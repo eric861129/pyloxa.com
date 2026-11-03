@@ -1,4 +1,4 @@
-// MAD 官網的互動：派工面板（首屏）、工作狀態、功能開關、常見問題與進場動態。
+// Pyloxa 官網的互動：派工面板（首屏）、工作狀態、功能開關、常見問題與進場動態。
 // 沒有 JavaScript 時內容照常顯示（派工面板顯示預設的結果，常見問題顯示第一題）。
 (function () {
   const root = document.documentElement;
@@ -21,7 +21,7 @@
     reveals.forEach((el) => io.observe(el));
   } else reveals.forEach((el) => el.classList.add("is-in"));
 
-  // ---- 派工面板：與 MAD 的規則相同（前端 → Claude Code、後端 → Codex，互為備援；其他走預設路由） ----
+  // ---- 派工面板：與 Pyloxa 的規則相同（前端 → Claude Code、後端 → Codex，互為備援；其他走預設路由） ----
   const router = document.querySelector("[data-router]");
   if (router) {
     const R = copy.router;

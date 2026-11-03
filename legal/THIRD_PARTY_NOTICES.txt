@@ -1,6 +1,6 @@
-MAD — Third-Party Notices
+Pyloxa — Third-Party Notices
 
-MAD includes the third-party software listed below. Each component is licensed under its own terms, reproduced here.
+Pyloxa includes the third-party software listed below. Each component is licensed under its own terms, reproduced here.
 Electron and Chromium licenses are in LICENSE.electron.txt and LICENSES.chromium.html in the installation folder.
 
 Components: 377

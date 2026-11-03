@@ -1,7 +1,7 @@
-﻿MAD END USER LICENSE AGREEMENT (FREE VERSION)
+﻿Pyloxa END USER LICENSE AGREEMENT (FREE VERSION)
 Version 0.1 — November 3, 2026
 
-Please read this agreement before installing or using MAD (Multi-Agent Desktop, "the Software"). By installing or using the Software, you agree to these terms. If you do not agree, do not install or use the Software.
+Please read this agreement before installing or using Pyloxa ("the Software"). By installing or using the Software, you agree to these terms. If you do not agree, do not install or use the Software.
 
 1. License
 ChiYu-Huang ("the Developer") grants you a free, non-exclusive, non-transferable, revocable license to install and use the free version of the Software on computers that you own or control, for personal or commercial purposes.
@@ -41,11 +41,11 @@ This license ends automatically if you breach these terms. When it ends, you mus
 This agreement is governed by the laws of Taiwan (Republic of China). The Taiwan Taipei District Court has jurisdiction as the court of first instance, unless mandatory law provides otherwise.
 
 12. Contact
-For questions about this agreement, use the support channel listed on the official MAD website.
+For questions about this agreement, use the support channel listed on the official Pyloxa website (https://pyloxa.com).
 
 ---
 
-MAD 終端使用者授權合約（免費版）
+Pyloxa 終端使用者授權合約（免費版）
 版本 0.1 — 2026 年 11 月 3 日
 
 以下為上述英文合約的繁體中文譯文；兩者不一致時，以英文版本為準。
@@ -88,4 +88,4 @@ ChiYu-Huang（下稱「開發者」）授予你免費、非專屬、不可轉讓
 本合約以中華民國（台灣）法律為準據法；除強制規定另有規定外，以臺灣臺北地方法院為第一審管轄法院。
 
 12. 聯絡方式
-對本合約有疑問，請使用 MAD 官方網站列出的支援管道。
+對本合約有疑問，請使用 Pyloxa 官方網站（https://pyloxa.com）列出的支援管道。

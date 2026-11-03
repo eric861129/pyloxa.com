@@ -1,4 +1,4 @@
-/* MAD — 官網樣式。品牌色沿用 App：靛藍 #4932D4、橘 #F29611（direction: The product performs）。 */
+/* Pyloxa — 官網樣式。品牌色沿用 App：靛藍 #4932D4、橘 #F29611（direction: The product performs）。 */
 :root {
   --ground: #f7f7f8;
   --tone: #ececef;
@@ -151,9 +151,15 @@ h3 {
   padding-block: 28px;
 }
 
+/* 文字字標：正式標誌完成前暫用（D-41） */
 .nav .mark {
   display: block;
-  width: 92px;
+  font-size: var(--step-lead);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .nav ul {
@@ -908,7 +914,7 @@ section {
   opacity: 0;
 }
 
-/* 收尾：打開 MAD 的第一個畫面 */
+/* 收尾：打開 Pyloxa 的第一個畫面 */
 .close {
   margin-top: var(--gap-section);
   background: var(--accent);
@@ -1043,8 +1049,12 @@ section {
   justify-content: center;
 }
 
-.tile.word img {
-  width: min(560px, 70%);
+.tile.word .wordmark {
+  font-size: var(--step-display);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
 }
 
 .tile.go {
