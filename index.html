@@ -20,7 +20,10 @@
     <header class="wrap nav">
       <a class="mark" href="./" aria-label="Pyloxa home">Pyloxa</a>
       <ul>
+        <li class="optional"><a href="#why">Why Pyloxa</a></li>
         <li class="optional"><a href="#how">How it works</a></li>
+        <li class="optional"><a href="#custom">Customize</a></li>
+        <li class="optional"><a href="#skills">Skills</a></li>
         <li class="optional"><a href="#pricing">Pricing</a></li>
         <li class="optional"><a href="#faq">FAQ</a></li>
         <li><a href="zh-TW/" lang="zh-Hant">繁體中文</a></li>
@@ -99,7 +102,7 @@
                 <span class="spacer"></span>
                 <span class="badge info"><span class="spin" aria-hidden="true"></span>Running</span>
               </div>
-              <span class="ui-muted">Codex · in its own worktree on branch mad/r_8f2k/t_api</span>
+              <span class="ui-muted">Codex · in its own worktree on branch pyloxa/r_8f2k/t_api</span>
             </div>
           </div>
 
@@ -126,7 +129,7 @@
                 <span class="spacer"></span>
                 <span class="badge ok">Done</span>
               </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Accepted and merged into mad/r_8f2k/integration</span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Accepted and merged into pyloxa/r_8f2k/integration</span>
             </div>
           </div>
 
@@ -146,9 +149,64 @@
         </div>
       </section>
 
+      <section class="wrap section why" id="why" aria-labelledby="why-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="why-title">More than more agents</h2>
+            <p>Plenty of tools let you run several agents side by side. Pyloxa handles what happens between them: who does which part, how you know it is done, and who takes over when one gets stuck.</p>
+            <p>Here is the same request handled by switching between CLIs yourself, and by handing it to Pyloxa.</p>
+          </div>
+          <table class="compare reveal">
+            <thead>
+              <tr>
+                <td></td>
+                <th scope="col">Switching CLIs yourself</th>
+                <th scope="col" class="ours">With Pyloxa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Splitting the work</th>
+                <td data-label="Yourself">You decide which tool fits each part and paste the request over.</td>
+                <td class="ours">The brain breaks the request into phases and tasks and routes each one by your rules, naming the rule it matched.</td>
+              </tr>
+              <tr>
+                <th scope="row">Handoffs</th>
+                <td data-label="Yourself">When one agent finishes, you paste the API shape and file paths into the next.</td>
+                <td class="ours">The next phase receives a handoff package: the results, the checks that passed, and what to watch for.</td>
+              </tr>
+              <tr>
+                <th scope="row">Done means</th>
+                <td data-label="Yourself">The agent says it is done, and you run the tests to find out.</td>
+                <td class="ours">A task is done when your verification commands pass in its own worktree. If they fail, the agent gets one automatic fix.</td>
+              </tr>
+              <tr>
+                <th scope="row">Out of quota</th>
+                <td data-label="Yourself">You switch tools and explain again where things stand.</td>
+                <td class="ours">Pyloxa proposes the fallback from your rules; once you confirm, it continues from the files the first agent changed.</td>
+              </tr>
+              <tr>
+                <th scope="row">Your repo</th>
+                <td data-label="Yourself">The agent edits your working directory directly.</td>
+                <td class="ours">Every task works in its own git worktree. Merging and pushing stay your call.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>How it works</span></h2>
+
+          <figure class="demo reveal">
+            <div class="frame">
+              <video class="clip" muted loop playsinline preload="metadata" poster="assets/video/en/flow.jpg" aria-label="Screen recording: type a request, the brain proposes a plan, Claude Code and Codex each take a part after approval, checks pass, and the result is merged">
+                <source src="assets/video/en/flow.webm" type="video/webm" />
+              </video>
+            </div>
+            <figcaption>A real recording: one request, a plan from the brain, Claude Code and Codex splitting the work, checks passing, and the merge. Time spent waiting on agents is cut out.</figcaption>
+          </figure>
 
           <div class="exchange reveal">
             <p class="say">First, say what you want.</p>
@@ -186,6 +244,149 @@
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Merged into main. Nothing is pushed until you push it.</span></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section custom" id="custom" aria-labelledby="custom-title">
+        <div class="grid no-tabs" data-tabs>
+          <div class="custom-head reveal">
+            <h2 id="custom-title">Split the work your way</h2>
+            <p>Which models to use, which work goes to whom, and when Pyloxa should stop and ask are all your settings. The brain only proposes plans; it cannot change any of them.</p>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="What you can customize" hidden>
+            <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">Agents and models</button>
+            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">Routing rules</button>
+            <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">Phases and checks</button>
+            <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">How much to automate</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-agents" aria-labelledby="tab-agents">
+            <div class="panel-copy">
+              <h3>Every agent is a profile you set up</h3>
+              <p>A profile picks the CLI, the model, the reasoning level, and a role prompt added to every task. One CLI can have several, such as "Claude frontend" and "Claude docs".</p>
+              <ul>
+                <li>The model list comes straight from the CLI you installed. Reasoning shows each CLI's own values (Claude Code's <code>--effort</code>, Codex's <code>model_reasoning_effort</code>) rather than a made-up common scale.</li>
+                <li>Any profile can be the brain that reads the project and writes the plan, and the brain can use a different model from the agents doing the work.</li>
+                <li>Profiles store settings only, never credentials.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="assets/video/en/agents.jpg" aria-label="Screen recording: adding a Codex backend profile with a model, a reasoning level and a role prompt">
+                  <source src="assets/video/en/agents.webm" type="video/webm" />
+                </video>
+              </div>
+              <img class="still" src="assets/shots/en/profile-dialog.png" width="1440" height="900" alt="The New profile dialog: name, CLI, model, reasoning and role prompt" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
+            <div class="panel-copy">
+              <h3>Your rules decide who does what</h3>
+              <p>Rules match on phase type and task type, for example "backend work in the implementation phase goes to Codex backend". Each rule has a primary profile and a fallback order, and applies to every project or just the current one.</p>
+              <ul>
+                <li>Rules are checked top to bottom and the first full match wins. Pyloxa warns you when one rule hides another.</li>
+                <li>Rule simulation calls no agent and uses no quota: pick a kind of task and see who gets it and why.</li>
+                <li>When nothing matches, Pyloxa asks you in the plan preview or stops, as you choose. It never picks an agent at random.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="assets/video/en/rules.jpg" aria-label="Screen recording: adding a Backend to Codex rule with a fallback, then checking it with rule simulation">
+                  <source src="assets/video/en/rules.webm" type="video/webm" />
+                </video>
+              </div>
+              <img class="still" src="assets/shots/en/rules-page.png" width="1440" height="900" alt="The Routing Rules page: a project rule Backend to Codex and the rule simulation result" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow">
+            <div class="panel-copy">
+              <h3>Every phase is checked with your commands</h3>
+              <p>The brain lays out phases to fit the request, such as specification, contract, implementation and testing. Before you approve, you can reassign a task, edit its instructions, or ask the brain to revise.</p>
+              <ul>
+                <li>Verification commands such as <code>npm run test</code> need your approval, and you can try them first in a temporary worktree. The brain can only use commands you approved.</li>
+                <li>Each finished task is checked in its own worktree; at the end of each phase, the gate runs again on the integrated result.</li>
+                <li>A gate can move on by itself once it passes, or wait for your approval.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="assets/video/en/commands.jpg" aria-label="Screen recording: trying the suggested npm run test and approving it as a verification command">
+                  <source src="assets/video/en/commands.webm" type="video/webm" />
+                </video>
+              </div>
+              <img class="still" src="assets/shots/en/plan-card.png" width="1440" height="900" alt="A plan card from the brain: implementation and testing phases, each task showing its agent and the rule it matched" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-modes" aria-labelledby="tab-modes">
+            <div class="panel-copy">
+              <h3>You decide how much to let go</h3>
+              <p>The routing mode decides when Pyloxa asks you first. In every mode, pushing and deploying never happen on their own.</p>
+              <ul>
+                <li>The brain and the working agents are set up separately; a working agent running out of quota never replaces the brain.</li>
+                <li>Each task gets at most 3 automatic tries, and plans have limits on tasks and time, so nothing retries forever.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="modes" data-ui>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Suggest, then ask</span><span class="badge info">Default</span><span class="spacer"></span><span class="badge">Free</span></div>
+                  <span class="ui-muted">The brain proposes the plan and who does each task; nothing starts until you approve the plan.</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Follow settings only</span><span class="spacer"></span><span class="badge">Free</span></div>
+                  <span class="ui-muted">Starts right away when every task matches a rule; stops when nothing matches or a profile is unavailable.</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Automatic within limits</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                  <span class="ui-muted">Chooses and retries within the profiles, models and counts you allow, and pauses at any limit.</span>
+                </div>
+              </div>
+              <img class="still" src="assets/shots/en/agents-page.png" width="1440" height="900" alt="The Agents and Brain page: brain, routing mode, and three profiles with their model and reasoning settings" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section" id="skills" aria-labelledby="skills-title">
+        <div class="wrap grid">
+          <div class="skills-copy reveal">
+            <span class="dev-tag">In development</span>
+            <h2 id="skills-title">One set of skills for every agent</h2>
+            <p>Claude Code reads <code>~/.claude/skills</code>; Codex reads <code>~/.agents/skills</code>. Keep a copy of the same skill in each, change one, and the other goes stale. Pyloxa manages them in one place.</p>
+            <ol class="steps">
+              <li><strong>Inventory<span class="tier">Free</span></strong><span>See which skills each CLI has, and which share a name but differ in content.</span></li>
+              <li><strong>Sync<span class="tier">Pro</span></strong><span>Use <code>~/.agents/skills</code> as the library and sync it to every CLI. Files you changed on the CLI side are never overwritten without asking.</span></li>
+              <li><strong>Assign<span class="tier">Pro</span></strong><span>Pick the skills each project uses; Claude Code and Codex can also take them per profile.</span></li>
+              <li><strong>Routing packs<span class="tier">Pro</span></strong><span>Bundle rules, skills, phases and verification commands to share. Imports show each item first and never replace your existing rules.</span></li>
+            </ol>
+          </div>
+          <div class="skills-mock reveal">
+            <div data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Skills</span>
+                <span class="ui-muted">5 skills · 1 differs</span>
+                <span class="spacer"></span>
+                <span class="ui-button primary" aria-hidden="true">Sync to all CLIs</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th scope="col">Name</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">shop project</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>api-contract</td><td><span class="badge ok">Synced</span></td><td><span class="badge ok">Synced</span></td><td><span class="badge info">In use</span></td></tr>
+                  <tr><td>react-conventions</td><td><span class="badge ok">Synced</span></td><td><span class="badge warn">Differs</span></td><td><span class="badge info">In use</span></td></tr>
+                  <tr><td>release-notes</td><td><span class="badge">Missing</span></td><td><span class="badge ok">Synced</span></td><td><span class="badge">Not used</span></td></tr>
+                  <tr><td>db-migration</td><td><span class="badge ok">Synced</span></td><td><span class="badge ok">Synced</span></td><td><span class="badge">Not used</span></td></tr>
+                  <tr><td>test-writer</td><td><span class="badge ok">Synced</span></td><td><span class="badge ok">Synced</span></td><td><span class="badge info">In use</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="media-note">Mockup. Skills management is in development. The inventory will be in the free version; sync, assignment and routing packs are Pro.</p>
           </div>
         </div>
       </section>
@@ -256,6 +457,11 @@
               <td>Several projects working at once, with one inbox for everything waiting on you</td>
             </tr>
             <tr>
+              <th scope="row">Agent setup</th>
+              <td class="rec">Your own profiles: model, reasoning and role prompt; any profile can be the brain</td>
+              <td>Same</td>
+            </tr>
+            <tr>
               <th scope="row">Plans and routing</th>
               <td class="rec">Brain plans, routing rules, verification commands, phase gates</td>
               <td>The same, plus automatic mode within the limits you set</td>
@@ -267,8 +473,8 @@
             </tr>
             <tr>
               <th scope="row">Skills</th>
-              <td class="rec">See which skills each CLI has</td>
-              <td>One skills library synced to every CLI and assigned per project</td>
+              <td class="rec">See which skills each CLI has (in development)</td>
+              <td>One skills library synced to every CLI, assigned per project or profile, bundled into routing packs (in development)</td>
             </tr>
             <tr>
               <th scope="row">Workspace</th>
@@ -366,6 +572,26 @@
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Why does Windows warn me when installing?</button>
               <div class="inline-answer"><p>The free installer is not code-signed yet, so SmartScreen may say it protected your PC. Choose More info, then Run anyway. You can compare the installer’s SHA-256 with the one on the release page first.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">Can I choose the model and reasoning level?</button>
+              <div class="inline-answer"><p>Yes. Each profile has its own model and reasoning setting, listed from the CLI you installed; leave them empty to use the CLI's defaults. The brain and the working agents can use different models.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">Can a kind of task always go to one agent?</button>
+              <div class="inline-answer"><p>Yes. Write a routing rule, such as "testing-phase work goes to Claude Code", for every project or just this one. You can also reassign a single task before approving a plan.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">How is this different from a CLI's own subagents?</button>
+              <div class="inline-answer"><p>Subagents split work inside one CLI. Pyloxa splits work across CLIs: tasks can go to different CLIs, each runs in its own worktree, your commands check the results, and another CLI takes over when one runs out of quota. You can use both together.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">Does it support Gemini or other agents?</button>
+              <div class="inline-answer"><p>Today Pyloxa supports Claude Code and Codex CLI. Other agents are being evaluated; support will be announced in the release notes.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">When does skills management arrive?</button>
+              <div class="inline-answer"><p>It is in development. The inventory will be in the free version; sync, per-project or per-profile assignment and routing packs are Pro. Watch the release notes for the date.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">What will Pro add?</button>

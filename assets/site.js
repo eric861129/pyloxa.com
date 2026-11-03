@@ -120,6 +120,58 @@
     });
   }
 
+  // ---- 客製化分頁：沒有 JavaScript 時四個面板依序全部顯示 ----
+  document.querySelectorAll("[data-tabs]").forEach((box) => {
+    const tabs = [...box.querySelectorAll("[role=tab]")];
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute("aria-controls")));
+    box.classList.remove("no-tabs");
+    box.querySelector(".tabs").hidden = false;
+    const select = (i, focus) => {
+      tabs.forEach((t, j) => {
+        t.setAttribute("aria-selected", String(i === j));
+        t.tabIndex = i === j ? 0 : -1;
+        panels[j].hidden = i !== j;
+      });
+      if (focus) tabs[i].focus();
+      panels[i].querySelectorAll("video").forEach((v) => clipObserver?.observe(v));
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => select(i));
+      t.addEventListener("keydown", (e) => {
+        const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (d) select((i + d + tabs.length) % tabs.length, true);
+      });
+    });
+    select(0);
+  });
+
+  // ---- 操作錄影：捲到看得到時播放、離開時暫停；按一下暫停或繼續。偏好減少動態時不自動播放 ----
+  var clipObserver;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clips = document.querySelectorAll("video.clip");
+  clips.forEach((v) => {
+    if (reduce) v.controls = true;
+    v.addEventListener("click", () => {
+      if (reduce) return;
+      v.dataset.paused = v.paused ? "" : "1";
+      if (v.paused) v.play().catch(() => {});
+      else v.pause();
+    });
+  });
+  if (!reduce && "IntersectionObserver" in window) {
+    clipObserver = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          const v = e.target;
+          if (e.isIntersecting && !v.dataset.paused && v.offsetParent) v.play().catch(() => {});
+          else v.pause();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    clips.forEach((v) => clipObserver.observe(v));
+  }
+
   // ---- 常見問題：左邊選題，右邊顯示答案；手機改為展開在題目下方 ----
   const list = document.querySelector(".faq-list");
   const pane = document.querySelector(".faq-pane");

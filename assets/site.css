@@ -1502,3 +1502,454 @@ section {
 :lang(zh-Hant) body {
   line-break: strict;
 }
+
+/* ---- 實際操作錄影（video 以 IntersectionObserver 在看得到時播放） ---- */
+.clip {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.demo {
+  margin: 0 0 96px;
+  width: min(980px, calc(100vw - 2 * var(--margin)));
+}
+
+.demo .frame {
+  background: var(--tone);
+  padding: clamp(10px, 1.4vw, 18px);
+}
+
+.demo figcaption,
+.media-note {
+  margin-top: 12px;
+  font-size: var(--step-small);
+  color: var(--soft);
+  max-width: 64ch;
+}
+
+/* ---- 與自己切換 CLI 的差別 ---- */
+.why .grid {
+  align-items: start;
+}
+
+.why-copy {
+  grid-column: 1 / 5;
+  position: sticky;
+  top: 48px;
+}
+
+.why-copy h2 {
+  font-size: var(--step-head);
+}
+
+.why-copy p {
+  margin-top: 20px;
+  color: var(--soft);
+  max-width: 34ch;
+}
+
+.compare {
+  grid-column: 5 / 13;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step-body);
+}
+
+.compare th,
+.compare td {
+  text-align: left;
+  vertical-align: top;
+  padding: 18px 20px;
+}
+
+.compare thead th {
+  font-weight: 600;
+  font-size: var(--step-lead);
+  letter-spacing: -0.01em;
+}
+
+.compare tbody th {
+  font-weight: 400;
+  color: var(--soft);
+  white-space: nowrap;
+  padding-left: 0;
+}
+
+.compare tbody tr + tr > * {
+  border-top: 1px solid #dddbe3;
+}
+
+.compare td:first-of-type {
+  color: var(--soft);
+}
+
+.compare .ours {
+  background: var(--accent-tint);
+  width: 46%;
+}
+
+.compare thead .ours {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ---- 客製化：四個分頁 ---- */
+.custom-head {
+  grid-column: 1 / 8;
+}
+
+.custom-head h2 {
+  font-size: var(--step-head);
+}
+
+.custom-head p {
+  margin-top: 20px;
+  max-width: 52ch;
+  color: var(--soft);
+}
+
+.tabs {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 36px;
+  margin: 56px 0 40px;
+  border-bottom: 1px solid #dddbe3;
+}
+
+.tabs button {
+  border: 0;
+  background: none;
+  padding: 0 0 14px;
+  margin-bottom: -1px;
+  border-bottom: 3px solid transparent;
+  font: 400 var(--step-lead) / 1.2 var(--font);
+  color: var(--soft);
+  cursor: pointer;
+  transition:
+    color 150ms var(--ease),
+    border-color 150ms var(--ease);
+}
+
+.tabs button:hover {
+  color: var(--ink);
+}
+
+.tabs button[aria-selected="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.panel {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(12px, 2vw, 32px);
+  align-items: start;
+}
+
+.no-tabs .panel + .panel {
+  margin-top: 96px;
+}
+
+.panel-copy {
+  grid-column: 1 / 5;
+}
+
+.panel-copy h3 {
+  font-size: var(--step-lead);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.panel-copy > p {
+  margin-top: 16px;
+}
+
+.panel-copy ul {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+.panel-copy li {
+  padding-left: 18px;
+  position: relative;
+}
+
+.panel-copy li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 7px;
+  height: 7px;
+  background: var(--orange);
+}
+
+.panel-copy code {
+  font-size: 0.95em;
+  color: var(--ink);
+}
+
+.panel-media {
+  grid-column: 5 / 13;
+  display: grid;
+  gap: 20px;
+}
+
+.panel-media .frame {
+  background: var(--tone);
+  padding: clamp(10px, 1.4vw, 18px);
+}
+
+.panel-media .still {
+  width: 72%;
+  justify-self: end;
+  background: var(--tone);
+  padding: clamp(8px, 1vw, 14px);
+}
+
+.modes {
+  overflow: hidden;
+}
+
+.modes .ui-row + .ui-row {
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.modes .mode-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.modes .mode-top .spacer {
+  flex: 1;
+}
+
+/* ---- Skills（開發中） ---- */
+.skills {
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding-block: clamp(72px, 9vw, 140px);
+}
+
+.skills .grid {
+  align-items: start;
+}
+
+.skills-copy {
+  grid-column: 1 / 6;
+}
+
+.dev-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--orange);
+  color: var(--ink);
+  font-size: var(--step-small);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.skills-copy h2 {
+  font-size: var(--step-head);
+}
+
+.skills-copy > p {
+  margin-top: 20px;
+  max-width: 40ch;
+}
+
+.skills-copy code {
+  font-size: 0.92em;
+}
+
+.steps {
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 22px;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 2.2em 1fr;
+  column-gap: 8px;
+  font-size: var(--step-small);
+}
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  grid-row: span 2;
+  font-size: var(--step-lead);
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.steps strong {
+  font-size: var(--step-body);
+  font-weight: 600;
+}
+
+.steps .tier {
+  font-weight: 400;
+  opacity: 0.75;
+  margin-left: 6px;
+}
+
+.skills-mock {
+  grid-column: 7 / 13;
+}
+
+.skills-mock [data-ui] {
+  overflow: hidden;
+}
+
+.skills-mock table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.skills-mock th,
+.skills-mock td {
+  text-align: left;
+  padding: 10px 18px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+  white-space: nowrap;
+}
+
+.skills-mock thead th {
+  color: #6b6878;
+  font-weight: 400;
+}
+
+.skills-mock td:first-child {
+  font-weight: 600;
+  white-space: normal;
+}
+
+.skills-mock .mock-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skills-mock .mock-head .spacer {
+  flex: 1;
+}
+
+.skills-mock .media-note {
+  color: var(--accent-ink);
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .demo {
+    width: 100%;
+    margin-bottom: 72px;
+  }
+
+  .why-copy,
+  .compare,
+  .custom-head,
+  .panel-copy,
+  .panel-media,
+  .skills-copy,
+  .skills-mock {
+    grid-column: 1 / -1;
+  }
+
+  .why-copy {
+    position: static;
+    margin-bottom: 32px;
+  }
+
+  .compare thead {
+    display: none;
+  }
+
+  .compare,
+  .compare tbody,
+  .compare tr,
+  .compare th,
+  .compare td {
+    display: block;
+    width: auto;
+  }
+
+  .compare tbody tr {
+    padding: 20px 0;
+  }
+
+  .compare tbody tr + tr > * {
+    border-top: 0;
+  }
+
+  .compare tbody tr + tr {
+    border-top: 1px solid #dddbe3;
+  }
+
+  .compare th,
+  .compare td {
+    padding: 4px 0;
+  }
+
+  .compare tbody th {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .compare td:first-of-type::before {
+    content: attr(data-label) "：";
+  }
+
+  .compare .ours {
+    width: auto;
+    padding: 12px 14px;
+    margin-top: 8px;
+  }
+
+  .tabs {
+    gap: 4px 20px;
+    margin: 40px 0 28px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .tabs button {
+    font-size: var(--step-body);
+    white-space: nowrap;
+  }
+
+  .panel-media {
+    margin-top: 28px;
+  }
+
+  .panel-media .still {
+    width: 100%;
+  }
+
+  .skills-mock {
+    margin-top: 48px;
+  }
+
+  .skills-mock [data-ui] {
+    overflow-x: auto;
+  }
+}
