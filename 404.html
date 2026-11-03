@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found — Pyloxa</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Noto+Sans+TC:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+      .lost {
+        min-height: 70vh;
+        display: grid;
+        align-content: center;
+        gap: 20px;
+        max-width: 640px;
+      }
+      .lost h1 {
+        font-size: var(--step-display);
+      }
+      .lost p {
+        color: var(--soft);
+      }
+      .lost .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .lost .button.is-light {
+        background: var(--tone);
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wrap nav">
+      <a class="mark" href="/" aria-label="Pyloxa home">Pyloxa</a>
+    </header>
+    <main class="wrap lost">
+      <h1>404</h1>
+      <p>This page does not exist. <span lang="zh-Hant-TW">找不到這個頁面。</span></p>
+      <div class="actions">
+        <a class="button" href="/">Pyloxa home</a>
+        <a class="button is-light" href="/zh-TW/" lang="zh-Hant-TW">繁體中文首頁</a>
+      </div>
+    </main>
+  </body>
+</html>
