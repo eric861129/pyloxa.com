@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAD — One chat, many agents</title>
+    <meta name="description" content="MAD is a free Windows app: describe the work once, and it plans it, hands each task to Claude Code or Codex CLI on your own subscription, and checks the results." />
+    <link rel="icon" href="assets/icon.png" />
+    <link rel="alternate" hreflang="zh-TW" href="zh-TW/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a href="./" aria-label="MAD home"><img class="mark" src="assets/logo.svg" width="92" height="35" alt="MAD" /></a>
+      <ul>
+        <li class="optional"><a href="#how">How it works</a></li>
+        <li class="optional"><a href="#pricing">Pricing</a></li>
+        <li class="optional"><a href="#faq">FAQ</a></li>
+        <li><a href="zh-TW/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/MAD-Releases/releases/latest">Download</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap grid">
+          <div class="hero-copy reveal">
+            <h1 id="hero-title">One chat.<br />Many agents.</h1>
+            <p class="lead">Describe the work once. MAD plans it, hands each task to Claude Code or Codex on your own subscription, and checks the result before anything is merged.</p>
+            <div class="actions">
+              <a class="button" href="https://github.com/eric861129/MAD-Releases/releases/latest">Download for Windows</a>
+              <span class="meta">Free · v0.1.0 · Windows 10 and 11</span>
+            </div>
+          </div>
+        </div>
+        <div class="stage" aria-label="Try the routing">
+          <div class="stage-inner">
+            <div class="router" data-ui data-router>
+              <div class="ui-row router-head">
+                <span class="ui-title">Who gets this task?</span>
+                <span class="badge info">Routing rules</span>
+              </div>
+              <div class="ui-row fields">
+                <div>
+                  <label class="field-label" for="task-title">Task</label>
+                  <input id="task-title" type="text" value="Add the GET /api/profile endpoint with tests" />
+                </div>
+                <div>
+                  <span class="field-label" id="type-label">Type</span>
+                  <div class="seg" role="group" aria-labelledby="type-label">
+                    <button type="button" data-type="frontend" aria-pressed="false">Frontend</button>
+                    <button type="button" data-type="backend" aria-pressed="true">Backend</button>
+                    <button type="button" data-type="docs" aria-pressed="false">Docs</button>
+                    <button type="button" data-type="testing" aria-pressed="false">Tests</button>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-row decision" aria-live="polite">
+                <span class="who"><span data-who>Goes to “Codex”</span></span>
+                <span class="ui-muted" data-why>Matched rule “Backend to Codex”</span>
+                <span class="ui-muted" data-fallback>Fallback “Claude Code”: available, not triggered</span>
+              </div>
+              <div class="ui-row quota-switch">
+                <button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="quota-label" data-quota></button>
+                <span id="quota-label">Codex is out of quota</span>
+              </div>
+              <div class="quota-box" data-quota-box hidden>
+                <span class="ui-title" data-quota-title>Codex ran out of quota (resets around 18:00)</span>
+                <span class="ui-muted">A fallback can take over and continue from Codex’s work, after you confirm.</span>
+                <span><button type="button" class="ui-button primary" data-takeover>Let Claude Code take over</button></span>
+              </div>
+              <div class="quota-box" data-taken hidden>
+                <span class="check-line">Claude Code took over and continues from Codex’s files.</span>
+              </div>
+            </div>
+          </div>
+          <p class="stage-note">These are MAD’s example rules. You write your own, and every task shows the rule it matched.</p>
+        </div>
+      </section>
+
+      <section class="wrap section" aria-labelledby="states-title">
+        <div class="states reveal">
+          <h2 class="section-head" id="states-title">Every result is checked</h2>
+
+          <p class="state-word">Working</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">Profile API</span>
+                <span class="badge">backend</span>
+                <span class="badge warn">Writable</span>
+                <span class="spacer"></span>
+                <span class="badge info"><span class="spin" aria-hidden="true"></span>Running</span>
+              </div>
+              <span class="ui-muted">Codex · in its own worktree on branch mad/r_8f2k/t_api</span>
+            </div>
+          </div>
+
+          <p class="state-word">Verified</p>
+          <div class="state-row task-row" data-ui data-task>
+            <div class="ui-row" data-pending>
+              <div class="top">
+                <span class="ui-title">Profile API</span>
+                <span class="badge">backend</span>
+                <span class="badge warn">Writable</span>
+                <span class="spacer"></span>
+                <span class="badge warn">Waiting for you</span>
+              </div>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>npm run test passed · 2 files changed · within its write scope</span>
+              <div class="actions">
+                <button type="button" class="ui-button primary" data-accept>Accept result</button>
+                <button type="button" class="ui-button">Reply in session</button>
+              </div>
+            </div>
+            <div class="ui-row" data-accepted hidden>
+              <div class="top">
+                <span class="ui-title">Profile API</span>
+                <span class="badge">backend</span>
+                <span class="spacer"></span>
+                <span class="badge ok">Done</span>
+              </div>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Accepted and merged into mad/r_8f2k/integration</span>
+            </div>
+          </div>
+
+          <p class="state-word">Integrated</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">Profile page</span>
+                <span class="badge">frontend</span>
+                <span class="badge ok">Auto-accepted</span>
+                <span class="spacer"></span>
+                <span class="badge ok">Done</span>
+              </div>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>All verification commands passed (2) · merged into the integration branch</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+        <div class="flow-col">
+          <h2 class="section-head reveal" id="how-title"><span>How it works</span></h2>
+
+          <div class="exchange reveal">
+            <p class="say">First, say what you want.</p>
+            <div class="call">
+              <div data-ui class="ui-row">Build a member profile page where people can edit their nickname and avatar. The backend needs an API and docs.</div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img class="crop-chat" src="assets/shots/en/conversation.png" width="2560" height="1802" alt="MAD showing the brain’s reply and a three-phase plan with tasks assigned to Claude Code" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange reveal">
+            <p class="say">Then approve the plan.</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Approve and start</button> <span class="ui-muted">One agent works at a time, each in its own git worktree.</span></div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img src="assets/shots/en/plan-gates.png" alt="A plan with tasks auto-accepted after their verification commands passed and a phase gate passed" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange final reveal">
+            <p class="say">Finally, merge what passed.</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Merge into current branch (main)</button></div>
+            </div>
+            <div class="response result" data-ui>
+              <div class="ui-row"><span class="ui-title">Result of the whole plan (5 files)</span></div>
+              <ul class="files">
+                <li><span class="st">A</span>docs/api/profile.yaml</li>
+                <li><span class="st">A</span>server/src/routes/profile.ts</li>
+                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
+                <li><span class="st">A</span>test/profile.test.ts</li>
+                <li><span class="st">A</span>test/contract.test.ts</li>
+              </ul>
+              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Merged into main. Nothing is pushed until you push it.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fallback section" aria-labelledby="fallback-title">
+        <div class="wrap grid">
+          <div class="fallback-copy reveal">
+            <h2 id="fallback-title">When one runs dry</h2>
+            <p>If Codex hits its usage limit halfway through a task, MAD stops sending it work, shows when the quota resets, and offers the fallback from your rule. You confirm, and Claude Code continues from the files Codex already changed.</p>
+            <div class="figures">
+              <span>3 automatic tries per task</span>
+              <span>2 fallbacks at most</span>
+              <span>0 API charges you did not allow</span>
+            </div>
+          </div>
+          <div class="fallback-shots reveal">
+            <img class="drift" src="assets/shots/en/quota-task.png" alt="A task where Codex ran out of quota, with a button to let Claude Code take over" loading="lazy" />
+            <img class="small" src="assets/shots/en/connection-card.png" alt="The Codex connection marked out of quota until the reset time, with a Quota restored button" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section class="bands" aria-label="What MAD does for you">
+        <div class="band c1">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b1">Run my tests on every task.</p><p class="consequence">npm run test runs in each task’s own worktree. Pass, and the task is accepted for you; fail, and the agent gets one automatic fix.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b1" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c2">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b2">Ask me before the next phase.</p><p class="consequence">A phase passes its commands on the integrated version, then waits for one click from you. Leave it off and checked phases move on by themselves.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b2" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c3">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b3">Never touch my credentials.</p><p class="consequence">MAD only runs the CLIs you signed in to. It never reads, copies or sends their tokens, and your working directory is never stashed or reset.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b3" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c4">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b4">Reply in my language.</p><p class="consequence">The interface and the agents’ replies in English, 繁體中文 or 简体中文, chosen separately.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section pricing" id="pricing" aria-labelledby="pricing-title">
+        <table class="reveal">
+          <thead>
+            <tr>
+              <th scope="col" id="pricing-title">Free now, Pro later</th>
+              <th scope="col" class="rec">Free<span class="price">$0 <span class="period">no account needed</span></span></th>
+              <th scope="col">Pro<span class="price later">Price not announced</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Agents</th>
+              <td class="rec">Claude Code and Codex CLI on your own subscriptions</td>
+              <td>The same, plus API billing when a subscription runs out, if you allow it</td>
+            </tr>
+            <tr>
+              <th scope="row">Plans and routing</th>
+              <td class="rec">Brain plans, routing rules, verification commands, phase gates</td>
+              <td>The same, plus automatic mode within the limits you set</td>
+            </tr>
+            <tr>
+              <th scope="row">Agents at a time</th>
+              <td class="rec">One</td>
+              <td>Two</td>
+            </tr>
+            <tr>
+              <th scope="row">When quota runs out</th>
+              <td class="rec">You confirm each takeover</td>
+              <td>An automatic fallback chain</td>
+            </tr>
+            <tr>
+              <th scope="row">Workspace</th>
+              <td class="rec">Files, Markdown, diffs, git, pull requests through gh</td>
+              <td>The same, plus several repositories and review comments turned into tasks</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td class="rec"><a class="button" href="https://github.com/eric861129/MAD-Releases/releases/latest">Download for Windows</a></td>
+              <td><span class="later">Coming later</span></td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pricing-phone">
+          <div class="plan-block rec">
+            <h3>Free</h3>
+            <p class="price">$0</p>
+            <dl>
+              <dt>Agents</dt>
+              <dd>Claude Code and Codex CLI on your own subscriptions</dd>
+              <dt>Plans and routing</dt>
+              <dd>Brain plans, routing rules, verification commands, phase gates</dd>
+              <dt>Agents at a time</dt>
+              <dd>One</dd>
+              <dt>When quota runs out</dt>
+              <dd>You confirm each takeover</dd>
+            </dl>
+            <a class="button" href="https://github.com/eric861129/MAD-Releases/releases/latest">Download for Windows</a>
+          </div>
+          <div class="plan-block">
+            <h3>Pro</h3>
+            <p class="price later">Price not announced</p>
+            <dl>
+              <dt>Adds</dt>
+              <dd>Automatic mode, two agents at a time, an automatic fallback chain, API billing fallback and several repositories</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
+        <div class="grid">
+          <ul class="faq-list reveal" role="tablist" aria-orientation="vertical">
+            <li class="faq-head" id="faq-title">Questions</li>
+            <li data-q class="is-open">
+              <button type="button" role="tab" aria-selected="true">Does MAD charge for AI usage?</button>
+              <div class="inline-answer"><p>No. MAD runs the official Claude Code and Codex CLIs you already signed in to, so usage counts against your own subscription. MAD never resells or proxies any AI service.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">What do I need to install?</button>
+              <div class="inline-answer"><p>Windows 10 or 11 (64-bit), git, and at least one of Claude Code or Codex CLI, signed in. A second CLI makes routing and fallback useful.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">Does MAD read my credentials?</button>
+              <div class="inline-answer"><p>Never. It checks sign-in status with each CLI’s own command and starts the CLI as you would. Tokens and credential files are not read, copied or sent.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">Is my code sent anywhere?</button>
+              <div class="inline-answer"><p>MAD itself has no server and collects no telemetry. Your code goes only where the CLIs send it, under Anthropic’s and OpenAI’s terms.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">Can an agent break my repository?</button>
+              <div class="inline-answer"><p>Agents work in separate git worktrees. Your working directory is never stashed, reset or checked out by MAD, and nothing is merged or pushed until you choose to.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">Why does Windows warn me when installing?</button>
+              <div class="inline-answer"><p>The free installer is not code-signed yet, so SmartScreen may say it protected your PC. Choose More info, then Run anyway. You can compare the installer’s SHA-256 with the one on the release page first.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">What will Pro add?</button>
+              <div class="inline-answer"><p>Automatic mode, two agents at a time, an automatic fallback chain and more. The price is not announced yet; the free version stays free.</p></div>
+            </li>
+          </ul>
+          <div class="faq-pane" aria-live="polite">
+            <p>No. MAD runs the official Claude Code and Codex CLIs you already signed in to, so usage counts against your own subscription. MAD never resells or proxies any AI service.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="close" aria-labelledby="close-title">
+        <div class="wrap grid">
+          <div class="close-copy reveal">
+            <h2 id="close-title">Say it once.</h2>
+            <p>Install MAD, open a project folder and describe what you want done. The brain reads the project first and asks before it plans anything big.</p>
+            <p class="smartscreen">The installer is not code-signed yet; if SmartScreen appears, choose More info, then Run anyway.</p>
+          </div>
+          <div class="starter reveal" data-ui>
+            <div class="ui-row">
+              <h3>What do you want to get done?</h3>
+              <p class="ui-muted" style="margin-top: 4px">shop · main</p>
+            </div>
+            <div class="ui-row" style="display: grid; gap: 12px">
+              <textarea rows="3" aria-label="What do you want to get done?">Add a points page for members, with an API and tests.</textarea>
+              <div class="seg" role="group" aria-label="Who gets it">
+                <button type="button" aria-pressed="true" data-seg>To the brain</button>
+                <button type="button" aria-pressed="false" data-seg>Straight to Codex</button>
+              </div>
+            </div>
+            <div class="ui-row">
+              <a class="button download" href="https://github.com/eric861129/MAD-Releases/releases/latest">Download MAD for Windows</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="tiles">
+        <div class="tile statement">
+          <p>A desktop app for working with several AI agents at once.</p>
+          <p class="legal">© 2026 ChiYu-Huang. Free version under the <a href="legal/EULA.txt">license agreement</a>. <a href="legal/THIRD_PARTY_NOTICES.txt">Third-party notices</a>.</p>
+        </div>
+        <nav class="tile links" aria-label="Footer">
+          <ul>
+            <li><a href="https://github.com/eric861129/MAD-Releases/releases/latest">Download</a></li>
+            <li><a href="https://github.com/eric861129/MAD-Releases/releases">Release notes</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="zh-TW/" lang="zh-Hant">繁體中文</a></li>
+          </ul>
+        </nav>
+        <div class="tile system">
+          <p>Windows 10 and 11<br />64-bit<br />Version 0.1.0</p>
+        </div>
+        <div class="tile issue">
+          <p>Found a problem?</p>
+          <a href="https://github.com/eric861129/MAD-Releases/issues">Report it on GitHub</a>
+        </div>
+        <div class="tile word"><img src="assets/logo.svg" width="560" height="211" alt="MAD" style="filter: brightness(0) invert(1)" loading="lazy" /></div>
+        <a class="tile go" href="https://github.com/eric861129/MAD-Releases/releases/latest">
+          <span>Download it free</span>
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M14 42 42 14M20 14h22v22" /></svg>
+        </a>
+      </div>
+    </footer>
+
+    <script type="application/json" id="copy">
+      {
+        "router": {
+          "goesTo": "Goes to “{agent}”",
+          "fallback": "Fallback “{agent}”: {state}",
+          "available": "available, not triggered",
+          "unavailable": "out of quota",
+          "noFallback": "No fallback in this rule",
+          "quotaTitle": "{agent} ran out of quota (resets around 18:00)",
+          "takeover": "Let {agent} take over",
+          "tookOverReason": "“{from}” ran out of quota; you confirmed “{agent}” takes over",
+          "rules": {
+            "frontend": { "agent": "Claude Code", "fallback": "Codex", "reason": "Matched rule “Frontend to Claude Code”" },
+            "backend": { "agent": "Codex", "fallback": "Claude Code", "reason": "Matched rule “Backend to Codex”" },
+            "docs": { "agent": "Claude Code", "fallback": "", "reason": "No rule matched; using the default route" },
+            "testing": { "agent": "Claude Code", "fallback": "", "reason": "No rule matched; using the default route" }
+          }
+        }
+      }
+    </script>
+    <script src="assets/site.js" defer></script>
+  </body>
+</html>

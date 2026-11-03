@@ -1,0 +1,91 @@
+﻿MAD END USER LICENSE AGREEMENT (FREE VERSION)
+Version 0.1 — November 3, 2026
+
+Please read this agreement before installing or using MAD (Multi-Agent Desktop, "the Software"). By installing or using the Software, you agree to these terms. If you do not agree, do not install or use the Software.
+
+1. License
+ChiYu-Huang ("the Developer") grants you a free, non-exclusive, non-transferable, revocable license to install and use the free version of the Software on computers that you own or control, for personal or commercial purposes.
+
+2. Restrictions
+You may not:
+(a) sell, rent, lease, sublicense, distribute or publish the Software or any part of it, except by sharing the official download link;
+(b) decompile, disassemble or reverse engineer the Software, except to the extent that applicable law expressly permits this despite this restriction;
+(c) remove or alter any copyright, trademark or license notices;
+(d) circumvent any license check or feature limitation in the Software.
+
+3. Third-party AI services and tools
+The Software runs official command-line tools (such as Claude Code and Codex CLI) that you install and sign in to yourself, using your own subscriptions or API keys. The Developer does not provide, resell or proxy any AI service. You are responsible for complying with the terms of those providers and for any fees they charge. The Software does not read, copy or transmit the credentials of those tools.
+
+4. Your data
+The Software runs on your computer. The Developer does not collect your project files, prompts, credentials or usage telemetry through the Software. Content that the command-line tools send to AI providers is governed by those providers' terms and privacy policies.
+
+5. AI agents modify files
+The Software lets AI agents read and modify files in your projects. Agents work in isolated git worktrees, but you are responsible for reviewing their changes, keeping backups, and deciding what to merge, commit or push.
+
+6. Third-party software
+The Software includes third-party components licensed under their own terms, listed in THIRD_PARTY_NOTICES.txt in the installation folder. Those terms apply to the respective components.
+
+7. Updates and paid versions
+The Developer may update, change or discontinue the free version at any time. Paid versions or features, if offered, may be subject to separate terms.
+
+8. No warranty
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+9. Limitation of liability
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE DEVELOPER SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF DATA, PROFITS OR BUSINESS, ARISING FROM THE USE OF OR INABILITY TO USE THE SOFTWARE. BECAUSE THE FREE VERSION IS PROVIDED AT NO CHARGE, THE DEVELOPER'S TOTAL LIABILITY SHALL NOT EXCEED ZERO, TO THE EXTENT PERMITTED BY LAW.
+
+10. Termination
+This license ends automatically if you breach these terms. When it ends, you must stop using the Software and delete all copies.
+
+11. Governing law
+This agreement is governed by the laws of Taiwan (Republic of China). The Taiwan Taipei District Court has jurisdiction as the court of first instance, unless mandatory law provides otherwise.
+
+12. Contact
+For questions about this agreement, use the support channel listed on the official MAD website.
+
+---
+
+MAD 終端使用者授權合約（免費版）
+版本 0.1 — 2026 年 11 月 3 日
+
+以下為上述英文合約的繁體中文譯文；兩者不一致時，以英文版本為準。
+
+1. 授權
+ChiYu-Huang（下稱「開發者」）授予你免費、非專屬、不可轉讓、可撤銷的授權，在你擁有或控制的電腦上安裝與使用本軟體的免費版本，可用於個人或商業用途。
+
+2. 限制
+你不得：
+(a) 出售、出租、再授權、散布或公開本軟體的全部或一部分；分享官方下載連結除外；
+(b) 反編譯、反組譯或逆向工程本軟體，但適用法律明確允許者不在此限；
+(c) 移除或變更任何著作權、商標或授權聲明；
+(d) 規避本軟體的授權檢查或功能限制。
+
+3. 第三方 AI 服務與工具
+本軟體執行你自行安裝並登入的官方命令列工具（例如 Claude Code 與 Codex CLI），使用你自己的訂閱或 API Key。開發者不提供、不轉售也不代理任何 AI 服務。你須自行遵守這些供應商的條款並支付其費用。本軟體不讀取、不複製也不傳送這些工具的憑證。
+
+4. 你的資料
+本軟體在你的電腦上執行。開發者不會透過本軟體收集你的專案檔案、提示內容、憑證或使用遙測。命令列工具傳送給 AI 供應商的內容，受各供應商的條款與隱私政策規範。
+
+5. AI Agent 會修改檔案
+本軟體讓 AI Agent 讀取並修改你專案中的檔案。Agent 在隔離的 git worktree 中工作，但檢視修改、保留備份，以及決定是否合併、提交或推送，是你的責任。
+
+6. 第三方軟體
+本軟體包含依各自授權條款提供的第三方元件，列於安裝目錄中的 THIRD_PARTY_NOTICES.txt；各元件適用其各自的條款。
+
+7. 更新與付費版本
+開發者得隨時更新、變更或停止提供免費版本。若提供付費版本或功能，可能另有條款。
+
+8. 不提供保證
+本軟體依「現狀」提供，不提供任何明示或默示的保證，包括但不限於適售性、特定目的適用性與不侵權之保證。
+
+9. 責任限制
+在法律允許的最大範圍內，開發者對因使用或無法使用本軟體所生的任何間接、附帶、特殊、衍生或懲罰性損害，或資料、利潤、營業之損失，不負賠償責任。由於免費版本不收取費用，在法律允許的範圍內，開發者的總賠償責任以零為限。
+
+10. 終止
+你違反本合約時，授權自動終止。授權終止後，你必須停止使用並刪除本軟體的所有複本。
+
+11. 準據法
+本合約以中華民國（台灣）法律為準據法；除強制規定另有規定外，以臺灣臺北地方法院為第一審管轄法院。
+
+12. 聯絡方式
+對本合約有疑問，請使用 MAD 官方網站列出的支援管道。
