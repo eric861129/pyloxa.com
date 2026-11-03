@@ -841,6 +841,81 @@ section {
   display: none;
 }
 
+.pricing-note {
+  margin: 20px 0 0;
+  max-width: 68ch;
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+/* Pro 早鳥名單（端點設定在 <meta name="pyloxa:waitlist">，沒有設定時只顯示「即將開放」） */
+.waitlist {
+  display: grid;
+  gap: 10px;
+  max-width: 30rem;
+  font-size: var(--step-body);
+}
+
+.waitlist label {
+  font-weight: 600;
+}
+
+.waitlist-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.waitlist input[type="email"] {
+  flex: 1 1 12rem;
+  min-width: 0;
+  padding: 0.85em 1em;
+  font: 400 var(--step-body) / 1 var(--font);
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid #cfcbdb;
+  border-radius: 0;
+}
+
+.waitlist input[type="email"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.waitlist .button {
+  flex: none;
+}
+
+.waitlist .button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.waitlist-note,
+.waitlist-status {
+  margin: 0;
+}
+
+.waitlist-note {
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+.waitlist-status:empty {
+  display: none;
+}
+
+.waitlist.is-done label,
+.waitlist.is-done .waitlist-row,
+.waitlist.is-done .waitlist-note {
+  display: none;
+}
+
+.waitlist.is-done .waitlist-status {
+  color: var(--green);
+  font-weight: 600;
+}
+
 /* 常見問題 */
 .faq .grid {
   align-items: start;
@@ -1334,6 +1409,10 @@ section {
   .plan-block .button {
     width: 100%;
     justify-content: center;
+  }
+
+  .plan-block .waitlist {
+    max-width: none;
   }
 
   .faq-list,

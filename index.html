@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pyloxa — One chat, many agents</title>
     <meta name="description" content="Pyloxa is a free Windows app: describe the work once, and it plans it, hands each task to Claude Code or Codex CLI on your own subscription, and checks the results." />
+    <meta name="pyloxa:waitlist" content="" />
     <link rel="icon" href="assets/icon.png" />
     <link rel="canonical" href="https://pyloxa.com/" />
     <link rel="alternate" hreflang="en" href="https://pyloxa.com/" />
@@ -238,9 +239,9 @@
         <table class="reveal">
           <thead>
             <tr>
-              <th scope="col" id="pricing-title">Free now, Pro later</th>
+              <th scope="col" id="pricing-title">Free now, Pro soon</th>
               <th scope="col" class="rec">Free<span class="price">$0 <span class="period">no account needed</span></span></th>
-              <th scope="col">Pro<span class="price later">Price not announced</span></th>
+              <th scope="col">Pro<span class="price">Buy once <span class="period">12 months of updates, then keep it</span></span></th>
             </tr>
           </thead>
           <tbody>
@@ -250,31 +251,50 @@
               <td>The same, plus API billing when a subscription runs out, if you allow it</td>
             </tr>
             <tr>
+              <th scope="row">Projects</th>
+              <td class="rec">One project working at a time; switch any time</td>
+              <td>Several projects working at once, with one inbox for everything waiting on you</td>
+            </tr>
+            <tr>
               <th scope="row">Plans and routing</th>
               <td class="rec">Brain plans, routing rules, verification commands, phase gates</td>
               <td>The same, plus automatic mode within the limits you set</td>
             </tr>
             <tr>
-              <th scope="row">Agents at a time</th>
-              <td class="rec">One</td>
-              <td>Two</td>
-            </tr>
-            <tr>
               <th scope="row">When quota runs out</th>
               <td class="rec">You confirm each takeover</td>
-              <td>An automatic fallback chain</td>
+              <td>An automatic fallback chain, and plans that wait for the next reset</td>
+            </tr>
+            <tr>
+              <th scope="row">Skills</th>
+              <td class="rec">See which skills each CLI has</td>
+              <td>One skills library synced to every CLI and assigned per project</td>
             </tr>
             <tr>
               <th scope="row">Workspace</th>
               <td class="rec">Files, Markdown, diffs, git, pull requests through gh</td>
-              <td>The same, plus several repositories and review comments turned into tasks</td>
+              <td>The same</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td></td>
               <td class="rec"><a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download for Windows</a></td>
-              <td><span class="later">Coming later</span></td>
+              <td>
+              <span class="later" data-waitlist-soon>Early-bird sign-up opens soon.</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-table">Get the early-bird price</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-table" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">Notify me</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="en" />
+                <p class="waitlist-note">One email when Pro launches, sent through Buttondown. Unsubscribe any time.</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+              </td>
             </tr>
           </tfoot>
         </table>
@@ -285,10 +305,8 @@
             <dl>
               <dt>Agents</dt>
               <dd>Claude Code and Codex CLI on your own subscriptions or API keys</dd>
-              <dt>Plans and routing</dt>
-              <dd>Brain plans, routing rules, verification commands, phase gates</dd>
-              <dt>Agents at a time</dt>
-              <dd>One</dd>
+              <dt>Projects</dt>
+              <dd>One project working at a time; switch any time</dd>
               <dt>When quota runs out</dt>
               <dd>You confirm each takeover</dd>
             </dl>
@@ -296,13 +314,29 @@
           </div>
           <div class="plan-block">
             <h3>Pro</h3>
-            <p class="price later">Price not announced</p>
+            <p class="price">Buy once</p>
             <dl>
+              <dt>Updates</dt>
+              <dd>12 months included, then keep using it</dd>
               <dt>Adds</dt>
-              <dd>Automatic mode, two agents at a time, an automatic fallback chain, API billing fallback and several repositories</dd>
+              <dd>Several projects at once with one inbox, automatic mode within your limits, an automatic fallback chain, API billing fallback, quota scheduling and a shared skills library</dd>
             </dl>
+            <span class="later" data-waitlist-soon>Early-bird sign-up opens soon.</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-phone">Get the early-bird price</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-phone" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">Notify me</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="en" />
+                <p class="waitlist-note">One email when Pro launches, sent through Buttondown. Unsubscribe any time.</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
           </div>
         </div>
+        <p class="pricing-note">Pro launches with several projects at once, the inbox, automatic mode and the fallback chain. Quota scheduling and skills arrive in later updates for both versions, and they are included in Pro’s 12 months of updates.</p>
       </section>
 
       <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
@@ -335,7 +369,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">What will Pro add?</button>
-              <div class="inline-answer"><p>Automatic mode, two agents at a time, an automatic fallback chain and more. The price is not announced yet; the free version stays free.</p></div>
+              <div class="inline-answer"><p>Several projects working at once with one inbox, automatic mode, an automatic fallback chain, and later quota scheduling and a shared skills library. Pro is a one-time purchase with 12 months of updates, and you keep the last version after that. Leave your email in the plans table to get the early-bird price. The free version stays free.</p></div>
             </li>
           </ul>
           <div class="faq-pane" aria-live="polite">
@@ -402,6 +436,7 @@
 
     <script type="application/json" id="copy">
       {
+        "waitlist": {"sending": "Sending…", "done": "Almost done. Check your inbox and confirm your email.", "failed": "That didn’t go through. Check your connection and try again."},
         "router": {
           "goesTo": "Goes to “{agent}”",
           "fallback": "Fallback “{agent}”: {state}",

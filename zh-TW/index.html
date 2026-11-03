@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pyloxa — 一段對話，多個 Agent</title>
     <meta name="description" content="Pyloxa 是免費的 Windows App：把要做的事說一次，它會擬好計畫，用你自己的訂閱把每個工作交給 Claude Code 或 Codex CLI，並檢查成果。" />
+    <meta name="pyloxa:waitlist" content="" />
     <link rel="icon" href="../assets/icon.png" />
     <link rel="canonical" href="https://pyloxa.com/zh-TW/" />
     <link rel="alternate" hreflang="en" href="https://pyloxa.com/" />
@@ -238,9 +239,9 @@
         <table class="reveal">
           <thead>
             <tr>
-              <th scope="col" id="pricing-title">現在免費，Pro 之後推出</th>
+              <th scope="col" id="pricing-title">現在免費，Pro 即將推出</th>
               <th scope="col" class="rec">免費版<span class="price">$0 <span class="period">不需要帳號</span></span></th>
-              <th scope="col">Pro<span class="price later">價格尚未公布</span></th>
+              <th scope="col">Pro<span class="price">一次買斷 <span class="period">含 12 個月更新，之後照常使用</span></span></th>
             </tr>
           </thead>
           <tbody>
@@ -250,31 +251,50 @@
               <td>同左；訂閱額度用完時，經你允許可改用 API 計費</td>
             </tr>
             <tr>
+              <th scope="row">專案</th>
+              <td class="rec">一次一個專案在執行，可隨時切換</td>
+              <td>多個專案同時執行，所有等你處理的事集中在一個收件匣</td>
+            </tr>
+            <tr>
               <th scope="row">計畫與派工</th>
               <td class="rec">大腦擬計畫、派工規則、驗證命令、階段 Gate</td>
               <td>同左，加上在你設定的範圍內自動執行</td>
             </tr>
             <tr>
-              <th scope="row">同時工作的 Agent</th>
-              <td class="rec">一個</td>
-              <td>兩個</td>
-            </tr>
-            <tr>
               <th scope="row">額度用盡時</th>
               <td class="rec">每次接手由你確認</td>
-              <td>自動依序交給備援</td>
+              <td>自動依序交給備援，計畫也能排到額度重設後再跑</td>
+            </tr>
+            <tr>
+              <th scope="row">Skills</th>
+              <td class="rec">看到每個 CLI 裝了哪些 Skills</td>
+              <td>一個 Skills 庫同步到每個 CLI，依專案指派</td>
             </tr>
             <tr>
               <th scope="row">工作區</th>
               <td class="rec">檔案、Markdown、差異比對、git，以及透過 gh 開 pull request</td>
-              <td>同左，加上多個 repo，並把審查留言轉成工作</td>
+              <td>同左</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td></td>
               <td class="rec"><a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載 Windows 版</a></td>
-              <td><span class="later">之後推出</span></td>
+              <td>
+              <span class="later" data-waitlist-soon>早鳥登記即將開放。</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-table">早鳥價通知</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-table" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">通知我</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="zh-tw" />
+                <p class="waitlist-note">Pro 推出時寄一封信給你，經 Buttondown 寄送，可隨時取消訂閱。</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+              </td>
             </tr>
           </tfoot>
         </table>
@@ -285,10 +305,8 @@
             <dl>
               <dt>Agent</dt>
               <dd>Claude Code 與 Codex CLI，使用你自己的訂閱或 API Key</dd>
-              <dt>計畫與派工</dt>
-              <dd>大腦擬計畫、派工規則、驗證命令、階段 Gate</dd>
-              <dt>同時工作的 Agent</dt>
-              <dd>一個</dd>
+              <dt>專案</dt>
+              <dd>一次一個專案在執行，可隨時切換</dd>
               <dt>額度用盡時</dt>
               <dd>每次接手由你確認</dd>
             </dl>
@@ -296,13 +314,29 @@
           </div>
           <div class="plan-block">
             <h3>Pro</h3>
-            <p class="price later">價格尚未公布</p>
+            <p class="price">一次買斷</p>
             <dl>
+              <dt>更新</dt>
+              <dd>含 12 個月更新，之後照常使用</dd>
               <dt>另外提供</dt>
-              <dd>自動模式、同時兩個 Agent、自動備援、API 計費備援與多個 repo</dd>
+              <dd>多個專案同時執行並集中在一個收件匣、在你設定的範圍內自動執行、自動備援、API 計費備援、額度排程與共用的 Skills 庫</dd>
             </dl>
+            <span class="later" data-waitlist-soon>早鳥登記即將開放。</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-phone">早鳥價通知</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-phone" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">通知我</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="zh-tw" />
+                <p class="waitlist-note">Pro 推出時寄一封信給你，經 Buttondown 寄送，可隨時取消訂閱。</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
           </div>
         </div>
+        <p class="pricing-note">Pro 推出時先有多專案同時執行、收件匣、自動模式與自動備援；額度排程與 Skills 會在之後的更新加入，免費版與 Pro 都一樣，也包含在 Pro 的 12 個月更新內。</p>
       </section>
 
       <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
@@ -335,7 +369,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Pro 會多什麼？</button>
-              <div class="inline-answer"><p>自動模式、同時兩個 Agent、自動備援等功能。價格尚未公布；免費版會維持免費。</p></div>
+              <div class="inline-answer"><p>多個專案同時執行並集中在一個收件匣、自動模式、自動備援，之後還有額度排程與共用的 Skills 庫。Pro 是一次買斷，含 12 個月更新，之後可以繼續使用最後一個版本。在方案表留下 email，就能拿到早鳥價。免費版會維持免費。</p></div>
             </li>
           </ul>
           <div class="faq-pane" aria-live="polite">
@@ -402,6 +436,7 @@
 
     <script type="application/json" id="copy">
       {
+        "waitlist": {"sending": "送出中…", "done": "還差一步：請到信箱點確認信裡的連結。", "failed": "沒有送出，請檢查網路後再試一次。"},
         "router": {
           "goesTo": "交給「{agent}」",
           "fallback": "備援「{agent}」：{state}",

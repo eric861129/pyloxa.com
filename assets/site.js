@@ -92,6 +92,34 @@
     sw.addEventListener("click", () => set(sw.getAttribute("aria-checked") !== "true"));
   });
 
+  // ---- Pro 早鳥名單：端點在 <meta name="pyloxa:waitlist">（Buttondown 的 embed-subscribe）。
+  // 沒有設定時保留「即將開放」；Buttondown 不允許跨來源讀取回應，所以用 no-cors 送出，送出後請使用者到信箱確認（雙重確認） ----
+  const endpoint = (document.querySelector('meta[name="pyloxa:waitlist"]')?.content || "").trim();
+  const W = copy.waitlist || {};
+  if (endpoint) {
+    document.querySelectorAll("[data-waitlist]").forEach((form) => {
+      const soon = form.parentElement.querySelector("[data-waitlist-soon]");
+      const status = form.querySelector(".waitlist-status");
+      const button = form.querySelector("button[type=submit]");
+      form.action = endpoint;
+      form.hidden = false;
+      if (soon) soon.hidden = true;
+      form.addEventListener("submit", async (ev) => {
+        ev.preventDefault();
+        button.disabled = true;
+        status.textContent = W.sending;
+        try {
+          await fetch(endpoint, { method: "POST", body: new FormData(form), mode: "no-cors" });
+          form.classList.add("is-done");
+          status.textContent = W.done;
+        } catch {
+          status.textContent = W.failed;
+          button.disabled = false;
+        }
+      });
+    });
+  }
+
   // ---- 常見問題：左邊選題，右邊顯示答案；手機改為展開在題目下方 ----
   const list = document.querySelector(".faq-list");
   const pane = document.querySelector(".faq-pane");
