@@ -1,0 +1,141 @@
+<!doctype html>
+<!-- 由 scripts/build-changelog.mjs 從 Pyloxa-Releases 的版本說明產生，請勿直接修改 -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Changelog — Pyloxa</title>
+    <meta name="description" content="What changed in each Pyloxa release: new features, fixes, privacy notes, known limitations and installer checksums." />
+    <link rel="canonical" href="https://pyloxa.com/changelog/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/changelog/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/changelog/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/changelog/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Changelog — Pyloxa" />
+    <meta property="og:description" content="What changed in each Pyloxa release: new features, fixes, privacy notes, known limitations and installer checksums." />
+    <meta property="og:url" content="https://pyloxa.com/changelog/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+      .changelog { max-width: 820px; padding-block: clamp(40px, 6vw, 96px); display: grid; gap: clamp(48px, 6vw, 80px); }
+      .changelog > .intro h1 { font-size: var(--step-display); line-height: 1; }
+      .changelog > .intro p { margin-top: 16px; color: var(--soft); font-size: var(--step-lead); }
+      .changelog > .intro .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+      .release { display: grid; gap: 16px; padding-top: 32px; border-top: 1px solid var(--tone); scroll-margin-top: 24px; }
+      .release header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 20px; }
+      .release h2 { font-size: var(--step-head); }
+      .release h2 a { color: inherit; text-decoration: none; }
+      .release h2 a:hover { color: var(--accent); }
+      .release .date { color: var(--soft); font-size: var(--step-small); }
+      .release .body { display: grid; gap: 12px; }
+      .release .body > p:first-child { font-size: var(--step-lead); }
+      .release h3 { margin-top: 12px; font-size: var(--step-body); font-weight: 600; }
+      .release ul { display: grid; gap: 8px; padding-left: 1.2em; }
+      .release li::marker { color: var(--soft); }
+      .release code { font-size: 0.9em; padding: 0.1em 0.3em; border-radius: 4px; background: var(--tone); overflow-wrap: anywhere; }
+      .release .table { overflow-x: auto; }
+      .release table { border-collapse: collapse; font-size: var(--step-small); }
+      .release th, .release td { padding: 6px 12px 6px 0; text-align: left; border-bottom: 1px solid var(--tone); vertical-align: top; }
+      .release td code { overflow-wrap: anywhere; word-break: break-all; }
+      .button.is-light { background: var(--tone); color: var(--ink); }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a class="mark" href="../" aria-label="Pyloxa home">Pyloxa</a>
+      <ul>
+        <li><a href="../zh-TW/changelog/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+      </ul>
+    </header>
+    <main id="main" class="wrap changelog">
+      <div class="intro">
+        <h1>Changelog</h1>
+        <p>What changed in each release. Pyloxa tells you when a new version is out; download it from the releases page.</p>
+        <div class="actions">
+          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download the latest version</a>
+          <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">Report a problem</a>
+        </div>
+      </div>
+      <article class="release" id="v0.1.3" aria-labelledby="h-v0.1.3">
+        <header>
+          <h2 id="h-v0.1.3"><a href="#v0.1.3">0.1.3</a></h2>
+          <p class="date"><time datetime="2026-11-04">Released 2026-11-04</time></p>
+        </header>
+        <div class="body">
+<p>This release comes from testing Pyloxa on two real projects, a .NET API and a React web app. It fixes what got in the way of real work.</p>
+<h3>What's new</h3>
+<ul><li><strong>Agents can check their own work.</strong> Claude Code can now run the commands you approved under <strong>Verification commands</strong>, such as installing dependencies, building or testing, before it reports back. Other commands are still refused automatically. Before, every command was refused, so agents had to write code without running it.</li><li><strong>Suggestions for .NET, Gradle and Maven projects.</strong> The <strong>Verification commands</strong> page now suggests <code>dotnet build</code> for a solution and a <code>dotnet test</code> for each test project. For Java it suggests your project's Gradle or Maven wrapper.</li><li><strong>Environment variables for verification commands.</strong> A command can set variables such as a snapshot-update flag. Pyloxa refuses names that look like keys or passwords and won't override system variables such as PATH.</li><li><strong>A heads-up for .NET projects on Windows.</strong> On Windows, Codex's sandbox can't restore NuGet packages, so it can't build .NET projects. When a .NET task goes to Codex, the plan preview says so. One click makes Claude Code handle backend work in that project, with Codex as the fallback.</li><li><strong>Flaky checks get a second chance.</strong> When a phase's gate checks fail, Pyloxa first runs them once more on the same version. It only asks an agent to fix things if they fail again.</li></ul>
+<h3>Fixes</h3>
+<ul><li><strong>Long paths on Windows.</strong> Approving a plan no longer fails with &quot;Filename too long&quot; in projects with deep folders. Pyloxa's worktree folders also have shorter names now.</li><li><strong>Clearer git errors.</strong> Git errors now show the actual cause instead of progress output. If approving a plan fails, the error stays on the plan card.</li><li><strong>Verification record headings.</strong> In pull requests, long goals are no longer cut off in the middle of parentheses, and agent names aren't repeated.</li></ul>
+<h3>Privacy and safety</h3>
+<ul><li>The commands an agent may run are exactly the ones you approved under <strong>Verification commands</strong>. Pyloxa already runs them in the same worktree when it checks results, so this doesn't give agents any new access.</li><li>Environment variables are stored with the command on your computer. Don't put secrets in them.</li></ul>
+<h3>Upgrading</h3>
+<p>Run the new installer over the old version. Your run history, projects and settings in <code>%APPDATA%\Pyloxa</code> are kept. Plans that are already running keep their current worktree folders.</p>
+<h3>Known limitations</h3>
+<ul><li>Windows 10 and 11, 64-bit only.</li><li>The installer is not code-signed. SmartScreen may warn you; choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li><li>No automatic updates. Pyloxa tells you when a new version is out.</li><li>Codex runs through <code>codex exec</code> in its sandbox. On Windows, the sandbox usually can't build projects or install packages, so Codex's results are checked by your verification commands.</li><li>Gemini CLI support is experimental. It can't act as the brain and can't run commands in unattended mode.</li><li>Tested with Claude Code 2.1.316–2.1.317, Codex CLI 0.166.0 and Gemini CLI 0.42.0.</li></ul>
+<h3>Checksum</h3>
+<div class="table"><table><thead><tr><th scope="col">File</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.3.exe</code></td><td><code>547407f479fd074b2541b14c2989e64cebb72dc04326807627373c0f820f4e89</code></td></tr></tbody></table></div>
+        </div>
+      </article>
+      <article class="release" id="v0.1.2" aria-labelledby="h-v0.1.2">
+        <header>
+          <h2 id="h-v0.1.2"><a href="#v0.1.2">0.1.2</a></h2>
+          <p class="date"><time datetime="2026-11-04">Released 2026-11-04</time></p>
+        </header>
+        <div class="body">
+<p>Three agents work together out of the box, Gemini CLI joins as an experimental option, and a plan can run two tasks at once.</p>
+<h3>What's new</h3>
+<ul><li><strong>A default flow for three agents.</strong> New installs start with Claude Code as the brain, handling frontend work and video editing; Codex handling backend work and image generation; and Gemini handling writing and docs. If an agent isn't set up, its tasks go to the brain, and the plan preview says why. Every rule can be changed or deleted on the <strong>Routing rules</strong> page. If you already use Pyloxa, click <strong>Apply the default flow</strong> there; your existing rules are kept.</li><li><strong>Gemini CLI (experimental).</strong> Connect Gemini CLI with your own paid Gemini API key on the <strong>Connections</strong> page. Google account sign-in and AI Pro or Ultra subscriptions are not supported. Pyloxa makes Gemini CLI use only your API key, even if your own Gemini settings choose Google sign-in. Gemini runs tasks but can't act as the brain.</li><li><strong>Two tasks at once.</strong> A plan runs up to two independent tasks at the same time, and each CLI runs at most two tasks at once. Tasks that change the same files wait for each other, and the plan card shows what a task is waiting for.</li><li><strong>A guided first task.</strong> New conversations suggest a small first task and explain the steps. If the folder isn't a git project or has no commits yet, the plan preview says so before you approve.</li><li><strong>Update notice and desktop notifications.</strong> Pyloxa tells you when a new version is out. When Pyloxa isn't in front, Windows notifications tell you when a plan is ready, a task needs you, work finishes or fails, the brain replies, or a CLI runs out of quota. Both can be turned off in <strong>Settings</strong>.</li><li><strong>Fewer version warnings.</strong> Patch versions in the same series as a tested version, such as Claude Code 2.1.x, no longer show an &quot;unverified version&quot; warning.</li><li><strong>Verification record in pull requests.</strong> When you create a pull request, Pyloxa can append what each agent result actually went through: acceptance commands, required files, write scope, phase checks and who approved them. Checks that didn't run are never shown as passed.</li><li><strong>Skills inventory.</strong> A new <strong>Skills</strong> page lists the skills each CLI can read and flags skills with the same name but different content.</li><li><strong>Team rules in the repository.</strong> Pyloxa reads <code>.pyloxa/rules.json</code> and <code>.pyloxa/commands.json</code> from a project. You see a preview first; rules apply to the project only when you choose, and commands still need your approval one by one.</li><li><strong>Usage and feedback.</strong> <strong>Settings</strong> shows your first success, completion rate, fallbacks and other counts, computed on your computer only. <strong>Copy diagnostics</strong> copies versions and counts for a bug report.</li></ul>
+<h3>Privacy</h3>
+<ul><li>Pyloxa asks GitHub for the latest Pyloxa version at startup and every 12 hours. Only this request is sent, with no project or usage data. Turn it off in <strong>Settings → Notifications and updates</strong>.</li><li>The <strong>Skills</strong> page reads the skills folders of each CLI (<code>~/.agents/skills</code>, <code>~/.claude/skills</code>, <code>~/.codex/skills</code>, <code>~/.gemini/skills</code>) and of the open project. It reads nothing else in those CLI folders and changes nothing.</li><li>Usage statistics are computed on your computer and never sent. Diagnostics contain no project names, paths, instructions, code, accounts or keys, and leave your computer only if you paste them somewhere.</li></ul>
+<h3>Upgrading</h3>
+<p>Run the new installer over the old version. Your run history and projects in <code>%APPDATA%\Pyloxa</code> are kept. Existing setups don't get the default flow automatically; use <strong>Apply the default flow</strong> on the <strong>Routing rules</strong> page if you want it.</p>
+<h3>Known limitations</h3>
+<ul><li>Windows 10 and 11, 64-bit only.</li><li>The installer is not code-signed. SmartScreen may warn you; choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li><li>No automatic updates. Pyloxa tells you when a new version is out; download it from the releases page.</li><li>Codex runs through <code>codex exec</code> inside its sandbox and cannot ask for approval of single actions.</li><li>Gemini CLI support is experimental. It can't act as the brain or resume a previous session. In unattended mode Gemini CLI offers no shell tool, so Gemini can edit files but can't run commands.</li><li>Tested with Claude Code 2.1.316–2.1.317, Codex CLI 0.166.0 and Gemini CLI 0.42.0. Other patch versions in the same series run without a warning; a new series runs in supervised mode only, and its output format can change.</li><li>Running two tasks at once is new. It has been tested with Claude Code and Codex CLI; if you see anything odd, please report it.</li></ul>
+<h3>Checksum</h3>
+<div class="table"><table><thead><tr><th scope="col">File</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.2.exe</code></td><td><code>db246370f7dab30353c984a2265e76e7a0e6482e74d93e8e08343d790c7cf239</code></td></tr></tbody></table></div>
+        </div>
+      </article>
+      <article class="release" id="v0.1.1" aria-labelledby="h-v0.1.1">
+        <header>
+          <h2 id="h-v0.1.1"><a href="#v0.1.1">0.1.1</a></h2>
+          <p class="date"><time datetime="2026-11-03">Released 2026-11-03</time></p>
+        </header>
+        <div class="body">
+<p>Easier first run, and you can now use your own API key instead of a subscription.</p>
+<h3>What's new</h3>
+<ul><li><strong>Getting started guide.</strong> If no agent CLI is ready, the home screen and the conversation show what to install, the official sign-in command to copy into a terminal (<code>claude auth login</code> or <code>codex login</code>), and re-detect when you come back to Pyloxa.</li><li><strong>API key connections.</strong> On the <strong>Connections</strong> page, switch Claude Code or Codex to your own API key. Usage is billed per use to your API account instead of your subscription. Pyloxa encrypts the key with Windows secure storage (DPAPI), passes it only to the CLI process that runs your work, and shows only the last 4 characters. Switching back to your subscription deletes the saved key.</li><li><strong>Clearer connection problems.</strong> The sidebar, the agent settings and the conversation now show the problem that actually blocks work, for example &quot;not signed in&quot; instead of &quot;unverified version&quot;.</li><li><strong>Re-detect finds newly installed CLIs.</strong> Pyloxa reads PATH again when it re-detects, so you don't have to restart it after installing a CLI.</li><li><strong>When the brain can't run.</strong> A notice above the message box explains why and links to the fix. A message that couldn't be sent stays visible with the reason.</li></ul>
+<h3>Upgrading</h3>
+<p>Run the new installer over the old version. Your run history and projects in <code>%APPDATA%\Pyloxa</code> are kept.</p>
+<h3>Known limitations</h3>
+<ul><li>Windows 10 and 11, 64-bit only.</li><li>The installer is not code-signed. SmartScreen may warn you; choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li><li>No automatic updates. Download new versions from the releases page.</li><li>One agent works at a time.</li><li>Codex runs through <code>codex exec</code> inside its sandbox and cannot ask for approval of single actions.</li><li>Tested with Claude Code 2.1.316 and Codex CLI 0.166.0. Newer versions run in supervised mode only, and their output format can change.</li></ul>
+<h3>Checksum</h3>
+<div class="table"><table><thead><tr><th scope="col">File</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.1.exe</code></td><td><code>548c0f189e4cc5d621a724f888a3d40848313fdb09a618284c0ef8be90e8da23</code></td></tr></tbody></table></div>
+        </div>
+      </article>
+      <article class="release" id="v0.1.0" aria-labelledby="h-v0.1.0">
+        <header>
+          <h2 id="h-v0.1.0"><a href="#v0.1.0">0.1.0</a></h2>
+          <p class="date"><time datetime="2026-11-03">Released 2026-11-03</time></p>
+        </header>
+        <div class="body">
+<p>The first free release of Pyloxa for Windows.</p>
+<h3>What it does</h3>
+<ul><li><strong>One conversation.</strong> Tell the brain (Claude Code or Codex) what you want. It reads the project, asks when something is unclear, and answers directly or proposes a plan of phases and tasks.</li><li><strong>Routing rules.</strong> Your rules decide which agent gets each task. Every task shows the rule it matched, why, and its fallback. The rules page can simulate routing without calling an agent.</li><li><strong>Isolated work.</strong> Each writable task runs in its own git worktree. Pyloxa never stashes, resets or checks out your working directory.</li><li><strong>Verification commands.</strong> Approve commands such as <code>npm run test</code>, try them first, and let tasks run them. A task that passes all its checks and needs no review is accepted for you; a task that fails gets one automatic fix.</li><li><strong>Phase gates.</strong> At the end of each phase, the gate commands run on the integrated result. The plan moves on by itself or waits for your approval; a failed gate gets one automatic fix task.</li><li><strong>When quota runs out.</strong> If a CLI reports its usage limit, Pyloxa marks that connection as limited with the reset time and stops sending it work. You confirm a fallback agent, which continues from the previous agent's files, or let Pyloxa retry after the reset. Rate limits and network errors are retried once.</li><li><strong>Usage.</strong> Token usage for each task and for the whole plan.</li><li><strong>Restart recovery.</strong> If Pyloxa stops in the middle of a task, it stops the leftover CLI process on the next start, keeps the work done so far and asks you to review it.</li><li><strong>Workspace.</strong> Browse and search files, edit Markdown with a live preview, review diffs, commit, branch, push and pull, and open pull requests through <code>gh</code>.</li><li><strong>Languages and themes.</strong> English, 繁體中文 and 简体中文, with light, dark and color themes.</li></ul>
+<h3>Known limitations</h3>
+<ul><li>Windows 10 and 11, 64-bit only.</li><li>The installer is not code-signed. SmartScreen may warn you; choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li><li>No automatic updates. Download new versions from the releases page.</li><li>One agent works at a time.</li><li>Codex runs through <code>codex exec</code> inside its sandbox and cannot ask for approval of single actions.</li><li>Tested with Claude Code 2.1.316 and Codex CLI 0.166.0. Other versions may work, but their output format can change.</li></ul>
+<h3>Checksum</h3>
+<div class="table"><table><thead><tr><th scope="col">File</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.0.exe</code></td><td><code>ba359205aa7c41f25754d42ff423a7864360bdccb6d55bd0d8004b37198d67ae</code></td></tr></tbody></table></div>
+        </div>
+      </article>
+    </main>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

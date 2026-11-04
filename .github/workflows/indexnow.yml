@@ -23,7 +23,7 @@ jobs:
               "host": "pyloxa.com",
               "key": "c11e770d29e531bffe32789c008327a4",
               "keyLocation": "https://pyloxa.com/c11e770d29e531bffe32789c008327a4.txt",
-              "urlList": ["https://pyloxa.com/", "https://pyloxa.com/zh-TW/"]
+              "urlList": ["https://pyloxa.com/", "https://pyloxa.com/zh-TW/", "https://pyloxa.com/changelog/", "https://pyloxa.com/zh-TW/changelog/"]
             }')
           echo "IndexNow HTTP $status"
           # 200 已接受，202 已收到但金鑰尚待驗證
