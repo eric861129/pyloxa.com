@@ -1,0 +1,30 @@
+# 官網每次部署完成後，以 IndexNow 通知 Bing 等搜尋引擎重新抓取頁面。
+# 金鑰檔是網站根目錄的 c11e770d29e531bffe32789c008327a4.txt（IndexNow 用它確認網址屬於本站）。
+name: IndexNow
+
+on:
+  page_build:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    if: github.event_name == 'workflow_dispatch' || github.event.build.status == 'built'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify IndexNow
+        run: |
+          # GitHub Pages 的 CDN 需要一點時間換成新版本
+          sleep 60
+          status=$(curl -s -o /dev/stderr -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d '{
+              "host": "pyloxa.com",
+              "key": "c11e770d29e531bffe32789c008327a4",
+              "keyLocation": "https://pyloxa.com/c11e770d29e531bffe32789c008327a4.txt",
+              "urlList": ["https://pyloxa.com/", "https://pyloxa.com/zh-TW/"]
+            }')
+          echo "IndexNow HTTP $status"
+          # 200 已接受，202 已收到但金鑰尚待驗證
+          case "$status" in 200|202) ;; *) exit 1 ;; esac
