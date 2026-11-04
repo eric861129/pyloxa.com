@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="免費的 Windows App：把需求拆成工作，依你的規則交給 Claude Code 或 Codex，用你的測試驗收成果，額度用完時由另一個 Agent 接手。使用你自己的訂閱。" />
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-zh.png" />
     <meta name="twitter:image:alt" content="Pyloxa：讓 Claude Code 與 Codex 分工合作。計畫中的每個工作都標出交給哪個 Agent 與命中的規則。" />
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pyloxa", "url": "https://pyloxa.com/zh-TW/", "image": "https://pyloxa.com/assets/og-zh.png", "description": "免費的 Windows App：把需求拆成工作，依你的規則交給 Claude Code 或 Codex，用你的測試驗收成果，額度用完時由另一個 Agent 接手。使用你自己的訂閱。", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "0.1.1", "downloadUrl": "https://github.com/eric861129/Pyloxa-Releases/releases/latest", "releaseNotes": "https://github.com/eric861129/Pyloxa-Releases/releases", "inLanguage": "zh-TW", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "ChiYu-Huang"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pyloxa", "url": "https://pyloxa.com/zh-TW/", "image": "https://pyloxa.com/assets/og-zh.png", "description": "免費的 Windows App：把需求拆成工作，依你的規則交給 Claude Code 或 Codex，用你的測試驗收成果，額度用完時由另一個 Agent 接手。使用你自己的訂閱。", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "0.1.2", "downloadUrl": "https://github.com/eric861129/Pyloxa-Releases/releases/latest", "releaseNotes": "https://github.com/eric861129/Pyloxa-Releases/releases", "inLanguage": "zh-TW", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "ChiYu-Huang"}}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
@@ -61,7 +61,7 @@
             <p class="lead">把要做的事說一次。Pyloxa 會擬好計畫，用你自己的訂閱把每個工作交給 Claude Code 或 Codex，並在合併前檢查成果。</p>
             <div class="actions">
               <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載 Windows 版</a>
-              <span class="meta">免費 · v0.1.1 · Windows 10 與 11</span>
+              <span class="meta">免費 · v0.1.2 · Windows 10 與 11</span>
             </div>
           </div>
         </div>
@@ -408,7 +408,7 @@
                 </tbody>
               </table>
             </div>
-            <p class="media-note">示意畫面，Skills 管理正在開發。盤點會包含在免費版；同步、指派與派工包屬於 Pro。</p>
+            <p class="media-note">示意畫面。盤點從 0.1.2 起包含在免費版；同步、指派與派工包屬於 Pro，還在開發。</p>
           </div>
         </div>
       </section>
@@ -470,7 +470,7 @@
           <tbody>
             <tr>
               <th scope="row">Agent</th>
-              <td class="rec">Claude Code 與 Codex CLI，使用你自己的訂閱或 API Key</td>
+              <td class="rec">Claude Code 與 Codex CLI，使用你自己的訂閱或 API Key；Gemini CLI 使用你自己的 API Key（實驗性）</td>
               <td>同左；訂閱額度用完時，經你允許可改用 API 計費</td>
             </tr>
             <tr>
@@ -495,7 +495,7 @@
             </tr>
             <tr>
               <th scope="row">Skills</th>
-              <td class="rec">看到每個 CLI 裝了哪些 Skills（開發中）</td>
+              <td class="rec">看到每個 CLI 裝了哪些 Skills</td>
               <td>一個 Skills 庫同步到每個 CLI，依專案或 Profile 指派，打包成派工包（開發中）</td>
             </tr>
             <tr>
@@ -532,7 +532,7 @@
             <p class="price">$0</p>
             <dl>
               <dt>Agent</dt>
-              <dd>Claude Code 與 Codex CLI，使用你自己的訂閱或 API Key</dd>
+              <dd>Claude Code 與 Codex CLI，使用你自己的訂閱或 API Key；Gemini CLI 使用你自己的 API Key（實驗性）</dd>
               <dt>專案</dt>
               <dd>一次一個專案在執行，可隨時切換</dd>
               <dt>額度用盡時</dt>
@@ -573,11 +573,11 @@
             <li class="faq-head" id="faq-title">常見問題</li>
             <li data-q class="is-open">
               <button type="button" role="tab" aria-selected="true">Pyloxa 會收 AI 使用費嗎？</button>
-              <div class="inline-answer"><p>不會。Pyloxa 執行的是你已登入的官方 Claude Code 與 Codex CLI，用量算在你自己的訂閱裡，或改用你自己的 API Key。Pyloxa 不轉售、也不代理任何 AI 服務。</p></div>
+              <div class="inline-answer"><p>不會。Pyloxa 執行的是你已設定好的官方 CLI（Claude Code、Codex CLI，以及實驗性的 Gemini CLI），用量算在你自己的訂閱裡，或改用你自己的 API Key。Pyloxa 不轉售、也不代理任何 AI 服務。</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">需要安裝什麼？</button>
-              <div class="inline-answer"><p>Windows 10 或 11（64 位元）、git，以及至少一個已登入的 Claude Code 或 Codex CLI。裝了第二個 CLI，派工規則與備援才派得上用場。</p></div>
+              <div class="inline-answer"><p>Windows 10 或 11（64 位元）、git，以及至少一個已登入的 Claude Code 或 Codex CLI。Gemini CLI 是選用的實驗性支援，需要你自己的付費 Gemini API Key。裝了不只一個 CLI，預設流程才能分工，備援也才派得上用場。</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Pyloxa 會讀取我的憑證嗎？</button>
@@ -585,7 +585,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">我的程式碼會送到哪裡？</button>
-              <div class="inline-answer"><p>Pyloxa 本身沒有伺服器，也不收集使用資料。你的程式碼只會送到 CLI 原本會送去的地方，適用 Anthropic 與 OpenAI 的條款。</p></div>
+              <div class="inline-answer"><p>Pyloxa 本身沒有伺服器，也不收集使用資料。你的程式碼只會送到 CLI 原本會送去的地方，適用 Anthropic、OpenAI 與 Google 的條款。Pyloxa 啟動時和每 12 小時會向 GitHub 查詢最新版本，不含任何專案或使用資料，可以在「設定」關閉。使用統計只在你的電腦計算，不會傳送。</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Agent 會弄壞我的 repo 嗎？</button>
@@ -601,7 +601,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">可以讓某類工作固定交給某個 Agent 嗎？</button>
-              <div class="inline-answer"><p>可以。用派工規則指定，例如「測試階段的工作都交給 Claude Code」，規則可以只套用在目前的專案。核准計畫前，也能手動改派單一工作。</p></div>
+              <div class="inline-answer"><p>可以。用派工規則指定，例如「測試階段的工作都交給 Claude Code」，規則可以只套用在目前的專案。核准計畫前，也能手動改派單一工作。新安裝時會套用預設流程：Claude Code 負責前端與影片剪輯，Codex 負責後端與生圖，Gemini 負責文章與文件，隨時可以修改。</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">和 CLI 內建的子 Agent 有什麼不同？</button>
@@ -609,11 +609,11 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">支援 Gemini 或其他 Agent 嗎？</button>
-              <div class="inline-answer"><p>目前支援 Claude Code 與 Codex CLI。其他 Agent 還在評估，確定支援時會寫在版本說明裡。</p></div>
+              <div class="inline-answer"><p>從 0.1.2 起以實驗性功能支援 Gemini CLI，使用你自己的付費 Gemini API Key，不支援 Google 帳號登入與 AI Pro、Ultra 訂閱。Gemini 可以執行文章、文件等工作，但不能擔任大腦；在無人值守模式下可以修改檔案，但不能執行命令。其他 Agent 還在評估。</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Skills 管理什麼時候推出？</button>
-              <div class="inline-answer"><p>正在開發。盤點會包含在免費版；同步、依專案或 Profile 指派與派工包屬於 Pro。推出時間以版本說明為準。</p></div>
+              <div class="inline-answer"><p>盤點從 0.1.2 起包含在免費版：「Skills」頁列出各 CLI 讀得到的 Skills，並標示同名但內容不同的。同步、依專案或 Profile 指派與派工包屬於 Pro，還在開發，推出時間以版本說明為準。</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Pro 會多什麼？</button>
@@ -621,7 +621,7 @@
             </li>
           </ul>
           <div class="faq-pane" aria-live="polite">
-            <p>不會。Pyloxa 執行的是你已登入的官方 Claude Code 與 Codex CLI，用量算在你自己的訂閱裡，或改用你自己的 API Key。Pyloxa 不轉售、也不代理任何 AI 服務。</p>
+            <p>不會。Pyloxa 執行的是你已設定好的官方 CLI（Claude Code、Codex CLI，以及實驗性的 Gemini CLI），用量算在你自己的訂閱裡，或改用你自己的 API Key。Pyloxa 不轉售、也不代理任何 AI 服務。</p>
           </div>
         </div>
       </section>
@@ -657,7 +657,7 @@
       <div class="tiles">
         <div class="tile statement">
           <p>同時和多個 AI Agent 一起工作的桌面 App。</p>
-          <p class="legal">© 2026 ChiYu-Huang。免費版依<a href="../legal/EULA.txt">授權合約</a>提供。<a href="../legal/THIRD_PARTY_NOTICES.txt">第三方軟體聲明</a>。Pyloxa 與 Anthropic、OpenAI 沒有關係，也未獲得它們的背書。Claude Code 是 Anthropic 的產品，Codex 是 OpenAI 的產品。本站以 Cloudflare Web Analytics 統計瀏覽次數，不使用 cookie，也不追蹤個別訪客。</p>
+          <p class="legal">© 2026 ChiYu-Huang。免費版依<a href="../legal/EULA.txt">授權合約</a>提供。<a href="../legal/THIRD_PARTY_NOTICES.txt">第三方軟體聲明</a>。Pyloxa 與 Anthropic、OpenAI、Google 沒有關係，也未獲得它們的背書。Claude Code 是 Anthropic 的產品，Codex 是 OpenAI 的產品，Gemini 是 Google 的產品。本站以 Cloudflare Web Analytics 統計瀏覽次數，不使用 cookie，也不追蹤個別訪客。</p>
         </div>
         <nav class="tile links" aria-label="頁尾">
           <ul>
@@ -668,7 +668,7 @@
           </ul>
         </nav>
         <div class="tile system">
-          <p>Windows 10 與 11<br />64 位元<br />版本 0.1.1</p>
+          <p>Windows 10 與 11<br />64 位元<br />版本 0.1.2</p>
         </div>
         <div class="tile issue">
           <p>發現問題？</p>

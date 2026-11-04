@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out." />
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
     <meta name="twitter:image:alt" content="Pyloxa: run Claude Code and Codex together. A plan where each task shows the agent it goes to and the rule it matched." />
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pyloxa", "url": "https://pyloxa.com/", "image": "https://pyloxa.com/assets/og-en.png", "description": "Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "0.1.1", "downloadUrl": "https://github.com/eric861129/Pyloxa-Releases/releases/latest", "releaseNotes": "https://github.com/eric861129/Pyloxa-Releases/releases", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "ChiYu-Huang"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pyloxa", "url": "https://pyloxa.com/", "image": "https://pyloxa.com/assets/og-en.png", "description": "Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "0.1.2", "downloadUrl": "https://github.com/eric861129/Pyloxa-Releases/releases/latest", "releaseNotes": "https://github.com/eric861129/Pyloxa-Releases/releases", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "ChiYu-Huang"}}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -62,7 +62,7 @@
             <p class="lead">Describe the work once. Pyloxa plans it, hands each task to Claude Code or Codex on your own subscription, and checks the result before anything is merged.</p>
             <div class="actions">
               <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download for Windows</a>
-              <span class="meta">Free · v0.1.1 · Windows 10 and 11</span>
+              <span class="meta">Free · v0.1.2 · Windows 10 and 11</span>
             </div>
           </div>
         </div>
@@ -409,7 +409,7 @@
                 </tbody>
               </table>
             </div>
-            <p class="media-note">Mockup. Skills management is in development. The inventory will be in the free version; sync, assignment and routing packs are Pro.</p>
+            <p class="media-note">Mockup. The inventory is in the free version since 0.1.2; sync, assignment and routing packs are Pro and still in development.</p>
           </div>
         </div>
       </section>
@@ -471,7 +471,7 @@
           <tbody>
             <tr>
               <th scope="row">Agents</th>
-              <td class="rec">Claude Code and Codex CLI on your own subscriptions or API keys</td>
+              <td class="rec">Claude Code and Codex CLI on your own subscriptions or API keys; Gemini CLI on your own API key (experimental)</td>
               <td>The same, plus API billing when a subscription runs out, if you allow it</td>
             </tr>
             <tr>
@@ -496,7 +496,7 @@
             </tr>
             <tr>
               <th scope="row">Skills</th>
-              <td class="rec">See which skills each CLI has (in development)</td>
+              <td class="rec">See which skills each CLI has</td>
               <td>One skills library synced to every CLI, assigned per project or profile, bundled into routing packs (in development)</td>
             </tr>
             <tr>
@@ -533,7 +533,7 @@
             <p class="price">$0</p>
             <dl>
               <dt>Agents</dt>
-              <dd>Claude Code and Codex CLI on your own subscriptions or API keys</dd>
+              <dd>Claude Code and Codex CLI on your own subscriptions or API keys; Gemini CLI on your own API key (experimental)</dd>
               <dt>Projects</dt>
               <dd>One project working at a time; switch any time</dd>
               <dt>When quota runs out</dt>
@@ -574,11 +574,11 @@
             <li class="faq-head" id="faq-title">Questions</li>
             <li data-q class="is-open">
               <button type="button" role="tab" aria-selected="true">Does Pyloxa charge for AI usage?</button>
-              <div class="inline-answer"><p>No. Pyloxa runs the official Claude Code and Codex CLIs you already signed in to, so usage counts against your own subscription, or against your own API key if you choose one. Pyloxa never resells or proxies any AI service.</p></div>
+              <div class="inline-answer"><p>No. Pyloxa runs the official CLIs you already set up (Claude Code, Codex CLI and, experimentally, Gemini CLI), so usage counts against your own subscription, or against your own API key if you choose one. Pyloxa never resells or proxies any AI service.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">What do I need to install?</button>
-              <div class="inline-answer"><p>Windows 10 or 11 (64-bit), git, and at least one of Claude Code or Codex CLI, signed in. A second CLI makes routing and fallback useful.</p></div>
+              <div class="inline-answer"><p>Windows 10 or 11 (64-bit), git, and at least one of Claude Code or Codex CLI, signed in. Gemini CLI is optional and experimental, and needs your own paid Gemini API key. With more than one CLI, the default flow splits the work and fallback becomes useful.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Does Pyloxa read my credentials?</button>
@@ -586,7 +586,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Is my code sent anywhere?</button>
-              <div class="inline-answer"><p>Pyloxa itself has no server and collects no telemetry. Your code goes only where the CLIs send it, under Anthropic’s and OpenAI’s terms.</p></div>
+              <div class="inline-answer"><p>Pyloxa itself has no server and collects no telemetry. Your code goes only where the CLIs send it, under Anthropic’s, OpenAI’s and Google’s terms. Pyloxa asks GitHub for the latest Pyloxa version at startup and every 12 hours, with no project or usage data; you can turn this off in Settings. Usage statistics are computed on your computer and never sent.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Can an agent break my repository?</button>
@@ -602,7 +602,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Can a kind of task always go to one agent?</button>
-              <div class="inline-answer"><p>Yes. Write a routing rule, such as "testing-phase work goes to Claude Code", for every project or just this one. You can also reassign a single task before approving a plan.</p></div>
+              <div class="inline-answer"><p>Yes. Write a routing rule, such as "testing-phase work goes to Claude Code", for every project or just this one. You can also reassign a single task before approving a plan. New installs start with a default flow: Claude Code for frontend and video, Codex for backend and images, Gemini for writing and docs. Change it any time.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">How is this different from a CLI's own subagents?</button>
@@ -610,11 +610,11 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Does it support Gemini or other agents?</button>
-              <div class="inline-answer"><p>Today Pyloxa supports Claude Code and Codex CLI. Other agents are being evaluated; support will be announced in the release notes.</p></div>
+              <div class="inline-answer"><p>Since 0.1.2, Gemini CLI is supported as an experimental option with your own paid Gemini API key. Google account sign-in and AI Pro or Ultra subscriptions are not supported. Gemini can run tasks such as writing and docs but can’t be the brain, and in unattended mode it can edit files but not run commands. Other agents are being evaluated.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">When does skills management arrive?</button>
-              <div class="inline-answer"><p>It is in development. The inventory will be in the free version; sync, per-project or per-profile assignment and routing packs are Pro. Watch the release notes for the date.</p></div>
+              <div class="inline-answer"><p>The inventory is in the free version since 0.1.2: the Skills page lists the skills each CLI can read and flags skills that share a name but differ in content. Sync, per-project or per-profile assignment and routing packs are Pro and still in development; watch the release notes for the date.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">What will Pro add?</button>
@@ -622,7 +622,7 @@
             </li>
           </ul>
           <div class="faq-pane" aria-live="polite">
-            <p>No. Pyloxa runs the official Claude Code and Codex CLIs you already signed in to, so usage counts against your own subscription, or against your own API key if you choose one. Pyloxa never resells or proxies any AI service.</p>
+            <p>No. Pyloxa runs the official CLIs you already set up (Claude Code, Codex CLI and, experimentally, Gemini CLI), so usage counts against your own subscription, or against your own API key if you choose one. Pyloxa never resells or proxies any AI service.</p>
           </div>
         </div>
       </section>
@@ -658,7 +658,7 @@
       <div class="tiles">
         <div class="tile statement">
           <p>A desktop app for working with several AI agents at once.</p>
-          <p class="legal">© 2026 ChiYu-Huang. Free version under the <a href="legal/EULA.txt">license agreement</a>. <a href="legal/THIRD_PARTY_NOTICES.txt">Third-party notices</a>. Pyloxa is not affiliated with or endorsed by Anthropic or OpenAI. Claude Code is a product of Anthropic. Codex is a product of OpenAI. This site counts page views with Cloudflare Web Analytics, which uses no cookies and does not track individual visitors.</p>
+          <p class="legal">© 2026 ChiYu-Huang. Free version under the <a href="legal/EULA.txt">license agreement</a>. <a href="legal/THIRD_PARTY_NOTICES.txt">Third-party notices</a>. Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google. Claude Code is a product of Anthropic. Codex is a product of OpenAI. Gemini is a product of Google. This site counts page views with Cloudflare Web Analytics, which uses no cookies and does not track individual visitors.</p>
         </div>
         <nav class="tile links" aria-label="Footer">
           <ul>
@@ -669,7 +669,7 @@
           </ul>
         </nav>
         <div class="tile system">
-          <p>Windows 10 and 11<br />64-bit<br />Version 0.1.1</p>
+          <p>Windows 10 and 11<br />64-bit<br />Version 0.1.2</p>
         </div>
         <div class="tile issue">
           <p>Found a problem?</p>
