@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out." />
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
     <meta name="twitter:image:alt" content="Pyloxa: run Claude Code and Codex together. A plan where each task shows the agent it goes to and the rule it matched." />
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pyloxa", "url": "https://pyloxa.com/", "image": "https://pyloxa.com/assets/og-en.png", "description": "Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "0.1.4", "downloadUrl": "https://github.com/eric861129/Pyloxa-Releases/releases/latest", "releaseNotes": "https://github.com/eric861129/Pyloxa-Releases/releases", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "ChiYu-Huang"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pyloxa", "url": "https://pyloxa.com/", "image": "https://pyloxa.com/assets/og-en.png", "description": "Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "0.1.5", "downloadUrl": "https://github.com/eric861129/Pyloxa-Releases/releases/latest", "releaseNotes": "https://github.com/eric861129/Pyloxa-Releases/releases", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "ChiYu-Huang"}}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -78,7 +78,7 @@
             <p class="lead">Describe the work once. Pyloxa plans it, hands each task to Claude Code or Codex on your own subscription, and checks the result before anything is merged.</p>
             <div class="actions">
               <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download for Windows</a>
-              <span class="meta">Free · v0.1.4 · Windows 10 and 11</span>
+              <span class="meta">Free · v0.1.5 · Windows 10 and 11</span>
             </div>
           </div>
         </div>
@@ -221,7 +221,7 @@
                 <th scope="row">Done means</th>
                 <td data-label="Yourself">The agent says it is done, and you run the tests to find out.</td>
                 <td data-label="Multiplexer">You see which agents are working, done or waiting for you; whether the result is right is still yours to check.</td>
-                <td class="ours">A task is done when your verification commands pass in its own worktree. If they fail, the agent gets one automatic fix.</td>
+                <td class="ours">A task is done when your verification commands pass in its own worktree. If they fail, the agent gets one automatic fix. You can also have a different agent write tests for it and the brain review it; the brain's verdict is labelled as an AI review.</td>
               </tr>
               <tr>
                 <th scope="row">Out of quota</th>
@@ -238,7 +238,7 @@
               <tr>
                 <th scope="row">Best for</th>
                 <td data-label="Yourself">One thing at a time.</td>
-                <td data-label="Multiplexer">Watching many terminals at once, keeping agents running in the background, or working on remote machines.</td>
+                <td data-label="Multiplexer">Watching many terminals at once, keeping agents running even after you quit the app, or working on remote machines.</td>
                 <td class="ours">Splitting one request across agents and checking the results before they are merged.</td>
               </tr>
             </tbody>
@@ -361,6 +361,8 @@
                 <li>Verification commands such as <code>npm run test</code> need your approval, and you can try them first in a temporary worktree. The brain can only use commands you approved.</li>
                 <li>Each finished task is checked in its own worktree; at the end of each phase, the gate runs again on the integrated result.</li>
                 <li>A gate can move on by itself once it passes, or wait for your approval.</li>
+                <li>Hand a finished task to a different agent to test it, for example Codex builds and Claude Code writes the tests. The tester can change only test files, and Pyloxa reruns your commands on the result.</li>
+                <li>The brain can review finished work, with its own model and thinking effort. Its verdict is labelled as an AI review, and a task that asks for your review still waits for you.</li>
               </ul>
             </div>
             <div class="panel-media">
@@ -514,8 +516,8 @@
             </tr>
             <tr>
               <th scope="row">Plans and routing</th>
-              <td class="rec">Brain plans, routing rules, verification commands, phase gates</td>
-              <td>The same, plus automatic mode within the limits you set</td>
+              <td class="rec">Brain plans, routing rules, verification commands, phase gates, brain review, and cross-testing by another agent when you ask</td>
+              <td>The same, plus automatic mode within the limits you set, and automatic cross-testing by task type with failed tests sent back for a fix</td>
             </tr>
             <tr>
               <th scope="row">When quota runs out</th>
@@ -576,7 +578,7 @@
               <dt>Subscription</dt>
               <dd>Billed yearly. If you stop, Pro keeps working on every version released while you subscribed.</dd>
               <dt>Adds</dt>
-              <dd>Several projects at once with one inbox, automatic mode within your limits, an automatic fallback chain, API billing fallback, quota scheduling and a shared skills library</dd>
+              <dd>Several projects at once with one inbox, automatic mode within your limits, automatic cross-testing, an automatic fallback chain, API billing fallback, quota scheduling and a shared skills library</dd>
             </dl>
             <span class="later" data-waitlist-soon>Early-bird sign-up opens soon.</span>
               <form class="waitlist" data-waitlist method="post" hidden>
@@ -593,7 +595,7 @@
               </form>
           </div>
         </div>
-        <p class="pricing-note">Pro launches with several projects at once, the inbox, automatic mode and the fallback chain. Quota scheduling and skills arrive in later updates for both versions, and Pro subscribers get them as part of the subscription.</p>
+        <p class="pricing-note">Pro launches with several projects at once, the inbox, automatic mode, automatic cross-testing and the fallback chain. Quota scheduling and skills arrive in later updates for both versions, and Pro subscribers get them as part of the subscription.</p>
       </section>
 
       <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
@@ -634,7 +636,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">How is this different from tools that put agent terminals side by side?</button>
-              <div class="inline-answer"><p>Terminal multiplexers put several agent terminals in one window so you can see which are working and which are waiting for you; some keep agents running in the background or reach remote machines. Pyloxa handles what happens outside the terminals: the brain splits the request into tasks, your rules route them, your commands check the results, a fallback is proposed when quota runs out, and you merge at the end. If you want to watch every terminal yourself, a multiplexer fits; if you want to hand over a request and get checked results back, Pyloxa fits.</p></div>
+              <div class="inline-answer"><p>Terminal multiplexers put several agent terminals in one window so you can see which are working and which are waiting for you; some keep agents running even after you quit the app or reach remote machines. Pyloxa handles what happens outside the terminals: the brain splits the request into tasks, your rules route them, your commands check the results, a fallback is proposed when quota runs out, and you merge at the end. Pyloxa keeps working in the system tray when you close its window, and tasks interrupted by a restart can be resumed. If you want to watch every terminal yourself, a multiplexer fits; if you want to hand over a request and get checked results back, Pyloxa fits.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">I already pay for Claude or ChatGPT. Why not just run the CLI in a terminal?</button>
@@ -646,7 +648,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Does it support Gemini or other agents?</button>
-              <div class="inline-answer"><p>Since 0.1.2, Gemini CLI is supported as an experimental option with your own paid Gemini API key. Google account sign-in and AI Pro or Ultra subscriptions are not supported. Gemini can run tasks such as writing and docs but can’t be the brain, and in unattended mode it can edit files but not run commands. Other agents are being evaluated.</p></div>
+              <div class="inline-answer"><p>Since 0.1.2, Gemini CLI is supported as an experimental option with your own paid Gemini API key. Google account sign-in and AI Pro or Ultra subscriptions are not supported. Gemini can run tasks such as writing and docs but can’t be the brain or test another agent’s work, and in unattended mode it can edit files but not run commands. Other agents are being evaluated.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">When does skills management arrive?</button>
@@ -654,7 +656,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">What will Pro add?</button>
-              <div class="inline-answer"><p>Several projects working at once with one inbox, automatic mode, an automatic fallback chain, and later quota scheduling and a shared skills library. Pro is US$79 a year. If you stop, Pro keeps working on every version released while you subscribed. Leave your email in the plans table for the early-bird price: US$49 the first year, then US$59 a year. The free version stays free.</p></div>
+              <div class="inline-answer"><p>Several projects working at once with one inbox, automatic mode, automatic cross-testing by task type, an automatic fallback chain, and later quota scheduling and a shared skills library. Pro is US$79 a year. If you stop, Pro keeps working on every version released while you subscribed. Leave your email in the plans table for the early-bird price: US$49 the first year, then US$59 a year. The free version stays free.</p></div>
             </li>
           </ul>
           <div class="faq-pane" aria-live="polite">
@@ -705,7 +707,7 @@
           </ul>
         </nav>
         <div class="tile system">
-          <p>Windows 10 and 11<br />64-bit<br />Version 0.1.4</p>
+          <p>Windows 10 and 11<br />64-bit<br />Version 0.1.5</p>
         </div>
         <div class="tile issue">
           <p>Found a problem?</p>

@@ -44,21 +44,6 @@
       .release td code { overflow-wrap: anywhere; word-break: break-all; }
       .button.is-light { background: var(--tone); color: var(--ink); }
     </style>
-    <!-- Google Analytics：不開廣告功能；歐洲經濟區、英國與瑞士的訪客預設不使用 analytics cookie -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
-      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
-      gtag("js", new Date());
-      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
-      // 下載按鈕：記成 download_click，在 GA 設為主要事件
-      document.addEventListener("click", (e) => {
-        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
-        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
-      });
-    </script>
   </head>
   <body>
     <a class="skip" href="#main">跳到主要內容</a>
@@ -78,6 +63,37 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">回報問題</a>
         </div>
       </div>
+      <article class="release" id="v0.1.5" aria-labelledby="h-v0.1.5">
+        <header>
+          <h2 id="h-v0.1.5"><a href="#v0.1.5">0.1.5</a></h2>
+          <p class="date"><time datetime="2026-11-06">發布於 2026-11-06</time></p>
+        </header>
+        <div class="body">
+<p>這一版加入新使用者的設定精靈。完成的工作可以交給另一個 Agent 測試、交給大腦驗收。關閉視窗時 Pyloxa 會留在系統匣繼續執行，被中斷的工作也可以接續。外觀也換新了，而且可以依你的習慣調整。</p>
+<h3>新功能</h3>
+<p>### 開始使用</p>
+<ul><li><strong>設定精靈</strong>：新安裝時會先出現設定精靈。 - 精靈會說明 Pyloxa 怎麼運作，並檢查 git 與 Node.js。 - 你確認後，它用官方的 npm 命令安裝 Agent CLI，再帶你完成登入與金鑰。 - 接著選大腦（Claude Code 或 Codex CLI），依你有的 Agent 調整分工，設定工作習慣與 Skills，最後開啟專案並核准驗證命令。 - 從舊版升級不會自動出現，可以在「設定 → 設定精靈」開啟。</li><li><strong>入門清單與提示</strong>：側欄有入門清單；第一次碰到某個畫面時會出現一則提示，可以在「設定」關閉或重新顯示。</li><li><strong>精靈顯示版本</strong>：環境檢查與安裝 Agent 會顯示最新版本、Pyloxa 已驗證到的版本，並提供一鍵更新。</li></ul>
+<p>### 檢查完成的工作</p>
+<ul><li><strong>大腦的模型與思考強度</strong>：可以在「Agent」頁設定大腦的模型與思考強度，不影響執行工作的 Agent。</li><li><strong>大腦驗收</strong>：可以讓大腦驗收完成的工作。 - 可以選關閉（預設）、只驗收沒有驗證命令的工作，或驗收所有工作。 - 大腦可以接受、請同一個 Agent 修改一次，或交給你決定。 - 大腦接受的工作會標示「AI 驗收」。</li><li><strong>交叉測試</strong>：完成的工作可以交給另一個 Agent 測試，例如 Codex 開發、Claude Code 測試。 - 測試者只能新增或修改測試檔。 - Pyloxa 會自己重跑你的驗證命令，以命令結果為準。 - 沒通過時，可以交回原本的 Agent 修正，而且它不能改測試者寫的測試。 - 依工作類型或由大腦判斷的自動交叉測試屬於付費版，目前還沒推出。</li></ul>
+<p>### 背景執行</p>
+<ul><li><strong>關閉視窗後繼續執行</strong>：有工作在執行或排定時，關閉視窗後 Pyloxa 會留在系統匣。 - 工作完成或需要你處理時會通知你。系統匣圖示會顯示狀態，有事等你時帶紅點。 - 沒有工作時，關閉視窗照常結束。可以在「設定 → 背景執行」修改。</li><li><strong>做完再結束</strong>：有工作在執行時，結束 Pyloxa 會先問你。 - 「做完再結束」不再開始新的工作，等執行中的做完後自動結束。 - 「立即結束」會停止執行中的工作，改到一半的內容會保留。</li><li><strong>執行中不睡眠</strong>：有工作在執行、接上電源時，Pyloxa 會讓電腦不因閒置而睡眠。螢幕照常關閉，闔上螢幕或手動睡眠也照常。 - 大腦與驗證命令的時間上限只算醒著的時間，電腦睡醒後不會因此判定逾時。 - 可以在「設定 → 背景執行」關閉。</li><li><strong>接續中斷的工作</strong>：Pyloxa 結束、當掉或 Windows 關機時還在執行的工作，之後可以接續，由同一個 Agent 從中斷前的成果接著做。重新開啟後，視窗頂端會列出中斷的工作，可以「全部接續」。</li></ul>
+<p>### 計畫與對話</p>
+<ul><li><strong>計畫卡收合</strong>：每個工作收合成一行，顯示大腦寫的摘要與交給誰；細節與改派放在「詳細」。</li><li><strong>回報預覽</strong>：對話中可以直接看到 Agent 的回報預覽與執行中的動態。</li><li><strong>精簡回覆</strong>：開啟這個開關（預設關閉）後，大腦與 Agent 的回覆會先講結論。</li><li><strong>整個計畫共用一個 worktree</strong>：計畫可以在同一個 worktree 依序執行所有工作，保留已安裝的依賴。核准前可以在計畫卡上切換。</li><li><strong>更少的確認</strong>：階段沒有 Gate 命令、而且工作都由你逐一接受過時，這個階段會直接通過，不用再核准。</li></ul>
+<p>### Gemini CLI 與 Skills</p>
+<ul><li><strong>Gemini 用量下降</strong>： - 新安裝時，文章與文件改交給大腦，不再交給 Gemini；你已有的規則不受影響。 - Gemini 執行時會提早壓縮對話紀錄，也不能啟動 Gemini 內建的子 Agent。 - 我們用 Gemini CLI 0.67.0 測試時，一個單檔修改用了約 5.6 萬 token。</li><li><strong>Gemini CLI 0.67.0 已驗證。</strong></li><li><strong>自訂 Skills 資料夾</strong>：Skills 盤點可以加入你自己的資料夾，也會列出 Claude Code 外掛的 Skills，兩者都只讀。</li></ul>
+<p>### 外觀</p>
+<ul><li><strong>新的外觀</strong>：預設改用品牌的 Pyloxa 靛藍，側欄、對話與設定頁都重新設計。Windows 上改用 Pyloxa 自己的標題列，Windows 11 的視窗可以使用 Mica 或 Acrylic 材質。</li><li><strong>內建字型</strong>：內建 Inter、JetBrains Mono 與思源黑體，每台電腦看起來都一樣；英文、中文與程式碼也可以改用你電腦上已安裝的任何字型。</li><li><strong>依你的習慣調整</strong>：在「設定 → 外觀」可以調整強調色、介面縮放、字級、行距、密度、圓角、對話寬度、程式碼連字與動畫，並即時預覽。</li></ul>
+<h3>隱私與安全</h3>
+<ul><li>Pyloxa 本身沒有增加新的網路請求。設定精靈的一鍵安裝會在你確認後，執行 CLI 官方的 <code>npm install -g</code> 命令，由 npm 下載。</li><li>大腦驗收與交叉測試預設關閉；開啟後，每個被驗收或測試的工作大約多用一次你自己的訂閱或 API Key 的 Agent 執行。</li><li>交叉測試的測試者在自己的 worktree 工作，只能修改測試檔：<code>*.test.*</code>、<code>*.spec.*</code>，以及 <code>test/</code>、<code>tests/</code>、<code>__tests__/</code> 資料夾裡的檔案。</li><li>Pyloxa 不會隨 Windows 啟動，也不會擋住登出或關機。只有在有工作執行或排定時才會留在系統匣，除非你選「一律留在系統匣」。</li><li>內建字型都包含在 Pyloxa 裡，不會向 Google Fonts 或其他字型服務下載。</li></ul>
+<h3>升級</h3>
+<p>直接執行新的安裝檔覆蓋舊版即可。存在 <code>%APPDATA%\Pyloxa</code> 的執行紀錄、專案、設定與保存的 API Key 都會保留並升級，你的派工規則不會被改動。升級後不能再用 0.1.4 開啟同一份資料，因為 0.1.4 無法讀取升級過的資料。</p>
+<p>因為內建字型，安裝檔比 0.1.4 大約多 5 MB。</p>
+<h3>已知限制</h3>
+<ul><li>只支援 Windows 10 與 11（64 位元）。</li><li>安裝檔沒有程式碼簽章，SmartScreen 可能跳出警告；請按「其他資訊」，再按「仍要執行」。</li><li>Pyloxa 本身不會自動更新。有新版本時 Pyloxa 會提示你。</li><li>Codex 透過 <code>codex exec</code> 在它的沙箱內執行。在 Windows 上，這個沙箱通常無法建置專案或安裝套件，所以 Codex 的成果以你的驗證命令驗收。</li><li>Gemini CLI 是實驗性支援：不能擔任大腦或交叉測試的測試者，在無人值守模式下也不能執行命令。</li><li>已測試 Claude Code 2.1.318、Codex CLI 0.166.0，以及 Gemini CLI 0.66.0 與 0.67.0。</li></ul>
+<h3>校驗碼</h3>
+<div class="table"><table><thead><tr><th scope="col">檔案</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.5.exe</code></td><td><code>faace5c7e8edd185eaf20bcca15e38085cf71fd0c710dfb3af5bd02857233192</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.4" aria-labelledby="h-v0.1.4">
         <header>
           <h2 id="h-v0.1.4"><a href="#v0.1.4">0.1.4</a></h2>

@@ -44,21 +44,6 @@
       .release td code { overflow-wrap: anywhere; word-break: break-all; }
       .button.is-light { background: var(--tone); color: var(--ink); }
     </style>
-    <!-- Google Analytics：不開廣告功能；歐洲經濟區、英國與瑞士的訪客預設不使用 analytics cookie -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
-      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
-      gtag("js", new Date());
-      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
-      // 下載按鈕：記成 download_click，在 GA 設為主要事件
-      document.addEventListener("click", (e) => {
-        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
-        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
-      });
-    </script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -78,6 +63,37 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">Report a problem</a>
         </div>
       </div>
+      <article class="release" id="v0.1.5" aria-labelledby="h-v0.1.5">
+        <header>
+          <h2 id="h-v0.1.5"><a href="#v0.1.5">0.1.5</a></h2>
+          <p class="date"><time datetime="2026-11-06">Released 2026-11-06</time></p>
+        </header>
+        <div class="body">
+<p>This release adds a setup wizard for new users, lets a second agent test finished work and the brain review it, keeps Pyloxa running in the tray when you close the window, and lets you resume tasks that were interrupted. Pyloxa also has a new look that you can adjust to your taste.</p>
+<h3>What's new</h3>
+<p>### Getting started</p>
+<ul><li><strong>Setup wizard.</strong> New installs start with a wizard. It explains how Pyloxa works and checks for git and Node.js. It installs the agent CLIs with their official npm commands after you confirm, then walks you through sign-in and API keys. Finally you pick the brain (Claude Code or Codex CLI), adjust who does what based on the agents you have, choose your working habits and Skills, and open a project with its verification commands. If you're upgrading, the wizard doesn't appear on its own; open it from <strong>Settings → Setup wizard</strong>.</li><li><strong>Getting-started checklist and tips.</strong> A checklist in the sidebar and one-time tips help the first time you meet each screen. You can turn tips off or show them again in <strong>Settings</strong>.</li><li><strong>Versions in the wizard.</strong> The environment check and agent install steps show the latest version, the version Pyloxa has verified, and a one-click update.</li></ul>
+<p>### Checking finished work</p>
+<ul><li><strong>Brain model and effort.</strong> Choose the brain's model and thinking effort on the <strong>Agents</strong> page. This doesn't change the agents that do the work.</li><li><strong>Brain review.</strong> You can have the brain review finished tasks. - Choose off (default), only tasks without verification commands, or all tasks. - The brain can accept the work, ask the same agent for one round of changes, or leave the decision to you. - Work it accepts is labeled as an AI review.</li><li><strong>Cross-testing.</strong> Send a finished task to a different agent to test it; for example, Codex builds and Claude Code tests. - The tester can only add or change test files. - Pyloxa reruns your verification commands itself, and their results take priority over the tester's report. - If the tests fail, you can send the task back to the original agent, which can't change the tester's tests. - Automatic cross-testing by task type or by the brain's judgment is part of the paid version, which isn't available yet.</li></ul>
+<p>### Running in the background</p>
+<ul><li><strong>Keeps working when you close the window.</strong> If work is running or scheduled, closing the window leaves Pyloxa in the system tray. - It notifies you when work finishes or needs you. The tray icon shows the status, with a red dot when something needs you. - With nothing running, closing the window quits as before. You can change this in <strong>Settings → Background running</strong>.</li><li><strong>Quit when done.</strong> Quitting while work is running asks first. - <strong>Quit When Done</strong> starts nothing new, waits for the running work to finish, then quits. - <strong>Quit Now</strong> stops the running work and keeps its partial changes.</li><li><strong>Stays awake while working.</strong> While work is running on AC power, Pyloxa keeps the computer from going to sleep when idle. The screen still turns off, and closing the lid or choosing Sleep still works. - Time limits for the brain and for verification commands count only time awake, so waking from sleep doesn't fail a run. - You can turn this off in <strong>Settings → Background running</strong>.</li><li><strong>Resume interrupted tasks.</strong> If Pyloxa quits, crashes or Windows shuts down while a task runs, you can resume it later: the same agent continues from its changes so far. After a restart, a bar at the top of the window lists interrupted tasks with <strong>Resume All</strong>.</li></ul>
+<p>### Plans and conversations</p>
+<ul><li><strong>Compact plan cards.</strong> Each task collapses to one line: the brain's summary and who it goes to. Details and reassignment are under <strong>Details</strong>.</li><li><strong>Report previews.</strong> The conversation shows each agent's report and live progress.</li><li><strong>Concise replies.</strong> A switch (off by default) asks the brain and the agents to lead with the conclusion.</li><li><strong>One worktree for a whole plan.</strong> A plan can run its tasks one after another in a single shared worktree, so installed dependencies are kept. You can switch this on the plan card before approving.</li><li><strong>Fewer confirmations.</strong> If a phase has no gate commands and you accepted each of its tasks yourself, it now passes without asking you to approve the phase.</li></ul>
+<p>### Gemini CLI and Skills</p>
+<ul><li><strong>Gemini uses fewer tokens.</strong> - On new installs, documentation tasks go to the brain instead of Gemini. Rules you already have aren't changed. - Gemini runs now compress their history earlier and can't start Gemini's built-in sub-agents. - In our tests with Gemini CLI 0.67.0, a one-file edit used about 56,000 tokens.</li><li><strong>Gemini CLI 0.67.0 verified.</strong></li><li><strong>Your own Skills folders.</strong> You can add your own folders to the Skills inventory. Skills from Claude Code plugins are listed too. Both are read-only.</li></ul>
+<p>### Look and feel</p>
+<ul><li><strong>A new look.</strong> Pyloxa now uses its brand indigo by default, with a redesigned sidebar, conversation and Settings page. On Windows it has its own title bar, and on Windows 11 the window can use Mica or Acrylic.</li><li><strong>Built-in fonts.</strong> Inter, JetBrains Mono and Noto Sans TC are included, so text looks the same on every computer. You can also pick any font installed on your computer for English, Chinese and code.</li><li><strong>Make it yours.</strong> In <strong>Settings → Appearance</strong> you can change the accent color, interface zoom, text size, line spacing, density, corner radius, conversation width, code ligatures and animations, with a live preview.</li></ul>
+<h3>Privacy and safety</h3>
+<ul><li>Pyloxa makes no new network requests of its own. The wizard's one-click install runs the CLI's official <code>npm install -g</code> command after you confirm, which downloads from npm.</li><li>Brain review and cross-testing are off by default. When you turn them on, each reviewed or tested task uses about one more agent run from your own subscription or API key.</li><li>A cross-tester works in its own worktree and can change only test files: <code>*.test.*</code>, <code>*.spec.*</code>, and files in <code>test/</code>, <code>tests/</code> or <code>__tests__/</code>.</li><li>Pyloxa doesn't start with Windows and never blocks sign-out or shutdown. Staying in the tray happens only while work is running or scheduled, unless you choose <strong>Always stay in the tray</strong>.</li><li>The built-in fonts ship inside Pyloxa. Nothing is downloaded from Google Fonts or any other font service.</li></ul>
+<h3>Upgrading</h3>
+<p>Run the new installer over the old version. Your run history, projects, settings and saved API keys in <code>%APPDATA%\Pyloxa</code> are kept and upgraded. Your routing rules aren't changed. After upgrading, you can't go back to 0.1.4 with the same data, because 0.1.4 can't open the upgraded data folder.</p>
+<p>The installer is about 5 MB larger than 0.1.4 because it includes the built-in fonts.</p>
+<h3>Known limitations</h3>
+<ul><li>Windows 10 and 11, 64-bit only.</li><li>The installer is not code-signed. SmartScreen may warn you; choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li><li>No automatic updates for Pyloxa itself. Pyloxa tells you when a new version is out.</li><li>Codex runs through <code>codex exec</code> in its sandbox. On Windows, the sandbox usually can't build projects or install packages, so Codex's results are checked by your verification commands.</li><li>Gemini CLI support is experimental. It can't act as the brain or as a cross-tester, and it can't run commands in unattended mode.</li><li>Tested with Claude Code 2.1.318, Codex CLI 0.166.0 and Gemini CLI 0.66.0 and 0.67.0.</li></ul>
+<h3>Checksum</h3>
+<div class="table"><table><thead><tr><th scope="col">File</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.5.exe</code></td><td><code>faace5c7e8edd185eaf20bcca15e38085cf71fd0c710dfb3af5bd02857233192</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.4" aria-labelledby="h-v0.1.4">
         <header>
           <h2 id="h-v0.1.4"><a href="#v0.1.4">0.1.4</a></h2>
