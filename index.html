@@ -193,13 +193,14 @@
           <div class="why-copy reveal">
             <h2 id="why-title">More than more agents</h2>
             <p>Plenty of tools let you run several agents side by side. Pyloxa handles what happens between them: who does which part, how you know it is done, and who takes over when one gets stuck.</p>
-            <p>Here is the same request handled by switching between CLIs yourself, and by handing it to Pyloxa.</p>
+            <p>Here is the same request three ways: switching between CLIs yourself, putting several agent terminals side by side in a terminal multiplexer, and handing it to Pyloxa.</p>
           </div>
           <table class="compare reveal">
             <thead>
               <tr>
                 <td></td>
                 <th scope="col">Switching CLIs yourself</th>
+                <th scope="col">Terminal multiplexer</th>
                 <th scope="col" class="ours">With Pyloxa</th>
               </tr>
             </thead>
@@ -207,27 +208,38 @@
               <tr>
                 <th scope="row">Splitting the work</th>
                 <td data-label="Yourself">You decide which tool fits each part and paste the request over.</td>
+                <td data-label="Multiplexer">You decide what the agent in each terminal does; some tools also let an agent start helper agents.</td>
                 <td class="ours">The brain breaks the request into phases and tasks and routes each one by your rules, naming the rule it matched.</td>
               </tr>
               <tr>
                 <th scope="row">Handoffs</th>
                 <td data-label="Yourself">When one agent finishes, you paste the API shape and file paths into the next.</td>
+                <td data-label="Multiplexer">Agents can message each other; what gets handed over is up to the agents.</td>
                 <td class="ours">The next phase receives a handoff package: the results, the checks that passed, and what to watch for.</td>
               </tr>
               <tr>
                 <th scope="row">Done means</th>
                 <td data-label="Yourself">The agent says it is done, and you run the tests to find out.</td>
+                <td data-label="Multiplexer">You see which agents are working, done or waiting for you; whether the result is right is still yours to check.</td>
                 <td class="ours">A task is done when your verification commands pass in its own worktree. If they fail, the agent gets one automatic fix.</td>
               </tr>
               <tr>
                 <th scope="row">Out of quota</th>
                 <td data-label="Yourself">You switch tools and explain again where things stand.</td>
+                <td data-label="Multiplexer">That terminal stops and waits; arranging a takeover is up to you.</td>
                 <td class="ours">Pyloxa proposes the fallback from your rules; once you confirm, it continues from the files the first agent changed.</td>
               </tr>
               <tr>
                 <th scope="row">Your repo</th>
                 <td data-label="Yourself">The agent edits your working directory directly.</td>
-                <td class="ours">Every task works in its own git worktree. Merging and pushing stay your call.</td>
+                <td data-label="Multiplexer">Depends on how you open the terminal; usually your working directory.</td>
+                <td class="ours">Every task works in its own git worktree, and its changes are checked against the allowed write scope. Merging and pushing stay your call.</td>
+              </tr>
+              <tr>
+                <th scope="row">Best for</th>
+                <td data-label="Yourself">One thing at a time.</td>
+                <td data-label="Multiplexer">Watching many terminals at once, keeping agents running in the background, or working on remote machines.</td>
+                <td class="ours">Splitting one request across agents and checking the results before they are merged.</td>
               </tr>
             </tbody>
           </table>
@@ -606,7 +618,7 @@
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Can an agent break my repository?</button>
-              <div class="inline-answer"><p>Agents work in separate git worktrees. Your working directory is never stashed, reset or checked out by Pyloxa, and nothing is merged or pushed until you choose to.</p></div>
+              <div class="inline-answer"><p>Agents work in separate git worktrees, away from the working directory you are editing, and Pyloxa never stashes, resets or checks it out. When a task finishes, its changed files are checked against the write scope the plan allows, and you can review each file in the built-in diff view. Nothing is merged or pushed until you choose to.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Why does Windows warn me when installing?</button>
@@ -619,6 +631,14 @@
             <li data-q>
               <button type="button" role="tab" aria-selected="false">Can a kind of task always go to one agent?</button>
               <div class="inline-answer"><p>Yes. Write a routing rule, such as "testing-phase work goes to Claude Code", for every project or just this one. You can also reassign a single task before approving a plan. New installs start with a default flow: Claude Code for frontend and video, Codex for backend and images, Gemini for writing and docs. Change it any time.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">How is this different from tools that put agent terminals side by side?</button>
+              <div class="inline-answer"><p>Terminal multiplexers put several agent terminals in one window so you can see which are working and which are waiting for you; some keep agents running in the background or reach remote machines. Pyloxa handles what happens outside the terminals: the brain splits the request into tasks, your rules route them, your commands check the results, a fallback is proposed when quota runs out, and you merge at the end. If you want to watch every terminal yourself, a multiplexer fits; if you want to hand over a request and get checked results back, Pyloxa fits.</p></div>
+            </li>
+            <li data-q>
+              <button type="button" role="tab" aria-selected="false">I already pay for Claude or ChatGPT. Why not just run the CLI in a terminal?</button>
+              <div class="inline-answer"><p>Running the CLI directly is fine, and Pyloxa uses the same CLI and the same subscription. The difference is three things: when quota runs out, Pyloxa proposes a fallback from your rules and, once you confirm, another CLI continues from the files already changed; an agent saying it is done does not count until your verification commands pass; and routing rules plus the skills each CLI can see are in one place instead of in each CLI's own settings.</p></div>
             </li>
             <li data-q>
               <button type="button" role="tab" aria-selected="false">How is this different from a CLI's own subagents?</button>

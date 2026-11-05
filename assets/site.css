@@ -1583,13 +1583,13 @@ section {
   border-top: 1px solid #dddbe3;
 }
 
-.compare td:first-of-type {
+.compare td[data-label] {
   color: var(--soft);
 }
 
 .compare .ours {
   background: var(--accent-tint);
-  width: 46%;
+  width: 36%;
 }
 
 .compare thead .ours {
@@ -1915,8 +1915,12 @@ section {
     color: var(--ink);
   }
 
-  .compare td:first-of-type::before {
+  .compare td[data-label]::before {
     content: attr(data-label) "：";
+  }
+
+  :lang(en) .compare td[data-label]::before {
+    content: attr(data-label) ": ";
   }
 
   .compare .ours {
