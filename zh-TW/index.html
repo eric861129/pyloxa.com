@@ -36,6 +36,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Noto+Sans+TC:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/site.css" />
+    <!-- Google Analytics：不開廣告功能；歐洲經濟區、英國與瑞士的訪客預設不使用 analytics cookie -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+    </script>
   </head>
   <body>
     <a class="skip" href="#main">跳到主要內容</a>
@@ -658,7 +673,7 @@
       <div class="tiles">
         <div class="tile statement">
           <p>同時和多個 AI Agent 一起工作的桌面 App。</p>
-          <p class="legal">© 2026 ChiYu-Huang。免費版依<a href="../legal/EULA.txt">授權合約</a>提供。<a href="../legal/THIRD_PARTY_NOTICES.txt">第三方軟體聲明</a>。Pyloxa 與 Anthropic、OpenAI、Google 沒有關係，也未獲得它們的背書。Claude Code 是 Anthropic 的產品，Codex 是 OpenAI 的產品，Gemini 是 Google 的產品。本站以 Cloudflare Web Analytics 統計瀏覽次數，不使用 cookie，也不追蹤個別訪客。</p>
+          <p class="legal">© 2026 ChiYu-Huang。免費版依<a href="../legal/EULA.txt">授權合約</a>提供。<a href="../legal/THIRD_PARTY_NOTICES.txt">第三方軟體聲明</a>。Pyloxa 與 Anthropic、OpenAI、Google 沒有關係，也未獲得它們的背書。Claude Code 是 Anthropic 的產品，Codex 是 OpenAI 的產品，Gemini 是 Google 的產品。本站以 Cloudflare Web Analytics（不使用 cookie）與 Google Analytics（不開啟廣告功能；歐洲經濟區、英國與瑞士的訪客不設定分析 cookie）統計瀏覽情形。</p>
         </div>
         <nav class="tile links" aria-label="頁尾">
           <ul>

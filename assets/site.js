@@ -112,6 +112,7 @@
           await fetch(endpoint, { method: "POST", body: new FormData(form), mode: "no-cors" });
           form.classList.add("is-done");
           status.textContent = W.done;
+          if (typeof gtag === "function") gtag("event", "generate_lead", { form: "pro_early_bird" });
         } catch {
           status.textContent = W.failed;
           button.disabled = false;
