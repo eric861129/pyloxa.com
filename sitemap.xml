@@ -28,4 +28,18 @@
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/changelog/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/changelog/" />
   </url>
+  <url>
+    <loc>https://pyloxa.com/privacy/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/privacy/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/privacy/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/privacy/" />
+  </url>
 </urlset>
