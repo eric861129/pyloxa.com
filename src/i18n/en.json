@@ -308,7 +308,7 @@
   "faq-title.8": "Does Pyloxa read my credentials?",
   "faq-title.9": "Never. It checks sign-in status with each CLI’s own command and starts the CLI as you would. Tokens and credential files are not read, copied or sent.",
   "faq-title.10": "Is my code sent anywhere?",
-  "faq-title.11": "Pyloxa itself has no server and collects no telemetry. Your code goes only where the CLIs send it, under Anthropic’s, OpenAI’s and Google’s terms. Pyloxa asks GitHub for the latest Pyloxa version and its CLI compatibility catalog at startup and every 12 hours, with no project or usage data; you can turn this off in Settings. Usage statistics are computed on your computer and never sent.",
+  "faq-title.11": "Pyloxa never sends your code or prompts to us. Your code goes only where the CLIs send it, under Anthropic’s, OpenAI’s and Google’s terms. Pyloxa asks GitHub for the latest Pyloxa version and its CLI compatibility catalog at startup and every 12 hours, with no project or usage data; you can turn this off in Settings. Usage statistics are computed on your computer. They are sent only if you turn on anonymous sharing, which is off by default, and then contain only counts and categories (see the <a href=\"/privacy/#usage-statistics\">privacy policy</a>).",
   "faq-title.12": "Can an agent break my repository?",
   "faq-title.13": "Agents work in separate git worktrees, away from the working directory you are editing, and Pyloxa never stashes, resets or checks it out. When a task finishes, its changed files are checked against the write scope the plan allows, and you can review each file in the built-in diff view. Nothing is merged or pushed until you choose to.",
   "faq-title.14": "Why does Windows warn me when installing?",

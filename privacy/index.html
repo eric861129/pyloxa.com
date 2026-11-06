@@ -46,7 +46,7 @@
     <main id="main" class="wrap policy">
       <div class="intro">
         <h1>Privacy Policy</h1>
-        <p>This policy covers the pyloxa.com website and the Pyloxa desktop app (free version). The app has no server and sends nothing about your projects to us. The website counts visits, and keeps your email address only if you join the Pro early-bird list.</p>
+        <p>This policy covers the pyloxa.com website and the Pyloxa desktop app (free version). The app never sends us your projects, code or prompts. It sends usage data only if you turn on anonymous usage statistics, which are off unless you turn them on. The website counts visits, and keeps your email address only if you join the Pro early-bird list.</p>
         <p class="updated">Last updated: November 16, 2026</p>
       </div>
 
@@ -65,6 +65,7 @@
               <tr><td>Your IP address when you load a page</td><td>GitHub (hosting)</td><td>Deliver the site and keep it secure</td></tr>
               <tr><td>Your email address, only if you join the early-bird list</td><td>Buttondown</td><td>Email you when Pro launches</td></tr>
               <tr><td>The app’s update check</td><td>GitHub</td><td>Tell you about new versions and CLI compatibility</td></tr>
+              <tr><td>Anonymous usage statistics, only if you turn them on in the app</td><td>Our receiver at <code>stats.pyloxa.com</code>, run on Cloudflare</td><td>See which features are used, where new users get stuck and how often each CLI fails</td></tr>
               <tr><td>Your code and prompts</td><td>Only the AI providers whose CLIs you use, under your own account</td><td>Run your tasks; we never receive them</td></tr>
             </tbody>
           </table>
@@ -98,12 +99,37 @@
       <section id="app" aria-labelledby="app-title">
         <h2 id="app-title">The Pyloxa app</h2>
 
-        <h3>No account, no telemetry</h3>
-        <p>Pyloxa needs no account and has no server of its own. It sends us no usage data, crash reports, project files, prompts or credentials. The usage statistics in Settings are computed on your computer and never sent.</p>
+        <h3>No account; usage data only if you opt in</h3>
+        <p>The free version needs no account. Pyloxa sends us no crash reports, project files, prompts or credentials, and it sends no usage data unless you turn on anonymous usage statistics. The statistics shown in Settings are computed on your computer.</p>
+
+        <h3 id="usage-statistics">Anonymous usage statistics (optional)</h3>
+        <p>Pyloxa can send us one anonymous report a day so we can see how many people keep using it, where new users get stuck and which agents fail most often. It is off unless you turn it on. Pyloxa asks once, after the first task you accept, and you can turn it on or off at any time in Settings → Usage and feedback. That page also shows the exact reports before they are sent.</p>
+        <ul>
+          <li><strong>What a report contains:</strong> a random anonymous ID created when you turn sharing on, and the date. It also contains:
+            <ul>
+              <li>Pyloxa’s version, whether it came from GitHub or the Microsoft Store, Windows 10 or 11, and the interface language.</li>
+              <li>The edition (free, trial or Pro), the week you first used Pyloxa, and whether you finished the setup guide.</li>
+              <li>For each CLI, whether it is installed and signed in, its major and minor version, and whether it uses a subscription or an API key.</li>
+              <li>Counts for that day: conversations, brain replies, plans, tasks and their result category (for example finished, quota exhausted or rate limited), how results were accepted, fallbacks, cross-tests, brain reviews and background-run actions.</li>
+              <li>Feature settings: brain review, cross-testing, concise replies, worktree mode, what closing the window does, and sleep prevention.</li>
+            </ul>
+          </li>
+          <li><strong>What it never contains:</strong> prompts, instructions, code, file names, paths, project or repository names, CLI output, error messages, account names, email addresses or API keys. The anonymous ID is not linked to a Pro account.</li>
+          <li><strong>Where it goes:</strong> to our receiver at <code>stats.pyloxa.com</code>, which runs on Cloudflare. We don’t store your IP address or browser details, only the two-letter country code that Cloudflare derives from your IP address. The app contains no third-party analytics code.</li>
+          <li><strong>How long:</strong> reports are kept for 13 months. After that, only daily totals with no ID are kept. If Pyloxa can’t connect, it keeps unsent reports on your computer for up to 7 days.</li>
+          <li><strong>Your controls:</strong>
+            <ul>
+              <li>Turning sharing off stops sending and deletes the ID and unsent reports from your computer.</li>
+              <li><strong>Delete my data</strong> asks the receiver to delete every report with your ID, then turns sharing off.</li>
+              <li><strong>Reset anonymous ID</strong> starts over with a new ID.</li>
+            </ul>
+          </li>
+        </ul>
 
         <h3>Network requests Pyloxa makes</h3>
         <ul>
           <li><strong>Update check:</strong> at startup and every 12 hours, Pyloxa asks GitHub (<code>api.github.com</code>) for the latest Pyloxa release and the CLI compatibility catalog. Like any internet request, it reveals your IP address to GitHub; it also carries Pyloxa’s version number, but no project or usage data. Turn it off in Settings → Notifications and updates.</li>
+          <li><strong>Anonymous usage statistics:</strong> only if you turn them on, Pyloxa sends finished daily reports to <code>stats.pyloxa.com</code> about once an hour while it is open (see above).</li>
           <li><strong>Installing or updating a CLI:</strong> only when you click and confirm, Pyloxa runs the official install command, which downloads from npm or from the CLI’s provider.</li>
           <li><strong>Git and GitHub:</strong> fetch, pull, push and pull requests happen only when you choose them, through your own git remotes and your own GitHub CLI sign-in.</li>
           <li><strong>Agent tools on your computer:</strong> while Pyloxa is open, it listens on random ports on <code>127.0.0.1</code> so the agents it starts can search and propose shared memories. Other computers can’t connect, and nothing is sent over the internet.</li>
@@ -116,7 +142,7 @@
 
         <h3>Data stored on your computer</h3>
         <ul>
-          <li><code>%APPDATA%\Pyloxa</code> holds the projects you opened, conversations, plans, task records and logs, shared memory, settings and usage statistics.</li>
+          <li><code>%APPDATA%\Pyloxa</code> holds the projects you opened, conversations, plans, task records and logs, shared memory, settings and usage statistics. If you turn on anonymous usage statistics, it also holds the anonymous ID and any reports not yet sent.</li>
           <li>API keys you add are encrypted with Windows secure storage and kept in the same folder. Pyloxa passes a key only to the CLI process that runs your task.</li>
           <li><code>%LOCALAPPDATA%\Pyloxa\worktrees</code> holds the git worktrees where agents work.</li>
           <li>Only if you choose to: <strong>Sync to CLIs</strong> writes a project’s rules and preferences into <code>AGENTS.md</code> and related files in that project, and the user-level option writes rules and preferences into a marked block in <code>~/.claude/CLAUDE.md</code>, <code>~/.codex/AGENTS.md</code> and <code>~/.gemini/GEMINI.md</code>, after backing up the originals to <code>%APPDATA%\Pyloxa\memory-backup</code>. The CLIs send what’s in these files to their providers when you use them.</li>
@@ -135,7 +161,7 @@
             <thead><tr><th scope="col">Service</th><th scope="col">Used for</th><th scope="col">Privacy policy</th></tr></thead>
             <tbody>
               <tr><td>GitHub</td><td>Website hosting, the app’s update check, issue reports</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a></td></tr>
-              <tr><td>Cloudflare</td><td>DNS, Web Analytics</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
+              <tr><td>Cloudflare</td><td>DNS, Web Analytics, receiving the app’s anonymous usage statistics (only if you turn them on)</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
               <tr><td>Google</td><td>Google Analytics</td><td><a href="https://policies.google.com/privacy">Google Privacy Policy</a></td></tr>
               <tr><td>Buttondown</td><td>Pro early-bird list</td><td><a href="https://buttondown.com/legal/privacy">Buttondown Privacy Policy</a></td></tr>
             </tbody>
@@ -149,6 +175,7 @@
         <p>If you are in the EEA, the UK or Switzerland, we rely on:</p>
         <ul>
           <li><strong>Your consent</strong> for the early-bird list, given when you confirm your email address. You can withdraw it at any time by unsubscribing.</li>
+          <li><strong>Your consent</strong> for the app’s anonymous usage statistics, given when you turn them on. You can withdraw it at any time by turning them off, and <strong>Delete my data</strong> removes reports already sent.</li>
           <li><strong>Our legitimate interest</strong> in running a secure website and knowing how many people visit and download Pyloxa, for hosting logs and Cloudflare’s cookieless visit counts. The site doesn’t load Google Analytics when your device’s time zone is in Europe.</li>
         </ul>
       </section>
@@ -156,7 +183,7 @@
       <section id="rights" aria-labelledby="rights-title">
         <h2 id="rights-title">Your rights</h2>
         <p>You can ask us to tell you what personal data we hold about you, give you a copy, correct it, stop using it or delete it. These rights come from Taiwan’s Personal Data Protection Act and, for visitors in the EEA, the UK and Switzerland, from the GDPR, which also lets you object to processing, receive your data in a portable format and complain to your local data protection authority.</p>
-        <p>Write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>. For the early-bird list, write from the address concerned so that we can find it. We reply within 15 days and complete a request within 30 days. The visit statistics we see are aggregated and not linked to your name or email address, so we usually can’t pick out one visitor’s records.</p>
+        <p>Write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>. For the early-bird list, write from the address concerned so that we can find it. For usage statistics, use <strong>Delete my data</strong> in the app, or send us the anonymous ID shown in Settings → Usage and feedback; without it we can’t tell which reports are yours. We reply within 15 days and complete a request within 30 days. The visit statistics we see are aggregated and not linked to your name or email address, so we usually can’t pick out one visitor’s records.</p>
       </section>
 
       <section id="other" aria-labelledby="other-title">
@@ -164,7 +191,7 @@
         <ul>
           <li>The website and the app are not meant for children. Please don’t join the early-bird list if you are under 16.</li>
           <li>The website is served only over HTTPS. Only we can access the early-bird list.</li>
-          <li>When what we collect changes, we update this page and the date at the top before the change takes effect. Planned changes that will be covered here before they start: Pro sign-in and payments (handled by a payment provider acting as the merchant of record; we never see your card details), and optional usage statistics in the app that are sent only if you agree. Earlier versions of this page are in the site’s public <a href="https://github.com/eric861129/pyloxa.com">GitHub repository</a>.</li>
+          <li>When what we collect changes, we update this page and the date at the top before the change takes effect. Planned changes that will be covered here before they start: Pro sign-in and payments (handled by a payment provider acting as the merchant of record; we never see your card details). Earlier versions of this page are in the site’s public <a href="https://github.com/eric861129/pyloxa.com">GitHub repository</a>.</li>
           <li>This policy is also available in <a href="../zh-TW/privacy/" lang="zh-Hant">Traditional Chinese</a>. If the two versions differ, the English version applies.</li>
         </ul>
       </section>
