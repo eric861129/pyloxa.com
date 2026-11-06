@@ -1,0 +1,29 @@
+# Pyloxa
+
+> Pyloxa is a desktop app for Windows 10 and 11 that gets AI coding agents such as Claude Code and Codex CLI to work together on one software project. You describe the work once; Pyloxa plans it, hands each task to an agent by your routing rules, checks the result with your own verification commands, and leaves the merge to you. It runs the official CLIs on your own subscriptions or API keys and does not resell or proxy any AI service. The free edition is a direct download.
+
+## Key facts
+
+- Platform: Windows 10 and 11, 64-bit. Requires git and at least one signed-in Claude Code or Codex CLI. A setup wizard checks git and Node.js and installs the CLIs with their official npm commands after you confirm.
+- Agents: Claude Code and Codex CLI. Gemini CLI is experimental support and needs your own paid Gemini API key; it cannot be the brain or test other agents' work.
+- How it works: a "brain" agent reads the project and writes a plan. Each task goes to a CLI by routing rules you write (for example "backend tasks go to Codex"), runs in its own git worktree on its own branch, and is checked against the write scope in the plan and your verification commands (for example `npm run test`). You can also have a different agent test the work. You accept results and decide what is merged and pushed.
+- When quota runs out: Pyloxa stops sending work to that CLI, shows when the quota resets, and proposes a fallback from your rules. After you confirm, the other CLI continues from the files already changed. At most 3 automatic attempts and 2 fallback takeovers per task; no API charges you have not approved.
+- Background: closing the window while work runs keeps Pyloxa in the system tray; interrupted work can be resumed.
+- Credentials and privacy: Pyloxa never reads, copies or sends CLI tokens or credential files, and never stashes or resets your working directory. It has no server of its own and collects no usage data; your code goes only where each CLI already sends it. It checks GitHub for updates and the CLI compatibility catalog, which can be turned off.
+- Installer: not code-signed yet, so Windows SmartScreen may warn on first run.
+- Not affiliated with or endorsed by Anthropic, OpenAI or Google.
+
+## Free and Pro
+
+- Free (US$0, no account): one project working at a time, routing rules, verification commands, phase gates, brain review, cross-testing on request, fallback proposals you confirm, desktop notifications, and an inventory of the skills each CLI can see. The free edition stays free.
+- Pro (coming soon, US$79 a year; early bird US$49 the first year, then US$59 a year): several projects at once with one task-center inbox, automatic routing within limits you set, an automatic fallback chain, and automatic cross-testing with failed tests sent back for a fix. Later updates add quota scheduling, a usage dashboard and reports, Telegram/Discord/webhook notifications, a synced skills library, and a backup brain. If you stop paying, Pro keeps working on versions released while you paid.
+
+## Links
+
+- [Website (English)](https://pyloxa.com/): features, demo videos, comparison, pricing and FAQ
+- [Website (Traditional Chinese)](https://pyloxa.com/zh-TW/): 繁體中文版官網
+- [Changelog](https://pyloxa.com/changelog/): what changed in each release
+- [Download](https://github.com/eric861129/Pyloxa-Releases/releases/latest): latest Windows installer and SHA-256
+- [Report a problem](https://github.com/eric861129/Pyloxa-Releases/issues)
+- [Privacy policy](https://pyloxa.com/privacy/)
+- [License (EULA)](https://pyloxa.com/legal/EULA.txt)

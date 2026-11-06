@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
 
+# AI 搜尋與助理的爬蟲：明確允許，讓它們能引用官網內容
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://pyloxa.com/sitemap.xml
