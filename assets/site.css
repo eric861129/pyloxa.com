@@ -1252,6 +1252,76 @@ section {
 }
 
 /* 收尾：打開 Pyloxa 的第一個畫面 */
+/* ---- 全站的輕量動態 ---- */
+/* 頁面最上方的閱讀進度條 */
+.progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 60;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* 區塊標題下方的短色條：出現時由左往右長出來 */
+.section-head::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-top: 16px;
+  background: var(--accent);
+  transform-origin: left;
+}
+
+.js .reveal .section-head::after,
+.js .section-head.reveal::after {
+  transform: scaleX(0);
+  transition: transform 700ms var(--ease) 250ms;
+}
+
+.js .reveal.is-in .section-head::after,
+.js .section-head.reveal.is-in::after {
+  transform: none;
+}
+
+/* 按鈕：滑過時微微浮起 */
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -12px rgba(73, 50, 212, 0.75);
+}
+
+.button.is-light:hover {
+  box-shadow: inset 0 0 0 1.5px var(--ink), 0 10px 24px -14px rgba(21, 19, 31, 0.5);
+}
+
+/* 工作卡：滑過時浮起 */
+.states .task-row {
+  transition:
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease);
+}
+
+.states .task-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -18px rgba(21, 19, 31, 0.35);
+}
+
+/* 導覽列：滑過時底線由左往右畫出 */
+.nav ul a:not(.nav-download) {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  padding-bottom: 3px;
+  transition:
+    color 160ms var(--ease),
+    background-size 260ms var(--ease);
+}
+
+.nav ul a:not(.nav-download):hover {
+  background-size: 100% 1.5px;
+}
+
 /* ---- 名字的由來：P·Y·L·O·X·A 六個字 ---- */
 .name-head {
   max-width: 60ch;
@@ -1273,19 +1343,83 @@ section {
 }
 
 .name-letters li {
+  position: relative;
   display: grid;
   align-content: start;
   gap: 6px;
   padding-top: 16px;
   border-top: 2px solid var(--ink);
+  outline: none;
+}
+
+/* 上緣的色條：指到字母時由左往右填滿 */
+.name-letters li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 4px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease);
+}
+
+.name-letters li:is(:hover, :focus-visible, .is-active)::before {
+  transform: scaleX(1);
 }
 
 .name-letter {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
   font-size: clamp(3.5rem, 2rem + 4vw, 6rem);
   font-weight: 600;
   line-height: 0.9;
   letter-spacing: -0.03em;
   color: var(--accent);
+  transition:
+    transform 320ms var(--ease),
+    opacity 260ms var(--ease);
+}
+
+/* 進場：六個字母依序從下方升起 */
+.name-letter > span {
+  display: inline-block;
+  transition: transform 900ms var(--ease);
+}
+
+.js .name-letters .name-letter > span {
+  transform: translateY(105%);
+}
+
+.js .name-letters.is-in .name-letter > span {
+  transform: none;
+}
+
+.js .name-letters.is-in li:nth-child(2) .name-letter > span {
+  transition-delay: 90ms;
+}
+
+.js .name-letters.is-in li:nth-child(3) .name-letter > span {
+  transition-delay: 180ms;
+}
+
+.js .name-letters.is-in li:nth-child(4) .name-letter > span {
+  transition-delay: 270ms;
+}
+
+.js .name-letters.is-in li:nth-child(5) .name-letter > span {
+  transition-delay: 360ms;
+}
+
+.js .name-letters.is-in li:nth-child(6) .name-letter > span {
+  transition-delay: 450ms;
+}
+
+.name-hint {
+  display: none;
 }
 
 .name-word {
@@ -1309,6 +1443,49 @@ section {
   font-size: var(--step-small);
   color: var(--soft);
   line-height: 1.6;
+}
+
+/* 有滑鼠的裝置：平常只看到字母，指到（或用 Tab 選到）時才顯示下面的字；觸控裝置一律顯示 */
+@media (hover: hover) and (pointer: fine) {
+  .js .name-hint {
+    display: block;
+    margin-top: 10px;
+    font-size: var(--step-small);
+    color: var(--accent);
+  }
+
+  .js .name-letters li {
+    cursor: default;
+  }
+
+  .js .name-letters li > :not(.name-letter) {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 240ms var(--ease),
+      transform 320ms var(--ease);
+  }
+
+  .js .name-letters li:is(:hover, :focus-visible, .is-active) > :not(.name-letter) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .name-letters li:is(:hover, :focus-visible, .is-active) > .name-zh {
+    transition-delay: 50ms;
+  }
+
+  .js .name-letters li:is(:hover, :focus-visible, .is-active) > p {
+    transition-delay: 100ms;
+  }
+
+  .js .name-letters li:is(:hover, :focus-visible, .is-active) .name-letter {
+    transform: translateY(-6px);
+  }
+
+  .js .name-letters:has(li:is(:hover, :focus-visible, .is-active)) li:not(:hover, :focus-visible, .is-active) .name-letter {
+    opacity: 0.28;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -1587,7 +1764,12 @@ section {
   .js .stage-inner,
   .session,
   .drift,
-  .spin {
+  .spin,
+  .js .name-letters .name-letter > span,
+  .js .reveal .section-head::after,
+  .js .section-head.reveal::after,
+  .states .task-row,
+  .button {
     animation: none !important;
     transition: none !important;
     transform: none !important;

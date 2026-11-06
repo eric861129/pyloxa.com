@@ -21,6 +21,52 @@
     reveals.forEach((el) => io.observe(el));
   } else reveals.forEach((el) => el.classList.add("is-in"));
 
+  // ---- 閱讀進度條 ----
+  const bar = document.createElement("div");
+  bar.className = "progress";
+  bar.setAttribute("aria-hidden", "true");
+  document.body.append(bar);
+  let barQueued = false;
+  const drawBar = () => {
+    barQueued = false;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+  };
+  addEventListener("scroll", () => barQueued || ((barQueued = true), requestAnimationFrame(drawBar)), { passive: true });
+  addEventListener("resize", drawBar);
+  drawBar();
+
+  // ---- 名字的由來：第一次捲到時依序亮過六個字母，示範指到字母會顯示說明；使用者一動就停 ----
+  const letters = document.querySelector(".name-letters");
+  const canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (letters && canHover && !still && "IntersectionObserver" in window) {
+    const items = [...letters.children];
+    let timer = 0;
+    const stop = () => {
+      clearTimeout(timer);
+      letters.classList.remove("is-demo");
+      items.forEach((li) => li.classList.remove("is-active"));
+    };
+    const play = (i) => {
+      items.forEach((li, j) => li.classList.toggle("is-active", i === j));
+      if (i >= items.length) return stop();
+      timer = setTimeout(() => play(i + 1), 850);
+    };
+    const demo = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        demo.disconnect();
+        letters.classList.add("is-demo");
+        timer = setTimeout(() => play(0), 900);
+      },
+      { threshold: 0.6 },
+    );
+    demo.observe(letters);
+    letters.addEventListener("pointerenter", stop);
+    letters.addEventListener("focusin", stop);
+  }
+
   // ---- 派工面板：與 Pyloxa 的規則相同（前端 → Claude Code、後端 → Codex，互為備援；其他走預設路由） ----
   const router = document.querySelector("[data-router]");
   if (router) {
