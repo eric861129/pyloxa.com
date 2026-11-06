@@ -159,30 +159,49 @@
           </div>
 
           <p class="state-word">Verified</p>
-          <div class="state-row task-row" data-ui data-task>
-            <div class="ui-row" data-pending>
-              <div class="top">
-                <span class="ui-title">Profile API</span>
-                <span class="badge">backend</span>
-                <span class="badge warn">Writable</span>
-                <span class="spacer"></span>
-                <span class="badge warn">Waiting for you</span>
+          <div class="state-row reply-demo" data-reply-demo>
+            <div class="task-row" data-ui data-task>
+              <div class="ui-row" data-pending>
+                <div class="top">
+                  <span class="ui-title">Profile API</span>
+                  <span class="badge">backend</span>
+                  <span class="badge warn">Writable</span>
+                  <span class="spacer"></span>
+                  <span class="badge warn" data-status>Waiting for you</span>
+                </div>
+                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test passed · 2 files changed · within its write scope</span></span>
+                <div class="actions">
+                  <button type="button" class="ui-button primary" data-accept>Accept result</button>
+                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">Reply in session</button>
+                </div>
               </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>npm run test passed · 2 files changed · within its write scope</span>
-              <div class="actions">
-                <button type="button" class="ui-button primary" data-accept>Accept result</button>
-                <button type="button" class="ui-button">Reply in session</button>
+              <div class="ui-row" data-accepted hidden>
+                <div class="top">
+                  <span class="ui-title">Profile API</span>
+                  <span class="badge">backend</span>
+                  <span class="spacer"></span>
+                  <span class="badge ok">Done</span>
+                </div>
+                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Accepted and merged into pyloxa/r_8f2k/integration</span>
               </div>
             </div>
-            <div class="ui-row" data-accepted hidden>
-              <div class="top">
+            <section class="session" id="session-demo" data-ui data-session hidden aria-label="Session: Profile API">
+              <div class="ui-row session-head">
                 <span class="ui-title">Profile API</span>
-                <span class="badge">backend</span>
+                <span class="ui-muted">Codex · Session</span>
                 <span class="spacer"></span>
-                <span class="badge ok">Done</span>
+                <button type="button" class="session-close" data-session-close aria-label="Close session">×</button>
               </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Accepted and merged into pyloxa/r_8f2k/integration</span>
-            </div>
+              <div class="ui-row session-log" data-session-log aria-live="polite">
+                <div class="msg brief"><span class="who">Task</span><p>Add a GET /api/profile endpoint that returns the signed-in member, with tests.</p></div>
+                <div class="msg"><span class="who">Codex</span><p>Added GET /api/profile. It returns the member’s name and email, with 2 tests. npm run test passed.</p></div>
+              </div>
+              <form class="ui-row session-reply" data-session-form>
+                <label class="visually-hidden" for="session-input">Reply to Codex</label>
+                <textarea id="session-input" rows="2" data-session-input>Also return avatarUrl</textarea>
+                <button type="submit" class="ui-button primary">Send</button>
+              </form>
+            </section>
           </div>
 
           <p class="state-word">Integrated</p>
@@ -467,7 +486,6 @@
           </div>
           <div class="fallback-shots reveal">
             <img class="drift" src="assets/shots/en/quota-task.png" alt="A task where Codex ran out of quota, with a button to let Claude Code take over" loading="lazy" />
-            <img class="small" src="assets/shots/en/connection-card.png" alt="The Codex connection marked out of quota until the reset time, with a Quota restored button" loading="lazy" />
           </div>
         </div>
       </section>
@@ -762,6 +780,14 @@
     <script type="application/json" id="copy">
       {
         "waitlist": {"sending": "Sending…", "done": "Almost done. Check your inbox and confirm your email.", "failed": "That didn’t go through. Check your connection and try again."},
+        "session": {
+          "you": "You",
+          "working": "Codex is making the change…",
+          "running": "Running",
+          "waiting": "Waiting for you",
+          "answer": "Added avatarUrl to the response and updated the tests. npm run test passed.",
+          "check": "npm run test passed · run 2 · within its write scope"
+        },
         "router": {
           "goesTo": "Goes to “{agent}”",
           "fallback": "Fallback “{agent}”: {state}",

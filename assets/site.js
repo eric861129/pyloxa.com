@@ -72,14 +72,85 @@
     decide();
   }
 
-  // ---- 工作狀態：中間那列按「接受結果」後變成已接受 ----
-  document.querySelectorAll("[data-accept]").forEach((btn) =>
-    btn.addEventListener("click", () => {
-      const row = btn.closest("[data-task]");
-      row.querySelector("[data-pending]").hidden = true;
-      row.querySelector("[data-accepted]").hidden = false;
-    }),
-  );
+  // ---- 工作狀態：中間那列按「接受結果」後變成已接受；按「在 Session 回覆」在旁邊打開 Session ----
+  document.querySelectorAll("[data-reply-demo]").forEach((demo) => {
+    const S = copy.session || {};
+    const card = demo.querySelector("[data-task]");
+    const accept = card.querySelector("[data-accept]");
+    const replyBtn = card.querySelector("[data-reply]");
+    const status = card.querySelector("[data-status]");
+    const checkText = card.querySelector("[data-check-text]");
+    const session = demo.querySelector("[data-session]");
+    const log = session.querySelector("[data-session-log]");
+    const form = session.querySelector("[data-session-form]");
+    const input = session.querySelector("[data-session-input]");
+    const sendBtn = form.querySelector("button[type=submit]");
+    let busy = false;
+
+    const setOpen = (open) => {
+      session.hidden = !open;
+      demo.classList.toggle("is-open", open);
+      replyBtn.setAttribute("aria-expanded", String(open));
+    };
+    const addMsg = (who, text, cls) => {
+      const m = document.createElement("div");
+      m.className = "msg" + (cls ? " " + cls : "");
+      const w = document.createElement("span");
+      w.className = "who";
+      w.textContent = who;
+      const p = document.createElement("p");
+      p.textContent = text;
+      m.append(w, p);
+      log.append(m);
+      requestAnimationFrame(() => (log.scrollTop = log.scrollHeight));
+      return m;
+    };
+
+    accept.addEventListener("click", () => {
+      setOpen(false);
+      card.querySelector("[data-pending]").hidden = true;
+      card.querySelector("[data-accepted]").hidden = false;
+    });
+    replyBtn.addEventListener("click", () => {
+      const open = session.hidden;
+      setOpen(open);
+      if (open) input.focus({ preventScroll: true });
+    });
+    session.querySelector("[data-session-close]").addEventListener("click", () => {
+      setOpen(false);
+      replyBtn.focus();
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+        e.preventDefault();
+        form.requestSubmit();
+      }
+    });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text || busy) return;
+      busy = true;
+      addMsg(S.you, text, "you");
+      input.value = "";
+      accept.disabled = sendBtn.disabled = true;
+      status.className = "badge info";
+      status.innerHTML = '<span class="spin" aria-hidden="true"></span>';
+      status.append(S.running);
+      const working = addMsg("Codex", "", "working");
+      working.querySelector("p").innerHTML = '<span class="spin" aria-hidden="true"></span>';
+      working.querySelector("p").append(S.working);
+      setTimeout(() => {
+        working.remove();
+        addMsg("Codex", S.answer);
+        status.className = "badge warn";
+        status.textContent = S.waiting;
+        checkText.textContent = S.check;
+        accept.disabled = sendBtn.disabled = false;
+        busy = false;
+      }, 1800);
+    });
+  });
 
   // ---- 功能開關 ----
   document.querySelectorAll(".band [role=switch]").forEach((sw) => {

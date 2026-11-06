@@ -192,6 +192,12 @@ h3 {
   position: relative;
   overflow: hidden;
   min-height: min(980px, 100svh);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero > .wrap {
+  width: 100%;
 }
 
 .hero-copy {
@@ -223,21 +229,20 @@ h3 {
   color: var(--soft);
 }
 
+/* 舞台跟著派工面板長高：打開「額度用盡」後面板變長，也不會被裁掉 */
 .stage {
-  position: absolute;
-  left: calc(100% * 4 / 12);
-  right: 0;
-  top: 46%;
-  bottom: 0;
+  position: relative;
+  flex: 1 0 auto;
+  margin-top: -44px;
+  margin-left: calc(100% * 4 / 12);
+  padding: 56px 0 112px 56px;
   background: var(--accent);
   clip-path: polygon(120px 0, 100% 0, 100% 100%, 0 100%, 0 120px);
 }
 
 .stage-inner {
-  position: absolute;
-  left: 56px;
-  top: 56px;
-  width: min(640px, calc(100% - 80px));
+  position: relative;
+  width: min(640px, calc(100% - 56px));
 }
 
 .stage-note {
@@ -609,6 +614,7 @@ section {
   background: var(--tone);
   padding: clamp(10px, 1.4vw, 18px);
   width: min(820px, calc(100vw - 2 * var(--margin) - 56px));
+  width: min(820px, calc(75cqi - 56px));
 }
 
 /* 第一張截圖裁出對話區（不含側欄），維持可讀的大小 */
@@ -629,6 +635,7 @@ section {
 
 .exchange.final .response {
   width: min(900px, calc(100vw - 2 * var(--margin)));
+  width: min(900px, calc(75cqi - 56px));
   margin-left: 56px;
 }
 
@@ -692,10 +699,6 @@ section {
   padding: clamp(8px, 1vw, 14px);
 }
 
-.fallback-shots .small {
-  width: 82%;
-  justify-self: end;
-}
 
 /* 功能句與開關 */
 .bands {
@@ -744,7 +747,29 @@ section {
 .band .switch {
   grid-column: 11 / 13;
   justify-self: end;
-  font-size: var(--step-head);
+  font-size: clamp(2.25rem, 1.4rem + 1.9vw, 3rem);
+  line-height: 0;
+}
+
+.band .toggle {
+  font-size: inherit;
+  background: #a9a5b8;
+  box-shadow: 0 0 0 0 rgba(76, 54, 214, 0);
+  transition:
+    background-color 160ms var(--ease),
+    box-shadow 200ms var(--ease);
+}
+
+.band .toggle::after {
+  box-shadow: 0 1px 3px rgba(23, 21, 32, 0.25);
+}
+
+.band .toggle:hover {
+  box-shadow: 0 0 0 6px rgba(76, 54, 214, 0.14);
+}
+
+.band .toggle[aria-checked="true"] {
+  background: var(--green);
 }
 
 .band.is-on .line {
@@ -770,6 +795,156 @@ section {
 
 .band.is-on.c4 {
   background: var(--tone);
+}
+
+/* 「在 Session 回覆」：工作卡旁邊打開 Session，可以送出回覆 */
+.reply-demo {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+}
+
+.reply-demo .ui-button[disabled] {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.reply-demo .ui-button[aria-expanded="true"] {
+  background: #f4f3f7;
+}
+
+.session {
+  display: grid;
+  overflow: hidden;
+  animation: session-in 260ms var(--ease) both;
+}
+
+.session[hidden] {
+  display: none;
+}
+
+.session .session-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 12px;
+  border-bottom: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.session .session-head .spacer {
+  flex: 1;
+}
+
+.session .session-close {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #6b6878;
+  font: 400 20px / 1 var(--font);
+  cursor: pointer;
+}
+
+.session .session-close:hover {
+  background: #f4f3f7;
+}
+
+.session .session-log {
+  display: grid;
+  gap: 12px;
+  max-height: 340px;
+  overflow-y: auto;
+  background: #fbfbfc;
+}
+
+.session .msg {
+  display: grid;
+  gap: 2px;
+  max-width: 92%;
+}
+
+.session .msg .who {
+  font-size: 12px;
+  color: #6b6878;
+}
+
+.session .msg p {
+  padding: 8px 11px;
+  border: 1px solid #e6e4ec;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.session .msg.you {
+  justify-self: end;
+}
+
+.session .msg.you .who {
+  text-align: right;
+}
+
+.session .msg.you p {
+  background: #171520;
+  border-color: #171520;
+  color: #ffffff;
+}
+
+.session .msg.brief p {
+  background: #f5f4f8;
+}
+
+.session .msg.working p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b6878;
+}
+
+.session .session-reply {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.session .session-reply .ui-button {
+  justify-self: end;
+}
+
+@keyframes session-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Session 打開後這列變高，左邊的「已驗證」對齊工作卡上緣 */
+@media (min-width: 901px) {
+  .states .state-word:has(+ .reply-demo.is-open) {
+    align-self: start;
+    margin-top: 20px;
+  }
+}
+
+/* 寬螢幕：Session 開在工作卡右邊，工作卡位置不動 */
+@media (min-width: 1180px) {
+  .states .reply-demo.is-open {
+    grid-column: 4 / 13;
+    grid-template-columns: subgrid;
+    column-gap: clamp(12px, 2vw, 32px);
+  }
+
+  .reply-demo.is-open > .task-row {
+    grid-column: 1 / 7;
+  }
+
+  .reply-demo.is-open > .session {
+    grid-column: 7 / 10;
+  }
 }
 
 /* 價格表：Pro 欄以品牌色突出，免費版保持中性 */
@@ -1337,6 +1512,7 @@ section {
   .js .reveal > *,
   .js .stage,
   .js .stage-inner,
+  .session,
   .drift,
   .spin {
     animation: none !important;
@@ -1367,12 +1543,9 @@ section {
 
 
   .stage {
-    position: relative;
-    left: auto;
-    top: auto;
     margin-top: 40px;
-    margin-inline: calc(-1 * var(--margin));
-    min-height: 620px;
+    margin-left: 0;
+    padding: 40px 16px 40px;
     clip-path: polygon(72px 0, 100% 0, 100% 100%, 0 100%, 0 72px);
   }
 
@@ -1381,9 +1554,7 @@ section {
   }
 
   .stage-inner {
-    left: 16px;
-    top: 40px;
-    width: calc(100% - 32px);
+    width: 100%;
   }
 
   .stage-note {
@@ -1403,8 +1574,7 @@ section {
     grid-column: 1 / -1;
     text-align: left;
     font-size: var(--step-body);
-    order: 1;
-    margin-bottom: 38px;
+    margin-top: 18px;
   }
 
   .flow-col {
@@ -1426,9 +1596,6 @@ section {
     margin-top: 40px;
   }
 
-  .fallback-shots .small {
-    width: 100%;
-  }
 
   .band {
     min-height: 132px;
@@ -1444,7 +1611,7 @@ section {
 
   .band .switch {
     grid-column: 10 / 13;
-    font-size: var(--step-lead);
+    font-size: 2.25rem;
   }
 
   .band .consequence {
@@ -1634,9 +1801,15 @@ section {
   cursor: pointer;
 }
 
+.flow {
+  container-type: inline-size;
+}
+
+/* 影片從縮排的欄位往右延伸，但不超出頁面（flow-col 左邊縮排 25%，所以最多用到 75%） */
 .demo {
   margin: 0 0 96px;
-  width: min(980px, calc(100vw - 2 * var(--margin)));
+  width: min(980px, calc((min(100vw, 1440px) - 2 * var(--margin)) * 0.75 - 16px));
+  width: min(980px, 75cqi);
 }
 
 .demo .frame {

@@ -158,30 +158,49 @@
           </div>
 
           <p class="state-word">已驗證</p>
-          <div class="state-row task-row" data-ui data-task>
-            <div class="ui-row" data-pending>
-              <div class="top">
-                <span class="ui-title">會員資料 API</span>
-                <span class="badge">後端</span>
-                <span class="badge warn">可寫入</span>
-                <span class="spacer"></span>
-                <span class="badge warn">等你確認</span>
+          <div class="state-row reply-demo" data-reply-demo>
+            <div class="task-row" data-ui data-task>
+              <div class="ui-row" data-pending>
+                <div class="top">
+                  <span class="ui-title">會員資料 API</span>
+                  <span class="badge">後端</span>
+                  <span class="badge warn">可寫入</span>
+                  <span class="spacer"></span>
+                  <span class="badge warn" data-status>等你確認</span>
+                </div>
+                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test 通過 · 變更 2 個檔案 · 都在允許寫入的範圍內</span></span>
+                <div class="actions">
+                  <button type="button" class="ui-button primary" data-accept>接受結果</button>
+                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">在 Session 回覆</button>
+                </div>
               </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>npm run test 通過 · 變更 2 個檔案 · 都在允許寫入的範圍內</span>
-              <div class="actions">
-                <button type="button" class="ui-button primary" data-accept>接受結果</button>
-                <button type="button" class="ui-button">在 Session 回覆</button>
+              <div class="ui-row" data-accepted hidden>
+                <div class="top">
+                  <span class="ui-title">會員資料 API</span>
+                  <span class="badge">後端</span>
+                  <span class="spacer"></span>
+                  <span class="badge ok">已完成</span>
+                </div>
+                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已接受並合併到 pyloxa/r_8f2k/integration</span>
               </div>
             </div>
-            <div class="ui-row" data-accepted hidden>
-              <div class="top">
+            <section class="session" id="session-demo" data-ui data-session hidden aria-label="Session：會員資料 API">
+              <div class="ui-row session-head">
                 <span class="ui-title">會員資料 API</span>
-                <span class="badge">後端</span>
+                <span class="ui-muted">Codex · Session</span>
                 <span class="spacer"></span>
-                <span class="badge ok">已完成</span>
+                <button type="button" class="session-close" data-session-close aria-label="關閉 Session">×</button>
               </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已接受並合併到 pyloxa/r_8f2k/integration</span>
-            </div>
+              <div class="ui-row session-log" data-session-log aria-live="polite">
+                <div class="msg brief"><span class="who">派工內容</span><p>新增 GET /api/profile 端點，回傳目前登入會員的資料，並加上測試。</p></div>
+                <div class="msg"><span class="who">Codex</span><p>已新增 GET /api/profile，回傳會員的名稱與 email，並加上 2 個測試。npm run test 通過。</p></div>
+              </div>
+              <form class="ui-row session-reply" data-session-form>
+                <label class="visually-hidden" for="session-input">回覆 Codex</label>
+                <textarea id="session-input" rows="2" data-session-input>回傳資料也加上 avatarUrl</textarea>
+                <button type="submit" class="ui-button primary">送出</button>
+              </form>
+            </section>
           </div>
 
           <p class="state-word">已整合</p>
@@ -466,7 +485,6 @@
           </div>
           <div class="fallback-shots reveal">
             <img class="drift" src="../assets/shots/zh/quota-task.png" alt="Codex 額度用盡的工作，附有由 Claude Code 接手的按鈕" loading="lazy" />
-            <img class="small" src="../assets/shots/zh/connection-card.png" alt="Codex 連線標示額度用盡與重設時間，附有「額度已恢復」按鈕" loading="lazy" />
           </div>
         </div>
       </section>
@@ -761,6 +779,14 @@
     <script type="application/json" id="copy">
       {
         "waitlist": {"sending": "送出中…", "done": "還差一步：請到信箱點確認信裡的連結。", "failed": "沒有送出，請檢查網路後再試一次。"},
+        "session": {
+          "you": "你",
+          "working": "Codex 正在修改…",
+          "running": "執行中",
+          "waiting": "等你確認",
+          "answer": "已在回傳資料加上 avatarUrl，並更新測試。npm run test 通過。",
+          "check": "npm run test 通過 · 第 2 次執行 · 都在允許寫入的範圍內"
+        },
         "router": {
           "goesTo": "交給「{agent}」",
           "fallback": "備援「{agent}」：{state}",
