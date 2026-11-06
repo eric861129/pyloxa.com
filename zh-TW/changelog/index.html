@@ -63,6 +63,26 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">回報問題</a>
         </div>
       </div>
+      <article class="release" id="v0.1.6" aria-labelledby="h-v0.1.6">
+        <header>
+          <h2 id="h-v0.1.6"><a href="#v0.1.6">0.1.6</a></h2>
+          <p class="date"><time datetime="2026-11-06">發布於 2026-11-06</time></p>
+        </header>
+        <div class="body">
+<p>這是一個安全性更新，請從 0.1.5 以前的版本更新。</p>
+<h3>安全性修正</h3>
+<p>Pyloxa 0.1.5 以前的 <code>Pyloxa.exe</code> 還接受三個它用不到的 Electron 與 Node 選項：Node 模式（<code>ELECTRON_RUN_AS_NODE</code>）、<code>NODE_OPTIONS</code> 環境變數，以及 Node 的除錯參數（<code>--inspect</code>）。已經在你的 Windows 帳號下執行的其他程式，可以藉此透過 <code>Pyloxa.exe</code> 執行它自己的程式碼，或掛上除錯器。目前沒有收到被利用的回報。</p>
+<p>Pyloxa 0.1.6 關掉了這些途徑：</p>
+<ul><li><code>Pyloxa.exe</code> 不再以 Node 模式執行，也不理會 <code>NODE_OPTIONS</code> 與 Node 的除錯參數。</li><li>帶著遠端除錯之類的參數（<code>--remote-debugging-port</code>、<code>--remote-debugging-pipe</code>、<code>--inspect</code>、<code>--js-flags</code>）啟動時，會直接結束，不開視窗、也不碰你的資料。</li><li>只載入它自己的 <code>app.asar</code>，並在啟動時檢查；這個檔案被改過時，Pyloxa 不會啟動。</li></ul>
+<p>使用方式完全不變。</p>
+<h3>升級</h3>
+<p>直接執行新的安裝檔覆蓋舊版即可。存在 <code>%APPDATA%\Pyloxa</code> 的執行紀錄、專案、設定與保存的 API Key 都會保留並升級。升級後不能再用 0.1.5 以前的版本開啟同一份資料，因為舊版無法讀取升級過的資料。</p>
+<h3>已知限制</h3>
+<ul><li>只支援 Windows 10 與 11（64 位元）。</li><li>安裝檔沒有程式碼簽章，SmartScreen 可能跳出警告；請按「其他資訊」，再按「仍要執行」。</li><li>Pyloxa 本身不會自動更新。有新版本時 Pyloxa 會提示你。</li><li>Codex 透過 <code>codex exec</code> 在它的沙箱內執行。在 Windows 上，這個沙箱通常無法建置專案或安裝套件，所以 Codex 的成果以你的驗證命令驗收。</li><li>Gemini CLI 是實驗性支援：不能擔任大腦或交叉測試的測試者，在無人值守模式下也不能執行命令。</li><li>已測試 Claude Code 2.1.318、Codex CLI 0.166.0，以及 Gemini CLI 0.66.0 與 0.67.0。</li></ul>
+<h3>校驗碼</h3>
+<div class="table"><table><thead><tr><th scope="col">檔案</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.6.exe</code></td><td><code>2d2dbce83ab72d175fce086dc2c49b2df1cf76ffb7a820777f12b9f40aca1d2f</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.5" aria-labelledby="h-v0.1.5">
         <header>
           <h2 id="h-v0.1.5"><a href="#v0.1.5">0.1.5</a></h2>
