@@ -1,0 +1,6 @@
+Contact: https://github.com/eric861129/Pyloxa-Releases/security/advisories/new
+Contact: mailto:support@pyloxa.com
+Expires: 2027-11-01T00:00:00.000Z
+Policy: https://github.com/eric861129/Pyloxa-Releases/blob/main/SECURITY.md
+Preferred-Languages: en, zh-TW
+Canonical: https://pyloxa.com/.well-known/security.txt
