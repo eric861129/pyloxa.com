@@ -2,6 +2,10 @@
 
 > Pyloxa is a desktop app for Windows 10 and 11 that gets AI coding agents such as Claude Code and Codex CLI to work together on one software project. You describe the work once; Pyloxa plans it, hands each task to an agent by your routing rules, checks the result with your own verification commands, and leaves the merge to you. It runs the official CLIs on your own subscriptions or API keys and does not resell or proxy any AI service. The free edition is a direct download.
 
+## The name
+
+Pyloxa is made from the first letters of Plan, Yield, Lead, Orchestrate, eXecute and Agents: the brain plans the work, yields only results that pass your checks, leads the agents by your rules, orchestrates Claude Code and Codex, executes each task in its own git worktree, and works with the agents you already use.
+
 ## Key facts
 
 - Platform: Windows 10 and 11, 64-bit. Requires git and at least one signed-in Claude Code or Codex CLI. A setup wizard checks git and Node.js and installs the CLIs with their official npm commands after you confirm.

@@ -1252,6 +1252,79 @@ section {
 }
 
 /* 收尾：打開 Pyloxa 的第一個畫面 */
+/* ---- 名字的由來：P·Y·L·O·X·A 六個字 ---- */
+.name-head {
+  max-width: 60ch;
+}
+
+.name-head p {
+  margin-top: 16px;
+  color: var(--soft);
+}
+
+.name-letters {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: clamp(12px, 2vw, 32px);
+  row-gap: 40px;
+}
+
+.name-letters li {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+
+.name-letter {
+  font-size: clamp(3.5rem, 2rem + 4vw, 6rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.name-word {
+  margin-top: 10px;
+  font-size: var(--step-lead);
+  font-weight: 600;
+}
+
+.name-word b {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.name-zh {
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+.name-letters p {
+  margin-top: 6px;
+  font-size: var(--step-small);
+  color: var(--soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .name-letters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .name-letters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 40px;
+    row-gap: 32px;
+  }
+}
+
 .close {
   margin-top: var(--gap-section);
   background: var(--accent);
