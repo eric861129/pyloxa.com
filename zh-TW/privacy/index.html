@@ -64,7 +64,7 @@
           <table>
             <thead><tr><th scope="col">資料</th><th scope="col">誰會收到</th><th scope="col">用途</th></tr></thead>
             <tbody>
-              <tr><td>官網的瀏覽與下載點擊</td><td>Cloudflare、Google</td><td>統計瀏覽與下載次數</td></tr>
+              <tr><td>官網的瀏覽與下載點擊</td><td>Cloudflare；Google（歐洲的訪客除外）</td><td>統計瀏覽與下載次數</td></tr>
               <tr><td>開啟網頁時的 IP 位址</td><td>GitHub（網站主機）、Google（字型）</td><td>傳送網頁、維護網站安全</td></tr>
               <tr><td>你的 email（只在加入早鳥名單時）</td><td>Buttondown</td><td>Pro 推出時寄信通知你</td></tr>
               <tr><td>App 查詢新版本</td><td>GitHub</td><td>告訴你有新版本與 CLI 相容性資訊</td></tr>
@@ -83,8 +83,9 @@
         <h3>瀏覽統計</h3>
         <ul>
           <li><strong>Cloudflare Web Analytics</strong>：每一頁都有。統計瀏覽次數、從哪些網站連過來、國家、瀏覽器類型與網頁載入速度。不使用 cookie 或本機儲存空間，也不會辨識個別訪客的裝置。</li>
-          <li><strong>Google Analytics 4</strong>：首頁與「找不到網頁」頁面有。記錄瀏覽、下載連結的點擊，以及早鳥表單送出了一次（不含你填的 email）。廣告功能與 Google 信號都已關閉。Google 表示 Google Analytics 4 不會記錄或儲存 IP 位址。事件層級的資料最多保留 14 個月，我們只看得到彙總後的報表。</li>
-          <li><strong>Cookie</strong>：在歐洲經濟區、英國與瑞士以外，Google Analytics 會設定 <code>_ga</code> 與 <code>_ga_PWKKJHQV92</code> 兩個 cookie，最長保存兩年，用來區分新訪客與回訪的訪客。歐洲經濟區、英國與瑞士的訪客不會被設定 cookie，Google Analytics 只送出不含 cookie 的統計。你可以在瀏覽器封鎖這些 cookie，或安裝 Google 的 <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics 停用外掛程式</a>。</li>
+          <li><strong>Google Analytics 4</strong>：首頁與「找不到網頁」頁面有，但只對歐洲以外的訪客載入（見下方）。記錄瀏覽、下載連結的點擊，以及早鳥表單送出了一次（不含你填的 email）。廣告功能與 Google 信號都已關閉。Google 表示 Google Analytics 4 不會記錄或儲存 IP 位址。事件層級的資料最多保留 14 個月，我們只看得到彙總後的報表。</li>
+          <li><strong>歐洲的訪客</strong>：載入 Google Analytics 之前，網頁會先讀取你裝置的時區。時區在歐洲（涵蓋歐洲經濟區、英國與瑞士）或它們的海外地區、是 UTC，或讀不到時，網頁完全不載入 Google Analytics，Google 也不會從這裡收到任何資料，只有 Cloudflare Web Analytics 統計你的瀏覽。</li>
+          <li><strong>Cookie</strong>：其他地區的訪客，Google Analytics 會設定 <code>_ga</code> 與 <code>_ga_PWKKJHQV92</code> 兩個 cookie，最長保存兩年，用來區分新訪客與回訪的訪客。如果 Google 仍判斷你在歐洲經濟區、英國或瑞士，就不會設定 cookie。你可以在瀏覽器封鎖這些 cookie，或安裝 Google 的 <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics 停用外掛程式</a>。</li>
         </ul>
 
         <h3>Pro 早鳥名單</h3>
@@ -148,7 +149,7 @@
         <p>如果你在歐洲經濟區、英國或瑞士，我們依據的是：</p>
         <ul>
           <li><strong>你的同意</strong>：早鳥名單，你確認 email 時同意。隨時可以取消訂閱來撤回同意。</li>
-          <li><strong>我們的正當利益</strong>：網站主機記錄、字型與瀏覽統計，用於維護網站安全，並了解有多少人瀏覽與下載 Pyloxa。在你所在的地區，這些統計不使用 cookie。</li>
+          <li><strong>我們的正當利益</strong>：網站主機記錄、字型與 Cloudflare 不使用 cookie 的瀏覽統計，用於維護網站安全，並了解有多少人瀏覽與下載 Pyloxa。裝置時區在歐洲時，網頁不會載入 Google Analytics。</li>
         </ul>
       </section>
 

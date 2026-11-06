@@ -37,11 +37,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/site.css" />
-    <!-- Google Analytics：不開廣告功能；歐洲經濟區、英國與瑞士的訪客預設不使用 analytics cookie -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92"></script>
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
     <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
+      window.gtag = function () { dataLayer.push(arguments); };
       gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
       gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
       gtag("js", new Date());
@@ -51,6 +63,7 @@
         const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
         if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
       });
+      })();
     </script>
   </head>
   <body>
@@ -720,7 +733,7 @@
       <div class="tiles">
         <div class="tile statement">
           <p>A desktop app for working with several AI agents at once.</p>
-          <p class="legal">© 2026 ChiYu-Huang. Free version under the <a href="legal/EULA.txt">license agreement</a>. <a href="legal/THIRD_PARTY_NOTICES.txt">Third-party notices</a>. Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google. Claude Code is a product of Anthropic. Codex is a product of OpenAI. Gemini is a product of Google. This site counts page views with Cloudflare Web Analytics (no cookies) and Google Analytics (advertising features off; no analytics cookies for visitors in the EEA, UK and Switzerland). See the <a href="privacy/">privacy policy</a>.</p>
+          <p class="legal">© 2026 ChiYu-Huang. Free version under the <a href="legal/EULA.txt">license agreement</a>. <a href="legal/THIRD_PARTY_NOTICES.txt">Third-party notices</a>. Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google. Claude Code is a product of Anthropic. Codex is a product of OpenAI. Gemini is a product of Google. This site counts page views with Cloudflare Web Analytics (no cookies) and Google Analytics (advertising features off; not loaded for visitors in Europe). See the <a href="privacy/">privacy policy</a>.</p>
         </div>
         <nav class="tile links" aria-label="Footer">
           <ul>

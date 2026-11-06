@@ -64,7 +64,7 @@
           <table>
             <thead><tr><th scope="col">What</th><th scope="col">Who receives it</th><th scope="col">Why</th></tr></thead>
             <tbody>
-              <tr><td>Page views and download clicks on pyloxa.com</td><td>Cloudflare, Google</td><td>Count visits and downloads</td></tr>
+              <tr><td>Page views and download clicks on pyloxa.com</td><td>Cloudflare; Google, except for visitors in Europe</td><td>Count visits and downloads</td></tr>
               <tr><td>Your IP address when you load a page</td><td>GitHub (hosting), Google (fonts)</td><td>Deliver the site and keep it secure</td></tr>
               <tr><td>Your email address, only if you join the early-bird list</td><td>Buttondown</td><td>Email you when Pro launches</td></tr>
               <tr><td>The app’s update check</td><td>GitHub</td><td>Tell you about new versions and CLI compatibility</td></tr>
@@ -83,8 +83,9 @@
         <h3>Visit statistics</h3>
         <ul>
           <li><strong>Cloudflare Web Analytics</strong> runs on every page. It counts page views, referring sites, countries, browser types and page load speed. It uses no cookies or local storage and does not fingerprint visitors.</li>
-          <li><strong>Google Analytics 4</strong> runs on the home pages and the page-not-found page. It records page views, clicks on download links and the fact that the early-bird form was submitted (not the address you entered). Advertising features and Google signals are off. Google says Google Analytics 4 does not log or store IP addresses. Event-level data is kept for up to 14 months; we see only aggregated reports.</li>
-          <li><strong>Cookies:</strong> outside the European Economic Area, the UK and Switzerland, Google Analytics sets the cookies <code>_ga</code> and <code>_ga_PWKKJHQV92</code>, which last up to two years, to tell new and returning visitors apart. For visitors in the EEA, the UK and Switzerland, Google Analytics sets no cookies and sends only cookieless measurements. You can block these cookies in your browser or install Google’s <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out add-on</a>.</li>
+          <li><strong>Google Analytics 4</strong> runs on the home pages and the page-not-found page, but only for visitors outside Europe (see below). It records page views, clicks on download links and the fact that the early-bird form was submitted (not the address you entered). Advertising features and Google signals are off. Google says Google Analytics 4 does not log or store IP addresses. Event-level data is kept for up to 14 months; we see only aggregated reports.</li>
+          <li><strong>Visitors in Europe:</strong> before loading Google Analytics, the page reads your device’s time zone. If it is in Europe, which covers the European Economic Area, the UK and Switzerland, or in one of their overseas regions, or if it is UTC or can’t be read, the page doesn’t load Google Analytics at all and Google receives nothing from it. Only Cloudflare Web Analytics counts your visit.</li>
+          <li><strong>Cookies:</strong> elsewhere, Google Analytics sets the cookies <code>_ga</code> and <code>_ga_PWKKJHQV92</code>, which last up to two years, to tell new and returning visitors apart. If Google still locates you in the EEA, the UK or Switzerland, it sets no cookies. You can block these cookies in your browser or install Google’s <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out add-on</a>.</li>
         </ul>
 
         <h3>Pro early-bird list</h3>
@@ -148,7 +149,7 @@
         <p>If you are in the EEA, the UK or Switzerland, we rely on:</p>
         <ul>
           <li><strong>Your consent</strong> for the early-bird list, given when you confirm your email address. You can withdraw it at any time by unsubscribing.</li>
-          <li><strong>Our legitimate interest</strong> in running a secure website and knowing how many people visit and download Pyloxa, for hosting logs, fonts and visit statistics. In your region these statistics are collected without cookies.</li>
+          <li><strong>Our legitimate interest</strong> in running a secure website and knowing how many people visit and download Pyloxa, for hosting logs, fonts and Cloudflare’s cookieless visit counts. The site doesn’t load Google Analytics when your device’s time zone is in Europe.</li>
         </ul>
       </section>
 
