@@ -329,7 +329,6 @@
                   <source src="assets/video/en/agents.webm" type="video/webm" />
                 </video>
               </div>
-              <img class="still" src="assets/shots/en/profile-dialog.png" width="1440" height="900" alt="The New profile dialog: name, CLI, model, reasoning and role prompt" loading="lazy" />
             </div>
           </div>
 
@@ -349,7 +348,6 @@
                   <source src="assets/video/en/rules.webm" type="video/webm" />
                 </video>
               </div>
-              <img class="still" src="assets/shots/en/rules-page.png" width="1440" height="900" alt="The Routing Rules page: a project rule Backend to Codex and the rule simulation result" loading="lazy" />
             </div>
           </div>
 
@@ -371,7 +369,6 @@
                   <source src="assets/video/en/commands.webm" type="video/webm" />
                 </video>
               </div>
-              <img class="still" src="assets/shots/en/plan-card.png" width="1440" height="900" alt="A plan card from the brain: implementation and testing phases, each task showing its agent and the rule it matched" loading="lazy" />
             </div>
           </div>
 
@@ -490,56 +487,74 @@
       </section>
 
       <section class="wrap section pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="pricing-lede reveal">
+          <h2 id="pricing-title">Free runs one project with you. Pro looks after all of them.</h2>
+          <p>The free version covers the whole flow: plan, route, check, merge. Pro takes over what you would otherwise do by hand: several projects at once, decisions within the limits you set, takeovers when quota runs out, and finished work sent to another agent for testing.</p>
+        </div>
         <table class="reveal">
           <thead>
             <tr>
-              <th scope="col" id="pricing-title">Free now, Pro soon</th>
-              <th scope="col" class="rec">Free<span class="price">$0 <span class="period">no account needed</span></span></th>
-              <th scope="col">Pro<span class="price">US$79 <span class="period">per year, keep what you paid for</span></span></th>
+              <th scope="col"><span class="visually-hidden">Compare plans</span></th>
+              <th scope="col">Free<span class="price">$0 <span class="period">no account needed</span></span></th>
+              <th scope="col" class="pro">Pro <span class="early">Early bird: US$49 the first year</span><span class="price">US$79 <span class="period">per year; if you stop, Pro keeps working on versions released while you paid</span></span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Agents</th>
-              <td class="rec">Claude Code and Codex CLI on your own subscriptions or API keys; Gemini CLI on your own API key (experimental)</td>
-              <td>The same, plus API billing when a subscription runs out, if you allow it</td>
+              <th scope="row">Projects at once</th>
+              <td>One project working at a time; switch any time</td>
+              <td class="pro"><strong>Several projects working at once</strong>, with one task-center inbox for everything waiting on you</td>
             </tr>
             <tr>
-              <th scope="row">Projects</th>
-              <td class="rec">One project working at a time; switch any time</td>
-              <td>Several projects working at once, with one inbox for everything waiting on you</td>
-            </tr>
-            <tr>
-              <th scope="row">Agent setup</th>
-              <td class="rec">Your own profiles: model, reasoning and role prompt; any profile can be the brain</td>
-              <td>Same</td>
-            </tr>
-            <tr>
-              <th scope="row">Plans and routing</th>
-              <td class="rec">Brain plans, routing rules, verification commands, phase gates, brain review, and cross-testing by another agent when you ask</td>
-              <td>The same, plus automatic mode within the limits you set, and automatic cross-testing by task type with failed tests sent back for a fix</td>
+              <th scope="row">Routing</th>
+              <td>Suggest then ask, or follow your settings only</td>
+              <td class="pro"><strong>Automatic within limits</strong>: chooses and retries within the agents, models and counts you allow, and pauses at any limit</td>
             </tr>
             <tr>
               <th scope="row">When quota runs out</th>
-              <td class="rec">You confirm each takeover</td>
-              <td>An automatic fallback chain, and plans that wait for the next reset</td>
+              <td>A fallback is proposed; you confirm each takeover</td>
+              <td class="pro"><strong>Automatic fallback chain</strong> with triggers and limits; with your prior OK, switches to API billing when a subscription runs out</td>
+            </tr>
+            <tr>
+              <th scope="row">Checks and tests</th>
+              <td>Verification commands, phase gates, brain review, and cross-testing by another agent when you ask</td>
+              <td class="pro"><strong>Automatic cross-testing</strong> by task type or the brain's judgment, with failed tests sent back for a fix</td>
+            </tr>
+            <tr>
+              <th scope="row">Quota scheduling</th>
+              <td>Tasks waiting on quota resume after the reset</td>
+              <td class="pro">Project priority, per-connection quotas, and plans scheduled for a set time or the next reset <span class="soon-tag">later update</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Usage and reports</th>
+              <td>Usage for each run</td>
+              <td class="pro">A usage dashboard across projects, budget reservations, and per-project usage and time reports in Markdown or CSV <span class="soon-tag">later update</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Notifications</th>
+              <td>Windows desktop notifications</td>
+              <td class="pro">Sent to your own Telegram bot, Discord or any webhook <span class="soon-tag">later update</span></td>
             </tr>
             <tr>
               <th scope="row">Skills</th>
-              <td class="rec">See which skills each CLI has</td>
-              <td>One skills library synced to every CLI, assigned per project or profile, bundled into routing packs (in development)</td>
+              <td>Inventory of the skills each CLI can see</td>
+              <td class="pro">One skills library synced to every CLI, assigned per project or profile, and shared with your rules as routing packs <span class="soon-tag">later update</span></td>
             </tr>
             <tr>
-              <th scope="row">Workspace</th>
-              <td class="rec">Files, Markdown, diffs, git, pull requests through gh</td>
-              <td>The same</td>
+              <th scope="row">Brain</th>
+              <td>One brain, changeable any time</td>
+              <td class="pro">A backup brain that takes over planning when the main one is unavailable <span class="soon-tag">later update</span></td>
+            </tr>
+            <tr class="both">
+              <th scope="row">Both versions</th>
+              <td colspan="2">Claude Code, Codex CLI and Gemini CLI (experimental) · your own profiles and routing rules · verification commands and phase gates · a worktree per task · background running and resuming interrupted work · files, diffs, git and pull requests</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td></td>
-              <td class="rec"><a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download for Windows</a></td>
-              <td>
+              <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download the free version</a></td>
+              <td class="pro">
               <span class="later" data-waitlist-soon>Early-bird sign-up opens soon.</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-table">Early bird: US$49 the first year</label>
@@ -558,28 +573,24 @@
           </tfoot>
         </table>
         <div class="pricing-phone">
-          <div class="plan-block rec">
-            <h3>Free</h3>
-            <p class="price">$0</p>
-            <dl>
-              <dt>Agents</dt>
-              <dd>Claude Code and Codex CLI on your own subscriptions or API keys; Gemini CLI on your own API key (experimental)</dd>
-              <dt>Projects</dt>
-              <dd>One project working at a time; switch any time</dd>
-              <dt>When quota runs out</dt>
-              <dd>You confirm each takeover</dd>
-            </dl>
-            <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download for Windows</a>
-          </div>
-          <div class="plan-block">
-            <h3>Pro</h3>
-            <p class="price">US$79 / year</p>
-            <dl>
-              <dt>Subscription</dt>
-              <dd>Billed yearly. If you stop, Pro keeps working on every version released while you subscribed.</dd>
-              <dt>Adds</dt>
-              <dd>Several projects at once with one inbox, automatic mode within your limits, automatic cross-testing, an automatic fallback chain, API billing fallback, quota scheduling and a shared skills library</dd>
-            </dl>
+          <div class="plan-block pro">
+            <h3>Pro <span class="early">Early bird: US$49 the first year</span></h3>
+            <p class="price">US$79 <span class="period">per year; if you stop, Pro keeps working on versions released while you paid</span></p>
+            <p class="plan-sub">At launch</p>
+            <ul>
+              <li>Several projects working at once, with one task-center inbox for everything waiting on you</li>
+              <li>Automatic within limits: chooses and retries within the agents, models and counts you allow, and pauses at any limit</li>
+              <li>Automatic fallback chain with triggers and limits; with your prior OK, switches to API billing when a subscription runs out</li>
+              <li>Automatic cross-testing by task type or the brain's judgment, with failed tests sent back for a fix</li>
+            </ul>
+            <p class="plan-sub">Later updates</p>
+            <ul class="muted">
+              <li>Quota scheduling: Project priority, per-connection quotas, and plans scheduled for a set time or the next reset</li>
+              <li>Usage and reports: A usage dashboard across projects, budget reservations, and per-project usage and time reports in Markdown or CSV</li>
+              <li>Notifications: Sent to your own Telegram bot, Discord or any webhook</li>
+              <li>Skills: One skills library synced to every CLI, assigned per project or profile, and shared with your rules as routing packs</li>
+              <li>Brain: A backup brain that takes over planning when the main one is unavailable</li>
+            </ul>
             <span class="later" data-waitlist-soon>Early-bird sign-up opens soon.</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-phone">Early bird: US$49 the first year</label>
@@ -594,8 +605,21 @@
                 <p class="waitlist-status" role="status"></p>
               </form>
           </div>
+          <div class="plan-block">
+            <h3>Free</h3>
+            <p class="price">$0 <span class="period">no account needed</span></p>
+            <ul>
+              <li>One project working at a time</li>
+              <li>Suggest then ask, or follow your settings</li>
+              <li>You confirm each takeover when quota runs out</li>
+              <li>Brain review and cross-testing when you ask</li>
+            </ul>
+            <p class="plan-sub">Both versions</p>
+            <p class="plan-both">Claude Code, Codex CLI and Gemini CLI (experimental) · your own profiles and routing rules · verification commands and phase gates · a worktree per task · background running and resuming interrupted work · files, diffs, git and pull requests</p>
+            <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download the free version</a>
+          </div>
         </div>
-        <p class="pricing-note">Pro launches with several projects at once, the inbox, automatic mode, automatic cross-testing and the fallback chain. Quota scheduling and skills arrive in later updates for both versions, and Pro subscribers get them as part of the subscription.</p>
+        <p class="pricing-note">Features marked “later update” arrive after Pro launches, and subscribers get them as they ship. The free version stays free, and everything about safety and correctness is in it.</p>
       </section>
 
       <section class="wrap section faq" id="faq" aria-labelledby="faq-title">

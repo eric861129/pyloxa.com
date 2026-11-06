@@ -328,7 +328,6 @@
                   <source src="../assets/video/zh/agents.webm" type="video/webm" />
                 </video>
               </div>
-              <img class="still" src="../assets/shots/zh/profile-dialog.png" width="1440" height="900" alt="新增 Profile 的對話框：名稱、CLI、模型、推理參數與角色指示" loading="lazy" />
             </div>
           </div>
 
@@ -348,7 +347,6 @@
                   <source src="../assets/video/zh/rules.webm" type="video/webm" />
                 </video>
               </div>
-              <img class="still" src="../assets/shots/zh/rules-page.png" width="1440" height="900" alt="派工規則頁：專案規則「後端交給 Codex」與規則模擬的結果" loading="lazy" />
             </div>
           </div>
 
@@ -370,7 +368,6 @@
                   <source src="../assets/video/zh/commands.webm" type="video/webm" />
                 </video>
               </div>
-              <img class="still" src="../assets/shots/zh/plan-card.png" width="1440" height="900" alt="大腦提出的計畫卡：開發與測試兩個階段，每個工作標出交給哪個 Agent 和命中的規則" loading="lazy" />
             </div>
           </div>
 
@@ -489,56 +486,74 @@
       </section>
 
       <section class="wrap section pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="pricing-lede reveal">
+          <h2 id="pricing-title">免費版陪你做一個專案，Pro 幫你同時顧好所有專案。</h2>
+          <p>免費版就能走完整個流程：擬計畫、派工、驗收、合併。Pro 把你原本要親手做的事交給 Pyloxa：多個專案一起跑、在你設定的範圍內自己決定、額度用完自己接手、做完自己找另一個 Agent 測試。</p>
+        </div>
         <table class="reveal">
           <thead>
             <tr>
-              <th scope="col" id="pricing-title">現在免費，Pro 即將推出</th>
-              <th scope="col" class="rec">免費版<span class="price">$0 <span class="period">不需要帳號</span></span></th>
-              <th scope="col">Pro<span class="price">US$79 <span class="period">每年，停訂後已付期間的版本照常使用</span></span></th>
+              <th scope="col"><span class="visually-hidden">方案比較</span></th>
+              <th scope="col">免費版<span class="price">$0 <span class="period">不需要帳號</span></span></th>
+              <th scope="col" class="pro">Pro <span class="early">早鳥首年 US$49</span><span class="price">US$79 <span class="period">每年；停止續訂後，已付期間發布的版本照常使用 Pro</span></span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Agent</th>
-              <td class="rec">Claude Code 與 Codex CLI，使用你自己的訂閱或 API Key；Gemini CLI 使用你自己的 API Key（實驗性）</td>
-              <td>同左；訂閱額度用完時，經你允許可改用 API 計費</td>
+              <th scope="row">同時進行的專案</th>
+              <td>一次一個專案在執行，可隨時切換</td>
+              <td class="pro"><strong>多個專案同時執行</strong>，所有等你處理的事集中在任務中心的收件匣</td>
             </tr>
             <tr>
-              <th scope="row">專案</th>
-              <td class="rec">一次一個專案在執行，可隨時切換</td>
-              <td>多個專案同時執行，所有等你處理的事集中在一個收件匣</td>
+              <th scope="row">派工</th>
+              <td>建議後詢問，或僅依設定執行</td>
+              <td class="pro"><strong>授權範圍內自動</strong>：在你允許的 Agent、模型與次數內自己選擇與重試，超出範圍就暫停</td>
             </tr>
             <tr>
-              <th scope="row">Agent 設定</th>
-              <td class="rec">自訂 Profile：模型、推理參數、角色指示；任一 Profile 都能當大腦</td>
-              <td>同左</td>
+              <th scope="row">額度用完時</th>
+              <td>提出備援，每次由你確認</td>
+              <td class="pro"><strong>自動備援鏈</strong>：依序交給備援，可設觸發條件與上限；經你事先允許，訂閱額度用完時改用 API 計費</td>
             </tr>
             <tr>
-              <th scope="row">計畫與派工</th>
-              <td class="rec">大腦擬計畫、派工規則、驗證命令、階段 Gate、大腦驗收，以及手動交給另一個 Agent 交叉測試</td>
-              <td>同左，加上在你設定的範圍內自動執行，以及依工作類型自動交叉測試、沒通過時自動退回修正</td>
+              <th scope="row">驗收與測試</th>
+              <td>驗證命令、階段 Gate、大腦驗收，以及手動交給另一個 Agent 測試</td>
+              <td class="pro"><strong>自動交叉測試</strong>：依工作類型或由大腦判斷，自動交給另一個 Agent 測試，沒通過就自動退回修正</td>
             </tr>
             <tr>
-              <th scope="row">額度用盡時</th>
-              <td class="rec">每次接手由你確認</td>
-              <td>自動依序交給備援，計畫也能排到額度重設後再跑</td>
+              <th scope="row">額度調度</th>
+              <td>等額度的工作在重設後自動繼續</td>
+              <td class="pro">專案優先序、每條連線的配額，整個計畫排到指定時間或下次額度重設再開始 <span class="soon-tag">之後的更新</span></td>
+            </tr>
+            <tr>
+              <th scope="row">用量與報告</th>
+              <td>每次執行的用量</td>
+              <td class="pro">跨專案的用量儀表板與預算預留，專案用量與工時報告匯出成 Markdown 或 CSV <span class="soon-tag">之後的更新</span></td>
+            </tr>
+            <tr>
+              <th scope="row">通知</th>
+              <td>Windows 桌面通知</td>
+              <td class="pro">推送到你自己的 Telegram bot、Discord 或任意 webhook <span class="soon-tag">之後的更新</span></td>
             </tr>
             <tr>
               <th scope="row">Skills</th>
-              <td class="rec">看到每個 CLI 裝了哪些 Skills</td>
-              <td>一個 Skills 庫同步到每個 CLI，依專案或 Profile 指派，打包成派工包（開發中）</td>
+              <td>盤點每個 CLI 讀得到的 Skills</td>
+              <td class="pro">一個 Skills 庫同步到每個 CLI，依專案或 Profile 指派，和規則一起打包成派工包分享 <span class="soon-tag">之後的更新</span></td>
             </tr>
             <tr>
-              <th scope="row">工作區</th>
-              <td class="rec">檔案、Markdown、差異比對、git，以及透過 gh 開 pull request</td>
-              <td>同左</td>
+              <th scope="row">大腦</th>
+              <td>一個大腦，可隨時更換</td>
+              <td class="pro">大腦備援：大腦不能用時改由備援接手規劃 <span class="soon-tag">之後的更新</span></td>
+            </tr>
+            <tr class="both">
+              <th scope="row">兩版都有</th>
+              <td colspan="2">Claude Code、Codex CLI 與 Gemini CLI（實驗性）· 自訂 Profile 與派工規則 · 驗證命令與階段 Gate · 每個工作獨立的 worktree · 背景執行與接續中斷的工作 · 檔案、差異檢視、git 與 PR</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td></td>
-              <td class="rec"><a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載 Windows 版</a></td>
-              <td>
+              <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載免費版</a></td>
+              <td class="pro">
               <span class="later" data-waitlist-soon>早鳥登記即將開放。</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-table">早鳥價：首年 US$49</label>
@@ -557,28 +572,24 @@
           </tfoot>
         </table>
         <div class="pricing-phone">
-          <div class="plan-block rec">
-            <h3>免費版</h3>
-            <p class="price">$0</p>
-            <dl>
-              <dt>Agent</dt>
-              <dd>Claude Code 與 Codex CLI，使用你自己的訂閱或 API Key；Gemini CLI 使用你自己的 API Key（實驗性）</dd>
-              <dt>專案</dt>
-              <dd>一次一個專案在執行，可隨時切換</dd>
-              <dt>額度用盡時</dt>
-              <dd>每次接手由你確認</dd>
-            </dl>
-            <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載 Windows 版</a>
-          </div>
-          <div class="plan-block">
-            <h3>Pro</h3>
-            <p class="price">US$79 / 年</p>
-            <dl>
-              <dt>訂閱</dt>
-              <dd>每年續訂。停止續訂後，訂閱期間發布的版本仍可使用 Pro 功能。</dd>
-              <dt>另外提供</dt>
-              <dd>多個專案同時執行並集中在一個收件匣、在你設定的範圍內自動執行、自動交叉測試、自動備援、API 計費備援、額度排程與共用的 Skills 庫</dd>
-            </dl>
+          <div class="plan-block pro">
+            <h3>Pro <span class="early">早鳥首年 US$49</span></h3>
+            <p class="price">US$79 <span class="period">每年；停止續訂後，已付期間發布的版本照常使用 Pro</span></p>
+            <p class="plan-sub">Pro 推出時</p>
+            <ul>
+              <li>多個專案同時執行，所有等你處理的事集中在任務中心的收件匣</li>
+              <li>授權範圍內自動：在你允許的 Agent、模型與次數內自己選擇與重試，超出範圍就暫停</li>
+              <li>自動備援鏈：依序交給備援，可設觸發條件與上限；經你事先允許，訂閱額度用完時改用 API 計費</li>
+              <li>自動交叉測試：依工作類型或由大腦判斷，自動交給另一個 Agent 測試，沒通過就自動退回修正</li>
+            </ul>
+            <p class="plan-sub">之後的更新</p>
+            <ul class="muted">
+              <li>額度調度：專案優先序、每條連線的配額，整個計畫排到指定時間或下次額度重設再開始</li>
+              <li>用量與報告：跨專案的用量儀表板與預算預留，專案用量與工時報告匯出成 Markdown 或 CSV</li>
+              <li>通知：推送到你自己的 Telegram bot、Discord 或任意 webhook</li>
+              <li>Skills：一個 Skills 庫同步到每個 CLI，依專案或 Profile 指派，和規則一起打包成派工包分享</li>
+              <li>大腦：大腦備援：大腦不能用時改由備援接手規劃</li>
+            </ul>
             <span class="later" data-waitlist-soon>早鳥登記即將開放。</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-phone">早鳥價：首年 US$49</label>
@@ -593,8 +604,21 @@
                 <p class="waitlist-status" role="status"></p>
               </form>
           </div>
+          <div class="plan-block">
+            <h3>免費版</h3>
+            <p class="price">$0 <span class="period">不需要帳號</span></p>
+            <ul>
+              <li>一次一個專案在執行</li>
+              <li>建議後詢問或僅依設定執行</li>
+              <li>額度用完時，每次接手由你確認</li>
+              <li>大腦驗收與手動交叉測試</li>
+            </ul>
+            <p class="plan-sub">兩版都有</p>
+            <p class="plan-both">Claude Code、Codex CLI 與 Gemini CLI（實驗性）· 自訂 Profile 與派工規則 · 驗證命令與階段 Gate · 每個工作獨立的 worktree · 背景執行與接續中斷的工作 · 檔案、差異檢視、git 與 PR</p>
+            <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載免費版</a>
+          </div>
         </div>
-        <p class="pricing-note">Pro 推出時先有多專案同時執行、收件匣、自動模式、自動交叉測試與自動備援；額度排程與 Skills 會在之後的更新加入，免費版與 Pro 都一樣，訂閱 Pro 就會收到。</p>
+        <p class="pricing-note">標示「之後的更新」的功能會在 Pro 推出後陸續加入，訂閱期間都會收到。免費版會一直免費，安全與正確性相關的功能都在免費版。</p>
       </section>
 
       <section class="wrap section faq" id="faq" aria-labelledby="faq-title">

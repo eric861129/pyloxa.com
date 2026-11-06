@@ -772,18 +772,42 @@ section {
   background: var(--tone);
 }
 
-/* 價格表 */
+/* 價格表：Pro 欄以品牌色突出，免費版保持中性 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.pricing-lede {
+  max-width: 60ch;
+  margin-bottom: 48px;
+}
+
+.pricing-lede h2 {
+  font-size: var(--step-head);
+  line-height: 1.15;
+}
+
+.pricing-lede p {
+  margin-top: 16px;
+  color: var(--soft);
+}
+
 .pricing table {
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--step-lead);
+  font-size: var(--step-body);
 }
 
 .pricing th,
 .pricing td {
   text-align: left;
   vertical-align: top;
-  padding: 20px;
+  padding: 16px 20px;
 }
 
 .pricing thead th {
@@ -791,50 +815,113 @@ section {
   font-size: var(--step-head);
   letter-spacing: -0.02em;
   line-height: 1.05;
+  vertical-align: bottom;
+  padding-top: 28px;
+  padding-bottom: 24px;
 }
 
 .pricing thead .price {
   display: block;
   font-weight: 400;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .pricing thead .period {
+  display: block;
+  margin-top: 6px;
   font-size: var(--step-small);
   color: var(--soft);
   font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+  max-width: 34ch;
 }
 
-.pricing thead th:first-child {
-  font-weight: 400;
+.pricing thead th.pro {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
-.pricing tbody tr:nth-child(even) th,
-.pricing tbody tr:nth-child(even) td {
-  background: var(--tone);
+.pricing thead th.pro .period {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pricing .early {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  padding: 4px 10px;
+  background: var(--orange);
+  color: var(--ink);
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
 }
 
 .pricing tbody th {
   font-weight: 400;
   color: var(--soft);
-  width: 33%;
+  width: 20%;
 }
 
-.pricing .rec {
+.pricing tbody td {
+  color: var(--soft);
+  width: 32%;
+}
+
+.pricing tbody tr + tr > * {
+  border-top: 1px solid #dddbe3;
+}
+
+.pricing .pro {
   background: var(--accent-tint);
 }
 
-.pricing tbody tr:nth-child(even) .rec {
-  background: #ddd7f8;
+.pricing tbody td.pro {
+  color: var(--ink);
+  width: 48%;
+}
+
+.pricing tbody td.pro strong {
+  font-weight: 600;
+}
+
+.pricing .soon-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border: 1px solid #b9b0ee;
+  color: var(--accent);
+  font-size: var(--step-small);
+  white-space: nowrap;
+}
+
+.pricing tr.both > * {
+  background: var(--tone);
+}
+
+.pricing tr.both td {
+  color: var(--ink);
 }
 
 .pricing tfoot td {
   padding-top: 28px;
+  padding-bottom: 28px;
 }
 
 .pricing .later {
   color: var(--soft);
   font-size: var(--step-body);
+}
+
+.pricing .button.is-light {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+
+.pricing .button.is-light:hover {
+  background: #ffffff;
 }
 
 .pricing-phone {
@@ -1378,8 +1465,9 @@ section {
     background: var(--tone);
   }
 
-  .plan-block.rec {
+  .plan-block.pro {
     background: var(--accent-tint);
+    border-top: 6px solid var(--accent);
   }
 
   .plan-block h3 {
@@ -1387,28 +1475,61 @@ section {
     font-weight: 600;
   }
 
+  .plan-block .early {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    padding: 3px 8px;
+    background: var(--orange);
+    color: var(--ink);
+    font-size: var(--step-small);
+    font-weight: 600;
+  }
+
   .plan-block .price {
     font-size: var(--step-head);
+    margin-top: 6px;
   }
 
-  .plan-block dl {
-    margin: 16px 0;
-    display: grid;
-    gap: 12px;
-    font-size: var(--step-body);
-  }
-
-  .plan-block dt {
+  .plan-block .period {
+    display: block;
+    font-size: var(--step-small);
     color: var(--soft);
   }
 
-  .plan-block dd {
-    margin: 0;
+  .plan-block .plan-sub {
+    margin-top: 20px;
+    font-size: var(--step-small);
+    font-weight: 600;
+    color: var(--soft);
+  }
+
+  .plan-block ul {
+    margin: 8px 0 0;
+    padding-left: 1.1em;
+    display: grid;
+    gap: 8px;
+    font-size: var(--step-body);
+  }
+
+  .plan-block ul.muted {
+    color: var(--soft);
+    font-size: var(--step-small);
+  }
+
+  .plan-block .plan-both {
+    margin-top: 8px;
+    font-size: var(--step-small);
   }
 
   .plan-block .button {
     width: 100%;
     justify-content: center;
+    margin-top: 20px;
+  }
+
+  .plan-block .waitlist {
+    margin-top: 20px;
   }
 
   .plan-block .waitlist {
