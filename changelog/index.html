@@ -63,6 +63,27 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">Report a problem</a>
         </div>
       </div>
+      <article class="release" id="v0.1.7" aria-labelledby="h-v0.1.7">
+        <header>
+          <h2 id="h-v0.1.7"><a href="#v0.1.7">0.1.7</a></h2>
+          <p class="date"><time datetime="2026-11-06">Released 2026-11-06</time></p>
+        </header>
+        <div class="body">
+<p>This is a security update. Please update from 0.1.6 or earlier.</p>
+<h3>Security fixes</h3>
+<p>A security review found four problems in Pyloxa 0.1.6 and earlier. We have no reports of any of them being used.</p>
+<ul><li><strong>Opening a project could run a program from that project.</strong> Pyloxa started <code>git</code> and <code>gh</code> by name, and Windows looks in the current folder first. A repository that contained its own <code>git.exe</code> could have that file run as soon as you opened the project in Pyloxa. Pyloxa 0.1.7 starts git, gh and the Windows tools it uses only from where they are installed.</li><li><strong>A project's agent settings were loaded without asking you.</strong> Pyloxa runs Claude Code and Gemini CLI without an interactive window, so their own &quot;Do you trust this folder?&quot; question never appeared. A project's <code>.claude/settings.json</code>, <code>.claude/settings.local.json</code>, <code>.gemini/settings.json</code> or <code>.gemini/.env</code> was loaded whenever work was dispatched, and these files can make the CLI run commands, connect somewhere else or loosen its permissions. Pyloxa 0.1.7 now asks first (see below).</li><li>**Renaming <code>Pyloxa.exe</code> turned on developer-only options.** With a different file name, Pyloxa treated itself as a development build, which also re-enabled remote debugging that 0.1.6 had blocked. Pyloxa 0.1.7 recognizes a released build by how it is packaged, not by its file name.</li><li><strong>Pyloxa could be told to show another web page as its interface.</strong> Another program already running under your Windows account could start Pyloxa with the <code>ELECTRON_RENDERER_URL</code> environment variable, and that page got the same access as Pyloxa's own interface. Pyloxa 0.1.7 ignores this variable.</li></ul>
+<h3>Confirming a project's agent settings</h3>
+<p>When a project you open contains agent settings beyond the model and display options, a notice at the top of the window lists the files. Click a file name to review it, then choose <strong>Trust</strong>. Until you do, Pyloxa won't dispatch work in that project, and a task that tries explains why.</p>
+<p>Pyloxa remembers the exact contents you trusted. If a file changes later, for example after a pull or because an agent's task edited it, Pyloxa asks again. Files that only set the model or display options don't need confirming.</p>
+<h3>Upgrading</h3>
+<p>Run the new installer over the old version. Your run history, projects, settings and saved API keys in <code>%APPDATA%\Pyloxa</code> are kept. This version doesn't change the data format.</p>
+<h3>Known limitations</h3>
+<ul><li>Windows 10 and 11, 64-bit only.</li><li>The installer is not code-signed. SmartScreen may warn you; choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li><li>No automatic updates for Pyloxa itself. Pyloxa tells you when a new version is out.</li><li>Codex runs through <code>codex exec</code> in its sandbox. On Windows, the sandbox usually can't build projects or install packages, so Codex's results are checked by your verification commands.</li><li>Gemini CLI support is experimental. It can't act as the brain or as a cross-tester, and it can't run commands in unattended mode.</li><li>Tested with Claude Code 2.1.318, Codex CLI 0.166.0 and Gemini CLI 0.66.0 and 0.67.0.</li></ul>
+<h3>Checksum</h3>
+<div class="table"><table><thead><tr><th scope="col">File</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.7.exe</code></td><td><code>69921de8f1552eebf84b47455de6b5f6e2fa722fc0575d0bea07fb6354007be6</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.6" aria-labelledby="h-v0.1.6">
         <header>
           <h2 id="h-v0.1.6"><a href="#v0.1.6">0.1.6</a></h2>

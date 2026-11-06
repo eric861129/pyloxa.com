@@ -63,6 +63,27 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">回報問題</a>
         </div>
       </div>
+      <article class="release" id="v0.1.7" aria-labelledby="h-v0.1.7">
+        <header>
+          <h2 id="h-v0.1.7"><a href="#v0.1.7">0.1.7</a></h2>
+          <p class="date"><time datetime="2026-11-06">發布於 2026-11-06</time></p>
+        </header>
+        <div class="body">
+<p>這是一個安全性更新，請從 0.1.6 以前的版本更新。</p>
+<h3>安全性修正</h3>
+<p>安全審查在 Pyloxa 0.1.6 以前的版本找到四個問題，目前沒有收到任何一個被利用的回報。</p>
+<ul><li><strong>開啟專案時可能執行專案裡的程式。</strong> Pyloxa 以名稱啟動 <code>git</code> 與 <code>gh</code>，而 Windows 會先在目前的資料夾裡找。如果 repo 裡放了自己的 <code>git.exe</code>，你在 Pyloxa 開啟這個專案時，它就可能被執行。Pyloxa 0.1.7 只從安裝位置啟動 git、gh 與它用到的 Windows 工具。</li><li><strong>專案的 Agent 設定檔沒有先問過你就被載入。</strong> Pyloxa 在沒有互動視窗的模式下執行 Claude Code 與 Gemini CLI，所以它們自己的「信任這個資料夾嗎？」不會出現。專案裡的 <code>.claude/settings.json</code>、<code>.claude/settings.local.json</code>、<code>.gemini/settings.json</code> 或 <code>.gemini/.env</code> 會在派工時被載入，而這些檔案可以讓 CLI 執行命令、連到其他地方，或放寬它的權限。Pyloxa 0.1.7 會先問你（見下方說明）。</li><li>**把 <code>Pyloxa.exe</code> 改名，會打開只供開發用的選項。** 換了檔名之後，Pyloxa 會把自己當成開發版，連 0.1.6 擋下的遠端除錯也會重新可用。Pyloxa 0.1.7 改以打包方式判斷是不是正式版，不看檔名。</li><li><strong>Pyloxa 可能被要求把其他網頁當成它的介面。</strong> 已經在你的 Windows 帳號下執行的其他程式，可以帶著 <code>ELECTRON_RENDERER_URL</code> 環境變數啟動 Pyloxa，那個網頁會拿到和 Pyloxa 介面相同的權限。Pyloxa 0.1.7 不再理會這個變數。</li></ul>
+<h3>確認專案的 Agent 設定檔</h3>
+<p>你開啟的專案裡如果有模型與顯示選項以外的 Agent 設定，視窗上方會出現提示並列出這些檔案。按檔名可以檢查內容，確認後按「信任」。在那之前，Pyloxa 不會在這個專案派工，嘗試派工時也會說明原因。</p>
+<p>Pyloxa 記住的是你信任時的檔案內容。之後檔案有變動（例如 pull 之後，或 Agent 的工作修改了它），Pyloxa 會再問一次。只設定模型或顯示選項的檔案不需要確認。</p>
+<h3>升級</h3>
+<p>直接執行新的安裝檔覆蓋舊版即可。存在 <code>%APPDATA%\Pyloxa</code> 的執行紀錄、專案、設定與保存的 API Key 都會保留。這個版本沒有改變資料格式。</p>
+<h3>已知限制</h3>
+<ul><li>只支援 Windows 10 與 11（64 位元）。</li><li>安裝檔沒有程式碼簽章，SmartScreen 可能跳出警告；請按「其他資訊」，再按「仍要執行」。</li><li>Pyloxa 本身不會自動更新。有新版本時 Pyloxa 會提示你。</li><li>Codex 透過 <code>codex exec</code> 在它的沙箱內執行。在 Windows 上，這個沙箱通常無法建置專案或安裝套件，所以 Codex 的成果以你的驗證命令驗收。</li><li>Gemini CLI 是實驗性支援：不能擔任大腦或交叉測試的測試者，在無人值守模式下也不能執行命令。</li><li>已測試 Claude Code 2.1.318、Codex CLI 0.166.0，以及 Gemini CLI 0.66.0 與 0.67.0。</li></ul>
+<h3>校驗碼</h3>
+<div class="table"><table><thead><tr><th scope="col">檔案</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.7.exe</code></td><td><code>69921de8f1552eebf84b47455de6b5f6e2fa722fc0575d0bea07fb6354007be6</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.6" aria-labelledby="h-v0.1.6">
         <header>
           <h2 id="h-v0.1.6"><a href="#v0.1.6">0.1.6</a></h2>
