@@ -1,18 +1,14 @@
-// 依首頁的常見問題產生結構化資料（Organization、WebSite、FAQPage），寫進 index.html 與 zh-TW/index.html 的
-// <script type="application/ld+json" id="site-graph">。SoftwareApplication 那段另外手寫，不在這裡產生。
-// 官網沒有建置步驟：改了常見問題或品牌資訊後執行一次，把頁面一起提交。
+// 依首頁的常見問題產生結構化資料（Organization、WebSite、FAQPage），寫進各語言首頁的
+// <script type="application/ld+json" id="site-graph">。SoftwareApplication 由 build-pages.mjs 產生。
+// build-pages.mjs 產生頁面時會直接呼叫 siteGraphTag()；單獨執行本檔則就地更新 src/languages.json 列出的每一頁。
 // 用法：node scripts/build-schema.mjs
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const site = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ORIGIN = "https://pyloxa.com";
-
-const pages = [
-  { file: "index.html", url: `${ORIGIN}/`, lang: "en" },
-  { file: "zh-TW/index.html", url: `${ORIGIN}/zh-TW/`, lang: "zh-TW" },
-];
+const languages = JSON.parse(readFileSync(path.join(site, "src", "languages.json"), "utf8")).filter((l) => existsSync(path.join(site, "src", "i18n", `${l.code}.json`)));
 
 const decode = (s) =>
   s
@@ -28,7 +24,8 @@ const decode = (s) =>
 
 function faq(html) {
   const section = html.slice(html.indexOf('id="faq"'), html.indexOf('class="faq-pane"'));
-  const items = [...section.matchAll(/<li data-q[^>]*>\s*<button[^>]*>([\s\S]*?)<\/button>\s*<div class="inline-answer">([\s\S]*?)<\/div>\s*<\/li>/g)];
+  // 題目是 <h3 class="faq-q"><button>…</button></h3>（標題讓題目能單獨被引用）
+  const items = [...section.matchAll(/<li data-q[^>]*>\s*(?:<h3[^>]*>\s*)?<button[^>]*>([\s\S]*?)<\/button>\s*(?:<\/h3>\s*)?<div class="inline-answer">([\s\S]*?)<\/div>\s*<\/li>/g)];
   if (items.length === 0) throw new Error("找不到常見問題");
   return items.map(([, q, a]) => ({
     "@type": "Question",
@@ -37,9 +34,7 @@ function faq(html) {
   }));
 }
 
-for (const page of pages) {
-  const file = path.join(site, page.file);
-  let html = readFileSync(file, "utf8");
+export function siteGraphTag(html, page) {
   const graph = {
     "@context": "https://schema.org",
     "@graph": [
@@ -58,7 +53,7 @@ for (const page of pages) {
         "@id": `${ORIGIN}/#website`,
         url: `${ORIGIN}/`,
         name: "Pyloxa",
-        inLanguage: ["en", "zh-TW"],
+        inLanguage: languages.map((l) => l.hreflang),
         publisher: { "@id": `${ORIGIN}/#organization` },
       },
       {
@@ -72,14 +67,21 @@ for (const page of pages) {
     ],
   };
   // JSON 放進 <script> 時跳脫 <，避免內容裡出現 </script>
-  const tag = `<script type="application/ld+json" id="site-graph">${JSON.stringify(graph).replace(/</g, "\\u003c")}</script>`;
-  const existing = /<script type="application\/ld\+json" id="site-graph">[\s\S]*?<\/script>/;
-  if (existing.test(html)) html = html.replace(existing, tag);
-  else {
-    // 第一次：放在 SoftwareApplication 那段後面
-    const at = html.indexOf("</script>", html.indexOf('<script type="application/ld+json">')) + "</script>".length;
-    html = `${html.slice(0, at)}\n    ${tag}${html.slice(at)}`;
+  return `<script type="application/ld+json" id="site-graph">${JSON.stringify(graph).replace(/</g, "\\u003c")}</script>`;
+}
+
+const existing = /<script type="application\/ld\+json" id="site-graph">[\s\S]*?<\/script>/;
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  for (const l of languages) {
+    const rel = path.join(l.dir || "", "index.html");
+    const file = path.join(site, rel);
+    let html = readFileSync(file, "utf8");
+    const url = `${ORIGIN}/${l.dir ? `${l.dir}/` : ""}`;
+    const tag = siteGraphTag(html, { url, lang: l.hreflang });
+    if (!existing.test(html)) throw new Error(`${rel} 沒有 site-graph 區塊`);
+    html = html.replace(existing, () => tag);
+    writeFileSync(file, html);
+    console.log(rel, faq(html).length, "questions");
   }
-  writeFileSync(file, html);
-  console.log(page.file, graph["@graph"][2].mainEntity.length, "questions");
 }

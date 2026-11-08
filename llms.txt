@@ -26,6 +26,7 @@ Pyloxa is made from the first letters of Plan, Yield, Lead, Orchestrate, eXecute
 
 - [Website (English)](https://pyloxa.com/): features, demo videos, comparison, pricing and FAQ
 - [Website (Traditional Chinese)](https://pyloxa.com/zh-TW/): 繁體中文版官網
+- The home page is also in [简体中文](https://pyloxa.com/zh-CN/), [日本語](https://pyloxa.com/ja/), [한국어](https://pyloxa.com/ko/), [Español](https://pyloxa.com/es/), [Português (Brasil)](https://pyloxa.com/pt-BR/), [Deutsch](https://pyloxa.com/de/) and [Français](https://pyloxa.com/fr/). The app's own interface is in English, Traditional Chinese and Simplified Chinese.
 - [Changelog](https://pyloxa.com/changelog/): what changed in each release
 - [Download](https://github.com/eric861129/Pyloxa-Releases/releases/latest): latest Windows installer and SHA-256
 - [Report a problem](https://github.com/eric861129/Pyloxa-Releases/issues)

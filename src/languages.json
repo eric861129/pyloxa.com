@@ -1,0 +1,11 @@
+[
+  { "code": "en", "dir": "", "htmlLang": "en", "hreflang": "en", "name": "English", "ogLocale": "en_US", "og": "og-en.png", "assets": "en", "pages": ["changelog", "privacy"], "appUi": true },
+  { "code": "zh-TW", "dir": "zh-TW", "htmlLang": "zh-Hant-TW", "hreflang": "zh-TW", "name": "繁體中文", "ogLocale": "zh_TW", "og": "og-zh.png", "assets": "zh", "pages": ["changelog", "privacy"], "appUi": true },
+  { "code": "zh-CN", "dir": "zh-CN", "htmlLang": "zh-Hans-CN", "hreflang": "zh-CN", "name": "简体中文", "ogLocale": "zh_CN", "og": "og-en.png", "assets": "en", "appUi": true },
+  { "code": "ja", "dir": "ja", "htmlLang": "ja", "hreflang": "ja", "name": "日本語", "ogLocale": "ja_JP", "og": "og-en.png", "assets": "en" },
+  { "code": "ko", "dir": "ko", "htmlLang": "ko", "hreflang": "ko", "name": "한국어", "ogLocale": "ko_KR", "og": "og-en.png", "assets": "en" },
+  { "code": "es", "dir": "es", "htmlLang": "es", "hreflang": "es", "name": "Español", "ogLocale": "es_ES", "og": "og-en.png", "assets": "en" },
+  { "code": "pt-BR", "dir": "pt-BR", "htmlLang": "pt-BR", "hreflang": "pt-BR", "name": "Português (Brasil)", "ogLocale": "pt_BR", "og": "og-en.png", "assets": "en" },
+  { "code": "de", "dir": "de", "htmlLang": "de", "hreflang": "de", "name": "Deutsch", "ogLocale": "de_DE", "og": "og-en.png", "assets": "en" },
+  { "code": "fr", "dir": "fr", "htmlLang": "fr", "hreflang": "fr", "name": "Français", "ogLocale": "fr_FR", "og": "og-en.png", "assets": "en" }
+]

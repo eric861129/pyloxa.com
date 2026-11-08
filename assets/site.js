@@ -298,7 +298,7 @@
     const show = (li) => {
       items.forEach((x) => {
         const on = x === li;
-        x.querySelector("button").setAttribute("aria-selected", String(on));
+        x.querySelector("button").setAttribute("aria-expanded", String(on));
         x.classList.toggle("is-open", on);
       });
       const html = li.querySelector(".inline-answer").innerHTML;
@@ -315,6 +315,25 @@
       b.addEventListener("focus", () => show(li));
       b.addEventListener("mouseenter", () => {
         if (window.matchMedia("(min-width: 901px)").matches) show(li);
+      });
+    });
+  }
+
+  // ---- 語言選單：點選單外面或按 Esc 就收起 ----
+  const menus = [...document.querySelectorAll(".lang-menu")];
+  if (menus.length) {
+    document.addEventListener("click", (e) => {
+      menus.forEach((m) => {
+        if (m.open && !m.contains(e.target)) m.open = false;
+      });
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      menus.forEach((m) => {
+        if (m.open) {
+          m.open = false;
+          m.querySelector("summary").focus();
+        }
       });
     });
   }

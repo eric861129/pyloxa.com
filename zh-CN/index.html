@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="zh-Hans-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pyloxa｜Claude Code 和 Codex 协同编程的免费 Windows 工具</title>
+    <meta name="description" content="免费 Windows 工具，让 Claude Code、Codex 等 AI 编程 Agent 分工协作：按你的规则分派任务，每个任务在独立的 git worktree 中用你的测试验收；一个 CLI 额度用完，经你确认后由另一个接手。使用你自己的订阅。" />
+    <meta name="pyloxa:waitlist" content="https://buttondown.com/api/emails/embed-subscribe/pyloxa" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Pyloxa — 让 Claude Code 和 Codex 分工协作" />
+    <meta property="og:description" content="免费的 Windows 工具：把需求拆成任务，按你的规则交给 Claude Code 或 Codex，用你的测试验收结果，额度用完时由另一个 Agent 接手。使用你自己的订阅。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-CN/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pyloxa：让 Claude Code 和 Codex 分工协作。计划中的每个任务都标明交给哪个 Agent 以及命中的规则。" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_TW" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pyloxa — 让 Claude Code 和 Codex 分工协作" />
+    <meta name="twitter:description" content="免费的 Windows 工具：把需求拆成任务，按你的规则交给 Claude Code 或 Codex，用你的测试验收结果，额度用完时由另一个 Agent 接手。使用你自己的订阅。" />
+    <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta name="twitter:image:alt" content="Pyloxa：让 Claude Code 和 Codex 分工协作。计划中的每个任务都标明交给哪个 Agent 以及命中的规则。" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/zh-CN/#software","name":"Pyloxa","url":"https://pyloxa.com/zh-CN/","image":"https://pyloxa.com/assets/og-en.png","description":"免费的 Windows 工具：把需求拆成任务，按你的规则交给 Claude Code 或 Codex，用你的测试验收结果，额度用完时由另一个 Agent 接手。使用你自己的订阅。","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.8","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-CN/#faq","url":"https://pyloxa.com/zh-CN/","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa 是什么？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版可直接下载；即将推出的 Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用。"}},{"@type":"Question","name":"Pyloxa 会收取 AI 使用费吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 运行的是你已经配置好的官方 CLI（Claude Code、Codex CLI，以及实验性的 Gemini CLI），用量计入你自己的订阅，或者你自己选用的 API Key。Pyloxa 不转售、也不代理任何 AI 服务。"}},{"@type":"Question","name":"需要安装什么？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 或 11（64 位）、git，以及至少一个已登录的 Claude Code 或 Codex CLI。Gemini CLI 是可选的实验性支持，需要你自己的付费 Gemini API Key。装了不止一个 CLI，默认流程才能分工，备用接手才派得上用场。还没装也没关系：首次启动时，设置向导会检查 git 和 Node.js，在你确认后用官方的 npm 命令安装 CLI，再带你完成登录和 API Key 配置。"}},{"@type":"Question","name":"Pyloxa 会读取我的凭据吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 只用各 CLI 自带的命令查询登录状态，并像你一样启动 CLI；token 和凭据文件不会被读取、复制或发送。"}},{"@type":"Question","name":"我的代码会发送到哪里？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 本身没有服务器，也不收集遥测数据。你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。Codex 已登录时，额度一览每 10 分钟还会让 Codex CLI 查询剩余额度，由 Codex 用你自己的登录向 OpenAI 获取，不消耗额度；关闭额度一览就不再查询。使用统计只在你的电脑上计算，不会发送出去。"}},{"@type":"Question","name":"Agent 会弄坏我的仓库吗？","acceptedAnswer":{"@type":"Answer","text":"Agent 在独立的 git worktree 中工作，不碰你正在编辑的工作目录；Pyloxa 也不会对它执行 stash、reset 或 checkout。每个任务完成后，会核对改动的文件是否都在计划允许的写入范围内，你也可以在内置的 diff 视图中逐个文件查看。是否合并、是否推送，都由你决定。"}},{"@type":"Question","name":"为什么安装时 Windows 会弹出警告？","acceptedAnswer":{"@type":"Answer","text":"免费版安装包目前还没有代码签名，SmartScreen 可能会提示“Windows 已保护你的电脑”。请点击“更多信息”，再点击“仍要运行”。安装前可以先核对安装包的 SHA-256 与发布页上的值是否一致。"}},{"@type":"Question","name":"可以指定模型和推理强度吗？","acceptedAnswer":{"@type":"Answer","text":"可以。每个 Profile 都能选择模型和推理参数，列表直接取自你安装的 CLI；不选就用 CLI 的默认值。大脑和执行任务的 Agent 可以用不同的模型。"}},{"@type":"Question","name":"能让某类任务固定交给某个 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"可以。用派工规则指定，例如“测试阶段的任务都交给 Claude Code”，规则可以应用到所有项目，也可以只用于当前项目。批准计划前，也能手动改派单个任务。新安装时会使用默认流程：Claude Code 负责前端和视频剪辑，Codex 负责后端和生成图片，Gemini 负责文章和文档，随时可以修改。"}},{"@type":"Question","name":"和把多个 Agent 终端并排显示的工具有什么不同？","acceptedAnswer":{"@type":"Answer","text":"终端复用工具把好几个 Agent 的终端放进同一个窗口，让你看到哪些在运行、哪些在等你，有些还能在退出应用后让 Agent 继续运行，或者连接远程机器。Pyloxa 管的是终端之外的事：大脑把需求拆成任务、按你的规则派给 Agent、用你的命令验收、额度用完时提出备用 Agent，最后由你合并。关闭 Pyloxa 的窗口后，它会留在系统托盘中继续工作；因重启等原因中断的任务，也可以恢复。如果你想亲自盯着每个终端，终端复用工具很合适；如果你想交出一个需求、拿回验收过的结果，Pyloxa 更合适。"}},{"@type":"Question","name":"已经订阅了 Claude 或 ChatGPT，为什么不直接在终端里运行 CLI？","acceptedAnswer":{"@type":"Answer","text":"直接运行 CLI 没有问题，Pyloxa 用的就是同一个 CLI 和你的订阅。区别在三点：额度用完时，Pyloxa 按你的规则提出备用 Agent，你确认后由另一个 CLI 在已改好的文件上继续做；Agent 说做完了不算数，你的验证命令通过才算；派工规则和各 CLI 能读到的 Skills 集中在一个地方查看，不必分别去每个 CLI 里设置。"}},{"@type":"Question","name":"和 CLI 内置的子 Agent 有什么不同？","acceptedAnswer":{"@type":"Answer","text":"子 Agent 在同一个 CLI 内部分工。Pyloxa 在 CLI 之间分工：不同任务可以交给不同的 CLI，各自在独立的 worktree 中运行，用你的命令验收，额度用完时由另一个 CLI 接手。两者可以一起用。"}},{"@type":"Question","name":"支持 Gemini 或其他 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"从 0.1.2 起以实验性功能支持 Gemini CLI，使用你自己的付费 Gemini API Key，不支持 Google 账号登录以及 AI Pro、Ultra 订阅。Gemini 可以执行文章、文档等任务，但不能担任大脑，也不能测试其他 Agent 的成果；在无人值守模式下可以修改文件，但不能运行命令。其他 Agent 仍在评估中。"}},{"@type":"Question","name":"Skills 管理什么时候推出？","acceptedAnswer":{"@type":"Answer","text":"盘点从 0.1.2 起包含在免费版中：“Skills”页面列出各 CLI 能读到的 Skills，并标出名称相同但内容不同的。同步、按项目或 Profile 分配以及派工包属于 Pro，仍在开发，推出时间以版本说明为准。"}},{"@type":"Question","name":"Pro 会增加什么？","acceptedAnswer":{"@type":"Answer","text":"多个项目同时运行并集中到一个收件箱、自动模式、按任务类型自动交叉测试、自动备用链，之后还有额度调度和共享的 Skills 库。Pro 每年 US$79。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。在方案表中留下 email 即可获得早鸟价：每年 US$49，只要持续订阅就不涨价。免费版会一直免费。"}}]}]}</script>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/zh-CN/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://pyloxa.com/zh-CN/" />
+    <link rel="alternate" hreflang="ja" href="https://pyloxa.com/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://pyloxa.com/ko/" />
+    <link rel="alternate" hreflang="es" href="https://pyloxa.com/es/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://pyloxa.com/pt-BR/" />
+    <link rel="alternate" hreflang="de" href="https://pyloxa.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://pyloxa.com/fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">跳到主要内容</a>
+    <header class="wrap nav">
+      <a class="mark" href="./" aria-label="Pyloxa 首页">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="#why">有何不同</a></li>
+        <li class="optional"><a href="#how">工作原理</a></li>
+        <li class="optional"><a href="#custom">自定义</a></li>
+        <li class="optional"><a href="#skills">Skills</a></li>
+        <li class="optional"><a href="#pricing">价格</a></li>
+        <li class="optional"><a href="#faq">常见问题</a></li>
+        <li class="optional"><a href="../changelog/">更新日志</a></li>
+        <li class="nav-lang"><details class="lang-menu in-nav"><summary><span class="lang-current">简体中文</span><span class="visually-hidden"> — 语言</span></summary><ul><li><a href="../" lang="en" hreflang="en">English</a></li><li><a href="../zh-TW/" lang="zh-Hant-TW" hreflang="zh-TW">繁體中文</a></li><li><a href="../zh-CN/" lang="zh-Hans-CN" hreflang="zh-CN" aria-current="true">简体中文</a></li><li><a href="../ja/" lang="ja" hreflang="ja">日本語</a></li><li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li><li><a href="../es/" lang="es" hreflang="es">Español</a></li><li><a href="../pt-BR/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></li><li><a href="../de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li></ul></details></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap grid">
+          <div class="hero-copy reveal">
+            <h1 id="hero-title">一次对话，<br />多个 Agent。<span class="h1-sub">让 Claude Code 和 Codex 分工协作的 Windows 应用</span></h1>
+            <p class="lead">需求只说一次。Pyloxa 会先做好计划，用你自己的订阅把每个任务交给 Claude Code 或 Codex，并在合并前检查结果。</p>
+            <div class="actions">
+              <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载 Windows 版</a>
+              <span class="meta">免费 · v0.1.8 · Windows 10 和 11</span>
+            </div>
+          </div>
+        </div>
+        <div class="stage" aria-label="试试派工">
+          <div class="stage-inner">
+            <div class="router" data-ui data-router>
+              <div class="ui-row router-head">
+                <span class="ui-title">这个任务交给谁？</span>
+                <span class="badge info">派工规则</span>
+              </div>
+              <div class="ui-row fields">
+                <div>
+                  <label class="field-label" for="task-title">任务</label>
+                  <input id="task-title" type="text" value="新增 GET /api/profile 接口和测试" />
+                </div>
+                <div>
+                  <span class="field-label" id="type-label">类型</span>
+                  <div class="seg" role="group" aria-labelledby="type-label">
+                    <button type="button" data-type="frontend" aria-pressed="false">前端</button>
+                    <button type="button" data-type="backend" aria-pressed="true">后端</button>
+                    <button type="button" data-type="docs" aria-pressed="false">文档</button>
+                    <button type="button" data-type="testing" aria-pressed="false">测试</button>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-row decision" aria-live="polite">
+                <span class="who"><span data-who>交给“Codex”</span></span>
+                <span class="ui-muted" data-why>命中规则“后端交给 Codex”</span>
+                <span class="ui-muted" data-fallback>备用“Claude Code”：可用，未触发</span>
+              </div>
+              <div class="ui-row quota-switch">
+                <button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="quota-label" data-quota></button>
+                <span id="quota-label">Codex 额度已用完</span>
+              </div>
+              <div class="quota-box" data-quota-box hidden>
+                <span class="ui-title" data-quota-title>Codex 额度已用完（约 18:00 重置）</span>
+                <span class="ui-muted">经你确认后，备用 Agent 可以接手，在 Codex 的成果上继续做。</span>
+                <span><button type="button" class="ui-button primary" data-takeover>由 Claude Code 接手</button></span>
+              </div>
+              <div class="quota-box" data-taken hidden>
+                <span class="check-line">Claude Code 已接手，在 Codex 改过的文件上继续做。</span>
+              </div>
+            </div>
+          </div>
+          <p class="stage-note">这些是 Pyloxa 的示例规则。规则由你自己写，每个任务都会标明它命中的规则。</p>
+        </div>
+      </section>
+
+      <section class="wrap section" aria-labelledby="states-title">
+        <div class="states reveal">
+          <h2 class="section-head" id="states-title">每份结果都经过检查</h2>
+
+          <p class="state-word">进行中</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">会员资料 API</span>
+                <span class="badge">后端</span>
+                <span class="badge warn">可写</span>
+                <span class="spacer"></span>
+                <span class="badge info"><span class="spin" aria-hidden="true"></span>运行中</span>
+              </div>
+              <span class="ui-muted">Codex · 在自己的 worktree 中，分支 pyloxa/r_8f2k/t_api</span>
+            </div>
+          </div>
+
+          <p class="state-word">已验证</p>
+          <div class="state-row reply-demo" data-reply-demo>
+            <div class="task-row" data-ui data-task>
+              <div class="ui-row" data-pending>
+                <div class="top">
+                  <span class="ui-title">会员资料 API</span>
+                  <span class="badge">后端</span>
+                  <span class="badge warn">可写</span>
+                  <span class="spacer"></span>
+                  <span class="badge warn" data-status>等你确认</span>
+                </div>
+                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test 通过 · 改动 2 个文件 · 都在允许的写入范围内</span></span>
+                <div class="actions">
+                  <button type="button" class="ui-button primary" data-accept>接受结果</button>
+                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">在 Session 中回复</button>
+                </div>
+              </div>
+              <div class="ui-row" data-accepted hidden>
+                <div class="top">
+                  <span class="ui-title">会员资料 API</span>
+                  <span class="badge">后端</span>
+                  <span class="spacer"></span>
+                  <span class="badge ok">已完成</span>
+                </div>
+                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已接受并合并到 pyloxa/r_8f2k/integration</span>
+              </div>
+            </div>
+            <section class="session" id="session-demo" data-ui data-session hidden aria-label="Session：会员资料 API">
+              <div class="ui-row session-head">
+                <span class="ui-title">会员资料 API</span>
+                <span class="ui-muted">Codex · Session</span>
+                <span class="spacer"></span>
+                <button type="button" class="session-close" data-session-close aria-label="关闭 Session">×</button>
+              </div>
+              <div class="ui-row session-log" data-session-log aria-live="polite">
+                <div class="msg brief"><span class="who">任务内容</span><p>新增 GET /api/profile 接口，返回当前登录会员的资料，并加上测试。</p></div>
+                <div class="msg"><span class="who">Codex</span><p>已新增 GET /api/profile，返回会员的名称和 email，并加了 2 个测试。npm run test 通过。</p></div>
+              </div>
+              <form class="ui-row session-reply" data-session-form>
+                <label class="visually-hidden" for="session-input">回复 Codex</label>
+                <textarea id="session-input" rows="2" data-session-input>返回数据里也加上 avatarUrl</textarea>
+                <button type="submit" class="ui-button primary">发送</button>
+              </form>
+            </section>
+          </div>
+
+          <p class="state-word">已集成</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">会员资料页</span>
+                <span class="badge">前端</span>
+                <span class="badge ok">自动接受</span>
+                <span class="spacer"></span>
+                <span class="badge ok">已完成</span>
+              </div>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>验证命令全部通过（2 个）· 已合并到集成分支</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section why" id="why" aria-labelledby="why-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="why-title">不只是多开几个 Agent</h2>
+            <p>能同时开好几个 Agent 的工具已经不少。Pyloxa 处理的是 Agent 之间的事：谁做哪一部分、做完怎么确认、卡住时谁来接手。</p>
+            <p>下面是同一个需求的三种做法：自己在几个 CLI 之间切换、用终端复用工具把多个 Agent 的终端并排，以及交给 Pyloxa。</p>
+          </div>
+          <table class="compare reveal">
+            <thead>
+              <tr>
+                <td></td>
+                <th scope="col">自己切换 CLI</th>
+                <th scope="col">终端复用工具</th>
+                <th scope="col" class="ours">交给 Pyloxa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">分工</th>
+                <td data-label="自己切换">自己判断每件事适合哪个工具，再把需求复制过去。</td>
+                <td data-label="终端复用">你决定每个终端里的 Agent 做什么；有些工具也允许 Agent 自己启动其他 Agent。</td>
+                <td class="ours">大脑把需求拆成阶段和任务，按你的规则派给 Agent；每个任务都写明命中了哪条规则。</td>
+              </tr>
+              <tr>
+                <th scope="row">交接</th>
+                <td data-label="自己切换">前一个 Agent 做完后，你把 API 格式和文件路径贴给下一个。</td>
+                <td data-label="终端复用">Agent 之间可以互发消息，交接什么由 Agent 自己决定。</td>
+                <td class="ours">下一个阶段自动拿到交接包：成果、已通过的检查和需要注意的地方。</td>
+              </tr>
+              <tr>
+                <th scope="row">怎样才算完成</th>
+                <td data-label="自己切换">Agent 说做完了，你自己跑测试确认。</td>
+                <td data-label="终端复用">能看到哪些 Agent 在运行、已完成或在等你；结果对不对，还得你自己确认。</td>
+                <td class="ours">验证命令在任务自己的 worktree 中通过才算完成；没通过，Agent 会自动修复一次。也可以交给另一个 Agent 补测试、让大脑验收；大脑的结论会标注为 AI 验收。</td>
+              </tr>
+              <tr>
+                <th scope="row">额度用完</th>
+                <td data-label="自己切换">换一个工具，重新解释做到了哪里。</td>
+                <td data-label="终端复用">那个终端停下来等你，换谁接手要你自己安排。</td>
+                <td class="ours">按你的规则提出备用 Agent，你确认后，在前一个 Agent 改好的文件上继续做。</td>
+              </tr>
+              <tr>
+                <th scope="row">你的仓库</th>
+                <td data-label="自己切换">Agent 直接改你的工作目录。</td>
+                <td data-label="终端复用">取决于你在终端里怎么打开：通常就在你的工作目录。</td>
+                <td class="ours">每个任务都在自己的 git worktree 中进行，完成后核对改动是否都在允许的写入范围内；合并和推送由你决定。</td>
+              </tr>
+              <tr>
+                <th scope="row">更适合</th>
+                <td data-label="自己切换">一次只做一件事。</td>
+                <td data-label="终端复用">想同时盯着很多个终端、退出应用后让 Agent 继续运行，或连接远程机器。</td>
+                <td class="ours">想把一个需求拆给不同的 Agent，做完先验收再合并。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+        <div class="flow-col">
+          <h2 class="section-head reveal" id="how-title"><span>工作原理</span></h2>
+
+          <figure class="demo reveal">
+            <div class="frame">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="操作录屏：输入需求，大脑提出计划，批准后 Claude Code 和 Codex 各做一部分，验证通过后合并">
+                <source src="../assets/video/en/flow.webm" type="video/webm" />
+              </video>
+            </div>
+            <figcaption>真实操作录屏：一句需求、大脑做计划、Claude Code 和 Codex 分工、验证通过、合并。等待 Agent 工作的时间已剪掉。</figcaption>
+          </figure>
+
+          <div class="exchange reveal">
+            <p class="say">先说你想做什么。</p>
+            <div class="call">
+              <div data-ui class="ui-row">做一个会员资料页，让会员可以修改昵称和头像。后端要有 API 和文档。</div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="2576" height="1840" alt="Pyloxa 显示大脑的回复，以及分成三个阶段、任务交给 Claude Code 的计划" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange reveal">
+            <p class="say">再批准计划。</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">批准并开始</button> <span class="ui-muted">一次一个 Agent 工作，各自在独立的 git worktree 中。</span></div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img src="../assets/shots/en/plan-gates.png" alt="验证命令通过后自动接受的任务，以及已通过的阶段 Gate" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange final reveal">
+            <p class="say">最后合并通过的成果。</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">合并到当前分支（main）</button></div>
+            </div>
+            <div class="response result" data-ui>
+              <div class="ui-row"><span class="ui-title">整个计划的成果（5 个文件）</span></div>
+              <ul class="files">
+                <li><span class="st">A</span>docs/api/profile.yaml</li>
+                <li><span class="st">A</span>server/src/routes/profile.ts</li>
+                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
+                <li><span class="st">A</span>test/profile.test.ts</li>
+                <li><span class="st">A</span>test/contract.test.ts</li>
+              </ul>
+              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已合并到 main。是否推送由你决定。</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section custom" id="custom" aria-labelledby="custom-title">
+        <div class="grid no-tabs" data-tabs>
+          <div class="custom-head reveal">
+            <h2 id="custom-title">按你的方式分工</h2>
+            <p>用哪个模型、哪类任务交给谁、做到哪一步要先问你，都由你设置。大脑只负责提出计划，不能改动这些设置。</p>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="可自定义的项目" hidden>
+            <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">Agent 和模型</button>
+            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">派工规则</button>
+            <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">流程和验收</button>
+            <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">自动化程度</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-agents" aria-labelledby="tab-agents">
+            <div class="panel-copy">
+              <h3>每个 Agent 都是你设置的 Profile</h3>
+              <p>Profile 决定用哪个 CLI、哪个模型、多少推理，以及每个任务附带的角色提示词。同一个 CLI 可以建多个，例如“Claude 前端”和“Claude 文档”。</p>
+              <ul>
+                <li>模型列表直接取自你安装的 CLI；推理参数显示各家原生的值（Claude Code 的 <code>--effort</code>、Codex 的 <code>model_reasoning_effort</code>），不强行换算成同一套刻度。</li>
+                <li>任何一个 Profile 都可以当大脑，负责读项目和拆计划；大脑和执行任务的 Agent 可以用不同的模型。</li>
+                <li>Profile 只保存设置，不保存任何凭据。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/agents.jpg" aria-label="操作录屏：新增 Codex 后端 Profile，选择模型、推理参数并填写角色提示词">
+                  <source src="../assets/video/en/agents.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
+            <div class="panel-copy">
+              <h3>谁来做，由你的规则决定</h3>
+              <p>规则按“阶段类型”加“任务类型”匹配，例如“开发阶段的后端任务交给 Codex 后端”。每条规则有一个主 Profile 和备用顺序，可以应用到所有项目，也可以只用于当前项目。</p>
+              <ul>
+                <li>规则从上往下匹配，第一条完全匹配的生效；一条规则把另一条规则遮住时会提醒你。</li>
+                <li>规则模拟不调用 Agent、不消耗额度：选一类任务，就能看到会交给谁、为什么。</li>
+                <li>没有规则匹配时，可以设为在计划预览中问你，或者直接停下。Pyloxa 不会随便挑一个 Agent。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/rules.jpg" aria-label="操作录屏：新增“后端交给 Codex”规则，加上备用 Agent，再用规则模拟确认派工结果">
+                  <source src="../assets/video/en/rules.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow">
+            <div class="panel-copy">
+              <h3>每个阶段做完，用你的命令验收</h3>
+              <p>大脑按需求排出阶段，例如规格、接口契约、开发、测试。批准前，你可以改派某个任务、修改它的说明，或让大脑重新规划。</p>
+              <ul>
+                <li>验证命令需要你批准，例如 <code>npm run test</code>，可以先在临时 worktree 中试运行。大脑只能使用你批准过的命令。</li>
+                <li>每个任务完成后，在它自己的 worktree 中验收；每个阶段结束时，在集成后的版本上再跑一次 Gate。</li>
+                <li>Gate 通过后可以自动进入下一步，也可以停下来等你批准。</li>
+                <li>完成的任务可以交给另一个 Agent 测试，例如 Codex 开发、Claude Code 补测试。测试方只能修改测试文件，Pyloxa 会在结果上重新运行你的命令。</li>
+                <li>大脑可以验收完成的任务，使用它自己的模型和思考强度。结论会标注为 AI 验收；要求你亲自确认的任务，仍然等你决定。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/commands.jpg" aria-label="操作录屏：试运行 Pyloxa 建议的 npm run test，通过后批准为验证命令">
+                  <source src="../assets/video/en/commands.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-modes" aria-labelledby="tab-modes">
+            <div class="panel-copy">
+              <h3>放手多少，由你决定</h3>
+              <p>派工模式决定 Pyloxa 什么时候先问你。无论哪种模式，推送和部署都不会自动进行。</p>
+              <ul>
+                <li>大脑和执行任务的 Agent 分开设置；执行任务的 Agent 额度不足，不会换掉大脑。</li>
+                <li>每个任务最多自动尝试 3 次，计划有任务数和时间上限，不会无限重试。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="modes" data-ui>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">建议后询问</span><span class="badge info">默认</span><span class="spacer"></span><span class="badge">免费版</span></div>
+                  <span class="ui-muted">大脑给出计划和派工结果，你批准整个计划后才开始。</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">仅按设置执行</span><span class="spacer"></span><span class="badge">免费版</span></div>
+                  <span class="ui-muted">每个任务都有规则可派时直接开始；没有匹配的规则，或 Profile 不可用，就停下来。</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">授权范围内自动</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                  <span class="ui-muted">在你允许的 Profile、模型和次数内自行选择与重试，超出范围就暂停。</span>
+                </div>
+              </div>
+              <img class="still" src="../assets/shots/en/agents-page.png" width="1440" height="900" alt="Agent 与大脑页面：选择大脑、派工模式，以及三个 Profile 的模型和推理设置" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section" id="skills" aria-labelledby="skills-title">
+        <div class="wrap grid">
+          <div class="skills-copy reveal">
+            <span class="dev-tag">开发中</span>
+            <h2 id="skills-title">一套 Skills，每个 Agent 都能用</h2>
+            <p>Claude Code 读 <code>~/.claude/skills</code>，Codex 读 <code>~/.agents/skills</code>。同一个 Skill 两边各放一份，改了一边，另一边就过时了。Pyloxa 把它们集中管理。</p>
+            <ol class="steps">
+              <li><strong>盘点<span class="tier">免费版</span></strong><span>列出每个 CLI 装了哪些 Skills，并标出名称相同但内容不同的。</span></li>
+              <li><strong>同步<span class="tier">Pro</span></strong><span>以 <code>~/.agents/skills</code> 作为 Skills 库，同步到每个 CLI。你在 CLI 那边改过的文件不会被直接覆盖，Pyloxa 会先问你。</span></li>
+              <li><strong>分配<span class="tier">Pro</span></strong><span>为每个项目勾选要用的 Skills；Claude Code 和 Codex 还能按 Profile 指定。</span></li>
+              <li><strong>派工包<span class="tier">Pro</span></strong><span>把派工规则、Skills、流程和验证命令打包分享。导入时逐项预览，不会覆盖你已有的规则。</span></li>
+            </ol>
+          </div>
+          <div class="skills-mock reveal">
+            <div data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Skills</span>
+                <span class="ui-muted">5 个 · 1 个内容不同</span>
+                <span class="spacer"></span>
+                <span class="ui-button primary" aria-hidden="true">同步到所有 CLI</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th scope="col">名称</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">shop 项目</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>api-contract</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge info">使用中</span></td></tr>
+                  <tr><td>react-conventions</td><td><span class="badge ok">已同步</span></td><td><span class="badge warn">内容不同</span></td><td><span class="badge info">使用中</span></td></tr>
+                  <tr><td>release-notes</td><td><span class="badge">缺失</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge">未使用</span></td></tr>
+                  <tr><td>db-migration</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge">未使用</span></td></tr>
+                  <tr><td>test-writer</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge info">使用中</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="media-note">示意图。盘点从 0.1.2 起包含在免费版中；同步、分配和派工包属于 Pro，仍在开发。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="fallback section" aria-labelledby="fallback-title">
+        <div class="wrap grid">
+          <div class="fallback-copy reveal">
+            <h2 id="fallback-title">额度用完的时候</h2>
+            <p>如果 Codex 做到一半额度用完，Pyloxa 会停止给它派工、显示额度何时重置，并按你的规则提出备用 Agent。你确认后，Claude Code 会在 Codex 已经改好的文件上继续做。</p>
+            <div class="figures">
+              <span>每个任务最多自动尝试 3 次</span>
+              <span>最多 2 次备用接手</span>
+              <span>0 笔你没同意的 API 费用</span>
+            </div>
+          </div>
+          <div class="fallback-shots reveal">
+            <img class="drift" src="../assets/shots/en/quota-task.png" alt="Codex 额度用完的任务，带有让 Claude Code 接手的按钮" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section class="bands" aria-label="Pyloxa 替你做的事">
+        <div class="band c1">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b1">每个任务都跑我的测试。</p><p class="consequence">npm run test 在每个任务自己的 worktree 中运行。通过就自动接受；没通过，Agent 会自动修复一次。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b1" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c2">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b2">进入下一阶段前先问我。</p><p class="consequence">阶段先在集成后的版本上跑完命令，再等你点一下。不开启的话，检查通过的阶段会自动进入下一步。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b2" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c3">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b3">绝不碰我的凭据。</p><p class="consequence">Pyloxa 只运行你已登录的 CLI，从不读取、复制或发送它们的 token，也不会对你的工作目录执行 stash 或 reset。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b3" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c4">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b4">用我的语言回复。</p><p class="consequence">界面和 Agent 的回复语言可以分别选择：<span lang="en">English</span>、<span lang="zh-Hant">繁體中文</span>或简体中文。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="pricing-lede reveal">
+          <h2 id="pricing-title">免费版陪你做一个项目，Pro 帮你同时照看所有项目。</h2>
+          <p>免费版就能走完整个流程：做计划、派工、验收、合并。Pro 把你原本要亲手做的事交给 Pyloxa：多个项目一起运行、在你设定的范围内自行决定、额度用完自动接手、做完自动交给另一个 Agent 测试。</p>
+        </div>
+        <table class="reveal">
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">方案对比</span></th>
+              <th scope="col">免费版<span class="price">$0 <span class="period">无需账号</span></span></th>
+              <th scope="col" class="pro">Pro <span class="early">早鸟价每年 US$49</span><span class="price">US$79 <span class="period">每年；停止续订后，付费期间发布的版本仍可使用 Pro</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">同时进行的项目</th>
+              <td>一次运行一个项目，可随时切换</td>
+              <td class="pro"><strong>多个项目同时运行</strong>，所有等你处理的事集中在任务中心的收件箱</td>
+            </tr>
+            <tr>
+              <th scope="row">派工</th>
+              <td>建议后询问，或仅按设置执行</td>
+              <td class="pro"><strong>授权范围内自动</strong>：在你允许的 Agent、模型和次数内自行选择与重试，超出范围就暂停</td>
+            </tr>
+            <tr>
+              <th scope="row">额度用完时</th>
+              <td>提出备用 Agent，每次接手由你确认</td>
+              <td class="pro"><strong>自动备用链</strong>：依次交给备用 Agent，可设触发条件和上限；经你事先允许，订阅额度用完时改用 API 计费</td>
+            </tr>
+            <tr>
+              <th scope="row">验收和测试</th>
+              <td>验证命令、阶段 Gate、大脑验收，以及手动交给另一个 Agent 交叉测试</td>
+              <td class="pro"><strong>自动交叉测试</strong>：按任务类型或由大脑判断，自动交给另一个 Agent 测试，没通过就自动退回修复</td>
+            </tr>
+            <tr>
+              <th scope="row">额度调度</th>
+              <td>等待额度的任务在重置后自动继续</td>
+              <td class="pro">项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始 <span class="soon-tag">后续更新</span></td>
+            </tr>
+            <tr>
+              <th scope="row">用量和报告</th>
+              <td>每次运行的用量</td>
+              <td class="pro">跨项目的用量仪表盘和预算预留，项目用量和工时报告导出为 Markdown 或 CSV <span class="soon-tag">后续更新</span></td>
+            </tr>
+            <tr>
+              <th scope="row">通知</th>
+              <td>Windows 桌面通知</td>
+              <td class="pro">推送到你自己的 Telegram bot、Discord 或任意 webhook <span class="soon-tag">后续更新</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Skills</th>
+              <td>盘点每个 CLI 能读到的 Skills</td>
+              <td class="pro">一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，并和规则一起打包成派工包分享 <span class="soon-tag">后续更新</span></td>
+            </tr>
+            <tr>
+              <th scope="row">大脑</th>
+              <td>一个大脑，可随时更换</td>
+              <td class="pro">备用大脑：主大脑不可用时由备用大脑接手规划 <span class="soon-tag">后续更新</span></td>
+            </tr>
+            <tr class="both">
+              <th scope="row">两个版本都有</th>
+              <td colspan="2">Claude Code、Codex CLI 和 Gemini CLI（实验性）· 自定义 Profile 和派工规则 · 验证命令和阶段 Gate · 每个任务独立的 worktree · 后台运行和恢复中断的任务 · 文件、diff 视图、git 和 PR</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载免费版</a></td>
+              <td class="pro">
+              <span class="later" data-waitlist-soon>早鸟登记即将开放。</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-table">早鸟价：每年 US$49</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-table" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">通知我</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="zh-cn" />
+                <p class="waitlist-note">只要持续订阅，每年都是 US$49，不涨价。Pro 发布时给你发一封邮件，通过 Buttondown 发送，可随时退订。</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pricing-phone">
+          <div class="plan-block pro">
+            <h3>Pro <span class="early">早鸟价每年 US$49</span></h3>
+            <p class="price">US$79 <span class="period">每年；停止续订后，付费期间发布的版本仍可使用 Pro</span></p>
+            <p class="plan-sub">Pro 发布时</p>
+            <ul>
+              <li>多个项目同时运行，所有等你处理的事集中在任务中心的收件箱</li>
+              <li>授权范围内自动：在你允许的 Agent、模型和次数内自行选择与重试，超出范围就暂停</li>
+              <li>自动备用链：依次交给备用 Agent，可设触发条件和上限；经你事先允许，订阅额度用完时改用 API 计费</li>
+              <li>自动交叉测试：按任务类型或由大脑判断，自动交给另一个 Agent 测试，没通过就自动退回修复</li>
+            </ul>
+            <p class="plan-sub">后续更新</p>
+            <ul class="muted">
+              <li>额度调度：项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始</li>
+              <li>用量和报告：跨项目的用量仪表盘和预算预留，项目用量和工时报告导出为 Markdown 或 CSV</li>
+              <li>通知：推送到你自己的 Telegram bot、Discord 或任意 webhook</li>
+              <li>Skills：一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，并和规则一起打包成派工包分享</li>
+              <li>大脑：备用大脑，主大脑不可用时由它接手规划</li>
+            </ul>
+            <span class="later" data-waitlist-soon>早鸟登记即将开放。</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-phone">早鸟价：每年 US$49</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-phone" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">通知我</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="zh-cn" />
+                <p class="waitlist-note">只要持续订阅，每年都是 US$49，不涨价。Pro 发布时给你发一封邮件，通过 Buttondown 发送，可随时退订。</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+          </div>
+          <div class="plan-block">
+            <h3>免费版</h3>
+            <p class="price">$0 <span class="period">无需账号</span></p>
+            <ul>
+              <li>一次运行一个项目</li>
+              <li>建议后询问，或仅按设置执行</li>
+              <li>额度用完时，每次接手由你确认</li>
+              <li>大脑验收和手动交叉测试</li>
+            </ul>
+            <p class="plan-sub">两个版本都有</p>
+            <p class="plan-both">Claude Code、Codex CLI 和 Gemini CLI（实验性）· 自定义 Profile 和派工规则 · 验证命令和阶段 Gate · 每个任务独立的 worktree · 后台运行和恢复中断的任务 · 文件、diff 视图、git 和 PR</p>
+            <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载免费版</a>
+          </div>
+        </div>
+        <p class="pricing-note">标注“后续更新”的功能会在 Pro 发布后陆续加入，订阅期间都能用上。免费版会一直免费，与安全和正确性相关的功能都在免费版中。</p>
+      </section>
+
+      <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
+        <div class="grid">
+          <ul class="faq-list reveal">
+            <li class="faq-head"><h2 id="faq-title">常见问题</h2></li>
+            <li data-q class="is-open">
+              <h3 class="faq-q"><button type="button" aria-expanded="true">Pyloxa 是什么？</button></h3>
+              <div class="inline-answer"><p>Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版可直接下载；即将推出的 Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Pyloxa 会收取 AI 使用费吗？</button></h3>
+              <div class="inline-answer"><p>不会。Pyloxa 运行的是你已经配置好的官方 CLI（Claude Code、Codex CLI，以及实验性的 Gemini CLI），用量计入你自己的订阅，或者你自己选用的 API Key。Pyloxa 不转售、也不代理任何 AI 服务。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">需要安装什么？</button></h3>
+              <div class="inline-answer"><p>Windows 10 或 11（64 位）、git，以及至少一个已登录的 Claude Code 或 Codex CLI。Gemini CLI 是可选的实验性支持，需要你自己的付费 Gemini API Key。装了不止一个 CLI，默认流程才能分工，备用接手才派得上用场。还没装也没关系：首次启动时，设置向导会检查 git 和 Node.js，在你确认后用官方的 npm 命令安装 CLI，再带你完成登录和 API Key 配置。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Pyloxa 会读取我的凭据吗？</button></h3>
+              <div class="inline-answer"><p>不会。Pyloxa 只用各 CLI 自带的命令查询登录状态，并像你一样启动 CLI；token 和凭据文件不会被读取、复制或发送。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">我的代码会发送到哪里？</button></h3>
+              <div class="inline-answer"><p>Pyloxa 本身没有服务器，也不收集遥测数据。你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。Codex 已登录时，额度一览每 10 分钟还会让 Codex CLI 查询剩余额度，由 Codex 用你自己的登录向 OpenAI 获取，不消耗额度；关闭额度一览就不再查询。使用统计只在你的电脑上计算，不会发送出去。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Agent 会弄坏我的仓库吗？</button></h3>
+              <div class="inline-answer"><p>Agent 在独立的 git worktree 中工作，不碰你正在编辑的工作目录；Pyloxa 也不会对它执行 stash、reset 或 checkout。每个任务完成后，会核对改动的文件是否都在计划允许的写入范围内，你也可以在内置的 diff 视图中逐个文件查看。是否合并、是否推送，都由你决定。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">为什么安装时 Windows 会弹出警告？</button></h3>
+              <div class="inline-answer"><p>免费版安装包目前还没有代码签名，SmartScreen 可能会提示“Windows 已保护你的电脑”。请点击“更多信息”，再点击“仍要运行”。安装前可以先核对安装包的 SHA-256 与发布页上的值是否一致。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">可以指定模型和推理强度吗？</button></h3>
+              <div class="inline-answer"><p>可以。每个 Profile 都能选择模型和推理参数，列表直接取自你安装的 CLI；不选就用 CLI 的默认值。大脑和执行任务的 Agent 可以用不同的模型。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">能让某类任务固定交给某个 Agent 吗？</button></h3>
+              <div class="inline-answer"><p>可以。用派工规则指定，例如“测试阶段的任务都交给 Claude Code”，规则可以应用到所有项目，也可以只用于当前项目。批准计划前，也能手动改派单个任务。新安装时会使用默认流程：Claude Code 负责前端和视频剪辑，Codex 负责后端和生成图片，Gemini 负责文章和文档，随时可以修改。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">和把多个 Agent 终端并排显示的工具有什么不同？</button></h3>
+              <div class="inline-answer"><p>终端复用工具把好几个 Agent 的终端放进同一个窗口，让你看到哪些在运行、哪些在等你，有些还能在退出应用后让 Agent 继续运行，或者连接远程机器。Pyloxa 管的是终端之外的事：大脑把需求拆成任务、按你的规则派给 Agent、用你的命令验收、额度用完时提出备用 Agent，最后由你合并。关闭 Pyloxa 的窗口后，它会留在系统托盘中继续工作；因重启等原因中断的任务，也可以恢复。如果你想亲自盯着每个终端，终端复用工具很合适；如果你想交出一个需求、拿回验收过的结果，Pyloxa 更合适。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">已经订阅了 Claude 或 ChatGPT，为什么不直接在终端里运行 CLI？</button></h3>
+              <div class="inline-answer"><p>直接运行 CLI 没有问题，Pyloxa 用的就是同一个 CLI 和你的订阅。区别在三点：额度用完时，Pyloxa 按你的规则提出备用 Agent，你确认后由另一个 CLI 在已改好的文件上继续做；Agent 说做完了不算数，你的验证命令通过才算；派工规则和各 CLI 能读到的 Skills 集中在一个地方查看，不必分别去每个 CLI 里设置。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">和 CLI 内置的子 Agent 有什么不同？</button></h3>
+              <div class="inline-answer"><p>子 Agent 在同一个 CLI 内部分工。Pyloxa 在 CLI 之间分工：不同任务可以交给不同的 CLI，各自在独立的 worktree 中运行，用你的命令验收，额度用完时由另一个 CLI 接手。两者可以一起用。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">支持 Gemini 或其他 Agent 吗？</button></h3>
+              <div class="inline-answer"><p>从 0.1.2 起以实验性功能支持 Gemini CLI，使用你自己的付费 Gemini API Key，不支持 Google 账号登录以及 AI Pro、Ultra 订阅。Gemini 可以执行文章、文档等任务，但不能担任大脑，也不能测试其他 Agent 的成果；在无人值守模式下可以修改文件，但不能运行命令。其他 Agent 仍在评估中。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Skills 管理什么时候推出？</button></h3>
+              <div class="inline-answer"><p>盘点从 0.1.2 起包含在免费版中：“Skills”页面列出各 CLI 能读到的 Skills，并标出名称相同但内容不同的。同步、按项目或 Profile 分配以及派工包属于 Pro，仍在开发，推出时间以版本说明为准。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Pro 会增加什么？</button></h3>
+              <div class="inline-answer"><p>多个项目同时运行并集中到一个收件箱、自动模式、按任务类型自动交叉测试、自动备用链，之后还有额度调度和共享的 Skills 库。Pro 每年 US$79。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。在方案表中留下 email 即可获得早鸟价：每年 US$49，只要持续订阅就不涨价。免费版会一直免费。</p></div>
+            </li>
+          </ul>
+          <div class="faq-pane" aria-live="polite">
+            <p>Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版可直接下载；即将推出的 Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section name" id="name" aria-labelledby="name-title">
+        <div class="name-head reveal">
+          <h2 class="section-head" id="name-title">名字的由来</h2>
+          <p>Pyloxa 取自六个英文单词的首字母，正好是它为你做的六件事。</p>
+          <p class="name-hint">把鼠标移到字母上，看看它代表什么。</p>
+        </div>
+        <ol class="name-letters reveal">
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>P</span></span>
+              <span class="name-word" lang="en"><b>P</b>lan</span><span class="name-zh">规划</span>
+              <p>大脑读过项目，把你的需求拆成一个个任务。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>Y</span></span>
+              <span class="name-word" lang="en"><b>Y</b>ield</span><span class="name-zh">交付成果</span>
+              <p>只有通过你的验证命令的结果，才会交到你手上。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>L</span></span>
+              <span class="name-word" lang="en"><b>L</b>ead</span><span class="name-zh">主导</span>
+              <p>大脑带着各个 Agent 按计划推进，按你的规则派工。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>O</span></span>
+              <span class="name-word" lang="en"><b>O</b>rchestrate</span><span class="name-zh">编排</span>
+              <p>Claude Code 和 Codex 分工，一方额度用完时由另一方接手。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>X</span></span>
+              <span class="name-word" lang="en">e<b>X</b>ecute</span><span class="name-zh">执行</span>
+              <p>每个任务在自己的 git worktree 中执行，不碰你的工作目录。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>A</span></span>
+              <span class="name-word" lang="en"><b>A</b>gents</span><span class="name-zh">你的 Agent</span>
+              <p>你已经在用的 AI Agent，用你自己的订阅。</p>
+            </li>
+        </ol>
+      </section>
+
+      <section class="close" aria-labelledby="close-title">
+        <div class="wrap grid">
+          <div class="close-copy reveal">
+            <h2 id="close-title">说一次就够了。</h2>
+            <p>安装 Pyloxa、打开项目文件夹，说出你想完成的事。大脑会先读一遍项目，规模较大的计划会先征求你的意见。</p>
+            <p class="smartscreen">安装包目前尚未签名；如果出现 SmartScreen 提示，请点击“更多信息”，再点击“仍要运行”。</p>
+          </div>
+          <div class="starter reveal" data-ui>
+            <div class="ui-row">
+              <h3>想完成什么？</h3>
+              <p class="ui-muted" style="margin-top: 4px">shop · main</p>
+            </div>
+            <div class="ui-row" style="display: grid; gap: 12px">
+              <textarea rows="3" aria-label="想完成什么？">给会员加一个积分页，要有 API 和测试。</textarea>
+              <div class="seg" role="group" aria-label="交给谁">
+                <button type="button" aria-pressed="true" data-seg>交给大脑</button>
+                <button type="button" aria-pressed="false" data-seg>直接交给 Codex</button>
+              </div>
+            </div>
+            <div class="ui-row">
+              <a class="button download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载 Pyloxa Windows 版</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="tiles">
+        <div class="tile statement">
+          <p>同时和多个 AI Agent 一起工作的桌面应用。</p>
+          <p class="maker">由独立开发者 <a href="https://github.com/eric861129">ChiYu-Huang</a> 开发和维护。联系方式：<a href="mailto:support@pyloxa.com">support@pyloxa.com</a></p>
+          <p class="legal">© 2026 ChiYu-Huang。免费版依据<a href="../legal/EULA.txt">许可协议</a>提供。<a href="../legal/THIRD_PARTY_NOTICES.txt">第三方软件声明</a>。Pyloxa 与 Anthropic、OpenAI、Google 没有关联，也未获得它们的认可。Claude Code 是 Anthropic 的产品，Codex 是 OpenAI 的产品，Gemini 是 Google 的产品。本站使用 Cloudflare Web Analytics（不使用 cookie）和 Google Analytics（未开启广告功能；不对欧洲访客加载）统计访问情况，详见<a href="../privacy/">隐私政策</a>。</p>
+        </div>
+        <nav class="tile links" aria-label="页脚">
+          <ul>
+            <li><a href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载</a></li>
+            <li><a href="../changelog/">更新日志</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="../privacy/">隐私政策</a></li>
+            <li><a href="mailto:support@pyloxa.com">联系我们</a></li>
+            <li><details class="lang-menu"><summary><span class="lang-current">简体中文</span><span class="visually-hidden"> — 语言</span></summary><ul><li><a href="../" lang="en" hreflang="en">English</a></li><li><a href="../zh-TW/" lang="zh-Hant-TW" hreflang="zh-TW">繁體中文</a></li><li><a href="../zh-CN/" lang="zh-Hans-CN" hreflang="zh-CN" aria-current="true">简体中文</a></li><li><a href="../ja/" lang="ja" hreflang="ja">日本語</a></li><li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li><li><a href="../es/" lang="es" hreflang="es">Español</a></li><li><a href="../pt-BR/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></li><li><a href="../de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li></ul></details></li>
+          </ul>
+        </nav>
+        <div class="tile system">
+          <p>Windows 10 和 11<br />64 位<br />版本 0.1.8</p>
+        </div>
+        <div class="tile issue">
+          <p>发现问题？</p>
+          <a href="https://github.com/eric861129/Pyloxa-Releases/issues">到 GitHub 反馈</a>
+        </div>
+        <div class="tile word"><span class="wordmark">Pyloxa</span></div>
+        <a class="tile go" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">
+          <span>免费下载</span>
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M14 42 42 14M20 14h22v22" /></svg>
+        </a>
+      </div>
+    </footer>
+
+    <script type="application/json" id="copy">
+      {
+        "waitlist": {"sending": "发送中…", "done": "还差一步：请到邮箱点击确认邮件里的链接。", "failed": "没有发送成功，请检查网络后重试。"},
+        "session": {
+          "you": "你",
+          "working": "Codex 正在修改…",
+          "running": "运行中",
+          "waiting": "等你确认",
+          "answer": "已在返回数据中加上 avatarUrl，并更新了测试。npm run test 通过。",
+          "check": "npm run test 通过 · 第 2 次运行 · 都在允许的写入范围内"
+        },
+        "router": {
+          "goesTo": "交给“{agent}”",
+          "fallback": "备用“{agent}”：{state}",
+          "available": "可用，未触发",
+          "unavailable": "额度已用完",
+          "noFallback": "这条规则没有备用 Agent",
+          "quotaTitle": "{agent} 额度已用完（约 18:00 重置）",
+          "takeover": "由 {agent} 接手",
+          "tookOverReason": "“{from}”额度已用完，你确认由“{agent}”接手",
+          "rules": {
+            "frontend": { "agent": "Claude Code", "fallback": "Codex", "reason": "命中规则“前端交给 Claude Code”" },
+            "backend": { "agent": "Codex", "fallback": "Claude Code", "reason": "命中规则“后端交给 Codex”" },
+            "docs": { "agent": "Claude Code", "fallback": "", "reason": "没有命中规则，使用默认路由" },
+            "testing": { "agent": "Claude Code", "fallback": "", "reason": "没有命中规则，使用默认路由" }
+          }
+        }
+      }
+    </script>
+    <script src="../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

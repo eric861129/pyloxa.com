@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pyloxa — Claude Code und Codex zusammen nutzen | Windows</title>
+    <meta name="description" content="Kostenlose Windows-App für KI-Coding-Agenten: verteilt Aufgaben an Claude Code und Codex, prüft sie mit deinen Tests, wechselt bei leerem Kontingent." />
+    <meta name="pyloxa:waitlist" content="https://buttondown.com/api/emails/embed-subscribe/pyloxa" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Pyloxa — Claude Code und Codex gemeinsam einsetzen" />
+    <meta property="og:description" content="Kostenlose Windows-App, die jede Coding-Aufgabe nach deinen Regeln an Claude Code oder Codex gibt, Ergebnisse mit deinen Tests prüft und bei leerem Kontingent den Agenten wechselt." />
+    <meta property="og:url" content="https://pyloxa.com/de/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pyloxa: Claude Code und Codex zusammen nutzen. Ein Plan, in dem jede Aufgabe zeigt, an welchen Agenten sie geht und welche Regel gegriffen hat." />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_TW" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pyloxa — Claude Code und Codex gemeinsam einsetzen" />
+    <meta name="twitter:description" content="Kostenlose Windows-App, die jede Coding-Aufgabe nach deinen Regeln an Claude Code oder Codex gibt, Ergebnisse mit deinen Tests prüft und bei leerem Kontingent den Agenten wechselt." />
+    <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta name="twitter:image:alt" content="Pyloxa: Claude Code und Codex zusammen nutzen. Ein Plan, in dem jede Aufgabe zeigt, an welchen Agenten sie geht und welche Regel gegriffen hat." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/de/#software","name":"Pyloxa","url":"https://pyloxa.com/de/","image":"https://pyloxa.com/assets/og-en.png","description":"Kostenlose Windows-App, die jede Coding-Aufgabe nach deinen Regeln an Claude Code oder Codex gibt, Ergebnisse mit deinen Tests prüft und bei leerem Kontingent den Agenten wechselt.","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.8","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"de","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/de/#faq","url":"https://pyloxa.com/de/","inLanguage":"de","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Was ist Pyloxa?","acceptedAnswer":{"@type":"Answer","text":"Pyloxa ist eine Desktop-App für Windows 10 und 11, mit der KI-Coding-Agenten wie Claude Code und Codex CLI zusammenarbeiten. Du beschreibst die Arbeit einmal, der Planer zerlegt sie in Aufgaben und gibt jede nach deinen Routing-Regeln an eine CLI. Jede Aufgabe läuft in ihrem eigenen git-Worktree und wird mit deinen Prüfbefehlen geprüft, und du entscheidest, was gemergt wird. Geht einer CLI das Kontingent aus, übernimmt eine andere, sobald du bestätigst. Pyloxa nutzt deine eigenen Abos oder API-Keys. Die kostenlose Edition ist ein direkter Download; Pro kommt bald für US$79 pro Jahr und bringt mehrere Projekte gleichzeitig, Auto-Modus und automatischen Fallback."}},{"@type":"Question","name":"Verlangt Pyloxa Geld für die KI-Nutzung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Pyloxa startet die offiziellen CLIs, die du schon eingerichtet hast (Claude Code, Codex CLI und experimentell Gemini CLI), daher zählt die Nutzung gegen dein eigenes Abo oder gegen deinen eigenen API-Key, wenn du einen wählst. Pyloxa verkauft nie einen KI-Dienst weiter und leitet auch keinen über sich um."}},{"@type":"Question","name":"Was muss ich installieren?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 oder 11 (64-Bit), git und mindestens Claude Code oder Codex CLI, angemeldet. Gemini CLI ist optional und experimentell und braucht deinen eigenen kostenpflichtigen Gemini-API-Key. Mit mehr als einer CLI teilt der Standardablauf die Arbeit auf, und der Fallback wird nützlich. Hast du sie noch nicht? Beim ersten Start prüft der Einrichtungsassistent git und Node.js, installiert die CLIs nach deiner Bestätigung mit ihren offiziellen npm-Befehlen und führt dich durch Anmeldung und API-Keys."}},{"@type":"Question","name":"Liest Pyloxa meine Zugangsdaten?","acceptedAnswer":{"@type":"Answer","text":"Nie. Es prüft den Anmeldestatus mit dem eigenen Befehl jeder CLI und startet die CLI so, wie du es tun würdest. Tokens und Dateien mit Zugangsdaten werden nicht gelesen, kopiert oder gesendet."}},{"@type":"Question","name":"Wird mein Code irgendwohin gesendet?","acceptedAnswer":{"@type":"Answer","text":"Pyloxa selbst hat keinen Server und sammelt keine Telemetrie. Dein Code geht nur dorthin, wohin die CLIs ihn senden, unter den Bedingungen von Anthropic, OpenAI und Google. Pyloxa fragt beim Start und alle 12 Stunden bei GitHub die neueste Pyloxa-Version und den CLI-Kompatibilitätskatalog ab, ohne Projekt- oder Nutzungsdaten; das kannst du in den Einstellungen abschalten. Ist Codex angemeldet, fragt die Nutzungsanzeige außerdem alle 10 Minuten bei Codex CLI dein verbleibendes Kontingent ab; Codex holt es mit deiner eigenen Anmeldung von OpenAI und verbraucht dabei kein Kontingent, und wenn du die Nutzungsanzeige abschaltest, hört das auf. Nutzungsstatistiken werden auf deinem Computer berechnet und nie gesendet."}},{"@type":"Question","name":"Kann ein Agent mein Repository kaputt machen?","acceptedAnswer":{"@type":"Answer","text":"Agenten arbeiten in separaten git-Worktrees, getrennt von dem Arbeitsverzeichnis, in dem du arbeitest, und Pyloxa führt dort nie stash, reset oder checkout aus. Wenn eine Aufgabe fertig ist, werden ihre geänderten Dateien gegen den Schreibbereich geprüft, den der Plan erlaubt, und du kannst jede Datei in der eingebauten Diff-Ansicht durchsehen. Nichts wird gemergt oder gepusht, bevor du dich dafür entscheidest."}},{"@type":"Question","name":"Warum warnt mich Windows bei der Installation?","acceptedAnswer":{"@type":"Answer","text":"Der kostenlose Installer ist noch nicht code-signiert, daher meldet SmartScreen eventuell, dass dein PC geschützt wurde. Wähl „Weitere Informationen“ und dann „Trotzdem ausführen“. Du kannst vorher den SHA-256 des Installers mit dem auf der Release-Seite vergleichen."}},{"@type":"Question","name":"Kann ich Modell und Reasoning-Stufe wählen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Jedes Profil hat eigene Modell- und Reasoning-Einstellungen, aufgelistet aus der CLI, die du installiert hast; lass sie leer, um die Standardwerte der CLI zu nutzen. Planer und ausführende Agenten können verschiedene Modelle nutzen."}},{"@type":"Question","name":"Kann eine Art Aufgabe immer an denselben Agenten gehen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Schreib eine Routing-Regel wie „Arbeit in der Testphase geht an Claude Code“, für alle Projekte oder nur für dieses. Du kannst auch eine einzelne Aufgabe neu zuweisen, bevor du einen Plan freigibst. Neue Installationen starten mit einem Standardablauf: Claude Code für Frontend und Video, Codex für Backend und Bilder, Gemini für Texte und Doku. Das kannst du jederzeit ändern."}},{"@type":"Question","name":"Was ist der Unterschied zu Tools, die Agent-Terminals nebeneinander anordnen?","acceptedAnswer":{"@type":"Answer","text":"Terminal-Multiplexer bringen mehrere Agent-Terminals in ein Fenster, damit du siehst, welche arbeiten und welche auf dich warten; manche lassen Agenten weiterlaufen, auch wenn du die App beendest, oder erreichen entfernte Rechner. Pyloxa kümmert sich um das, was außerhalb der Terminals passiert: Der Planer zerlegt die Anfrage in Aufgaben, deine Regeln verteilen sie, deine Befehle prüfen die Ergebnisse, bei leerem Kontingent wird ein Fallback vorgeschlagen, und am Ende mergst du. Pyloxa arbeitet im Infobereich der Taskleiste weiter, wenn du das Fenster schließt, und durch einen Neustart unterbrochene Aufgaben lassen sich fortsetzen. Willst du jedes Terminal selbst im Blick behalten, passt ein Multiplexer; willst du eine Anfrage abgeben und geprüfte Ergebnisse zurückbekommen, passt Pyloxa."}},{"@type":"Question","name":"Ich zahle schon für Claude oder ChatGPT. Warum nicht einfach die CLI im Terminal starten?","acceptedAnswer":{"@type":"Answer","text":"Die CLI direkt zu starten ist völlig in Ordnung, und Pyloxa nutzt dieselbe CLI und dasselbe Abo. Der Unterschied liegt in drei Dingen: Geht das Kontingent aus, schlägt Pyloxa einen Fallback aus deinen Regeln vor, und nach deiner Bestätigung macht eine andere CLI mit den bereits geänderten Dateien weiter; sagt ein Agent, er sei fertig, zählt das erst, wenn deine Prüfbefehle bestehen; und Routing-Regeln sowie die Skills, die jede CLI sieht, liegen an einem Ort statt in den Einstellungen jeder einzelnen CLI."}},{"@type":"Question","name":"Was ist der Unterschied zu den Subagents einer CLI?","acceptedAnswer":{"@type":"Answer","text":"Subagents teilen Arbeit innerhalb einer CLI auf. Pyloxa teilt Arbeit über CLIs hinweg auf: Aufgaben können an verschiedene CLIs gehen, jede läuft in ihrem eigenen Worktree, deine Befehle prüfen die Ergebnisse, und eine andere CLI übernimmt, wenn einer das Kontingent ausgeht. Du kannst beides zusammen nutzen."}},{"@type":"Question","name":"Unterstützt es Gemini oder andere Agenten?","acceptedAnswer":{"@type":"Answer","text":"Seit 0.1.2 wird Gemini CLI als experimentelle Option mit deinem eigenen kostenpflichtigen Gemini-API-Key unterstützt. Anmeldung mit einem Google-Konto und AI-Pro- oder Ultra-Abos werden nicht unterstützt. Gemini kann Aufgaben wie Texte und Doku übernehmen, aber weder Planer sein noch die Arbeit eines anderen Agenten testen, und im unbeaufsichtigten Modus kann es Dateien bearbeiten, aber keine Befehle ausführen. Weitere Agenten werden geprüft."}},{"@type":"Question","name":"Wann kommt die Skills-Verwaltung?","acceptedAnswer":{"@type":"Answer","text":"Der Bestand ist seit 0.1.2 in der kostenlosen Version: Die Seite Skills listet die Skills, die jede CLI lesen kann, und markiert Skills, die gleich heißen, aber inhaltlich abweichen. Sync, Zuweisung pro Projekt oder Profil und Routing-Pakete sind Pro und noch in Entwicklung; den Termin findest du in den Release Notes."}},{"@type":"Question","name":"Was bringt Pro?","acceptedAnswer":{"@type":"Answer","text":"Mehrere Projekte gleichzeitig mit einer Inbox, automatischen Modus, automatisches Cross-Testing nach Aufgabentyp, eine automatische Fallback-Kette und später Kontingent-Planung und eine gemeinsame Skills-Bibliothek. Pro kostet US$79 pro Jahr. Kündigst du, läuft Pro auf jeder Version weiter, die während deines Abos erschienen ist. Hinterlass deine E-Mail in der Plantabelle für den Frühbucherpreis: US$49 pro Jahr, und es bleibt bei US$49, solange du abonniert bleibst. Die kostenlose Version bleibt kostenlos."}}]}]}</script>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/de/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://pyloxa.com/zh-CN/" />
+    <link rel="alternate" hreflang="ja" href="https://pyloxa.com/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://pyloxa.com/ko/" />
+    <link rel="alternate" hreflang="es" href="https://pyloxa.com/es/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://pyloxa.com/pt-BR/" />
+    <link rel="alternate" hreflang="de" href="https://pyloxa.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://pyloxa.com/fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Zum Inhalt springen</a>
+    <header class="wrap nav">
+      <a class="mark" href="./" aria-label="Pyloxa Startseite">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="#why">Warum Pyloxa</a></li>
+        <li class="optional"><a href="#how">So funktioniert’s</a></li>
+        <li class="optional"><a href="#custom">Anpassen</a></li>
+        <li class="optional"><a href="#skills">Skills</a></li>
+        <li class="optional"><a href="#pricing">Preise</a></li>
+        <li class="optional"><a href="#faq">FAQ</a></li>
+        <li class="optional"><a href="../changelog/">Changelog</a></li>
+        <li class="nav-lang"><details class="lang-menu in-nav"><summary><span class="lang-current">Deutsch</span><span class="visually-hidden"> — Sprache</span></summary><ul><li><a href="../" lang="en" hreflang="en">English</a></li><li><a href="../zh-TW/" lang="zh-Hant-TW" hreflang="zh-TW">繁體中文</a></li><li><a href="../zh-CN/" lang="zh-Hans-CN" hreflang="zh-CN">简体中文</a></li><li><a href="../ja/" lang="ja" hreflang="ja">日本語</a></li><li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li><li><a href="../es/" lang="es" hreflang="es">Español</a></li><li><a href="../pt-BR/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></li><li><a href="../de/" lang="de" hreflang="de" aria-current="true">Deutsch</a></li><li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li></ul></details></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap grid">
+          <div class="hero-copy reveal">
+            <h1 id="hero-title">Ein Chat.<br />Viele Agenten.<span class="h1-sub">Eine Windows-App, mit der sich Claude Code und Codex die Arbeit teilen</span></h1>
+            <p class="lead">Beschreib die Arbeit einmal. Pyloxa plant sie, gibt jede Aufgabe an Claude Code oder Codex mit deinem eigenen Abo und prüft das Ergebnis, bevor irgendetwas gemergt wird.</p>
+            <div class="actions">
+              <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Für Windows herunterladen</a>
+              <span class="meta">Kostenlos · v0.1.8 · Windows 10 und 11</span><span class="meta app-lang">Die Pyloxa-App selbst gibt es derzeit auf Englisch, traditionellem Chinesisch und vereinfachtem Chinesisch.</span>
+            </div>
+          </div>
+        </div>
+        <div class="stage" aria-label="Routing ausprobieren">
+          <div class="stage-inner">
+            <div class="router" data-ui data-router>
+              <div class="ui-row router-head">
+                <span class="ui-title">Wer bekommt diese Aufgabe?</span>
+                <span class="badge info">Routing-Regeln</span>
+              </div>
+              <div class="ui-row fields">
+                <div>
+                  <label class="field-label" for="task-title">Aufgabe</label>
+                  <input id="task-title" type="text" value="Endpunkt GET /api/profile mit Tests hinzufügen" />
+                </div>
+                <div>
+                  <span class="field-label" id="type-label">Typ</span>
+                  <div class="seg" role="group" aria-labelledby="type-label">
+                    <button type="button" data-type="frontend" aria-pressed="false">Frontend</button>
+                    <button type="button" data-type="backend" aria-pressed="true">Backend</button>
+                    <button type="button" data-type="docs" aria-pressed="false">Doku</button>
+                    <button type="button" data-type="testing" aria-pressed="false">Tests</button>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-row decision" aria-live="polite">
+                <span class="who"><span data-who>Geht an „Codex“</span></span>
+                <span class="ui-muted" data-why>Regel „Backend an Codex“ greift</span>
+                <span class="ui-muted" data-fallback>Fallback „Claude Code“: verfügbar, nicht ausgelöst</span>
+              </div>
+              <div class="ui-row quota-switch">
+                <button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="quota-label" data-quota></button>
+                <span id="quota-label">Codex hat kein Kontingent mehr</span>
+              </div>
+              <div class="quota-box" data-quota-box hidden>
+                <span class="ui-title" data-quota-title>Kontingent von Codex aufgebraucht (Reset gegen 18:00)</span>
+                <span class="ui-muted">Ein Fallback kann übernehmen und an der Arbeit von Codex weitermachen, nachdem du bestätigt hast.</span>
+                <span><button type="button" class="ui-button primary" data-takeover>Claude Code übernehmen lassen</button></span>
+              </div>
+              <div class="quota-box" data-taken hidden>
+                <span class="check-line">Claude Code hat übernommen und macht mit den Dateien von Codex weiter.</span>
+              </div>
+            </div>
+          </div>
+          <p class="stage-note">Das sind Beispielregeln von Pyloxa. Du schreibst deine eigenen, und jede Aufgabe zeigt die Regel, die gegriffen hat.</p>
+        </div>
+      </section>
+
+      <section class="wrap section" aria-labelledby="states-title">
+        <div class="states reveal">
+          <h2 class="section-head" id="states-title">Jedes Ergebnis wird geprüft</h2>
+
+          <p class="state-word">In Arbeit</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">Profil-API</span>
+                <span class="badge">backend</span>
+                <span class="badge warn">Schreibbar</span>
+                <span class="spacer"></span>
+                <span class="badge info"><span class="spin" aria-hidden="true"></span>Läuft</span>
+              </div>
+              <span class="ui-muted">Codex · im eigenen Worktree auf Branch pyloxa/r_8f2k/t_api</span>
+            </div>
+          </div>
+
+          <p class="state-word">Verifiziert</p>
+          <div class="state-row reply-demo" data-reply-demo>
+            <div class="task-row" data-ui data-task>
+              <div class="ui-row" data-pending>
+                <div class="top">
+                  <span class="ui-title">Profil-API</span>
+                  <span class="badge">backend</span>
+                  <span class="badge warn">Schreibbar</span>
+                  <span class="spacer"></span>
+                  <span class="badge warn" data-status>Wartet auf dich</span>
+                </div>
+                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test bestanden · 2 Dateien geändert · innerhalb des Schreibbereichs</span></span>
+                <div class="actions">
+                  <button type="button" class="ui-button primary" data-accept>Ergebnis annehmen</button>
+                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">In der Sitzung antworten</button>
+                </div>
+              </div>
+              <div class="ui-row" data-accepted hidden>
+                <div class="top">
+                  <span class="ui-title">Profil-API</span>
+                  <span class="badge">backend</span>
+                  <span class="spacer"></span>
+                  <span class="badge ok">Fertig</span>
+                </div>
+                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Angenommen und in pyloxa/r_8f2k/integration gemergt</span>
+              </div>
+            </div>
+            <section class="session" id="session-demo" data-ui data-session hidden aria-label="Sitzung: Profil-API">
+              <div class="ui-row session-head">
+                <span class="ui-title">Profil-API</span>
+                <span class="ui-muted">Codex · Session</span>
+                <span class="spacer"></span>
+                <button type="button" class="session-close" data-session-close aria-label="Sitzung schließen">×</button>
+              </div>
+              <div class="ui-row session-log" data-session-log aria-live="polite">
+                <div class="msg brief"><span class="who">Aufgabe</span><p>Füge einen Endpunkt GET /api/profile hinzu, der das angemeldete Mitglied zurückgibt, mit Tests.</p></div>
+                <div class="msg"><span class="who">Codex</span><p>GET /api/profile hinzugefügt. Gibt Name und E-Mail des Mitglieds zurück, mit 2 Tests. npm run test bestanden.</p></div>
+              </div>
+              <form class="ui-row session-reply" data-session-form>
+                <label class="visually-hidden" for="session-input">Codex antworten</label>
+                <textarea id="session-input" rows="2" data-session-input>Gib auch avatarUrl zurück</textarea>
+                <button type="submit" class="ui-button primary">Senden</button>
+              </form>
+            </section>
+          </div>
+
+          <p class="state-word">Integriert</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">Profilseite</span>
+                <span class="badge">frontend</span>
+                <span class="badge ok">Automatisch angenommen</span>
+                <span class="spacer"></span>
+                <span class="badge ok">Fertig</span>
+              </div>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Alle Prüfbefehle bestanden (2) · in den Integrations-Branch gemergt</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section why" id="why" aria-labelledby="why-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="why-title">Mehr als nur mehr Agenten</h2>
+            <p>Viele Tools lassen dich mehrere Agenten nebeneinander laufen. Pyloxa kümmert sich um das, was zwischen ihnen passiert: wer welchen Teil macht, woran du erkennst, dass er fertig ist, und wer übernimmt, wenn einer hängen bleibt.</p>
+            <p>Hier dieselbe Anfrage auf drei Arten: selbst zwischen CLIs wechseln, mehrere Agent-Terminals nebeneinander in einem Terminal-Multiplexer, und an Pyloxa übergeben.</p>
+          </div>
+          <table class="compare reveal">
+            <thead>
+              <tr>
+                <td></td>
+                <th scope="col">Selbst zwischen CLIs wechseln</th>
+                <th scope="col">Terminal-Multiplexer</th>
+                <th scope="col" class="ours">Mit Pyloxa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Arbeit aufteilen</th>
+                <td data-label="Selbst">Du entscheidest, welches Tool zu welchem Teil passt, und kopierst die Anfrage rüber.</td>
+                <td data-label="Multiplexer">Du legst fest, was der Agent in jedem Terminal macht; manche Tools lassen einen Agenten auch Helfer-Agenten starten.</td>
+                <td class="ours">Der Planer zerlegt die Anfrage in Phasen und Aufgaben und verteilt jede nach deinen Regeln, mit Angabe der Regel, die gegriffen hat.</td>
+              </tr>
+              <tr>
+                <th scope="row">Übergaben</th>
+                <td data-label="Selbst">Wenn ein Agent fertig ist, kopierst du API-Struktur und Dateipfade in den nächsten.</td>
+                <td data-label="Multiplexer">Agenten können sich Nachrichten schicken; was übergeben wird, entscheiden die Agenten.</td>
+                <td class="ours">Die nächste Phase bekommt ein Übergabepaket: die Ergebnisse, die bestandenen Prüfungen und worauf zu achten ist.</td>
+              </tr>
+              <tr>
+                <th scope="row">Fertig heißt</th>
+                <td data-label="Selbst">Der Agent sagt, er ist fertig, und du lässt die Tests laufen, um es herauszufinden.</td>
+                <td data-label="Multiplexer">Du siehst, welche Agenten arbeiten, fertig sind oder auf dich warten; ob das Ergebnis stimmt, musst du weiterhin selbst prüfen.</td>
+                <td class="ours">Eine Aufgabe ist fertig, wenn deine Prüfbefehle in ihrem eigenen Worktree bestehen. Schlagen sie fehl, bekommt der Agent einen automatischen Korrekturversuch. Du kannst auch einen anderen Agenten Tests dafür schreiben und den Planer ein Review machen lassen; das Urteil des Planers ist als KI-Review gekennzeichnet.</td>
+              </tr>
+              <tr>
+                <th scope="row">Kontingent leer</th>
+                <td data-label="Selbst">Du wechselst das Tool und erklärst noch mal, wo alles steht.</td>
+                <td data-label="Multiplexer">Das Terminal hält an und wartet; eine Übernahme musst du selbst organisieren.</td>
+                <td class="ours">Pyloxa schlägt den Fallback aus deinen Regeln vor; nach deiner Bestätigung geht es mit den Dateien weiter, die der erste Agent geändert hat.</td>
+              </tr>
+              <tr>
+                <th scope="row">Dein Repo</th>
+                <td data-label="Selbst">Der Agent bearbeitet direkt dein Arbeitsverzeichnis.</td>
+                <td data-label="Multiplexer">Hängt davon ab, wie du das Terminal öffnest; meist dein Arbeitsverzeichnis.</td>
+                <td class="ours">Jede Aufgabe arbeitet in ihrem eigenen git-Worktree, und ihre Änderungen werden gegen den erlaubten Schreibbereich geprüft. Mergen und Pushen bleibt deine Entscheidung.</td>
+              </tr>
+              <tr>
+                <th scope="row">Ideal für</th>
+                <td data-label="Selbst">Eins nach dem anderen.</td>
+                <td data-label="Multiplexer">Viele Terminals gleichzeitig im Blick behalten, Agenten weiterlaufen lassen, auch wenn du die App beendest, oder auf entfernten Rechnern arbeiten.</td>
+                <td class="ours">Eine Anfrage auf mehrere Agenten aufteilen und die Ergebnisse prüfen, bevor sie gemergt werden.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+        <div class="flow-col">
+          <h2 class="section-head reveal" id="how-title"><span>So funktioniert’s</span></h2>
+
+          <figure class="demo reveal">
+            <div class="frame">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Bildschirmaufnahme: Anfrage eingeben, der Planer schlägt einen Plan vor, Claude Code und Codex übernehmen nach der Freigabe je einen Teil, die Prüfungen bestehen und das Ergebnis wird gemergt">
+                <source src="../assets/video/en/flow.webm" type="video/webm" />
+              </video>
+            </div>
+            <figcaption>Eine echte Aufnahme: eine Anfrage, ein Plan vom Planer, Claude Code und Codex teilen sich die Arbeit, die Prüfungen bestehen, dann der Merge. Wartezeiten auf die Agenten sind herausgeschnitten.</figcaption>
+          </figure>
+
+          <div class="exchange reveal">
+            <p class="say">Zuerst sagst du, was du willst.</p>
+            <div class="call">
+              <div data-ui class="ui-row">Baue eine Profilseite für Mitglieder, auf der sie Nickname und Avatar ändern können. Das Backend braucht eine API und Doku.</div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="2576" height="1840" alt="Pyloxa zeigt die Antwort des Planers und einen Plan mit drei Phasen, dessen Aufgaben Claude Code zugewiesen sind" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange reveal">
+            <p class="say">Dann gibst du den Plan frei.</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Freigeben und starten</button> <span class="ui-muted">Es arbeitet jeweils ein Agent, jeder in seinem eigenen git-Worktree.</span></div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img src="../assets/shots/en/plan-gates.png" alt="Ein Plan mit Aufgaben, die nach bestandenen Prüfbefehlen automatisch angenommen wurden, und einem bestandenen Phasen-Gate" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange final reveal">
+            <p class="say">Zum Schluss mergst du, was bestanden hat.</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">In aktuellen Branch mergen (main)</button></div>
+            </div>
+            <div class="response result" data-ui>
+              <div class="ui-row"><span class="ui-title">Ergebnis des ganzen Plans (5 Dateien)</span></div>
+              <ul class="files">
+                <li><span class="st">A</span>docs/api/profile.yaml</li>
+                <li><span class="st">A</span>server/src/routes/profile.ts</li>
+                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
+                <li><span class="st">A</span>test/profile.test.ts</li>
+                <li><span class="st">A</span>test/contract.test.ts</li>
+              </ul>
+              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>In main gemergt. Nichts wird gepusht, bis du es pushst.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section custom" id="custom" aria-labelledby="custom-title">
+        <div class="grid no-tabs" data-tabs>
+          <div class="custom-head reveal">
+            <h2 id="custom-title">Teil die Arbeit auf, wie du willst</h2>
+            <p>Welche Modelle, welche Arbeit an wen und wann Pyloxa anhalten und fragen soll: Das sind alles deine Einstellungen. Der Planer schlägt nur Pläne vor; ändern kann er nichts davon.</p>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Was du anpassen kannst" hidden>
+            <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">Agenten und Modelle</button>
+            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">Routing-Regeln</button>
+            <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">Phasen und Prüfungen</button>
+            <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">Wie viel automatisch</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-agents" aria-labelledby="tab-agents">
+            <div class="panel-copy">
+              <h3>Jeder Agent ist ein Profil, das du einrichtest</h3>
+              <p>Ein Profil legt CLI, Modell, Reasoning-Stufe und einen Rollen-Prompt fest, der jeder Aufgabe mitgegeben wird. Eine CLI kann mehrere haben, etwa „Claude Frontend“ und „Claude Doku“.</p>
+              <ul>
+                <li>Die Modellliste kommt direkt aus der CLI, die du installiert hast. Beim Reasoning siehst du die eigenen Werte jeder CLI (bei Claude Code <code>--effort</code>, bei Codex <code>model_reasoning_effort</code>) statt einer erfundenen gemeinsamen Skala.</li>
+                <li>Jedes Profil kann der Planer sein, der das Projekt liest und den Plan schreibt, und der Planer kann ein anderes Modell nutzen als die Agenten, die die Arbeit machen.</li>
+                <li>Profile speichern nur Einstellungen, niemals Zugangsdaten.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/agents.jpg" aria-label="Bildschirmaufnahme: ein Codex-Backend-Profil mit Modell, Reasoning-Stufe und Rollen-Prompt anlegen">
+                  <source src="../assets/video/en/agents.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
+            <div class="panel-copy">
+              <h3>Deine Regeln entscheiden, wer was macht</h3>
+              <p>Regeln greifen nach Phasentyp und Aufgabentyp, zum Beispiel „Backend-Arbeit in der Implementierungsphase geht an Codex Backend“. Jede Regel hat ein Hauptprofil und eine Fallback-Reihenfolge und gilt für alle Projekte oder nur für das aktuelle.</p>
+              <ul>
+                <li>Regeln werden von oben nach unten geprüft, und der erste vollständige Treffer gewinnt. Pyloxa warnt dich, wenn eine Regel eine andere verdeckt.</li>
+                <li>Die Regelsimulation ruft keinen Agenten auf und verbraucht kein Kontingent: Wähl eine Art Aufgabe und sieh, wer sie bekommt und warum.</li>
+                <li>Wenn nichts passt, fragt Pyloxa dich in der Planvorschau oder hält an, je nachdem, was du einstellst. Es wählt nie zufällig einen Agenten.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/rules.jpg" aria-label="Bildschirmaufnahme: eine Regel „Backend an Codex“ mit Fallback anlegen und sie dann mit der Regelsimulation prüfen">
+                  <source src="../assets/video/en/rules.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow">
+            <div class="panel-copy">
+              <h3>Jede Phase wird mit deinen Befehlen geprüft</h3>
+              <p>Der Planer legt Phasen passend zur Anfrage an, etwa Spezifikation, Schnittstellenvertrag, Implementierung und Tests. Vor der Freigabe kannst du eine Aufgabe neu zuweisen, ihre Anweisungen bearbeiten oder den Planer um eine Überarbeitung bitten.</p>
+              <ul>
+                <li>Prüfbefehle wie <code>npm run test</code> brauchen deine Freigabe, und du kannst sie vorher in einem temporären Worktree ausprobieren. Der Planer kann nur Befehle nutzen, die du freigegeben hast.</li>
+                <li>Jede fertige Aufgabe wird in ihrem eigenen Worktree geprüft; am Ende jeder Phase läuft das Gate noch einmal auf dem integrierten Ergebnis.</li>
+                <li>Ein Gate kann nach dem Bestehen von selbst weitergehen oder auf deine Freigabe warten.</li>
+                <li>Gib eine fertige Aufgabe zum Testen an einen anderen Agenten, zum Beispiel baut Codex und Claude Code schreibt die Tests. Der Tester darf nur Testdateien ändern, und Pyloxa führt deine Befehle auf dem Ergebnis erneut aus.</li>
+                <li>Der Planer kann fertige Arbeit reviewen, mit eigenem Modell und eigener Denktiefe. Sein Urteil ist als KI-Review gekennzeichnet, und eine Aufgabe, die dein Review verlangt, wartet trotzdem auf dich.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/commands.jpg" aria-label="Bildschirmaufnahme: das vorgeschlagene npm run test ausprobieren und als Prüfbefehl freigeben">
+                  <source src="../assets/video/en/commands.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-modes" aria-labelledby="tab-modes">
+            <div class="panel-copy">
+              <h3>Du entscheidest, wie viel du abgibst</h3>
+              <p>Der Routing-Modus legt fest, wann Pyloxa dich vorher fragt. In keinem Modus wird von selbst gepusht oder deployt.</p>
+              <ul>
+                <li>Planer und ausführende Agenten werden getrennt eingerichtet; geht einem ausführenden Agenten das Kontingent aus, ersetzt er nie den Planer.</li>
+                <li>Jede Aufgabe bekommt höchstens 3 automatische Versuche, und Pläne haben Grenzen für Aufgaben und Zeit, damit nichts endlos wiederholt wird.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="modes" data-ui>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Vorschlagen, dann fragen</span><span class="badge info">Standard</span><span class="spacer"></span><span class="badge">Kostenlos</span></div>
+                  <span class="ui-muted">Der Planer schlägt den Plan vor und wer welche Aufgabe macht; nichts startet, bevor du den Plan freigibst.</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Nur nach Einstellungen</span><span class="spacer"></span><span class="badge">Kostenlos</span></div>
+                  <span class="ui-muted">Startet sofort, wenn jede Aufgabe zu einer Regel passt; hält an, wenn nichts passt oder ein Profil nicht verfügbar ist.</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Automatisch in Grenzen</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                  <span class="ui-muted">Wählt und wiederholt innerhalb der Profile, Modelle und Anzahlen, die du erlaubst, und pausiert an jeder Grenze.</span>
+                </div>
+              </div>
+              <img class="still" src="../assets/shots/en/agents-page.png" width="1440" height="900" alt="Die Seite „Agents and Brain“: Planer, Routing-Modus und drei Profile mit ihren Modell- und Reasoning-Einstellungen" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section" id="skills" aria-labelledby="skills-title">
+        <div class="wrap grid">
+          <div class="skills-copy reveal">
+            <span class="dev-tag">In Entwicklung</span>
+            <h2 id="skills-title">Ein Satz Skills für alle Agenten</h2>
+            <p>Claude Code liest <code>~/.claude/skills</code>, Codex liest <code>~/.agents/skills</code>. Hältst du in beiden eine Kopie desselben Skills und änderst eine, veraltet die andere. Pyloxa verwaltet sie an einem Ort.</p>
+            <ol class="steps">
+              <li><strong>Bestand<span class="tier">Kostenlos</span></strong><span>Sieh, welche Skills jede CLI hat und welche gleich heißen, aber inhaltlich abweichen.</span></li>
+              <li><strong>Sync<span class="tier">Pro</span></strong><span>Nutze <code>~/.agents/skills</code> als Bibliothek und synchronisiere sie mit jeder CLI. Dateien, die du auf CLI-Seite geändert hast, werden nie ohne Nachfrage überschrieben.</span></li>
+              <li><strong>Zuweisen<span class="tier">Pro</span></strong><span>Wähl die Skills für jedes Projekt; Claude Code und Codex können sie auch pro Profil bekommen.</span></li>
+              <li><strong>Routing-Pakete<span class="tier">Pro</span></strong><span>Bündle Regeln, Skills, Phasen und Prüfbefehle zum Teilen. Beim Import siehst du jeden Eintrag zuerst, und deine bestehenden Regeln werden nie ersetzt.</span></li>
+            </ol>
+          </div>
+          <div class="skills-mock reveal">
+            <div data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Skills</span>
+                <span class="ui-muted">5 Skills · 1 abweichend</span>
+                <span class="spacer"></span>
+                <span class="ui-button primary" aria-hidden="true">Mit allen CLIs synchronisieren</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th scope="col">Name</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">Projekt shop</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>api-contract</td><td><span class="badge ok">Synchron</span></td><td><span class="badge ok">Synchron</span></td><td><span class="badge info">In Nutzung</span></td></tr>
+                  <tr><td>react-conventions</td><td><span class="badge ok">Synchron</span></td><td><span class="badge warn">Abweichend</span></td><td><span class="badge info">In Nutzung</span></td></tr>
+                  <tr><td>release-notes</td><td><span class="badge">Fehlt</span></td><td><span class="badge ok">Synchron</span></td><td><span class="badge">Nicht genutzt</span></td></tr>
+                  <tr><td>db-migration</td><td><span class="badge ok">Synchron</span></td><td><span class="badge ok">Synchron</span></td><td><span class="badge">Nicht genutzt</span></td></tr>
+                  <tr><td>test-writer</td><td><span class="badge ok">Synchron</span></td><td><span class="badge ok">Synchron</span></td><td><span class="badge info">In Nutzung</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="media-note">Mockup. Der Bestand ist seit 0.1.2 in der kostenlosen Version; Sync, Zuweisung und Routing-Pakete sind Pro und noch in Entwicklung.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="fallback section" aria-labelledby="fallback-title">
+        <div class="wrap grid">
+          <div class="fallback-copy reveal">
+            <h2 id="fallback-title">Wenn einem das Kontingent ausgeht</h2>
+            <p>Erreicht Codex mitten in einer Aufgabe sein Nutzungslimit, schickt Pyloxa ihm keine Arbeit mehr, zeigt, wann das Kontingent zurückgesetzt wird, und bietet den Fallback aus deiner Regel an. Du bestätigst, und Claude Code macht mit den Dateien weiter, die Codex schon geändert hat.</p>
+            <div class="figures">
+              <span>3 automatische Versuche pro Aufgabe</span>
+              <span>höchstens 2 Fallbacks</span>
+              <span>0 API-Kosten, die du nicht erlaubt hast</span>
+            </div>
+          </div>
+          <div class="fallback-shots reveal">
+            <img class="drift" src="../assets/shots/en/quota-task.png" alt="Eine Aufgabe, bei der Codex das Kontingent ausgegangen ist, mit einem Button, um Claude Code übernehmen zu lassen" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section class="bands" aria-label="Was Pyloxa für dich erledigt">
+        <div class="band c1">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b1">Lass meine Tests bei jeder Aufgabe laufen.</p><p class="consequence">npm run test läuft im eigenen Worktree jeder Aufgabe. Bestanden, und die Aufgabe wird für dich angenommen; fehlgeschlagen, und der Agent bekommt einen automatischen Korrekturversuch.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b1" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c2">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b2">Frag mich vor der nächsten Phase.</p><p class="consequence">Eine Phase besteht ihre Befehle auf der integrierten Version und wartet dann auf einen Klick von dir. Schaltest du das aus, gehen geprüfte Phasen von selbst weiter.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b2" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c3">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b3">Fass meine Zugangsdaten nie an.</p><p class="consequence">Pyloxa startet nur die CLIs, bei denen du angemeldet bist. Es liest, kopiert oder sendet nie deren Tokens, und dein Arbeitsverzeichnis wird nie gestasht oder zurückgesetzt.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b3" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c4">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b4">Antworte in meiner Sprache.</p><p class="consequence">Oberfläche und Antworten der Agenten auf <span lang="en">English</span>, <span lang="zh-Hant">繁體中文</span> oder <span lang="zh-Hans">简体中文</span>, getrennt wählbar.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="pricing-lede reveal">
+          <h2 id="pricing-title">Die kostenlose Version arbeitet mit dir an einem Projekt. Pro kümmert sich um alle.</h2>
+          <p>Die kostenlose Version deckt den ganzen Ablauf ab: planen, verteilen, prüfen, mergen. Pro übernimmt, was du sonst von Hand machen würdest: mehrere Projekte gleichzeitig, Entscheidungen innerhalb der Grenzen, die du setzt, Übernahmen bei leerem Kontingent und fertige Arbeit, die zum Testen an einen anderen Agenten geht.</p>
+        </div>
+        <table class="reveal">
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Pläne vergleichen</span></th>
+              <th scope="col">Kostenlos<span class="price">$0 <span class="period">ohne Konto</span></span></th>
+              <th scope="col" class="pro">Pro <span class="early">Frühbucher: US$49 pro Jahr</span><span class="price">US$79 <span class="period">pro Jahr; kündigst du, läuft Pro auf den Versionen weiter, die während deines Abos erschienen sind</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Projekte gleichzeitig</th>
+              <td>Ein Projekt zur Zeit; jederzeit wechselbar</td>
+              <td class="pro"><strong>Mehrere Projekte gleichzeitig</strong>, mit einer Inbox im Task-Center für alles, was auf dich wartet</td>
+            </tr>
+            <tr>
+              <th scope="row">Routing</th>
+              <td>Vorschlagen, dann fragen, oder nur nach deinen Einstellungen</td>
+              <td class="pro"><strong>Automatisch in Grenzen</strong>: wählt und wiederholt innerhalb der Agenten, Modelle und Anzahlen, die du erlaubst, und pausiert an jeder Grenze</td>
+            </tr>
+            <tr>
+              <th scope="row">Wenn das Kontingent ausgeht</th>
+              <td>Ein Fallback wird vorgeschlagen; du bestätigst jede Übernahme</td>
+              <td class="pro"><strong>Automatische Fallback-Kette</strong> mit Auslösern und Grenzen; mit deinem vorherigen OK Wechsel zur API-Abrechnung, wenn ein Abo aufgebraucht ist</td>
+            </tr>
+            <tr>
+              <th scope="row">Prüfungen und Tests</th>
+              <td>Prüfbefehle, Phasen-Gates, Planer-Review und Cross-Testing durch einen anderen Agenten, wenn du willst</td>
+              <td class="pro"><strong>Automatisches Cross-Testing</strong> nach Aufgabentyp oder Einschätzung des Planers; fehlgeschlagene Tests gehen zur Korrektur zurück</td>
+            </tr>
+            <tr>
+              <th scope="row">Kontingent-Planung</th>
+              <td>Aufgaben, die auf Kontingent warten, laufen nach dem Reset weiter</td>
+              <td class="pro">Projektpriorität, Kontingente pro Verbindung und Pläne, die zu einer festen Zeit oder zum nächsten Reset starten <span class="soon-tag">späteres Update</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Nutzung und Berichte</th>
+              <td>Nutzung pro Durchlauf</td>
+              <td class="pro">Nutzungs-Dashboard über alle Projekte, Budget-Reservierungen und Nutzungs- und Zeitberichte pro Projekt als Markdown oder CSV <span class="soon-tag">späteres Update</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Benachrichtigungen</th>
+              <td>Windows-Desktop-Benachrichtigungen</td>
+              <td class="pro">An deinen eigenen Telegram-Bot, Discord oder einen beliebigen Webhook <span class="soon-tag">späteres Update</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Skills</th>
+              <td>Bestand der Skills, die jede CLI sieht</td>
+              <td class="pro">Eine Skills-Bibliothek, mit jeder CLI synchronisiert, pro Projekt oder Profil zugewiesen und mit deinen Regeln als Routing-Pakete teilbar <span class="soon-tag">späteres Update</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Planer</th>
+              <td>Ein Planer, jederzeit wechselbar</td>
+              <td class="pro">Ein Ersatz-Planer, der die Planung übernimmt, wenn der Haupt-Planer nicht verfügbar ist <span class="soon-tag">späteres Update</span></td>
+            </tr>
+            <tr class="both">
+              <th scope="row">Beide Versionen</th>
+              <td colspan="2">Claude Code, Codex CLI und Gemini CLI (experimentell) · eigene Profile und Routing-Regeln · Prüfbefehle und Phasen-Gates · ein Worktree pro Aufgabe · Ausführung im Hintergrund und Fortsetzen unterbrochener Arbeit · Dateien, Diffs, git und Pull Requests</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Kostenlose Version herunterladen</a></td>
+              <td class="pro">
+              <span class="later" data-waitlist-soon>Die Frühbucher-Anmeldung öffnet bald.</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-table">Frühbucher: US$49 pro Jahr</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-table" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">Benachrichtige mich</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="de" />
+                <p class="waitlist-note">Es bleibt bei US$49, solange du abonniert bleibst. Eine E-Mail zum Start von Pro, verschickt über Buttondown. Abmelden jederzeit möglich.</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pricing-phone">
+          <div class="plan-block pro">
+            <h3>Pro <span class="early">Frühbucher: US$49 pro Jahr</span></h3>
+            <p class="price">US$79 <span class="period">pro Jahr; kündigst du, läuft Pro auf den Versionen weiter, die während deines Abos erschienen sind</span></p>
+            <p class="plan-sub">Zum Start</p>
+            <ul>
+              <li>Mehrere Projekte gleichzeitig, mit einer Inbox im Task-Center für alles, was auf dich wartet</li>
+              <li>Automatisch in Grenzen: wählt und wiederholt innerhalb der Agenten, Modelle und Anzahlen, die du erlaubst, und pausiert an jeder Grenze</li>
+              <li>Automatische Fallback-Kette mit Auslösern und Grenzen; mit deinem vorherigen OK Wechsel zur API-Abrechnung, wenn ein Abo aufgebraucht ist</li>
+              <li>Automatisches Cross-Testing nach Aufgabentyp oder Einschätzung des Planers; fehlgeschlagene Tests gehen zur Korrektur zurück</li>
+            </ul>
+            <p class="plan-sub">Spätere Updates</p>
+            <ul class="muted">
+              <li>Kontingent-Planung: Projektpriorität, Kontingente pro Verbindung und Pläne, die zu einer festen Zeit oder zum nächsten Reset starten</li>
+              <li>Nutzung und Berichte: Nutzungs-Dashboard über alle Projekte, Budget-Reservierungen und Nutzungs- und Zeitberichte pro Projekt als Markdown oder CSV</li>
+              <li>Benachrichtigungen: An deinen eigenen Telegram-Bot, Discord oder einen beliebigen Webhook</li>
+              <li>Skills: Eine Skills-Bibliothek, mit jeder CLI synchronisiert, pro Projekt oder Profil zugewiesen und mit deinen Regeln als Routing-Pakete teilbar</li>
+              <li>Planer: Ein Ersatz-Planer, der die Planung übernimmt, wenn der Haupt-Planer nicht verfügbar ist</li>
+            </ul>
+            <span class="later" data-waitlist-soon>Die Frühbucher-Anmeldung öffnet bald.</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-phone">Frühbucher: US$49 pro Jahr</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-phone" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">Benachrichtige mich</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="de" />
+                <p class="waitlist-note">Es bleibt bei US$49, solange du abonniert bleibst. Eine E-Mail zum Start von Pro, verschickt über Buttondown. Abmelden jederzeit möglich.</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+          </div>
+          <div class="plan-block">
+            <h3>Kostenlos</h3>
+            <p class="price">$0 <span class="period">ohne Konto</span></p>
+            <ul>
+              <li>Ein Projekt zur Zeit</li>
+              <li>Vorschlagen, dann fragen, oder nach deinen Einstellungen</li>
+              <li>Du bestätigst jede Übernahme bei leerem Kontingent</li>
+              <li>Planer-Review und Cross-Testing, wenn du willst</li>
+            </ul>
+            <p class="plan-sub">Beide Versionen</p>
+            <p class="plan-both">Claude Code, Codex CLI und Gemini CLI (experimentell) · eigene Profile und Routing-Regeln · Prüfbefehle und Phasen-Gates · ein Worktree pro Aufgabe · Ausführung im Hintergrund und Fortsetzen unterbrochener Arbeit · Dateien, Diffs, git und Pull Requests</p>
+            <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Kostenlose Version herunterladen</a>
+          </div>
+        </div>
+        <p class="pricing-note">Funktionen mit „späteres Update“ kommen nach dem Start von Pro, und Abonnenten bekommen sie, sobald sie erscheinen. Die kostenlose Version bleibt kostenlos, und alles rund um Sicherheit und Korrektheit ist darin enthalten.</p>
+      </section>
+
+      <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
+        <div class="grid">
+          <ul class="faq-list reveal">
+            <li class="faq-head"><h2 id="faq-title">Fragen</h2></li>
+            <li data-q class="is-open">
+              <h3 class="faq-q"><button type="button" aria-expanded="true">Was ist Pyloxa?</button></h3>
+              <div class="inline-answer"><p>Pyloxa ist eine Desktop-App für Windows 10 und 11, mit der KI-Coding-Agenten wie Claude Code und Codex CLI zusammenarbeiten. Du beschreibst die Arbeit einmal, der Planer zerlegt sie in Aufgaben und gibt jede nach deinen Routing-Regeln an eine CLI. Jede Aufgabe läuft in ihrem eigenen git-Worktree und wird mit deinen Prüfbefehlen geprüft, und du entscheidest, was gemergt wird. Geht einer CLI das Kontingent aus, übernimmt eine andere, sobald du bestätigst. Pyloxa nutzt deine eigenen Abos oder API-Keys. Die kostenlose Edition ist ein direkter Download; Pro kommt bald für US$79 pro Jahr und bringt mehrere Projekte gleichzeitig, Auto-Modus und automatischen Fallback.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Verlangt Pyloxa Geld für die KI-Nutzung?</button></h3>
+              <div class="inline-answer"><p>Nein. Pyloxa startet die offiziellen CLIs, die du schon eingerichtet hast (Claude Code, Codex CLI und experimentell Gemini CLI), daher zählt die Nutzung gegen dein eigenes Abo oder gegen deinen eigenen API-Key, wenn du einen wählst. Pyloxa verkauft nie einen KI-Dienst weiter und leitet auch keinen über sich um.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Was muss ich installieren?</button></h3>
+              <div class="inline-answer"><p>Windows 10 oder 11 (64-Bit), git und mindestens Claude Code oder Codex CLI, angemeldet. Gemini CLI ist optional und experimentell und braucht deinen eigenen kostenpflichtigen Gemini-API-Key. Mit mehr als einer CLI teilt der Standardablauf die Arbeit auf, und der Fallback wird nützlich. Hast du sie noch nicht? Beim ersten Start prüft der Einrichtungsassistent git und Node.js, installiert die CLIs nach deiner Bestätigung mit ihren offiziellen npm-Befehlen und führt dich durch Anmeldung und API-Keys.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Liest Pyloxa meine Zugangsdaten?</button></h3>
+              <div class="inline-answer"><p>Nie. Es prüft den Anmeldestatus mit dem eigenen Befehl jeder CLI und startet die CLI so, wie du es tun würdest. Tokens und Dateien mit Zugangsdaten werden nicht gelesen, kopiert oder gesendet.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Wird mein Code irgendwohin gesendet?</button></h3>
+              <div class="inline-answer"><p>Pyloxa selbst hat keinen Server und sammelt keine Telemetrie. Dein Code geht nur dorthin, wohin die CLIs ihn senden, unter den Bedingungen von Anthropic, OpenAI und Google. Pyloxa fragt beim Start und alle 12 Stunden bei GitHub die neueste Pyloxa-Version und den CLI-Kompatibilitätskatalog ab, ohne Projekt- oder Nutzungsdaten; das kannst du in den Einstellungen abschalten. Ist Codex angemeldet, fragt die Nutzungsanzeige außerdem alle 10 Minuten bei Codex CLI dein verbleibendes Kontingent ab; Codex holt es mit deiner eigenen Anmeldung von OpenAI und verbraucht dabei kein Kontingent, und wenn du die Nutzungsanzeige abschaltest, hört das auf. Nutzungsstatistiken werden auf deinem Computer berechnet und nie gesendet.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Kann ein Agent mein Repository kaputt machen?</button></h3>
+              <div class="inline-answer"><p>Agenten arbeiten in separaten git-Worktrees, getrennt von dem Arbeitsverzeichnis, in dem du arbeitest, und Pyloxa führt dort nie stash, reset oder checkout aus. Wenn eine Aufgabe fertig ist, werden ihre geänderten Dateien gegen den Schreibbereich geprüft, den der Plan erlaubt, und du kannst jede Datei in der eingebauten Diff-Ansicht durchsehen. Nichts wird gemergt oder gepusht, bevor du dich dafür entscheidest.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Warum warnt mich Windows bei der Installation?</button></h3>
+              <div class="inline-answer"><p>Der kostenlose Installer ist noch nicht code-signiert, daher meldet SmartScreen eventuell, dass dein PC geschützt wurde. Wähl „Weitere Informationen“ und dann „Trotzdem ausführen“. Du kannst vorher den SHA-256 des Installers mit dem auf der Release-Seite vergleichen.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Kann ich Modell und Reasoning-Stufe wählen?</button></h3>
+              <div class="inline-answer"><p>Ja. Jedes Profil hat eigene Modell- und Reasoning-Einstellungen, aufgelistet aus der CLI, die du installiert hast; lass sie leer, um die Standardwerte der CLI zu nutzen. Planer und ausführende Agenten können verschiedene Modelle nutzen.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Kann eine Art Aufgabe immer an denselben Agenten gehen?</button></h3>
+              <div class="inline-answer"><p>Ja. Schreib eine Routing-Regel wie „Arbeit in der Testphase geht an Claude Code“, für alle Projekte oder nur für dieses. Du kannst auch eine einzelne Aufgabe neu zuweisen, bevor du einen Plan freigibst. Neue Installationen starten mit einem Standardablauf: Claude Code für Frontend und Video, Codex für Backend und Bilder, Gemini für Texte und Doku. Das kannst du jederzeit ändern.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Was ist der Unterschied zu Tools, die Agent-Terminals nebeneinander anordnen?</button></h3>
+              <div class="inline-answer"><p>Terminal-Multiplexer bringen mehrere Agent-Terminals in ein Fenster, damit du siehst, welche arbeiten und welche auf dich warten; manche lassen Agenten weiterlaufen, auch wenn du die App beendest, oder erreichen entfernte Rechner. Pyloxa kümmert sich um das, was außerhalb der Terminals passiert: Der Planer zerlegt die Anfrage in Aufgaben, deine Regeln verteilen sie, deine Befehle prüfen die Ergebnisse, bei leerem Kontingent wird ein Fallback vorgeschlagen, und am Ende mergst du. Pyloxa arbeitet im Infobereich der Taskleiste weiter, wenn du das Fenster schließt, und durch einen Neustart unterbrochene Aufgaben lassen sich fortsetzen. Willst du jedes Terminal selbst im Blick behalten, passt ein Multiplexer; willst du eine Anfrage abgeben und geprüfte Ergebnisse zurückbekommen, passt Pyloxa.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Ich zahle schon für Claude oder ChatGPT. Warum nicht einfach die CLI im Terminal starten?</button></h3>
+              <div class="inline-answer"><p>Die CLI direkt zu starten ist völlig in Ordnung, und Pyloxa nutzt dieselbe CLI und dasselbe Abo. Der Unterschied liegt in drei Dingen: Geht das Kontingent aus, schlägt Pyloxa einen Fallback aus deinen Regeln vor, und nach deiner Bestätigung macht eine andere CLI mit den bereits geänderten Dateien weiter; sagt ein Agent, er sei fertig, zählt das erst, wenn deine Prüfbefehle bestehen; und Routing-Regeln sowie die Skills, die jede CLI sieht, liegen an einem Ort statt in den Einstellungen jeder einzelnen CLI.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Was ist der Unterschied zu den Subagents einer CLI?</button></h3>
+              <div class="inline-answer"><p>Subagents teilen Arbeit innerhalb einer CLI auf. Pyloxa teilt Arbeit über CLIs hinweg auf: Aufgaben können an verschiedene CLIs gehen, jede läuft in ihrem eigenen Worktree, deine Befehle prüfen die Ergebnisse, und eine andere CLI übernimmt, wenn einer das Kontingent ausgeht. Du kannst beides zusammen nutzen.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Unterstützt es Gemini oder andere Agenten?</button></h3>
+              <div class="inline-answer"><p>Seit 0.1.2 wird Gemini CLI als experimentelle Option mit deinem eigenen kostenpflichtigen Gemini-API-Key unterstützt. Anmeldung mit einem Google-Konto und AI-Pro- oder Ultra-Abos werden nicht unterstützt. Gemini kann Aufgaben wie Texte und Doku übernehmen, aber weder Planer sein noch die Arbeit eines anderen Agenten testen, und im unbeaufsichtigten Modus kann es Dateien bearbeiten, aber keine Befehle ausführen. Weitere Agenten werden geprüft.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Wann kommt die Skills-Verwaltung?</button></h3>
+              <div class="inline-answer"><p>Der Bestand ist seit 0.1.2 in der kostenlosen Version: Die Seite Skills listet die Skills, die jede CLI lesen kann, und markiert Skills, die gleich heißen, aber inhaltlich abweichen. Sync, Zuweisung pro Projekt oder Profil und Routing-Pakete sind Pro und noch in Entwicklung; den Termin findest du in den Release Notes.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Was bringt Pro?</button></h3>
+              <div class="inline-answer"><p>Mehrere Projekte gleichzeitig mit einer Inbox, automatischen Modus, automatisches Cross-Testing nach Aufgabentyp, eine automatische Fallback-Kette und später Kontingent-Planung und eine gemeinsame Skills-Bibliothek. Pro kostet US$79 pro Jahr. Kündigst du, läuft Pro auf jeder Version weiter, die während deines Abos erschienen ist. Hinterlass deine E-Mail in der Plantabelle für den Frühbucherpreis: US$49 pro Jahr, und es bleibt bei US$49, solange du abonniert bleibst. Die kostenlose Version bleibt kostenlos.</p></div>
+            </li>
+          </ul>
+          <div class="faq-pane" aria-live="polite">
+            <p>Pyloxa ist eine Desktop-App für Windows 10 und 11, mit der KI-Coding-Agenten wie Claude Code und Codex CLI zusammenarbeiten. Du beschreibst die Arbeit einmal, der Planer zerlegt sie in Aufgaben und gibt jede nach deinen Routing-Regeln an eine CLI. Jede Aufgabe läuft in ihrem eigenen git-Worktree und wird mit deinen Prüfbefehlen geprüft, und du entscheidest, was gemergt wird. Geht einer CLI das Kontingent aus, übernimmt eine andere, sobald du bestätigst. Pyloxa nutzt deine eigenen Abos oder API-Keys. Die kostenlose Edition ist ein direkter Download; Pro kommt bald für US$79 pro Jahr und bringt mehrere Projekte gleichzeitig, Auto-Modus und automatischen Fallback.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section name" id="name" aria-labelledby="name-title">
+        <div class="name-head reveal">
+          <h2 class="section-head" id="name-title">Woher der Name kommt</h2>
+          <p>Pyloxa besteht aus den Anfangsbuchstaben von sechs Wörtern, und das sind zufällig genau die sechs Dinge, die es für dich erledigt.</p>
+          <p class="name-hint">Zeig auf einen Buchstaben, um zu sehen, wofür er steht.</p>
+        </div>
+        <ol class="name-letters reveal">
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>P</span></span>
+              <span class="name-word" lang="en"><b>P</b>lan</span><span class="name-zh">Planen</span>
+              <p>Der Planer liest das Projekt und zerlegt deine Anfrage in Aufgaben.</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>Y</span></span>
+              <span class="name-word" lang="en"><b>Y</b>ield</span><span class="name-zh">Liefern</span>
+              <p>Nur Ergebnisse, die deine Prüfbefehle bestehen, kommen zu dir zurück.</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>L</span></span>
+              <span class="name-word" lang="en"><b>L</b>ead</span><span class="name-zh">Führen</span>
+              <p>Der Planer führt die Agenten durch den Plan und verteilt die Arbeit nach deinen Regeln.</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>O</span></span>
+              <span class="name-word" lang="en"><b>O</b>rchestrate</span><span class="name-zh">Koordinieren</span>
+              <p>Claude Code und Codex teilen sich die Arbeit und übernehmen, wenn einem das Kontingent ausgeht.</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>X</span></span>
+              <span class="name-word" lang="en">e<b>X</b>ecute</span><span class="name-zh">Ausführen</span>
+              <p>Jede Aufgabe läuft in ihrem eigenen git-Worktree, getrennt von deinem Arbeitsverzeichnis.</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>A</span></span>
+              <span class="name-word" lang="en"><b>A</b>gents</span><span class="name-zh">Deine Agenten</span>
+              <p>Die KI-Agenten, die du schon nutzt, mit deinen eigenen Abos.</p>
+            </li>
+        </ol>
+      </section>
+
+      <section class="close" aria-labelledby="close-title">
+        <div class="wrap grid">
+          <div class="close-copy reveal">
+            <h2 id="close-title">Sag es einmal.</h2>
+            <p>Installier Pyloxa, öffne einen Projektordner und beschreib, was erledigt werden soll. Der Planer liest zuerst das Projekt und fragt nach, bevor er etwas Großes plant.</p>
+            <p class="smartscreen">Der Installer ist noch nicht code-signiert; erscheint SmartScreen, wähl „Weitere Informationen“ und dann „Trotzdem ausführen“.</p>
+          </div>
+          <div class="starter reveal" data-ui>
+            <div class="ui-row">
+              <h3>Was soll erledigt werden?</h3>
+              <p class="ui-muted" style="margin-top: 4px">shop · main</p>
+            </div>
+            <div class="ui-row" style="display: grid; gap: 12px">
+              <textarea rows="3" aria-label="Was soll erledigt werden?">Füge eine Punkteseite für Mitglieder hinzu, mit API und Tests.</textarea>
+              <div class="seg" role="group" aria-label="Wer bekommt es">
+                <button type="button" aria-pressed="true" data-seg>An den Planer</button>
+                <button type="button" aria-pressed="false" data-seg>Direkt an Codex</button>
+              </div>
+            </div>
+            <div class="ui-row">
+              <a class="button download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Pyloxa für Windows herunterladen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="tiles">
+        <div class="tile statement">
+          <p>Eine Desktop-App, um mit mehreren KI-Agenten gleichzeitig zu arbeiten.</p>
+          <p class="maker">Entwickelt und gepflegt vom unabhängigen Entwickler <a href="https://github.com/eric861129">ChiYu-Huang</a>. Kontakt: <a href="mailto:support@pyloxa.com">support@pyloxa.com</a></p>
+          <p class="legal">© 2026 ChiYu-Huang. Kostenlose Version unter der <a href="../legal/EULA.txt">Lizenzvereinbarung</a>. <a href="../legal/THIRD_PARTY_NOTICES.txt">Hinweise zu Drittanbietern</a>. Pyloxa ist nicht mit Anthropic, OpenAI oder Google verbunden und wird von ihnen nicht unterstützt. Claude Code ist ein Produkt von Anthropic. Codex ist ein Produkt von OpenAI. Gemini ist ein Produkt von Google. Diese Website zählt Seitenaufrufe mit Cloudflare Web Analytics (ohne Cookies) und Google Analytics (Werbefunktionen aus; für Besucher in Europa nicht geladen). Mehr dazu in der <a href="../privacy/">Datenschutzerklärung</a>.</p>
+        </div>
+        <nav class="tile links" aria-label="Fußzeile">
+          <ul>
+            <li><a href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+            <li><a href="../changelog/">Changelog</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="../privacy/">Datenschutz</a></li>
+            <li><a href="mailto:support@pyloxa.com">Kontakt</a></li>
+            <li><details class="lang-menu"><summary><span class="lang-current">Deutsch</span><span class="visually-hidden"> — Sprache</span></summary><ul><li><a href="../" lang="en" hreflang="en">English</a></li><li><a href="../zh-TW/" lang="zh-Hant-TW" hreflang="zh-TW">繁體中文</a></li><li><a href="../zh-CN/" lang="zh-Hans-CN" hreflang="zh-CN">简体中文</a></li><li><a href="../ja/" lang="ja" hreflang="ja">日本語</a></li><li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li><li><a href="../es/" lang="es" hreflang="es">Español</a></li><li><a href="../pt-BR/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></li><li><a href="../de/" lang="de" hreflang="de" aria-current="true">Deutsch</a></li><li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li></ul></details></li>
+          </ul>
+        </nav>
+        <div class="tile system">
+          <p>Windows 10 und 11<br />64-Bit<br />Version 0.1.8</p>
+        </div>
+        <div class="tile issue">
+          <p>Problem gefunden?</p>
+          <a href="https://github.com/eric861129/Pyloxa-Releases/issues">Auf GitHub melden</a>
+        </div>
+        <div class="tile word"><span class="wordmark">Pyloxa</span></div>
+        <a class="tile go" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">
+          <span>Kostenlos herunterladen</span>
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M14 42 42 14M20 14h22v22" /></svg>
+        </a>
+      </div>
+    </footer>
+
+    <script type="application/json" id="copy">
+      {
+        "waitlist": {"sending": "Wird gesendet…", "done": "Fast geschafft. Schau in dein Postfach und bestätige deine E-Mail.", "failed": "Das hat nicht geklappt. Prüf deine Verbindung und versuch es noch mal."},
+        "session": {
+          "you": "Du",
+          "working": "Codex nimmt die Änderung vor…",
+          "running": "Läuft",
+          "waiting": "Wartet auf dich",
+          "answer": "avatarUrl zur Antwort hinzugefügt und die Tests aktualisiert. npm run test bestanden.",
+          "check": "npm run test bestanden · Durchlauf 2 · innerhalb des Schreibbereichs"
+        },
+        "router": {
+          "goesTo": "Geht an „{agent}“",
+          "fallback": "Fallback „{agent}“: {state}",
+          "available": "verfügbar, nicht ausgelöst",
+          "unavailable": "kein Kontingent mehr",
+          "noFallback": "Kein Fallback in dieser Regel",
+          "quotaTitle": "Kontingent von {agent} aufgebraucht (Reset gegen 18:00)",
+          "takeover": "{agent} übernehmen lassen",
+          "tookOverReason": "Kontingent von „{from}“ aufgebraucht; du hast bestätigt, dass „{agent}“ übernimmt",
+          "rules": {
+            "frontend": { "agent": "Claude Code", "fallback": "Codex", "reason": "Regel „Frontend an Claude Code“ greift" },
+            "backend": { "agent": "Codex", "fallback": "Claude Code", "reason": "Regel „Backend an Codex“ greift" },
+            "docs": { "agent": "Claude Code", "fallback": "", "reason": "Keine Regel greift; Standardroute wird genutzt" },
+            "testing": { "agent": "Claude Code", "fallback": "", "reason": "Keine Regel greift; Standardroute wird genutzt" }
+          }
+        }
+      }
+    </script>
+    <script src="../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

@@ -16,9 +16,6 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Noto+Sans+TC:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/site.css" />
     <style>
       .policy { max-width: 820px; padding-block: clamp(40px, 6vw, 96px); display: grid; gap: clamp(40px, 5vw, 64px); }
@@ -65,7 +62,7 @@
             <thead><tr><th scope="col">資料</th><th scope="col">誰會收到</th><th scope="col">用途</th></tr></thead>
             <tbody>
               <tr><td>官網的瀏覽與下載點擊</td><td>Cloudflare；Google（歐洲的訪客除外）</td><td>統計瀏覽與下載次數</td></tr>
-              <tr><td>開啟網頁時的 IP 位址</td><td>GitHub（網站主機）、Google（字型）</td><td>傳送網頁、維護網站安全</td></tr>
+              <tr><td>開啟網頁時的 IP 位址</td><td>GitHub（網站主機）</td><td>傳送網頁、維護網站安全</td></tr>
               <tr><td>你的 email（只在加入早鳥名單時）</td><td>Buttondown</td><td>Pro 推出時寄信通知你</td></tr>
               <tr><td>App 查詢新版本</td><td>GitHub</td><td>告訴你有新版本與 CLI 相容性資訊</td></tr>
               <tr><td>你的程式碼與提示內容</td><td>只有你使用的 CLI 所屬的 AI 供應商，以你自己的帳號送出</td><td>執行你的工作；我們不會收到</td></tr>
@@ -78,7 +75,7 @@
         <h2 id="website-title">官網</h2>
 
         <h3>網站主機與字型</h3>
-        <p>pyloxa.com 架在 GitHub Pages。你開啟網頁時，GitHub 會收到你的 IP 位址，並為了安全目的記錄下來，所有 GitHub Pages 網站的訪客都是如此。網站的字型從 Google Fonts 載入，所以 Google 傳送字型時也會收到你的 IP 位址與瀏覽器資訊，這個過程不使用 cookie。網域的 DNS 查詢由 Cloudflare 回應。</p>
+        <p>pyloxa.com 架在 GitHub Pages。你開啟網頁時，GitHub 會收到你的 IP 位址，並為了安全目的記錄下來，所有 GitHub Pages 網站的訪客都是如此。網站的字型由 pyloxa.com 自己提供，不會有字型服務收到你的 IP 位址。網域的 DNS 查詢由 Cloudflare 回應。</p>
 
         <h3>瀏覽統計</h3>
         <ul>
@@ -137,7 +134,7 @@
             <tbody>
               <tr><td>GitHub</td><td>網站主機、App 查詢新版本、問題回報</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a></td></tr>
               <tr><td>Cloudflare</td><td>DNS、Web Analytics</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
-              <tr><td>Google</td><td>Google Analytics、Google Fonts</td><td><a href="https://policies.google.com/privacy?hl=zh-TW">Google 隱私權政策</a></td></tr>
+              <tr><td>Google</td><td>Google Analytics</td><td><a href="https://policies.google.com/privacy?hl=zh-TW">Google 隱私權政策</a></td></tr>
               <tr><td>Buttondown</td><td>Pro 早鳥名單</td><td><a href="https://buttondown.com/legal/privacy">Buttondown Privacy Policy</a></td></tr>
             </tbody>
           </table>
@@ -150,7 +147,7 @@
         <p>如果你在歐洲經濟區、英國或瑞士，我們依據的是：</p>
         <ul>
           <li><strong>你的同意</strong>：早鳥名單，你確認 email 時同意。隨時可以取消訂閱來撤回同意。</li>
-          <li><strong>我們的正當利益</strong>：網站主機記錄、字型與 Cloudflare 不使用 cookie 的瀏覽統計，用於維護網站安全，並了解有多少人瀏覽與下載 Pyloxa。裝置時區在歐洲時，網頁不會載入 Google Analytics。</li>
+          <li><strong>我們的正當利益</strong>：網站主機記錄與 Cloudflare 不使用 cookie 的瀏覽統計，用於維護網站安全，並了解有多少人瀏覽與下載 Pyloxa。裝置時區在歐洲時，網頁不會載入 Google Analytics。</li>
         </ul>
       </section>
 

@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pyloxa｜Claude Code と Codex を併用・使い分ける無料 Windows アプリ</title>
+    <meta name="description" content="Claude Code と Codex を併用できる無料の Windows アプリ。AI コーディングエージェントにルールどおりタスクを振り分け、結果は自分のテストで検証。利用枠が尽きたら、確認のうえ別のエージェントが引き継ぎます。" />
+    <meta name="pyloxa:waitlist" content="https://buttondown.com/api/emails/embed-subscribe/pyloxa" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Pyloxa — Claude Code と Codex で作業を分担" />
+    <meta property="og:description" content="コーディングのタスクをルールに従って Claude Code か Codex に振り分け、結果を自分のテストで検証し、利用枠が尽きたらエージェントを切り替える無料の Windows アプリです。" />
+    <meta property="og:url" content="https://pyloxa.com/ja/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pyloxa：Claude Code と Codex を一緒に使う。各タスクの担当エージェントと、一致したルールが表示されたプラン。" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_TW" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pyloxa — Claude Code と Codex で作業を分担" />
+    <meta name="twitter:description" content="コーディングのタスクをルールに従って Claude Code か Codex に振り分け、結果を自分のテストで検証し、利用枠が尽きたらエージェントを切り替える無料の Windows アプリです。" />
+    <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta name="twitter:image:alt" content="Pyloxa：Claude Code と Codex を一緒に使う。各タスクの担当エージェントと、一致したルールが表示されたプラン。" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/ja/#software","name":"Pyloxa","url":"https://pyloxa.com/ja/","image":"https://pyloxa.com/assets/og-en.png","description":"コーディングのタスクをルールに従って Claude Code か Codex に振り分け、結果を自分のテストで検証し、利用枠が尽きたらエージェントを切り替える無料の Windows アプリです。","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.8","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"ja","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/ja/#faq","url":"https://pyloxa.com/ja/","inLanguage":"ja","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa は、Claude Code や Codex CLI などの AI コーディングエージェントを連携させる、Windows 10 / 11 向けのデスクトップアプリです。やりたいことを一度伝えると、ブレインがそれをタスクに分け、あなたの振り分けルールに従って各タスクを CLI に渡します。各タスクは専用の git worktree で実行され、あなたの検証コマンドで検証されます。何をマージするかはあなたが決めます。ある CLI の利用枠が尽きたら、確認のうえ別の CLI が引き継ぎます。Pyloxa はあなた自身のサブスクリプションまたは API キーを使います。無料版は直接ダウンロードできます。近日公開予定の Pro（年額 US$79）では、複数プロジェクトの同時実行、自動モード、自動フォールバックが加わります。"}},{"@type":"Question","name":"Pyloxa は AI の利用料金を請求しますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。Pyloxa は、すでにセットアップ済みの公式 CLI（Claude Code、Codex CLI、実験的に Gemini CLI）を実行するので、使用量はあなた自身のサブスクリプション、または選択した場合はあなた自身の API キーに計上されます。Pyloxa が AI サービスを再販したり、プロキシしたりすることはありません。"}},{"@type":"Question","name":"何をインストールする必要がありますか？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 または 11（64 ビット）、git、そしてサインイン済みの Claude Code か Codex CLI のどちらか 1 つ以上です。Gemini CLI は任意の実験的機能で、自分の有料 Gemini API キーが必要です。CLI が複数あれば、デフォルトのフローで作業を分担でき、フォールバックも役立ちます。まだ入っていなくても大丈夫です。初回起動時にセットアップウィザードが git と Node.js を確認し、あなたの確認後に公式の npm コマンドで CLI をインストールし、サインインと API キーの設定まで案内します。"}},{"@type":"Question","name":"Pyloxa は認証情報を読み取りますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ、決して読み取りません。サインイン状態は各 CLI 自身のコマンドで確認し、CLI はあなたが起動するのと同じ方法で起動します。トークンや認証情報ファイルを読み取ったり、コピーしたり、送信したりすることはありません。"}},{"@type":"Question","name":"コードはどこかに送信されますか？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 自体にはサーバーがなく、テレメトリも収集しません。コードが送られるのは CLI が送信する先だけで、Anthropic、OpenAI、Google の規約が適用されます。Pyloxa は起動時と 12 時間ごとに、最新の Pyloxa バージョンと CLI 互換性カタログを GitHub に問い合わせます。プロジェクトや使用状況のデータは含まれず、設定でオフにできます。Codex にサインインしている場合、使用量メーターも 10 分ごとに Codex CLI に残りの使用量を問い合わせます。Codex はあなた自身のサインインで OpenAI から取得し、利用枠は消費しません。使用量メーターをオフにすると問い合わせも止まります。使用統計はあなたのコンピューター上で計算され、送信されることはありません。"}},{"@type":"Question","name":"エージェントがリポジトリを壊すことはありますか？","acceptedAnswer":{"@type":"Answer","text":"エージェントは、あなたが編集中の作業ディレクトリとは別の git worktree で作業し、Pyloxa が作業ディレクトリを stash、reset、checkout することはありません。タスクが終わると、変更されたファイルがプランで許可された書き込み範囲内かを確認します。内蔵の差分ビューで 1 ファイルずつ確認することもできます。あなたが選ぶまで、何もマージやプッシュはされません。"}},{"@type":"Question","name":"インストール時に Windows が警告を表示するのはなぜですか？","acceptedAnswer":{"@type":"Answer","text":"無料版のインストーラーはまだコード署名されていないため、SmartScreen に「Windows によって PC が保護されました」と表示されることがあります。「詳細情報」を選び、「実行」を選んでください。事前に、インストーラーの SHA-256 をリリースページの値と照合することもできます。"}},{"@type":"Question","name":"モデルや推論レベルを選べますか？","acceptedAnswer":{"@type":"Answer","text":"はい。プロファイルごとにモデルと推論レベルを設定でき、選択肢はインストールした CLI から取得します。空欄にすると CLI のデフォルトを使います。ブレインと作業エージェントには別々のモデルを使えます。"}},{"@type":"Question","name":"特定の種類のタスクを、常に同じエージェントに任せられますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「テストフェーズの作業は Claude Code へ」のような振り分けルールを書き、すべてのプロジェクトか、このプロジェクトだけに適用します。プランを承認する前に、個別のタスクの割り当てを変えることもできます。新規インストール時はデフォルトのフローで始まります。フロントエンドと動画は Claude Code、バックエンドと画像は Codex、文章とドキュメントは Gemini です。いつでも変更できます。"}},{"@type":"Question","name":"エージェントのターミナルを並べるツールとは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"ターミナルマルチプレクサは、複数のエージェントのターミナルをひとつのウィンドウにまとめ、どれが作業中でどれがあなたを待っているかを見られるようにします。アプリを終了してもエージェントを動かし続けたり、リモートマシンにつないだりできるものもあります。Pyloxa が扱うのはターミナルの外で起きることです。ブレインが依頼をタスクに分け、あなたのルールが振り分け、あなたのコマンドが結果を検証し、利用枠が尽きたらフォールバックを提案し、最後にあなたがマージします。Pyloxa はウィンドウを閉じてもシステムトレイで動き続け、再起動で中断したタスクも再開できます。すべてのターミナルを自分で見ていたいならマルチプレクサが、依頼を渡して検証済みの結果を受け取りたいなら Pyloxa が向いています。"}},{"@type":"Question","name":"Claude や ChatGPT はすでに契約しています。ターミナルで CLI を直接動かすのではだめですか？","acceptedAnswer":{"@type":"Answer","text":"CLI を直接動かすのはまったく問題ありません。Pyloxa も同じ CLI と同じサブスクリプションを使います。違いは 3 つです。利用枠が尽きたとき、Pyloxa はルールからフォールバックを提案し、確認後は別の CLI がすでに変更されたファイルから作業を続けます。エージェントが「完了」と言っても、検証コマンドが成功するまでは完了とみなしません。そして、振り分けルールと各 CLI が参照できるスキルを、CLI ごとの設定ではなく 1 か所で扱えます。"}},{"@type":"Question","name":"CLI 自身のサブエージェントとは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"サブエージェントはひとつの CLI の中で作業を分けます。Pyloxa は CLI をまたいで作業を分けます。タスクを別々の CLI に渡し、それぞれ専用の worktree で実行し、あなたのコマンドで結果を検証し、ある CLI の利用枠が尽きたら別の CLI が引き継ぎます。両方を併用することもできます。"}},{"@type":"Question","name":"Gemini やほかのエージェントには対応していますか？","acceptedAnswer":{"@type":"Answer","text":"0.1.2 から、自分の有料 Gemini API キーを使う実験的なオプションとして Gemini CLI に対応しています。Google アカウントでのサインインや AI Pro / Ultra のサブスクリプションには対応していません。Gemini は文章やドキュメントなどのタスクを実行できますが、ブレインになったり、ほかのエージェントの作業をテストしたりはできません。また、無人モードではファイルの編集はできますが、コマンドは実行できません。ほかのエージェントは検討中です。"}},{"@type":"Question","name":"スキル管理はいつ利用できますか？","acceptedAnswer":{"@type":"Answer","text":"一覧は 0.1.2 から無料版に含まれています。Skills ページでは、各 CLI が読み込めるスキルを一覧表示し、名前が同じで内容が異なるスキルに印を付けます。同期、プロジェクトやプロファイルごとの割り当て、振り分けパックは Pro の機能で、現在開発中です。時期はリリースノートでお知らせします。"}},{"@type":"Question","name":"Pro では何が追加されますか？","acceptedAnswer":{"@type":"Answer","text":"ひとつの受信トレイで扱える複数プロジェクトの同時進行、自動モード、タスクの種類に応じた自動クロステスト、自動フォールバックチェーン、そして今後追加される利用枠のスケジューリングと共有スキルライブラリです。Pro は年額 US$79 です。解約しても、契約期間中にリリースされたすべてのバージョンで Pro は引き続き使えます。料金表にメールアドレスを登録すると早期割引価格の年額 US$49 になり、契約を続けている限り US$49 のままです。無料版はずっと無料です。"}}]}]}</script>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/ja/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://pyloxa.com/zh-CN/" />
+    <link rel="alternate" hreflang="ja" href="https://pyloxa.com/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://pyloxa.com/ko/" />
+    <link rel="alternate" hreflang="es" href="https://pyloxa.com/es/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://pyloxa.com/pt-BR/" />
+    <link rel="alternate" hreflang="de" href="https://pyloxa.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://pyloxa.com/fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">本文へスキップ</a>
+    <header class="wrap nav">
+      <a class="mark" href="./" aria-label="Pyloxa ホーム">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="#why">違い</a></li>
+        <li class="optional"><a href="#how">しくみ</a></li>
+        <li class="optional"><a href="#custom">カスタマイズ</a></li>
+        <li class="optional"><a href="#skills">Skills</a></li>
+        <li class="optional"><a href="#pricing">料金</a></li>
+        <li class="optional"><a href="#faq">よくある質問</a></li>
+        <li class="optional"><a href="../changelog/">更新履歴</a></li>
+        <li class="nav-lang"><details class="lang-menu in-nav"><summary><span class="lang-current">日本語</span><span class="visually-hidden"> — 言語</span></summary><ul><li><a href="../" lang="en" hreflang="en">English</a></li><li><a href="../zh-TW/" lang="zh-Hant-TW" hreflang="zh-TW">繁體中文</a></li><li><a href="../zh-CN/" lang="zh-Hans-CN" hreflang="zh-CN">简体中文</a></li><li><a href="../ja/" lang="ja" hreflang="ja" aria-current="true">日本語</a></li><li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li><li><a href="../es/" lang="es" hreflang="es">Español</a></li><li><a href="../pt-BR/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></li><li><a href="../de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li></ul></details></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">ダウンロード</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap grid">
+          <div class="hero-copy reveal">
+            <h1 id="hero-title">チャットはひとつ。<br />エージェントは複数。<span class="h1-sub">Claude Code と Codex に作業を分担させる Windows アプリ</span></h1>
+            <p class="lead">やりたいことを一度伝えるだけ。Pyloxa が計画を立て、各タスクをあなた自身のサブスクリプションで Claude Code か Codex に渡し、マージの前に結果を確認します。</p>
+            <div class="actions">
+              <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Windows 版をダウンロード</a>
+              <span class="meta">無料 · v0.1.8 · Windows 10 / 11</span><span class="meta app-lang">Pyloxa アプリ本体の表示言語は、現在、英語、繁体字中国語、簡体字中国語の 3 つです。</span>
+            </div>
+          </div>
+        </div>
+        <div class="stage" aria-label="振り分けを試す">
+          <div class="stage-inner">
+            <div class="router" data-ui data-router>
+              <div class="ui-row router-head">
+                <span class="ui-title">このタスクは誰に？</span>
+                <span class="badge info">振り分けルール</span>
+              </div>
+              <div class="ui-row fields">
+                <div>
+                  <label class="field-label" for="task-title">タスク</label>
+                  <input id="task-title" type="text" value="GET /api/profile エンドポイントをテスト付きで追加" />
+                </div>
+                <div>
+                  <span class="field-label" id="type-label">種類</span>
+                  <div class="seg" role="group" aria-labelledby="type-label">
+                    <button type="button" data-type="frontend" aria-pressed="false">フロントエンド</button>
+                    <button type="button" data-type="backend" aria-pressed="true">バックエンド</button>
+                    <button type="button" data-type="docs" aria-pressed="false">ドキュメント</button>
+                    <button type="button" data-type="testing" aria-pressed="false">テスト</button>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-row decision" aria-live="polite">
+                <span class="who"><span data-who>担当：「Codex」</span></span>
+                <span class="ui-muted" data-why>一致したルール：「バックエンドは Codex」</span>
+                <span class="ui-muted" data-fallback>フォールバック「Claude Code」：利用可能、未発動</span>
+              </div>
+              <div class="ui-row quota-switch">
+                <button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="quota-label" data-quota></button>
+                <span id="quota-label">Codex の利用枠切れ</span>
+              </div>
+              <div class="quota-box" data-quota-box hidden>
+                <span class="ui-title" data-quota-title>Codex の利用枠が上限に達しました（18:00 ごろリセット）</span>
+                <span class="ui-muted">あなたが確認すると、フォールバックが Codex の作業を引き継いで続けられます。</span>
+                <span><button type="button" class="ui-button primary" data-takeover>Claude Code に引き継ぐ</button></span>
+              </div>
+              <div class="quota-box" data-taken hidden>
+                <span class="check-line">Claude Code が引き継ぎ、Codex が変更したファイルから作業を続けています。</span>
+              </div>
+            </div>
+          </div>
+          <p class="stage-note">これは Pyloxa のルール例です。ルールは自分で書き、各タスクには一致したルールが表示されます。</p>
+        </div>
+      </section>
+
+      <section class="wrap section" aria-labelledby="states-title">
+        <div class="states reveal">
+          <h2 class="section-head" id="states-title">結果はすべて検証されます</h2>
+
+          <p class="state-word">作業中</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">プロフィール API</span>
+                <span class="badge">バックエンド</span>
+                <span class="badge warn">書き込み可</span>
+                <span class="spacer"></span>
+                <span class="badge info"><span class="spin" aria-hidden="true"></span>実行中</span>
+              </div>
+              <span class="ui-muted">Codex · 専用の worktree（ブランチ pyloxa/r_8f2k/t_api）で作業中</span>
+            </div>
+          </div>
+
+          <p class="state-word">検証済み</p>
+          <div class="state-row reply-demo" data-reply-demo>
+            <div class="task-row" data-ui data-task>
+              <div class="ui-row" data-pending>
+                <div class="top">
+                  <span class="ui-title">プロフィール API</span>
+                  <span class="badge">バックエンド</span>
+                  <span class="badge warn">書き込み可</span>
+                  <span class="spacer"></span>
+                  <span class="badge warn" data-status>あなたの確認待ち</span>
+                </div>
+                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test 成功 · 2 ファイル変更 · 書き込み範囲内</span></span>
+                <div class="actions">
+                  <button type="button" class="ui-button primary" data-accept>結果を承認</button>
+                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">セッションで返信</button>
+                </div>
+              </div>
+              <div class="ui-row" data-accepted hidden>
+                <div class="top">
+                  <span class="ui-title">プロフィール API</span>
+                  <span class="badge">バックエンド</span>
+                  <span class="spacer"></span>
+                  <span class="badge ok">完了</span>
+                </div>
+                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>承認して pyloxa/r_8f2k/integration にマージ済み</span>
+              </div>
+            </div>
+            <section class="session" id="session-demo" data-ui data-session hidden aria-label="セッション：プロフィール API">
+              <div class="ui-row session-head">
+                <span class="ui-title">プロフィール API</span>
+                <span class="ui-muted">Codex · Session</span>
+                <span class="spacer"></span>
+                <button type="button" class="session-close" data-session-close aria-label="セッションを閉じる">×</button>
+              </div>
+              <div class="ui-row session-log" data-session-log aria-live="polite">
+                <div class="msg brief"><span class="who">タスク</span><p>ログイン中のメンバーを返す GET /api/profile エンドポイントを、テスト付きで追加してください。</p></div>
+                <div class="msg"><span class="who">Codex</span><p>GET /api/profile を追加しました。メンバーの名前とメールアドレスを返し、テストを 2 件追加しています。npm run test は成功しました。</p></div>
+              </div>
+              <form class="ui-row session-reply" data-session-form>
+                <label class="visually-hidden" for="session-input">Codex に返信</label>
+                <textarea id="session-input" rows="2" data-session-input>avatarUrl も返してください</textarea>
+                <button type="submit" class="ui-button primary">送信</button>
+              </form>
+            </section>
+          </div>
+
+          <p class="state-word">統合済み</p>
+          <div class="state-row task-row" data-ui>
+            <div class="ui-row">
+              <div class="top">
+                <span class="ui-title">プロフィールページ</span>
+                <span class="badge">フロントエンド</span>
+                <span class="badge ok">自動承認</span>
+                <span class="spacer"></span>
+                <span class="badge ok">完了</span>
+              </div>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>検証コマンドがすべて成功（2 件）· 統合ブランチにマージ済み</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section why" id="why" aria-labelledby="why-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="why-title">エージェントを増やすだけではなく</h2>
+            <p>複数のエージェントを並べて動かせるツールはたくさんあります。Pyloxa が扱うのは、エージェントどうしの間で起きることです。誰がどの部分を担当するか、完了をどう確かめるか、行き詰まったときに誰が引き継ぐか。</p>
+            <p>同じ依頼を 3 通りの方法で比べます。自分で CLI を切り替える方法、ターミナルマルチプレクサで複数のエージェントのターミナルを並べる方法、そして Pyloxa に任せる方法です。</p>
+          </div>
+          <table class="compare reveal">
+            <thead>
+              <tr>
+                <td></td>
+                <th scope="col">自分で CLI を切り替える</th>
+                <th scope="col">ターミナルマルチプレクサ</th>
+                <th scope="col" class="ours">Pyloxa の場合</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">作業の分担</th>
+                <td data-label="自分で切り替え">どの部分にどのツールが合うかを自分で判断し、依頼を貼り付け直します。</td>
+                <td data-label="マルチプレクサ">各ターミナルのエージェントが何をするかは自分で決めます。ツールによっては、エージェントが補助のエージェントを起動できるものもあります。</td>
+                <td class="ours">ブレインが依頼をフェーズとタスクに分け、あなたのルールに従って振り分けます。どのルールに一致したかも表示します。</td>
+              </tr>
+              <tr>
+                <th scope="row">引き継ぎ</th>
+                <td data-label="自分で切り替え">あるエージェントが終わったら、API の形式やファイルパスを次のエージェントに貼り付けます。</td>
+                <td data-label="マルチプレクサ">エージェントどうしでメッセージを送り合えますが、何を引き継ぐかはエージェント次第です。</td>
+                <td class="ours">次のフェーズは引き継ぎパッケージを受け取ります。中身は結果、成功したチェック、注意点です。</td>
+              </tr>
+              <tr>
+                <th scope="row">完了の基準</th>
+                <td data-label="自分で切り替え">エージェントが「完了」と言い、あなたがテストを実行して確かめます。</td>
+                <td data-label="マルチプレクサ">どのエージェントが作業中か、完了したか、あなたを待っているかは見えます。結果が正しいかどうかは、やはり自分で確認します。</td>
+                <td class="ours">タスク専用の worktree で検証コマンドが成功したとき、タスクは完了です。失敗した場合は、エージェントが 1 回自動で修正します。別のエージェントにテストを書かせたり、ブレインにレビューさせたりもできます。ブレインの判定は AI レビューと表示されます。</td>
+              </tr>
+              <tr>
+                <th scope="row">利用枠が尽きたら</th>
+                <td data-label="自分で切り替え">ツールを切り替えて、どこまで進んだかをもう一度説明します。</td>
+                <td data-label="マルチプレクサ">そのターミナルは止まって待機します。引き継ぎの段取りは自分で行います。</td>
+                <td class="ours">Pyloxa があなたのルールからフォールバックを提案します。確認すると、最初のエージェントが変更したファイルから作業を続けます。</td>
+              </tr>
+              <tr>
+                <th scope="row">リポジトリ</th>
+                <td data-label="自分で切り替え">エージェントが作業ディレクトリを直接編集します。</td>
+                <td data-label="マルチプレクサ">ターミナルの開き方によります。たいていは作業ディレクトリです。</td>
+                <td class="ours">各タスクは専用の git worktree で作業し、変更が許可された書き込み範囲内かどうかを確認します。マージとプッシュはあなたが決めます。</td>
+              </tr>
+              <tr>
+                <th scope="row">向いている用途</th>
+                <td data-label="自分で切り替え">一度にひとつの作業。</td>
+                <td data-label="マルチプレクサ">多くのターミナルを同時に見ること、アプリを終了してもエージェントを動かし続けること、リモートマシンでの作業。</td>
+                <td class="ours">ひとつの依頼を複数のエージェントに分け、マージ前に結果を検証すること。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+        <div class="flow-col">
+          <h2 class="section-head reveal" id="how-title"><span>しくみ</span></h2>
+
+          <figure class="demo reveal">
+            <div class="frame">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="画面録画：依頼を入力すると、ブレインがプランを提案し、承認後に Claude Code と Codex がそれぞれ一部を担当し、チェックが成功して結果がマージされる">
+                <source src="../assets/video/en/flow.webm" type="video/webm" />
+              </video>
+            </div>
+            <figcaption>実際の画面録画です。ひとつの依頼、ブレインのプラン、Claude Code と Codex の分担、チェックの成功、マージまで。エージェントの作業を待つ時間はカットしています。</figcaption>
+          </figure>
+
+          <div class="exchange reveal">
+            <p class="say">まず、やりたいことを伝えます。</p>
+            <div class="call">
+              <div data-ui class="ui-row">メンバーがニックネームとアバターを編集できるプロフィールページを作ってください。バックエンドには API とドキュメントが必要です。</div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="2576" height="1840" alt="ブレインの返答と、タスクが Claude Code に割り当てられた 3 フェーズのプランを表示している Pyloxa" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange reveal">
+            <p class="say">次に、プランを承認します。</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">承認して開始</button> <span class="ui-muted">一度に動くエージェントはひとつで、それぞれ専用の git worktree で作業します。</span></div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img src="../assets/shots/en/plan-gates.png" alt="検証コマンドの成功後に自動承認されたタスクと、通過したフェーズゲートが表示されたプラン" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange final reveal">
+            <p class="say">最後に、成功したものをマージします。</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">現在のブランチ（main）にマージ</button></div>
+            </div>
+            <div class="response result" data-ui>
+              <div class="ui-row"><span class="ui-title">プラン全体の結果（5 ファイル）</span></div>
+              <ul class="files">
+                <li><span class="st">A</span>docs/api/profile.yaml</li>
+                <li><span class="st">A</span>server/src/routes/profile.ts</li>
+                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
+                <li><span class="st">A</span>test/profile.test.ts</li>
+                <li><span class="st">A</span>test/contract.test.ts</li>
+              </ul>
+              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>main にマージしました。あなたがプッシュするまで、何もプッシュされません。</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section custom" id="custom" aria-labelledby="custom-title">
+        <div class="grid no-tabs" data-tabs>
+          <div class="custom-head reveal">
+            <h2 id="custom-title">作業の分け方は自分で決める</h2>
+            <p>使うモデル、どの作業を誰に任せるか、Pyloxa がいつ止まって確認するか。これらはすべてあなたの設定です。ブレインはプランを提案するだけで、設定を変更することはできません。</p>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="カスタマイズできる項目" hidden>
+            <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">エージェントとモデル</button>
+            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">振り分けルール</button>
+            <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">フェーズとチェック</button>
+            <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">自動化の度合い</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-agents" aria-labelledby="tab-agents">
+            <div class="panel-copy">
+              <h3>エージェントはすべて、自分で設定するプロファイルです</h3>
+              <p>プロファイルでは、CLI、モデル、推論レベル、すべてのタスクに付け加えるロールプロンプトを選びます。ひとつの CLI に複数のプロファイルを作れます（例：「Claude フロントエンド」と「Claude ドキュメント」）。</p>
+              <ul>
+                <li>モデルの一覧は、インストールした CLI から直接取得します。推論レベルは共通の尺度に置き換えず、各 CLI の値（Claude Code の <code>--effort</code>、Codex の <code>model_reasoning_effort</code>）をそのまま表示します。</li>
+                <li>どのプロファイルも、プロジェクトを読んでプランを書くブレインにできます。ブレインには、作業するエージェントとは別のモデルを使えます。</li>
+                <li>プロファイルに保存するのは設定だけで、認証情報は保存しません。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/agents.jpg" aria-label="画面録画：モデル、推論レベル、ロールプロンプトを指定して Codex のバックエンド用プロファイルを追加する">
+                  <source src="../assets/video/en/agents.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
+            <div class="panel-copy">
+              <h3>誰が何をするかは、あなたのルールが決めます</h3>
+              <p>ルールはフェーズの種類とタスクの種類で照合します。たとえば「実装フェーズのバックエンド作業は Codex バックエンドへ」。各ルールにはメインのプロファイルとフォールバックの順番があり、すべてのプロジェクトか、現在のプロジェクトだけに適用できます。</p>
+              <ul>
+                <li>ルールは上から順に照合され、最初に完全一致したものが採用されます。あるルールが別のルールを隠してしまう場合は警告します。</li>
+                <li>ルールのシミュレーションはエージェントを呼び出さず、利用枠も使いません。タスクの種類を選ぶと、誰が担当するか、その理由がわかります。</li>
+                <li>どのルールにも一致しない場合は、設定に応じて、プランのプレビューで確認するか、停止します。エージェントを適当に選ぶことはありません。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/rules.jpg" aria-label="画面録画：フォールバック付きの「バックエンドは Codex」ルールを追加し、ルールのシミュレーションで確認する">
+                  <source src="../assets/video/en/rules.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow">
+            <div class="panel-copy">
+              <h3>各フェーズを、あなたのコマンドで検証します</h3>
+              <p>ブレインは依頼に合わせて、仕様、コントラクト、実装、テストなどのフェーズを組み立てます。承認する前に、タスクの割り当て変更、指示の編集、ブレインへの修正依頼ができます。</p>
+              <ul>
+                <li>検証コマンド（<code>npm run test</code> など）にはあなたの承認が必要で、先に一時的な worktree で試せます。ブレインが使えるのは承認済みのコマンドだけです。</li>
+                <li>完了したタスクはそれぞれ専用の worktree で検証し、各フェーズの終わりには、統合した結果に対してゲートをもう一度実行します。</li>
+                <li>ゲートは、通過したら自動で次へ進めることも、あなたの承認を待つこともできます。</li>
+                <li>完了したタスクを別のエージェントに渡してテストさせられます。たとえば Codex が実装し、Claude Code がテストを書きます。テスト担当が変更できるのはテストファイルだけで、Pyloxa は結果に対してあなたのコマンドを再実行します。</li>
+                <li>ブレインは、独自のモデルと思考レベルで完了した作業をレビューできます。判定は AI レビューと表示され、あなたのレビューが必要なタスクは引き続きあなたを待ちます。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="frame">
+                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/commands.jpg" aria-label="画面録画：提案された npm run test を試し、検証コマンドとして承認する">
+                  <source src="../assets/video/en/commands.webm" type="video/webm" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-modes" aria-labelledby="tab-modes">
+            <div class="panel-copy">
+              <h3>どこまで任せるかは、あなたが決めます</h3>
+              <p>振り分けモードは、Pyloxa がいつ先に確認するかを決めます。どのモードでも、プッシュとデプロイが勝手に行われることはありません。</p>
+              <ul>
+                <li>ブレインと作業エージェントは別々に設定します。作業エージェントの利用枠が尽きても、ブレインが置き換わることはありません。</li>
+                <li>各タスクの自動試行は最大 3 回で、プランにはタスク数と時間の上限があるため、際限なく再試行することはありません。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="modes" data-ui>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">提案してから確認</span><span class="badge info">デフォルト</span><span class="spacer"></span><span class="badge">無料</span></div>
+                  <span class="ui-muted">ブレインがプランと各タスクの担当を提案します。プランを承認するまで何も始まりません。</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">設定どおりにのみ実行</span><span class="spacer"></span><span class="badge">無料</span></div>
+                  <span class="ui-muted">すべてのタスクがルールに一致すればすぐに開始し、一致しないタスクがあるか、プロファイルが使えない場合は停止します。</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">許可した範囲で自動</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                  <span class="ui-muted">許可したプロファイル、モデル、回数の範囲で選択と再試行を行い、上限に達すると一時停止します。</span>
+                </div>
+              </div>
+              <img class="still" src="../assets/shots/en/agents-page.png" width="1440" height="900" alt="エージェントとブレインのページ：ブレイン、振り分けモード、モデルと推論の設定を持つ 3 つのプロファイル" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section" id="skills" aria-labelledby="skills-title">
+        <div class="wrap grid">
+          <div class="skills-copy reveal">
+            <span class="dev-tag">開発中</span>
+            <h2 id="skills-title">すべてのエージェントで使える、ひとつのスキルセット</h2>
+            <p>Claude Code は <code>~/.claude/skills</code> を、Codex は <code>~/.agents/skills</code> を読み込みます。同じスキルをそれぞれにコピーしておくと、片方を変えたときにもう片方が古くなります。Pyloxa はそれらを 1 か所で管理します。</p>
+            <ol class="steps">
+              <li><strong>一覧<span class="tier">無料</span></strong><span>各 CLI にどのスキルがあるか、名前は同じでも内容が異なるものはどれかを確認できます。</span></li>
+              <li><strong>同期<span class="tier">Pro</span></strong><span>ライブラリには <code>~/.agents/skills</code> を使い、すべての CLI に同期します。CLI 側で変更したファイルを、確認なしに上書きすることはありません。</span></li>
+              <li><strong>割り当て<span class="tier">Pro</span></strong><span>プロジェクトごとに使うスキルを選びます。Claude Code と Codex では、プロファイルごとに指定することもできます。</span></li>
+              <li><strong>振り分けパック<span class="tier">Pro</span></strong><span>ルール、スキル、フェーズ、検証コマンドをまとめて共有できます。インポート時は各項目を先に表示し、既存のルールを置き換えることはありません。</span></li>
+            </ol>
+          </div>
+          <div class="skills-mock reveal">
+            <div data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Skills</span>
+                <span class="ui-muted">スキル 5 件 · 1 件が不一致</span>
+                <span class="spacer"></span>
+                <span class="ui-button primary" aria-hidden="true">すべての CLI に同期</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th scope="col">名前</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">shop プロジェクト</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>api-contract</td><td><span class="badge ok">同期済み</span></td><td><span class="badge ok">同期済み</span></td><td><span class="badge info">使用中</span></td></tr>
+                  <tr><td>react-conventions</td><td><span class="badge ok">同期済み</span></td><td><span class="badge warn">不一致</span></td><td><span class="badge info">使用中</span></td></tr>
+                  <tr><td>release-notes</td><td><span class="badge">なし</span></td><td><span class="badge ok">同期済み</span></td><td><span class="badge">未使用</span></td></tr>
+                  <tr><td>db-migration</td><td><span class="badge ok">同期済み</span></td><td><span class="badge ok">同期済み</span></td><td><span class="badge">未使用</span></td></tr>
+                  <tr><td>test-writer</td><td><span class="badge ok">同期済み</span></td><td><span class="badge ok">同期済み</span></td><td><span class="badge info">使用中</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="media-note">モックアップです。一覧は 0.1.2 から無料版に含まれています。同期、割り当て、振り分けパックは Pro の機能で、現在開発中です。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="fallback section" aria-labelledby="fallback-title">
+        <div class="wrap grid">
+          <div class="fallback-copy reveal">
+            <h2 id="fallback-title">利用枠が尽きたとき</h2>
+            <p>タスクの途中で Codex が利用上限に達すると、Pyloxa は Codex への作業の送信を止め、利用枠がリセットされる時刻を表示し、あなたのルールにあるフォールバックを提案します。確認すると、Codex がすでに変更したファイルから Claude Code が作業を続けます。</p>
+            <div class="figures">
+              <span>タスクごとに自動試行 3 回</span>
+              <span>フォールバックは最大 2 回</span>
+              <span>許可していない API 料金は 0</span>
+            </div>
+          </div>
+          <div class="fallback-shots reveal">
+            <img class="drift" src="../assets/shots/en/quota-task.png" alt="Codex の利用枠が尽きたタスクと、Claude Code に引き継ぐボタン" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section class="bands" aria-label="Pyloxa が代わりにやること">
+        <div class="band c1">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b1">すべてのタスクでテストを実行する。</p><p class="consequence">npm run test は各タスク専用の worktree で実行されます。成功すればタスクは自動で承認され、失敗すればエージェントが 1 回自動で修正します。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b1" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c2">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b2">次のフェーズの前に確認する。</p><p class="consequence">フェーズは統合したバージョンでコマンドが成功したあと、あなたのワンクリックを待ちます。オフにすると、チェックを通過したフェーズは自動で次へ進みます。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b2" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c3">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b3">認証情報には決して触れない。</p><p class="consequence">Pyloxa が実行するのは、あなたがサインインした CLI だけです。CLI のトークンを読み取ったり、コピーしたり、送信したりすることはなく、作業ディレクトリを stash したり reset したりすることもありません。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b3" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c4">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b4">自分の言語で返信する。</p><p class="consequence">画面表示とエージェントの返答の言語は、<span lang="en">English</span>、<span lang="zh-Hant">繁體中文</span>、<span lang="zh-Hans">简体中文</span>からそれぞれ別に選べます。</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="pricing-lede reveal">
+          <h2 id="pricing-title">無料版はひとつのプロジェクトを一緒に進め、Pro はすべてのプロジェクトを見守ります。</h2>
+          <p>無料版でも、プラン作成、振り分け、検証、マージという流れ全体を使えます。Pro は、本来なら手作業でやることを引き受けます。複数プロジェクトの同時進行、設定した範囲内での判断、利用枠が尽きたときの引き継ぎ、完了した作業の別エージェントによるテストです。</p>
+        </div>
+        <table class="reveal">
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">プランの比較</span></th>
+              <th scope="col">無料版<span class="price">$0 <span class="period">アカウント不要</span></span></th>
+              <th scope="col" class="pro">Pro <span class="early">早期割引：年額 US$49</span><span class="price">US$79 <span class="period">/ 年。解約後も、支払い期間中にリリースされたバージョンでは Pro がそのまま使えます</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">同時に進めるプロジェクト</th>
+              <td>一度に作業するプロジェクトはひとつ。いつでも切り替え可能</td>
+              <td class="pro"><strong>複数のプロジェクトを同時に進行</strong>。あなたの対応を待つものはすべて、タスクセンターの受信トレイにまとまります</td>
+            </tr>
+            <tr>
+              <th scope="row">振り分け</th>
+              <td>提案してから確認、または設定どおりにのみ実行</td>
+              <td class="pro"><strong>許可した範囲で自動</strong>：許可したエージェント、モデル、回数の範囲で選択と再試行を行い、上限に達すると一時停止</td>
+            </tr>
+            <tr>
+              <th scope="row">利用枠が尽きたとき</th>
+              <td>フォールバックを提案し、引き継ぎは毎回あなたが確認</td>
+              <td class="pro"><strong>自動フォールバックチェーン</strong>：トリガーと上限を設定可能。事前に許可しておけば、サブスクリプションの利用枠が尽きたときに API 課金へ切り替え</td>
+            </tr>
+            <tr>
+              <th scope="row">検証とテスト</th>
+              <td>検証コマンド、フェーズゲート、ブレインレビュー、必要に応じた別エージェントによるクロステスト</td>
+              <td class="pro"><strong>自動クロステスト</strong>：タスクの種類やブレインの判断で実行し、失敗したテストは修正に戻す</td>
+            </tr>
+            <tr>
+              <th scope="row">利用枠のスケジューリング</th>
+              <td>利用枠を待つタスクはリセット後に再開</td>
+              <td class="pro">プロジェクトの優先度、接続ごとの利用枠、指定時刻や次のリセット時に開始するプランの予約 <span class="soon-tag">今後のアップデート</span></td>
+            </tr>
+            <tr>
+              <th scope="row">使用量とレポート</th>
+              <td>実行ごとの使用量</td>
+              <td class="pro">プロジェクト横断の使用量ダッシュボード、予算の確保、プロジェクトごとの使用量・作業時間レポート（Markdown または CSV） <span class="soon-tag">今後のアップデート</span></td>
+            </tr>
+            <tr>
+              <th scope="row">通知</th>
+              <td>Windows のデスクトップ通知</td>
+              <td class="pro">自分の Telegram bot、Discord、任意の webhook に送信 <span class="soon-tag">今後のアップデート</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Skills</th>
+              <td>各 CLI が参照できるスキルの一覧</td>
+              <td class="pro">ひとつのスキルライブラリをすべての CLI に同期し、プロジェクトやプロファイルごとに割り当て、ルールと一緒に振り分けパックとして共有 <span class="soon-tag">今後のアップデート</span></td>
+            </tr>
+            <tr>
+              <th scope="row">ブレイン</th>
+              <td>ブレインはひとつ。いつでも変更可能</td>
+              <td class="pro">メインのブレインが使えないときにプランニングを引き継ぐ予備のブレイン <span class="soon-tag">今後のアップデート</span></td>
+            </tr>
+            <tr class="both">
+              <th scope="row">両方に共通</th>
+              <td colspan="2">Claude Code、Codex CLI、Gemini CLI（実験的）· 独自のプロファイルと振り分けルール · 検証コマンドとフェーズゲート · タスクごとの worktree · バックグラウンド実行と中断した作業の再開 · ファイル、差分、git、プルリクエスト</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">無料版をダウンロード</a></td>
+              <td class="pro">
+              <span class="later" data-waitlist-soon>早期割引の登録はまもなく開始します。</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-table">早期割引：年額 US$49</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-table" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">通知を受け取る</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="ja" />
+                <p class="waitlist-note">契約を続けている限り、US$49 のままです。Pro のリリース時に Buttondown 経由でメールを 1 通お送りします。登録はいつでも解除できます。</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pricing-phone">
+          <div class="plan-block pro">
+            <h3>Pro <span class="early">早期割引：年額 US$49</span></h3>
+            <p class="price">US$79 <span class="period">/ 年。解約後も、支払い期間中にリリースされたバージョンでは Pro がそのまま使えます</span></p>
+            <p class="plan-sub">リリース時</p>
+            <ul>
+              <li>複数のプロジェクトを同時に進行。あなたの対応を待つものはすべて、タスクセンターの受信トレイにまとまります</li>
+              <li>許可した範囲で自動：許可したエージェント、モデル、回数の範囲で選択と再試行を行い、上限に達すると一時停止</li>
+              <li>自動フォールバックチェーン：トリガーと上限を設定可能。事前に許可しておけば、サブスクリプションの利用枠が尽きたときに API 課金へ切り替え</li>
+              <li>自動クロステスト：タスクの種類やブレインの判断で実行し、失敗したテストは修正に戻す</li>
+            </ul>
+            <p class="plan-sub">今後のアップデート</p>
+            <ul class="muted">
+              <li>利用枠のスケジューリング：プロジェクトの優先度、接続ごとの利用枠、指定時刻や次のリセット時に開始するプランの予約</li>
+              <li>使用量とレポート：プロジェクト横断の使用量ダッシュボード、予算の確保、プロジェクトごとの使用量・作業時間レポート（Markdown または CSV）</li>
+              <li>通知：自分の Telegram bot、Discord、任意の webhook に送信</li>
+              <li>Skills：ひとつのスキルライブラリをすべての CLI に同期し、プロジェクトやプロファイルごとに割り当て、ルールと一緒に振り分けパックとして共有</li>
+              <li>ブレイン：メインのブレインが使えないときにプランニングを引き継ぐ予備のブレイン</li>
+            </ul>
+            <span class="later" data-waitlist-soon>早期割引の登録はまもなく開始します。</span>
+              <form class="waitlist" data-waitlist method="post" hidden>
+                <label for="wl-email-phone">早期割引：年額 US$49</label>
+                <div class="waitlist-row">
+                  <input id="wl-email-phone" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  <button class="button" type="submit">通知を受け取る</button>
+                </div>
+                <input type="hidden" name="embed" value="1" />
+                <input type="hidden" name="tag" value="pro-early-bird" />
+                <input type="hidden" name="tag" value="ja" />
+                <p class="waitlist-note">契約を続けている限り、US$49 のままです。Pro のリリース時に Buttondown 経由でメールを 1 通お送りします。登録はいつでも解除できます。</p>
+                <p class="waitlist-status" role="status"></p>
+              </form>
+          </div>
+          <div class="plan-block">
+            <h3>無料版</h3>
+            <p class="price">$0 <span class="period">アカウント不要</span></p>
+            <ul>
+              <li>一度に作業するプロジェクトはひとつ</li>
+              <li>提案してから確認、または設定どおりに実行</li>
+              <li>利用枠が尽きたら、引き継ぎは毎回あなたが確認</li>
+              <li>必要に応じてブレインレビューとクロステスト</li>
+            </ul>
+            <p class="plan-sub">両方に共通</p>
+            <p class="plan-both">Claude Code、Codex CLI、Gemini CLI（実験的）· 独自のプロファイルと振り分けルール · 検証コマンドとフェーズゲート · タスクごとの worktree · バックグラウンド実行と中断した作業の再開 · ファイル、差分、git、プルリクエスト</p>
+            <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">無料版をダウンロード</a>
+          </div>
+        </div>
+        <p class="pricing-note">「今後のアップデート」と表示された機能は Pro のリリース後に追加され、契約者には公開されしだい提供されます。無料版はずっと無料で、安全性と正確性に関わる機能はすべて無料版に含まれています。</p>
+      </section>
+
+      <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
+        <div class="grid">
+          <ul class="faq-list reveal">
+            <li class="faq-head"><h2 id="faq-title">よくある質問</h2></li>
+            <li data-q class="is-open">
+              <h3 class="faq-q"><button type="button" aria-expanded="true">Pyloxa とは何ですか？</button></h3>
+              <div class="inline-answer"><p>Pyloxa は、Claude Code や Codex CLI などの AI コーディングエージェントを連携させる、Windows 10 / 11 向けのデスクトップアプリです。やりたいことを一度伝えると、ブレインがそれをタスクに分け、あなたの振り分けルールに従って各タスクを CLI に渡します。各タスクは専用の git worktree で実行され、あなたの検証コマンドで検証されます。何をマージするかはあなたが決めます。ある CLI の利用枠が尽きたら、確認のうえ別の CLI が引き継ぎます。Pyloxa はあなた自身のサブスクリプションまたは API キーを使います。無料版は直接ダウンロードできます。近日公開予定の Pro（年額 US$79）では、複数プロジェクトの同時実行、自動モード、自動フォールバックが加わります。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Pyloxa は AI の利用料金を請求しますか？</button></h3>
+              <div class="inline-answer"><p>いいえ。Pyloxa は、すでにセットアップ済みの公式 CLI（Claude Code、Codex CLI、実験的に Gemini CLI）を実行するので、使用量はあなた自身のサブスクリプション、または選択した場合はあなた自身の API キーに計上されます。Pyloxa が AI サービスを再販したり、プロキシしたりすることはありません。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">何をインストールする必要がありますか？</button></h3>
+              <div class="inline-answer"><p>Windows 10 または 11（64 ビット）、git、そしてサインイン済みの Claude Code か Codex CLI のどちらか 1 つ以上です。Gemini CLI は任意の実験的機能で、自分の有料 Gemini API キーが必要です。CLI が複数あれば、デフォルトのフローで作業を分担でき、フォールバックも役立ちます。まだ入っていなくても大丈夫です。初回起動時にセットアップウィザードが git と Node.js を確認し、あなたの確認後に公式の npm コマンドで CLI をインストールし、サインインと API キーの設定まで案内します。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Pyloxa は認証情報を読み取りますか？</button></h3>
+              <div class="inline-answer"><p>いいえ、決して読み取りません。サインイン状態は各 CLI 自身のコマンドで確認し、CLI はあなたが起動するのと同じ方法で起動します。トークンや認証情報ファイルを読み取ったり、コピーしたり、送信したりすることはありません。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">コードはどこかに送信されますか？</button></h3>
+              <div class="inline-answer"><p>Pyloxa 自体にはサーバーがなく、テレメトリも収集しません。コードが送られるのは CLI が送信する先だけで、Anthropic、OpenAI、Google の規約が適用されます。Pyloxa は起動時と 12 時間ごとに、最新の Pyloxa バージョンと CLI 互換性カタログを GitHub に問い合わせます。プロジェクトや使用状況のデータは含まれず、設定でオフにできます。Codex にサインインしている場合、使用量メーターも 10 分ごとに Codex CLI に残りの使用量を問い合わせます。Codex はあなた自身のサインインで OpenAI から取得し、利用枠は消費しません。使用量メーターをオフにすると問い合わせも止まります。使用統計はあなたのコンピューター上で計算され、送信されることはありません。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">エージェントがリポジトリを壊すことはありますか？</button></h3>
+              <div class="inline-answer"><p>エージェントは、あなたが編集中の作業ディレクトリとは別の git worktree で作業し、Pyloxa が作業ディレクトリを stash、reset、checkout することはありません。タスクが終わると、変更されたファイルがプランで許可された書き込み範囲内かを確認します。内蔵の差分ビューで 1 ファイルずつ確認することもできます。あなたが選ぶまで、何もマージやプッシュはされません。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">インストール時に Windows が警告を表示するのはなぜですか？</button></h3>
+              <div class="inline-answer"><p>無料版のインストーラーはまだコード署名されていないため、SmartScreen に「Windows によって PC が保護されました」と表示されることがあります。「詳細情報」を選び、「実行」を選んでください。事前に、インストーラーの SHA-256 をリリースページの値と照合することもできます。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">モデルや推論レベルを選べますか？</button></h3>
+              <div class="inline-answer"><p>はい。プロファイルごとにモデルと推論レベルを設定でき、選択肢はインストールした CLI から取得します。空欄にすると CLI のデフォルトを使います。ブレインと作業エージェントには別々のモデルを使えます。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">特定の種類のタスクを、常に同じエージェントに任せられますか？</button></h3>
+              <div class="inline-answer"><p>はい。「テストフェーズの作業は Claude Code へ」のような振り分けルールを書き、すべてのプロジェクトか、このプロジェクトだけに適用します。プランを承認する前に、個別のタスクの割り当てを変えることもできます。新規インストール時はデフォルトのフローで始まります。フロントエンドと動画は Claude Code、バックエンドと画像は Codex、文章とドキュメントは Gemini です。いつでも変更できます。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">エージェントのターミナルを並べるツールとは何が違いますか？</button></h3>
+              <div class="inline-answer"><p>ターミナルマルチプレクサは、複数のエージェントのターミナルをひとつのウィンドウにまとめ、どれが作業中でどれがあなたを待っているかを見られるようにします。アプリを終了してもエージェントを動かし続けたり、リモートマシンにつないだりできるものもあります。Pyloxa が扱うのはターミナルの外で起きることです。ブレインが依頼をタスクに分け、あなたのルールが振り分け、あなたのコマンドが結果を検証し、利用枠が尽きたらフォールバックを提案し、最後にあなたがマージします。Pyloxa はウィンドウを閉じてもシステムトレイで動き続け、再起動で中断したタスクも再開できます。すべてのターミナルを自分で見ていたいならマルチプレクサが、依頼を渡して検証済みの結果を受け取りたいなら Pyloxa が向いています。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Claude や ChatGPT はすでに契約しています。ターミナルで CLI を直接動かすのではだめですか？</button></h3>
+              <div class="inline-answer"><p>CLI を直接動かすのはまったく問題ありません。Pyloxa も同じ CLI と同じサブスクリプションを使います。違いは 3 つです。利用枠が尽きたとき、Pyloxa はルールからフォールバックを提案し、確認後は別の CLI がすでに変更されたファイルから作業を続けます。エージェントが「完了」と言っても、検証コマンドが成功するまでは完了とみなしません。そして、振り分けルールと各 CLI が参照できるスキルを、CLI ごとの設定ではなく 1 か所で扱えます。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">CLI 自身のサブエージェントとは何が違いますか？</button></h3>
+              <div class="inline-answer"><p>サブエージェントはひとつの CLI の中で作業を分けます。Pyloxa は CLI をまたいで作業を分けます。タスクを別々の CLI に渡し、それぞれ専用の worktree で実行し、あなたのコマンドで結果を検証し、ある CLI の利用枠が尽きたら別の CLI が引き継ぎます。両方を併用することもできます。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Gemini やほかのエージェントには対応していますか？</button></h3>
+              <div class="inline-answer"><p>0.1.2 から、自分の有料 Gemini API キーを使う実験的なオプションとして Gemini CLI に対応しています。Google アカウントでのサインインや AI Pro / Ultra のサブスクリプションには対応していません。Gemini は文章やドキュメントなどのタスクを実行できますが、ブレインになったり、ほかのエージェントの作業をテストしたりはできません。また、無人モードではファイルの編集はできますが、コマンドは実行できません。ほかのエージェントは検討中です。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">スキル管理はいつ利用できますか？</button></h3>
+              <div class="inline-answer"><p>一覧は 0.1.2 から無料版に含まれています。Skills ページでは、各 CLI が読み込めるスキルを一覧表示し、名前が同じで内容が異なるスキルに印を付けます。同期、プロジェクトやプロファイルごとの割り当て、振り分けパックは Pro の機能で、現在開発中です。時期はリリースノートでお知らせします。</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Pro では何が追加されますか？</button></h3>
+              <div class="inline-answer"><p>ひとつの受信トレイで扱える複数プロジェクトの同時進行、自動モード、タスクの種類に応じた自動クロステスト、自動フォールバックチェーン、そして今後追加される利用枠のスケジューリングと共有スキルライブラリです。Pro は年額 US$79 です。解約しても、契約期間中にリリースされたすべてのバージョンで Pro は引き続き使えます。料金表にメールアドレスを登録すると早期割引価格の年額 US$49 になり、契約を続けている限り US$49 のままです。無料版はずっと無料です。</p></div>
+            </li>
+          </ul>
+          <div class="faq-pane" aria-live="polite">
+            <p>Pyloxa は、Claude Code や Codex CLI などの AI コーディングエージェントを連携させる、Windows 10 / 11 向けのデスクトップアプリです。やりたいことを一度伝えると、ブレインがそれをタスクに分け、あなたの振り分けルールに従って各タスクを CLI に渡します。各タスクは専用の git worktree で実行され、あなたの検証コマンドで検証されます。何をマージするかはあなたが決めます。ある CLI の利用枠が尽きたら、確認のうえ別の CLI が引き継ぎます。Pyloxa はあなた自身のサブスクリプションまたは API キーを使います。無料版は直接ダウンロードできます。近日公開予定の Pro（年額 US$79）では、複数プロジェクトの同時実行、自動モード、自動フォールバックが加わります。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section name" id="name" aria-labelledby="name-title">
+        <div class="name-head reveal">
+          <h2 class="section-head" id="name-title">名前の由来</h2>
+          <p>Pyloxa は 6 つの英単語の頭文字からできています。それがちょうど、Pyloxa があなたのためにする 6 つのことです。</p>
+          <p class="name-hint">文字にポインターを合わせると、意味が表示されます。</p>
+        </div>
+        <ol class="name-letters reveal">
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>P</span></span>
+              <span class="name-word" lang="en"><b>P</b>lan</span><span class="name-zh">計画する</span>
+              <p>ブレインがプロジェクトを読み、依頼をタスクに分けます。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>Y</span></span>
+              <span class="name-word" lang="en"><b>Y</b>ield</span><span class="name-zh">成果を返す</span>
+              <p>あなたの検証コマンドを通過した結果だけが、あなたの元に届きます。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>L</span></span>
+              <span class="name-word" lang="en"><b>L</b>ead</span><span class="name-zh">導く</span>
+              <p>ブレインがプランに沿ってエージェントを導き、あなたのルールで作業を振り分けます。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>O</span></span>
+              <span class="name-word" lang="en"><b>O</b>rchestrate</span><span class="name-zh">連携させる</span>
+              <p>Claude Code と Codex が作業を分担し、どちらかの利用枠が尽きたらもう一方が引き継ぎます。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>X</span></span>
+              <span class="name-word" lang="en">e<b>X</b>ecute</span><span class="name-zh">実行する</span>
+              <p>各タスクは、作業ディレクトリから切り離された専用の git worktree で実行されます。</p>
+            </li>
+            <li tabindex="0">
+              <span class="name-letter" aria-hidden="true"><span>A</span></span>
+              <span class="name-word" lang="en"><b>A</b>gents</span><span class="name-zh">エージェント</span>
+              <p>すでに使っている AI エージェントを、あなた自身のサブスクリプションで。</p>
+            </li>
+        </ol>
+      </section>
+
+      <section class="close" aria-labelledby="close-title">
+        <div class="wrap grid">
+          <div class="close-copy reveal">
+            <h2 id="close-title">伝えるのは一度だけ。</h2>
+            <p>Pyloxa をインストールし、プロジェクトフォルダーを開いて、やりたいことを伝えてください。ブレインはまずプロジェクトを読み、大きな計画を立てる前には確認します。</p>
+            <p class="smartscreen">インストーラーはまだコード署名されていません。SmartScreen が表示されたら、「詳細情報」を選び、「実行」を選んでください。</p>
+          </div>
+          <div class="starter reveal" data-ui>
+            <div class="ui-row">
+              <h3>何を進めたいですか？</h3>
+              <p class="ui-muted" style="margin-top: 4px">shop · main</p>
+            </div>
+            <div class="ui-row" style="display: grid; gap: 12px">
+              <textarea rows="3" aria-label="何を進めたいですか？">メンバー向けのポイントページを、API とテスト付きで追加してください。</textarea>
+              <div class="seg" role="group" aria-label="担当">
+                <button type="button" aria-pressed="true" data-seg>ブレインへ</button>
+                <button type="button" aria-pressed="false" data-seg>Codex に直接</button>
+              </div>
+            </div>
+            <div class="ui-row">
+              <a class="button download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Windows 版 Pyloxa をダウンロード</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="tiles">
+        <div class="tile statement">
+          <p>複数の AI エージェントと同時に作業するためのデスクトップアプリ。</p>
+          <p class="maker">個人開発者 <a href="https://github.com/eric861129">ChiYu-Huang</a> が開発・保守しています。連絡先：<a href="mailto:support@pyloxa.com">support@pyloxa.com</a></p>
+          <p class="legal">© 2026 ChiYu-Huang. 無料版は<a href="../legal/EULA.txt">使用許諾契約</a>に基づいて提供されます。<a href="../legal/THIRD_PARTY_NOTICES.txt">サードパーティーに関する通知</a>。Pyloxa は Anthropic、OpenAI、Google とは提携しておらず、承認も受けていません。Claude Code は Anthropic の製品、Codex は OpenAI の製品、Gemini は Google の製品です。このサイトでは、Cloudflare Web Analytics（Cookie 不使用）と Google Analytics（広告機能はオフ、ヨーロッパからの訪問者には読み込みません）でページビューを計測しています。詳しくは<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</p>
+        </div>
+        <nav class="tile links" aria-label="フッター">
+          <ul>
+            <li><a href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">ダウンロード</a></li>
+            <li><a href="../changelog/">更新履歴</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+            <li><a href="../privacy/">プライバシー</a></li>
+            <li><a href="mailto:support@pyloxa.com">お問い合わせ</a></li>
+            <li><details class="lang-menu"><summary><span class="lang-current">日本語</span><span class="visually-hidden"> — 言語</span></summary><ul><li><a href="../" lang="en" hreflang="en">English</a></li><li><a href="../zh-TW/" lang="zh-Hant-TW" hreflang="zh-TW">繁體中文</a></li><li><a href="../zh-CN/" lang="zh-Hans-CN" hreflang="zh-CN">简体中文</a></li><li><a href="../ja/" lang="ja" hreflang="ja" aria-current="true">日本語</a></li><li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li><li><a href="../es/" lang="es" hreflang="es">Español</a></li><li><a href="../pt-BR/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></li><li><a href="../de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li></ul></details></li>
+          </ul>
+        </nav>
+        <div class="tile system">
+          <p>Windows 10 / 11<br />64 ビット<br />バージョン 0.1.8</p>
+        </div>
+        <div class="tile issue">
+          <p>問題を見つけましたか？</p>
+          <a href="https://github.com/eric861129/Pyloxa-Releases/issues">GitHub で報告する</a>
+        </div>
+        <div class="tile word"><span class="wordmark">Pyloxa</span></div>
+        <a class="tile go" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">
+          <span>無料でダウンロード</span>
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M14 42 42 14M20 14h22v22" /></svg>
+        </a>
+      </div>
+    </footer>
+
+    <script type="application/json" id="copy">
+      {
+        "waitlist": {"sending": "送信中…", "done": "あと少しです。受信トレイを開き、メールアドレスの確認を済ませてください。", "failed": "送信できませんでした。接続を確認して、もう一度お試しください。"},
+        "session": {
+          "you": "あなた",
+          "working": "Codex が変更しています…",
+          "running": "実行中",
+          "waiting": "あなたの確認待ち",
+          "answer": "レスポンスに avatarUrl を追加し、テストを更新しました。npm run test は成功しました。",
+          "check": "npm run test 成功 · 2 回目の実行 · 書き込み範囲内"
+        },
+        "router": {
+          "goesTo": "担当：「{agent}」",
+          "fallback": "フォールバック「{agent}」：{state}",
+          "available": "利用可能、未発動",
+          "unavailable": "利用枠切れ",
+          "noFallback": "このルールにはフォールバックがありません",
+          "quotaTitle": "{agent} の利用枠が上限に達しました（18:00 ごろリセット）",
+          "takeover": "{agent} に引き継ぐ",
+          "tookOverReason": "「{from}」の利用枠が尽きたため、あなたの確認を受けて「{agent}」が引き継ぎました",
+          "rules": {
+            "frontend": { "agent": "Claude Code", "fallback": "Codex", "reason": "一致したルール：「フロントエンドは Claude Code」" },
+            "backend": { "agent": "Codex", "fallback": "Claude Code", "reason": "一致したルール：「バックエンドは Codex」" },
+            "docs": { "agent": "Claude Code", "fallback": "", "reason": "一致するルールがないため、デフォルトの振り分けを使用" },
+            "testing": { "agent": "Claude Code", "fallback": "", "reason": "一致するルールがないため、デフォルトの振り分けを使用" }
+          }
+        }
+      }
+    </script>
+    <script src="../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>
