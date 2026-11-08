@@ -20,7 +20,7 @@ Pyloxa is made from the first letters of Plan, Yield, Lead, Orchestrate, eXecute
 ## Free and Pro
 
 - Free (US$0, no account): one project working at a time, routing rules, verification commands, phase gates, brain review, cross-testing on request, fallback proposals you confirm, desktop notifications, and an inventory of the skills each CLI can see. The free edition stays free.
-- Pro (coming soon, US$79 a year; early bird US$49 the first year, then US$59 a year): several projects at once with one task-center inbox, automatic routing within limits you set, an automatic fallback chain, and automatic cross-testing with failed tests sent back for a fix. Later updates add quota scheduling, a usage dashboard and reports, Telegram/Discord/webhook notifications, a synced skills library, and a backup brain. If you stop paying, Pro keeps working on versions released while you paid.
+- Pro (coming soon, US$79 a year; early bird US$49 a year, unchanged for as long as you stay subscribed): several projects at once with one task-center inbox, automatic routing within limits you set, an automatic fallback chain, and automatic cross-testing with failed tests sent back for a fix. Later updates add quota scheduling, a usage dashboard and reports, Telegram/Discord/webhook notifications, a synced skills library, and a backup brain. If you stop paying, Pro keeps working on versions released while you paid.
 
 ## Links
 
