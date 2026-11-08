@@ -63,6 +63,28 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">回報問題</a>
         </div>
       </div>
+      <article class="release" id="v0.1.8" aria-labelledby="h-v0.1.8">
+        <header>
+          <h2 id="h-v0.1.8"><a href="#v0.1.8">0.1.8</a></h2>
+          <p class="date"><time datetime="2026-11-08">發布於 2026-11-08</time></p>
+        </header>
+        <div class="body">
+<p>這次更新加入 Agent 額度一覽與所有 Agent 共用的記憶，並包含更多安全性修正。請從 0.1.7 以前的版本更新。</p>
+<h3>新功能</h3>
+<ul><li><strong>Agent 額度一覽。</strong> 標題列會顯示每個訂閱還剩多少：已用 70% 變黃，90% 或被限制時變紅。點開可以看每個視窗的已用比例、重置時間與今天的 token，「連線」頁的卡片也會顯示同樣的資訊。Claude Code 的數字來自它執行時自己的回報；Codex 的數字來自唯讀查詢（見下方「隱私」）。可以在「設定 → 外觀」關閉。</li><li><strong>共用記憶。</strong> 側欄新增「記憶」頁，保存給所有專案或單一專案的規則、偏好、決策與事實。Pyloxa 會把它們當成背景資訊（不是指令）帶進每個 Agent 的 prompt，每個 Session 也會顯示這次用了哪些記憶。你可以在大腦的回覆或工作 Session 按「記住」，也可以從各 CLI 自己的記憶檔挑選要匯入的項目（CLAUDE.md 與 rules、Claude 的自動記憶、Codex 的 AGENTS.md 與 memories、GEMINI.md）。看起來含有金鑰、token 或密碼的記憶會被拒收。記憶可以整個關閉，也可以只關閉某個專案。</li></ul>
+<h3>安全性修正</h3>
+<p>這些修正來自和 0.1.7 相同的安全審查，目前沒有收到任何一項被利用的回報。</p>
+<ul><li><strong>驗證命令拿不到你的金鑰。</strong> 驗證命令與準備命令會執行專案的 script，而 Agent 可以修改它們。這些命令不再拿到看起來像金鑰的環境變數，例如 <code>GITHUB_TOKEN</code>、<code>NPM_TOKEN</code> 或 AWS 的金鑰。某個命令真的需要時，在「驗證命令」頁該命令的環境變數寫成 <code>NAME=${NAME}</code>：命令執行時才從你的系統取值，值不會存在 Pyloxa。</li><li><strong>worktree 的指標被改過時停止。</strong> Agent 改了自己 worktree 的 <code>.git</code> 指標時，Pyloxa 會停止操作，不會在 Agent 的沙箱之外套用另一個 repo 的設定執行 git。</li><li><strong>執行紀錄遮罩金鑰。</strong> Agent 輸出與命令輸出裡看起來像金鑰或 token 的文字，會先遮罩再保存。</li><li><strong>介面更嚴格。</strong> Pyloxa 的視窗不能連到任何其他位址，除了通知、剪貼簿與本機字型，其他瀏覽器權限一律拒絕。</li><li><strong>相容性目錄只接受官方連結。</strong> CLI 相容性目錄裡的下載與更新說明連結必須指向官方網站，日期在未來的目錄不會被採用。</li><li><strong>Electron 45.2.3</strong>，包含 Chromium 最新的安全性修補。</li></ul>
+<h3>隱私</h3>
+<ul><li><strong>額度一覽：</strong> Codex 已安裝並以訂閱登入時，Pyloxa 開著的期間每 10 分鐘會請 Codex CLI 查詢剩餘額度；開 App、Codex 工作結束後與電腦從睡眠恢復時也會查。Codex 用你自己的登入向 OpenAI 取得數字，不消耗額度，Pyloxa 也不保存帳號資訊。在「設定 → 外觀」關閉額度一覽就不再查詢。Claude Code 的數字不需要額外的請求。</li><li><strong>共用記憶</strong>只存在你的電腦。記憶會帶進你使用的每個 Agent 的 prompt，所以從某個 CLI 的檔案匯入的記憶，也會送到其他 Agent 的供應商。請挑選要匯入的內容。</li></ul>
+<h3>升級</h3>
+<p>直接執行新的安裝檔覆蓋舊版即可。存在 <code>%APPDATA%\Pyloxa</code> 的執行紀錄、專案、設定與保存的 API Key 都會保留並升級。共用記憶需要新的資料庫版本，所以升級後不能再用 0.1.7 以前的版本開啟同一份資料。</p>
+<h3>已知限制</h3>
+<ul><li>只支援 Windows 10 與 11（64 位元）。</li><li>安裝檔沒有程式碼簽章，SmartScreen 可能跳出警告；請按「其他資訊」，再按「仍要執行」。</li><li>Pyloxa 本身不會自動更新。有新版本時 Pyloxa 會提示你。</li><li>Codex 透過 <code>codex exec</code> 在它的沙箱內執行。在 Windows 上，這個沙箱通常無法建置專案或安裝套件，所以 Codex 的成果以你的驗證命令驗收。</li><li>Gemini CLI 是實驗性支援：不能擔任大腦或交叉測試的測試者，在無人值守模式下也不能執行命令。</li><li>已測試 Claude Code 2.1.318、Codex CLI 0.166.0，以及 Gemini CLI 0.66.0 與 0.67.0。</li></ul>
+<h3>校驗碼</h3>
+<div class="table"><table><thead><tr><th scope="col">檔案</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.8.exe</code></td><td><code>fb9ef9dd592c263da03fc2143f45c7c926f3a47ad71a256556ab2d5294d39128</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.7" aria-labelledby="h-v0.1.7">
         <header>
           <h2 id="h-v0.1.7"><a href="#v0.1.7">0.1.7</a></h2>

@@ -50,7 +50,7 @@
       <div class="intro">
         <h1>Privacy Policy</h1>
         <p>This policy covers the pyloxa.com website and the Pyloxa desktop app (free version). The app has no server and sends nothing about your projects to us. The website counts visits, and keeps your email address only if you join the Pro early-bird list.</p>
-        <p class="updated">Last updated: November 6, 2026</p>
+        <p class="updated">Last updated: November 8, 2026</p>
       </div>
 
       <section id="who" aria-labelledby="who-title">
@@ -109,15 +109,16 @@
           <li><strong>Update check:</strong> at startup and every 12 hours, Pyloxa asks GitHub (<code>api.github.com</code>) for the latest Pyloxa release and the CLI compatibility catalog. Like any internet request, it reveals your IP address to GitHub; it also carries Pyloxa’s version number, but no project or usage data. Turn it off in Settings → Notifications and updates.</li>
           <li><strong>Installing or updating a CLI:</strong> only when you click and confirm, Pyloxa runs the official install command, which downloads from npm or from the CLI’s provider.</li>
           <li><strong>Git and GitHub:</strong> fetch, pull, push and pull requests happen only when you choose them, through your own git remotes and your own GitHub CLI sign-in.</li>
+          <li><strong>Usage meter (Codex):</strong> when Codex CLI is installed and signed in with a subscription, Pyloxa asks it for your remaining Codex usage every 10 minutes while Pyloxa is open, and also at startup, after Codex tasks and after your computer wakes. Codex gets the numbers from OpenAI with your own sign-in; this uses none of your quota, and Pyloxa keeps only the numbers on your computer. Turn off the usage meter in Settings → Appearance to stop these checks.</li>
           <li>Links in the app, such as the changelog, open in your web browser, where the website section above applies.</li>
         </ul>
 
         <h3>AI agents</h3>
-        <p>Pyloxa runs Claude Code, Codex CLI and Gemini CLI on your computer. Those tools send your prompts, your code and the files they read to Anthropic, OpenAI and Google under your own account or API key, and those providers’ terms and privacy policies apply. We never receive this content. Pyloxa does not read, copy or send the CLIs’ sign-in credentials. For Gemini CLI, Pyloxa uses a separate settings folder in which Gemini CLI’s usage statistics are turned off.</p>
+        <p>Pyloxa runs Claude Code, Codex CLI and Gemini CLI on your computer. Those tools send your prompts, your code and the files they read to Anthropic, OpenAI and Google under your own account or API key, and those providers’ terms and privacy policies apply. We never receive this content. Pyloxa does not read, copy or send the CLIs’ sign-in credentials. For Gemini CLI, Pyloxa uses a separate settings folder in which Gemini CLI’s usage statistics are turned off. Memories you keep in Pyloxa’s shared memory are added to the prompts of every agent you use, so they reach each of those providers.</p>
 
         <h3>Data stored on your computer</h3>
         <ul>
-          <li><code>%APPDATA%\Pyloxa</code> holds the projects you opened, conversations, plans, task records and logs, settings and usage statistics.</li>
+          <li><code>%APPDATA%\Pyloxa</code> holds the projects you opened, conversations, plans, task records and logs, shared memory, settings and usage statistics.</li>
           <li>API keys you add are encrypted with Windows secure storage and kept in the same folder. Pyloxa passes a key only to the CLI process that runs your task.</li>
           <li><code>%LOCALAPPDATA%\Pyloxa\worktrees</code> holds the git worktrees where agents work.</li>
           <li>Uninstalling Pyloxa keeps these folders so that you don’t lose your history. To remove everything, delete both folders after uninstalling, then run <code>git worktree prune</code> in your projects.</li>

@@ -63,6 +63,28 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">Report a problem</a>
         </div>
       </div>
+      <article class="release" id="v0.1.8" aria-labelledby="h-v0.1.8">
+        <header>
+          <h2 id="h-v0.1.8"><a href="#v0.1.8">0.1.8</a></h2>
+          <p class="date"><time datetime="2026-11-08">Released 2026-11-08</time></p>
+        </header>
+        <div class="body">
+<p>This update adds an agent usage meter and shared memory for all agents, and includes more security fixes. Please update from 0.1.7 or earlier.</p>
+<h3>New</h3>
+<ul><li><strong>Agent usage meter.</strong> The title bar shows how much of each subscription is left: yellow at 70% used, red at 90% or when you're limited. Click it to see each window's usage, its reset time and today's tokens. The cards on the Connections page show the same. Claude Code's numbers come from its own output when it runs; Codex's come from a read-only check (see Privacy). You can turn it off in <strong>Settings → Appearance</strong>.</li><li><strong>Shared memory.</strong> A new <strong>Memory</strong> page in the sidebar keeps rules, preferences, decisions and facts for all projects or for one project. Pyloxa adds them to each agent's prompt as background information, not as instructions, and each session shows which memories it used. You can choose <strong>Remember</strong> on a brain reply or a task session, and import items you pick from the CLIs' own memory files (CLAUDE.md and rules, Claude's auto memory, Codex's AGENTS.md and memories, GEMINI.md). Memories that look like they contain a key, token or password are refused. You can turn memory off entirely or for one project.</li></ul>
+<h3>Security fixes</h3>
+<p>These come from the same security review as 0.1.7. We have no reports of any of them being used.</p>
+<ul><li><strong>Verification commands no longer get your keys.</strong> Verification and setup commands run your project's scripts, which agents can change. They no longer receive environment variables that look like keys, such as <code>GITHUB_TOKEN</code>, <code>NPM_TOKEN</code> or AWS keys. If a command really needs one, write <code>NAME=${NAME}</code> in that command's environment variables on the <strong>Verification commands</strong> page: the value is read from your system when the command runs and is never stored in Pyloxa.</li><li><strong>A changed worktree pointer stops Pyloxa.</strong> If an agent changes the <code>.git</code> pointer in its worktree, Pyloxa now stops instead of running git with another repository's settings outside the agent's sandbox.</li><li><strong>Keys are masked in run history.</strong> Text that looks like a key or token in agent output and command output is masked before it's saved.</li><li><strong>A tighter interface.</strong> Pyloxa's window can't connect to any other address, and it refuses browser permissions other than notifications, the clipboard and local fonts.</li><li><strong>Official links only in the compatibility catalog.</strong> Download and changelog links in the CLI compatibility catalog must point to the official sites, and a catalog dated in the future is ignored.</li><li><strong>Electron 45.2.3</strong>, with the latest Chromium security fixes.</li></ul>
+<h3>Privacy</h3>
+<ul><li><strong>Usage meter:</strong> when Codex is installed and signed in with a subscription, Pyloxa asks Codex CLI for your remaining usage every 10 minutes while Pyloxa is open, and also at startup, after Codex tasks and after your computer wakes. Codex gets the numbers from OpenAI with your own sign-in. This uses none of your quota, and Pyloxa doesn't store your account details. Turning off the usage meter in <strong>Settings → Appearance</strong> stops these checks. Claude Code's numbers need no extra request.</li><li><strong>Shared memory</strong> is stored only on your computer. Memories are added to the prompts of every agent you use, so a memory you import from one CLI's files also reaches the other agents' providers. Choose what you import.</li></ul>
+<h3>Upgrading</h3>
+<p>Run the new installer over the old version. Your run history, projects, settings and saved API keys in <code>%APPDATA%\Pyloxa</code> are kept and upgraded. Shared memory needs a new database version, so after upgrading you can't go back to 0.1.7 or earlier with the same data.</p>
+<h3>Known limitations</h3>
+<ul><li>Windows 10 and 11, 64-bit only.</li><li>The installer is not code-signed. SmartScreen may warn you; choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li><li>No automatic updates for Pyloxa itself. Pyloxa tells you when a new version is out.</li><li>Codex runs through <code>codex exec</code> in its sandbox. On Windows, the sandbox usually can't build projects or install packages, so Codex's results are checked by your verification commands.</li><li>Gemini CLI support is experimental. It can't act as the brain or as a cross-tester, and it can't run commands in unattended mode.</li><li>Tested with Claude Code 2.1.318, Codex CLI 0.166.0 and Gemini CLI 0.66.0 and 0.67.0.</li></ul>
+<h3>Checksum</h3>
+<div class="table"><table><thead><tr><th scope="col">File</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.8.exe</code></td><td><code>fb9ef9dd592c263da03fc2143f45c7c926f3a47ad71a256556ab2d5294d39128</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.7" aria-labelledby="h-v0.1.7">
         <header>
           <h2 id="h-v0.1.7"><a href="#v0.1.7">0.1.7</a></h2>
