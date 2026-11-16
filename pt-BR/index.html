@@ -289,6 +289,42 @@
         </div>
       </section>
 
+      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
+      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="supervised-title">Não é uma plataforma onde os agentes se viram sozinhos</h2>
+            <p>Algumas plataformas fazem os agentes funcionarem como uma empresa: eles se atribuem trabalho, acordam em horários marcados e rodam o dia todo. O Pyloxa segue outro caminho. Os agentes fazem só o que você pede, e os resultados são verificados antes de você decidir mesclá-los.</p>
+          </div>
+          <ul class="promises reveal">
+            <li>
+              <h3>Nativo no Windows</h3>
+              <p>Roda direto no Windows 10 e 11. Sem WSL, sem Docker e sem servidor ou banco de dados para configurar.</p>
+            </li>
+            <li>
+              <h3>O Pyloxa executa seus testes por conta própria</h3>
+              <p>Um agente dizer que terminou não conta. O Pyloxa executa no worktree da tarefa os comandos de verificação que você aprovou, e a tarefa termina quando eles passam.</p>
+            </li>
+            <li>
+              <h3>Sem pular permissões</h3>
+              <p>O Pyloxa nunca usa modos que pulam todas as verificações de permissão, como <code>--dangerously-skip-permissions</code>. Alterações fora do escopo de escrita permitido nunca são aceitas automaticamente.</p>
+            </li>
+            <li>
+              <h3>Seu login da CLI continua seu</h3>
+              <p>O Pyloxa nunca lê, copia ou envia credenciais das CLIs, e nunca compartilha sua assinatura com ninguém. Os agentes usam as CLIs oficiais em que você entrou.</p>
+            </li>
+            <li>
+              <h3>Nada de trabalho inventado</h3>
+              <p>Os agentes trabalham só no que você pediu e nunca criam trabalho por conta própria. Quando a cota acaba, o trabalho para ou passa para outro agente pelas suas regras.</p>
+            </li>
+            <li>
+              <h3>Um registro para o seu PR</h3>
+              <p>Ao abrir um PR, você pode anexar um registro de quais comandos realmente rodaram e de quem aceitou cada resultado.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>Como funciona</span></h2>

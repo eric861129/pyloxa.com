@@ -289,6 +289,42 @@
         </div>
       </section>
 
+      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
+      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="supervised-title">エージェントが勝手に動くプラットフォームではありません</h2>
+            <p>エージェントを会社のように動かし、自分で仕事を割り振り、決まった時間に起きて、一日中動かし続けるプラットフォームもあります。Pyloxa は別の道を選びました。エージェントは頼まれたことだけを行い、成果はチェックを通ってからマージするかどうかをあなたが決めます。</p>
+          </div>
+          <ul class="promises reveal">
+            <li>
+              <h3>Windows ネイティブ</h3>
+              <p>Windows 10・11 でそのまま動きます。WSL や Docker も、サーバーやデータベースの用意も不要です。</p>
+            </li>
+            <li>
+              <h3>テストは Pyloxa が自分で実行</h3>
+              <p>エージェントの「完了しました」だけでは完了になりません。承認した検証コマンドを Pyloxa がタスクの worktree で実行し、通過したら完了です。</p>
+            </li>
+            <li>
+              <h3>権限確認を飛ばさない</h3>
+              <p><code>--dangerously-skip-permissions</code> のように権限確認をすべて飛ばすモードは使いません。書き込み範囲の外を変更した場合は、自動で受け入れません。</p>
+            </li>
+            <li>
+              <h3>CLI のサインインに触れない</h3>
+              <p>CLI の認証情報を読み取ったり、コピーしたり、送信したりせず、サブスクリプションを他人と共有することもありません。エージェントは、あなたがサインインした公式 CLI で動きます。</p>
+            </li>
+            <li>
+              <h3>勝手に仕事を作らない</h3>
+              <p>エージェントは依頼された作業だけを行い、自分で新しい仕事を作りません。利用枠を使い切ったら止まるか、あなたのルールで交代します。</p>
+            </li>
+            <li>
+              <h3>PR に検証記録を添付</h3>
+              <p>PR を作るとき、実際に実行されたコマンドと、各成果を誰が受け入れたかの記録を添付できます。</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>しくみ</span></h2>

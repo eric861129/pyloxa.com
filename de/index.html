@@ -289,6 +289,42 @@
         </div>
       </section>
 
+      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
+      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="supervised-title">Keine Plattform, auf der Agents sich selbst steuern</h2>
+            <p>Manche Plattformen lassen Agents wie eine Firma arbeiten: Sie verteilen ihre Arbeit selbst, wachen nach Zeitplan auf und laufen rund um die Uhr. Pyloxa geht einen anderen Weg. Agents tun nur, worum du sie bittest, und ihre Ergebnisse werden geprüft, bevor du sie mergst.</p>
+          </div>
+          <ul class="promises reveal">
+            <li>
+              <h3>Nativ unter Windows</h3>
+              <p>Läuft direkt unter Windows 10 und 11. Kein WSL, kein Docker und kein Server oder keine Datenbank, die du einrichten musst.</p>
+            </li>
+            <li>
+              <h3>Pyloxa führt deine Tests selbst aus</h3>
+              <p>Wenn ein Agent sagt, er sei fertig, zählt das nicht. Pyloxa führt die Prüfbefehle, die du freigegeben hast, im Worktree der Aufgabe aus; die Aufgabe ist fertig, wenn sie bestehen.</p>
+            </li>
+            <li>
+              <h3>Keine umgangenen Berechtigungen</h3>
+              <p>Pyloxa nutzt nie Modi, die jede Berechtigungsprüfung überspringen, etwa <code>--dangerously-skip-permissions</code>. Änderungen außerhalb des erlaubten Schreibbereichs werden nie automatisch angenommen.</p>
+            </li>
+            <li>
+              <h3>Deine CLI-Anmeldung bleibt deine</h3>
+              <p>Pyloxa liest, kopiert oder sendet niemals CLI-Zugangsdaten und teilt dein Abo mit niemandem. Agents laufen über die offiziellen CLIs, bei denen du angemeldet bist.</p>
+            </li>
+            <li>
+              <h3>Keine selbst erfundene Arbeit</h3>
+              <p>Agents arbeiten nur an dem, worum du gebeten hast, und erzeugen nie eigene Aufgaben. Ist das Kontingent aufgebraucht, stoppt die Arbeit oder wird nach deinen Regeln übergeben.</p>
+            </li>
+            <li>
+              <h3>Ein Nachweis für deinen PR</h3>
+              <p>Beim Erstellen eines PR kannst du einen Nachweis anhängen, welche Befehle tatsächlich liefen und wer jedes Ergebnis angenommen hat.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>So funktioniert’s</span></h2>

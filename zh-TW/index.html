@@ -289,6 +289,42 @@
         </div>
       </section>
 
+      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
+      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="supervised-title">不是讓 Agent 自己運作的平台</h2>
+            <p>有些平台讓 Agent 像一家公司一樣自己排工作、定時醒來、全天運作。Pyloxa 走另一條路：Agent 只做你交代的事，成果經過檢查才交給你合併。</p>
+          </div>
+          <ul class="promises reveal">
+            <li>
+              <h3>Windows 原生</h3>
+              <p>直接在 Windows 10、11 執行，不需要 WSL、Docker，也不用架伺服器或資料庫。</p>
+            </li>
+            <li>
+              <h3>Pyloxa 自己跑你的測試</h3>
+              <p>Agent 說做完了不算數。你核准的驗證命令由 Pyloxa 在工作自己的 worktree 執行，通過才算完成。</p>
+            </li>
+            <li>
+              <h3>不略過權限確認</h3>
+              <p>不使用 <code>--dangerously-skip-permissions</code> 這類略過所有權限確認的模式；改到寫入範圍以外的檔案時，不會自動接受。</p>
+            </li>
+            <li>
+              <h3>不碰你的 CLI 登入</h3>
+              <p>不讀取、複製或傳送 CLI 的登入憑證，也不把你的訂閱分給別人用。Agent 用的是你自己登入的官方 CLI。</p>
+            </li>
+            <li>
+              <h3>不會自己找事做</h3>
+              <p>Agent 只做你提出的需求，不會自己生出新的工作；額度用完時停下來，或照你的規則換手。</p>
+            </li>
+            <li>
+              <h3>PR 附上驗證紀錄</h3>
+              <p>開 PR 時可以附上紀錄：哪些命令真的跑過、每個成果是誰接受的。</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>運作方式</span></h2>

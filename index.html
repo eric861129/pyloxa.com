@@ -290,6 +290,42 @@
         </div>
       </section>
 
+      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
+      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="supervised-title">Not a platform where agents run themselves</h2>
+            <p>Some platforms let agents run like a company: assigning their own work, waking up on a schedule and running around the clock. Pyloxa takes the other road. Agents do only what you ask, and their results are checked before you merge them.</p>
+          </div>
+          <ul class="promises reveal">
+            <li>
+              <h3>Native on Windows</h3>
+              <p>Runs directly on Windows 10 and 11. No WSL, no Docker, and no server or database to set up.</p>
+            </li>
+            <li>
+              <h3>Pyloxa runs your tests itself</h3>
+              <p>An agent saying it's done doesn't count. Pyloxa runs the verification commands you approved in the task's own worktree, and the task is done when they pass.</p>
+            </li>
+            <li>
+              <h3>No permission bypass</h3>
+              <p>Pyloxa never uses modes that skip every permission check, such as <code>--dangerously-skip-permissions</code>. Changes outside the allowed write scope are never accepted automatically.</p>
+            </li>
+            <li>
+              <h3>Your CLI sign-in stays yours</h3>
+              <p>Pyloxa never reads, copies or sends CLI credentials, and never shares your subscription with anyone. Agents run on the official CLIs you signed in to.</p>
+            </li>
+            <li>
+              <h3>No self-assigned work</h3>
+              <p>Agents work only on what you asked for and never create work of their own. When quota runs out, work stops or hands over by your rules.</p>
+            </li>
+            <li>
+              <h3>A record for your PR</h3>
+              <p>When you open a PR, you can attach a record of which commands actually ran and who accepted each result.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>How it works</span></h2>

@@ -2360,6 +2360,40 @@ html:lang(ko) {
   color: var(--accent-ink);
 }
 
+/* ---- 和讓 Agent 自己運作的平台不同（D-109） ---- */
+.promises {
+  grid-column: 5 / 13;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
+}
+
+.promises li {
+  padding: 20px 0 24px;
+  border-top: 1px solid #dddbe3;
+}
+
+.promises h3 {
+  font-size: var(--step-lead);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.promises p {
+  margin-top: 8px;
+  color: var(--soft);
+}
+
+/* 命令列參數不在連字號處斷行 */
+.promises code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
 /* ---- 客製化：四個分頁 ---- */
 .custom-head {
   grid-column: 1 / 8;
@@ -2630,6 +2664,7 @@ html:lang(ko) {
 
   .why-copy,
   .compare,
+  .promises,
   .custom-head,
   .panel-copy,
   .panel-media,
@@ -2645,6 +2680,10 @@ html:lang(ko) {
 
   .compare thead {
     display: none;
+  }
+
+  .promises {
+    grid-template-columns: 1fr;
   }
 
   .compare,

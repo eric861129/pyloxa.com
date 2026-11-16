@@ -289,6 +289,42 @@
         </div>
       </section>
 
+      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
+      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="supervised-title">Pas une plateforme où les agents se gèrent seuls</h2>
+            <p>Certaines plateformes font tourner les agents comme une entreprise : ils se répartissent le travail, se réveillent à heure fixe et tournent jour et nuit. Pyloxa prend un autre chemin. Les agents font seulement ce que vous demandez, et leurs résultats sont vérifiés avant que vous les fusionniez.</p>
+          </div>
+          <ul class="promises reveal">
+            <li>
+              <h3>Natif sous Windows</h3>
+              <p>Fonctionne directement sous Windows 10 et 11. Ni WSL, ni Docker, ni serveur ou base de données à installer.</p>
+            </li>
+            <li>
+              <h3>Pyloxa exécute lui-même vos tests</h3>
+              <p>Qu’un agent annonce avoir terminé ne compte pas. Pyloxa exécute dans le worktree de la tâche les commandes de vérification que vous avez approuvées, et la tâche est terminée quand elles réussissent.</p>
+            </li>
+            <li>
+              <h3>Pas de contournement des permissions</h3>
+              <p>Pyloxa n’utilise jamais de mode qui saute toutes les vérifications de permissions, comme <code>--dangerously-skip-permissions</code>. Les modifications hors du périmètre d’écriture autorisé ne sont jamais acceptées automatiquement.</p>
+            </li>
+            <li>
+              <h3>Votre connexion à la CLI reste la vôtre</h3>
+              <p>Pyloxa ne lit, ne copie ni n’envoie jamais les identifiants des CLI, et ne partage jamais votre abonnement. Les agents utilisent les CLI officielles auxquelles vous vous êtes connecté.</p>
+            </li>
+            <li>
+              <h3>Pas de travail inventé</h3>
+              <p>Les agents travaillent uniquement sur ce que vous avez demandé et ne créent jamais de tâches d’eux-mêmes. Quand le quota est épuisé, le travail s’arrête ou passe à un autre agent selon vos règles.</p>
+            </li>
+            <li>
+              <h3>Un historique pour votre PR</h3>
+              <p>En ouvrant une PR, vous pouvez y joindre un historique des commandes réellement exécutées et de qui a accepté chaque résultat.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>Fonctionnement</span></h2>

@@ -289,6 +289,42 @@
         </div>
       </section>
 
+      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
+      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
+        <div class="grid">
+          <div class="why-copy reveal">
+            <h2 id="supervised-title">No es una plataforma donde los agentes se manejan solos</h2>
+            <p>Algunas plataformas hacen que los agentes funcionen como una empresa: se asignan su propio trabajo, se despiertan con un horario y trabajan día y noche. Pyloxa toma otro camino. Los agentes hacen solo lo que pides, y sus resultados se comprueban antes de que decidas fusionarlos.</p>
+          </div>
+          <ul class="promises reveal">
+            <li>
+              <h3>Nativo en Windows</h3>
+              <p>Funciona directamente en Windows 10 y 11. Sin WSL, sin Docker y sin servidor ni base de datos que montar.</p>
+            </li>
+            <li>
+              <h3>Pyloxa ejecuta tus pruebas por su cuenta</h3>
+              <p>Que un agente diga que terminó no cuenta. Pyloxa ejecuta en el worktree de la tarea los comandos de verificación que aprobaste, y la tarea termina cuando pasan.</p>
+            </li>
+            <li>
+              <h3>Sin saltarse los permisos</h3>
+              <p>Pyloxa nunca usa modos que se saltan todas las comprobaciones de permisos, como <code>--dangerously-skip-permissions</code>. Los cambios fuera del alcance de escritura permitido nunca se aceptan automáticamente.</p>
+            </li>
+            <li>
+              <h3>Tu sesión de la CLI sigue siendo tuya</h3>
+              <p>Pyloxa nunca lee, copia ni envía las credenciales de las CLI, y nunca comparte tu suscripción con nadie. Los agentes usan las CLI oficiales en las que iniciaste sesión.</p>
+            </li>
+            <li>
+              <h3>Sin trabajo que se asignen solos</h3>
+              <p>Los agentes trabajan solo en lo que pediste y nunca crean trabajo por su cuenta. Cuando se agota la cuota, el trabajo se detiene o pasa a otro agente según tus reglas.</p>
+            </li>
+            <li>
+              <h3>Un registro para tu PR</h3>
+              <p>Al abrir un PR puedes añadir un registro de qué comandos se ejecutaron de verdad y quién aceptó cada resultado.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section class="wrap section flow" id="how" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>Cómo funciona</span></h2>
