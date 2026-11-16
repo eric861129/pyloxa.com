@@ -52,7 +52,7 @@
 
       <section id="who" aria-labelledby="who-title">
         <h2 id="who-title">Who we are</h2>
-        <p>Pyloxa is made by ChiYu-Huang, an individual developer in Taiwan (“we”, “us”). We decide how the personal data described here is used. Write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a> about anything in this policy.</p>
+        <p>Pyloxa is made by ChiYu-Huang, an individual developer in Taiwan (“we”, “us”). We decide how the personal data described here is used. Write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a> about anything in this policy. Email sent to that address is forwarded by Cloudflare Email Routing to our Gmail inbox, where it is kept so that we can answer and follow up; ask us if you want your messages deleted.</p>
       </section>
 
       <section id="summary" aria-labelledby="summary-title">
@@ -157,7 +157,7 @@
           <li><strong>Anonymous usage statistics:</strong> only if you turn them on, Pyloxa sends finished daily reports to <code>stats.pyloxa.com</code> about once an hour while it is open (see above).</li>
           <li><strong>Installing or updating a CLI:</strong> only when you click and confirm, Pyloxa runs the official install command, which downloads from npm or from the CLI’s provider.</li>
           <li><strong>Git and GitHub:</strong> fetch, pull, push and pull requests happen only when you choose them, through your own git remotes and your own GitHub CLI sign-in.</li>
-          <li><strong>Agent tools on your computer:</strong> while Pyloxa is open, it listens on random ports on <code>127.0.0.1</code> so the agents it starts can search and propose shared memories. Other computers can’t connect, and nothing is sent over the internet.</li>
+          <li><strong>Agent tools on your computer:</strong> while Pyloxa is open, it listens on random ports on <code>127.0.0.1</code> so the agents it starts can search and propose shared memories and, with Agent Teams (Pro), read the team’s tasks and send messages to each other. Other computers can’t connect, and nothing is sent over the internet by these tools. Messages between team members become part of the agents’ prompts, so they reach the providers of the agents you use.</li>
           <li><strong>No spell-check dictionary:</strong> spell-check is off, so Pyloxa doesn’t download a dictionary. Versions 0.1.0 to 0.1.8 downloaded an English spell-check dictionary from Google (<code>redirector.gvt1.com</code>) the first time they started, which this page didn’t list. That request revealed your IP address to Google and carried no other data. A dictionary that was already downloaded stays in <code>%APPDATA%\Pyloxa\Dictionaries</code>, and you can delete that folder.</li>
           <li>Links in the app, such as the changelog, open in your web browser, where the website section above applies.</li>
         </ul>
@@ -172,6 +172,7 @@
           <li>If you sign in, the license, the device ID and the device credential are encrypted with Windows secure storage in the same folder. While you are signed in, the account’s email address is also kept in that folder so that Settings can show it. Signing out deletes the license, the credential and the email address from this computer.</li>
           <li><code>%LOCALAPPDATA%\Pyloxa\worktrees</code> holds the git worktrees where agents work.</li>
           <li>Only if you choose to: <strong>Sync to CLIs</strong> writes a project’s rules and preferences into <code>AGENTS.md</code> and related files in that project, and the user-level option writes rules and preferences into a marked block in <code>~/.claude/CLAUDE.md</code>, <code>~/.codex/AGENTS.md</code> and <code>~/.gemini/GEMINI.md</code>, after backing up the originals to <code>%APPDATA%\Pyloxa\memory-backup</code>. The CLIs send what’s in these files to their providers when you use them.</li>
+          <li>Only if you choose to (Pro): <strong>Skills sync</strong> copies skills from Pyloxa’s library into the CLIs’ skills folders, such as <code>~/.claude/skills</code> and <code>~/.agents/skills</code>. A skill it would overwrite or remove is first moved to <code>%APPDATA%\Pyloxa\skills-backup</code>.</li>
           <li>Uninstalling Pyloxa keeps these folders so that you don’t lose your history. To remove everything, delete both folders after uninstalling, then run <code>git worktree prune</code> in your projects.</li>
         </ul>
 
@@ -187,8 +188,8 @@
             <thead><tr><th scope="col">Service</th><th scope="col">Used for</th><th scope="col">Privacy policy</th></tr></thead>
             <tbody>
               <tr><td>GitHub</td><td>Website hosting, the app’s update check, issue reports</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a></td></tr>
-              <tr><td>Cloudflare</td><td>DNS, Web Analytics, the account service and its database (only if you sign in), receiving the app’s anonymous usage statistics (only if you turn them on)</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
-              <tr><td>Google</td><td>Google Analytics</td><td><a href="https://policies.google.com/privacy">Google Privacy Policy</a></td></tr>
+              <tr><td>Cloudflare</td><td>DNS, Web Analytics, forwarding email sent to support@pyloxa.com, the account service and its database (only if you sign in), receiving the app’s anonymous usage statistics (only if you turn them on)</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
+              <tr><td>Google</td><td>Google Analytics, Gmail for email sent to support@pyloxa.com</td><td><a href="https://policies.google.com/privacy">Google Privacy Policy</a></td></tr>
               <tr><td>Buttondown</td><td>Pro early-bird list</td><td><a href="https://buttondown.com/legal/privacy">Buttondown Privacy Policy</a></td></tr>
               <tr><td>Resend</td><td>Sign-in codes, trial reminders and service notices for accounts</td><td><a href="https://resend.com/legal/privacy-policy">Resend Privacy Policy</a></td></tr>
               <tr><td>Polar</td><td>Payments as the merchant of record (only if you buy Pro)</td><td><a href="https://polar.sh/legal/privacy">Polar Privacy Policy</a></td></tr>
@@ -220,7 +221,7 @@
       <section id="other" aria-labelledby="other-title">
         <h2 id="other-title">Children, security and changes</h2>
         <ul>
-          <li>The website and the app are not meant for children. Please don’t join the early-bird list if you are under 16.</li>
+          <li>The website and the app are not meant for children. Please don’t join the early-bird list or sign in for the trial, the Pro preview or Pro if you are under 16.</li>
           <li>The website and the account service are served only over HTTPS. Only we can access the early-bird list and the account database. Sign-in codes, authorization codes and device credentials are stored only as hashes.</li>
           <li>When what we collect changes, we update this page and the date at the top before the change takes effect. Earlier versions of this page are in the site’s public <a href="https://github.com/eric861129/pyloxa.com">GitHub repository</a>.</li>
           <li>This policy is also available in <a href="../zh-TW/privacy/" lang="zh-Hant">Traditional Chinese</a>. If the two versions differ, the English version applies.</li>

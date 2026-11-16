@@ -52,7 +52,7 @@
 
       <section id="who" aria-labelledby="who-title">
         <h2 id="who-title">我們是誰</h2>
-        <p>Pyloxa 由台灣的個人開發者 ChiYu-Huang（下稱「我們」）製作，也由我們決定這裡所說的個人資料怎麼使用。對這份政策有任何問題，請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。</p>
+        <p>Pyloxa 由台灣的個人開發者 ChiYu-Huang（下稱「我們」）製作，也由我們決定這裡所說的個人資料怎麼使用。對這份政策有任何問題，請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。寄到這個地址的信，會由 Cloudflare Email Routing 轉到我們的 Gmail 信箱並保存在那裡，以便回覆與後續處理；想刪除你寄來的信，請告訴我們。</p>
       </section>
 
       <section id="summary" aria-labelledby="summary-title">
@@ -157,7 +157,7 @@
           <li><strong>匿名使用統計</strong>：只在你開啟時，Pyloxa 開著的期間大約每小時把整理好的每天報告送到 <code>stats.pyloxa.com</code>（見上方說明）。</li>
           <li><strong>安裝或更新 CLI</strong>：只有在你按下並確認後，Pyloxa 才會執行官方的安裝命令，從 npm 或 CLI 的供應商下載。</li>
           <li><strong>Git 與 GitHub</strong>：fetch、pull、push 與建立 PR 都只在你選擇時進行，使用你自己的 git 遠端與 GitHub CLI 登入。</li>
-          <li><strong>在你電腦上的 Agent 工具</strong>：Pyloxa 開著的期間，會在 <code>127.0.0.1</code> 的隨機埠等候連線，讓它啟動的 Agent 搜尋與提議共用記憶。其他電腦連不上，也不會透過網際網路傳送任何內容。</li>
+          <li><strong>在你電腦上的 Agent 工具</strong>：Pyloxa 開著的期間，會在 <code>127.0.0.1</code> 的隨機埠等候連線，讓它啟動的 Agent 搜尋與提議共用記憶；使用 Agent Teams（Pro）時，Agent 也透過它查看團隊的工作、互相傳訊息。其他電腦連不上，這些工具也不會透過網際網路傳送任何內容。團隊成員之間的訊息會成為 Agent 的 prompt，所以會送到你使用的 Agent 的供應商。</li>
           <li><strong>不下載拼字檢查字典</strong>：拼字檢查已關閉，Pyloxa 不會下載字典。0.1.0 到 0.1.8 第一次啟動時會從 Google（<code>redirector.gvt1.com</code>）下載英文拼字檢查字典，這一頁之前沒有列出。這項請求會讓 Google 知道你的 IP 位址，不含其他資料。已經下載的字典留在 <code>%APPDATA%\Pyloxa\Dictionaries</code>，可以直接刪除這個資料夾。</li>
           <li>App 裡的連結（例如改版紀錄）會在你的瀏覽器開啟，適用上面「官網」的說明。</li>
         </ul>
@@ -172,6 +172,7 @@
           <li>登入之後，授權、裝置 ID 與裝置憑證以 Windows 的安全儲存加密，存在同一個資料夾。登入期間，帳號的 email 也存在這個資料夾，讓設定頁顯示。登出會從這台電腦刪除授權、憑證與 email。</li>
           <li><code>%LOCALAPPDATA%\Pyloxa\worktrees</code>：Agent 工作用的 git worktree。</li>
           <li>只有你選擇時才會寫入：「同步到各 CLI」會把專案的規則與偏好寫進該專案的 <code>AGENTS.md</code> 與相關檔案；使用者層的選項會把規則與偏好寫進 <code>~/.claude/CLAUDE.md</code>、<code>~/.codex/AGENTS.md</code> 與 <code>~/.gemini/GEMINI.md</code> 裡標示好的區塊，並先把原本的檔案備份到 <code>%APPDATA%\Pyloxa\memory-backup</code>。各 CLI 在你使用時，會把這些檔案的內容送給它們的供應商。</li>
+          <li>只有你選擇時才會寫入（Pro）：「Skills 同步」會把 Pyloxa 庫裡的 Skills 複製到各 CLI 的 Skills 資料夾，例如 <code>~/.claude/skills</code> 與 <code>~/.agents/skills</code>；會被覆寫或移除的 Skill，先搬到 <code>%APPDATA%\Pyloxa\skills-backup</code>。</li>
           <li>解除安裝 Pyloxa 時會保留這些資料夾，以免你的紀錄不見。要全部移除，請在解除安裝後刪除這兩個資料夾，再到你的專案執行 <code>git worktree prune</code>。</li>
         </ul>
 
@@ -187,8 +188,8 @@
             <thead><tr><th scope="col">服務</th><th scope="col">用途</th><th scope="col">隱私權政策</th></tr></thead>
             <tbody>
               <tr><td>GitHub</td><td>網站主機、App 查詢新版本、問題回報</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a></td></tr>
-              <tr><td>Cloudflare</td><td>DNS、Web Analytics、帳號服務與它的資料庫（只在你登入時）、接收 App 的匿名使用統計（只在你開啟時）</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
-              <tr><td>Google</td><td>Google Analytics</td><td><a href="https://policies.google.com/privacy?hl=zh-TW">Google 隱私權政策</a></td></tr>
+              <tr><td>Cloudflare</td><td>DNS、Web Analytics、轉寄寄到 support@pyloxa.com 的信、帳號服務與它的資料庫（只在你登入時）、接收 App 的匿名使用統計（只在你開啟時）</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
+              <tr><td>Google</td><td>Google Analytics、收寄到 support@pyloxa.com 的信（Gmail）</td><td><a href="https://policies.google.com/privacy?hl=zh-TW">Google 隱私權政策</a></td></tr>
               <tr><td>Buttondown</td><td>Pro 早鳥名單</td><td><a href="https://buttondown.com/legal/privacy">Buttondown Privacy Policy</a></td></tr>
               <tr><td>Resend</td><td>帳號的驗證碼、試用提醒與服務通知信</td><td><a href="https://resend.com/legal/privacy-policy">Resend Privacy Policy</a></td></tr>
               <tr><td>Polar</td><td>以代理銷售商的身分收款（只在你購買 Pro 時）</td><td><a href="https://polar.sh/legal/privacy">Polar Privacy Policy</a></td></tr>
@@ -220,7 +221,7 @@
       <section id="other" aria-labelledby="other-title">
         <h2 id="other-title">兒童、安全與政策變更</h2>
         <ul>
-          <li>官網與 App 不是為兒童設計的。未滿 16 歲請不要加入早鳥名單。</li>
+          <li>官網與 App 不是為兒童設計的。未滿 16 歲請不要加入早鳥名單，也不要為了試用、Pro 預覽或 Pro 登入。</li>
           <li>官網與帳號服務只透過 HTTPS 提供。早鳥名單與帳號資料庫只有我們能存取。驗證碼、授權碼與裝置憑證只存雜湊。</li>
           <li>蒐集的資料有變動時，我們會在變動生效前更新這一頁與上方的日期。這一頁過去的版本都在官網公開的 <a href="https://github.com/eric861129/pyloxa.com">GitHub repo</a>。</li>
           <li>這份政策另有<a href="../../privacy/" lang="en">英文版</a>；兩者不一致時，以英文版為準。</li>

@@ -1050,6 +1050,16 @@ section {
   color: var(--accent-ink);
 }
 
+.pricing .preview-note {
+  display: block;
+  margin-top: 12px;
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+  max-width: 34ch;
+}
+
 .pricing thead th.pro .period {
   color: rgba(255, 255, 255, 0.82);
 }
