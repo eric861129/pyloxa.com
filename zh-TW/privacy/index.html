@@ -46,7 +46,7 @@
     <main id="main" class="wrap policy">
       <div class="intro">
         <h1>隱私權政策</h1>
-        <p>這份政策適用於 pyloxa.com 官網與 Pyloxa 桌面 App（免費版）。App 不會把你的專案、程式碼或提示內容傳給我們；只有在你開啟匿名使用統計時才會傳送使用資料，預設是關閉的。官網只統計瀏覽情形，你加入 Pro 早鳥名單時才會留下 email。</p>
+        <p>這份政策適用於 pyloxa.com 官網、Pyloxa 桌面 App 與 <code>account.pyloxa.com</code> 的 Pyloxa 帳號服務。免費版的 App 不需要帳號，不會把你的專案、程式碼或提示內容傳給我們；只有在你開啟匿名使用統計時才會傳送使用資料，預設是關閉的。你為了試用、Pro 預覽或 Pro 登入時，帳號只用來授權。官網只統計瀏覽情形，你加入 Pro 早鳥名單時才會留下 email。</p>
         <p class="updated">最後更新：2026 年 11 月 16 日</p>
       </div>
 
@@ -65,6 +65,9 @@
               <tr><td>開啟網頁時的 IP 位址</td><td>GitHub（網站主機）</td><td>傳送網頁、維護網站安全</td></tr>
               <tr><td>你的 email（只在加入早鳥名單時）</td><td>Buttondown</td><td>Pro 推出時寄信通知你</td></tr>
               <tr><td>App 查詢新版本</td><td>GitHub</td><td>告訴你有新版本與 CLI 相容性資訊</td></tr>
+              <tr><td>你的 email、登入方式、電腦與授權（只在你為了試用、Pro 預覽或 Pro 登入時）</td><td>我們在 <code>account.pyloxa.com</code> 的帳號服務，在 Cloudflare 上執行；驗證碼與服務通知信經由 Resend 寄出</td><td>讓你登入、簽發授權、限制每個授權 2 台電腦</td></tr>
+              <tr><td>付款資料（只在你購買 Pro 時）</td><td>擔任代理銷售商的 Polar；我們看不到你的卡號</td><td>收款，處理稅務、發票與退款</td></tr>
+              <tr><td>專案名稱、事件與計畫標題（只在你設定通知時）</td><td>你指定的 Telegram bot、Discord 頻道或 webhook，從你的電腦直接送出</td><td>在工作需要你或完成時通知你</td></tr>
               <tr><td>匿名使用統計（只在你於 App 開啟時）</td><td>我們在 <code>stats.pyloxa.com</code> 的接收端，在 Cloudflare 上執行</td><td>了解哪些功能有人用、新使用者卡在哪一步、各 CLI 多常失敗</td></tr>
               <tr><td>你的程式碼與提示內容</td><td>只有你使用的 CLI 所屬的 AI 供應商，以你自己的帳號送出</td><td>執行你的工作；我們不會收到</td></tr>
             </tbody>
@@ -92,15 +95,35 @@
           <li><strong>保存哪些資料</strong>：你的 email、標示你加入 Pro 早鳥名單與使用哪個語言頁面的標籤，以及加入的時間。Buttondown 另外會記錄 IP 位址、瀏覽器與大略位置等技術資料，詳見它的隱私權政策。</li>
           <li><strong>用途</strong>：Pro 推出時寄一封信，附上早鳥優惠。我們不會把你加進其他名單，也不會把 email 提供給其他人。</li>
           <li><strong>保存期間</strong>：到你取消訂閱或要求刪除為止。每封信都有取消訂閱的連結。取消訂閱後，Buttondown 會保留一筆紀錄，避免再寄信給你；想完全刪除，請寫信給我們。</li>
-          <li>加入名單是自願的。不留 email 只是收不到推出通知；下載與使用 Pyloxa 都不需要 email 或帳號。</li>
+          <li>加入名單是自願的。不留 email 只是收不到推出通知；下載與使用免費版都不需要 email 或帳號。早鳥名單和 Pro 帳號是分開的，登入不會讓你加入名單。</li>
         </ul>
       </section>
 
       <section id="app" aria-labelledby="app-title">
         <h2 id="app-title">Pyloxa App</h2>
 
-        <h3>不需要帳號；使用資料只在你選擇加入時傳送</h3>
-        <p>免費版不需要帳號。Pyloxa 不會傳給我們任何當機回報、專案檔案、提示內容或憑證；除非你開啟匿名使用統計，否則也不會傳送使用資料。「設定」裡顯示的統計是在你的電腦計算的。</p>
+        <h3>免費版不需要帳號</h3>
+        <p>免費版不需要帳號，也不會連到我們的帳號服務。Pyloxa 不會傳給我們任何當機回報、專案檔案、提示內容或憑證；除非你開啟匿名使用統計，否則也不會傳送使用資料。「設定」裡顯示的統計是在你的電腦計算的。</p>
+
+        <h3 id="pro-account">Pro 的帳號（試用、Pro 預覽與 Pro）</h3>
+        <p>試用、Pro 預覽與 Pro 需要登入。帳號只用來授權：不和匿名使用統計關聯，也不用來寄行銷信。登入時會用你的瀏覽器開啟我們的帳號服務 <code>account.pyloxa.com</code>，它在 Cloudflare Workers 上執行，資料存在 Cloudflare 亞太區的 D1 資料庫。</p>
+        <ul>
+          <li><strong>登入方式</strong>：Google、GitHub，或寄到你 email 的 6 位數驗證碼。從 Google 我們只取得已驗證的 email 與 Google 帳號 ID（範圍 <code>openid</code> 與 <code>email</code>）；從 GitHub 只取得已驗證的主要 email 與 GitHub 使用者 ID（<code>read:user</code>、<code>user:email</code>）。我們不保存 Google 或 GitHub 的 access token。驗證碼經由 Resend 寄出。</li>
+          <li><strong>保存哪些資料</strong>：
+            <ul>
+              <li>你的 email 與連結的登入方式，保存到帳號刪除為止。</li>
+              <li>你登入的每台電腦：Pyloxa 產生的隨機裝置 ID（不是硬體指紋）、預設為電腦名稱而且可以改的名稱、最後一次更新授權的時間，以及 Pyloxa 與 Windows 的版本。保存到你移除這台電腦或刪除帳號為止。</li>
+              <li>你的授權、試用或 Pro 預覽，以及 Polar 的訂單、訂閱與客戶 ID 和購買時用的 email，保存到帳號刪除為止。</li>
+              <li>登入、電腦異動與簽發授權的安全紀錄，含請求的 IP 位址，保存 13 個月。頻率限制會用到 IP 位址，最多保留兩天。</li>
+            </ul>
+          </li>
+          <li><strong>每天更新授權</strong>：登入之後，Pyloxa 在啟動時與大約每天一次更新授權，只把裝置 ID、裝置憑證與 Pyloxa、Windows 的版本送到 <code>account.pyloxa.com</code>。連不上時，Pro 從最後一次更新起還可以用 14 天。</li>
+          <li><strong>付款</strong>：購買 Pro 時會開啟 Polar 的結帳頁。Polar 是代理銷售商（merchant of record），依它自己的隱私權政策處理付款、稅務、發票與退款。我們會把帳號的 email 與隨機的帳號 ID 交給 Polar，讓這筆購買對應到你。我們看不到你的卡號。</li>
+          <li><strong>我們寄的信</strong>：驗證碼、試用到期提醒，以及和授權有關的服務通知（例如 Pro 預覽結束），都經由 Resend 寄出。我們不會寄行銷信給帳號。</li>
+          <li><strong>Pro 預覽</strong>：Pro 開賣之前，登入就能免費使用 Pro。預覽在開賣時結束，至少提前 30 天在 App 與 email 通知。之後你還有 14 天的 Pro，並在 App 與帳號頁看到早鳥折扣；之後 App 回到免費版，資料與設定都保留。</li>
+          <li><strong>帳號頁</strong>（<code>account.pyloxa.com/account</code>）列出你的電腦與授權，可以改電腦名稱、移除電腦、下載你的資料（JSON）與刪除帳號。它使用兩個登入必要的 cookie：登入過程中的 <code>pyloxa_signin</code>，以及讓你在帳號頁保持登入 7 天的 <code>pyloxa_account</code>。帳號頁不載入任何分析程式或第三方內容。</li>
+          <li><strong>刪除帳號</strong>會刪除登入方式、電腦、授權、帳號頁的登入狀態與安全紀錄，並把 email 換成無法聯絡的佔位。每個裝置 ID 用過試用的紀錄會保留，不含個人資料，以免重複試用。Polar 依它的規定與稅法保留訂單與發票。</li>
+        </ul>
 
         <h3 id="usage-statistics">匿名使用統計（選擇加入）</h3>
         <p>Pyloxa 可以每天傳給我們一份匿名報告，讓我們知道有多少人持續使用、新使用者卡在哪一步，以及哪個 Agent 最常失敗。這個功能預設關閉。Pyloxa 會在你第一次接受工作成果後詢問一次，之後隨時可以在「設定 → 使用統計與回報」開啟或關閉。在同一頁也能先看到會送出的完整報告。</p>
@@ -129,6 +152,8 @@
         <h3>Pyloxa 自己發出的網路請求</h3>
         <ul>
           <li><strong>查詢新版本</strong>：啟動時和每 12 小時，Pyloxa 會向 GitHub（<code>api.github.com</code>）查詢 Pyloxa 的最新版本與 CLI 相容性目錄。和所有網路請求一樣，GitHub 會看到你的 IP 位址；請求裡另外帶著 Pyloxa 的版本號碼，但沒有任何專案或使用資料。可以在「設定 → 通知與更新」關閉。</li>
+          <li><strong>Pro 的登入與授權更新</strong>：只在你登入之後。登入時用瀏覽器開啟 <code>account.pyloxa.com</code>；之後依上面的說明大約每天更新一次授權。免費版不會連線。</li>
+          <li><strong>通知（Pro）</strong>：只在你設定之後，Pyloxa 會把專案名稱、事件（例如等你處理、Gate 沒通過、計畫完成、額度用盡）與計畫或工作的標題，從你的電腦直接送到你指定的 Telegram bot、Discord webhook 或 HTTPS webhook，適用這些服務的條款，訊息不經過我們。bot token 與 webhook 網址以 Windows 的安全儲存加密。</li>
           <li><strong>匿名使用統計</strong>：只在你開啟時，Pyloxa 開著的期間大約每小時把整理好的每天報告送到 <code>stats.pyloxa.com</code>（見上方說明）。</li>
           <li><strong>安裝或更新 CLI</strong>：只有在你按下並確認後，Pyloxa 才會執行官方的安裝命令，從 npm 或 CLI 的供應商下載。</li>
           <li><strong>Git 與 GitHub</strong>：fetch、pull、push 與建立 PR 都只在你選擇時進行，使用你自己的 git 遠端與 GitHub CLI 登入。</li>
@@ -144,6 +169,7 @@
         <ul>
           <li><code>%APPDATA%\Pyloxa</code>：開過的專案、對話、計畫、工作紀錄與執行記錄、共用記憶、設定與使用統計。開啟匿名使用統計時，另外存著匿名 ID 與還沒送出的報告。</li>
           <li>你設定的 API Key 以 Windows 的安全儲存加密，存在同一個資料夾。Pyloxa 只把 Key 交給執行該工作的 CLI 程序。</li>
+          <li>登入之後，授權、裝置 ID 與裝置憑證以 Windows 的安全儲存加密，存在同一個資料夾。登入期間，帳號的 email 也存在這個資料夾，讓設定頁顯示。登出會從這台電腦刪除授權、憑證與 email。</li>
           <li><code>%LOCALAPPDATA%\Pyloxa\worktrees</code>：Agent 工作用的 git worktree。</li>
           <li>只有你選擇時才會寫入：「同步到各 CLI」會把專案的規則與偏好寫進該專案的 <code>AGENTS.md</code> 與相關檔案；使用者層的選項會把規則與偏好寫進 <code>~/.claude/CLAUDE.md</code>、<code>~/.codex/AGENTS.md</code> 與 <code>~/.gemini/GEMINI.md</code> 裡標示好的區塊，並先把原本的檔案備份到 <code>%APPDATA%\Pyloxa\memory-backup</code>。各 CLI 在你使用時，會把這些檔案的內容送給它們的供應商。</li>
           <li>解除安裝 Pyloxa 時會保留這些資料夾，以免你的紀錄不見。要全部移除，請在解除安裝後刪除這兩個資料夾，再到你的專案執行 <code>git worktree prune</code>。</li>
@@ -161,9 +187,12 @@
             <thead><tr><th scope="col">服務</th><th scope="col">用途</th><th scope="col">隱私權政策</th></tr></thead>
             <tbody>
               <tr><td>GitHub</td><td>網站主機、App 查詢新版本、問題回報</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a></td></tr>
-              <tr><td>Cloudflare</td><td>DNS、Web Analytics、接收 App 的匿名使用統計（只在你開啟時）</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
+              <tr><td>Cloudflare</td><td>DNS、Web Analytics、帳號服務與它的資料庫（只在你登入時）、接收 App 的匿名使用統計（只在你開啟時）</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
               <tr><td>Google</td><td>Google Analytics</td><td><a href="https://policies.google.com/privacy?hl=zh-TW">Google 隱私權政策</a></td></tr>
               <tr><td>Buttondown</td><td>Pro 早鳥名單</td><td><a href="https://buttondown.com/legal/privacy">Buttondown Privacy Policy</a></td></tr>
+              <tr><td>Resend</td><td>帳號的驗證碼、試用提醒與服務通知信</td><td><a href="https://resend.com/legal/privacy-policy">Resend Privacy Policy</a></td></tr>
+              <tr><td>Polar</td><td>以代理銷售商的身分收款（只在你購買 Pro 時）</td><td><a href="https://polar.sh/legal/privacy">Polar Privacy Policy</a></td></tr>
+              <tr><td>Google、GitHub</td><td>登入（只在你選擇這個方式時）</td><td>見上方的 Google 與 GitHub 政策</td></tr>
             </tbody>
           </table>
         </div>
@@ -176,6 +205,8 @@
         <ul>
           <li><strong>你的同意</strong>：早鳥名單，你確認 email 時同意。隨時可以取消訂閱來撤回同意。</li>
           <li><strong>你的同意</strong>：App 的匿名使用統計，你開啟時同意。隨時可以關閉來撤回同意；「刪除我的資料」會刪除已經送出的報告。</li>
+          <li><strong>履行和你的契約</strong>：帳號、登入、授權與付款的紀錄，是提供試用、Pro 預覽與 Pro 所必需。</li>
+          <li><strong>我們的正當利益</strong>：安全紀錄與頻率限制，用於維護帳號安全，並防止一份授權超出上限共用。</li>
           <li><strong>我們的正當利益</strong>：網站主機記錄與 Cloudflare 不使用 cookie 的瀏覽統計，用於維護網站安全，並了解有多少人瀏覽與下載 Pyloxa。裝置時區在歐洲時，網頁不會載入 Google Analytics。</li>
         </ul>
       </section>
@@ -183,15 +214,15 @@
       <section id="rights" aria-labelledby="rights-title">
         <h2 id="rights-title">你的權利</h2>
         <p>依台灣的個人資料保護法，你可以請我們告訴你保存了你的哪些個人資料、提供複本、補充或更正、停止蒐集、處理或利用，或刪除。歐洲經濟區、英國與瑞士的訪客另依 GDPR，可以反對我們處理你的資料、以可攜的格式取得你的資料，也可以向當地的資料保護機關申訴。</p>
-        <p>請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。與早鳥名單有關的要求，請用那個 email 寄出，方便我們找到。與使用統計有關的要求，請在 App 按「刪除我的資料」，或把「設定 → 使用統計與回報」顯示的匿名 ID 寄給我們；沒有這個 ID，我們無法分辨哪些報告是你的。我們會在 15 天內回覆，30 天內處理完成。我們看到的瀏覽統計是彙總後的數字，不會連到你的姓名或 email，所以通常無法找出單一訪客的紀錄。</p>
+        <p>請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。與早鳥名單有關的要求，請用那個 email 寄出，方便我們找到。Pro 帳號可以在帳號頁自己下載資料與刪除帳號，也可以用帳號的 email 寫信給我們。與使用統計有關的要求，請在 App 按「刪除我的資料」，或把「設定 → 使用統計與回報」顯示的匿名 ID 寄給我們；沒有這個 ID，我們無法分辨哪些報告是你的。我們會在 15 天內回覆，30 天內處理完成。我們看到的瀏覽統計是彙總後的數字，不會連到你的姓名或 email，所以通常無法找出單一訪客的紀錄。</p>
       </section>
 
       <section id="other" aria-labelledby="other-title">
         <h2 id="other-title">兒童、安全與政策變更</h2>
         <ul>
           <li>官網與 App 不是為兒童設計的。未滿 16 歲請不要加入早鳥名單。</li>
-          <li>官網只透過 HTTPS 提供。早鳥名單只有我們能存取。</li>
-          <li>蒐集的資料有變動時，我們會在變動生效前更新這一頁與上方的日期。已經規劃、開始前會先寫進這裡的有：Pro 的登入與付款（由擔任代理銷售商的金流服務處理，我們看不到你的卡號）。這一頁過去的版本都在官網公開的 <a href="https://github.com/eric861129/pyloxa.com">GitHub repo</a>。</li>
+          <li>官網與帳號服務只透過 HTTPS 提供。早鳥名單與帳號資料庫只有我們能存取。驗證碼、授權碼與裝置憑證只存雜湊。</li>
+          <li>蒐集的資料有變動時，我們會在變動生效前更新這一頁與上方的日期。這一頁過去的版本都在官網公開的 <a href="https://github.com/eric861129/pyloxa.com">GitHub repo</a>。</li>
           <li>這份政策另有<a href="../../privacy/" lang="en">英文版</a>；兩者不一致時，以英文版為準。</li>
         </ul>
       </section>

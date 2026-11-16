@@ -46,7 +46,7 @@
     <main id="main" class="wrap policy">
       <div class="intro">
         <h1>Privacy Policy</h1>
-        <p>This policy covers the pyloxa.com website and the Pyloxa desktop app (free version). The app never sends us your projects, code or prompts. It sends usage data only if you turn on anonymous usage statistics, which are off unless you turn them on. The website counts visits, and keeps your email address only if you join the Pro early-bird list.</p>
+        <p>This policy covers the pyloxa.com website, the Pyloxa desktop app and the Pyloxa account service at <code>account.pyloxa.com</code>. The free version of the app needs no account and never sends us your projects, code or prompts. It sends usage data only if you turn on anonymous usage statistics, which are off unless you turn them on. If you sign in for the trial, the Pro preview or Pro, the account is used only for licensing. The website counts visits, and keeps your email address only if you join the Pro early-bird list.</p>
         <p class="updated">Last updated: November 16, 2026</p>
       </div>
 
@@ -65,6 +65,9 @@
               <tr><td>Your IP address when you load a page</td><td>GitHub (hosting)</td><td>Deliver the site and keep it secure</td></tr>
               <tr><td>Your email address, only if you join the early-bird list</td><td>Buttondown</td><td>Email you when Pro launches</td></tr>
               <tr><td>The app’s update check</td><td>GitHub</td><td>Tell you about new versions and CLI compatibility</td></tr>
+              <tr><td>Your email address, sign-in method, computers and license, only if you sign in for the trial, the Pro preview or Pro</td><td>Our account service at <code>account.pyloxa.com</code>, run on Cloudflare; Resend for sign-in codes and service emails</td><td>Sign you in, issue your license and enforce the two-computer limit</td></tr>
+              <tr><td>Payment details, only if you buy Pro</td><td>Polar, the merchant of record; we never see your card</td><td>Take payment, handle tax, invoices and refunds</td></tr>
+              <tr><td>Project names, events and plan titles, only if you set up notifications</td><td>The Telegram bot, Discord channel or webhook you choose, sent directly from your computer</td><td>Tell you when work needs you or finishes</td></tr>
               <tr><td>Anonymous usage statistics, only if you turn them on in the app</td><td>Our receiver at <code>stats.pyloxa.com</code>, run on Cloudflare</td><td>See which features are used, where new users get stuck and how often each CLI fails</td></tr>
               <tr><td>Your code and prompts</td><td>Only the AI providers whose CLIs you use, under your own account</td><td>Run your tasks; we never receive them</td></tr>
             </tbody>
@@ -92,15 +95,35 @@
           <li><strong>What is kept:</strong> your email address, tags showing that you joined the Pro early-bird list and which language page you used, and when you signed up. Buttondown also records technical data such as your IP address, browser and approximate location, as described in its privacy policy.</li>
           <li><strong>What we use it for:</strong> one email when Pro launches, with the early-bird offer. We don’t add you to other lists or share your address with anyone else.</li>
           <li><strong>How long:</strong> until you unsubscribe or ask us to delete it. Every email has an unsubscribe link. After you unsubscribe, Buttondown keeps a record so you are not emailed again; write to us if you want the address removed completely.</li>
-          <li>Joining is optional. Without it you only miss the launch email; downloading and using Pyloxa need no email address or account.</li>
+          <li>Joining is optional. Without it you only miss the launch email; downloading and using the free version need no email address or account. The early-bird list is separate from Pro accounts: signing in doesn’t add you to it.</li>
         </ul>
       </section>
 
       <section id="app" aria-labelledby="app-title">
         <h2 id="app-title">The Pyloxa app</h2>
 
-        <h3>No account; usage data only if you opt in</h3>
-        <p>The free version needs no account. Pyloxa sends us no crash reports, project files, prompts or credentials, and it sends no usage data unless you turn on anonymous usage statistics. The statistics shown in Settings are computed on your computer.</p>
+        <h3>The free version needs no account</h3>
+        <p>The free version needs no account and never connects to our account service. Pyloxa sends us no crash reports, project files, prompts or credentials, and it sends no usage data unless you turn on anonymous usage statistics. The statistics shown in Settings are computed on your computer.</p>
+
+        <h3 id="pro-account">Pro accounts (trial, Pro preview and Pro)</h3>
+        <p>The trial, the Pro preview and Pro need you to sign in. The account is used only for licensing: it isn’t linked to anonymous usage statistics, and we don’t use it for marketing. Signing in opens your web browser at <code>account.pyloxa.com</code>, our account service, which runs on Cloudflare Workers and stores its data in a Cloudflare D1 database in the Asia-Pacific region.</p>
+        <ul>
+          <li><strong>Sign-in:</strong> with Google, GitHub or a six-digit code sent to your email. From Google we receive only your verified email address and Google account ID (scopes <code>openid</code> and <code>email</code>); from GitHub, your verified primary email address and GitHub user ID (<code>read:user</code>, <code>user:email</code>). We don’t keep Google’s or GitHub’s access tokens. Sign-in codes are sent through Resend.</li>
+          <li><strong>What we store:</strong>
+            <ul>
+              <li>Your email address and the sign-in methods linked to it, for as long as the account exists.</li>
+              <li>Each computer you sign in on: a random device ID created by Pyloxa (not a hardware fingerprint), a name that defaults to the computer’s name and that you can change, the last time it refreshed, and the Pyloxa and Windows versions. Kept until you remove the computer or delete the account.</li>
+              <li>Your license, trial or Pro preview, and the Polar order, subscription and customer IDs and the email address used for the purchase. Kept for as long as the account exists.</li>
+              <li>Security records of sign-ins, device changes and licenses issued, with the IP address of the request, kept for 13 months. Rate limits use your IP address for up to two days.</li>
+            </ul>
+          </li>
+          <li><strong>Daily license refresh:</strong> once signed in, Pyloxa refreshes its license at startup and about once a day, sending only the device ID, a device credential and the Pyloxa and Windows versions to <code>account.pyloxa.com</code>. If it can’t connect, Pro keeps working for 14 days from the last refresh.</li>
+          <li><strong>Payment:</strong> buying Pro opens a checkout page from Polar, which acts as the merchant of record and handles payment, tax, invoices and refunds under its own privacy policy. We send Polar your account’s email address and a random account ID so the purchase is linked to you. We never see your card details.</li>
+          <li><strong>Email we send:</strong> sign-in codes, trial reminders and service notices about your license, such as the end of the Pro preview, all through Resend. We don’t send marketing email to accounts.</li>
+          <li><strong>Pro preview:</strong> before Pro goes on sale, signing in gives you Pro for free. The preview ends when Pro goes on sale, with at least 30 days’ notice in the app and by email. You then keep Pro for 14 more days and see the early-bird discount in the app and on the account page; after that the app returns to the free version and keeps your data and settings.</li>
+          <li><strong>The account page</strong> at <code>account.pyloxa.com/account</code> lists your computers and license, lets you rename or remove computers, download your data as JSON and delete the account. It uses two cookies that are needed for signing in: <code>pyloxa_signin</code> during sign-in and <code>pyloxa_account</code>, which keeps you signed in on the account page for 7 days. It loads no analytics or third-party content.</li>
+          <li><strong>Deleting the account</strong> removes your sign-in methods, computers, licenses, account-page sessions and security records, and replaces your email address with a placeholder. A record that each device ID has had a trial is kept without personal data so that the trial can’t be repeated. Polar keeps orders and invoices as its own rules and tax law require.</li>
+        </ul>
 
         <h3 id="usage-statistics">Anonymous usage statistics (optional)</h3>
         <p>Pyloxa can send us one anonymous report a day so we can see how many people keep using it, where new users get stuck and which agents fail most often. It is off unless you turn it on. Pyloxa asks once, after the first task you accept, and you can turn it on or off at any time in Settings → Usage and feedback. That page also shows the exact reports before they are sent.</p>
@@ -129,6 +152,8 @@
         <h3>Network requests Pyloxa makes</h3>
         <ul>
           <li><strong>Update check:</strong> at startup and every 12 hours, Pyloxa asks GitHub (<code>api.github.com</code>) for the latest Pyloxa release and the CLI compatibility catalog. Like any internet request, it reveals your IP address to GitHub; it also carries Pyloxa’s version number, but no project or usage data. Turn it off in Settings → Notifications and updates.</li>
+          <li><strong>Pro sign-in and license refresh:</strong> only after you sign in. Signing in opens your browser at <code>account.pyloxa.com</code>; after that, Pyloxa refreshes its license about once a day as described above. The free version never connects.</li>
+          <li><strong>Notifications (Pro):</strong> only if you set them up, Pyloxa sends the project name, the event (for example waiting for you, a gate that didn’t pass, a finished plan or exhausted quota) and the plan or task title from your computer directly to the Telegram bot, Discord webhook or HTTPS webhook you choose. Those services’ terms apply, and the message doesn’t pass through us. Bot tokens and webhook addresses are encrypted with Windows secure storage.</li>
           <li><strong>Anonymous usage statistics:</strong> only if you turn them on, Pyloxa sends finished daily reports to <code>stats.pyloxa.com</code> about once an hour while it is open (see above).</li>
           <li><strong>Installing or updating a CLI:</strong> only when you click and confirm, Pyloxa runs the official install command, which downloads from npm or from the CLI’s provider.</li>
           <li><strong>Git and GitHub:</strong> fetch, pull, push and pull requests happen only when you choose them, through your own git remotes and your own GitHub CLI sign-in.</li>
@@ -144,6 +169,7 @@
         <ul>
           <li><code>%APPDATA%\Pyloxa</code> holds the projects you opened, conversations, plans, task records and logs, shared memory, settings and usage statistics. If you turn on anonymous usage statistics, it also holds the anonymous ID and any reports not yet sent.</li>
           <li>API keys you add are encrypted with Windows secure storage and kept in the same folder. Pyloxa passes a key only to the CLI process that runs your task.</li>
+          <li>If you sign in, the license, the device ID and the device credential are encrypted with Windows secure storage in the same folder. While you are signed in, the account’s email address is also kept in that folder so that Settings can show it. Signing out deletes the license, the credential and the email address from this computer.</li>
           <li><code>%LOCALAPPDATA%\Pyloxa\worktrees</code> holds the git worktrees where agents work.</li>
           <li>Only if you choose to: <strong>Sync to CLIs</strong> writes a project’s rules and preferences into <code>AGENTS.md</code> and related files in that project, and the user-level option writes rules and preferences into a marked block in <code>~/.claude/CLAUDE.md</code>, <code>~/.codex/AGENTS.md</code> and <code>~/.gemini/GEMINI.md</code>, after backing up the originals to <code>%APPDATA%\Pyloxa\memory-backup</code>. The CLIs send what’s in these files to their providers when you use them.</li>
           <li>Uninstalling Pyloxa keeps these folders so that you don’t lose your history. To remove everything, delete both folders after uninstalling, then run <code>git worktree prune</code> in your projects.</li>
@@ -161,9 +187,12 @@
             <thead><tr><th scope="col">Service</th><th scope="col">Used for</th><th scope="col">Privacy policy</th></tr></thead>
             <tbody>
               <tr><td>GitHub</td><td>Website hosting, the app’s update check, issue reports</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a></td></tr>
-              <tr><td>Cloudflare</td><td>DNS, Web Analytics, receiving the app’s anonymous usage statistics (only if you turn them on)</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
+              <tr><td>Cloudflare</td><td>DNS, Web Analytics, the account service and its database (only if you sign in), receiving the app’s anonymous usage statistics (only if you turn them on)</td><td><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
               <tr><td>Google</td><td>Google Analytics</td><td><a href="https://policies.google.com/privacy">Google Privacy Policy</a></td></tr>
               <tr><td>Buttondown</td><td>Pro early-bird list</td><td><a href="https://buttondown.com/legal/privacy">Buttondown Privacy Policy</a></td></tr>
+              <tr><td>Resend</td><td>Sign-in codes, trial reminders and service notices for accounts</td><td><a href="https://resend.com/legal/privacy-policy">Resend Privacy Policy</a></td></tr>
+              <tr><td>Polar</td><td>Payments as the merchant of record (only if you buy Pro)</td><td><a href="https://polar.sh/legal/privacy">Polar Privacy Policy</a></td></tr>
+              <tr><td>Google, GitHub</td><td>Sign-in, only if you choose that method</td><td>See the Google and GitHub policies above</td></tr>
             </tbody>
           </table>
         </div>
@@ -176,6 +205,8 @@
         <ul>
           <li><strong>Your consent</strong> for the early-bird list, given when you confirm your email address. You can withdraw it at any time by unsubscribing.</li>
           <li><strong>Your consent</strong> for the app’s anonymous usage statistics, given when you turn them on. You can withdraw it at any time by turning them off, and <strong>Delete my data</strong> removes reports already sent.</li>
+          <li><strong>Our contract with you</strong> for the account, sign-in, license and payment records, which are needed to provide the trial, the Pro preview and Pro.</li>
+          <li><strong>Our legitimate interest</strong> in keeping accounts secure and preventing one license from being shared beyond its limits, for the security records and rate limits.</li>
           <li><strong>Our legitimate interest</strong> in running a secure website and knowing how many people visit and download Pyloxa, for hosting logs and Cloudflare’s cookieless visit counts. The site doesn’t load Google Analytics when your device’s time zone is in Europe.</li>
         </ul>
       </section>
@@ -183,15 +214,15 @@
       <section id="rights" aria-labelledby="rights-title">
         <h2 id="rights-title">Your rights</h2>
         <p>You can ask us to tell you what personal data we hold about you, give you a copy, correct it, stop using it or delete it. These rights come from Taiwan’s Personal Data Protection Act and, for visitors in the EEA, the UK and Switzerland, from the GDPR, which also lets you object to processing, receive your data in a portable format and complain to your local data protection authority.</p>
-        <p>Write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>. For the early-bird list, write from the address concerned so that we can find it. For usage statistics, use <strong>Delete my data</strong> in the app, or send us the anonymous ID shown in Settings → Usage and feedback; without it we can’t tell which reports are yours. We reply within 15 days and complete a request within 30 days. The visit statistics we see are aggregated and not linked to your name or email address, so we usually can’t pick out one visitor’s records.</p>
+        <p>Write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>. For the early-bird list, write from the address concerned so that we can find it. For a Pro account, the account page lets you download your data and delete the account yourself; you can also write from the account’s email address. For usage statistics, use <strong>Delete my data</strong> in the app, or send us the anonymous ID shown in Settings → Usage and feedback; without it we can’t tell which reports are yours. We reply within 15 days and complete a request within 30 days. The visit statistics we see are aggregated and not linked to your name or email address, so we usually can’t pick out one visitor’s records.</p>
       </section>
 
       <section id="other" aria-labelledby="other-title">
         <h2 id="other-title">Children, security and changes</h2>
         <ul>
           <li>The website and the app are not meant for children. Please don’t join the early-bird list if you are under 16.</li>
-          <li>The website is served only over HTTPS. Only we can access the early-bird list.</li>
-          <li>When what we collect changes, we update this page and the date at the top before the change takes effect. Planned changes that will be covered here before they start: Pro sign-in and payments (handled by a payment provider acting as the merchant of record; we never see your card details). Earlier versions of this page are in the site’s public <a href="https://github.com/eric861129/pyloxa.com">GitHub repository</a>.</li>
+          <li>The website and the account service are served only over HTTPS. Only we can access the early-bird list and the account database. Sign-in codes, authorization codes and device credentials are stored only as hashes.</li>
+          <li>When what we collect changes, we update this page and the date at the top before the change takes effect. Earlier versions of this page are in the site’s public <a href="https://github.com/eric861129/pyloxa.com">GitHub repository</a>.</li>
           <li>This policy is also available in <a href="../zh-TW/privacy/" lang="zh-Hant">Traditional Chinese</a>. If the two versions differ, the English version applies.</li>
         </ul>
       </section>

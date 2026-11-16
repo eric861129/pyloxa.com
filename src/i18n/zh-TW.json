@@ -308,7 +308,7 @@
   "faq-title.8": "Pyloxa 會讀取我的憑證嗎？",
   "faq-title.9": "不會。Pyloxa 只用各 CLI 自己的指令查詢登入狀態，並像你一樣啟動 CLI；token 與憑證檔不會被讀取、複製或傳送。",
   "faq-title.10": "我的程式碼會送到哪裡？",
-  "faq-title.11": "Pyloxa 不會把你的程式碼或提示內容傳給我們。你的程式碼只會送到 CLI 原本會送去的地方，適用 Anthropic、OpenAI 與 Google 的條款。Pyloxa 啟動時和每 12 小時會向 GitHub 查詢最新版本與 CLI 相容性目錄，不含任何專案或使用資料，可以在「設定」關閉。使用統計在你的電腦計算；只有你開啟匿名分享（預設關閉）時才會傳送，而且只有次數與類別（見<a href=\"/zh-TW/privacy/#usage-statistics\">隱私權政策</a>）。",
+  "faq-title.11": "免費版不需要帳號，Pyloxa 也不會把你的專案、提示內容或程式碼傳給我們；你的程式碼只會送到 CLI 原本會送去的地方，適用 Anthropic、OpenAI 與 Google 的條款。試用、Pro 預覽與 Pro 需要登入，帳號只用來授權：登入後大約每天更新一次授權，只送裝置 ID、App 與 Windows 的版本。Pyloxa 啟動時和每 12 小時會向 GitHub 查詢最新版本與 CLI 相容性目錄，不含任何專案或使用資料，可以在「設定」關閉。使用統計在你的電腦計算，只有你開啟匿名分享（預設關閉）時才會傳送，而且只有次數與類別。你設定的 Pro 通知會從你的電腦直接送到你指定的 Telegram、Discord 或 webhook。詳見<a href=\"/zh-TW/privacy/\">隱私權政策</a>。",
   "faq-title.12": "Agent 會弄壞我的 repo 嗎？",
   "faq-title.13": "Agent 在獨立的 git worktree 工作，不碰你正在改的工作目錄；Pyloxa 也不會對它執行 stash、reset 或 checkout。每個工作完成後，會核對改動的檔案是否都在計畫允許的寫入範圍內，你也能在內建的差異檢視逐檔查看。要不要合併、要不要推送，都由你決定。",
   "faq-title.14": "為什麼安裝時 Windows 會跳出警告？",
