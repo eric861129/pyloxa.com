@@ -308,7 +308,7 @@
   "faq-title.8": "Pyloxa 会读取我的凭据吗？",
   "faq-title.9": "不会。Pyloxa 只用各 CLI 自带的命令查询登录状态，并像你一样启动 CLI；token 和凭据文件不会被读取、复制或发送。",
   "faq-title.10": "我的代码会发送到哪里？",
-  "faq-title.11": "Pyloxa 本身没有服务器，也不收集遥测数据。你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。Codex 已登录时，额度一览每 10 分钟还会让 Codex CLI 查询剩余额度，由 Codex 用你自己的登录向 OpenAI 获取，不消耗额度；关闭额度一览就不再查询。使用统计只在你的电脑上计算，不会发送出去。",
+  "faq-title.11": "Pyloxa 本身没有服务器，也不收集遥测数据。你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。使用统计只在你的电脑上计算，不会发送出去。",
   "faq-title.12": "Agent 会弄坏我的仓库吗？",
   "faq-title.13": "Agent 在独立的 git worktree 中工作，不碰你正在编辑的工作目录；Pyloxa 也不会对它执行 stash、reset 或 checkout。每个任务完成后，会核对改动的文件是否都在计划允许的写入范围内，你也可以在内置的 diff 视图中逐个文件查看。是否合并、是否推送，都由你决定。",
   "faq-title.14": "为什么安装时 Windows 会弹出警告？",

@@ -47,7 +47,7 @@
       <div class="intro">
         <h1>Privacy Policy</h1>
         <p>This policy covers the pyloxa.com website and the Pyloxa desktop app (free version). The app has no server and sends nothing about your projects to us. The website counts visits, and keeps your email address only if you join the Pro early-bird list.</p>
-        <p class="updated">Last updated: November 8, 2026</p>
+        <p class="updated">Last updated: November 16, 2026</p>
       </div>
 
       <section id="who" aria-labelledby="who-title">
@@ -106,7 +106,8 @@
           <li><strong>Update check:</strong> at startup and every 12 hours, Pyloxa asks GitHub (<code>api.github.com</code>) for the latest Pyloxa release and the CLI compatibility catalog. Like any internet request, it reveals your IP address to GitHub; it also carries Pyloxa’s version number, but no project or usage data. Turn it off in Settings → Notifications and updates.</li>
           <li><strong>Installing or updating a CLI:</strong> only when you click and confirm, Pyloxa runs the official install command, which downloads from npm or from the CLI’s provider.</li>
           <li><strong>Git and GitHub:</strong> fetch, pull, push and pull requests happen only when you choose them, through your own git remotes and your own GitHub CLI sign-in.</li>
-          <li><strong>Usage meter (Codex):</strong> when Codex CLI is installed and signed in with a subscription, Pyloxa asks it for your remaining Codex usage every 10 minutes while Pyloxa is open, and also at startup, after Codex tasks and after your computer wakes. Codex gets the numbers from OpenAI with your own sign-in; this uses none of your quota, and Pyloxa keeps only the numbers on your computer. Turn off the usage meter in Settings → Appearance to stop these checks.</li>
+          <li><strong>Agent tools on your computer:</strong> while Pyloxa is open, it listens on random ports on <code>127.0.0.1</code> so the agents it starts can search and propose shared memories. Other computers can’t connect, and nothing is sent over the internet.</li>
+          <li><strong>No spell-check dictionary:</strong> spell-check is off, so Pyloxa doesn’t download a dictionary. Versions 0.1.0 to 0.1.8 downloaded an English spell-check dictionary from Google (<code>redirector.gvt1.com</code>) the first time they started, which this page didn’t list. That request revealed your IP address to Google and carried no other data. A dictionary that was already downloaded stays in <code>%APPDATA%\Pyloxa\Dictionaries</code>, and you can delete that folder.</li>
           <li>Links in the app, such as the changelog, open in your web browser, where the website section above applies.</li>
         </ul>
 
@@ -118,6 +119,7 @@
           <li><code>%APPDATA%\Pyloxa</code> holds the projects you opened, conversations, plans, task records and logs, shared memory, settings and usage statistics.</li>
           <li>API keys you add are encrypted with Windows secure storage and kept in the same folder. Pyloxa passes a key only to the CLI process that runs your task.</li>
           <li><code>%LOCALAPPDATA%\Pyloxa\worktrees</code> holds the git worktrees where agents work.</li>
+          <li>Only if you choose to: <strong>Sync to CLIs</strong> writes a project’s rules and preferences into <code>AGENTS.md</code> and related files in that project, and the user-level option writes rules and preferences into a marked block in <code>~/.claude/CLAUDE.md</code>, <code>~/.codex/AGENTS.md</code> and <code>~/.gemini/GEMINI.md</code>, after backing up the originals to <code>%APPDATA%\Pyloxa\memory-backup</code>. The CLIs send what’s in these files to their providers when you use them.</li>
           <li>Uninstalling Pyloxa keeps these folders so that you don’t lose your history. To remove everything, delete both folders after uninstalling, then run <code>git worktree prune</code> in your projects.</li>
         </ul>
 

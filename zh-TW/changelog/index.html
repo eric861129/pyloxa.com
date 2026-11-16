@@ -60,6 +60,32 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">回報問題</a>
         </div>
       </div>
+      <article class="release" id="v0.1.9" aria-labelledby="h-v0.1.9">
+        <header>
+          <h2 id="h-v0.1.9"><a href="#v0.1.9">0.1.9</a></h2>
+          <p class="date"><time datetime="2026-11-16">發布於 2026-11-16</time></p>
+        </header>
+        <div class="body">
+<p>這次更新包含更多安全性修正，讓 Agent 可以搜尋與提議共用記憶，並調整 Claude Code 訂閱同時執行的工作數。請從 0.1.8 以前的版本更新。</p>
+<h3>安全性修正</h3>
+<p>這些修正來自和 0.1.7、0.1.8 相同的安全審查，目前沒有收到任何一項被利用的回報。</p>
+<ul><li><strong>Agent 改了命令的執行方式時，驗證命令會等你。</strong> 工作改了 <code>package.json</code> 的 script、Makefile 這類建置檔、<code>.npmrc</code> 或命令直接點名的檔案，或是改到寫入範圍以外的檔案時，Pyloxa 不會自己在沙箱外執行驗證命令，工作會說明原因。你看過變更後，按「看過了，執行驗收命令」；就算通過，也要由你接受這個工作。</li><li><strong>改到會影響 Agent 與自動化的檔案，一律由你決定。</strong> 工作改了 <code>.claude</code>、<code>.github</code>、<code>.husky</code>、<code>CLAUDE.md</code> 這類檔案時，不會自動接受，也不會交給大腦驗收，合併前的對話框會再列出這些檔案。</li><li><strong>信任專案的 Agent 設定，涵蓋的範圍更大。</strong> 信任確認現在也涵蓋設定檔指向的腳本、hooks 資料夾、放寬權限的 skills、agents 與 commands、Codex 的 hooks，以及 Gemini CLI 的政策與擴充。信任只對一個專案有效：同一個專案的 worktree 算同一個專案，別的 repo 會重新詢問。</li><li>**Gemini CLI 不再讀專案的 <code>.env</code>。** 專案裡的 <code>.env</code> 可能讓 Gemini 的請求連同你的 API Key 被送到別的伺服器。</li><li><strong>計畫不能自己放寬限制。</strong> 計畫不經你核准就開始時（固定模式），Pyloxa 會自己檢查兩項上限，不照單全收大腦的計畫：只有實作與測試階段可以不經你核准，每個工作的寫入範圍要寫明資料夾或檔名，不能涵蓋整個專案。不符合時，計畫會等你核准並說明原因。</li><li><strong>自動接受的記憶有自己的標示。</strong> Agent 看到的不再寫成由你核准。</li></ul>
+<h3>調整</h3>
+<ul><li><strong>計畫中，每個 Claude Code 訂閱同時只跑 1 個工作。</strong> 訂閱的額度以一般個人使用為前提，所以在計畫裡，Claude Code 的訂閱連線現在同時只跑 1 個工作；以 API Key 連線的 Claude Code、Codex CLI 與 Gemini CLI 仍是同時 2 個。計畫卡的等待原因會說明。你直接派的單一工作不受這個限制，但會計入。</li><li><strong>Pyloxa 不再向 Codex 查詢剩餘額度。</strong> Pyloxa 不再啟動 <code>codex app-server</code>。Codex 訂閱在額度一覽改為和 API Key 一樣，只顯示今天的 token。Codex 額度用完時，Pyloxa 仍會標示為受限。</li><li><strong>免費版同一時間只有一個專案有工作在跑。</strong> 另一個專案還有工作在跑時，你核准的計畫會等待，那邊的工作完成後自動開始。要換成先做這個專案，在計畫卡按「改成先做這個專案」；已經在跑的工作會先做完。</li><li><strong>交叉測試與大腦驗收也佔連線名額。</strong> 連線忙碌時會排隊等候，不會疊在其他工作上同時跑。</li><li><strong>大腦不驗收自己做的工作。</strong> 工作是大腦自己做的時候（例如交給大腦的文件工作），大腦驗收會記成沒有完成，工作等你確認，不會自動接受。</li><li><strong>輸入框不再用紅色底線標示英文拼字錯誤。</strong> 原因請見「隱私」。</li></ul>
+<h3>新功能</h3>
+<ul><li><strong>Agent 可以使用共用記憶。</strong> Claude Code、Codex CLI 與 Gemini CLI 工作時，可以搜尋你核准過的記憶，也可以提議新的記憶，每個工作最多 5 則。</li><li><strong>大腦也可以提議。</strong> 你說「以後都用 pnpm」這類的話時，大腦可以提議記下來。大腦驗收時也可以提議它發現的慣例或陷阱。</li><li><strong>記什麼由你決定。</strong> 提議會出現在「記憶」頁的「待確認」，側欄有數量提示，對話裡也會出現「大腦想記住 N 件事」。每一則都可以接受、修改後接受或捨棄。你接受之前，任何 Agent 都看不到這些提議。每個專案可以設定自動接受 Agent 提議的事實與踩過的坑；規則、偏好、決策與大腦的提議一律等你確認。</li><li><strong>在 Pyloxa 以外也讀得到。</strong> 「記憶」頁的「同步到各 CLI」可以把專案的規則與偏好寫進 <code>AGENTS.md</code> 的 Pyloxa 區塊，在 <code>CLAUDE.md</code> 加上 <code>@AGENTS.md</code>，也可以把 <code>AGENTS.md</code> 加進 Gemini CLI 讀取的說明檔，讓你在終端機直接使用各 CLI 時也讀得到。會先顯示差異，由你勾選要寫入的檔案，Pyloxa 不會自動提交。</li><li><strong>也可以寫進各 CLI 的使用者層記憶。</strong> 開啟「也寫進各 CLI 的使用者層記憶」（預設關閉）後，所有專案適用的規則與偏好會保存在 <code>~/.claude/CLAUDE.md</code>、<code>~/.codex/AGENTS.md</code> 與 <code>~/.gemini/GEMINI.md</code> 的 Pyloxa 區塊，記憶有變動時自動更新。第一次寫入前會先備份原本的檔案，關閉時移除這個區塊。</li><li><strong>匯出與匯入。</strong> 共用記憶可以匯出成 Markdown 或 JSON，也可以從檔案匯入，並挑選要加入的項目。</li></ul>
+<h3>修正</h3>
+<ul><li>Pyloxa 執行 Gemini CLI 時，現在和其他 CLI 一樣會讀取專案的 <code>AGENTS.md</code>。</li><li>匯入記憶時，看起來含有金鑰、token 或密碼的項目會標示出來，不能勾選。</li><li>送出工作後馬上關閉視窗，不會在工作還在準備時就結束 Pyloxa。</li></ul>
+<h3>隱私</h3>
+<ul><li><strong>少了兩項請求：</strong> - Pyloxa 不再請 Codex CLI 查詢剩餘額度，0.1.8 每 10 分鐘一次的查詢已經移除。 - Pyloxa 不再從 Google 下載拼字檢查字典。從 0.1.0 起，第一次啟動時會從 Google 的伺服器下載英文字典（<code>en-US-10-2.bdic</code>），隱私權政策沒有列出這項請求。拼字檢查已經關閉，代價是英文拼錯時不再有紅色底線。已經下載的字典留在 <code>%APPDATA%\Pyloxa\Dictionaries</code>，可以直接刪除這個資料夾。</li><li><strong>沒有新增任何網際網路請求。</strong> 這個版本不會連到任何新的網路位址。和之前一樣，Pyloxa 會向 GitHub 查詢最新版本與 CLI 相容性目錄，各 CLI 會把你的工作送給它們的供應商。</li><li><strong>Agent 工具只在你的電腦上運作。</strong> Pyloxa 開著的期間，會在 <code>127.0.0.1</code> 的隨機埠等候連線，讓它啟動的 Agent 使用共用記憶。其他電腦連不上。每個工作有自己的金鑰，工作結束後金鑰就失效。</li><li><strong>提議可能來自 Agent 讀到的檔案。</strong> 接受之前，請確認內容合理。</li><li><strong>Pyloxa 會寫入什麼（只在你選擇時）。</strong> <code>AGENTS.md</code> 提交之後，能存取這個 repo 的人都看得到其中的規則。各 CLI 在你使用時，會把使用者層記憶檔的內容送給它的供應商。原本檔案的備份在 <code>%APPDATA%\Pyloxa\memory-backup</code>。</li></ul>
+<h3>升級</h3>
+<p>直接執行新的安裝檔覆蓋舊版即可。存在 <code>%APPDATA%\Pyloxa</code> 的執行紀錄、專案、設定、共用記憶與保存的 API Key 都會保留，資料庫會升級到第 21 版（0.1.8 是第 12 版）。升級之後，無法用同一份資料回到 0.1.8 或更早的版本：0.1.8 不會開啟較新的資料庫，也不會改動它，所以重新安裝 0.1.9 就能回到原本的狀態。</p>
+<h3>已知限制</h3>
+<ul><li>只支援 Windows 10 與 11（64 位元）。</li><li>安裝檔沒有程式碼簽章，SmartScreen 可能跳出警告；請按「其他資訊」，再按「仍要執行」。</li><li>Pyloxa 本身不會自動更新。有新版本時 Pyloxa 會提示你。</li><li>Codex 透過 <code>codex exec</code> 在它的沙箱內執行。在 Windows 上，這個沙箱通常無法建置專案或安裝套件，所以 Codex 的成果以你的驗證命令驗收。</li><li>Agent 寫的測試程式，在驗證命令執行它時仍在沙箱外執行（環境裡沒有你的金鑰）。新增或修改測試的工作，請看過變更再接受。</li><li>Gemini CLI 是實驗性支援：不能擔任大腦或交叉測試的測試者，在無人值守模式下也不能執行命令。</li><li>Gemini CLI 能連上共用記憶工具，但搜尋與提議還沒有用真實的 Gemini API Key 測試過。</li><li>已測試 Claude Code 2.1.318、Codex CLI 0.166.0，以及 Gemini CLI 0.66.0 與 0.67.0。</li></ul>
+<h3>校驗碼</h3>
+<div class="table"><table><thead><tr><th scope="col">檔案</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.9.exe</code></td><td><code>492a3f039151196125c719a789d6c804c59ad3c8cd20573186da8fdb953c77f0</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.8" aria-labelledby="h-v0.1.8">
         <header>
           <h2 id="h-v0.1.8"><a href="#v0.1.8">0.1.8</a></h2>
