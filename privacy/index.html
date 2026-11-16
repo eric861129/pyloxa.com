@@ -115,14 +115,17 @@
               <li>Each computer you sign in on: a random device ID created by Pyloxa (not a hardware fingerprint), a name that defaults to the computer’s name and that you can change, the last time it refreshed, and the Pyloxa and Windows versions. Kept until you remove the computer or delete the account.</li>
               <li>Your license, trial or Pro preview, and the Polar order, subscription and customer IDs and the email address used for the purchase. Kept for as long as the account exists.</li>
               <li>Security records of sign-ins, device changes and licenses issued, with the IP address of the request, kept for 13 months. Rate limits use your IP address for up to two days.</li>
+              <li>Records we write when we help you or give you Pro: notes and tags on the account, and the reason for and dates of any Pro we give you. If you work with us as a creator, also your name, platform, profile and content links, the tracking link or discount code we gave you, and the downloads and subscriptions we attribute to it. Kept for as long as the account exists and included when you download your data.</li>
+              <li>Which service notices we emailed to your account and when, kept for 13 months.</li>
             </ul>
           </li>
           <li><strong>Daily license refresh:</strong> once signed in, Pyloxa refreshes its license at startup and about once a day, sending only the device ID, a device credential and the Pyloxa and Windows versions to <code>account.pyloxa.com</code>. If it can’t connect, Pro keeps working for 14 days from the last refresh.</li>
           <li><strong>Payment:</strong> buying Pro opens a checkout page from Polar, which acts as the merchant of record and handles payment, tax, invoices and refunds under its own privacy policy. We send Polar your account’s email address and a random account ID so the purchase is linked to you. We never see your card details.</li>
-          <li><strong>Email we send:</strong> sign-in codes, trial reminders and service notices about your license, such as the end of the Pro preview, all through Resend. We don’t send marketing email to accounts.</li>
+          <li><strong>Email we send:</strong> sign-in codes, trial reminders and service notices about your account and license, such as the end of the Pro preview, planned maintenance or Pro we give you, all through Resend. Replies go to support@pyloxa.com. We don’t send marketing email to accounts.</li>
+          <li><strong>Notices in the app:</strong> the daily license refresh can bring back short service notices from us, such as planned maintenance, which Pyloxa shows as a banner. Nothing extra is sent to get them, and which notices you dismissed is kept only on your computer.</li>
           <li><strong>Pro preview:</strong> before Pro goes on sale, signing in gives you Pro for free. The preview ends when Pro goes on sale, with at least 30 days’ notice in the app and by email. You then keep Pro for 14 more days and see the early-bird discount in the app and on the account page; after that the app returns to the free version and keeps your data and settings.</li>
           <li><strong>The account page</strong> at <code>account.pyloxa.com/account</code> lists your computers and license, lets you rename or remove computers, download your data as JSON and delete the account. It uses two cookies that are needed for signing in: <code>pyloxa_signin</code> during sign-in and <code>pyloxa_account</code>, which keeps you signed in on the account page for 7 days. It loads no analytics or third-party content.</li>
-          <li><strong>Deleting the account</strong> removes your sign-in methods, computers, licenses, account-page sessions and security records, and replaces your email address with a placeholder. A record that each device ID has had a trial is kept without personal data so that the trial can’t be repeated. Polar keeps orders and invoices as its own rules and tax law require.</li>
+          <li><strong>Deleting the account</strong> removes your sign-in methods, computers, licenses, account-page sessions, security records, our notes, tags and creator records, and the records of notices sent to you, and replaces your email address with a placeholder. Our own log of changes we made to the account keeps only what was done and when. A record that each device ID has had a trial is kept without personal data so that the trial can’t be repeated. Polar keeps orders and invoices as its own rules and tax law require.</li>
         </ul>
 
         <h3 id="usage-statistics">Anonymous usage statistics (optional)</h3>
@@ -208,6 +211,7 @@
           <li><strong>Your consent</strong> for the app’s anonymous usage statistics, given when you turn them on. You can withdraw it at any time by turning them off, and <strong>Delete my data</strong> removes reports already sent.</li>
           <li><strong>Our contract with you</strong> for the account, sign-in, license and payment records, which are needed to provide the trial, the Pro preview and Pro.</li>
           <li><strong>Our legitimate interest</strong> in keeping accounts secure and preventing one license from being shared beyond its limits, for the security records and rate limits.</li>
+          <li><strong>Our legitimate interest</strong> in supporting you and managing Pro we give to creators, for account notes and tags, creator records and service notices.</li>
           <li><strong>Our legitimate interest</strong> in running a secure website and knowing how many people visit and download Pyloxa, for hosting logs and Cloudflare’s cookieless visit counts. The site doesn’t load Google Analytics when your device’s time zone is in Europe.</li>
         </ul>
       </section>
@@ -222,7 +226,7 @@
         <h2 id="other-title">Children, security and changes</h2>
         <ul>
           <li>The website and the app are not meant for children. Please don’t join the early-bird list or sign in for the trial, the Pro preview or Pro if you are under 16.</li>
-          <li>The website and the account service are served only over HTTPS. Only we can access the early-bird list and the account database. Sign-in codes, authorization codes and device credentials are stored only as hashes.</li>
+          <li>The website and the account service are served only over HTTPS. Only we can access the early-bird list, the account database and our admin pages, which are protected by Cloudflare Access. Sign-in codes, authorization codes and device credentials are stored only as hashes.</li>
           <li>When what we collect changes, we update this page and the date at the top before the change takes effect. Earlier versions of this page are in the site’s public <a href="https://github.com/eric861129/pyloxa.com">GitHub repository</a>.</li>
           <li>This policy is also available in <a href="../zh-TW/privacy/" lang="zh-Hant">Traditional Chinese</a>. If the two versions differ, the English version applies.</li>
         </ul>
