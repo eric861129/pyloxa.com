@@ -31,7 +31,7 @@
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
     <meta name="twitter:image:alt" content="Pyloxa: usa Claude Code y Codex juntos. Un plan en el que cada tarea muestra el agente al que va y la regla con la que coincidió." />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/es/#software","name":"Pyloxa","url":"https://pyloxa.com/es/","image":"https://pyloxa.com/assets/og-en.png","description":"App gratis para Windows que asigna cada tarea de programación a Claude Code o Codex según tus reglas, verifica con tus pruebas y cambia de agente si se acaba la cuota.","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.10","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"es","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
-    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/es/#faq","url":"https://pyloxa.com/es/","inLanguage":"es","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"¿Qué es Pyloxa?","acceptedAnswer":{"@type":"Answer","text":"Pyloxa es una app de escritorio para Windows 10 y 11 que hace que agentes de IA para programar, como Claude Code y Codex CLI, trabajen juntos. Describes el trabajo una vez, y el cerebro lo divide en tareas y entrega cada una a una CLI según tus reglas de asignación. Cada tarea se ejecuta en su propio git worktree y se verifica con tus comandos de verificación, y tú decides qué se fusiona. Si una CLI se queda sin cuota, otra toma el relevo cuando lo confirmas. Pyloxa usa tus propias suscripciones o claves de API. La edición gratuita no necesita cuenta; Pro, por US$79 al año, añade varios proyectos a la vez, modo automático y respaldo automático, y ahora está en vista previa gratuita: inicia sesión para usarlo."}},{"@type":"Question","name":"¿Pyloxa cobra por el uso de IA?","acceptedAnswer":{"@type":"Answer","text":"No. Pyloxa ejecuta las CLI oficiales que ya configuraste (Claude Code, Codex CLI y, de forma experimental, Gemini CLI), así que el uso se descuenta de tu propia suscripción, o de tu propia clave de API si eliges una. Pyloxa nunca revende ni hace de proxy de ningún servicio de IA."}},{"@type":"Question","name":"¿Qué necesito instalar?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 u 11 (64 bits), git y al menos una de estas CLI con la sesión iniciada: Claude Code o Codex CLI. Gemini CLI es opcional y experimental, y necesita tu propia clave de API de Gemini de pago. Con más de una CLI, el flujo predeterminado reparte el trabajo y el respaldo empieza a ser útil. ¿Todavía no las tienes? En el primer inicio, el asistente de configuración comprueba git y Node.js, instala las CLI con sus comandos npm oficiales después de que confirmes y te guía por el inicio de sesión y las claves de API."}},{"@type":"Question","name":"¿Pyloxa lee mis credenciales?","acceptedAnswer":{"@type":"Answer","text":"Nunca. Comprueba el estado del inicio de sesión con el propio comando de cada CLI y la inicia como lo harías tú. Los tokens y los archivos de credenciales no se leen, copian ni envían."}},{"@type":"Question","name":"¿Se envía mi código a algún sitio?","acceptedAnswer":{"@type":"Answer","text":"La versión gratuita no necesita cuenta, y Pyloxa nunca nos envía tus proyectos, prompts ni código; tu código solo va a donde lo envían las CLI, bajo los términos de Anthropic, OpenAI y Google. La prueba, la vista previa de Pro y Pro requieren iniciar sesión, y la cuenta solo se usa para la licencia: después de iniciar sesión, Pyloxa renueva la licencia aproximadamente una vez al día y solo envía un ID de dispositivo y las versiones de la app y de Windows. Pyloxa consulta a GitHub la última versión de Pyloxa y su catálogo de compatibilidad de CLI al iniciarse y cada 12 horas, sin datos de proyectos ni de uso; puedes desactivarlo en la configuración. Las estadísticas de uso se calculan en tu equipo y solo se envían si activas el uso compartido anónimo, que está desactivado de forma predeterminada, y entonces solo contienen recuentos y categorías. Las notificaciones de Pro que configures van directamente desde tu equipo al Telegram, Discord o webhook que elijas. Los detalles están en la política de privacidad (en inglés)."}},{"@type":"Question","name":"¿Un agente puede romper mi repositorio?","acceptedAnswer":{"@type":"Answer","text":"Los agentes trabajan en git worktrees separados, lejos del directorio de trabajo que estás editando, y Pyloxa nunca hace stash, reset ni checkout en él. Cuando una tarea termina, sus archivos cambiados se comprueban contra el alcance de escritura que permite el plan, y puedes revisar cada archivo en la vista de diff integrada. No se fusiona ni se hace push de nada hasta que tú lo decidas."}},{"@type":"Question","name":"¿Por qué Windows me muestra una advertencia al instalar?","acceptedAnswer":{"@type":"Answer","text":"El instalador gratuito todavía no tiene firma de código, así que SmartScreen puede decir que protegió tu PC. Elige Más información y luego Ejecutar de todas formas. Antes puedes comparar el SHA-256 del instalador con el de la página de la versión."}},{"@type":"Question","name":"¿Puedo elegir el modelo y el nivel de razonamiento?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada perfil tiene su propio modelo y nivel de razonamiento, con las opciones de la CLI que instalaste; déjalos vacíos para usar los valores predeterminados de la CLI. El cerebro y los agentes que trabajan pueden usar modelos distintos."}},{"@type":"Question","name":"¿Un tipo de tarea puede ir siempre al mismo agente?","acceptedAnswer":{"@type":"Answer","text":"Sí. Escribe una regla de asignación, como \"el trabajo de la fase de pruebas va a Claude Code\", para todos los proyectos o solo para este. También puedes reasignar una tarea concreta antes de aprobar un plan. Las instalaciones nuevas empiezan con un flujo predeterminado: Claude Code para frontend y video, Codex para backend e imágenes, Gemini para redacción y documentación. Cámbialo cuando quieras."}},{"@type":"Question","name":"¿En qué se diferencia de las herramientas que ponen terminales de agentes lado a lado?","acceptedAnswer":{"@type":"Answer","text":"Los multiplexores de terminales ponen varias terminales de agentes en una ventana para que veas cuáles están trabajando y cuáles te esperan; algunos mantienen los agentes en marcha incluso después de cerrar la app o llegan a máquinas remotas. Pyloxa se ocupa de lo que pasa fuera de las terminales: el cerebro divide la petición en tareas, tus reglas las asignan, tus comandos verifican los resultados, se propone un respaldo cuando se acaba la cuota y tú fusionas al final. Pyloxa sigue trabajando en la bandeja del sistema cuando cierras su ventana, y las tareas interrumpidas por un reinicio se pueden reanudar. Si quieres vigilar cada terminal tú mismo, te conviene un multiplexor; si quieres entregar una petición y recibir resultados verificados, te conviene Pyloxa."}},{"@type":"Question","name":"Ya pago Claude o ChatGPT. ¿Por qué no ejecutar la CLI en una terminal?","acceptedAnswer":{"@type":"Answer","text":"Ejecutar la CLI directamente está bien, y Pyloxa usa la misma CLI y la misma suscripción. La diferencia está en tres cosas: cuando se acaba la cuota, Pyloxa propone un respaldo según tus reglas y, cuando confirmas, otra CLI continúa desde los archivos ya cambiados; que un agente diga que terminó no cuenta hasta que pasan tus comandos de verificación; y las reglas de asignación y las skills que ve cada CLI están en un solo lugar en vez de en la configuración de cada CLI."}},{"@type":"Question","name":"¿En qué se diferencia de los subagentes de una CLI?","acceptedAnswer":{"@type":"Answer","text":"Los subagentes reparten el trabajo dentro de una CLI. Pyloxa lo reparte entre varias CLI: las tareas pueden ir a CLI distintas, cada una se ejecuta en su propio worktree, tus comandos verifican los resultados y otra CLI toma el relevo cuando una se queda sin cuota. Puedes usar ambos a la vez."}},{"@type":"Question","name":"¿Es compatible con Gemini u otros agentes?","acceptedAnswer":{"@type":"Answer","text":"Desde 0.1.2, Gemini CLI es compatible como opción experimental con tu propia clave de API de Gemini de pago. No se admiten el inicio de sesión con cuenta de Google ni las suscripciones AI Pro o Ultra. Gemini puede ejecutar tareas como redacción y documentación, pero no puede ser el cerebro ni probar el trabajo de otro agente, y en modo desatendido puede editar archivos pero no ejecutar comandos. Se están evaluando otros agentes."}},{"@type":"Question","name":"¿Cómo se gestionan las skills?","acceptedAnswer":{"@type":"Answer","text":"En la versión gratuita, la página Skills muestra las skills que puede leer cada CLI y marca las que comparten nombre pero tienen contenido distinto. Pro las reúne en una sola biblioteca de skills: sincronizada con todas las CLI, asignada por proyecto o perfil y compartida con tu flujo de trabajo como paquetes de asignación. Están en la vista previa de Pro desde la 0.1.10; inicia sesión para usarlas."}},{"@type":"Question","name":"¿Qué añade Pro?","acceptedAnswer":{"@type":"Answer","text":"Varios proyectos trabajando a la vez, con todo lo que espera por ti en el centro de tareas; decisiones automáticas dentro de los límites que fijes (modo automático); respaldo automático cuando se agota la cuota; pruebas cruzadas automáticas; un cerebro de respaldo; prioridad por proyecto, cuotas por conexión y planes programados; un panel de uso e informes; notificaciones a Telegram, Discord o un webhook; una biblioteca de skills y paquetes de asignación; y Agent Teams, todavía experimental. Pro cuesta US$79 al año y ahora está en vista previa: inicia sesión y úsalo gratis hasta que Pro salga a la venta, con al menos 30 días de aviso. El precio early bird es de US$49 al año y se mantiene mientras sigas suscrito. Si cancelas, Pro sigue funcionando en todas las versiones publicadas mientras estuviste suscrito. La versión gratuita seguirá siendo gratuita."}}]}]}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/es/#faq","url":"https://pyloxa.com/es/","inLanguage":"es","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"¿Qué es Pyloxa?","acceptedAnswer":{"@type":"Answer","text":"Pyloxa es una app de escritorio para Windows 10 y 11 que hace que agentes de IA para programar, como Claude Code y Codex CLI, trabajen juntos. Describes el trabajo una vez, y el cerebro lo divide en tareas y entrega cada una a una CLI según tus reglas de asignación. Cada tarea se ejecuta en su propio git worktree y se verifica con tus comandos de verificación, y tú decides qué se fusiona. Si una CLI se queda sin cuota, otra toma el relevo cuando lo confirmas. Pyloxa usa tus propias suscripciones o claves de API. La edición gratuita no necesita cuenta; Pro, por US$79 al año, añade varios proyectos a la vez, modo automático y respaldo automático, y ahora está en vista previa gratuita: inicia sesión para usarlo."}},{"@type":"Question","name":"¿Pyloxa cobra por el uso de IA?","acceptedAnswer":{"@type":"Answer","text":"No. Pyloxa ejecuta las CLI oficiales que ya configuraste (Claude Code, Codex CLI y, de forma experimental, Gemini CLI), así que el uso se descuenta de tu propia suscripción, o de tu propia clave de API si eliges una. Pyloxa nunca revende ni hace de proxy de ningún servicio de IA."}},{"@type":"Question","name":"¿Qué necesito instalar?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 u 11 (64 bits), git y al menos una de estas CLI con la sesión iniciada: Claude Code o Codex CLI. Gemini CLI es opcional y experimental, y necesita tu propia clave de API de Gemini de pago. Con más de una CLI, el flujo predeterminado reparte el trabajo y el respaldo empieza a ser útil. ¿Todavía no las tienes? En el primer inicio, el asistente de configuración comprueba git y Node.js, instala las CLI con sus comandos npm oficiales después de que confirmes y te guía por el inicio de sesión y las claves de API."}},{"@type":"Question","name":"¿Pyloxa lee mis credenciales?","acceptedAnswer":{"@type":"Answer","text":"Nunca. Comprueba el estado del inicio de sesión con el propio comando de cada CLI y la inicia como lo harías tú. Los tokens y los archivos de credenciales no se leen, copian ni envían."}},{"@type":"Question","name":"¿Se envía mi código a algún sitio?","acceptedAnswer":{"@type":"Answer","text":"La versión gratuita no necesita cuenta, y Pyloxa nunca nos envía tus proyectos, prompts ni código; tu código solo va a donde lo envían las CLI, bajo los términos de Anthropic, OpenAI y Google. La prueba, la vista previa de Pro y Pro requieren iniciar sesión, y la cuenta solo se usa para la licencia: después de iniciar sesión, Pyloxa renueva la licencia aproximadamente una vez al día y solo envía un ID de dispositivo y las versiones de la app y de Windows. Pyloxa consulta a GitHub la última versión de Pyloxa y su catálogo de compatibilidad de CLI al iniciarse y cada 12 horas, sin datos de proyectos ni de uso; puedes desactivarlo en la configuración. Las estadísticas de uso se calculan en tu equipo y solo se envían si activas el uso compartido anónimo, que está desactivado de forma predeterminada, y entonces solo contienen recuentos y categorías. Las notificaciones de Pro que configures van directamente desde tu equipo al Telegram, Discord o webhook que elijas. Los detalles están en la política de privacidad (en inglés)."}},{"@type":"Question","name":"¿Un agente puede romper mi repositorio?","acceptedAnswer":{"@type":"Answer","text":"Los agentes trabajan en git worktrees separados, lejos del directorio de trabajo que estás editando, y Pyloxa nunca hace stash, reset ni checkout en él. Cuando una tarea termina, sus archivos cambiados se comprueban contra el alcance de escritura que permite el plan, y puedes revisar cada archivo en la vista de diff integrada. No se fusiona ni se hace push de nada hasta que tú lo decidas."}},{"@type":"Question","name":"¿Por qué Windows me muestra una advertencia al instalar?","acceptedAnswer":{"@type":"Answer","text":"El instalador gratuito todavía no tiene firma de código, así que SmartScreen puede decir que protegió tu PC. Elige Más información y luego Ejecutar de todas formas. Antes puedes comparar el SHA-256 del instalador con el de la página de la versión."}},{"@type":"Question","name":"¿En qué se diferencia de las herramientas que ponen terminales de agentes lado a lado?","acceptedAnswer":{"@type":"Answer","text":"Los multiplexores de terminales ponen varias terminales de agentes en una ventana para que veas cuáles están trabajando y cuáles te esperan; algunos mantienen los agentes en marcha incluso después de cerrar la app o llegan a máquinas remotas. Pyloxa se ocupa de lo que pasa fuera de las terminales: el cerebro divide la petición en tareas, tus reglas las asignan, tus comandos verifican los resultados, se propone un respaldo cuando se acaba la cuota y tú fusionas al final. Pyloxa sigue trabajando en la bandeja del sistema cuando cierras su ventana, y las tareas interrumpidas por un reinicio se pueden reanudar. Si quieres vigilar cada terminal tú mismo, te conviene un multiplexor; si quieres entregar una petición y recibir resultados verificados, te conviene Pyloxa."}},{"@type":"Question","name":"Ya pago Claude o ChatGPT. ¿Por qué no ejecutar la CLI en una terminal?","acceptedAnswer":{"@type":"Answer","text":"Ejecutar la CLI directamente está bien, y Pyloxa usa la misma CLI y la misma suscripción. La diferencia está en tres cosas: cuando se acaba la cuota, Pyloxa propone un respaldo según tus reglas y, cuando confirmas, otra CLI continúa desde los archivos ya cambiados; que un agente diga que terminó no cuenta hasta que pasan tus comandos de verificación; y las reglas de asignación y las skills que ve cada CLI están en un solo lugar en vez de en la configuración de cada CLI."}},{"@type":"Question","name":"¿En qué se diferencia de los subagentes de una CLI?","acceptedAnswer":{"@type":"Answer","text":"Los subagentes reparten el trabajo dentro de una CLI. Pyloxa lo reparte entre varias CLI: las tareas pueden ir a CLI distintas, cada una se ejecuta en su propio worktree, tus comandos verifican los resultados y otra CLI toma el relevo cuando una se queda sin cuota. Puedes usar ambos a la vez."}},{"@type":"Question","name":"¿Es compatible con Gemini u otros agentes?","acceptedAnswer":{"@type":"Answer","text":"Desde 0.1.2, Gemini CLI es compatible como opción experimental con tu propia clave de API de Gemini de pago. No se admiten el inicio de sesión con cuenta de Google ni las suscripciones AI Pro o Ultra. Gemini puede ejecutar tareas como redacción y documentación, pero no puede ser el cerebro ni probar el trabajo de otro agente, y en modo desatendido puede editar archivos pero no ejecutar comandos. Se están evaluando otros agentes."}},{"@type":"Question","name":"¿Qué añade Pro?","acceptedAnswer":{"@type":"Answer","text":"Varios proyectos trabajando a la vez, con todo lo que espera por ti en el centro de tareas; decisiones automáticas dentro de los límites que fijes (modo automático); respaldo automático cuando se agota la cuota; pruebas cruzadas automáticas; un cerebro de respaldo; prioridad por proyecto, cuotas por conexión y planes programados; un panel de uso e informes; notificaciones a Telegram, Discord o un webhook; una biblioteca de skills y paquetes de asignación; y Agent Teams, todavía experimental. Pro cuesta US$79 al año y ahora está en vista previa: inicia sesión y úsalo gratis hasta que Pro salga a la venta, con al menos 30 días de aviso. El precio early bird es de US$49 al año y se mantiene mientras sigas suscrito. Si cancelas, Pro sigue funcionando en todas las versiones publicadas mientras estuviste suscrito. La versión gratuita seguirá siendo gratuita."}}]}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
@@ -82,10 +82,10 @@
     <header class="wrap nav">
       <a class="mark" href="./" aria-label="Inicio de Pyloxa">Pyloxa</a>
       <ul>
-        <li class="optional"><a href="#why">Por qué Pyloxa</a></li>
         <li class="optional"><a href="#how">Cómo funciona</a></li>
-        <li class="optional"><a href="#custom">Personalizar</a></li>
-        <li class="optional"><a href="#skills">Skills</a></li>
+        <li class="optional"><a href="#workflow">Flujo de trabajo</a></li>
+        <li class="optional"><a href="#memory">Memoria y skills</a></li>
+        <li class="optional"><a href="#why">Por qué Pyloxa</a></li>
         <li class="optional"><a href="#pricing">Precios</a></li>
         <li class="optional"><a href="#faq">Preguntas frecuentes</a></li>
         <li class="optional"><a href="../changelog/">Registro de cambios</a></li>
@@ -104,6 +104,13 @@
               <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Descargar para Windows</a>
               <span class="meta">Gratis · v0.1.10 · Windows 10 y 11</span><span class="meta app-lang">La app de Pyloxa también está disponible en estos nueve idiomas.</span>
             </div>
+            <a class="hero-pro" href="#pricing">O inicia sesión y prueba gratis la vista previa de Pro →</a>
+            <ul class="trust" aria-label="En resumen">
+              <li>Nativo en Windows, sin WSL</li>
+              <li>Usa tus propias suscripciones</li>
+              <li>Nunca toca tus sesiones de las CLI</li>
+              <li>Interfaz en nueve idiomas</li>
+            </ul>
           </div>
         </div>
         <div class="stage" aria-label="Prueba la asignación">
@@ -151,82 +158,375 @@
         </div>
       </section>
 
-      <section class="wrap section" aria-labelledby="states-title">
-        <div class="states reveal">
-          <h2 class="section-head" id="states-title">Cada resultado se verifica</h2>
+      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+        <div class="flow-col">
+          <h2 class="section-head reveal" id="how-title"><span>Cómo funciona</span></h2>
 
-          <p class="state-word">En curso</p>
-          <div class="state-row task-row" data-ui>
-            <div class="ui-row">
-              <div class="top">
-                <span class="ui-title">API de perfil</span>
-                <span class="badge">backend</span>
-                <span class="badge warn">Con escritura</span>
-                <span class="spacer"></span>
-                <span class="badge info"><span class="spin" aria-hidden="true"></span>Ejecutándose</span>
+          <figure class="demo reveal">
+            <div class="frame">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Grabación de pantalla: se escribe una petición, el cerebro propone un plan, Claude Code y Codex toman cada uno una parte tras la aprobación, las verificaciones pasan y el resultado se fusiona">
+                <source src="../assets/video/en/flow.webm" type="video/webm" />
+              </video>
+            </div>
+            <figcaption>Una grabación real: una petición, un plan del cerebro, Claude Code y Codex repartiéndose el trabajo, las verificaciones pasando y la fusión. Se recortó el tiempo de espera de los agentes.</figcaption>
+          </figure>
+
+          <div class="exchange reveal">
+            <p class="say">Primero, di lo que quieres.</p>
+            <div class="call">
+              <div data-ui class="ui-row">Crea una página de perfil de miembro donde se pueda editar el apodo y el avatar. El backend necesita una API y documentación.</div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="2576" height="1840" alt="Pyloxa muestra la respuesta del cerebro y un plan de tres fases con tareas asignadas a Claude Code" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange reveal">
+            <p class="say">Luego, aprueba el plan.</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Aprobar y empezar</button> <span class="ui-muted">Trabaja un agente a la vez, cada uno en su propio git worktree.</span></div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img src="../assets/shots/en/plan-gates.png" alt="Un plan con tareas aceptadas automáticamente después de pasar sus comandos de verificación y con un control de fase superado" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange final reveal">
+            <p class="say">Por último, fusiona lo que superó las verificaciones.</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Fusionar en la rama actual (main)</button></div>
+            </div>
+            <div class="response result" data-ui>
+              <div class="ui-row"><span class="ui-title">Resultado de todo el plan (5 archivos)</span></div>
+              <ul class="files">
+                <li><span class="st">A</span>docs/api/profile.yaml</li>
+                <li><span class="st">A</span>server/src/routes/profile.ts</li>
+                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
+                <li><span class="st">A</span>test/profile.test.ts</li>
+                <li><span class="st">A</span>test/contract.test.ts</li>
+              </ul>
+              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Fusionado en main. No se hace push de nada hasta que tú lo hagas.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 工作流程五段：和 App「工作流程」頁的規劃、階段、分工、檢查、交付一致（D-108） -->
+      <section class="wrap section custom wf" id="workflow" aria-labelledby="wf-title">
+        <div class="grid no-tabs" data-tabs>
+          <div class="custom-head reveal">
+            <h2 class="section-head" id="wf-title">Un flujo de trabajo, cinco etapas</h2>
+            <p>La página “Flujo de trabajo” de la app muestra todo el flujo de una vez: quién planifica, en qué fases, quién hace cada tipo de trabajo, cómo se comprueba y cómo se entrega. Cada etapa la configuras tú; el cerebro solo propone planes y no puede cambiarlas.</p>
+          </div>
+
+          <div class="tabs wf-steps" role="tablist" aria-label="Las cinco etapas de un flujo de trabajo" hidden>
+            <button type="button" role="tab" id="wf-tab-plan" aria-controls="wf-plan" aria-selected="true"><span class="n" aria-hidden="true">1</span>Planificación</button>
+            <button type="button" role="tab" id="wf-tab-phases" aria-controls="wf-phases" aria-selected="false"><span class="n" aria-hidden="true">2</span>Fases</button>
+            <button type="button" role="tab" id="wf-tab-assign" aria-controls="wf-assign" aria-selected="false"><span class="n" aria-hidden="true">3</span>Reparto del trabajo</button>
+            <button type="button" role="tab" id="wf-tab-check" aria-controls="wf-check" aria-selected="false"><span class="n" aria-hidden="true">4</span>Comprobaciones</button>
+            <button type="button" role="tab" id="wf-tab-deliver" aria-controls="wf-deliver" aria-selected="false"><span class="n" aria-hidden="true">5</span>Entrega</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-plan" aria-labelledby="wf-tab-plan">
+            <div class="panel-copy">
+              <h3>Planificación: quién es el cerebro y cuánto control cedes</h3>
+              <p>Cualquier perfil puede ser el cerebro que lee el proyecto y escribe el plan, y el cerebro puede usar un modelo distinto del de los agentes que hacen el trabajo.</p>
+              <ul>
+                <li>Un perfil elige la CLI, el modelo, el nivel de razonamiento y un prompt de rol que se añade a cada tarea. Una CLI puede tener varios, como "Claude frontend" y "Claude docs".</li>
+                <li>El modo de asignación decide cuándo te pregunta Pyloxa primero. En ningún modo se hace push ni despliegue por sí solo.</li>
+                <li>Si el cerebro no está disponible, Pro puede pasar la planificación a un cerebro de respaldo. El cerebro nunca revisa el trabajo que hizo él mismo.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="modes" data-ui>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Cerebro</span><span class="badge info">Claude Code</span></div>
+                  <span class="ui-muted">Modelo: predeterminado de la CLI · Esfuerzo: high</span>
+                  <div class="mode-top wf-backup"><span class="ui-muted">Cerebro de respaldo: Codex</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Sugerir y preguntar</span><span class="badge info">Predeterminado</span><span class="spacer"></span><span class="badge">Gratis</span></div>
+                  <span class="ui-muted">El cerebro propone el plan y quién hace cada tarea; nada empieza hasta que apruebes el plan.</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Seguir solo la configuración</span><span class="spacer"></span><span class="badge">Gratis</span></div>
+                  <span class="ui-muted">Empieza de inmediato cuando cada tarea coincide con una regla; se detiene cuando nada coincide o un perfil no está disponible.</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">Automático dentro de límites</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                  <span class="ui-muted">Elige y reintenta dentro de los perfiles, modelos y cantidades que permites, y se pausa al llegar a cualquier límite.</span>
+                </div>
               </div>
-              <span class="ui-muted">Codex · en su propio worktree en la rama pyloxa/r_8f2k/t_api</span>
             </div>
           </div>
 
-          <p class="state-word">Verificado</p>
-          <div class="state-row reply-demo" data-reply-demo>
-            <div class="task-row" data-ui data-task>
-              <div class="ui-row" data-pending>
-                <div class="top">
-                  <span class="ui-title">API de perfil</span>
-                  <span class="badge">backend</span>
-                  <span class="badge warn">Con escritura</span>
-                  <span class="spacer"></span>
-                  <span class="badge warn" data-status>Esperándote</span>
+          <div class="panel" role="tabpanel" id="wf-phases" aria-labelledby="wf-tab-phases">
+            <div class="panel-copy">
+              <h3>Fases: el cerebro las organiza y cada una termina con una comprobación</h3>
+              <p>El cerebro organiza las fases según la petición, como especificación, contrato, implementación y pruebas. Antes de aprobar, puedes reasignar una tarea, editar sus instrucciones o pedirle al cerebro que lo revise.</p>
+              <ul>
+                <li>Cada tarea terminada se verifica en su propio worktree; al final de cada fase, el control se ejecuta de nuevo sobre el resultado integrado.</li>
+                <li>Un control puede avanzar solo cuando pasa, o esperar tu aprobación.</li>
+                <li>La siguiente fase recibe un paquete de traspaso: los resultados, las verificaciones que pasaron y en qué fijarse.</li>
+                <li>Agent Teams (experimental, Pro): los agentes en ejecución pueden ver las tareas de todo el equipo, informar de su avance y detenerse a preguntarte cuando les falta información.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="wf-plan-card" data-ui>
+                <div class="ui-row wf-card-head">
+                  <span class="ui-title">Plan: página de perfil</span>
+                  <span class="ui-muted">3 fases · 5 tareas</span>
                 </div>
-                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test pasó · 2 archivos cambiados · dentro de su alcance de escritura</span></span>
-                <div class="actions">
-                  <button type="button" class="ui-button primary" data-accept>Aceptar resultado</button>
-                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">Responder en la sesión</button>
-                </div>
-              </div>
-              <div class="ui-row" data-accepted hidden>
-                <div class="top">
-                  <span class="ui-title">API de perfil</span>
-                  <span class="badge">backend</span>
-                  <span class="spacer"></span>
-                  <span class="badge ok">Hecho</span>
-                </div>
-                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Se aceptó y se fusionó en pyloxa/r_8f2k/integration</span>
+                <ol class="wf-phase-list">
+                  <li class="ui-row"><span class="wf-num">1</span><div><span class="ui-title">Especificación y contrato</span><span class="ui-muted">Codex</span></div><span class="badge ok">Control superado</span></li>
+                  <li class="ui-row"><span class="wf-num">2</span><div><span class="ui-title">Implementación</span><span class="ui-muted">Frontend Claude Code · backend Codex</span></div><span class="badge info"><span class="spin" aria-hidden="true"></span>Ejecutándose</span></li>
+                  <li class="ui-row"><span class="wf-num">3</span><div><span class="ui-title">Pruebas</span><span class="ui-muted">Al terminar, espera tu aprobación</span></div><span class="badge">En espera</span></li>
+                </ol>
               </div>
             </div>
-            <section class="session" id="session-demo" data-ui data-session hidden aria-label="Sesión: API de perfil">
-              <div class="ui-row session-head">
-                <span class="ui-title">API de perfil</span>
-                <span class="ui-muted">Codex · Session</span>
-                <span class="spacer"></span>
-                <button type="button" class="session-close" data-session-close aria-label="Cerrar sesión">×</button>
-              </div>
-              <div class="ui-row session-log" data-session-log aria-live="polite">
-                <div class="msg brief"><span class="who">Tarea</span><p>Agrega un endpoint GET /api/profile que devuelva el miembro que inició sesión, con pruebas.</p></div>
-                <div class="msg"><span class="who">Codex</span><p>Agregué GET /api/profile. Devuelve el nombre y el email del miembro, con 2 pruebas. npm run test pasó.</p></div>
-              </div>
-              <form class="ui-row session-reply" data-session-form>
-                <label class="visually-hidden" for="session-input">Responder a Codex</label>
-                <textarea id="session-input" rows="2" data-session-input>Devuelve también avatarUrl</textarea>
-                <button type="submit" class="ui-button primary">Enviar</button>
-              </form>
-            </section>
           </div>
 
-          <p class="state-word">Integrado</p>
-          <div class="state-row task-row" data-ui>
-            <div class="ui-row">
-              <div class="top">
-                <span class="ui-title">Página de perfil</span>
-                <span class="badge">frontend</span>
-                <span class="badge ok">Aceptado automáticamente</span>
-                <span class="spacer"></span>
-                <span class="badge ok">Hecho</span>
-              </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Pasaron todos los comandos de verificación (2) · fusionado en la rama de integración</span>
+          <div class="panel" role="tabpanel" id="wf-assign" aria-labelledby="wf-tab-assign">
+            <div class="panel-copy">
+              <h3>Reparto del trabajo: una tabla decide quién hace qué</h3>
+              <p>Cada fila de la tabla de asignación es un tipo de trabajo. Elige el agente que lo recibe primero y el que toma el relevo; si dejas una celda vacía, ese agente nunca lo recibe.</p>
+              <ul>
+                <li>Las reglas se revisan de arriba abajo y gana la primera que coincide por completo. Pyloxa te avisa cuando una regla oculta a otra.</li>
+                <li>Las reglas para un solo proyecto o una sola fase van en la lista de reglas y tienen prioridad sobre la tabla.</li>
+                <li>La simulación de reglas no llama a ningún agente ni gasta cuota: elige un tipo de tarea y mira quién la recibe y por qué.</li>
+                <li>Cuando nada coincide, Pyloxa te pregunta en la vista previa del plan o se detiene, según elijas. Nunca elige un agente al azar.</li>
+              </ul>
             </div>
+            <div class="panel-media">
+              <div class="wf-matrix" data-ui data-matrix>
+                <div class="ui-row wf-card-head">
+                  <span class="ui-title">Tabla de asignación</span>
+                  <span class="ui-muted">Haz clic en una celda: principal → respaldo → no asignar</span>
+                </div>
+                <div class="wf-matrix-scroll">
+                  <table>
+                    <thead>
+                      <tr><th scope="col">Tipo de tarea</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">Gemini CLI</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><th scope="row">Frontend</th><td><button type="button" class="wf-cell is-primary" data-cell>Principal</button></td><td><button type="button" class="wf-cell is-fallback" data-cell>Respaldo</button></td><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td></tr>
+                      <tr><th scope="row">Backend</th><td><button type="button" class="wf-cell is-fallback" data-cell>Respaldo</button></td><td><button type="button" class="wf-cell is-primary" data-cell>Principal</button></td><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td></tr>
+                      <tr><th scope="row">Documentación</th><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td><td><button type="button" class="wf-cell is-primary" data-cell>Principal</button></td></tr>
+                      <tr><th scope="row">Pruebas</th><td><button type="button" class="wf-cell is-primary" data-cell>Principal</button></td><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td></tr>
+                      <tr><th scope="row">Imágenes</th><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td><td><button type="button" class="wf-cell is-primary" data-cell>Principal</button></td><td><button type="button" class="wf-cell" data-cell aria-label="No asignar">—</button></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-check" aria-labelledby="wf-tab-check">
+            <div class="panel-copy">
+              <h3>Comprobaciones: que un agente diga que terminó no cuenta</h3>
+              <p>Pyloxa ejecuta en el worktree de la tarea los comandos de verificación que aprobaste, y la tarea solo cuenta como terminada cuando pasan. Si fallan, el agente tiene un intento de corrección automático.</p>
+              <ul>
+                <li>Los comandos de verificación como <code>npm run test</code> necesitan tu aprobación, y puedes probarlos antes en un worktree temporal. El cerebro solo puede usar comandos que aprobaste.</li>
+                <li>Pasa una tarea terminada a otro agente para que la pruebe; por ejemplo, Codex la construye y Claude Code escribe las pruebas. El agente que prueba solo puede cambiar archivos de prueba, y Pyloxa vuelve a ejecutar tus comandos sobre el resultado.</li>
+                <li>El cerebro puede revisar el trabajo terminado, con su propio modelo y nivel de razonamiento. Su veredicto se marca como revisión de IA, y una tarea que pide tu revisión sigue esperándote.</li>
+              </ul>
+            </div>
+            <div class="panel-media wf-states">
+                <p class="state-word">En curso</p>
+                <div class="state-row task-row" data-ui>
+                  <div class="ui-row">
+                    <div class="top">
+                      <span class="ui-title">API de perfil</span>
+                      <span class="badge">backend</span>
+                      <span class="badge warn">Con escritura</span>
+                      <span class="spacer"></span>
+                      <span class="badge info"><span class="spin" aria-hidden="true"></span>Ejecutándose</span>
+                    </div>
+                    <span class="ui-muted">Codex · en su propio worktree en la rama pyloxa/r_8f2k/t_api</span>
+                  </div>
+                </div>
+
+                <p class="state-word">Verificado</p>
+                <div class="state-row reply-demo" data-reply-demo>
+                  <div class="task-row" data-ui data-task>
+                    <div class="ui-row" data-pending>
+                      <div class="top">
+                        <span class="ui-title">API de perfil</span>
+                        <span class="badge">backend</span>
+                        <span class="badge warn">Con escritura</span>
+                        <span class="spacer"></span>
+                        <span class="badge warn" data-status>Esperándote</span>
+                      </div>
+                      <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test pasó · 2 archivos cambiados · dentro de su alcance de escritura</span></span>
+                      <div class="actions">
+                        <button type="button" class="ui-button primary" data-accept>Aceptar resultado</button>
+                        <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">Responder en la sesión</button>
+                      </div>
+                    </div>
+                    <div class="ui-row" data-accepted hidden>
+                      <div class="top">
+                        <span class="ui-title">API de perfil</span>
+                        <span class="badge">backend</span>
+                        <span class="spacer"></span>
+                        <span class="badge ok">Hecho</span>
+                      </div>
+                      <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Se aceptó y se fusionó en pyloxa/r_8f2k/integration</span>
+                    </div>
+                  </div>
+                  <section class="session" id="session-demo" data-ui data-session hidden aria-label="Sesión: API de perfil">
+                    <div class="ui-row session-head">
+                      <span class="ui-title">API de perfil</span>
+                      <span class="ui-muted">Codex · Session</span>
+                      <span class="spacer"></span>
+                      <button type="button" class="session-close" data-session-close aria-label="Cerrar sesión">×</button>
+                    </div>
+                    <div class="ui-row session-log" data-session-log aria-live="polite">
+                      <div class="msg brief"><span class="who">Tarea</span><p>Agrega un endpoint GET /api/profile que devuelva el miembro que inició sesión, con pruebas.</p></div>
+                      <div class="msg"><span class="who">Codex</span><p>Agregué GET /api/profile. Devuelve el nombre y el email del miembro, con 2 pruebas. npm run test pasó.</p></div>
+                    </div>
+                    <form class="ui-row session-reply" data-session-form>
+                      <label class="visually-hidden" for="session-input">Responder a Codex</label>
+                      <textarea id="session-input" rows="2" data-session-input>Devuelve también avatarUrl</textarea>
+                      <button type="submit" class="ui-button primary">Enviar</button>
+                    </form>
+                  </section>
+                </div>
+
+                <p class="state-word">Integrado</p>
+                <div class="state-row task-row" data-ui>
+                  <div class="ui-row">
+                    <div class="top">
+                      <span class="ui-title">Página de perfil</span>
+                      <span class="badge">frontend</span>
+                      <span class="badge ok">Aceptado automáticamente</span>
+                      <span class="spacer"></span>
+                      <span class="badge ok">Hecho</span>
+                    </div>
+                    <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Pasaron todos los comandos de verificación (2) · fusionado en la rama de integración</span>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-deliver" aria-labelledby="wf-tab-deliver">
+            <div class="panel-copy">
+              <h3>Entrega: tú decides qué se fusiona y cuándo se hace push</h3>
+              <p>Cada tarea termina en su propio git worktree y se comprueba contra su alcance de escritura antes de fusionarse en la rama de integración. Fusionar en tu rama, hacer push y abrir un PR esperan a que tú lo decidas.</p>
+              <ul>
+                <li>Cuando una tarea cambia archivos que dirigen a los agentes y la automatización, como .github, .claude o CLAUDE.md, nunca se acepta automáticamente, y el diálogo de fusión vuelve a mostrar esos archivos.</li>
+                <li>Al abrir un PR puedes añadir un registro de qué comandos se ejecutaron de verdad y quién aceptó cada resultado.</li>
+                <li>Pyloxa nunca hace stash, reset ni checkout en tu directorio de trabajo.</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="wf-pr" data-ui>
+                <div class="ui-row wf-card-head"><span class="ui-title">Crear pull request</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
+                <div class="ui-row wf-pr-body">
+                  <span class="field-label">Título</span>
+                  <span class="wf-input">Agregar la página de perfil</span>
+                  <label class="wf-check"><input type="checkbox" checked /> Agregar al final de la descripción el registro de verificación de Pyloxa (5 resultados)</label>
+                  <div class="wf-warn">Necesita tu revisión: este cambio toca <code>.github/workflows/ci.yml</code></div>
+                </div>
+                <div class="ui-row wf-pr-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Pasaron todos los comandos de verificación (2) · fusionado en la rama de integración</span><span class="spacer"></span><button type="button" class="ui-button primary">Crear PR</button></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wf-templates reveal">
+            <h3>Empieza con una plantilla</h3>
+            <p>Antes de aplicar una, Pyloxa muestra cada configuración que cambia, y “Deshacer la última plantilla” te devuelve a como estaba. Las configuraciones de Pro de una plantilla se omiten en la versión gratuita.</p>
+            <ul>
+              <li><span class="wf-tpl-name">Equilibrado</span><span class="badge info">Predeterminado</span><p>Frontend a Claude Code, backend a Codex, cada uno respaldo del otro; sugerir y preguntar.</p></li>
+              <li><span class="wf-tpl-name">Arreglo rápido</span><p>Solo sigue tu configuración, en un worktree compartido, todo con el perfil del cerebro.</p></li>
+              <li><span class="wf-tpl-name">Revisión exhaustiva</span><span class="badge warn">Incluye configuración de Pro</span><p>El cerebro revisa cada tarea, y el trabajo de frontend y backend recibe pruebas cruzadas.</p></li>
+              <li><span class="wf-tpl-name">Repartir la cuota</span><span class="badge warn">Incluye configuración de Pro</span><p>Reparte cada tipo de trabajo entre Claude Code y Codex, con respaldo automático cuando se acaba la cuota.</p></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="fallback section" aria-labelledby="fallback-title">
+        <div class="wrap grid">
+          <div class="fallback-copy reveal">
+            <h2 id="fallback-title">Cuando uno se queda sin cuota</h2>
+            <p>Si Codex llega a su límite de uso a mitad de una tarea, Pyloxa deja de enviarle trabajo, muestra cuándo se restablece la cuota y ofrece el respaldo de tu regla. Tú confirmas, y Claude Code continúa desde los archivos que Codex ya cambió.</p>
+            <p>La barra de título muestra cuánto queda de cada suscripción: amarillo al 70% de uso, rojo al 90% o cuando estás limitado.</p>
+            <div class="figures">
+              <span>3 intentos automáticos por tarea</span>
+              <span>2 respaldos como máximo</span>
+              <span>0 cargos de API que no hayas permitido</span>
+            </div>
+          </div>
+          <div class="fallback-shots fq reveal">
+            <div class="fq-meter" data-ui>
+              <div class="ui-row wf-card-head"><span class="ui-title">Cuota de agentes</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent">Claude Code</span><span class="ui-muted">5 horas</span><span class="fq-bar"><i class="warn" style="width: 74%"></i></span><span class="fq-val">74%</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent"></span><span class="ui-muted">7 días</span><span class="fq-bar"><i style="width: 41%"></i></span><span class="fq-val">41%</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent">Codex</span><span class="ui-muted">Hoy</span><span class="fq-tokens">182k token</span><span class="badge bad">Limitado</span></div>
+            </div>
+            <div class="fq-card" data-ui>
+              <div class="ui-row">
+                <span class="ui-title fq-title">Codex se quedó sin cuota (se restablece hacia las 18:00)</span>
+                <span class="ui-muted">Claude Code puede tomar el relevo y continuar desde lo que terminó Codex, o Codex puede reintentar cuando se restablezca su cuota.</span>
+                <span class="fq-actions"><button type="button" class="ui-button primary">Que Claude Code tome el relevo</button><button type="button" class="ui-button">Reintentar cuando se restablezca la cuota</button></span>
+              </div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro toma el relevo automáticamente siguiendo tu cadena de respaldo, con los disparadores y límites que fijes.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section memory" id="memory" aria-labelledby="memory-title">
+        <div class="wrap grid">
+          <div class="skills-copy reveal">
+            <h2 id="memory-title">Todos los agentes leen el mismo contexto</h2>
+            <p>Anota una vez las reglas, convenciones y trampas conocidas de tu proyecto, y Claude Code, Codex y Gemini CLI las leen. Con las skills pasa lo mismo: las gestionas en un solo lugar en vez de tener una copia en cada CLI.</p>
+            <ol class="steps">
+              <li><strong>Recordar<span class="tier">Gratis</span></strong><span>Pulsa “Recordar” en una respuesta del cerebro o en la sesión de una tarea, o elige entradas para importar de CLAUDE.md, AGENTS.md y los archivos de memoria de las otras CLI.</span></li>
+              <li><strong>Los agentes sugieren, tú apruebas<span class="tier">Gratis</span></strong><span>Mientras trabajan, los agentes pueden buscar en la memoria y sugerir entradas nuevas. Ningún agente ve una sugerencia hasta que la aceptas.</span></li>
+              <li><strong>Sincronizar con las CLI<span class="tier">Gratis</span></strong><span>Escribe las reglas del proyecto en un bloque de Pyloxa en AGENTS.md, para que las CLI también las lean en tu terminal. Primero ves el diff, y Pyloxa no hace ningún commit por ti.</span></li>
+              <li><strong>Inventario de skills<span class="tier">Gratis</span></strong><span>Mira qué skills tiene cada CLI y cuáles comparten nombre pero difieren en contenido.</span></li>
+              <li><strong>Biblioteca de skills y paquetes de asignación<span class="tier">Pro</span></strong><span>Una biblioteca de skills sincronizada con todas las CLI y asignada por proyecto o perfil, que se comparte junto con tu flujo de trabajo como paquete de asignación.</span></li>
+            </ol>
+          </div>
+          <div class="skills-mock reveal">
+            <div class="mem-mock" data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Memoria</span>
+                <span class="badge warn">Pendientes 2</span>
+              </div>
+              <div class="ui-row mem-item">
+                <p class="mem-text">Usa siempre pnpm, no npm.</p>
+                <span class="ui-muted">Regla · este proyecto · propuesta por el cerebro</span>
+                <span class="mem-actions"><span class="ui-button primary" aria-hidden="true">Aceptar</span><span class="ui-button" aria-hidden="true">Editar</span><span class="ui-button" aria-hidden="true">Descartar</span></span>
+              </div>
+              <div class="ui-row mem-item">
+                <p class="mem-text">En Windows, ejecuta las pruebas con <code>--runInBand</code>, o se agota el tiempo de espera.</p>
+                <span class="ui-muted">Trampa conocida · este proyecto · propuesta por Codex</span>
+                <span class="mem-actions"><span class="ui-button primary" aria-hidden="true">Aceptar</span><span class="ui-button" aria-hidden="true">Editar</span><span class="ui-button" aria-hidden="true">Descartar</span></span>
+              </div>
+            </div>
+            <div data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Skills</span>
+                <span class="ui-muted">5 skills · 1 difiere</span>
+                <span class="spacer"></span>
+                <span class="ui-button primary" aria-hidden="true">Sincronizar con todas las CLI</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th scope="col">Nombre</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">proyecto shop</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>api-contract</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge info">En uso</span></td></tr>
+                  <tr><td>react-conventions</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge warn">Difiere</span></td><td><span class="badge info">En uso</span></td></tr>
+                  <tr><td>release-notes</td><td><span class="badge">Falta</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge">Sin usar</span></td></tr>
+                  <tr><td>db-migration</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge">Sin usar</span></td></tr>
+                  <tr><td>test-writer</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge info">En uso</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="media-note">Pantalla de ejemplo. La memoria y el inventario de skills están en la versión gratuita; la biblioteca de skills, su asignación y los paquetes de asignación son de Pro.</p>
           </div>
         </div>
       </section>
@@ -286,14 +586,8 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </section>
-
-      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
-      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
-        <div class="grid">
-          <div class="why-copy reveal">
-            <h2 id="supervised-title">No es una plataforma donde los agentes se manejan solos</h2>
+          <div class="promises-head reveal" id="supervised">
+            <h3>No es una plataforma donde los agentes se manejan solos</h3>
             <p>Algunas plataformas hacen que los agentes funcionen como una empresa: se asignan su propio trabajo, se despiertan con un horario y trabajan día y noche. Pyloxa toma otro camino. Los agentes hacen solo lo que pides, y sus resultados se comprueban antes de que decidas fusionarlos.</p>
           </div>
           <ul class="promises reveal">
@@ -325,240 +619,28 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
-        <div class="flow-col">
-          <h2 class="section-head reveal" id="how-title"><span>Cómo funciona</span></h2>
-
-          <figure class="demo reveal">
-            <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Grabación de pantalla: se escribe una petición, el cerebro propone un plan, Claude Code y Codex toman cada uno una parte tras la aprobación, las verificaciones pasan y el resultado se fusiona">
-                <source src="../assets/video/en/flow.webm" type="video/webm" />
-              </video>
-            </div>
-            <figcaption>Una grabación real: una petición, un plan del cerebro, Claude Code y Codex repartiéndose el trabajo, las verificaciones pasando y la fusión. Se recortó el tiempo de espera de los agentes.</figcaption>
-          </figure>
-
-          <div class="exchange reveal">
-            <p class="say">Primero, di lo que quieres.</p>
-            <div class="call">
-              <div data-ui class="ui-row">Crea una página de perfil de miembro donde se pueda editar el apodo y el avatar. El backend necesita una API y documentación.</div>
-            </div>
-            <figure class="response" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="2576" height="1840" alt="Pyloxa muestra la respuesta del cerebro y un plan de tres fases con tareas asignadas a Claude Code" loading="lazy" />
-            </figure>
-          </div>
-
-          <div class="exchange reveal">
-            <p class="say">Luego, aprueba el plan.</p>
-            <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Aprobar y empezar</button> <span class="ui-muted">Trabaja un agente a la vez, cada uno en su propio git worktree.</span></div>
-            </div>
-            <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/en/plan-gates.png" alt="Un plan con tareas aceptadas automáticamente después de pasar sus comandos de verificación y con un control de fase superado" loading="lazy" />
-            </figure>
-          </div>
-
-          <div class="exchange final reveal">
-            <p class="say">Por último, fusiona lo que superó las verificaciones.</p>
-            <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Fusionar en la rama actual (main)</button></div>
-            </div>
-            <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">Resultado de todo el plan (5 archivos)</span></div>
-              <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
-              </ul>
-              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Fusionado en main. No se hace push de nada hasta que tú lo hagas.</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="wrap section custom" id="custom" aria-labelledby="custom-title">
-        <div class="grid no-tabs" data-tabs>
-          <div class="custom-head reveal">
-            <h2 id="custom-title">Reparte el trabajo a tu manera</h2>
-            <p>Qué modelos usar, qué trabajo va a quién y cuándo debe Pyloxa detenerse a preguntar: todo eso lo configuras tú. El cerebro solo propone planes; no puede cambiar nada de eso.</p>
-          </div>
-
-          <div class="tabs" role="tablist" aria-label="Qué puedes personalizar" hidden>
-            <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">Agentes y modelos</button>
-            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">Reparto del trabajo</button>
-            <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">Fases y verificaciones</button>
-            <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">Cuánto automatizar</button>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-agents" aria-labelledby="tab-agents">
-            <div class="panel-copy">
-              <h3>Cada agente es un perfil que configuras</h3>
-              <p>Un perfil elige la CLI, el modelo, el nivel de razonamiento y un prompt de rol que se añade a cada tarea. Una CLI puede tener varios, como "Claude frontend" y "Claude docs".</p>
-              <ul>
-                <li>La lista de modelos sale directamente de la CLI que instalaste. El razonamiento muestra los valores propios de cada CLI (<code>--effort</code> en Claude Code, <code>model_reasoning_effort</code> en Codex) en lugar de una escala común inventada.</li>
-                <li>Cualquier perfil puede ser el cerebro que lee el proyecto y escribe el plan, y el cerebro puede usar un modelo distinto del de los agentes que hacen el trabajo.</li>
-                <li>Los perfiles solo guardan configuración, nunca credenciales.</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/agents.jpg" aria-label="Grabación de pantalla: se añade un perfil de backend de Codex con un modelo, un nivel de razonamiento y un prompt de rol">
-                  <source src="../assets/video/en/agents.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
-            <div class="panel-copy">
-              <h3>Tus reglas deciden quién hace qué</h3>
-              <p>Las reglas se basan en el tipo de fase y el tipo de tarea, por ejemplo "el trabajo de backend en la fase de implementación va a Codex backend". Cada regla tiene un perfil principal y un orden de respaldo, y se aplica a todos los proyectos o solo al actual.</p>
-              <ul>
-                <li>Las reglas se revisan de arriba abajo y gana la primera que coincide por completo. Pyloxa te avisa cuando una regla oculta a otra.</li>
-                <li>La simulación de reglas no llama a ningún agente ni gasta cuota: elige un tipo de tarea y mira quién la recibe y por qué.</li>
-                <li>Cuando nada coincide, Pyloxa te pregunta en la vista previa del plan o se detiene, según elijas. Nunca elige un agente al azar.</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/rules.jpg" aria-label="Grabación de pantalla: se añade una regla Backend a Codex con un respaldo y luego se comprueba con la simulación de reglas">
-                  <source src="../assets/video/en/rules.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow">
-            <div class="panel-copy">
-              <h3>Cada fase se verifica con tus comandos</h3>
-              <p>El cerebro organiza las fases según la petición, como especificación, contrato, implementación y pruebas. Antes de aprobar, puedes reasignar una tarea, editar sus instrucciones o pedirle al cerebro que lo revise.</p>
-              <ul>
-                <li>Los comandos de verificación como <code>npm run test</code> necesitan tu aprobación, y puedes probarlos antes en un worktree temporal. El cerebro solo puede usar comandos que aprobaste.</li>
-                <li>Cada tarea terminada se verifica en su propio worktree; al final de cada fase, el control se ejecuta de nuevo sobre el resultado integrado.</li>
-                <li>Un control puede avanzar solo cuando pasa, o esperar tu aprobación.</li>
-                <li>Pasa una tarea terminada a otro agente para que la pruebe; por ejemplo, Codex la construye y Claude Code escribe las pruebas. El agente que prueba solo puede cambiar archivos de prueba, y Pyloxa vuelve a ejecutar tus comandos sobre el resultado.</li>
-                <li>El cerebro puede revisar el trabajo terminado, con su propio modelo y nivel de razonamiento. Su veredicto se marca como revisión de IA, y una tarea que pide tu revisión sigue esperándote.</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/en/commands.jpg" aria-label="Grabación de pantalla: se prueba el npm run test sugerido y se aprueba como comando de verificación">
-                  <source src="../assets/video/en/commands.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-modes" aria-labelledby="tab-modes">
-            <div class="panel-copy">
-              <h3>Tú decides cuánto delegar</h3>
-              <p>El modo de asignación decide cuándo te pregunta Pyloxa primero. En ningún modo se hace push ni despliegue por sí solo.</p>
-              <ul>
-                <li>El cerebro y los agentes que trabajan se configuran por separado; si un agente de trabajo se queda sin cuota, nunca reemplaza al cerebro.</li>
-                <li>Cada tarea tiene como máximo 3 intentos automáticos, y los planes tienen límites de tareas y de tiempo, así que nada se reintenta para siempre.</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="modes" data-ui>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">Sugerir y preguntar</span><span class="badge info">Predeterminado</span><span class="spacer"></span><span class="badge">Gratis</span></div>
-                  <span class="ui-muted">El cerebro propone el plan y quién hace cada tarea; nada empieza hasta que apruebes el plan.</span>
-                </div>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">Seguir solo la configuración</span><span class="spacer"></span><span class="badge">Gratis</span></div>
-                  <span class="ui-muted">Empieza de inmediato cuando cada tarea coincide con una regla; se detiene cuando nada coincide o un perfil no está disponible.</span>
-                </div>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">Automático dentro de límites</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
-                  <span class="ui-muted">Elige y reintenta dentro de los perfiles, modelos y cantidades que permites, y se pausa al llegar a cualquier límite.</span>
-                </div>
-              </div>
-              <img class="still" src="../assets/shots/en/agents-page.png" width="1440" height="900" alt="La página de agentes y cerebro: el cerebro, el modo de asignación y tres perfiles con su modelo y nivel de razonamiento" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="skills section" id="skills" aria-labelledby="skills-title">
-        <div class="wrap grid">
-          <div class="skills-copy reveal">
-            <span class="dev-tag">En la vista previa de Pro</span>
-            <h2 id="skills-title">Un solo conjunto de skills para todos los agentes</h2>
-            <p>Claude Code lee <code>~/.claude/skills</code>; Codex lee <code>~/.agents/skills</code>. Si guardas una copia de la misma skill en cada uno y cambias una, la otra queda desactualizada. Pyloxa las gestiona en un solo lugar.</p>
-            <ol class="steps">
-              <li><strong>Inventario<span class="tier">Gratis</span></strong><span>Mira qué skills tiene cada CLI y cuáles comparten nombre pero difieren en contenido.</span></li>
-              <li><strong>Sincronizar<span class="tier">Pro</span></strong><span>Usa <code>~/.agents/skills</code> como biblioteca y sincronízala con todas las CLI. Los archivos que cambiaste del lado de la CLI nunca se sobrescriben sin preguntar.</span></li>
-              <li><strong>Asignar<span class="tier">Pro</span></strong><span>Elige las skills que usa cada proyecto; Claude Code y Codex también pueden recibirlas por perfil.</span></li>
-              <li><strong>Paquetes de asignación<span class="tier">Pro</span></strong><span>Agrupa reglas, skills, fases y comandos de verificación para compartirlos. Al importar, primero se muestra cada elemento y nunca se reemplazan tus reglas existentes.</span></li>
-            </ol>
-          </div>
-          <div class="skills-mock reveal">
-            <div data-ui>
-              <div class="ui-row mock-head">
-                <span class="ui-title">Skills</span>
-                <span class="ui-muted">5 skills · 1 difiere</span>
-                <span class="spacer"></span>
-                <span class="ui-button primary" aria-hidden="true">Sincronizar con todas las CLI</span>
-              </div>
-              <table>
-                <thead>
-                  <tr><th scope="col">Nombre</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">proyecto shop</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>api-contract</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge info">En uso</span></td></tr>
-                  <tr><td>react-conventions</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge warn">Difiere</span></td><td><span class="badge info">En uso</span></td></tr>
-                  <tr><td>release-notes</td><td><span class="badge">Falta</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge">Sin usar</span></td></tr>
-                  <tr><td>db-migration</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge">Sin usar</span></td></tr>
-                  <tr><td>test-writer</td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge ok">Sincronizada</span></td><td><span class="badge info">En uso</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="media-note">Maqueta. El inventario está en la versión gratuita; la sincronización, la asignación y los paquetes de asignación son de Pro, y puedes usarlos ya iniciando sesión en la vista previa de Pro.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="fallback section" aria-labelledby="fallback-title">
-        <div class="wrap grid">
-          <div class="fallback-copy reveal">
-            <h2 id="fallback-title">Cuando uno se queda sin cuota</h2>
-            <p>Si Codex llega a su límite de uso a mitad de una tarea, Pyloxa deja de enviarle trabajo, muestra cuándo se restablece la cuota y ofrece el respaldo de tu regla. Tú confirmas, y Claude Code continúa desde los archivos que Codex ya cambió.</p>
-            <div class="figures">
-              <span>3 intentos automáticos por tarea</span>
-              <span>2 respaldos como máximo</span>
-              <span>0 cargos de API que no hayas permitido</span>
-            </div>
-          </div>
-          <div class="fallback-shots reveal">
-            <img class="drift" src="../assets/shots/en/quota-task.png" alt="Una tarea en la que Codex se quedó sin cuota, con un botón para que Claude Code tome el relevo" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      <section class="bands" aria-label="Lo que Pyloxa hace por ti">
+      <section class="bands" aria-label="A tu manera">
         <div class="band c1">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b1">Ejecuta mis pruebas en cada tarea.</p><p class="consequence">npm run test se ejecuta en el propio worktree de cada tarea. Si pasa, la tarea se acepta por ti; si falla, el agente tiene un intento de corrección automático.</p></div>
+            <div class="sentence"><p class="line" id="b1">Háblame en mi idioma.</p><p class="consequence">La interfaz y las respuestas de los agentes vienen cada una en nueve idiomas, elegidos por separado.</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b1" data-ui></button></span>
           </div>
         </div>
         <div class="band c2">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b2">Pregúntame antes de la siguiente fase.</p><p class="consequence">Una fase pasa sus comandos sobre la versión integrada y luego espera un clic tuyo. Si lo desactivas, las fases verificadas avanzan solas.</p></div>
+            <div class="sentence"><p class="line" id="b2">Usa mis atajos.</p><p class="consequence">Define tus propios atajos de teclado en la configuración; el menú de la app los sigue, y Pyloxa te pregunta antes si uno choca con un atajo que ya usas.</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b2" data-ui></button></span>
           </div>
         </div>
         <div class="band c3">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b3">Nunca toques mis credenciales.</p><p class="consequence">Pyloxa solo ejecuta las CLI en las que iniciaste sesión. Nunca lee, copia ni envía sus tokens, y nunca hace stash ni reset de tu directorio de trabajo.</p></div>
+            <div class="sentence"><p class="line" id="b3">Recuerda lo que escribo a menudo.</p><p class="consequence">Escribe “/” en el cuadro de mensaje para elegir una plantilla de prompt guardada, con las partes que cambian marcadas entre llaves. Cinco plantillas en la versión gratuita, ilimitadas en Pro.</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b3" data-ui></button></span>
           </div>
         </div>
         <div class="band c4">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b4">Respóndeme en mi idioma.</p><p class="consequence">La interfaz y las respuestas de los agentes, cada una en nueve idiomas, los mismos de este sitio, elegidos por separado.</p></div>
+            <div class="sentence"><p class="line" id="b4">Ordénalo a mi gusto.</p><p class="consequence">Ensancha la barra lateral o redúcela a iconos, fija las páginas de configuración que más usas y dale a cada proyecto su propio color.</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
           </div>
         </div>
@@ -733,14 +815,6 @@
               <div class="inline-answer"><p>El instalador gratuito todavía no tiene firma de código, así que SmartScreen puede decir que protegió tu PC. Elige Más información y luego Ejecutar de todas formas. Antes puedes comparar el SHA-256 del instalador con el de la página de la versión.</p></div>
             </li>
             <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">¿Puedo elegir el modelo y el nivel de razonamiento?</button></h3>
-              <div class="inline-answer"><p>Sí. Cada perfil tiene su propio modelo y nivel de razonamiento, con las opciones de la CLI que instalaste; déjalos vacíos para usar los valores predeterminados de la CLI. El cerebro y los agentes que trabajan pueden usar modelos distintos.</p></div>
-            </li>
-            <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">¿Un tipo de tarea puede ir siempre al mismo agente?</button></h3>
-              <div class="inline-answer"><p>Sí. Escribe una regla de asignación, como "el trabajo de la fase de pruebas va a Claude Code", para todos los proyectos o solo para este. También puedes reasignar una tarea concreta antes de aprobar un plan. Las instalaciones nuevas empiezan con un flujo predeterminado: Claude Code para frontend y video, Codex para backend e imágenes, Gemini para redacción y documentación. Cámbialo cuando quieras.</p></div>
-            </li>
-            <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">¿En qué se diferencia de las herramientas que ponen terminales de agentes lado a lado?</button></h3>
               <div class="inline-answer"><p>Los multiplexores de terminales ponen varias terminales de agentes en una ventana para que veas cuáles están trabajando y cuáles te esperan; algunos mantienen los agentes en marcha incluso después de cerrar la app o llegan a máquinas remotas. Pyloxa se ocupa de lo que pasa fuera de las terminales: el cerebro divide la petición en tareas, tus reglas las asignan, tus comandos verifican los resultados, se propone un respaldo cuando se acaba la cuota y tú fusionas al final. Pyloxa sigue trabajando en la bandeja del sistema cuando cierras su ventana, y las tareas interrumpidas por un reinicio se pueden reanudar. Si quieres vigilar cada terminal tú mismo, te conviene un multiplexor; si quieres entregar una petición y recibir resultados verificados, te conviene Pyloxa.</p></div>
             </li>
@@ -755,10 +829,6 @@
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">¿Es compatible con Gemini u otros agentes?</button></h3>
               <div class="inline-answer"><p>Desde 0.1.2, Gemini CLI es compatible como opción experimental con tu propia clave de API de Gemini de pago. No se admiten el inicio de sesión con cuenta de Google ni las suscripciones AI Pro o Ultra. Gemini puede ejecutar tareas como redacción y documentación, pero no puede ser el cerebro ni probar el trabajo de otro agente, y en modo desatendido puede editar archivos pero no ejecutar comandos. Se están evaluando otros agentes.</p></div>
-            </li>
-            <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">¿Cómo se gestionan las skills?</button></h3>
-              <div class="inline-answer"><p>En la versión gratuita, la página Skills muestra las skills que puede leer cada CLI y marca las que comparten nombre pero tienen contenido distinto. Pro las reúne en una sola biblioteca de skills: sincronizada con todas las CLI, asignada por proyecto o perfil y compartida con tu flujo de trabajo como paquetes de asignación. Están en la vista previa de Pro desde la 0.1.10; inicia sesión para usarlas.</p></div>
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">¿Qué añade Pro?</button></h3>

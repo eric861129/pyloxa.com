@@ -31,7 +31,7 @@
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-zh.png" />
     <meta name="twitter:image:alt" content="Pyloxa：讓 Claude Code 與 Codex 分工合作。計畫中的每個工作都標出交給哪個 Agent 與命中的規則。" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/zh-TW/#software","name":"Pyloxa","url":"https://pyloxa.com/zh-TW/","image":"https://pyloxa.com/assets/og-zh.png","description":"免費的 Windows App：把需求拆成工作，依你的規則交給 Claude Code 或 Codex，用你的測試驗收成果，額度用完時由另一個 Agent 接手。使用你自己的訂閱。","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.10","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
-    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/#faq","url":"https://pyloxa.com/zh-TW/","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa 是什麼？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 是給 Windows 10 與 11 的桌面 App，讓 Claude Code、Codex CLI 等 AI 程式開發 Agent 分工合作。你把要做的事說一次，大腦會把它拆成工作，依你的派工規則交給不同的 CLI；每個工作在自己的 git worktree 執行，用你的驗證命令驗收，最後由你決定是否合併。某個 CLI 額度用完時，經你確認後由另一個 CLI 接手。Pyloxa 使用你自己的訂閱或 API Key，免費版不需要帳號；Pro 每年 US$79，增加多個專案同時執行、自動模式與自動備援，目前開放預覽，登入就能免費使用。"}},{"@type":"Question","name":"Pyloxa 會收 AI 使用費嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。Pyloxa 執行的是你已設定好的官方 CLI（Claude Code、Codex CLI，以及實驗性的 Gemini CLI），用量算在你自己的訂閱裡，或改用你自己的 API Key。Pyloxa 不轉售、也不代理任何 AI 服務。"}},{"@type":"Question","name":"需要安裝什麼？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 或 11（64 位元）、git，以及至少一個已登入的 Claude Code 或 Codex CLI。Gemini CLI 是選用的實驗性支援，需要你自己的付費 Gemini API Key。裝了不只一個 CLI，預設流程才能分工，備援也才派得上用場。還沒裝也沒關係：第一次開啟時，設定精靈會檢查 git 與 Node.js，在你確認後用官方的 npm 命令安裝 CLI，再帶你完成登入與金鑰。"}},{"@type":"Question","name":"Pyloxa 會讀取我的憑證嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。Pyloxa 只用各 CLI 自己的指令查詢登入狀態，並像你一樣啟動 CLI；token 與憑證檔不會被讀取、複製或傳送。"}},{"@type":"Question","name":"我的程式碼會送到哪裡？","acceptedAnswer":{"@type":"Answer","text":"免費版不需要帳號，Pyloxa 也不會把你的專案、提示內容或程式碼傳給我們；你的程式碼只會送到 CLI 原本會送去的地方，適用 Anthropic、OpenAI 與 Google 的條款。試用、Pro 預覽與 Pro 需要登入，帳號只用來授權：登入後大約每天更新一次授權，只送裝置 ID、App 與 Windows 的版本。Pyloxa 啟動時和每 12 小時會向 GitHub 查詢最新版本與 CLI 相容性目錄，不含任何專案或使用資料，可以在「設定」關閉。使用統計在你的電腦計算，只有你開啟匿名分享（預設關閉）時才會傳送，而且只有次數與類別。你設定的 Pro 通知會從你的電腦直接送到你指定的 Telegram、Discord 或 webhook。詳見隱私權政策。"}},{"@type":"Question","name":"Agent 會弄壞我的 repo 嗎？","acceptedAnswer":{"@type":"Answer","text":"Agent 在獨立的 git worktree 工作，不碰你正在改的工作目錄；Pyloxa 也不會對它執行 stash、reset 或 checkout。每個工作完成後，會核對改動的檔案是否都在計畫允許的寫入範圍內，你也能在內建的差異檢視逐檔查看。要不要合併、要不要推送，都由你決定。"}},{"@type":"Question","name":"為什麼安裝時 Windows 會跳出警告？","acceptedAnswer":{"@type":"Answer","text":"免費版安裝檔目前還沒有程式碼簽章，SmartScreen 可能顯示「Windows 已保護您的電腦」。請按「其他資訊」，再按「仍要執行」。安裝前可以先比對安裝檔的 SHA-256 與發布頁上的值。"}},{"@type":"Question","name":"可以指定模型和推理強度嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。每個 Profile 都能選模型與推理參數，清單直接取自你安裝的 CLI；不選就用 CLI 的預設。大腦和執行工作的 Agent 可以用不同的模型。"}},{"@type":"Question","name":"可以讓某類工作固定交給某個 Agent 嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。用派工規則指定，例如「測試階段的工作都交給 Claude Code」，規則可以只套用在目前的專案。核准計畫前，也能手動改派單一工作。新安裝時會套用預設流程：Claude Code 負責前端與影片剪輯，Codex 負責後端與生圖，Gemini 負責文章與文件，隨時可以修改。"}},{"@type":"Question","name":"和把多個 Agent 終端並排的工具有什麼不同？","acceptedAnswer":{"@type":"Answer","text":"終端機多工工具把好幾個 Agent 的終端放進同一個視窗，讓你看得到誰在跑、誰在等你，有些還能在關掉 App 後讓 Agent 繼續執行，或連到遠端機器。Pyloxa 管的是終端之外的事：大腦把需求拆成工作、依你的規則派給 Agent、用你的命令驗收、額度用完時提出備援，最後由你合併。關閉 Pyloxa 的視窗後，它會留在系統匣繼續工作；重新開機等原因中斷的工作，也可以接續。如果你想親手盯著每個終端，多工工具很合適；如果你想交出一份需求、拿回驗收過的成果，Pyloxa 比較適合。"}},{"@type":"Question","name":"已經有 Claude 或 ChatGPT 的訂閱，為什麼不直接在終端機開 CLI？","acceptedAnswer":{"@type":"Answer","text":"直接開 CLI 沒有問題，Pyloxa 用的就是同一個 CLI 和你的訂閱。差別在三件事：額度用完時，Pyloxa 依你的規則提出備援，你確認後由另一個 CLI 從已改好的檔案接著做；Agent 說做完了不算數，要你的驗證命令跑過才算；派工規則與各 CLI 讀到的 Skills 集中在同一個地方查看，不必分別去每個 CLI 設定。"}},{"@type":"Question","name":"和 CLI 內建的子 Agent 有什麼不同？","acceptedAnswer":{"@type":"Answer","text":"子 Agent 在同一個 CLI 裡分工。Pyloxa 在 CLI 之外分工：不同工作可以交給不同的 CLI，各自在獨立的 worktree 執行，用你的命令驗收，額度用完時由另一個 CLI 接手。兩者可以一起用。"}},{"@type":"Question","name":"支援 Gemini 或其他 Agent 嗎？","acceptedAnswer":{"@type":"Answer","text":"從 0.1.2 起以實驗性功能支援 Gemini CLI，使用你自己的付費 Gemini API Key，不支援 Google 帳號登入與 AI Pro、Ultra 訂閱。Gemini 可以執行文章、文件等工作，但不能擔任大腦，也不能測試其他 Agent 的成果；在無人值守模式下可以修改檔案，但不能執行命令。其他 Agent 還在評估。"}},{"@type":"Question","name":"Skills 怎麼管理？","acceptedAnswer":{"@type":"Answer","text":"免費版的「Skills」頁列出各 CLI 讀得到的 Skills，並標示名稱相同、內容卻不一樣的。Pro 把它們整理成一個 Skills 庫：同步到每個 CLI、依專案或 Profile 指派，也能和工作流程一起打包成派工包分享。這些功能從 0.1.10 起包含在 Pro 預覽，登入就能使用。"}},{"@type":"Question","name":"Pro 多了什麼？","acceptedAnswer":{"@type":"Answer","text":"多個專案同時執行，等你處理的事集中在任務中心；在你設定的範圍內自動決定（自動模式）；額度用完時自動備援；自動交叉測試；大腦備援；專案優先序、每條連線的配額與排定時間的計畫；用量儀表板與報告；通知到 Telegram、Discord 或 webhook；Skills 庫與派工包；以及實驗中的 Agent Teams。Pro 每年 US$79，目前開放預覽：登入就能免費使用，Pro 開賣時結束，至少提前 30 天通知。早鳥價每年 US$49，只要持續訂閱就不漲價。停止續訂後，訂閱期間發布的版本仍可使用 Pro 功能。免費版會一直免費。"}}]}]}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/#faq","url":"https://pyloxa.com/zh-TW/","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa 是什麼？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 是給 Windows 10 與 11 的桌面 App，讓 Claude Code、Codex CLI 等 AI 程式開發 Agent 分工合作。你把要做的事說一次，大腦會把它拆成工作，依你的派工規則交給不同的 CLI；每個工作在自己的 git worktree 執行，用你的驗證命令驗收，最後由你決定是否合併。某個 CLI 額度用完時，經你確認後由另一個 CLI 接手。Pyloxa 使用你自己的訂閱或 API Key，免費版不需要帳號；Pro 每年 US$79，增加多個專案同時執行、自動模式與自動備援，目前開放預覽，登入就能免費使用。"}},{"@type":"Question","name":"Pyloxa 會收 AI 使用費嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。Pyloxa 執行的是你已設定好的官方 CLI（Claude Code、Codex CLI，以及實驗性的 Gemini CLI），用量算在你自己的訂閱裡，或改用你自己的 API Key。Pyloxa 不轉售、也不代理任何 AI 服務。"}},{"@type":"Question","name":"需要安裝什麼？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 或 11（64 位元）、git，以及至少一個已登入的 Claude Code 或 Codex CLI。Gemini CLI 是選用的實驗性支援，需要你自己的付費 Gemini API Key。裝了不只一個 CLI，預設流程才能分工，備援也才派得上用場。還沒裝也沒關係：第一次開啟時，設定精靈會檢查 git 與 Node.js，在你確認後用官方的 npm 命令安裝 CLI，再帶你完成登入與金鑰。"}},{"@type":"Question","name":"Pyloxa 會讀取我的憑證嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。Pyloxa 只用各 CLI 自己的指令查詢登入狀態，並像你一樣啟動 CLI；token 與憑證檔不會被讀取、複製或傳送。"}},{"@type":"Question","name":"我的程式碼會送到哪裡？","acceptedAnswer":{"@type":"Answer","text":"免費版不需要帳號，Pyloxa 也不會把你的專案、提示內容或程式碼傳給我們；你的程式碼只會送到 CLI 原本會送去的地方，適用 Anthropic、OpenAI 與 Google 的條款。試用、Pro 預覽與 Pro 需要登入，帳號只用來授權：登入後大約每天更新一次授權，只送裝置 ID、App 與 Windows 的版本。Pyloxa 啟動時和每 12 小時會向 GitHub 查詢最新版本與 CLI 相容性目錄，不含任何專案或使用資料，可以在「設定」關閉。使用統計在你的電腦計算，只有你開啟匿名分享（預設關閉）時才會傳送，而且只有次數與類別。你設定的 Pro 通知會從你的電腦直接送到你指定的 Telegram、Discord 或 webhook。詳見隱私權政策。"}},{"@type":"Question","name":"Agent 會弄壞我的 repo 嗎？","acceptedAnswer":{"@type":"Answer","text":"Agent 在獨立的 git worktree 工作，不碰你正在改的工作目錄；Pyloxa 也不會對它執行 stash、reset 或 checkout。每個工作完成後，會核對改動的檔案是否都在計畫允許的寫入範圍內，你也能在內建的差異檢視逐檔查看。要不要合併、要不要推送，都由你決定。"}},{"@type":"Question","name":"為什麼安裝時 Windows 會跳出警告？","acceptedAnswer":{"@type":"Answer","text":"免費版安裝檔目前還沒有程式碼簽章，SmartScreen 可能顯示「Windows 已保護您的電腦」。請按「其他資訊」，再按「仍要執行」。安裝前可以先比對安裝檔的 SHA-256 與發布頁上的值。"}},{"@type":"Question","name":"和把多個 Agent 終端並排的工具有什麼不同？","acceptedAnswer":{"@type":"Answer","text":"終端機多工工具把好幾個 Agent 的終端放進同一個視窗，讓你看得到誰在跑、誰在等你，有些還能在關掉 App 後讓 Agent 繼續執行，或連到遠端機器。Pyloxa 管的是終端之外的事：大腦把需求拆成工作、依你的規則派給 Agent、用你的命令驗收、額度用完時提出備援，最後由你合併。關閉 Pyloxa 的視窗後，它會留在系統匣繼續工作；重新開機等原因中斷的工作，也可以接續。如果你想親手盯著每個終端，多工工具很合適；如果你想交出一份需求、拿回驗收過的成果，Pyloxa 比較適合。"}},{"@type":"Question","name":"已經有 Claude 或 ChatGPT 的訂閱，為什麼不直接在終端機開 CLI？","acceptedAnswer":{"@type":"Answer","text":"直接開 CLI 沒有問題，Pyloxa 用的就是同一個 CLI 和你的訂閱。差別在三件事：額度用完時，Pyloxa 依你的規則提出備援，你確認後由另一個 CLI 從已改好的檔案接著做；Agent 說做完了不算數，要你的驗證命令跑過才算；派工規則與各 CLI 讀到的 Skills 集中在同一個地方查看，不必分別去每個 CLI 設定。"}},{"@type":"Question","name":"和 CLI 內建的子 Agent 有什麼不同？","acceptedAnswer":{"@type":"Answer","text":"子 Agent 在同一個 CLI 裡分工。Pyloxa 在 CLI 之外分工：不同工作可以交給不同的 CLI，各自在獨立的 worktree 執行，用你的命令驗收，額度用完時由另一個 CLI 接手。兩者可以一起用。"}},{"@type":"Question","name":"支援 Gemini 或其他 Agent 嗎？","acceptedAnswer":{"@type":"Answer","text":"從 0.1.2 起以實驗性功能支援 Gemini CLI，使用你自己的付費 Gemini API Key，不支援 Google 帳號登入與 AI Pro、Ultra 訂閱。Gemini 可以執行文章、文件等工作，但不能擔任大腦，也不能測試其他 Agent 的成果；在無人值守模式下可以修改檔案，但不能執行命令。其他 Agent 還在評估。"}},{"@type":"Question","name":"Pro 多了什麼？","acceptedAnswer":{"@type":"Answer","text":"多個專案同時執行，等你處理的事集中在任務中心；在你設定的範圍內自動決定（自動模式）；額度用完時自動備援；自動交叉測試；大腦備援；專案優先序、每條連線的配額與排定時間的計畫；用量儀表板與報告；通知到 Telegram、Discord 或 webhook；Skills 庫與派工包；以及實驗中的 Agent Teams。Pro 每年 US$79，目前開放預覽：登入就能免費使用，Pro 開賣時結束，至少提前 30 天通知。早鳥價每年 US$49，只要持續訂閱就不漲價。停止續訂後，訂閱期間發布的版本仍可使用 Pro 功能。免費版會一直免費。"}}]}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
@@ -82,10 +82,10 @@
     <header class="wrap nav">
       <a class="mark" href="./" aria-label="Pyloxa 首頁">Pyloxa</a>
       <ul>
-        <li class="optional"><a href="#why">差別</a></li>
         <li class="optional"><a href="#how">運作方式</a></li>
-        <li class="optional"><a href="#custom">客製化</a></li>
-        <li class="optional"><a href="#skills">Skills</a></li>
+        <li class="optional"><a href="#workflow">工作流程</a></li>
+        <li class="optional"><a href="#memory">記憶與 Skills</a></li>
+        <li class="optional"><a href="#why">差別</a></li>
         <li class="optional"><a href="#pricing">方案</a></li>
         <li class="optional"><a href="#faq">常見問題</a></li>
         <li class="optional"><a href="changelog/">改版紀錄</a></li>
@@ -104,6 +104,13 @@
               <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載 Windows 版</a>
               <span class="meta">免費 · v0.1.10 · Windows 10 與 11</span>
             </div>
+            <a class="hero-pro" href="#pricing">或登入，免費試用 Pro 預覽 →</a>
+            <ul class="trust" aria-label="重點">
+              <li>Windows 原生，不需要 WSL</li>
+              <li>用你自己的訂閱</li>
+              <li>不碰 CLI 的登入憑證</li>
+              <li>介面有九種語言</li>
+            </ul>
           </div>
         </div>
         <div class="stage" aria-label="試試派工">
@@ -151,82 +158,375 @@
         </div>
       </section>
 
-      <section class="wrap section" aria-labelledby="states-title">
-        <div class="states reveal">
-          <h2 class="section-head" id="states-title">每份成果都經過檢查</h2>
+      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+        <div class="flow-col">
+          <h2 class="section-head reveal" id="how-title"><span>運作方式</span></h2>
 
-          <p class="state-word">執行中</p>
-          <div class="state-row task-row" data-ui>
-            <div class="ui-row">
-              <div class="top">
-                <span class="ui-title">會員資料 API</span>
-                <span class="badge">後端</span>
-                <span class="badge warn">可寫入</span>
-                <span class="spacer"></span>
-                <span class="badge info"><span class="spin" aria-hidden="true"></span>執行中</span>
+          <figure class="demo reveal">
+            <div class="frame">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/zh/flow.jpg" aria-label="操作錄影：輸入需求、大腦提出計畫、核准後 Claude Code 與 Codex 各做一部分，驗證通過後合併">
+                <source src="../assets/video/zh/flow.webm" type="video/webm" />
+              </video>
+            </div>
+            <figcaption>實際操作錄影：一句需求、大腦擬計畫、Claude Code 與 Codex 分工、驗證通過、合併。等 Agent 工作的時間已經剪掉。</figcaption>
+          </figure>
+
+          <div class="exchange reveal">
+            <p class="say">先說你想做什麼。</p>
+            <div class="call">
+              <div data-ui class="ui-row">做一個會員資料頁，讓會員可以修改暱稱和頭像。後端要有 API 和文件。</div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img class="crop-chat" src="../assets/shots/zh/conversation.png" width="2576" height="1840" alt="Pyloxa 顯示大腦的回覆，以及分成三個階段、工作交給 Claude Code 的計畫" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange reveal">
+            <p class="say">再核准計畫。</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">核准並開始</button> <span class="ui-muted">一次一個 Agent 工作，各自在獨立的 git worktree。</span></div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img src="../assets/shots/zh/plan-gates.png" alt="驗證命令通過後自動接受的工作，以及已通過的階段 Gate" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange final reveal">
+            <p class="say">最後合併通過的成果。</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">合併到目前分支（main）</button></div>
+            </div>
+            <div class="response result" data-ui>
+              <div class="ui-row"><span class="ui-title">整個計畫的成果（5 個檔案）</span></div>
+              <ul class="files">
+                <li><span class="st">A</span>docs/api/profile.yaml</li>
+                <li><span class="st">A</span>server/src/routes/profile.ts</li>
+                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
+                <li><span class="st">A</span>test/profile.test.ts</li>
+                <li><span class="st">A</span>test/contract.test.ts</li>
+              </ul>
+              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已合併到 main。要不要推送，由你決定。</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 工作流程五段：和 App「工作流程」頁的規劃、階段、分工、檢查、交付一致（D-108） -->
+      <section class="wrap section custom wf" id="workflow" aria-labelledby="wf-title">
+        <div class="grid no-tabs" data-tabs>
+          <div class="custom-head reveal">
+            <h2 class="section-head" id="wf-title">一個工作流程，五個段落</h2>
+            <p>App 的「工作流程」頁一次看完整個流程：誰來規劃、分成哪些階段、誰做哪一種工作、怎麼檢查、怎麼交付。每一段都是你的設定，大腦只負責提計畫，不能改動它們。</p>
+          </div>
+
+          <div class="tabs wf-steps" role="tablist" aria-label="工作流程的五段" hidden>
+            <button type="button" role="tab" id="wf-tab-plan" aria-controls="wf-plan" aria-selected="true"><span class="n" aria-hidden="true">1</span>規劃</button>
+            <button type="button" role="tab" id="wf-tab-phases" aria-controls="wf-phases" aria-selected="false"><span class="n" aria-hidden="true">2</span>階段</button>
+            <button type="button" role="tab" id="wf-tab-assign" aria-controls="wf-assign" aria-selected="false"><span class="n" aria-hidden="true">3</span>分工</button>
+            <button type="button" role="tab" id="wf-tab-check" aria-controls="wf-check" aria-selected="false"><span class="n" aria-hidden="true">4</span>檢查</button>
+            <button type="button" role="tab" id="wf-tab-deliver" aria-controls="wf-deliver" aria-selected="false"><span class="n" aria-hidden="true">5</span>交付</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-plan" aria-labelledby="wf-tab-plan">
+            <div class="panel-copy">
+              <h3>規劃：誰當大腦、要放手多少</h3>
+              <p>任何一個 Profile 都能當大腦，負責讀專案和拆計畫；大腦和執行工作的 Agent 可以用不同的模型。</p>
+              <ul>
+                <li>Profile 決定用哪個 CLI、哪個模型、多少推理，以及每個工作要附上的角色指示。同一個 CLI 可以建好幾個，例如「Claude 前端」和「Claude 文件」。</li>
+                <li>派工模式決定 Pyloxa 什麼時候要先問你。不論哪一種，推送和部署都不會自動發生。</li>
+                <li>大腦不能用時，Pro 可以改由備援大腦規劃。大腦一律不驗收自己做的工作。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="modes" data-ui>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">大腦</span><span class="badge info">Claude Code</span></div>
+                  <span class="ui-muted">模型：CLI 預設 · 思考強度：high</span>
+                  <div class="mode-top wf-backup"><span class="ui-muted">備援大腦：Codex</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">建議後詢問</span><span class="badge info">預設</span><span class="spacer"></span><span class="badge">免費版</span></div>
+                  <span class="ui-muted">大腦提出計畫和派工結果，你核准整個計畫後才開始。</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">僅依設定執行</span><span class="spacer"></span><span class="badge">免費版</span></div>
+                  <span class="ui-muted">每個工作都有規則能派時直接開始；沒有符合的規則，或 Profile 不能用，就停下來。</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">授權範圍內自動</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                  <span class="ui-muted">在你允許的 Profile、模型與次數內自己選擇與重試，超出範圍就暫停。</span>
+                </div>
               </div>
-              <span class="ui-muted">Codex · 在自己的 worktree，分支 pyloxa/r_8f2k/t_api</span>
             </div>
           </div>
 
-          <p class="state-word">已驗證</p>
-          <div class="state-row reply-demo" data-reply-demo>
-            <div class="task-row" data-ui data-task>
-              <div class="ui-row" data-pending>
-                <div class="top">
-                  <span class="ui-title">會員資料 API</span>
-                  <span class="badge">後端</span>
-                  <span class="badge warn">可寫入</span>
-                  <span class="spacer"></span>
-                  <span class="badge warn" data-status>等你確認</span>
+          <div class="panel" role="tabpanel" id="wf-phases" aria-labelledby="wf-tab-phases">
+            <div class="panel-copy">
+              <h3>階段：大腦排出階段，每段結束先檢查</h3>
+              <p>大腦依需求排出階段，例如規格、Contract、開發、測試。核准前，你可以改派某個工作、修改它的指示，或請大腦重擬。</p>
+              <ul>
+                <li>每個工作完成後，在它自己的 worktree 跑驗收；每個階段結束時，在整合後的版本再跑一次 Gate。</li>
+                <li>Gate 可以通過後自動往下走，也可以停下來等你核准。</li>
+                <li>下一個階段自動拿到上游的交接包：成果、通過的檢查和要注意的事。</li>
+                <li>Agent Teams（實驗，Pro）：執行中的 Agent 可以看整隊的工作、回報進度，缺少資訊時停下來問你。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="wf-plan-card" data-ui>
+                <div class="ui-row wf-card-head">
+                  <span class="ui-title">計畫：會員資料頁</span>
+                  <span class="ui-muted">3 個階段 · 5 個工作</span>
                 </div>
-                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test 通過 · 變更 2 個檔案 · 都在允許寫入的範圍內</span></span>
-                <div class="actions">
-                  <button type="button" class="ui-button primary" data-accept>接受結果</button>
-                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">在 Session 回覆</button>
-                </div>
-              </div>
-              <div class="ui-row" data-accepted hidden>
-                <div class="top">
-                  <span class="ui-title">會員資料 API</span>
-                  <span class="badge">後端</span>
-                  <span class="spacer"></span>
-                  <span class="badge ok">已完成</span>
-                </div>
-                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已接受並合併到 pyloxa/r_8f2k/integration</span>
+                <ol class="wf-phase-list">
+                  <li class="ui-row"><span class="wf-num">1</span><div><span class="ui-title">規格與 Contract</span><span class="ui-muted">Codex</span></div><span class="badge ok">Gate 通過</span></li>
+                  <li class="ui-row"><span class="wf-num">2</span><div><span class="ui-title">開發</span><span class="ui-muted">前端 Claude Code · 後端 Codex</span></div><span class="badge info"><span class="spin" aria-hidden="true"></span>執行中</span></li>
+                  <li class="ui-row"><span class="wf-num">3</span><div><span class="ui-title">測試</span><span class="ui-muted">做完等你核准</span></div><span class="badge">等待中</span></li>
+                </ol>
               </div>
             </div>
-            <section class="session" id="session-demo" data-ui data-session hidden aria-label="Session：會員資料 API">
-              <div class="ui-row session-head">
-                <span class="ui-title">會員資料 API</span>
-                <span class="ui-muted">Codex · Session</span>
-                <span class="spacer"></span>
-                <button type="button" class="session-close" data-session-close aria-label="關閉 Session">×</button>
-              </div>
-              <div class="ui-row session-log" data-session-log aria-live="polite">
-                <div class="msg brief"><span class="who">派工內容</span><p>新增 GET /api/profile 端點，回傳目前登入會員的資料，並加上測試。</p></div>
-                <div class="msg"><span class="who">Codex</span><p>已新增 GET /api/profile，回傳會員的名稱與 email，並加上 2 個測試。npm run test 通過。</p></div>
-              </div>
-              <form class="ui-row session-reply" data-session-form>
-                <label class="visually-hidden" for="session-input">回覆 Codex</label>
-                <textarea id="session-input" rows="2" data-session-input>回傳資料也加上 avatarUrl</textarea>
-                <button type="submit" class="ui-button primary">送出</button>
-              </form>
-            </section>
           </div>
 
-          <p class="state-word">已整合</p>
-          <div class="state-row task-row" data-ui>
-            <div class="ui-row">
-              <div class="top">
-                <span class="ui-title">會員資料頁</span>
-                <span class="badge">前端</span>
-                <span class="badge ok">自動接受</span>
-                <span class="spacer"></span>
-                <span class="badge ok">已完成</span>
-              </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>驗證命令全部通過（2 個）· 已合併到整合分支</span>
+          <div class="panel" role="tabpanel" id="wf-assign" aria-labelledby="wf-tab-assign">
+            <div class="panel-copy">
+              <h3>分工：一張表決定誰做哪一種工作</h3>
+              <p>分工表的每一列是一種工作：選它主要交給哪個 Agent、備援是誰；留空的格子，那個 Agent 就不會拿到這種工作。</p>
+              <ul>
+                <li>規則由上往下比對，第一條完全符合的生效；規則互相遮蔽時會提醒你。</li>
+                <li>只對一個專案或一個階段的規則寫在規則清單，而且比分工表優先。</li>
+                <li>規則模擬不呼叫 Agent、不花額度：選一種工作，就看到會交給誰、為什麼。</li>
+                <li>沒有規則符合時，可以設成在計畫預覽中問你，或直接停下。Pyloxa 不會隨便挑一個 Agent。</li>
+              </ul>
             </div>
+            <div class="panel-media">
+              <div class="wf-matrix" data-ui data-matrix>
+                <div class="ui-row wf-card-head">
+                  <span class="ui-title">分工表</span>
+                  <span class="ui-muted">點格子切換：主要 → 備援 → 不交給它</span>
+                </div>
+                <div class="wf-matrix-scroll">
+                  <table>
+                    <thead>
+                      <tr><th scope="col">工作類型</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">Gemini CLI</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><th scope="row">前端</th><td><button type="button" class="wf-cell is-primary" data-cell>主要</button></td><td><button type="button" class="wf-cell is-fallback" data-cell>備援</button></td><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td></tr>
+                      <tr><th scope="row">後端</th><td><button type="button" class="wf-cell is-fallback" data-cell>備援</button></td><td><button type="button" class="wf-cell is-primary" data-cell>主要</button></td><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td></tr>
+                      <tr><th scope="row">文件</th><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td><td><button type="button" class="wf-cell is-primary" data-cell>主要</button></td></tr>
+                      <tr><th scope="row">測試</th><td><button type="button" class="wf-cell is-primary" data-cell>主要</button></td><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td></tr>
+                      <tr><th scope="row">圖片</th><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td><td><button type="button" class="wf-cell is-primary" data-cell>主要</button></td><td><button type="button" class="wf-cell" data-cell aria-label="不交給它">—</button></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-check" aria-labelledby="wf-tab-check">
+            <div class="panel-copy">
+              <h3>檢查：Agent 說做完了不算數</h3>
+              <p>你核准的驗證命令由 Pyloxa 在工作自己的 worktree 執行，通過才算完成；沒通過，Agent 會自動修正一次。</p>
+              <ul>
+                <li>驗證命令要你核准，例如 <code>npm run test</code>，可以先在暫時的 worktree 試跑。大腦只能用你核准過的命令。</li>
+                <li>完成的工作可以交給另一個 Agent 測試，例如 Codex 開發、Claude Code 補測試。測試者只能修改測試檔，Pyloxa 會在成果上重跑你的命令。</li>
+                <li>大腦可以驗收完成的工作，並使用自己的模型與思考強度。結論會標示為 AI 驗收；要求你親自確認的工作，仍然等你決定。</li>
+              </ul>
+            </div>
+            <div class="panel-media wf-states">
+                <p class="state-word">執行中</p>
+                <div class="state-row task-row" data-ui>
+                  <div class="ui-row">
+                    <div class="top">
+                      <span class="ui-title">會員資料 API</span>
+                      <span class="badge">後端</span>
+                      <span class="badge warn">可寫入</span>
+                      <span class="spacer"></span>
+                      <span class="badge info"><span class="spin" aria-hidden="true"></span>執行中</span>
+                    </div>
+                    <span class="ui-muted">Codex · 在自己的 worktree，分支 pyloxa/r_8f2k/t_api</span>
+                  </div>
+                </div>
+
+                <p class="state-word">已驗證</p>
+                <div class="state-row reply-demo" data-reply-demo>
+                  <div class="task-row" data-ui data-task>
+                    <div class="ui-row" data-pending>
+                      <div class="top">
+                        <span class="ui-title">會員資料 API</span>
+                        <span class="badge">後端</span>
+                        <span class="badge warn">可寫入</span>
+                        <span class="spacer"></span>
+                        <span class="badge warn" data-status>等你確認</span>
+                      </div>
+                      <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>npm run test 通過 · 變更 2 個檔案 · 都在允許寫入的範圍內</span></span>
+                      <div class="actions">
+                        <button type="button" class="ui-button primary" data-accept>接受結果</button>
+                        <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">在 Session 回覆</button>
+                      </div>
+                    </div>
+                    <div class="ui-row" data-accepted hidden>
+                      <div class="top">
+                        <span class="ui-title">會員資料 API</span>
+                        <span class="badge">後端</span>
+                        <span class="spacer"></span>
+                        <span class="badge ok">已完成</span>
+                      </div>
+                      <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已接受並合併到 pyloxa/r_8f2k/integration</span>
+                    </div>
+                  </div>
+                  <section class="session" id="session-demo" data-ui data-session hidden aria-label="Session：會員資料 API">
+                    <div class="ui-row session-head">
+                      <span class="ui-title">會員資料 API</span>
+                      <span class="ui-muted">Codex · Session</span>
+                      <span class="spacer"></span>
+                      <button type="button" class="session-close" data-session-close aria-label="關閉 Session">×</button>
+                    </div>
+                    <div class="ui-row session-log" data-session-log aria-live="polite">
+                      <div class="msg brief"><span class="who">派工內容</span><p>新增 GET /api/profile 端點，回傳目前登入會員的資料，並加上測試。</p></div>
+                      <div class="msg"><span class="who">Codex</span><p>已新增 GET /api/profile，回傳會員的名稱與 email，並加上 2 個測試。npm run test 通過。</p></div>
+                    </div>
+                    <form class="ui-row session-reply" data-session-form>
+                      <label class="visually-hidden" for="session-input">回覆 Codex</label>
+                      <textarea id="session-input" rows="2" data-session-input>回傳資料也加上 avatarUrl</textarea>
+                      <button type="submit" class="ui-button primary">送出</button>
+                    </form>
+                  </section>
+                </div>
+
+                <p class="state-word">已整合</p>
+                <div class="state-row task-row" data-ui>
+                  <div class="ui-row">
+                    <div class="top">
+                      <span class="ui-title">會員資料頁</span>
+                      <span class="badge">前端</span>
+                      <span class="badge ok">自動接受</span>
+                      <span class="spacer"></span>
+                      <span class="badge ok">已完成</span>
+                    </div>
+                    <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>驗證命令全部通過（2 個）· 已合併到整合分支</span>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-deliver" aria-labelledby="wf-tab-deliver">
+            <div class="panel-copy">
+              <h3>交付：合併與推送由你決定</h3>
+              <p>每個工作在自己的 git worktree 完成，核對改動都在允許的寫入範圍內，再合併到整合分支。合併到你的分支、推送和開 PR，都等你按下。</p>
+              <ul>
+                <li>工作改到 .github、.claude、CLAUDE.md 這類影響 Agent 與自動化的檔案時，一律不自動接受，合併前的對話框也會再列出這些檔案。</li>
+                <li>開 PR 時可以附上紀錄：哪些命令真的跑過、每個成果是誰接受的。</li>
+                <li>Pyloxa 不會對你的工作目錄執行 stash、reset 或 checkout。</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="wf-pr" data-ui>
+                <div class="ui-row wf-card-head"><span class="ui-title">建立 Pull Request</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
+                <div class="ui-row wf-pr-body">
+                  <span class="field-label">標題</span>
+                  <span class="wf-input">新增會員資料頁</span>
+                  <label class="wf-check"><input type="checkbox" checked /> 在說明最後附上 Pyloxa 的驗證紀錄（5 個成果）</label>
+                  <div class="wf-warn">需要你確認：這次改到 <code>.github/workflows/ci.yml</code></div>
+                </div>
+                <div class="ui-row wf-pr-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>驗證命令全部通過（2 個）· 已合併到整合分支</span><span class="spacer"></span><button type="button" class="ui-button primary">建立 PR</button></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wf-templates reveal">
+            <h3>從範本開始</h3>
+            <p>套用前會列出每一項會改變的設定，「還原上一版」可以回到套用前。範本裡屬於 Pro 的設定，免費版不套用。</p>
+            <ul>
+              <li><span class="wf-tpl-name">均衡</span><span class="badge info">預設</span><p>前端交給 Claude Code、後端交給 Codex，互為備援；建議後詢問。</p></li>
+              <li><span class="wf-tpl-name">快速修改</span><p>僅依設定執行，共用一個 worktree，全部交給大腦的 Profile。</p></li>
+              <li><span class="wf-tpl-name">嚴謹審查</span><span class="badge warn">含 Pro 設定</span><p>大腦驗收所有工作，前端與後端的工作交叉測試。</p></li>
+              <li><span class="wf-tpl-name">平均分攤額度</span><span class="badge warn">含 Pro 設定</span><p>各種工作在 Claude Code 與 Codex 之間分攤，額度用完時自動備援。</p></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="fallback section" aria-labelledby="fallback-title">
+        <div class="wrap grid">
+          <div class="fallback-copy reveal">
+            <h2 id="fallback-title">額度用完的時候</h2>
+            <p>如果 Codex 做到一半用完額度，Pyloxa 會停止派工給它、顯示額度何時重設，並依你的規則提出備援。你確認後，Claude Code 會從 Codex 已經改好的檔案接著做。</p>
+            <p>標題列隨時顯示每個訂閱還剩多少：已用 70% 變黃，90% 或被限制時變紅。</p>
+            <div class="figures">
+              <span>每個工作最多自動嘗試 3 次</span>
+              <span>最多 2 次備援接手</span>
+              <span>0 筆你沒同意的 API 費用</span>
+            </div>
+          </div>
+          <div class="fallback-shots fq reveal">
+            <div class="fq-meter" data-ui>
+              <div class="ui-row wf-card-head"><span class="ui-title">Agent 額度</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent">Claude Code</span><span class="ui-muted">5 小時</span><span class="fq-bar"><i class="warn" style="width: 74%"></i></span><span class="fq-val">74%</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent"></span><span class="ui-muted">7 天</span><span class="fq-bar"><i style="width: 41%"></i></span><span class="fq-val">41%</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent">Codex</span><span class="ui-muted">今天</span><span class="fq-tokens">182k token</span><span class="badge bad">受限</span></div>
+            </div>
+            <div class="fq-card" data-ui>
+              <div class="ui-row">
+                <span class="ui-title fq-title">Codex 額度用盡（約 18:00 重設）</span>
+                <span class="ui-muted">可以由 Claude Code 接手，從 Codex 做完的部分接著做，或等額度重設後由 Codex 重試。</span>
+                <span class="fq-actions"><button type="button" class="ui-button primary">由 Claude Code 接手</button><button type="button" class="ui-button">額度恢復後重試</button></span>
+              </div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro 照你設定的備援鏈自動接手，可以設觸發條件與上限。</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section memory" id="memory" aria-labelledby="memory-title">
+        <div class="wrap grid">
+          <div class="skills-copy reveal">
+            <h2 id="memory-title">每個 Agent 都讀同一份背景</h2>
+            <p>專案的規則、慣例和踩過的坑，記一次，Claude Code、Codex 和 Gemini CLI 都讀得到。Skills 也一樣：集中在一個地方管理，不必每個 CLI 各放一份。</p>
+            <ol class="steps">
+              <li><strong>記住<span class="tier">免費版</span></strong><span>在大腦的回覆或工作 Session 按「記住」，也可以從 CLAUDE.md、AGENTS.md 等各 CLI 的記憶檔挑選匯入。</span></li>
+              <li><strong>Agent 提議，你核准<span class="tier">免費版</span></strong><span>Agent 工作時可以搜尋記憶、提議新的記憶；你接受之前，任何 Agent 都看不到這些提議。</span></li>
+              <li><strong>同步到各 CLI<span class="tier">免費版</span></strong><span>把專案的規則寫進 AGENTS.md 的 Pyloxa 區塊，在終端機直接用 CLI 也讀得到。先看差異再寫入，不會替你提交。</span></li>
+              <li><strong>盤點 Skills<span class="tier">免費版</span></strong><span>列出每個 CLI 裝了哪些 Skills，標出名稱相同、內容卻不一樣的。</span></li>
+              <li><strong>Skills 庫與派工包<span class="tier">Pro</span></strong><span>一個 Skills 庫同步到每個 CLI、依專案或 Profile 指派，也能和工作流程一起打包成派工包分享。</span></li>
+            </ol>
+          </div>
+          <div class="skills-mock reveal">
+            <div class="mem-mock" data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">記憶</span>
+                <span class="badge warn">待確認 2</span>
+              </div>
+              <div class="ui-row mem-item">
+                <p class="mem-text">一律用 pnpm，不要用 npm。</p>
+                <span class="ui-muted">規則 · 這個專案 · 大腦提議</span>
+                <span class="mem-actions"><span class="ui-button primary" aria-hidden="true">接受</span><span class="ui-button" aria-hidden="true">修改</span><span class="ui-button" aria-hidden="true">捨棄</span></span>
+              </div>
+              <div class="ui-row mem-item">
+                <p class="mem-text">在 Windows 跑測試要加 <code>--runInBand</code>，否則會逾時。</p>
+                <span class="ui-muted">踩過的坑 · 這個專案 · Codex 提議</span>
+                <span class="mem-actions"><span class="ui-button primary" aria-hidden="true">接受</span><span class="ui-button" aria-hidden="true">修改</span><span class="ui-button" aria-hidden="true">捨棄</span></span>
+              </div>
+            </div>
+            <div data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Skills</span>
+                <span class="ui-muted">5 個 · 1 個內容不同</span>
+                <span class="spacer"></span>
+                <span class="ui-button primary" aria-hidden="true">同步到所有 CLI</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th scope="col">名稱</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">shop 專案</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>api-contract</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge info">使用中</span></td></tr>
+                  <tr><td>react-conventions</td><td><span class="badge ok">已同步</span></td><td><span class="badge warn">內容不同</span></td><td><span class="badge info">使用中</span></td></tr>
+                  <tr><td>release-notes</td><td><span class="badge">沒有</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge">未使用</span></td></tr>
+                  <tr><td>db-migration</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge">未使用</span></td></tr>
+                  <tr><td>test-writer</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge info">使用中</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="media-note">示意畫面。記憶與 Skills 盤點包含在免費版；Skills 庫、指派與派工包屬於 Pro。</p>
           </div>
         </div>
       </section>
@@ -286,14 +586,8 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </section>
-
-      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
-      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
-        <div class="grid">
-          <div class="why-copy reveal">
-            <h2 id="supervised-title">不是讓 Agent 自己運作的平台</h2>
+          <div class="promises-head reveal" id="supervised">
+            <h3>不是讓 Agent 自己運作的平台</h3>
             <p>有些平台讓 Agent 像一家公司一樣自己排工作、定時醒來、全天運作。Pyloxa 走另一條路：Agent 只做你交代的事，成果經過檢查才交給你合併。</p>
           </div>
           <ul class="promises reveal">
@@ -325,240 +619,28 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
-        <div class="flow-col">
-          <h2 class="section-head reveal" id="how-title"><span>運作方式</span></h2>
-
-          <figure class="demo reveal">
-            <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/zh/flow.jpg" aria-label="操作錄影：輸入需求、大腦提出計畫、核准後 Claude Code 與 Codex 各做一部分，驗證通過後合併">
-                <source src="../assets/video/zh/flow.webm" type="video/webm" />
-              </video>
-            </div>
-            <figcaption>實際操作錄影：一句需求、大腦擬計畫、Claude Code 與 Codex 分工、驗證通過、合併。等 Agent 工作的時間已經剪掉。</figcaption>
-          </figure>
-
-          <div class="exchange reveal">
-            <p class="say">先說你想做什麼。</p>
-            <div class="call">
-              <div data-ui class="ui-row">做一個會員資料頁，讓會員可以修改暱稱和頭像。後端要有 API 和文件。</div>
-            </div>
-            <figure class="response" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/zh/conversation.png" width="2576" height="1840" alt="Pyloxa 顯示大腦的回覆，以及分成三個階段、工作交給 Claude Code 的計畫" loading="lazy" />
-            </figure>
-          </div>
-
-          <div class="exchange reveal">
-            <p class="say">再核准計畫。</p>
-            <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">核准並開始</button> <span class="ui-muted">一次一個 Agent 工作，各自在獨立的 git worktree。</span></div>
-            </div>
-            <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/zh/plan-gates.png" alt="驗證命令通過後自動接受的工作，以及已通過的階段 Gate" loading="lazy" />
-            </figure>
-          </div>
-
-          <div class="exchange final reveal">
-            <p class="say">最後合併通過的成果。</p>
-            <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">合併到目前分支（main）</button></div>
-            </div>
-            <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">整個計畫的成果（5 個檔案）</span></div>
-              <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
-              </ul>
-              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已合併到 main。要不要推送，由你決定。</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="wrap section custom" id="custom" aria-labelledby="custom-title">
-        <div class="grid no-tabs" data-tabs>
-          <div class="custom-head reveal">
-            <h2 id="custom-title">照你的方式分工</h2>
-            <p>用哪個模型、哪種工作交給誰、做到哪一步要先問你，都是你的設定。大腦只負責提計畫，不能改動這些設定。</p>
-          </div>
-
-          <div class="tabs" role="tablist" aria-label="客製化項目" hidden>
-            <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">Agent 與模型</button>
-            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">分工</button>
-            <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">流程與驗收</button>
-            <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">自動化程度</button>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-agents" aria-labelledby="tab-agents">
-            <div class="panel-copy">
-              <h3>每個 Agent 都是你設定的 Profile</h3>
-              <p>Profile 決定用哪個 CLI、哪個模型、多少推理，以及每個工作要附上的角色指示。同一個 CLI 可以建好幾個，例如「Claude 前端」和「Claude 文件」。</p>
-              <ul>
-                <li>模型清單直接取自你安裝的 CLI；推理參數顯示各家原生的值（Claude Code 的 <code>--effort</code>、Codex 的 <code>model_reasoning_effort</code>），不硬換算成同一套刻度。</li>
-                <li>任何一個 Profile 都能當大腦，負責讀專案和拆計畫；大腦和執行工作的 Agent 可以用不同的模型。</li>
-                <li>Profile 只存設定，不存任何憑證。</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/zh/agents.jpg" aria-label="操作錄影：新增 Codex 後端 Profile，選擇模型、推理參數並填寫角色指示">
-                  <source src="../assets/video/zh/agents.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
-            <div class="panel-copy">
-              <h3>誰來做，由你的規則決定</h3>
-              <p>規則用「階段類型」加「工作類型」比對，例如「開發階段的後端工作交給 Codex 後端」。每條規則有主要交給的 Profile 和備援順序，可以套用到所有專案，或只用在目前的專案。</p>
-              <ul>
-                <li>規則由上往下比對，第一條完全符合的生效；規則互相遮蔽時會提醒你。</li>
-                <li>規則模擬不呼叫 Agent、不花額度：選一種工作，就看到會交給誰、為什麼。</li>
-                <li>沒有規則符合時，可以設成在計畫預覽中問你，或直接停下。Pyloxa 不會隨便挑一個 Agent。</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/zh/rules.jpg" aria-label="操作錄影：新增「後端交給 Codex」規則，加入備援，再用規則模擬確認派工結果">
-                  <source src="../assets/video/zh/rules.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow">
-            <div class="panel-copy">
-              <h3>每個階段做完，用你的命令驗收</h3>
-              <p>大腦依需求排出階段，例如規格、Contract、開發、測試。核准前，你可以改派某個工作、修改它的指示，或請大腦重擬。</p>
-              <ul>
-                <li>驗證命令要你核准，例如 <code>npm run test</code>，可以先在暫時的 worktree 試跑。大腦只能用你核准過的命令。</li>
-                <li>每個工作完成後，在它自己的 worktree 跑驗收；每個階段結束時，在整合後的版本再跑一次 Gate。</li>
-                <li>Gate 可以通過後自動往下走，也可以停下來等你核准。</li>
-                <li>完成的工作可以交給另一個 Agent 測試，例如 Codex 開發、Claude Code 補測試。測試者只能修改測試檔，Pyloxa 會在成果上重跑你的命令。</li>
-                <li>大腦可以驗收完成的工作，並使用自己的模型與思考強度。結論會標示為 AI 驗收；要求你親自確認的工作，仍然等你決定。</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="../assets/video/zh/commands.jpg" aria-label="操作錄影：試跑 Pyloxa 建議的 npm run test，通過後核准為驗證命令">
-                  <source src="../assets/video/zh/commands.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-modes" aria-labelledby="tab-modes">
-            <div class="panel-copy">
-              <h3>要放手多少，你決定</h3>
-              <p>派工模式決定 Pyloxa 什麼時候要先問你。不論哪一種，推送和部署都不會自動發生。</p>
-              <ul>
-                <li>大腦和執行工作的 Agent 分開設定；執行工作的 Agent 額度不足，不會換掉大腦。</li>
-                <li>每個工作最多自動嘗試 3 次，計畫有工作數與時間上限，不會無限重試。</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="modes" data-ui>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">建議後詢問</span><span class="badge info">預設</span><span class="spacer"></span><span class="badge">免費版</span></div>
-                  <span class="ui-muted">大腦提出計畫和派工結果，你核准整個計畫後才開始。</span>
-                </div>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">僅依設定執行</span><span class="spacer"></span><span class="badge">免費版</span></div>
-                  <span class="ui-muted">每個工作都有規則能派時直接開始；沒有符合的規則，或 Profile 不能用，就停下來。</span>
-                </div>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">授權範圍內自動</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
-                  <span class="ui-muted">在你允許的 Profile、模型與次數內自己選擇與重試，超出範圍就暫停。</span>
-                </div>
-              </div>
-              <img class="still" src="../assets/shots/zh/agents-page.png" width="1440" height="900" alt="Agent 與大腦頁：選擇大腦、派工模式，以及三個 Profile 的模型與推理設定" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="skills section" id="skills" aria-labelledby="skills-title">
-        <div class="wrap grid">
-          <div class="skills-copy reveal">
-            <span class="dev-tag">Pro 預覽可用</span>
-            <h2 id="skills-title">一份 Skills，每個 Agent 都用得到</h2>
-            <p>Claude Code 讀 <code>~/.claude/skills</code>，Codex 讀 <code>~/.agents/skills</code>。同一個 Skill 各放一份，改了一邊，另一邊就過時了。Pyloxa 會把它們集中管理。</p>
-            <ol class="steps">
-              <li><strong>盤點<span class="tier">免費版</span></strong><span>列出每個 CLI 裝了哪些 Skills，標出名稱相同、內容卻不一樣的。</span></li>
-              <li><strong>同步<span class="tier">Pro</span></strong><span>以 <code>~/.agents/skills</code> 當 Skills 庫，同步到每個 CLI。你在 CLI 那邊改過的檔案不會被覆寫，Pyloxa 會先問你。</span></li>
-              <li><strong>指派<span class="tier">Pro</span></strong><span>每個專案勾選要用哪些 Skills；Claude Code 與 Codex 還能依 Profile 指定。</span></li>
-              <li><strong>派工包<span class="tier">Pro</span></strong><span>把派工規則、Skills、流程與驗證命令打包分享。匯入時逐項預覽，不會蓋掉你原本的規則。</span></li>
-            </ol>
-          </div>
-          <div class="skills-mock reveal">
-            <div data-ui>
-              <div class="ui-row mock-head">
-                <span class="ui-title">Skills</span>
-                <span class="ui-muted">5 個 · 1 個內容不同</span>
-                <span class="spacer"></span>
-                <span class="ui-button primary" aria-hidden="true">同步到所有 CLI</span>
-              </div>
-              <table>
-                <thead>
-                  <tr><th scope="col">名稱</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">shop 專案</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>api-contract</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge info">使用中</span></td></tr>
-                  <tr><td>react-conventions</td><td><span class="badge ok">已同步</span></td><td><span class="badge warn">內容不同</span></td><td><span class="badge info">使用中</span></td></tr>
-                  <tr><td>release-notes</td><td><span class="badge">沒有</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge">未使用</span></td></tr>
-                  <tr><td>db-migration</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge">未使用</span></td></tr>
-                  <tr><td>test-writer</td><td><span class="badge ok">已同步</span></td><td><span class="badge ok">已同步</span></td><td><span class="badge info">使用中</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="media-note">示意畫面。盤點包含在免費版；同步、指派與派工包屬於 Pro，Pro 預覽期間登入就能使用。</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="fallback section" aria-labelledby="fallback-title">
-        <div class="wrap grid">
-          <div class="fallback-copy reveal">
-            <h2 id="fallback-title">額度用完的時候</h2>
-            <p>如果 Codex 做到一半用完額度，Pyloxa 會停止派工給它、顯示額度何時重設，並依你的規則提出備援。你確認後，Claude Code 會從 Codex 已經改好的檔案接著做。</p>
-            <div class="figures">
-              <span>每個工作最多自動嘗試 3 次</span>
-              <span>最多 2 次備援接手</span>
-              <span>0 筆你沒同意的 API 費用</span>
-            </div>
-          </div>
-          <div class="fallback-shots reveal">
-            <img class="drift" src="../assets/shots/zh/quota-task.png" alt="Codex 額度用盡的工作，附有由 Claude Code 接手的按鈕" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      <section class="bands" aria-label="Pyloxa 替你做的事">
+      <section class="bands" aria-label="照你的習慣">
         <div class="band c1">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b1">每個工作都跑我的測試。</p><p class="consequence">npm run test 在每個工作自己的 worktree 執行。通過就自動接受；沒通過，Agent 會自動修正一次。</p></div>
+            <div class="sentence"><p class="line" id="b1">用我的語言。</p><p class="consequence">介面和 Agent 的回覆語言可以分開選，各有九種語言。</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b1" data-ui></button></span>
           </div>
         </div>
         <div class="band c2">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b2">進下一個階段前先問我。</p><p class="consequence">階段先在整合後的版本跑完命令，再等你按一下。不開的話，檢查通過的階段會自己往下走。</p></div>
+            <div class="sentence"><p class="line" id="b2">用我的快捷鍵。</p><p class="consequence">在「設定 → 快捷鍵」自訂，應用程式選單跟著換；和已經在用的快捷鍵衝突時，會先問你。</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b2" data-ui></button></span>
           </div>
         </div>
         <div class="band c3">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b3">絕不碰我的憑證。</p><p class="consequence">Pyloxa 只執行你已登入的 CLI，從不讀取、複製或傳送它們的 token，也不會 stash 或 reset 你的工作目錄。</p></div>
+            <div class="sentence"><p class="line" id="b3">記住我常打的指令。</p><p class="consequence">在輸入框打「/」選用存好的指令範本，用大括號標出每次要換的地方。免費版可以存 5 個，Pro 不限。</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b3" data-ui></button></span>
           </div>
         </div>
         <div class="band c4">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b4">用我的語言回覆。</p><p class="consequence">介面與 Agent 的回覆語言可以分開選，各有九種語言，和這個網站一樣。</p></div>
+            <div class="sentence"><p class="line" id="b4">照我的習慣排版面。</p><p class="consequence">側欄可以調寬或收成圖示列、釘選常用的設定頁，每個專案也可以有自己的顏色。</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
           </div>
         </div>
@@ -733,14 +815,6 @@
               <div class="inline-answer"><p>免費版安裝檔目前還沒有程式碼簽章，SmartScreen 可能顯示「Windows 已保護您的電腦」。請按「其他資訊」，再按「仍要執行」。安裝前可以先比對安裝檔的 SHA-256 與發布頁上的值。</p></div>
             </li>
             <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">可以指定模型和推理強度嗎？</button></h3>
-              <div class="inline-answer"><p>可以。每個 Profile 都能選模型與推理參數，清單直接取自你安裝的 CLI；不選就用 CLI 的預設。大腦和執行工作的 Agent 可以用不同的模型。</p></div>
-            </li>
-            <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">可以讓某類工作固定交給某個 Agent 嗎？</button></h3>
-              <div class="inline-answer"><p>可以。用派工規則指定，例如「測試階段的工作都交給 Claude Code」，規則可以只套用在目前的專案。核准計畫前，也能手動改派單一工作。新安裝時會套用預設流程：Claude Code 負責前端與影片剪輯，Codex 負責後端與生圖，Gemini 負責文章與文件，隨時可以修改。</p></div>
-            </li>
-            <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">和把多個 Agent 終端並排的工具有什麼不同？</button></h3>
               <div class="inline-answer"><p>終端機多工工具把好幾個 Agent 的終端放進同一個視窗，讓你看得到誰在跑、誰在等你，有些還能在關掉 App 後讓 Agent 繼續執行，或連到遠端機器。Pyloxa 管的是終端之外的事：大腦把需求拆成工作、依你的規則派給 Agent、用你的命令驗收、額度用完時提出備援，最後由你合併。關閉 Pyloxa 的視窗後，它會留在系統匣繼續工作；重新開機等原因中斷的工作，也可以接續。如果你想親手盯著每個終端，多工工具很合適；如果你想交出一份需求、拿回驗收過的成果，Pyloxa 比較適合。</p></div>
             </li>
@@ -755,10 +829,6 @@
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">支援 Gemini 或其他 Agent 嗎？</button></h3>
               <div class="inline-answer"><p>從 0.1.2 起以實驗性功能支援 Gemini CLI，使用你自己的付費 Gemini API Key，不支援 Google 帳號登入與 AI Pro、Ultra 訂閱。Gemini 可以執行文章、文件等工作，但不能擔任大腦，也不能測試其他 Agent 的成果；在無人值守模式下可以修改檔案，但不能執行命令。其他 Agent 還在評估。</p></div>
-            </li>
-            <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">Skills 怎麼管理？</button></h3>
-              <div class="inline-answer"><p>免費版的「Skills」頁列出各 CLI 讀得到的 Skills，並標示名稱相同、內容卻不一樣的。Pro 把它們整理成一個 Skills 庫：同步到每個 CLI、依專案或 Profile 指派，也能和工作流程一起打包成派工包分享。這些功能從 0.1.10 起包含在 Pro 預覽，登入就能使用。</p></div>
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">Pro 多了什麼？</button></h3>

@@ -63,10 +63,10 @@
     <header class="wrap nav">
       <a class="mark" href="./" aria-label="{{body.2}}">Pyloxa</a>
       <ul>
-        <li class="optional"><a href="#why">{{body.3}}</a></li>
         <li class="optional"><a href="#how">{{body.4}}</a></li>
-        <li class="optional"><a href="#custom">{{body.5}}</a></li>
-        <li class="optional"><a href="#skills">Skills</a></li>
+        <li class="optional"><a href="#workflow">{{body.5}}</a></li>
+        <li class="optional"><a href="#memory">{{nav.memory}}</a></li>
+        <li class="optional"><a href="#why">{{body.3}}</a></li>
         <li class="optional"><a href="#pricing">{{body.6}}</a></li>
         <li class="optional"><a href="#faq">{{body.7}}</a></li>
         <li class="optional"><a href="{{@changelog}}">{{body.8}}</a></li>
@@ -85,6 +85,13 @@
               <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{hero-title.5}}</a>
               <span class="meta">{{hero-title.6}}</span>{{@appLangNote}}
             </div>
+            <a class="hero-pro" href="#pricing">{{hero.pro}}</a>
+            <ul class="trust" aria-label="{{hero.trustLabel}}">
+              <li>{{hero.trust1}}</li>
+              <li>{{hero.trust2}}</li>
+              <li>{{hero.trust3}}</li>
+              <li>{{hero.trust4}}</li>
+            </ul>
           </div>
         </div>
         <div class="stage" aria-label="{{hero-title.7}}">
@@ -132,82 +139,375 @@
         </div>
       </section>
 
-      <section class="wrap section" aria-labelledby="states-title">
-        <div class="states reveal">
-          <h2 class="section-head" id="states-title">{{states-title.1}}</h2>
+      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+        <div class="flow-col">
+          <h2 class="section-head reveal" id="how-title"><span>{{how-title.1}}</span></h2>
 
-          <p class="state-word">{{states-title.2}}</p>
-          <div class="state-row task-row" data-ui>
-            <div class="ui-row">
-              <div class="top">
-                <span class="ui-title">{{states-title.3}}</span>
-                <span class="badge">{{states-title.4}}</span>
-                <span class="badge warn">{{states-title.5}}</span>
-                <span class="spacer"></span>
-                <span class="badge info"><span class="spin" aria-hidden="true"></span>{{states-title.6}}</span>
+          <figure class="demo reveal">
+            <div class="frame">
+              <video class="clip" muted loop playsinline preload="metadata" poster="{{@root}}assets/video/{{@assetLang}}/flow.jpg" aria-label="{{how-title.3}}">
+                <source src="{{@root}}assets/video/{{@assetLang}}/flow.webm" type="video/webm" />
+              </video>
+            </div>
+            <figcaption>{{how-title.5}}</figcaption>
+          </figure>
+
+          <div class="exchange reveal">
+            <p class="say">{{how-title.6}}</p>
+            <div class="call">
+              <div data-ui class="ui-row">{{how-title.7}}</div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img class="crop-chat" src="{{@root}}assets/shots/{{@assetLang}}/conversation.png" width="2576" height="1840" alt="{{how-title.9}}" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange reveal">
+            <p class="say">{{how-title.10}}</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">{{how-title.11}}</button> <span class="ui-muted">{{how-title.12}}</span></div>
+            </div>
+            <figure class="response" style="margin-inline-end: 0">
+              <img src="{{@root}}assets/shots/{{@assetLang}}/plan-gates.png" alt="{{how-title.14}}" loading="lazy" />
+            </figure>
+          </div>
+
+          <div class="exchange final reveal">
+            <p class="say">{{how-title.15}}</p>
+            <div class="call">
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">{{how-title.16}}</button></div>
+            </div>
+            <div class="response result" data-ui>
+              <div class="ui-row"><span class="ui-title">{{how-title.17}}</span></div>
+              <ul class="files">
+                <li><span class="st">A</span>docs/api/profile.yaml</li>
+                <li><span class="st">A</span>server/src/routes/profile.ts</li>
+                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
+                <li><span class="st">A</span>test/profile.test.ts</li>
+                <li><span class="st">A</span>test/contract.test.ts</li>
+              </ul>
+              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{how-title.18}}</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 工作流程五段：和 App「工作流程」頁的規劃、階段、分工、檢查、交付一致（D-108） -->
+      <section class="wrap section custom wf" id="workflow" aria-labelledby="wf-title">
+        <div class="grid no-tabs" data-tabs>
+          <div class="custom-head reveal">
+            <h2 class="section-head" id="wf-title">{{wf.title}}</h2>
+            <p>{{wf.lede}}</p>
+          </div>
+
+          <div class="tabs wf-steps" role="tablist" aria-label="{{wf.tabs}}" hidden>
+            <button type="button" role="tab" id="wf-tab-plan" aria-controls="wf-plan" aria-selected="true"><span class="n" aria-hidden="true">1</span>{{wf.s1}}</button>
+            <button type="button" role="tab" id="wf-tab-phases" aria-controls="wf-phases" aria-selected="false"><span class="n" aria-hidden="true">2</span>{{wf.s2}}</button>
+            <button type="button" role="tab" id="wf-tab-assign" aria-controls="wf-assign" aria-selected="false"><span class="n" aria-hidden="true">3</span>{{wf.s3}}</button>
+            <button type="button" role="tab" id="wf-tab-check" aria-controls="wf-check" aria-selected="false"><span class="n" aria-hidden="true">4</span>{{wf.s4}}</button>
+            <button type="button" role="tab" id="wf-tab-deliver" aria-controls="wf-deliver" aria-selected="false"><span class="n" aria-hidden="true">5</span>{{wf.s5}}</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-plan" aria-labelledby="wf-tab-plan">
+            <div class="panel-copy">
+              <h3>{{wf.plan.h}}</h3>
+              <p>{{panel-agents.6}}</p>
+              <ul>
+                <li>{{panel-agents.2}}</li>
+                <li>{{panel-modes.2}}</li>
+                <li>{{wf.plan.li}}</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="modes" data-ui>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">{{wf.plan.m1}}</span><span class="badge info">Claude Code</span></div>
+                  <span class="ui-muted">{{wf.plan.m2}}</span>
+                  <div class="mode-top wf-backup"><span class="ui-muted">{{wf.plan.m3}}</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">{{panel-modes.5}}</span><span class="badge info">{{panel-modes.6}}</span><span class="spacer"></span><span class="badge">{{panel-modes.7}}</span></div>
+                  <span class="ui-muted">{{panel-modes.8}}</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">{{panel-modes.9}}</span><span class="spacer"></span><span class="badge">{{panel-modes.10}}</span></div>
+                  <span class="ui-muted">{{panel-modes.11}}</span>
+                </div>
+                <div class="ui-row">
+                  <div class="mode-top"><span class="ui-title">{{panel-modes.12}}</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+                  <span class="ui-muted">{{panel-modes.13}}</span>
+                </div>
               </div>
-              <span class="ui-muted">{{states-title.7}}</span>
             </div>
           </div>
 
-          <p class="state-word">{{states-title.8}}</p>
-          <div class="state-row reply-demo" data-reply-demo>
-            <div class="task-row" data-ui data-task>
-              <div class="ui-row" data-pending>
-                <div class="top">
-                  <span class="ui-title">{{states-title.9}}</span>
-                  <span class="badge">{{states-title.10}}</span>
-                  <span class="badge warn">{{states-title.11}}</span>
-                  <span class="spacer"></span>
-                  <span class="badge warn" data-status>{{states-title.12}}</span>
+          <div class="panel" role="tabpanel" id="wf-phases" aria-labelledby="wf-tab-phases">
+            <div class="panel-copy">
+              <h3>{{wf.phases.h}}</h3>
+              <p>{{panel-flow.2}}</p>
+              <ul>
+                <li>{{panel-flow.5}}</li>
+                <li>{{panel-flow.6}}</li>
+                <li>{{why-title.18}}</li>
+                <li>{{wf.phases.li}}</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="wf-plan-card" data-ui>
+                <div class="ui-row wf-card-head">
+                  <span class="ui-title">{{wf.phases.m1}}</span>
+                  <span class="ui-muted">{{wf.phases.m2}}</span>
                 </div>
-                <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>{{states-title.13}}</span></span>
-                <div class="actions">
-                  <button type="button" class="ui-button primary" data-accept>{{states-title.14}}</button>
-                  <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">{{states-title.15}}</button>
-                </div>
-              </div>
-              <div class="ui-row" data-accepted hidden>
-                <div class="top">
-                  <span class="ui-title">{{states-title.16}}</span>
-                  <span class="badge">{{states-title.17}}</span>
-                  <span class="spacer"></span>
-                  <span class="badge ok">{{states-title.18}}</span>
-                </div>
-                <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{states-title.19}}</span>
+                <ol class="wf-phase-list">
+                  <li class="ui-row"><span class="wf-num">1</span><div><span class="ui-title">{{wf.phases.m3}}</span><span class="ui-muted">Codex</span></div><span class="badge ok">{{wf.phases.m4}}</span></li>
+                  <li class="ui-row"><span class="wf-num">2</span><div><span class="ui-title">{{wf.phases.m5}}</span><span class="ui-muted">{{wf.phases.m6}}</span></div><span class="badge info"><span class="spin" aria-hidden="true"></span>{{states-title.6}}</span></li>
+                  <li class="ui-row"><span class="wf-num">3</span><div><span class="ui-title">{{wf.phases.m7}}</span><span class="ui-muted">{{wf.phases.m8}}</span></div><span class="badge">{{wf.phases.m9}}</span></li>
+                </ol>
               </div>
             </div>
-            <section class="session" id="session-demo" data-ui data-session hidden aria-label="{{session-demo.1}}">
-              <div class="ui-row session-head">
-                <span class="ui-title">{{session-demo.2}}</span>
-                <span class="ui-muted">Codex · Session</span>
-                <span class="spacer"></span>
-                <button type="button" class="session-close" data-session-close aria-label="{{session-demo.3}}">×</button>
-              </div>
-              <div class="ui-row session-log" data-session-log aria-live="polite">
-                <div class="msg brief"><span class="who">{{session-demo.4}}</span><p>{{session-demo.5}}</p></div>
-                <div class="msg"><span class="who">Codex</span><p>{{session-demo.6}}</p></div>
-              </div>
-              <form class="ui-row session-reply" data-session-form>
-                <label class="visually-hidden" for="session-input">{{session-demo.7}}</label>
-                <textarea id="session-input" rows="2" data-session-input>{{session-input.1}}</textarea>
-                <button type="submit" class="ui-button primary">{{session-input.2}}</button>
-              </form>
-            </section>
           </div>
 
-          <p class="state-word">{{session-input.3}}</p>
-          <div class="state-row task-row" data-ui>
-            <div class="ui-row">
-              <div class="top">
-                <span class="ui-title">{{session-input.4}}</span>
-                <span class="badge">{{session-input.5}}</span>
-                <span class="badge ok">{{session-input.6}}</span>
-                <span class="spacer"></span>
-                <span class="badge ok">{{session-input.7}}</span>
-              </div>
-              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{session-input.8}}</span>
+          <div class="panel" role="tabpanel" id="wf-assign" aria-labelledby="wf-tab-assign">
+            <div class="panel-copy">
+              <h3>{{wf.assign.h}}</h3>
+              <p>{{wf.assign.p}}</p>
+              <ul>
+                <li>{{panel-rules.3}}</li>
+                <li>{{wf.assign.li}}</li>
+                <li>{{panel-rules.4}}</li>
+                <li>{{panel-rules.5}}</li>
+              </ul>
             </div>
+            <div class="panel-media">
+              <div class="wf-matrix" data-ui data-matrix>
+                <div class="ui-row wf-card-head">
+                  <span class="ui-title">{{wf.assign.m.title}}</span>
+                  <span class="ui-muted">{{wf.assign.m.hint}}</span>
+                </div>
+                <div class="wf-matrix-scroll">
+                  <table>
+                    <thead>
+                      <tr><th scope="col">{{wf.assign.m.type}}</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">Gemini CLI</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><th scope="row">{{type-label.2}}</th><td><button type="button" class="wf-cell is-primary" data-cell>{{wf.assign.m.primary}}</button></td><td><button type="button" class="wf-cell is-fallback" data-cell>{{wf.assign.m.fallback}}</button></td><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td></tr>
+                      <tr><th scope="row">{{type-label.3}}</th><td><button type="button" class="wf-cell is-fallback" data-cell>{{wf.assign.m.fallback}}</button></td><td><button type="button" class="wf-cell is-primary" data-cell>{{wf.assign.m.primary}}</button></td><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td></tr>
+                      <tr><th scope="row">{{type-label.4}}</th><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td><td><button type="button" class="wf-cell is-primary" data-cell>{{wf.assign.m.primary}}</button></td></tr>
+                      <tr><th scope="row">{{type-label.5}}</th><td><button type="button" class="wf-cell is-primary" data-cell>{{wf.assign.m.primary}}</button></td><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td></tr>
+                      <tr><th scope="row">{{wf.assign.m.img}}</th><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td><td><button type="button" class="wf-cell is-primary" data-cell>{{wf.assign.m.primary}}</button></td><td><button type="button" class="wf-cell" data-cell aria-label="{{wf.assign.m.none}}">—</button></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-check" aria-labelledby="wf-tab-check">
+            <div class="panel-copy">
+              <h3>{{wf.check.h}}</h3>
+              <p>{{wf.check.p}}</p>
+              <ul>
+                <li>{{panel-flow.3}}<code>npm run test</code>{{panel-flow.4}}</li>
+                <li>{{panel-flow.7}}</li>
+                <li>{{panel-flow.8}}</li>
+              </ul>
+            </div>
+            <div class="panel-media wf-states">
+                <p class="state-word">{{states-title.2}}</p>
+                <div class="state-row task-row" data-ui>
+                  <div class="ui-row">
+                    <div class="top">
+                      <span class="ui-title">{{states-title.3}}</span>
+                      <span class="badge">{{states-title.4}}</span>
+                      <span class="badge warn">{{states-title.5}}</span>
+                      <span class="spacer"></span>
+                      <span class="badge info"><span class="spin" aria-hidden="true"></span>{{states-title.6}}</span>
+                    </div>
+                    <span class="ui-muted">{{states-title.7}}</span>
+                  </div>
+                </div>
+
+                <p class="state-word">{{states-title.8}}</p>
+                <div class="state-row reply-demo" data-reply-demo>
+                  <div class="task-row" data-ui data-task>
+                    <div class="ui-row" data-pending>
+                      <div class="top">
+                        <span class="ui-title">{{states-title.9}}</span>
+                        <span class="badge">{{states-title.10}}</span>
+                        <span class="badge warn">{{states-title.11}}</span>
+                        <span class="spacer"></span>
+                        <span class="badge warn" data-status>{{states-title.12}}</span>
+                      </div>
+                      <span class="check-line" data-check><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><span data-check-text>{{states-title.13}}</span></span>
+                      <div class="actions">
+                        <button type="button" class="ui-button primary" data-accept>{{states-title.14}}</button>
+                        <button type="button" class="ui-button" data-reply aria-expanded="false" aria-controls="session-demo">{{states-title.15}}</button>
+                      </div>
+                    </div>
+                    <div class="ui-row" data-accepted hidden>
+                      <div class="top">
+                        <span class="ui-title">{{states-title.16}}</span>
+                        <span class="badge">{{states-title.17}}</span>
+                        <span class="spacer"></span>
+                        <span class="badge ok">{{states-title.18}}</span>
+                      </div>
+                      <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{states-title.19}}</span>
+                    </div>
+                  </div>
+                  <section class="session" id="session-demo" data-ui data-session hidden aria-label="{{session-demo.1}}">
+                    <div class="ui-row session-head">
+                      <span class="ui-title">{{session-demo.2}}</span>
+                      <span class="ui-muted">Codex · Session</span>
+                      <span class="spacer"></span>
+                      <button type="button" class="session-close" data-session-close aria-label="{{session-demo.3}}">×</button>
+                    </div>
+                    <div class="ui-row session-log" data-session-log aria-live="polite">
+                      <div class="msg brief"><span class="who">{{session-demo.4}}</span><p>{{session-demo.5}}</p></div>
+                      <div class="msg"><span class="who">Codex</span><p>{{session-demo.6}}</p></div>
+                    </div>
+                    <form class="ui-row session-reply" data-session-form>
+                      <label class="visually-hidden" for="session-input">{{session-demo.7}}</label>
+                      <textarea id="session-input" rows="2" data-session-input>{{session-input.1}}</textarea>
+                      <button type="submit" class="ui-button primary">{{session-input.2}}</button>
+                    </form>
+                  </section>
+                </div>
+
+                <p class="state-word">{{session-input.3}}</p>
+                <div class="state-row task-row" data-ui>
+                  <div class="ui-row">
+                    <div class="top">
+                      <span class="ui-title">{{session-input.4}}</span>
+                      <span class="badge">{{session-input.5}}</span>
+                      <span class="badge ok">{{session-input.6}}</span>
+                      <span class="spacer"></span>
+                      <span class="badge ok">{{session-input.7}}</span>
+                    </div>
+                    <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{session-input.8}}</span>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="wf-deliver" aria-labelledby="wf-tab-deliver">
+            <div class="panel-copy">
+              <h3>{{wf.deliver.h}}</h3>
+              <p>{{wf.deliver.p}}</p>
+              <ul>
+                <li>{{wf.deliver.li1}}</li>
+                <li>{{supervised-title.14}}</li>
+                <li>{{wf.deliver.li3}}</li>
+              </ul>
+            </div>
+            <div class="panel-media">
+              <div class="wf-pr" data-ui>
+                <div class="ui-row wf-card-head"><span class="ui-title">{{wf.deliver.m1}}</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
+                <div class="ui-row wf-pr-body">
+                  <span class="field-label">{{wf.deliver.m2}}</span>
+                  <span class="wf-input">{{wf.deliver.m3}}</span>
+                  <label class="wf-check"><input type="checkbox" checked /> {{wf.deliver.m4}}</label>
+                  <div class="wf-warn">{{wf.deliver.m5}} <code>.github/workflows/ci.yml</code></div>
+                </div>
+                <div class="ui-row wf-pr-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{session-input.8}}</span><span class="spacer"></span><button type="button" class="ui-button primary">{{wf.deliver.m6}}</button></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wf-templates reveal">
+            <h3>{{wf.tpl.h}}</h3>
+            <p>{{wf.tpl.p}}</p>
+            <ul>
+              <li><span class="wf-tpl-name">{{wf.tpl.n1}}</span><span class="badge info">{{wf.tpl.default}}</span><p>{{wf.tpl.d1}}</p></li>
+              <li><span class="wf-tpl-name">{{wf.tpl.n2}}</span><p>{{wf.tpl.d2}}</p></li>
+              <li><span class="wf-tpl-name">{{wf.tpl.n3}}</span><span class="badge warn">{{wf.tpl.pro}}</span><p>{{wf.tpl.d3}}</p></li>
+              <li><span class="wf-tpl-name">{{wf.tpl.n4}}</span><span class="badge warn">{{wf.tpl.pro}}</span><p>{{wf.tpl.d4}}</p></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="fallback section" aria-labelledby="fallback-title">
+        <div class="wrap grid">
+          <div class="fallback-copy reveal">
+            <h2 id="fallback-title">{{fallback-title.1}}</h2>
+            <p>{{fallback-title.2}}</p>
+            <p>{{fq.p2}}</p>
+            <div class="figures">
+              <span>{{fallback-title.3}}</span>
+              <span>{{fallback-title.4}}</span>
+              <span>{{fallback-title.5}}</span>
+            </div>
+          </div>
+          <div class="fallback-shots fq reveal">
+            <div class="fq-meter" data-ui>
+              <div class="ui-row wf-card-head"><span class="ui-title">{{fq.meter}}</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent">Claude Code</span><span class="ui-muted">{{fq.h5}}</span><span class="fq-bar"><i class="warn" style="width: 74%"></i></span><span class="fq-val">74%</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent"></span><span class="ui-muted">{{fq.d7}}</span><span class="fq-bar"><i style="width: 41%"></i></span><span class="fq-val">41%</span></div>
+              <div class="ui-row fq-row"><span class="fq-agent">Codex</span><span class="ui-muted">{{fq.today}}</span><span class="fq-tokens">182k token</span><span class="badge bad">{{fq.limited}}</span></div>
+            </div>
+            <div class="fq-card" data-ui>
+              <div class="ui-row">
+                <span class="ui-title fq-title">{{quota-label.2}}</span>
+                <span class="ui-muted">{{fq.card}}</span>
+                <span class="fq-actions"><button type="button" class="ui-button primary">{{quota-label.4}}</button><button type="button" class="ui-button">{{fq.retry}}</button></span>
+              </div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">{{fq.pro}}</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section memory" id="memory" aria-labelledby="memory-title">
+        <div class="wrap grid">
+          <div class="skills-copy reveal">
+            <h2 id="memory-title">{{mem.title}}</h2>
+            <p>{{mem.p}}</p>
+            <ol class="steps">
+              <li><strong>{{mem.s1t}}<span class="tier">{{skills-title.6}}</span></strong><span>{{mem.s1d}}</span></li>
+              <li><strong>{{mem.s2t}}<span class="tier">{{skills-title.6}}</span></strong><span>{{mem.s2d}}</span></li>
+              <li><strong>{{mem.s3t}}<span class="tier">{{skills-title.6}}</span></strong><span>{{mem.s3d}}</span></li>
+              <li><strong>{{mem.s4t}}<span class="tier">{{skills-title.6}}</span></strong><span>{{skills-title.7}}</span></li>
+              <li><strong>{{mem.s5t}}<span class="tier">Pro</span></strong><span>{{mem.s5d}}</span></li>
+            </ol>
+          </div>
+          <div class="skills-mock reveal">
+            <div class="mem-mock" data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">{{mem.m.title}}</span>
+                <span class="badge warn">{{mem.m.pending}} 2</span>
+              </div>
+              <div class="ui-row mem-item">
+                <p class="mem-text">{{mem.m.i1}}</p>
+                <span class="ui-muted">{{mem.m.i1meta}}</span>
+                <span class="mem-actions"><span class="ui-button primary" aria-hidden="true">{{mem.m.accept}}</span><span class="ui-button" aria-hidden="true">{{mem.m.edit}}</span><span class="ui-button" aria-hidden="true">{{mem.m.discard}}</span></span>
+              </div>
+              <div class="ui-row mem-item">
+                <p class="mem-text">{{mem.m.i2}} <code>--runInBand</code>{{mem.m.i2b}}</p>
+                <span class="ui-muted">{{mem.m.i2meta}}</span>
+                <span class="mem-actions"><span class="ui-button primary" aria-hidden="true">{{mem.m.accept}}</span><span class="ui-button" aria-hidden="true">{{mem.m.edit}}</span><span class="ui-button" aria-hidden="true">{{mem.m.discard}}</span></span>
+              </div>
+            </div>
+            <div data-ui>
+              <div class="ui-row mock-head">
+                <span class="ui-title">Skills</span>
+                <span class="ui-muted">{{skills-title.15}}</span>
+                <span class="spacer"></span>
+                <span class="ui-button primary" aria-hidden="true">{{skills-title.16}}</span>
+              </div>
+              <table>
+                <thead>
+                  <tr><th scope="col">{{skills-title.17}}</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">{{skills-title.18}}</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>api-contract</td><td><span class="badge ok">{{skills-title.19}}</span></td><td><span class="badge ok">{{skills-title.20}}</span></td><td><span class="badge info">{{skills-title.21}}</span></td></tr>
+                  <tr><td>react-conventions</td><td><span class="badge ok">{{skills-title.22}}</span></td><td><span class="badge warn">{{skills-title.23}}</span></td><td><span class="badge info">{{skills-title.24}}</span></td></tr>
+                  <tr><td>release-notes</td><td><span class="badge">{{skills-title.25}}</span></td><td><span class="badge ok">{{skills-title.26}}</span></td><td><span class="badge">{{skills-title.27}}</span></td></tr>
+                  <tr><td>db-migration</td><td><span class="badge ok">{{skills-title.28}}</span></td><td><span class="badge ok">{{skills-title.29}}</span></td><td><span class="badge">{{skills-title.30}}</span></td></tr>
+                  <tr><td>test-writer</td><td><span class="badge ok">{{skills-title.31}}</span></td><td><span class="badge ok">{{skills-title.32}}</span></td><td><span class="badge info">{{skills-title.33}}</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="media-note">{{mem.note}}</p>
           </div>
         </div>
       </section>
@@ -267,14 +567,8 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </section>
-
-      <!-- 和讓 Agent 自己運作的平台不同（D-109）：不點名，只寫 Pyloxa 自己做到的事 -->
-      <section class="wrap section why supervised" id="supervised" aria-labelledby="supervised-title">
-        <div class="grid">
-          <div class="why-copy reveal">
-            <h2 id="supervised-title">{{supervised-title.1}}</h2>
+          <div class="promises-head reveal" id="supervised">
+            <h3>{{supervised-title.1}}</h3>
             <p>{{supervised-title.2}}</p>
           </div>
           <ul class="promises reveal">
@@ -303,218 +597,6 @@
               <p>{{supervised-title.14}}</p>
             </li>
           </ul>
-        </div>
-      </section>
-
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
-        <div class="flow-col">
-          <h2 class="section-head reveal" id="how-title"><span>{{how-title.1}}</span></h2>
-
-          <figure class="demo reveal">
-            <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="{{@root}}assets/video/{{@assetLang}}/flow.jpg" aria-label="{{how-title.3}}">
-                <source src="{{@root}}assets/video/{{@assetLang}}/flow.webm" type="video/webm" />
-              </video>
-            </div>
-            <figcaption>{{how-title.5}}</figcaption>
-          </figure>
-
-          <div class="exchange reveal">
-            <p class="say">{{how-title.6}}</p>
-            <div class="call">
-              <div data-ui class="ui-row">{{how-title.7}}</div>
-            </div>
-            <figure class="response" style="margin-inline-end: 0">
-              <img class="crop-chat" src="{{@root}}assets/shots/{{@assetLang}}/conversation.png" width="2576" height="1840" alt="{{how-title.9}}" loading="lazy" />
-            </figure>
-          </div>
-
-          <div class="exchange reveal">
-            <p class="say">{{how-title.10}}</p>
-            <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">{{how-title.11}}</button> <span class="ui-muted">{{how-title.12}}</span></div>
-            </div>
-            <figure class="response" style="margin-inline-end: 0">
-              <img src="{{@root}}assets/shots/{{@assetLang}}/plan-gates.png" alt="{{how-title.14}}" loading="lazy" />
-            </figure>
-          </div>
-
-          <div class="exchange final reveal">
-            <p class="say">{{how-title.15}}</p>
-            <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">{{how-title.16}}</button></div>
-            </div>
-            <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">{{how-title.17}}</span></div>
-              <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
-              </ul>
-              <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{how-title.18}}</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="wrap section custom" id="custom" aria-labelledby="custom-title">
-        <div class="grid no-tabs" data-tabs>
-          <div class="custom-head reveal">
-            <h2 id="custom-title">{{custom-title.1}}</h2>
-            <p>{{custom-title.2}}</p>
-          </div>
-
-          <div class="tabs" role="tablist" aria-label="{{custom-title.3}}" hidden>
-            <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">{{tab-agents.1}}</button>
-            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">{{tab-rules.1}}</button>
-            <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">{{tab-flow.1}}</button>
-            <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">{{tab-modes.1}}</button>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-agents" aria-labelledby="tab-agents">
-            <div class="panel-copy">
-              <h3>{{panel-agents.1}}</h3>
-              <p>{{panel-agents.2}}</p>
-              <ul>
-                <li>{{panel-agents.3}}<code>--effort</code>{{panel-agents.4}}<code>model_reasoning_effort</code>{{panel-agents.5}}</li>
-                <li>{{panel-agents.6}}</li>
-                <li>{{panel-agents.7}}</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="{{@root}}assets/video/{{@assetLang}}/agents.jpg" aria-label="{{panel-agents.9}}">
-                  <source src="{{@root}}assets/video/{{@assetLang}}/agents.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
-            <div class="panel-copy">
-              <h3>{{panel-rules.1}}</h3>
-              <p>{{panel-rules.2}}</p>
-              <ul>
-                <li>{{panel-rules.3}}</li>
-                <li>{{panel-rules.4}}</li>
-                <li>{{panel-rules.5}}</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="{{@root}}assets/video/{{@assetLang}}/rules.jpg" aria-label="{{panel-rules.7}}">
-                  <source src="{{@root}}assets/video/{{@assetLang}}/rules.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow">
-            <div class="panel-copy">
-              <h3>{{panel-flow.1}}</h3>
-              <p>{{panel-flow.2}}</p>
-              <ul>
-                <li>{{panel-flow.3}}<code>npm run test</code>{{panel-flow.4}}</li>
-                <li>{{panel-flow.5}}</li>
-                <li>{{panel-flow.6}}</li>
-                <li>{{panel-flow.7}}</li>
-                <li>{{panel-flow.8}}</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="frame">
-                <video class="clip" muted loop playsinline preload="none" poster="{{@root}}assets/video/{{@assetLang}}/commands.jpg" aria-label="{{panel-flow.10}}">
-                  <source src="{{@root}}assets/video/{{@assetLang}}/commands.webm" type="video/webm" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel" role="tabpanel" id="panel-modes" aria-labelledby="tab-modes">
-            <div class="panel-copy">
-              <h3>{{panel-modes.1}}</h3>
-              <p>{{panel-modes.2}}</p>
-              <ul>
-                <li>{{panel-modes.3}}</li>
-                <li>{{panel-modes.4}}</li>
-              </ul>
-            </div>
-            <div class="panel-media">
-              <div class="modes" data-ui>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">{{panel-modes.5}}</span><span class="badge info">{{panel-modes.6}}</span><span class="spacer"></span><span class="badge">{{panel-modes.7}}</span></div>
-                  <span class="ui-muted">{{panel-modes.8}}</span>
-                </div>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">{{panel-modes.9}}</span><span class="spacer"></span><span class="badge">{{panel-modes.10}}</span></div>
-                  <span class="ui-muted">{{panel-modes.11}}</span>
-                </div>
-                <div class="ui-row">
-                  <div class="mode-top"><span class="ui-title">{{panel-modes.12}}</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
-                  <span class="ui-muted">{{panel-modes.13}}</span>
-                </div>
-              </div>
-              <img class="still" src="{{@root}}assets/shots/{{@assetLang}}/agents-page.png" width="1440" height="900" alt="{{panel-modes.15}}" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="skills section" id="skills" aria-labelledby="skills-title">
-        <div class="wrap grid">
-          <div class="skills-copy reveal">
-            <span class="dev-tag">{{skills.1}}</span>
-            <h2 id="skills-title">{{skills-title.1}}</h2>
-            <p>{{skills-title.2}}<code>~/.claude/skills</code>{{skills-title.3}}<code>~/.agents/skills</code>{{skills-title.4}}</p>
-            <ol class="steps">
-              <li><strong>{{skills-title.5}}<span class="tier">{{skills-title.6}}</span></strong><span>{{skills-title.7}}</span></li>
-              <li><strong>{{skills-title.8}}<span class="tier">Pro</span></strong><span>{{skills-title.9}}<code>~/.agents/skills</code>{{skills-title.10}}</span></li>
-              <li><strong>{{skills-title.11}}<span class="tier">Pro</span></strong><span>{{skills-title.12}}</span></li>
-              <li><strong>{{skills-title.13}}<span class="tier">Pro</span></strong><span>{{skills-title.14}}</span></li>
-            </ol>
-          </div>
-          <div class="skills-mock reveal">
-            <div data-ui>
-              <div class="ui-row mock-head">
-                <span class="ui-title">Skills</span>
-                <span class="ui-muted">{{skills-title.15}}</span>
-                <span class="spacer"></span>
-                <span class="ui-button primary" aria-hidden="true">{{skills-title.16}}</span>
-              </div>
-              <table>
-                <thead>
-                  <tr><th scope="col">{{skills-title.17}}</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">{{skills-title.18}}</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>api-contract</td><td><span class="badge ok">{{skills-title.19}}</span></td><td><span class="badge ok">{{skills-title.20}}</span></td><td><span class="badge info">{{skills-title.21}}</span></td></tr>
-                  <tr><td>react-conventions</td><td><span class="badge ok">{{skills-title.22}}</span></td><td><span class="badge warn">{{skills-title.23}}</span></td><td><span class="badge info">{{skills-title.24}}</span></td></tr>
-                  <tr><td>release-notes</td><td><span class="badge">{{skills-title.25}}</span></td><td><span class="badge ok">{{skills-title.26}}</span></td><td><span class="badge">{{skills-title.27}}</span></td></tr>
-                  <tr><td>db-migration</td><td><span class="badge ok">{{skills-title.28}}</span></td><td><span class="badge ok">{{skills-title.29}}</span></td><td><span class="badge">{{skills-title.30}}</span></td></tr>
-                  <tr><td>test-writer</td><td><span class="badge ok">{{skills-title.31}}</span></td><td><span class="badge ok">{{skills-title.32}}</span></td><td><span class="badge info">{{skills-title.33}}</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="media-note">{{skills-title.34}}</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="fallback section" aria-labelledby="fallback-title">
-        <div class="wrap grid">
-          <div class="fallback-copy reveal">
-            <h2 id="fallback-title">{{fallback-title.1}}</h2>
-            <p>{{fallback-title.2}}</p>
-            <div class="figures">
-              <span>{{fallback-title.3}}</span>
-              <span>{{fallback-title.4}}</span>
-              <span>{{fallback-title.5}}</span>
-            </div>
-          </div>
-          <div class="fallback-shots reveal">
-            <img class="drift" src="{{@root}}assets/shots/{{@assetLang}}/quota-task.png" alt="{{fallback-title.7}}" loading="lazy" />
-          </div>
         </div>
       </section>
 
@@ -714,14 +796,6 @@
               <div class="inline-answer"><p>{{faq-title.15}}</p></div>
             </li>
             <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.16}}</button></h3>
-              <div class="inline-answer"><p>{{faq-title.17}}</p></div>
-            </li>
-            <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.18}}</button></h3>
-              <div class="inline-answer"><p>{{faq-title.19}}</p></div>
-            </li>
-            <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.20}}</button></h3>
               <div class="inline-answer"><p>{{faq-title.21}}</p></div>
             </li>
@@ -736,10 +810,6 @@
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.26}}</button></h3>
               <div class="inline-answer"><p>{{faq-title.27}}</p></div>
-            </li>
-            <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.28}}</button></h3>
-              <div class="inline-answer"><p>{{faq-title.29}}</p></div>
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.30}}</button></h3>

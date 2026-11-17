@@ -1379,6 +1379,523 @@ section {
   background-size: 100% 1.5px;
 }
 
+/* ---- 首屏：Pro 預覽連結與重點 ---- */
+.hero-pro {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 260ms var(--ease);
+}
+
+.hero-pro:hover {
+  background-size: 100% 1.5px;
+}
+
+.trust {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+.trust li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.trust li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+}
+
+@media (min-width: 901px) {
+  .hero .actions .app-lang {
+    margin-bottom: 0;
+  }
+
+  .trust {
+    margin-bottom: 56px;
+  }
+}
+
+/* ---- 工作流程五段（沿用客製化分頁的版面） ---- */
+.wf-steps {
+  gap: 4px 28px;
+}
+
+.wf-steps button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wf-steps .n {
+  display: inline-grid;
+  place-items: center;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  background: var(--tone);
+  color: var(--soft);
+  font-size: 0.7em;
+  font-weight: 600;
+  transition:
+    background-color 150ms var(--ease),
+    color 150ms var(--ease);
+}
+
+.wf-steps button[aria-selected="true"] .n {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.js .wf .panel:not([hidden]) {
+  animation: wf-in 320ms var(--ease) both;
+}
+
+@keyframes wf-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.wf [data-ui] {
+  overflow: hidden;
+}
+
+.wf-card-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  border-bottom: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.wf-backup {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* 階段：計畫卡 */
+.wf-phase-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wf-phase-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.wf-phase-list li + li {
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.wf-phase-list li > div {
+  display: grid;
+  gap: 2px;
+}
+
+.wf-num {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #dedbe6;
+  font-size: 13px;
+  color: #6b6878;
+}
+
+/* 分工：分工表 */
+.wf-matrix-scroll {
+  overflow-x: auto;
+}
+
+.wf-matrix table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.wf-matrix th,
+.wf-matrix td {
+  text-align: left;
+  padding: 10px 16px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+  white-space: nowrap;
+}
+
+.wf-matrix thead th {
+  border-top: 0;
+  color: #6b6878;
+  font-weight: 400;
+}
+
+.wf-matrix tbody th {
+  font-weight: 600;
+}
+
+.wf-cell {
+  min-width: 72px;
+  padding: 3px 10px;
+  border: 1px solid #dedbe6;
+  border-radius: 999px;
+  background: #f5f4f8;
+  font: 400 13px / 1.4 var(--font);
+  color: #8a8796;
+  cursor: pointer;
+  transition:
+    background-color 140ms var(--ease),
+    color 140ms var(--ease),
+    transform 140ms var(--ease);
+}
+
+.wf-cell:hover {
+  border-color: #b9b0ee;
+}
+
+.wf-cell:active {
+  transform: scale(0.96);
+}
+
+.wf-cell.is-primary {
+  background: var(--accent-tint);
+  border-color: #cfc7f5;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.wf-cell.is-fallback {
+  background: #fdf5e8;
+  border-color: #f0cf9c;
+  color: #a6600a;
+}
+
+/* 檢查：沿用三列工作狀態，改成上下排列 */
+.wf-states {
+  gap: 10px;
+}
+
+.wf-states .state-row {
+  grid-column: auto;
+}
+
+.wf-states .state-word {
+  grid-column: auto;
+  text-align: left;
+  font-size: var(--step-small);
+  margin-top: 10px;
+}
+
+.wf-states .state-word:first-child {
+  margin-top: 0;
+}
+
+.wf-states .task-row {
+  transition:
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease);
+}
+
+.wf-states .task-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -18px rgba(21, 19, 31, 0.35);
+}
+
+/* 交付：建立 PR */
+.wf-pr-body {
+  display: grid;
+  gap: 10px;
+}
+
+.wf-input {
+  display: block;
+  border: 1px solid #dedbe6;
+  border-radius: 8px;
+  padding: 8px 11px;
+}
+
+.wf-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.wf-check input {
+  accent-color: var(--accent);
+}
+
+.wf-warn {
+  padding: 10px 12px;
+  border: 1px solid #f0cf9c; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+  border-radius: 8px;
+  background: #fdf8ee;
+  color: #8a4f06;
+  font-size: 13px;
+}
+
+.wf-warn code {
+  font-size: 12px;
+}
+
+.wf-pr-foot {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.wf-pr-foot .spacer {
+  flex: 1;
+}
+
+/* 內建範本 */
+.wf-templates {
+  grid-column: 1 / -1;
+  margin-top: 88px;
+}
+
+.wf-templates h3 {
+  font-size: var(--step-lead);
+  font-weight: 600;
+}
+
+.wf-templates > p {
+  margin-top: 10px;
+  max-width: 64ch;
+  color: var(--soft);
+}
+
+.wf-templates ul {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.wf-templates li {
+  padding-top: 14px;
+  border-top: 2px solid var(--ink);
+  transition: border-color 200ms var(--ease);
+}
+
+.wf-templates li:hover {
+  border-top-color: var(--accent);
+}
+
+.wf-tpl-name {
+  font-size: var(--step-body);
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.wf-templates .badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid #dedbe6;
+  border-radius: 999px;
+  font-size: 12px;
+  vertical-align: 2px;
+}
+
+.wf-templates .badge.info {
+  color: var(--accent);
+  border-color: #cfc7f5;
+  background: var(--accent-tint);
+}
+
+.wf-templates .badge.warn {
+  color: #a6600a;
+  border-color: #f0cf9c;
+  background: #fdf5e8;
+}
+
+.wf-templates li p {
+  margin-top: 8px;
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+/* ---- 額度用完：額度一覽與接手卡 ---- */
+.fq {
+  gap: 20px;
+}
+
+.fq-row {
+  display: grid;
+  grid-template-columns: 7.5em 4.5em minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding-block: 10px;
+}
+
+.fq-row + .fq-row {
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.fq-agent {
+  font-weight: 600;
+}
+
+.fq-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: #ecebf0;
+  overflow: hidden;
+}
+
+.fq-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green);
+}
+
+.fq-bar i.warn {
+  background: #e0a028;
+}
+
+.fq-val,
+.fq-tokens {
+  font-variant-numeric: tabular-nums;
+}
+
+.fq-card .ui-row:first-child {
+  display: grid;
+  gap: 10px;
+}
+
+.fq-title {
+  color: #8a4f06;
+}
+
+.fq-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fq-pro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+/* ---- 記憶與 Skills（沿用 Skills 區塊的版面） ---- */
+.mem-mock {
+  margin-bottom: 20px;
+}
+
+.mem-item {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.mem-text {
+  font-size: 14px;
+}
+
+.mem-text code {
+  font-size: 12px;
+}
+
+.mem-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.mem-actions .ui-button {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+/* ---- 差別：比較表之後接上原則 ---- */
+.promises-head {
+  grid-column: 5 / 13;
+  margin-top: 96px;
+  margin-bottom: 8px;
+}
+
+.promises-head h3 {
+  font-size: var(--step-head);
+  line-height: 1.15;
+}
+
+.promises-head p {
+  margin-top: 14px;
+  max-width: 60ch;
+  color: var(--soft);
+}
+
+@media (max-width: 1100px) {
+  .wf-templates ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .promises-head {
+    grid-column: 1 / -1;
+    margin-top: 64px;
+  }
+
+  .fq-row {
+    grid-template-columns: 6.5em 3.8em minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .wf-steps {
+    gap: 4px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wf-templates ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .wf .panel:not([hidden]),
+  .wf-states .task-row,
+  .wf-cell {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 /* ---- 名字的由來：P·Y·L·O·X·A 六個字 ---- */
 .name-head {
   max-width: 60ch;
@@ -2770,5 +3287,46 @@ html:lang(ko) {
 
   .skills-mock [data-ui] {
     overflow-x: auto;
+  }
+}
+
+/* 手機：工作流程五段排成一列五格（數字在上、名稱在下），分工表縮小到不用左右捲動 */
+@media (max-width: 600px) {
+  .tabs.wf-steps {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0 4px;
+    overflow: visible;
+  }
+
+  .tabs.wf-steps button {
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 10px;
+    font-size: var(--step-small);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  .wf-matrix th,
+  .wf-matrix td {
+    padding: 8px 5px;
+  }
+
+  .wf-matrix thead th {
+    white-space: normal;
+    font-size: 12px;
+  }
+
+  .wf-matrix tbody th {
+    white-space: normal;
+  }
+
+  .wf-cell {
+    min-width: 0;
+    width: 100%;
+    padding: 3px 2px;
+    font-size: 12px;
   }
 }

@@ -263,6 +263,29 @@
     select(0);
   });
 
+  // ---- 分工表：點格子切換 主要 → 備援 → 不交給它；同一列只有一個主要，原本的主要改成備援 ----
+  document.querySelectorAll("[data-matrix]").forEach((matrix) => {
+    const cells = [...matrix.querySelectorAll("[data-cell]")];
+    const sample = (cls) => cells.find((c) => c.classList.contains(cls));
+    const none = cells.find((c) => !c.classList.contains("is-primary") && !c.classList.contains("is-fallback"));
+    const label = { primary: sample("is-primary")?.textContent, fallback: sample("is-fallback")?.textContent, none: none?.getAttribute("aria-label") };
+    const set = (cell, state) => {
+      cell.classList.toggle("is-primary", state === "primary");
+      cell.classList.toggle("is-fallback", state === "fallback");
+      cell.textContent = state === "none" ? "—" : label[state];
+      if (state === "none") cell.setAttribute("aria-label", label.none);
+      else cell.removeAttribute("aria-label");
+    };
+    const stateOf = (cell) => (cell.classList.contains("is-primary") ? "primary" : cell.classList.contains("is-fallback") ? "fallback" : "none");
+    cells.forEach((cell) =>
+      cell.addEventListener("click", () => {
+        const next = { primary: "fallback", fallback: "none", none: "primary" }[stateOf(cell)];
+        if (next === "primary") cell.closest("tr").querySelectorAll(".is-primary").forEach((other) => set(other, "fallback"));
+        set(cell, next);
+      }),
+    );
+  });
+
   // ---- 操作錄影：捲到看得到時播放、離開時暫停；按一下暫停或繼續。偏好減少動態時不自動播放 ----
   var clipObserver;
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
