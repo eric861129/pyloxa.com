@@ -52,7 +52,7 @@
       <div class="intro">
         <h1>Help</h1>
         <p>How to install Pyloxa, connect your agents, run your first plan and fix common problems. Features marked <span class="pro">Pro</span> need the trial, the Pro preview or Pro; everything else is in the free version.</p>
-        <p class="updated">For Pyloxa 0.1.10 and later · Last updated: November 17, 2026</p>
+        <p class="updated">For Pyloxa 0.1.11 and later · Last updated: November 17, 2026</p>
       </div>
 
       <nav class="toc" aria-labelledby="toc-title">
@@ -166,6 +166,7 @@
         <h3>Approve the plan</h3>
         <ul>
           <li>The plan card lists the phases and tasks and which agent gets each one. Choose <strong>Approve and start</strong>, <strong>Ask the brain to revise</strong>, or reply to the brain.</li>
+          <li>Once you approve a plan with more than one phase, <strong>Phase progress</strong> appears above the plan card: each phase’s status (passed, running, waiting for your approval, needs you, cancelled or not started) and which phase the plan is on. Click a phase to jump to it.</li>
           <li>Each task runs in its own git worktree, away from the folder you are editing. Pyloxa never stashes, resets or checks out your working folder. You can switch the plan to <strong>One shared worktree for the whole plan</strong>, where tasks run one after another and see earlier changes.</li>
           <li>When a task finishes, its checks run (see <a href="#checks">Checks</a>). Choose <strong>Accept result</strong>, <strong>Retry</strong>, <strong>Reassign to another agent</strong> or <strong>Abandon this result</strong>, or open the session to see what the agent did.</li>
           <li>When the plan has finished, choose <strong>Merge into current branch</strong> or <strong>Create branch and open PR</strong>. Nothing is merged or pushed until you choose.</li>
@@ -213,6 +214,7 @@
           <li><strong>Start from a template</strong>: Balanced (default), Quick fix, Spec first, Thorough review, or Share the quota. Each shows what will change before it applies, and <strong>Undo last template</strong> takes it back. In the free version, the Pro parts of a template (auto mode, automatic cross-testing, automatic fallback) are skipped, and the preview says so.</li>
           <li><strong>Plan stages</strong>: let the brain decide the stages for each request (default), or <strong>Use my stages</strong>: up to five, each with a name, who does it, a note for the brain, whether to wait for your approval, and whether it can be skipped.</li>
           <li><strong>My workflows</strong> <span class="pro">Pro</span>: <strong>Save as my workflow</strong> keeps the current settings under a name (up to 20). Choose a saved workflow for each project. Without Pro, projects use the global settings and the saved workflows are kept.</li>
+          <li><strong>Version history</strong> <span class="pro">Pro</span>: every save that changes a workflow keeps a version, up to 10 per workflow, dropping the oldest first. Pick two versions to <strong>Compare</strong>, or <strong>Restore this version</strong>: the contents are replaced with that version and the name stays the same. Restoring also keeps a version of what you had, and projects using the workflow update with it. Version history stays on this computer and doesn’t travel with exported settings or dispatch packs.</li>
           <li><strong>Describe it</strong> <span class="pro">Pro</span>: write the workflow you want in a sentence and choose <strong>Draft it</strong>. The brain reads the project without changing it and proposes settings with its notes and a list of changes, usually within a minute or two. Then apply it globally (it can be undone), save it as one of your workflows, or edit the description and try again.</li>
         </ul>
       </section>
@@ -297,7 +299,7 @@
           <li><strong>Quota scheduling for this project…</strong> <span class="pro">Pro</span> (project menu in the sidebar): project priority and a quota share per connection.</li>
           <li><strong>Backup brains</strong> <span class="pro">Pro</span> (Agents &amp; Brain): up to three, taking over planning, answers and review when the main brain is out of quota, signed out or failing.</li>
           <li><strong>Notifications to your phone</strong> <span class="pro">Pro</span> (General settings): send “needs you”, “plan done”, “gate failed” and “out of quota” to your own Telegram bot, Discord channel or webhook. They are sent directly from your computer while Pyloxa is open. Windows desktop notifications are free.</li>
-          <li><strong>Dispatch packs</strong> <span class="pro">Pro</span> (Workflow → rule list): export or import rules, skills, conventions and suggested commands as a zip or folder. Rules in a repository’s <code>.pyloxa/</code> folder are read in the free version.</li>
+          <li><strong>Dispatch packs</strong> <span class="pro">Pro</span> (Workflow → rule list): export or import rules, your workflows, skills, conventions and suggested commands as a zip or folder. Importing previews each item and never overwrites your existing rules or workflows: when a workflow has the same name as one of yours but different contents, yours is kept unless you tick it (your version stays in its version history), and you can tick <strong>Use in this project</strong>. Workflows are written with CLI names and matched to this computer’s profiles on import. What older packs called “workflow and conventions” is now <strong>Conventions</strong>, which become the project’s shared memory; packs made by 0.1.10 still import. Rules in a repository’s <code>.pyloxa/</code> folder are read in the free version.</li>
         </ul>
       </section>
 
@@ -305,9 +307,10 @@
         <h2 id="transfer-title">Back up and move your settings</h2>
         <p>Settings → General settings → <strong>Backup and transfer</strong>, in the free version. There is no cloud sync; you move the file yourself.</p>
         <ul>
-          <li><strong>Export settings…</strong> saves a <code>.pyloxa-settings</code> file with the parts you tick: agent profiles, global routing rules, routing and brain preferences, prompt templates, global shared memory, the Skills library and interface preferences.</li>
-          <li>It never includes API keys, your license, project settings or paths on this computer. Items that contain secrets are skipped and listed.</li>
+          <li><strong>Export settings…</strong> saves a <code>.pyloxa-settings</code> file with the parts you tick: agent profiles, global routing rules, routing and brain preferences, your workflows, prompt templates, global shared memory, the Skills library and interface preferences. Exporting routing rules, preferences or your workflows also includes the agent profiles they use.</li>
+          <li>It never includes API keys, your license, project settings, which workflow each project uses, workflow version history or paths on this computer. Items that contain secrets are skipped and listed.</li>
           <li><strong>Import settings…</strong> shows what will change first; where an item differs, this computer’s version is kept unless you tick it. Your current settings are backed up before anything is applied, and <strong>Restore a backup…</strong> brings back one of the last five.</li>
+          <li>Your workflows are matched by name: identical ones are skipped, and when a name matches but the contents differ, this computer’s workflow is kept unless you tick it; a replaced workflow keeps its previous contents in its version history. You can have up to 20, and any beyond that aren’t imported. Without Pro they are still saved; using one in a project needs <span class="pro">Pro</span>.</li>
           <li>On the new computer, you still need to sign in to each CLI or enter API keys, add your project folders, and sign in to your account for Pro.</li>
         </ul>
       </section>
@@ -427,13 +430,13 @@
               <tr><td>When quota runs out</td><td>You confirm each takeover</td><td>Automatic fallback</td></tr>
               <tr><td>Cross-testing</td><td>When you ask</td><td>Automatic, with send-back for a fix</td></tr>
               <tr><td>Brain</td><td>One</td><td>Up to three backup brains</td></tr>
-              <tr><td>Saved workflows and describing a workflow in a sentence</td><td>—</td><td>Yes</td></tr>
+              <tr><td>Saved workflows, version history and describing a workflow in a sentence</td><td>Imported workflows are kept</td><td>Yes</td></tr>
               <tr><td>Agent Teams (experimental)</td><td>—</td><td>Yes</td></tr>
               <tr><td>Scheduled plans, project priority and quota shares</td><td>Waiting work resumes after the reset</td><td>Yes</td></tr>
               <tr><td>Usage report export</td><td>Usage per run</td><td>Across projects, Markdown or CSV</td></tr>
               <tr><td>Notifications</td><td>Windows desktop</td><td>Also Telegram, Discord, webhook</td></tr>
               <tr><td>Skills</td><td>List and view</td><td>Library, sync, per-project assignment</td></tr>
-              <tr><td>Dispatch packs</td><td>Reads <code>.pyloxa/</code> in a repository</td><td>Import and export</td></tr>
+              <tr><td>Dispatch packs</td><td>Reads <code>.pyloxa/</code> in a repository</td><td>Import and export, including your workflows</td></tr>
               <tr><td>Prompt templates</td><td>Up to five</td><td>Any number</td></tr>
             </tbody>
           </table>

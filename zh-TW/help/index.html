@@ -51,7 +51,7 @@
       <div class="intro">
         <h1>說明文件</h1>
         <p>怎麼安裝 Pyloxa、連接 Agent、跑第一個計畫，以及常見問題怎麼處理。標有 <span class="pro">Pro</span> 的功能需要試用、Pro 預覽或 Pro；其他都在免費版裡。</p>
-        <p class="updated">適用 Pyloxa 0.1.10 以後的版本・最後更新：2026 年 11 月 17 日</p>
+        <p class="updated">適用 Pyloxa 0.1.11 以後的版本・最後更新：2026 年 11 月 17 日</p>
       </div>
 
       <nav class="toc" aria-labelledby="toc-title">
@@ -165,6 +165,7 @@
         <h3>核准計畫</h3>
         <ul>
           <li>計畫卡列出各階段、各個工作，以及每個工作交給哪個 Agent。可以按「<strong>核准並開始</strong>」、「<strong>請大腦修訂</strong>」，或直接回覆大腦。</li>
+          <li>核准有兩個以上階段的計畫後，計畫卡上方會顯示「<strong>階段進度</strong>」：每一段的狀態（已通過、進行中、等你核准、需要你處理、已取消、還沒開始）與目前在第幾段，點一段會捲到那個階段。</li>
           <li>每個工作在自己的 git worktree 裡進行，不會碰到你正在編輯的資料夾。Pyloxa 不會對你的工作目錄做 stash、reset 或 checkout。也可以把計畫改成「<strong>整個計畫共用一個 worktree</strong>」，工作會依序進行，看得到前面的改動。</li>
           <li>工作完成後會跑驗證（見<a href="#checks">驗證</a>）。可以按「<strong>接受結果</strong>」、「<strong>重試</strong>」、「<strong>改派給其他 Agent</strong>」或「<strong>放棄這份成果</strong>」，也可以開啟 Session 看 Agent 做了什麼。</li>
           <li>整個計畫完成後，按「<strong>合併到目前分支</strong>」或「<strong>建立分支並開 PR</strong>」。你決定之前，什麼都不會合併或推送。</li>
@@ -212,6 +213,7 @@
           <li>「<strong>從範本開始</strong>」：均衡（預設）、快速修改、規格先行、嚴謹審查、平均分攤額度。套用前會先列出會改什麼，「<strong>還原上一版</strong>」可以復原。免費版套用範本時，會略過其中的 Pro 部分（授權範圍內自動、自動交叉測試、自動備援），預覽會標出來。</li>
           <li>「<strong>計畫的階段</strong>」：由大腦依每個需求決定（預設），或「<strong>照我規定的階段</strong>」：最多五個，每個可以設定名稱、由誰做、給大腦的說明、做完要不要等你核准，以及需求用不到時能不能省略。</li>
           <li>「<strong>我的流程</strong>」<span class="pro">Pro</span>：「<strong>存成我的流程</strong>」把目前的設定存成一個有名字的流程（最多 20 個），再替每個專案選要用哪一個。沒有 Pro 時，專案照全域設定，存好的流程會保留。</li>
+          <li>「<strong>版本紀錄</strong>」<span class="pro">Pro</span>：我的流程每次儲存、內容有變時留一個版本，每個流程最多 10 個，最舊的先丟。選兩個版本「<strong>比較</strong>」，或「<strong>還原這一版</strong>」：內容換成那一版、名稱不變，還原前的內容也會留一版，使用它的專案跟著更新。版本紀錄只留在這台電腦，不會跟著設定檔或派工包走。</li>
           <li>「<strong>用一句話建立</strong>」<span class="pro">Pro</span>：用一句話寫出你想要的流程，按「<strong>請大腦擬</strong>」。大腦只讀不改地看過專案，提出設定、說明與改動清單，通常一兩分鐘。之後可以套用到全域（可以復原）、存成我的流程，或修改描述再擬一次。</li>
         </ul>
       </section>
@@ -296,7 +298,7 @@
           <li>「<strong>這個專案的額度調度…</strong>」<span class="pro">Pro</span>（側欄的專案選單）：專案的優先序，以及每條連線可以用多少額度。</li>
           <li>「<strong>大腦備援</strong>」<span class="pro">Pro</span>（Agent 與大腦）：最多三個，在主要大腦額度用盡、登出或一直出錯時接手規劃、回答與驗收。</li>
           <li>「<strong>傳到手機的通知</strong>」<span class="pro">Pro</span>（一般設定）：把「等你處理」、「計畫完成」、「Gate 沒通過」與「額度用盡」傳到你自己的 Telegram bot、Discord 頻道或 webhook。通知直接從你的電腦送出，Pyloxa 開著時才會送。Windows 桌面通知是免費的。</li>
-          <li>「<strong>派工包</strong>」<span class="pro">Pro</span>（工作流程 → 規則清單）：把規則、Skills、慣例與建議的命令匯出或匯入成 zip 或資料夾。免費版也會讀 repo 裡 <code>.pyloxa/</code> 資料夾的規則。</li>
+          <li>「<strong>派工包</strong>」<span class="pro">Pro</span>（工作流程 → 規則清單）：把規則、我的流程、Skills、慣例與建議的命令匯出或匯入成 zip 或資料夾。匯入時逐項預覽，既有的規則與流程不會被覆寫：和你的流程同名而內容不同時，預設保留你的，勾了才取代（原本的留在版本紀錄），也可以勾「<strong>讓這個專案使用</strong>」。流程以 CLI 名稱表示，匯入時對應到這台電腦的 Profile。舊派工包的「流程與慣例」現在叫「<strong>慣例</strong>」，會成為專案的共用記憶；0.1.10 做的派工包照常能匯入。免費版也會讀 repo 裡 <code>.pyloxa/</code> 資料夾的規則。</li>
         </ul>
       </section>
 
@@ -304,9 +306,10 @@
         <h2 id="transfer-title">備份與搬移設定</h2>
         <p>設定 → 一般設定 →「<strong>備份與搬移</strong>」，免費版就有。沒有雲端同步，檔案由你自己搬。</p>
         <ul>
-          <li>「<strong>匯出設定…</strong>」把你勾選的項目存成一個 <code>.pyloxa-settings</code> 檔：Agent Profile、全域派工規則、派工與大腦的偏好、常用指令範本、全域共用記憶、Skills 庫與介面偏好。</li>
-          <li>不會包含 API Key、授權、專案設定與這台電腦的路徑。含有祕密的項目會被略過並列出來。</li>
+          <li>「<strong>匯出設定…</strong>」把你勾選的項目存成一個 <code>.pyloxa-settings</code> 檔：Agent Profile、全域派工規則、派工與大腦的偏好、我的流程、常用指令範本、全域共用記憶、Skills 庫與介面偏好。匯出派工規則、偏好或我的流程時，會一起帶上它們用到的 Profile。</li>
+          <li>不會包含 API Key、授權、專案設定、專案使用哪一個流程、流程的版本紀錄與這台電腦的路徑。含有祕密的項目會被略過並列出來。</li>
           <li>「<strong>匯入設定…</strong>」會先列出會改什麼；內容不同的項目預設保留這台電腦的版本，勾選了才換掉。套用前會先自動備份目前的設定，「<strong>還原備份…</strong>」可以還原最近五份之一。</li>
+          <li>我的流程依名稱比對：內容相同的略過；同名而內容不同的預設保留這台的，勾了才取代，原本的內容留在版本紀錄。最多 20 個，超過的不匯入。沒有 Pro 時照樣存起來，要讓專案使用需要 <span class="pro">Pro</span>。</li>
           <li>在新電腦上，還是要登入各 CLI 或填 API Key、加入專案資料夾；要用 Pro 的話，登入你的帳號。</li>
         </ul>
       </section>
@@ -426,13 +429,13 @@
               <tr><td>額度用盡時</td><td>每次接手由你確認</td><td>自動備援</td></tr>
               <tr><td>交叉測試</td><td>你按下時才測</td><td>自動測試，失敗時交回修正</td></tr>
               <tr><td>大腦</td><td>一個</td><td>最多三個備援大腦</td></tr>
-              <tr><td>我的流程與用一句話建立流程</td><td>—</td><td>有</td></tr>
+              <tr><td>我的流程、版本紀錄與用一句話建立流程</td><td>匯入的流程照存</td><td>有</td></tr>
               <tr><td>Agent Teams（實驗）</td><td>—</td><td>有</td></tr>
               <tr><td>排程計畫、專案優先序與額度分配</td><td>等待中的工作在重設後繼續</td><td>有</td></tr>
               <tr><td>用量報表匯出</td><td>每次執行的用量</td><td>跨專案，Markdown 或 CSV</td></tr>
               <tr><td>通知</td><td>Windows 桌面通知</td><td>再加上 Telegram、Discord、webhook</td></tr>
               <tr><td>Skills</td><td>盤點與檢視</td><td>Skills 庫、同步、依專案指派</td></tr>
-              <tr><td>派工包</td><td>讀取 repo 裡的 <code>.pyloxa/</code></td><td>匯入與匯出</td></tr>
+              <tr><td>派工包</td><td>讀取 repo 裡的 <code>.pyloxa/</code></td><td>匯入與匯出，可以帶我的流程</td></tr>
               <tr><td>常用指令</td><td>最多五個</td><td>不限數量</td></tr>
             </tbody>
           </table>
