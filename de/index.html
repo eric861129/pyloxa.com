@@ -145,7 +145,7 @@
                 <span id="quota-label">Codex hat kein Kontingent mehr</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Kontingent von Codex aufgebraucht (Reset gegen 18:00)</span>
+                <span class="ui-title" data-quota-title>Kontingent von Codex aufgebraucht</span>
                 <span class="ui-muted">Ein Fallback kann übernehmen und an der Arbeit von Codex weitermachen, nachdem du bestätigt hast.</span>
                 <span><button type="button" class="ui-button primary" data-takeover>Claude Code übernehmen lassen</button></span>
               </div>
@@ -217,6 +217,7 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">Ein Workflow, fünf Stufen</h2>
             <p>Die Seite „Workflow“ in der App zeigt den ganzen Ablauf auf einmal: wer plant, welche Phasen es gibt, wer welche Art von Arbeit übernimmt, wie geprüft und wie übergeben wird. Jede Stufe ist deine Einstellung; der Planer schlägt nur Pläne vor und kann daran nichts ändern.</p>
+            <p class="more-link"><a href="../workflow/">Mehr dazu (auf Englisch) →</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="Die fünf Stufen eines Workflows" hidden>
@@ -301,7 +302,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">Zuweisungstabelle</span>
-                  <span class="ui-muted">Zelle anklicken: Primär → Fallback → Nicht zuweisen</span>
+                  <span class="ui-muted">Beispielansicht: Zelle anklicken, um zwischen Primär, Fallback und Nicht zuweisen zu wechseln</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -449,8 +450,9 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">Wenn einem das Kontingent ausgeht</h2>
-            <p>Erreicht Codex mitten in einer Aufgabe sein Nutzungslimit, schickt Pyloxa ihm keine Arbeit mehr, zeigt, wann das Kontingent zurückgesetzt wird, und bietet den Fallback aus deiner Regel an. Du bestätigst, und Claude Code macht mit den Dateien weiter, die Codex schon geändert hat.</p>
-            <p>Die Titelleiste zeigt, wie viel von jedem Abo übrig ist: gelb ab 70 % Verbrauch, rot ab 90 % oder wenn du begrenzt bist.</p>
+            <p>Erreicht Codex mitten in einer Aufgabe sein Nutzungslimit, schickt Pyloxa ihm keine Arbeit mehr und bietet den Fallback aus deiner Regel an. Du bestätigst, und Claude Code macht mit den Dateien weiter, die Codex schon geändert hat.</p>
+            <p>Die Titelleiste zeigt, wie viel von deinem Abo für Claude Code übrig ist: gelb ab 70 % Verbrauch, rot ab 90 % oder wenn du begrenzt bist. Codex und andere Verbindungen zeigen die Tokens von heute und werden markiert, wenn sie begrenzt sind.</p>
+            <p class="more-link"><a href="../quota/">Mehr dazu (auf Englisch) →</a></p>
             <div class="figures">
               <span>3 automatische Versuche pro Aufgabe</span>
               <span>höchstens 2 Fallbacks</span>
@@ -466,11 +468,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Kontingent von Codex aufgebraucht (Reset gegen 18:00)</span>
+                <span class="ui-title fq-title">Kontingent von Codex aufgebraucht</span>
                 <span class="ui-muted">Claude Code kann übernehmen und dort weitermachen, wo Codex aufgehört hat, oder Codex versucht es nach dem Kontingent-Reset erneut.</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">Claude Code übernehmen lassen</button><button type="button" class="ui-button">Nach Kontingent-Reset wiederholen</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro übernimmt automatisch entlang deiner Fallback-Kette, mit den Auslösern und Grenzen, die du festlegst.</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro übernimmt automatisch entlang der Fallback-Kette aus deinen Regeln, ohne jedes Mal zu fragen; höchstens 2 Übernahmen pro Aufgabe.</span></div>
             </div>
           </div>
         </div>
@@ -481,12 +483,13 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">Jeder Agent liest denselben Kontext</h2>
             <p>Schreib die Regeln, Konventionen und Stolperfallen deines Projekts einmal auf, und Claude Code, Codex und Gemini CLI lesen sie alle. Mit Skills ist es genauso: ein Ort, an dem du sie verwaltest, statt einer Kopie in jeder CLI.</p>
+            <p class="more-link"><a href="../memory/">Mehr dazu (auf Englisch) →</a></p>
             <ol class="steps">
               <li><strong>Merken<span class="tier">Kostenlos</span></strong><span>Klicke bei einer Antwort des Planers oder in einer Aufgaben-Sitzung auf „Merken“, oder wähle Einträge aus CLAUDE.md, AGENTS.md und den Gedächtnisdateien der anderen CLIs zum Import aus.</span></li>
-              <li><strong>Agenten schlagen vor, du gibst frei<span class="tier">Kostenlos</span></strong><span>Während der Arbeit können Agenten das Gedächtnis durchsuchen und neue Einträge vorschlagen. Kein Agent sieht einen Vorschlag, bevor du ihn annimmst.</span></li>
+              <li><strong>Agenten schlagen vor, du gibst frei<span class="tier">Kostenlos</span></strong><span>Während der Arbeit können Agenten das Gedächtnis durchsuchen und neue Einträge vorschlagen. Kein Agent sieht einen Vorschlag, bevor du ihn annimmst, außer du lässt ein Projekt die von Agenten vorgeschlagenen Fakten und Stolperfallen automatisch annehmen (standardmäßig aus).</span></li>
               <li><strong>Mit allen CLIs synchronisieren<span class="tier">Kostenlos</span></strong><span>Schreib die Regeln des Projekts in einen Pyloxa-Block in AGENTS.md, damit die CLIs sie auch in deinem Terminal lesen. Du siehst zuerst den Diff, und nichts wird für dich committet.</span></li>
               <li><strong>Skills-Übersicht<span class="tier">Kostenlos</span></strong><span>Sieh, welche Skills jede CLI hat und welche gleich heißen, aber inhaltlich abweichen.</span></li>
-              <li><strong>Skills-Bibliothek und Routing-Pakete<span class="tier">Pro</span></strong><span>Eine Skills-Bibliothek, mit jeder CLI synchronisiert, pro Projekt oder Profil zugewiesen und zusammen mit deinem Workflow als Routing-Paket teilbar.</span></li>
+              <li><strong>Skills-Bibliothek und Routing-Pakete<span class="tier">Pro</span></strong><span>Eine Skills-Bibliothek, mit jeder CLI synchronisiert, pro Projekt oder Profil zugewiesen und zusammen mit deinen Regeln und Befehlsvorschlägen als Routing-Paket teilbar.</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -650,6 +653,7 @@
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">Die kostenlose Version arbeitet mit dir an einem Projekt. Pro kümmert sich um alle.</h2>
           <p>Die kostenlose Version deckt den ganzen Ablauf ab: planen, verteilen, prüfen, mergen. Pro übernimmt, was du sonst von Hand machen würdest: mehrere Projekte gleichzeitig, Entscheidungen innerhalb der Grenzen, die du setzt, Übernahmen bei leerem Kontingent und fertige Arbeit, die zum Testen an einen anderen Agenten geht.</p>
+          <p class="more-link"><a href="../pro/">Mehr dazu (auf Englisch) →</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -673,7 +677,7 @@
             <tr>
               <th scope="row">Wenn das Kontingent ausgeht</th>
               <td>Ein Fallback wird vorgeschlagen; du bestätigst jede Übernahme</td>
-              <td class="pro"><strong>Automatische Fallback-Kette</strong> mit Auslösern und Grenzen; mit deinem vorherigen OK Wechsel zur API-Abrechnung, wenn ein Abo aufgebraucht ist</td>
+              <td class="pro"><strong>Automatische Fallback-Kette</strong> nach deinen Regeln: übergibt der Reihe nach an die Fallbacks, ohne jedes Mal zu fragen; höchstens 2 Übernahmen pro Aufgabe</td>
             </tr>
             <tr>
               <th scope="row">Prüfungen und Tests</th>
@@ -682,7 +686,7 @@
             </tr>
             <tr>
               <th scope="row">Kontingent-Planung</th>
-              <td>Aufgaben, die auf Kontingent warten, laufen nach dem Reset weiter</td>
+              <td>Aufgaben, die auf Kontingent warten, laufen nach dem Reset weiter; automatisch, wenn der Zeitpunkt des Resets bekannt ist</td>
               <td class="pro">Projektpriorität, Kontingente pro Verbindung und Pläne, die zu einer festen Zeit oder zum nächsten Reset starten </td>
             </tr>
             <tr>
@@ -742,7 +746,7 @@
             <ul>
               <li>Mehrere Projekte gleichzeitig, mit einer Inbox im Task-Center für alles, was auf dich wartet</li>
               <li>Automatisch in Grenzen: wählt und wiederholt innerhalb der Agenten, Modelle und Anzahlen, die du erlaubst, und pausiert an jeder Grenze</li>
-              <li>Automatische Fallback-Kette mit Auslösern und Grenzen; mit deinem vorherigen OK Wechsel zur API-Abrechnung, wenn ein Abo aufgebraucht ist</li>
+              <li>Automatische Fallback-Kette nach deinen Regeln: übergibt der Reihe nach an die Fallbacks, ohne jedes Mal zu fragen; höchstens 2 Übernahmen pro Aufgabe</li>
               <li>Automatisches Cross-Testing nach Aufgabentyp oder Einschätzung des Planers; fehlgeschlagene Tests gehen zur Korrektur zurück</li>
               <li>Kontingent-Planung: Projektpriorität, Kontingente pro Verbindung und Pläne, die zu einer festen Zeit oder zum nächsten Reset starten</li>
               <li>Nutzung und Berichte: ein Nutzungs-Dashboard über alle Projekte, mit Arbeitszeit der Agenten, Tokens und den von der CLI gemeldeten Kosten pro Projekt, exportierbar als Markdown oder CSV</li>

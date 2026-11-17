@@ -17,14 +17,13 @@ jobs:
         run: |
           # GitHub Pages 的 CDN 需要一點時間換成新版本
           sleep 60
+          # 網址清單取自剛部署的 sitemap.xml（scripts/build-pages.mjs 產生），新增頁面時不必再改這裡
+          urls=$(curl -fsS https://pyloxa.com/sitemap.xml | grep -o '<loc>[^<]*</loc>' | sed -e 's/<loc>//' -e 's/<\/loc>//' | jq -R . | jq -cs .)
+          echo "IndexNow 網址：$urls"
+          body=$(jq -cn --argjson urls "$urls" '{host: "pyloxa.com", key: "c11e770d29e531bffe32789c008327a4", keyLocation: "https://pyloxa.com/c11e770d29e531bffe32789c008327a4.txt", urlList: $urls}')
           status=$(curl -s -o /dev/stderr -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
             -H 'Content-Type: application/json; charset=utf-8' \
-            -d '{
-              "host": "pyloxa.com",
-              "key": "c11e770d29e531bffe32789c008327a4",
-              "keyLocation": "https://pyloxa.com/c11e770d29e531bffe32789c008327a4.txt",
-              "urlList": ["https://pyloxa.com/", "https://pyloxa.com/zh-TW/", "https://pyloxa.com/zh-CN/", "https://pyloxa.com/ja/", "https://pyloxa.com/ko/", "https://pyloxa.com/es/", "https://pyloxa.com/pt-BR/", "https://pyloxa.com/de/", "https://pyloxa.com/fr/", "https://pyloxa.com/changelog/", "https://pyloxa.com/zh-TW/changelog/", "https://pyloxa.com/privacy/", "https://pyloxa.com/zh-TW/privacy/"]
-            }')
+            -d "$body")
           echo "IndexNow HTTP $status"
           # 200 已接受，202 已收到但金鑰尚待驗證
           case "$status" in 200|202) ;; *) exit 1 ;; esac

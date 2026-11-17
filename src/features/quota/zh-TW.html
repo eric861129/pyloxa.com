@@ -1,0 +1,122 @@
+<!--meta {"title": "額度與備援：Claude Code 或 Codex 額度用完時，換另一個 CLI 接手｜Pyloxa", "description": "Pyloxa 在標題列顯示 Claude Code 訂閱還剩多少；某個 CLI 額度用完時停止派工給它，依你的規則提出備援，另一個 CLI 從改好的檔案接著做。Pro 可以自動接手、排程與設定配額。"}-->
+      <section class="wrap fx-hero">
+        <p class="fx-eyebrow">額度與備援</p>
+        <h1>額度用完了，工作不用停</h1>
+        <p class="fx-lede">做到一半 Codex 額度用完時，Pyloxa 停止派工給它，依你的規則提出備援；你確認後，Claude Code 從 Codex 已經改好的檔案接著做。也可以等額度重設後再讓原本的 Agent 繼續。</p>
+        <div class="fx-actions">
+          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">免費下載</a>
+          <a class="button is-light" href="#meter">看額度怎麼顯示</a>
+        </div>
+        <ul class="fx-facts">
+          <li><strong>70% · 90%</strong><span>Claude Code 已用到這裡時，標題列變黃、變紅</span></li>
+          <li><strong>2 次</strong><span>每個工作最多換手的次數</span></li>
+          <li><strong>3 次</strong><span>每個工作最多自動執行的次數</span></li>
+          <li><strong>0 次</strong><span>從訂閱自動改用 API Key 的次數</span></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-sec" id="meter" aria-labelledby="meter-title">
+        <div class="fx-copy reveal">
+          <h2 id="meter-title">標題列看得到還剩多少</h2>
+          <p>打開「標題列顯示 Agent 額度」，標題列會顯示 Claude Code 訂閱還剩多少，取 5 小時與 7 天兩個額度中比較緊的那一個。</p>
+          <ul class="fx-list">
+            <li>已用 70% 變黃，90% 或被限制時變紅；還沒有資料時顯示「—」。</li>
+            <li>數字來自 Claude Code 執行時自己回報的額度事件，Pyloxa 不另外查詢，所以在執行之後才會更新。</li>
+            <li>Codex 不回報訂閱額度，只顯示今天用了多少 tokens，被限制時才出現在標題列。用 API Key 的連線與 Gemini CLI 也只顯示今天的 tokens。</li>
+            <li>Pyloxa 不讀任何憑證，額度數字只留在你的電腦。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Agent 額度</span><span class="spacer"></span><span class="ui-muted">示意畫面</span></div>
+            <div class="ui-row fx-meter"><span class="ui-title">Claude Code</span><span class="fx-bar"><i class="is-warn" style="width: 74%"></i></span><span class="fx-num">74%</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Codex</span><span class="ui-muted">今天 182k tokens</span><span class="spacer"></span><span class="badge bad">受限</span></div>
+            <div class="ui-row fx-note">Claude Code：已用 74%，取 5 小時與 7 天中比較緊的額度</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="takeover" aria-labelledby="takeover-title">
+        <div class="fx-copy reveal">
+          <h2 id="takeover-title">額度用完時，你決定誰接手</h2>
+          <p>CLI 回報額度用盡時，Pyloxa 把那條連線標為受限，在重設時間到之前（或你按「額度已恢復」之前）不再派工給它。免費版每次接手都由你確認。</p>
+          <ul class="fx-list">
+            <li><strong>由另一個 CLI 接手</strong>：依你在規則裡設定的備援，下一個 Agent 從前一個 Agent 已經改好的檔案接著做。</li>
+            <li><strong>額度恢復後重試</strong>：知道重設時間時自動開始；不知道時，等你按「額度已恢復」。</li>
+            <li>每個工作最多自動執行 3 次、換手 2 次，不會交回已經失敗過的 Agent。</li>
+            <li>短暫的速率限制（5 分鐘以內）重試一次；網路錯誤 30 秒後重試一次。</li>
+            <li>自動接手只會換到同一種計費方式的連線：用訂閱的工作不會自動改用 API Key 計費。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Codex 額度用盡</span><span class="spacer"></span><span class="badge bad">受限</span></div>
+            <div class="ui-row"><span class="ui-muted">可以由 Claude Code 接手，從 Codex 做完的部分接著做，或等額度重設後由 Codex 重試。</span></div>
+            <div class="ui-row fx-line"><span class="ui-button primary">由 Claude Code 接手</span><span class="ui-button">額度恢復後重試</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="pro" aria-labelledby="pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="pro-title">Pro：自動接手，額度照你的安排用</h2>
+          <p>不想每次都按確認的話，Pro 可以照規則裡的備援鏈自動接手，也能決定哪個專案先用額度、什麼時候開始。</p>
+          <ul class="fx-list">
+            <li><strong>額度用盡時自動由備援接手</strong>：預設關閉，計畫核准時就決定好；額度用盡或工作在等受限的連線時觸發，上限一樣是每個工作換手 2 次。</li>
+            <li><strong>優先序與每條連線的配額</strong>：決定專案的先後，替每條連線設一個估計的配額。配額是估計值，不是供應商的上限，也不能當計費依據。</li>
+            <li><strong>排定開始時間</strong>：整個計畫排到下次額度重設後，或 30 天內指定的時間。晚了 30 分鐘以內照常開始，更晚就等你決定；開始前 24 小時內接著電源時不讓電腦睡眠。</li>
+            <li><strong>大腦備援</strong>：最多 3 個備援大腦。大腦的服務出錯時重試一次，再由下一個接手，10 分鐘後才換回來。</li>
+            <li><strong>用量與工時</strong>：跨專案的用量儀表板，可以匯出成 Markdown 或 CSV。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">額度調度</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">優先序</span><span class="spacer"></span><span class="ui-muted">1 會員系統 · 2 官網 · 3 內部工具</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">每條連線的配額</span><span class="spacer"></span><span class="ui-muted">Codex：會員系統 60% · 官網 40%</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">開始時間</span><span class="spacer"></span><span class="badge info">排到下次重設再開始</span></div>
+            <div class="ui-row fx-note">配額是估計值，不是供應商的上限</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="free-pro" aria-labelledby="free-pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="free-pro-title">免費版與 Pro</h2>
+          <p>額度用完時，兩版都能讓工作接著做。差別在於要不要每次確認，以及能不能事先安排。</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col"></th><th scope="col">免費版</th><th scope="col" class="is-pro">Pro</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">看額度</th><td>標題列的 Agent 額度、每次執行的用量</td><td class="is-pro">加上跨專案的用量儀表板與報告</td></tr>
+              <tr><th scope="row">額度用完時</th><td>提出備援，每次由你確認；或等重設後重試</td><td class="is-pro">照備援鏈自動接手</td></tr>
+              <tr><th scope="row">安排</th><td>等額度的工作在重設後繼續</td><td class="is-pro">優先序、每條連線的配額、排定開始時間</td></tr>
+              <tr><th scope="row">大腦</th><td>一個大腦，可以隨時更換</td><td class="is-pro">最多 3 個備援大腦</td></tr>
+              <tr><th scope="row">通知</th><td>Windows 桌面通知</td><td class="is-pro">加上 Telegram、Discord 或 webhook</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">常見問題</h2>
+        <div class="fx-faq-list">
+          <details class="fx-q" open>
+            <summary>Pyloxa 怎麼知道 Claude Code 還剩多少額度？</summary>
+            <div><p>Claude Code 執行時會自己回報額度事件，Pyloxa 讀這些事件，不另外查詢、不讀憑證。所以標題列在執行之後才會更新，顯示 5 小時與 7 天兩個額度中比較緊的那一個。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>為什麼 Codex 只顯示 tokens？</summary>
+            <div><p>Codex 執行時不回報訂閱還剩多少，而 Pyloxa 不用其他方式查詢 Codex 的額度。所以 Codex 只顯示今天用了多少 tokens；被限制時，標題列會標示出來。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>換另一個 CLI 接手，會從頭做起嗎？</summary>
+            <div><p>不會。接手的 Agent 從前一個 Agent 已經改好的檔案接著做。每個工作最多換手 2 次，也不會交回已經失敗過的 Agent。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>額度用完時，Pyloxa 會改用 API Key 付費嗎？</summary>
+            <div><p>不會自動改用。自動接手只會換到同一種計費方式的連線，用訂閱的工作不會自動改用 API Key；要不要換到 API Key 的連線，由你決定。Pyloxa 也不轉售或代理任何 AI 服務，用量都算在你自己的訂閱或 API Key。</p></div>
+          </details>
+        </div>
+      </section>

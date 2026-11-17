@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shared memory and Skills: one project memory for Claude Code, Codex and Gemini CLI | Pyloxa</title>
+    <meta name="description" content="Write down a project’s rules, conventions and pitfalls once, and Claude Code, Codex and Gemini CLI all read them. Agents suggest new memories that count only after you accept them. See which skills each CLI can read; Pro adds a skills library and assignment." />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Shared memory and Skills: one project memory for Claude Code, Codex and Gemini CLI | Pyloxa" />
+    <meta property="og:description" content="Write down a project’s rules, conventions and pitfalls once, and Claude Code, Codex and Gemini CLI all read them. Agents suggest new memories that count only after you accept them. See which skills each CLI can read; Pro adds a skills library and assignment." />
+    <meta property="og:url" content="https://pyloxa.com/memory/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/memory/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/memory/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/memory/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/memory/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://pyloxa.com/memory/","url":"https://pyloxa.com/memory/","name":"Shared memory and Skills: one project memory for Claude Code, Codex and Gemini CLI | Pyloxa","description":"Write down a project’s rules, conventions and pitfalls once, and Claude Code, Codex and Gemini CLI all read them. Agents suggest new memories that count only after you accept them. See which skills each CLI can read; Pro adds a skills library and assignment.","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"about":{"@id":"https://pyloxa.com/#software"},"publisher":{"@id":"https://pyloxa.com/#organization"},"breadcrumb":{"@id":"https://pyloxa.com/memory/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/memory/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/"},{"@type":"ListItem","position":2,"name":"Memory & Skills","item":"https://pyloxa.com/memory/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/memory/#faq","mainEntity":[{"@type":"Question","name":"Where is shared memory stored? Does it go to the cloud?","acceptedAnswer":{"@type":"Answer","text":"On your computer. It’s never sent to us and isn’t part of the anonymous usage statistics. The only time it leaves is when relevant memories go with a task’s prompt to wherever that CLI already sends it."}},{"@type":"Question","name":"Can an agent write something wrong into memory?","acceptedAnswer":{"@type":"Answer","text":"Not in a way that takes effect on its own. Agents’ suggestions go to Pending, and no agent sees them until you accept them. Only if you turn on “Auto-accept facts and pitfalls agents propose” for a project are facts and pitfalls accepted automatically; rules and preferences always need your approval."}},{"@type":"Question","name":"I already have CLAUDE.md or AGENTS.md. Do I still need this?","acceptedAnswer":{"@type":"Answer","text":"You can import them. Pyloxa reads a fixed list of memory files, and from then on one memory serves all three CLIs. When you also want it in the terminal, “Sync to CLIs” writes it back into a Pyloxa block in AGENTS.md, after showing you the diff."}},{"@type":"Question","name":"Is the Skills inventory free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Seeing which skills each CLI can read is free. The skills library, assignment per project or profile, and dispatch packs are Pro."}}]}]}</script>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="stylesheet" href="../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a class="mark" href="../" aria-label="Pyloxa home">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../workflow/">Workflow</a></li>
+        <li class="optional"><a href="../memory/" aria-current="page">Memory & Skills</a></li>
+        <li class="optional"><a href="../quota/">Quota & fallback</a></li>
+        <li class="optional"><a href="../pro/">Pro</a></li>
+        <li><a href="../zh-TW/memory/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../">Pyloxa</a><span aria-hidden="true">/</span><span aria-current="page">Memory & Skills</span></nav>
+      <section class="wrap fx-hero">
+        <p class="fx-eyebrow">Memory &amp; Skills</p>
+        <h1>Write it down once, and every agent reads it</h1>
+        <p class="fx-lede">Your project’s rules, conventions and pitfalls don’t need a copy in CLAUDE.md, AGENTS.md and GEMINI.md. Pyloxa keeps them on your computer and hands them to every agent it dispatches. Anything new an agent learns goes to Pending first, and counts only after you accept it.</p>
+        <div class="fx-actions">
+          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download free</a>
+          <a class="button is-light" href="#how">See how it works</a>
+        </div>
+        <ul class="fx-facts">
+          <li><strong>3 CLIs</strong><span>Claude Code, Codex and Gemini CLI share one memory</span></li>
+          <li><strong>Free</strong><span>Every shared-memory feature is in the free version</span></li>
+          <li><strong>3,000</strong><span>Characters added per dispatch by default, adjustable</span></li>
+          <li><strong>0</strong><span>Agent suggestions that take effect without your OK (by default)</span></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-sec" id="how" aria-labelledby="how-title">
+        <div class="fx-copy reveal">
+          <h2 id="how-title">One memory, read by all three CLIs</h2>
+          <p>Click “Remember” in Shared memory, or save something from a conversation. Each memory has a scope (global or this project) and a kind: rule, preference, decision, fact or pitfall.</p>
+          <ul class="fx-list">
+            <li>When Pyloxa dispatches a task, plans with the brain, or runs brain review or cross-testing, it adds the relevant memories to the prompt, labeled as background rather than instructions.</li>
+            <li>The order is pinned memories, then rules and preferences (project before global), then up to 12 of the most relevant facts, decisions and pitfalls.</li>
+            <li>Each dispatch adds up to 3,000 characters by default; you can choose 1,000 or 6,000. Each memory is at most 500 characters.</li>
+            <li>The run record says how many memories were included.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Shared memory</span><span class="ui-muted">This project</span><span class="spacer"></span><span class="ui-button">Remember</span></div>
+            <div class="ui-row fx-line"><span class="badge info">Rule</span><span>API responses always use camelCase</span><span class="spacer"></span><span class="ui-muted">Pinned</span></div>
+            <div class="ui-row fx-line"><span class="badge">Preference</span><span>Tests live in <code>tests/</code> and use Vitest</span></div>
+            <div class="ui-row fx-line"><span class="badge warn">Pitfall</span><span>Integration tests on Windows need <code>--runInBand</code></span></div>
+            <div class="ui-row fx-note">3 shared memories were included in this run</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="propose" aria-labelledby="propose-title">
+        <div class="fx-copy reveal">
+          <h2 id="propose-title">Agents suggest, you approve</h2>
+          <p>While they work, agents can search memory and suggest new memories through tools Pyloxa provides. Every suggestion goes to Pending first, and no agent sees it until you accept it.</p>
+          <ul class="fx-list">
+            <li>Each task can suggest at most 5 memories, and the brain adopts at most 3 per turn, so memory doesn’t balloon.</li>
+            <li>Text that looks like a key or token is rejected and never stored.</li>
+            <li>To save time, you can let a project “Auto-accept facts and pitfalls agents propose”. It’s off by default, and rules and preferences always need your approval.</li>
+            <li>The memory tools are served only on 127.0.0.1, with a token for each run.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Pending (2)</span></div>
+            <div class="ui-row"><span class="ui-muted">From Codex · Fact</span><br />Points are calculated in <code>src/points/</code>; don’t touch <code>legacy/</code></div>
+            <div class="ui-row"><span class="ui-muted">From Claude Code · Pitfall</span><br />Start the mock server before the E2E tests</div>
+            <div class="ui-row fx-line"><span class="ui-button primary">Accept</span><span class="ui-button">Edit and accept</span><span class="ui-button">Discard</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="bridge" aria-labelledby="bridge-title">
+        <div class="fx-copy reveal">
+          <h2 id="bridge-title">Also there when you use a CLI in your terminal</h2>
+          <p>Memory can come along when you open a CLI directly, without Pyloxa. “Sync to CLIs” writes the project’s memory as a Pyloxa block in <code>AGENTS.md</code> and adds <code>@AGENTS.md</code> to <code>CLAUDE.md</code>; Gemini CLI can be set to read the same file.</p>
+          <ul class="fx-list">
+            <li>You see the diff first, and nothing is written until you click. Pyloxa never commits for you.</li>
+            <li>“Also write to each CLI’s user-level memory” is off by default. When you turn it on, Pyloxa backs up <code>~/.claude/CLAUDE.md</code>, <code>~/.codex/AGENTS.md</code> and <code>~/.gemini/GEMINI.md</code> before the first write, and removes its block when you turn it off.</li>
+            <li>It works the other way too: import from the CLIs’ own memory files. Pyloxa reads only a fixed list, such as the project’s <code>CLAUDE.md</code>, <code>.claude/rules/*.md</code>, <code>AGENTS.md</code> and <code>GEMINI.md</code>, and Codex Memories. It never reads credentials, settings or chat history.</li>
+            <li>Memory can be exported as Markdown or JSON and imported from a file.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Sync to CLIs</span><span class="ui-muted">Preview</span></div>
+            <div class="ui-row">
+              <pre class="fx-diff"><code><span class="ln">AGENTS.md</span>
+<span class="ln add">+ &lt;!-- pyloxa:memory start --&gt;</span>
+<span class="ln add">+ - API responses always use camelCase</span>
+<span class="ln add">+ - Tests live in tests/ and use Vitest</span>
+<span class="ln add">+ &lt;!-- pyloxa:memory end --&gt;</span>
+<span class="ln">CLAUDE.md</span>
+<span class="ln add">+ @AGENTS.md</span></code></pre>
+            </div>
+            <div class="ui-row fx-line"><span class="fx-note">Nothing is committed for you</span><span class="spacer"></span><span class="ui-button primary">Write</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="skills" aria-labelledby="skills-title">
+        <div class="fx-copy reveal">
+          <h2 id="skills-title">Skills: see what each CLI can actually read</h2>
+          <p>The Skills inventory lists the skills each CLI really sees, in a skill-by-agent table that shows what’s missing and what’s duplicated. That part is free.</p>
+          <ul class="fx-list">
+            <li><strong>Skills library</strong><span class="fx-tag">Pro</span>: keep your skills in one place, <code>~/.agents/skills</code>, and sync additions, edits and removals to each CLI.</li>
+            <li><strong>Assignment</strong><span class="fx-tag">Pro</span>: choose which skills go to which agent, per project or per profile.</li>
+            <li><strong>Dispatch packs</strong><span class="fx-tag">Pro</span>: bundle rules, command suggestions, conventions and skills into one file to share. Importing previews each item, and your existing rules are never overwritten.</li>
+            <li>Gemini CLI runs don’t see user-level skills; they get only the skills assigned to them through Pro.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Skills inventory</span><span class="spacer"></span><span class="ui-muted">Mockup</span></div>
+            <div class="fx-table">
+              <table>
+                <thead><tr><th scope="col">Skill</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">Gemini CLI</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">api-style</th><td><span class="badge ok">Sees it</span></td><td><span class="badge ok">Sees it</span></td><td>—</td></tr>
+                  <tr><th scope="row">db-migration</th><td><span class="badge ok">Sees it</span></td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">release-notes</th><td><span class="badge warn">Two versions</span></td><td><span class="badge ok">Sees it</span></td><td>—</td></tr>
+                  <tr><th scope="row">ui-review</th><td>—</td><td><span class="badge ok">Sees it</span></td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="free-pro" aria-labelledby="free-pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="free-pro-title">Free and Pro</h2>
+          <p>Shared memory is entirely free. Pro adds managing and sharing skills in one place.</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col" class="is-pro">Pro</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Shared memory</th><td>Remember, Pending and approval, memory in every dispatch, sync to CLIs, import from CLI memory files, export and import</td><td class="is-pro">Same as free</td></tr>
+              <tr><th scope="row">Skills</th><td>Skills inventory and the skill-by-agent table</td><td class="is-pro">A skills library synced to every CLI, assigned per project or profile</td></tr>
+              <tr><th scope="row">Sharing</th><td>Project rules can live in the repo’s <code>.pyloxa/</code> folder</td><td class="is-pro">Dispatch packs: rules, command suggestions, conventions and skills exported and imported together</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Questions</h2>
+        <div class="fx-faq-list">
+          <details class="fx-q" open>
+            <summary>Where is shared memory stored? Does it go to the cloud?</summary>
+            <div><p>On your computer. It’s never sent to us and isn’t part of the anonymous usage statistics. The only time it leaves is when relevant memories go with a task’s prompt to wherever that CLI already sends it.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Can an agent write something wrong into memory?</summary>
+            <div><p>Not in a way that takes effect on its own. Agents’ suggestions go to Pending, and no agent sees them until you accept them. Only if you turn on “Auto-accept facts and pitfalls agents propose” for a project are facts and pitfalls accepted automatically; rules and preferences always need your approval.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>I already have CLAUDE.md or AGENTS.md. Do I still need this?</summary>
+            <div><p>You can import them. Pyloxa reads a fixed list of memory files, and from then on one memory serves all three CLIs. When you also want it in the terminal, “Sync to CLIs” writes it back into a Pyloxa block in <code>AGENTS.md</code>, after showing you the diff.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Is the Skills inventory free?</summary>
+            <div><p>Yes. Seeing which skills each CLI can read is free. The skills library, assignment per project or profile, and dispatch packs are Pro.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">Try it on your own project</h2>
+          <p>Pyloxa is a free Windows app. It runs the Claude Code and Codex CLIs you already use, on your own subscriptions or API keys.</p>
+          <div class="fx-actions">
+            <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download Pyloxa for Windows</a>
+            <a class="button is-light" href="../#pricing">Compare Free and Pro</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">More about Pyloxa</h2>
+        <ul>
+            <li><a href="../workflow/"><span>Workflow</span><span class="fx-related-text">Plan, phases, who does what, checks and delivery on one page.</span></a></li>
+            <li><a href="../quota/"><span>Quota & fallback</span><span class="fx-related-text">See what’s left, and hand work to another CLI when quota runs out.</span></a></li>
+            <li><a href="../pro/"><span>Pro</span><span class="fx-related-text">What Pro adds, the free preview, and what stays free.</span></a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>Version 0.1.10 · Windows 10 and 11 · <a href="../changelog/">Changelog</a> · <a href="../privacy/">Privacy policy</a> · <a href="../legal/EULA.txt">License (EULA)</a> · <a href="mailto:support@pyloxa.com">Support</a></p>
+      <p>Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google.</p>
+    </footer>
+
+    <script src="../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

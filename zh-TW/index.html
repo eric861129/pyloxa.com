@@ -145,7 +145,7 @@
                 <span id="quota-label">Codex 額度用盡</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Codex 額度用盡（約 18:00 重設）</span>
+                <span class="ui-title" data-quota-title>Codex 額度用盡</span>
                 <span class="ui-muted">經你確認後，備援可以接手，從 Codex 的成果接著做。</span>
                 <span><button type="button" class="ui-button primary" data-takeover>由 Claude Code 接手</button></span>
               </div>
@@ -217,6 +217,7 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">一個工作流程，五個段落</h2>
             <p>App 的「工作流程」頁一次看完整個流程：誰來規劃、分成哪些階段、誰做哪一種工作、怎麼檢查、怎麼交付。每一段都是你的設定，大腦只負責提計畫，不能改動它們。</p>
+            <p class="more-link"><a href="workflow/">看工作流程的完整說明 →</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="工作流程的五段" hidden>
@@ -301,7 +302,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">分工表</span>
-                  <span class="ui-muted">點格子切換：主要 → 備援 → 不交給它</span>
+                  <span class="ui-muted">示意：點格子切換主要、備援、不交給它</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -449,8 +450,9 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">額度用完的時候</h2>
-            <p>如果 Codex 做到一半用完額度，Pyloxa 會停止派工給它、顯示額度何時重設，並依你的規則提出備援。你確認後，Claude Code 會從 Codex 已經改好的檔案接著做。</p>
-            <p>標題列隨時顯示每個訂閱還剩多少：已用 70% 變黃，90% 或被限制時變紅。</p>
+            <p>如果 Codex 做到一半用完額度，Pyloxa 會停止派工給它，並依你的規則提出備援。你確認後，Claude Code 會從 Codex 已經改好的檔案接著做。</p>
+            <p>標題列顯示 Claude Code 訂閱還剩多少：已用 70% 變黃，90% 或被限制時變紅。Codex 等其他連線顯示今天用了多少 tokens，被限制時也會標示。</p>
+            <p class="more-link"><a href="quota/">額度與備援的完整說明 →</a></p>
             <div class="figures">
               <span>每個工作最多自動嘗試 3 次</span>
               <span>最多 2 次備援接手</span>
@@ -466,11 +468,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Codex 額度用盡（約 18:00 重設）</span>
+                <span class="ui-title fq-title">Codex 額度用盡</span>
                 <span class="ui-muted">可以由 Claude Code 接手，從 Codex 做完的部分接著做，或等額度重設後由 Codex 重試。</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">由 Claude Code 接手</button><button type="button" class="ui-button">額度恢復後重試</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro 照你設定的備援鏈自動接手，可以設觸發條件與上限。</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro 照你規則裡的備援鏈自動接手，不必每次確認；每個工作最多換手 2 次。</span></div>
             </div>
           </div>
         </div>
@@ -481,12 +483,13 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">每個 Agent 都讀同一份背景</h2>
             <p>專案的規則、慣例和踩過的坑，記一次，Claude Code、Codex 和 Gemini CLI 都讀得到。Skills 也一樣：集中在一個地方管理，不必每個 CLI 各放一份。</p>
+            <p class="more-link"><a href="memory/">記憶與 Skills 的完整說明 →</a></p>
             <ol class="steps">
               <li><strong>記住<span class="tier">免費版</span></strong><span>在大腦的回覆或工作 Session 按「記住」，也可以從 CLAUDE.md、AGENTS.md 等各 CLI 的記憶檔挑選匯入。</span></li>
-              <li><strong>Agent 提議，你核准<span class="tier">免費版</span></strong><span>Agent 工作時可以搜尋記憶、提議新的記憶；你接受之前，任何 Agent 都看不到這些提議。</span></li>
+              <li><strong>Agent 提議，你核准<span class="tier">免費版</span></strong><span>Agent 工作時可以搜尋記憶、提議新的記憶；你接受之前，任何 Agent 都看不到這些提議。你也可以讓某個專案自動接受 Agent 提議的事實與坑，預設關閉。</span></li>
               <li><strong>同步到各 CLI<span class="tier">免費版</span></strong><span>把專案的規則寫進 AGENTS.md 的 Pyloxa 區塊，在終端機直接用 CLI 也讀得到。先看差異再寫入，不會替你提交。</span></li>
               <li><strong>盤點 Skills<span class="tier">免費版</span></strong><span>列出每個 CLI 裝了哪些 Skills，標出名稱相同、內容卻不一樣的。</span></li>
-              <li><strong>Skills 庫與派工包<span class="tier">Pro</span></strong><span>一個 Skills 庫同步到每個 CLI、依專案或 Profile 指派，也能和工作流程一起打包成派工包分享。</span></li>
+              <li><strong>Skills 庫與派工包<span class="tier">Pro</span></strong><span>一個 Skills 庫同步到每個 CLI、依專案或 Profile 指派，也能和規則、命令建議一起打包成派工包分享。</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -650,6 +653,7 @@
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">免費版陪你做一個專案，Pro 幫你同時顧好所有專案。</h2>
           <p>免費版就能走完整個流程：擬計畫、派工、驗收、合併。Pro 把你原本要親手做的事交給 Pyloxa：多個專案一起跑、在你設定的範圍內自己決定、額度用完自己接手、做完自己找另一個 Agent 測試。</p>
+          <p class="more-link"><a href="pro/">Pro 的完整說明 →</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -673,7 +677,7 @@
             <tr>
               <th scope="row">額度用完時</th>
               <td>提出備援，每次由你確認</td>
-              <td class="pro"><strong>自動備援鏈</strong>：依序交給備援，可設觸發條件與上限；經你事先允許，訂閱額度用完時改用 API 計費</td>
+              <td class="pro"><strong>自動備援鏈</strong>：依序交給規則裡的備援，不必每次確認；每個工作最多換手 2 次</td>
             </tr>
             <tr>
               <th scope="row">驗收與測試</th>
@@ -682,7 +686,7 @@
             </tr>
             <tr>
               <th scope="row">額度調度</th>
-              <td>等額度的工作在重設後自動繼續</td>
+              <td>等額度的工作在重設後繼續：知道重設時間時自動開始</td>
               <td class="pro">專案優先序、每條連線的配額，整個計畫排到指定時間或下次額度重設再開始 </td>
             </tr>
             <tr>
@@ -742,7 +746,7 @@
             <ul>
               <li>多個專案同時執行，所有等你處理的事集中在任務中心的收件匣</li>
               <li>授權範圍內自動：在你允許的 Agent、模型與次數內自己選擇與重試，超出範圍就暫停</li>
-              <li>自動備援鏈：依序交給備援，可設觸發條件與上限；經你事先允許，訂閱額度用完時改用 API 計費</li>
+              <li>自動備援鏈：依序交給規則裡的備援，不必每次確認；每個工作最多換手 2 次</li>
               <li>自動交叉測試：依工作類型或由大腦判斷，自動交給另一個 Agent 測試，沒通過就自動退回修正</li>
               <li>額度調度：專案優先序、每條連線的配額，整個計畫排到指定時間或下次額度重設再開始</li>
               <li>用量與報告：跨專案的用量儀表板，每個專案的 Agent 工時、token 與 CLI 回報的金額，可以匯出成 Markdown 或 CSV</li>

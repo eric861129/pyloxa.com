@@ -22,6 +22,8 @@ const languages = JSON.parse(readFileSync(path.join(site, "src", "languages.json
 const template = readFileSync(path.join(site, "src", "home.html"), "utf8");
 const english = JSON.parse(readFileSync(path.join(site, "src", "i18n", "en.json"), "utf8"));
 const { version } = JSON.parse(readFileSync(path.join(site, "src", "site.json"), "utf8"));
+// 功能頁（/workflow/ 等，scripts/build-features.mjs 產生）：只有這些語言有，其他語言的首頁連到英文版
+const features = JSON.parse(readFileSync(path.join(site, "src", "features", "pages.json"), "utf8"));
 
 // 模板用哪種換行，產生的片段就用哪種
 const NL = template.includes("\r\n") ? "\r\n" : "\n";
@@ -102,6 +104,7 @@ function render(lang) {
     langMenuFooter: languageMenu(lang, false, strings),
     appSchema: appSchema(lang, strings, url),
     siteGraph: '<script type="application/ld+json" id="site-graph">{}</script>',
+    feat: features.languages.includes(lang.code) ? "" : "../",
   };
   const fill = (text) =>
     text.replace(/\{\{@([\w-]+)\}\}/g, (_, key) => {
@@ -141,6 +144,7 @@ function sitemap() {
   };
   const urls = [
     ...languages.map((l) => `  <url>\n    <loc>${pageUrl(l)}</loc>\n    <lastmod>${today}</lastmod>\n${homeAlts}\n  </url>`),
+    ...features.pages.flatMap((p) => pair(p.slug)),
     ...pair("changelog"),
     ...pair("privacy"),
   ];

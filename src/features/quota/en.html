@@ -1,0 +1,122 @@
+<!--meta {"title": "Quota and fallback: when Claude Code or Codex runs out, another CLI takes over | Pyloxa", "description": "Pyloxa shows how much of your Claude Code subscription is left in the title bar. When a CLI runs out of quota, it stops sending it work and offers a fallback from your rules, and another CLI continues from the files already changed. Pro adds automatic takeovers, scheduling and quotas."}-->
+      <section class="wrap fx-hero">
+        <p class="fx-eyebrow">Quota &amp; fallback</p>
+        <h1>Out of quota doesn’t have to mean out of work</h1>
+        <p class="fx-lede">When Codex runs out of quota halfway through a task, Pyloxa stops sending it work and offers the fallback from your rules. You confirm, and Claude Code continues from the files Codex already changed. Or wait for the reset and let the original agent carry on.</p>
+        <div class="fx-actions">
+          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download free</a>
+          <a class="button is-light" href="#meter">See the quota meter</a>
+        </div>
+        <ul class="fx-facts">
+          <li><strong>70% · 90%</strong><span>Claude Code usage that turns the title bar yellow, then red</span></li>
+          <li><strong>2</strong><span>Takeovers per task, at most</span></li>
+          <li><strong>3</strong><span>Automatic runs per task, at most</span></li>
+          <li><strong>0</strong><span>Automatic switches from a subscription to an API key</span></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-sec" id="meter" aria-labelledby="meter-title">
+        <div class="fx-copy reveal">
+          <h2 id="meter-title">See what’s left in the title bar</h2>
+          <p>Turn on “Show agent usage in the title bar” to see how much of your Claude Code subscription is left. It shows the tighter of the 5-hour and 7-day limits.</p>
+          <ul class="fx-list">
+            <li>Yellow at 70% used, red at 90% or when you’re limited, and “—” before there’s any data.</li>
+            <li>The numbers come from the usage events Claude Code reports while it runs. Pyloxa makes no extra queries, so the meter updates after a run.</li>
+            <li>Codex doesn’t report its subscription quota, so it shows only today’s tokens and appears in the title bar only when it’s limited. API-key connections and Gemini CLI also show only today’s tokens.</li>
+            <li>Pyloxa reads no credentials, and quota numbers stay on your computer.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Agent usage</span><span class="spacer"></span><span class="ui-muted">Mockup</span></div>
+            <div class="ui-row fx-meter"><span class="ui-title">Claude Code</span><span class="fx-bar"><i class="is-warn" style="width: 74%"></i></span><span class="fx-num">74%</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Codex</span><span class="ui-muted">Today 182k tokens</span><span class="spacer"></span><span class="badge bad">Limited</span></div>
+            <div class="ui-row fx-note">Claude Code: 74% used, the tighter of the 5-hour and 7-day limits</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="takeover" aria-labelledby="takeover-title">
+        <div class="fx-copy reveal">
+          <h2 id="takeover-title">When quota runs out, you decide who takes over</h2>
+          <p>When a CLI reports that its quota is used up, Pyloxa marks the connection as limited and sends it no work until the reset time, or until you click “Quota restored”. In the free version, you confirm each takeover.</p>
+          <ul class="fx-list">
+            <li><strong>Another CLI takes over</strong>: following the fallback in your rules, the next agent continues from the files the previous one already changed.</li>
+            <li><strong>Retry when the quota resets</strong>: starts automatically when the reset time is known; otherwise it waits for you to click “Quota restored”.</li>
+            <li>Each task runs automatically at most 3 times and changes hands at most 2 times, and never goes back to an agent that already failed it.</li>
+            <li>A short rate limit (5 minutes or less) is retried once; a network error is retried once after 30 seconds.</li>
+            <li>Automatic takeovers only move to a connection with the same billing source: work on a subscription never switches to API-key billing on its own.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Codex ran out of quota</span><span class="spacer"></span><span class="badge bad">Limited</span></div>
+            <div class="ui-row"><span class="ui-muted">Claude Code can take over and continue from what Codex finished, or Codex can retry after its quota resets.</span></div>
+            <div class="ui-row fx-line"><span class="ui-button primary">Let Claude Code take over</span><span class="ui-button">Retry when the quota resets</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="pro" aria-labelledby="pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="pro-title">Pro: automatic takeovers, and quota used your way</h2>
+          <p>If you’d rather not confirm every time, Pro takes over along the fallback chain in your rules, and lets you decide which project uses quota first and when work starts.</p>
+          <ul class="fx-list">
+            <li><strong>Automatic fallback when quota runs out</strong>: off by default and fixed when you approve a plan. It triggers when quota runs out or a task is waiting on a limited connection, with the same limit of 2 takeovers per task.</li>
+            <li><strong>Priority and quota per connection</strong>: set which projects go first and give each connection an estimated quota. Quotas are estimates, not provider limits, and not billing evidence.</li>
+            <li><strong>Scheduled start</strong>: start a whole plan after the next quota reset, or at a set time up to 30 days ahead. Up to 30 minutes late it still starts; later than that it waits for you. In the 24 hours before the start, the computer won’t sleep while it’s plugged in.</li>
+            <li><strong>Backup brains</strong>: up to 3. If the brain’s service fails, Pyloxa retries once, then hands planning to the next brain for 10 minutes.</li>
+            <li><strong>Usage and hours</strong>: a usage dashboard across projects, exportable as Markdown or CSV.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Quota scheduling</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Priority</span><span class="spacer"></span><span class="ui-muted">1 Members · 2 Website · 3 Internal tools</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Quota per connection</span><span class="spacer"></span><span class="ui-muted">Codex: Members 60% · Website 40%</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Start</span><span class="spacer"></span><span class="badge info">Start after the next reset</span></div>
+            <div class="ui-row fx-note">Quotas are estimates, not provider limits</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="free-pro" aria-labelledby="free-pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="free-pro-title">Free and Pro</h2>
+          <p>Both keep work going when quota runs out. The difference is whether you confirm each time, and whether you can plan ahead.</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col" class="is-pro">Pro</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Seeing usage</th><td>Agent usage in the title bar, usage for each run</td><td class="is-pro">Adds a usage dashboard and reports across projects</td></tr>
+              <tr><th scope="row">When quota runs out</th><td>A fallback you confirm each time, or a retry after the reset</td><td class="is-pro">Takes over automatically along your fallback chain</td></tr>
+              <tr><th scope="row">Planning ahead</th><td>Tasks waiting on quota resume after the reset</td><td class="is-pro">Priority, quota per connection, scheduled start</td></tr>
+              <tr><th scope="row">Brain</th><td>One brain, which you can change any time</td><td class="is-pro">Up to 3 backup brains</td></tr>
+              <tr><th scope="row">Notifications</th><td>Windows desktop notifications</td><td class="is-pro">Adds Telegram, Discord or a webhook</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Questions</h2>
+        <div class="fx-faq-list">
+          <details class="fx-q" open>
+            <summary>How does Pyloxa know how much Claude Code quota is left?</summary>
+            <div><p>Claude Code reports usage events while it runs, and Pyloxa reads those. It makes no extra queries and reads no credentials, so the title bar updates after a run and shows the tighter of the 5-hour and 7-day limits.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Why does Codex show only tokens?</summary>
+            <div><p>Codex doesn’t report how much of the subscription is left while it runs, and Pyloxa doesn’t query Codex’s quota any other way. So Codex shows today’s tokens, and the title bar flags it when it’s limited.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>When another CLI takes over, does it start from scratch?</summary>
+            <div><p>No. The agent that takes over continues from the files the previous agent already changed. A task changes hands at most 2 times and never goes back to an agent that already failed it.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Will Pyloxa switch to paid API usage when quota runs out?</summary>
+            <div><p>Not on its own. Automatic takeovers only move to a connection with the same billing source, so work on a subscription never switches to an API key by itself; moving work to an API-key connection is your call. Pyloxa doesn’t resell or proxy any AI service, and all usage counts against your own subscriptions or API keys.</p></div>
+          </details>
+        </div>
+      </section>

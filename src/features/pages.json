@@ -1,0 +1,37 @@
+{
+  "languages": ["en", "zh-TW"],
+  "pages": [
+    {
+      "slug": "workflow",
+      "nav": { "en": "Workflow", "zh-TW": "工作流程" },
+      "blurb": {
+        "en": "Plan, phases, who does what, checks and delivery on one page.",
+        "zh-TW": "規劃、階段、分工、檢查與交付，在同一頁設定。"
+      }
+    },
+    {
+      "slug": "memory",
+      "nav": { "en": "Memory & Skills", "zh-TW": "記憶與 Skills" },
+      "blurb": {
+        "en": "One memory every agent reads, and the skills each CLI can see.",
+        "zh-TW": "每個 Agent 都讀得到的共用記憶，以及各 CLI 看得到的 Skills。"
+      }
+    },
+    {
+      "slug": "quota",
+      "nav": { "en": "Quota & fallback", "zh-TW": "額度與備援" },
+      "blurb": {
+        "en": "See what’s left, and hand work to another CLI when quota runs out.",
+        "zh-TW": "看得到還剩多少，額度用完時交給另一個 CLI 接手。"
+      }
+    },
+    {
+      "slug": "pro",
+      "nav": { "en": "Pro", "zh-TW": "Pro" },
+      "blurb": {
+        "en": "What Pro adds, the free preview, and what stays free.",
+        "zh-TW": "Pro 多了什麼、免費預覽，以及哪些一直免費。"
+      }
+    }
+  ]
+}

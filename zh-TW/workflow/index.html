@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>工作流程：讓 Claude Code 與 Codex 分工、驗收再合併｜Pyloxa</title>
+    <meta name="description" content="Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="工作流程：讓 Claude Code 與 Codex 分工、驗收再合併｜Pyloxa" />
+    <meta property="og:description" content="Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-TW/workflow/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-zh.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/zh-TW/workflow/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/workflow/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/workflow/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/workflow/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://pyloxa.com/zh-TW/workflow/","url":"https://pyloxa.com/zh-TW/workflow/","name":"工作流程：讓 Claude Code 與 Codex 分工、驗收再合併｜Pyloxa","description":"Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"about":{"@id":"https://pyloxa.com/#software"},"publisher":{"@id":"https://pyloxa.com/#organization"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/workflow/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/workflow/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"工作流程","item":"https://pyloxa.com/zh-TW/workflow/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/workflow/#faq","mainEntity":[{"@type":"Question","name":"Agent 說做完了，Pyloxa 怎麼判斷算不算完成？","acceptedAnswer":{"@type":"Answer","text":"看你核准的驗證命令。工作完成後，Pyloxa 在那個工作的 worktree 執行驗收命令，並核對必要檔案與寫入範圍。至少有一項客觀檢查而且全部通過、又不需要人看的工作，才會自動接受；沒通過就由同一個 Agent 自動修正一次。沒有執行、跳過或失敗的檢查，不會標成通過。"}},{"@type":"Question","name":"交叉測試的測試者會改到我的程式嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。測試者只能寫入測試檔（例如 *.test.*、*.spec.*、test/、tests/、__tests__/），它補上的測試原本的 Agent 改不掉。測試者不能是做這個工作的同一個 Profile，Gemini CLI 也不能當測試者。"}},{"@type":"Question","name":"Pyloxa 會自動合併或推送嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。工作接受後只合併到這次計畫自己的整合分支；合併到你的分支、推送與開 PR 都由你按下，有衝突時也不會自動解決。改到 .github、CLAUDE.md、AGENTS.md 這類影響 Agent 與自動化的檔案時，一律不自動接受。"}},{"@type":"Question","name":"分幾個階段由誰決定？","acceptedAnswer":{"@type":"Answer","text":"由大腦依每個需求決定。核准計畫前，你可以在計畫卡上改派工作、修改指示、決定每個階段做完要不要等你，或請大腦重擬。"}},{"@type":"Question","name":"工作流程頁要付費嗎？","acceptedAnswer":{"@type":"Answer","text":"不用。工作流程頁、分工表、規則清單、範本、驗證命令、Gate、大腦驗收與手動交叉測試都在免費版。Pro 加上授權範圍內自動、自動交叉測試、多個專案同時執行與 Agent Teams（實驗）。"}}]}]}</script>
+    <link rel="stylesheet" href="../../assets/site.css" />
+    <link rel="stylesheet" href="../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx">
+    <a class="skip" href="#main">跳到主要內容</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../zh-TW/" aria-label="Pyloxa 首頁">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../zh-TW/workflow/" aria-current="page">工作流程</a></li>
+        <li class="optional"><a href="../../zh-TW/memory/">記憶與 Skills</a></li>
+        <li class="optional"><a href="../../zh-TW/quota/">額度與備援</a></li>
+        <li class="optional"><a href="../../zh-TW/pro/">Pro</a></li>
+        <li><a href="../../workflow/" lang="en">English</a></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../zh-TW/">Pyloxa</a><span aria-hidden="true">/</span><span aria-current="page">工作流程</span></nav>
+      <section class="wrap fx-hero">
+        <p class="fx-eyebrow">工作流程</p>
+        <h1>從需求到合併，每一步都照你的設定</h1>
+        <p class="fx-lede">Pyloxa 的「工作流程」頁把整個流程攤開成五段：誰來規劃、分成哪些階段、誰做哪一種工作、怎麼檢查、怎麼交付。大腦只負責提計畫，不能改動這些設定；Agent 說做完了也不算數，要你的命令跑過才算。</p>
+        <div class="fx-actions">
+          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">免費下載</a>
+          <a class="button is-light" href="#plan">看五個段落</a>
+        </div>
+        <ul class="fx-facts">
+          <li><strong>5 段</strong><span>規劃、階段、分工、檢查、交付</span></li>
+          <li><strong>4 個</strong><span>內建範本，套用前先看差異</span></li>
+          <li><strong>1 次</strong><span>命令沒通過時自動修正的次數</span></li>
+          <li><strong>0 次</strong><span>不經你同意的合併與推送</span></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-sec" id="plan" aria-labelledby="plan-title">
+        <div class="fx-copy reveal">
+          <h2 id="plan-title">1. 規劃：誰當大腦、要放手多少</h2>
+          <p>選一個 Agent 當大腦。它先讀過專案，再把需求拆成階段與工作；派工模式決定計畫要不要等你核准。</p>
+          <ul class="fx-list">
+            <li><strong>建議後詢問</strong>：大腦提出計畫與派工，你看過、可以改派或修改指示，核准後才開始。</li>
+            <li><strong>僅依設定執行</strong>：每個工作都對得上規則時直接開始；有工作對不上規則就停下來問你。</li>
+            <li><strong>授權範圍內自動</strong><span class="fx-tag">Pro</span>：大腦在你允許的 Agent 中選擇，核准與執行都不必等你，只有人工 Gate 會停。</li>
+            <li>大腦不能用時，Pro 可以改由備援大腦規劃；大腦一律不驗收自己做的工作。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">派工模式</span><span class="spacer"></span><span class="ui-muted">大腦：Claude Code</span></div>
+            <div class="ui-row"><div class="fx-line"><span class="ui-title">建議後詢問</span><span class="badge info">目前</span></div><span class="ui-muted">大腦提出計畫，你核准後才開始</span></div>
+            <div class="ui-row"><div class="fx-line"><span class="ui-title">僅依設定執行</span></div><span class="ui-muted">照規則直接派工，對不上規則就停下來</span></div>
+            <div class="ui-row"><div class="fx-line"><span class="ui-title">授權範圍內自動</span><span class="spacer"></span><span class="badge warn">Pro</span></div><span class="ui-muted">在你允許的 Agent、模型與次數內自己決定</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="phases" aria-labelledby="phases-title">
+        <div class="fx-copy reveal">
+          <h2 id="phases-title">2. 階段：每段結束先檢查，再往下走</h2>
+          <p>大腦依需求排出階段，例如規格、開發、測試。核准計畫前，你可以在計畫卡上改派某個工作、修改它的指示、決定每個階段做完要不要等你，或請大腦重擬。</p>
+          <ul class="fx-list">
+            <li>每個階段結束時，Pyloxa 在整合後的版本上跑 <strong>Gate</strong>。Gate 沒通過會重跑一次，再不行就開一個修正工作。</li>
+            <li>Gate 可以通過後自動往下走，也可以停下來等你核准。</li>
+            <li>下一個階段自動拿到上一段的交接包：成果、通過的檢查和要注意的事。</li>
+            <li><strong>Agent Teams（實驗）</strong><span class="fx-tag">Pro</span>：執行中的 Agent 可以看整隊的工作、回報進度，缺少資訊時停下來問你。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">計畫：會員資料頁</span><span class="ui-muted">3 個階段 · 5 個工作</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">1 規格與 Contract</span><span class="ui-muted">Codex</span><span class="spacer"></span><span class="badge ok">Gate 通過</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">2 開發</span><span class="ui-muted">前端 Claude Code · 後端 Codex</span><span class="spacer"></span><span class="badge info"><span class="spin" aria-hidden="true"></span>執行中</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">3 測試</span><span class="ui-muted">Gate 通過後等你核准</span><span class="spacer"></span><span class="badge">等待中</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="assign" aria-labelledby="assign-title">
+        <div class="fx-copy reveal">
+          <h2 id="assign-title">3. 分工：一張表決定誰做哪一種工作</h2>
+          <p>分工表的每一列是一種工作，每一欄是一個 Agent Profile。點格子可以設為主要、加為備援、不交給它，或打開進階設定。</p>
+          <ul class="fx-list">
+            <li>決定順序：你在計畫卡上手動指定的、專案規則、全域規則，最後是預設路由；同一層由第一條完全符合的規則決定。</li>
+            <li>只對一個專案或一個階段的規則寫在「規則清單（進階）」，比分工表優先。分工表的列由哪一條規則決定，表上會寫明。</li>
+            <li>沒有規則命中時交給預設路由，或停下來問你，由你設定。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">分工表</span><span class="spacer"></span><span class="ui-muted">點格子：設為主要、加為備援、不交給它</span></div>
+            <div class="fx-table">
+              <table>
+                <thead><tr><th scope="col">工作類型</th><th scope="col">Claude Code</th><th scope="col">Codex</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">前端</th><td><span class="badge info">主要</span></td><td><span class="badge">備援 1</span></td></tr>
+                  <tr><th scope="row">後端</th><td><span class="badge">備援 1</span></td><td><span class="badge info">主要</span></td></tr>
+                  <tr><th scope="row">文件</th><td><span class="badge info">主要</span></td><td>—</td></tr>
+                  <tr><th scope="row">測試</th><td>—</td><td><span class="badge info">主要</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="checks" aria-labelledby="checks-title">
+        <div class="fx-copy reveal">
+          <h2 id="checks-title">4. 檢查：Agent 說做完了不算數</h2>
+          <p>Pyloxa 會建議驗證命令，例如 <code>npm run test</code>。每一條都要你核准，可以先在暫時的 worktree 試跑；大腦只能用你核准過的命令。</p>
+          <ul class="fx-list">
+            <li>工作完成後，Pyloxa 在它自己的 worktree 跑驗收命令、核對必要檔案與寫入範圍。至少有一項客觀檢查、全部通過、而且不需要人看的工作才會自動接受。</li>
+            <li>沒通過時，同一個 Agent 自動修正一次；每個工作最多自動執行 3 次。</li>
+            <li><strong>交叉測試</strong>：完成的工作交給另一個 Agent 補測試，Pyloxa 在成果上重跑你的命令。測試者只能改測試檔，補上的測試原本的 Agent 改不掉。免費版按「交給另一個 Agent 測試」，Pro 依設定自動進行。</li>
+            <li><strong>大腦驗收</strong>：大腦以唯讀方式檢查完成的工作，結論標示為 AI 判斷；要求你親自確認的工作，仍然等你決定。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">後端：會員點數 API</span><span class="badge">Codex</span><span class="spacer"></span><span class="badge ok">已接受</span></div>
+            <div class="ui-row">
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><code>npm run test</code>&nbsp;通過</span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>沒有超出寫入範圍</span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>交叉測試：Claude Code 補了 2 個測試，全部通過</span>
+            </div>
+            <div class="ui-row fx-note">核對全部通過，自動接受</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="deliver" aria-labelledby="deliver-title">
+        <div class="fx-copy reveal">
+          <h2 id="deliver-title">5. 交付：合併與推送由你決定</h2>
+          <p>每個工作在自己的 git worktree 與分支完成，接受後合併到這次計畫的整合分支。合併到你的分支、推送和開 PR，都等你按下；有衝突時 Pyloxa 不會自動解決。</p>
+          <ul class="fx-list">
+            <li>改到 <code>.github</code>、<code>.claude</code>、<code>.codex</code>、<code>CLAUDE.md</code>、<code>AGENTS.md</code>、<code>.mcp.json</code> 或定義驗證命令的檔案時，一律不自動接受，也不交給大腦驗收，合併前會再列出一次。</li>
+            <li>開 PR 時可以附上驗證紀錄：哪些命令真的跑過、每個成果是誰接受的。</li>
+            <li>需要時可以讓整個計畫共用一個 worktree，工作依序執行，後面的工作看得到前面接受的改動。</li>
+            <li>Pyloxa 不會對你的工作目錄執行 stash、reset 或 checkout。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">建立 Pull Request</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
+            <div class="ui-row"><span class="ui-muted">標題</span><br />新增會員點數頁</div>
+            <div class="ui-row fx-line"><input type="checkbox" checked disabled aria-label="附上驗證紀錄" /> <span>在說明最後附上 Pyloxa 的驗證紀錄（5 個成果）</span></div>
+            <div class="ui-row fx-line"><span class="spacer"></span><span class="ui-button primary">建立 PR</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="templates" aria-labelledby="templates-title">
+        <div class="fx-copy reveal">
+          <h2 id="templates-title">從範本開始，不滿意就還原</h2>
+          <p>套用範本前，Pyloxa 會列出每一項會改變的設定和每種工作的分派；「還原上一版」可以回到套用前。範本裡屬於 Pro 的設定，免費版不套用，差異裡會寫明。</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col">範本</th><th scope="col">做法</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">均衡（預設）</th><td>前端交給 Claude Code、後端交給 Codex，互為備援；建議後詢問。</td></tr>
+              <tr><th scope="row">快速修改</th><td>僅依設定執行，共用一個 worktree，全部交給大腦的 Profile。</td></tr>
+              <tr><th scope="row">嚴謹審查<span class="fx-tag">含 Pro 設定</span></th><td>大腦驗收所有工作，前端與後端的工作交叉測試。</td></tr>
+              <tr><th scope="row">平均分攤額度<span class="fx-tag">含 Pro 設定</span></th><td>各種工作在 Claude Code 與 Codex 之間分攤，額度用完時自動備援。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="free-pro" aria-labelledby="free-pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="free-pro-title">免費版與 Pro</h2>
+          <p>免費版就能走完整個流程。Pro 把你原本要親手做的事交給 Pyloxa。</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col"></th><th scope="col">免費版</th><th scope="col" class="is-pro">Pro</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">派工</th><td>建議後詢問、僅依設定執行</td><td class="is-pro">加上授權範圍內自動</td></tr>
+              <tr><th scope="row">設定</th><td>工作流程頁、分工表、規則清單、四個範本</td><td class="is-pro">同免費版</td></tr>
+              <tr><th scope="row">檢查</th><td>驗證命令、階段 Gate、大腦驗收、手動交叉測試</td><td class="is-pro">加上自動交叉測試，沒通過自動退回修正</td></tr>
+              <tr><th scope="row">執行</th><td>一次一個專案在執行</td><td class="is-pro">多個專案同時執行、Agent Teams（實驗）</td></tr>
+              <tr><th scope="row">交付</th><td>整合分支、合併、推送、開 PR、驗證紀錄</td><td class="is-pro">同免費版</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">常見問題</h2>
+        <div class="fx-faq-list">
+          <details class="fx-q" open>
+            <summary>Agent 說做完了，Pyloxa 怎麼判斷算不算完成？</summary>
+            <div><p>看你核准的驗證命令。工作完成後，Pyloxa 在那個工作的 worktree 執行驗收命令，並核對必要檔案與寫入範圍。至少有一項客觀檢查而且全部通過、又不需要人看的工作，才會自動接受；沒通過就由同一個 Agent 自動修正一次。沒有執行、跳過或失敗的檢查，不會標成通過。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>交叉測試的測試者會改到我的程式嗎？</summary>
+            <div><p>不會。測試者只能寫入測試檔（例如 <code>*.test.*</code>、<code>*.spec.*</code>、<code>test/</code>、<code>tests/</code>、<code>__tests__/</code>），它補上的測試原本的 Agent 改不掉。測試者不能是做這個工作的同一個 Profile，Gemini CLI 也不能當測試者。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Pyloxa 會自動合併或推送嗎？</summary>
+            <div><p>不會。工作接受後只合併到這次計畫自己的整合分支；合併到你的分支、推送與開 PR 都由你按下，有衝突時也不會自動解決。改到 <code>.github</code>、<code>CLAUDE.md</code>、<code>AGENTS.md</code> 這類影響 Agent 與自動化的檔案時，一律不自動接受。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>分幾個階段由誰決定？</summary>
+            <div><p>由大腦依每個需求決定。核准計畫前，你可以在計畫卡上改派工作、修改指示、決定每個階段做完要不要等你，或請大腦重擬。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>工作流程頁要付費嗎？</summary>
+            <div><p>不用。工作流程頁、分工表、規則清單、範本、驗證命令、Gate、大腦驗收與手動交叉測試都在免費版。Pro 加上授權範圍內自動、自動交叉測試、多個專案同時執行與 Agent Teams（實驗）。</p></div>
+          </details>
+        </div>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">拿你自己的專案試試看</h2>
+          <p>Pyloxa 是免費的 Windows App，執行你已經在用的 Claude Code 與 Codex CLI，用你自己的訂閱或 API Key。</p>
+          <div class="fx-actions">
+            <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載 Pyloxa Windows 版</a>
+            <a class="button is-light" href="../../zh-TW/#pricing">比較免費版與 Pro</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">更多關於 Pyloxa</h2>
+        <ul>
+            <li><a href="../../zh-TW/memory/"><span>記憶與 Skills</span><span class="fx-related-text">每個 Agent 都讀得到的共用記憶，以及各 CLI 看得到的 Skills。</span></a></li>
+            <li><a href="../../zh-TW/quota/"><span>額度與備援</span><span class="fx-related-text">看得到還剩多少，額度用完時交給另一個 CLI 接手。</span></a></li>
+            <li><a href="../../zh-TW/pro/"><span>Pro</span><span class="fx-related-text">Pro 多了什麼、免費預覽，以及哪些一直免費。</span></a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>版本 0.1.10 · Windows 10 與 11 · <a href="../../zh-TW/changelog/">改版紀錄</a> · <a href="../../zh-TW/privacy/">隱私權政策</a> · <a href="../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。</p>
+    </footer>
+
+    <script src="../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

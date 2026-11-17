@@ -1,0 +1,155 @@
+<!--meta {"title": "共用記憶與 Skills：Claude Code、Codex、Gemini CLI 讀同一份專案記憶｜Pyloxa", "description": "專案的規則、慣例與踩過的坑記一次，Claude Code、Codex 與 Gemini CLI 都讀得到。Agent 提議新的記憶，你核准後才生效；Skills 集中盤點，Pro 再加上 Skills 庫與指派。"}-->
+      <section class="wrap fx-hero">
+        <p class="fx-eyebrow">記憶與 Skills</p>
+        <h1>記一次，每個 Agent 都讀得到</h1>
+        <p class="fx-lede">專案的規則、慣例和踩過的坑，不必在 CLAUDE.md、AGENTS.md、GEMINI.md 各寫一份。Pyloxa 把它們存在你的電腦，派工時帶給每個 Agent；Agent 學到的新東西先放進「待確認」，你核准後才算數。</p>
+        <div class="fx-actions">
+          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">免費下載</a>
+          <a class="button is-light" href="#how">看怎麼運作</a>
+        </div>
+        <ul class="fx-facts">
+          <li><strong>3 個 CLI</strong><span>Claude Code、Codex、Gemini CLI 共用一份</span></li>
+          <li><strong>免費</strong><span>共用記憶的所有功能都在免費版</span></li>
+          <li><strong>3,000 字</strong><span>每次派工帶入的預設上限，可以調整</span></li>
+          <li><strong>0 次</strong><span>沒經你核准就生效的 Agent 提議（預設）</span></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-sec" id="how" aria-labelledby="how-title">
+        <div class="fx-copy reveal">
+          <h2 id="how-title">一份記憶，三個 CLI 都讀</h2>
+          <p>在「共用記憶」按「記住」，或從對話裡記下一件事。每一則記憶有範圍（全域或這個專案）與種類：規則、偏好、決策、事實、踩過的坑。</p>
+          <ul class="fx-list">
+            <li>派工、大腦規劃、大腦驗收與交叉測試時，Pyloxa 把相關的記憶放進提示，標明是背景資料，不是指令。</li>
+            <li>順序是：釘選的記憶、規則與偏好（專案的在全域之前），再加上最相關的事實、決策與踩過的坑，最多 12 則。</li>
+            <li>每次帶入的總長度預設 3,000 字，可以改成 1,000 或 6,000；每一則最多 500 字。</li>
+            <li>執行紀錄會寫明這次帶入了幾則記憶。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">共用記憶</span><span class="ui-muted">這個專案</span><span class="spacer"></span><span class="ui-button">記住</span></div>
+            <div class="ui-row fx-line"><span class="badge info">規則</span><span>API 回應一律用 camelCase</span><span class="spacer"></span><span class="ui-muted">釘選</span></div>
+            <div class="ui-row fx-line"><span class="badge">偏好</span><span>測試檔放在 <code>tests/</code>，用 Vitest</span></div>
+            <div class="ui-row fx-line"><span class="badge warn">踩過的坑</span><span>Windows 上跑整合測試要加 <code>--runInBand</code></span></div>
+            <div class="ui-row fx-note">這次派工帶入了 3 則共用記憶</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="propose" aria-labelledby="propose-title">
+        <div class="fx-copy reveal">
+          <h2 id="propose-title">Agent 提議，你核准</h2>
+          <p>Agent 工作時可以透過 Pyloxa 提供的工具搜尋記憶、提議新的記憶。每一則提議都先放進「待確認」，你接受之前，任何 Agent 都看不到。</p>
+          <ul class="fx-list">
+            <li>每個工作最多提議 5 則，大腦每回合最多採用 3 則，不會讓記憶一下子膨脹。</li>
+            <li>看起來像金鑰、token 的文字會被拒絕，不會存進記憶。</li>
+            <li>想省事的話，可以讓某個專案「自動接受 Agent 提議的事實與踩過的坑」，預設關閉；規則與偏好一律要你核准。</li>
+            <li>記憶工具只在本機的 127.0.0.1 提供，每次執行有自己的 token。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">待確認（2）</span></div>
+            <div class="ui-row"><span class="ui-muted">Codex 提議 · 事實</span><br />會員點數的計算在 <code>src/points/</code>，不要改 <code>legacy/</code></div>
+            <div class="ui-row"><span class="ui-muted">Claude Code 提議 · 踩過的坑</span><br />E2E 測試要先啟動 mock server</div>
+            <div class="ui-row fx-line"><span class="ui-button primary">接受</span><span class="ui-button">修改後接受</span><span class="ui-button">捨棄</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="bridge" aria-labelledby="bridge-title">
+        <div class="fx-copy reveal">
+          <h2 id="bridge-title">在終端機直接用 CLI，也讀得到</h2>
+          <p>不透過 Pyloxa、直接在終端機開 CLI 時，記憶也能跟著走。「同步到各 CLI」把專案的記憶寫成 <code>AGENTS.md</code> 裡的 Pyloxa 區塊，並在 <code>CLAUDE.md</code> 加上 <code>@AGENTS.md</code>，Gemini CLI 也可以設定讀這個檔案。</p>
+          <ul class="fx-list">
+            <li>寫入前先給你看差異，按下才寫；Pyloxa 不會替你提交。</li>
+            <li>「也寫進各 CLI 的使用者層記憶」預設關閉。打開後，Pyloxa 第一次寫入前先備份 <code>~/.claude/CLAUDE.md</code>、<code>~/.codex/AGENTS.md</code>、<code>~/.gemini/GEMINI.md</code>，關掉時把自己的區塊拿掉。</li>
+            <li>反過來也可以：從 CLI 原本的記憶檔匯入，只讀固定的檔案，例如專案的 <code>CLAUDE.md</code>、<code>.claude/rules/*.md</code>、<code>AGENTS.md</code>、<code>GEMINI.md</code>，以及 Codex 的 Memories。不讀憑證、設定或對話紀錄。</li>
+            <li>記憶可以匯出成 Markdown 或 JSON，也能從檔案匯入。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">同步到各 CLI</span><span class="ui-muted">預覽差異</span></div>
+            <div class="ui-row">
+              <pre class="fx-diff"><code><span class="ln">AGENTS.md</span>
+<span class="ln add">+ &lt;!-- pyloxa:memory start --&gt;</span>
+<span class="ln add">+ - API 回應一律用 camelCase</span>
+<span class="ln add">+ - 測試檔放在 tests/，用 Vitest</span>
+<span class="ln add">+ &lt;!-- pyloxa:memory end --&gt;</span>
+<span class="ln">CLAUDE.md</span>
+<span class="ln add">+ @AGENTS.md</span></code></pre>
+            </div>
+            <div class="ui-row fx-line"><span class="fx-note">不會替你提交</span><span class="spacer"></span><span class="ui-button primary">寫入</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="skills" aria-labelledby="skills-title">
+        <div class="fx-copy reveal">
+          <h2 id="skills-title">Skills：先看清楚每個 CLI 讀得到什麼</h2>
+          <p>「Skills 盤點」列出每個 CLI 實際讀得到的 Skills，用一張 Skill × Agent 的表看出哪裡缺、哪裡重複。這部分免費。</p>
+          <ul class="fx-list">
+            <li><strong>Skills 庫</strong><span class="fx-tag">Pro</span>：把 Skills 集中放在 <code>~/.agents/skills</code>，新增、修改、刪除後同步到各 CLI。</li>
+            <li><strong>指派</strong><span class="fx-tag">Pro</span>：依專案或 Profile 決定哪些 Skills 要帶給哪個 Agent。</li>
+            <li><strong>派工包</strong><span class="fx-tag">Pro</span>：把規則、驗證命令建議、慣例和 Skills 打包成一個檔案分享，匯入時逐項預覽，既有的規則不會被覆寫。</li>
+            <li>Gemini CLI 執行時看不到使用者層的 Skills，只會拿到透過 Pro 指派給它的 Skills。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Skills 盤點</span><span class="spacer"></span><span class="ui-muted">示意畫面</span></div>
+            <div class="fx-table">
+              <table>
+                <thead><tr><th scope="col">Skill</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">Gemini CLI</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">api-style</th><td><span class="badge ok">讀得到</span></td><td><span class="badge ok">讀得到</span></td><td>—</td></tr>
+                  <tr><th scope="row">db-migration</th><td><span class="badge ok">讀得到</span></td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">release-notes</th><td><span class="badge warn">兩份不同</span></td><td><span class="badge ok">讀得到</span></td><td>—</td></tr>
+                  <tr><th scope="row">ui-review</th><td>—</td><td><span class="badge ok">讀得到</span></td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="free-pro" aria-labelledby="free-pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="free-pro-title">免費版與 Pro</h2>
+          <p>共用記憶完全免費。Pro 加上的是 Skills 的集中管理與分享。</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col"></th><th scope="col">免費版</th><th scope="col" class="is-pro">Pro</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">共用記憶</th><td>記住、待確認與核准、帶入派工、同步到各 CLI、從 CLI 記憶檔匯入、匯出與匯入</td><td class="is-pro">同免費版</td></tr>
+              <tr><th scope="row">Skills</th><td>Skills 盤點與 Skill × Agent 對照表</td><td class="is-pro">Skills 庫同步到各 CLI，依專案或 Profile 指派</td></tr>
+              <tr><th scope="row">分享</th><td>專案規則可以放在 repo 的 <code>.pyloxa/</code></td><td class="is-pro">派工包：規則、命令建議、慣例與 Skills 一起匯出匯入</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">常見問題</h2>
+        <div class="fx-faq-list">
+          <details class="fx-q" open>
+            <summary>共用記憶存在哪裡？會傳到雲端嗎？</summary>
+            <div><p>存在你的電腦，不會傳給我們，也不在匿名使用統計裡。只有派工時，相關的記憶會跟著提示送到那個 CLI 原本會送去的地方。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Agent 會不會自己把錯的東西寫進記憶？</summary>
+            <div><p>不會直接生效。Agent 的提議都先放進「待確認」，你接受之前任何 Agent 都看不到。只有你為某個專案打開「自動接受 Agent 提議的事實與踩過的坑」時，事實與坑才會自動接受；規則與偏好一律要你核准。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>已經有 CLAUDE.md 或 AGENTS.md，還需要這個嗎？</summary>
+            <div><p>可以直接匯入。Pyloxa 從固定的記憶檔讀進來，之後由同一份記憶帶給三個 CLI；需要在終端機直接用 CLI 時，再用「同步到各 CLI」寫回 <code>AGENTS.md</code> 的 Pyloxa 區塊，寫入前先看差異。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Skills 盤點要付費嗎？</summary>
+            <div><p>不用。盤點每個 CLI 讀得到的 Skills 是免費功能；Skills 庫、依專案或 Profile 指派與派工包屬於 Pro。</p></div>
+          </details>
+        </div>
+      </section>

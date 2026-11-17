@@ -127,6 +127,62 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/" />
   </url>
   <url>
+    <loc>https://pyloxa.com/workflow/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/workflow/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/workflow/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/workflow/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/workflow/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/workflow/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/workflow/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/workflow/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/memory/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/memory/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/memory/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/memory/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/memory/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/memory/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/memory/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/memory/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/quota/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/quota/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/quota/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/quota/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/quota/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/quota/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/quota/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/quota/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/pro/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/pro/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/pro/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/pro/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/pro/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/pro/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/pro/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/pro/" />
+  </url>
+  <url>
     <loc>https://pyloxa.com/changelog/</loc>
     <lastmod>2026-11-17</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/changelog/" />

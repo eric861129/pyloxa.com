@@ -145,7 +145,7 @@
                 <span id="quota-label">Codex の利用枠切れ</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Codex の利用枠が上限に達しました（18:00 ごろリセット）</span>
+                <span class="ui-title" data-quota-title>Codex の利用枠が上限に達しました</span>
                 <span class="ui-muted">あなたが確認すると、フォールバックが Codex の作業を引き継いで続けられます。</span>
                 <span><button type="button" class="ui-button primary" data-takeover>Claude Code に引き継ぐ</button></span>
               </div>
@@ -217,6 +217,7 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">ひとつのワークフロー、5 つの段階</h2>
             <p>アプリの「ワークフロー」ページでは、流れ全体を一度に確認できます。誰が計画するか、どんなフェーズに分けるか、どの種類のタスクを誰が担当するか、どう確認するか、どう引き渡すか。どの段階もあなたの設定です。ブレインはプランを提案するだけで、設定は変更できません。</p>
+            <p class="more-link"><a href="../workflow/">詳しい説明（英語）→</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="ワークフローの 5 つの段階" hidden>
@@ -301,7 +302,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">割り当て表</span>
-                  <span class="ui-muted">セルをクリックで切り替え：プライマリ → 予備 → 割り当てない</span>
+                  <span class="ui-muted">画面はイメージです。セルをクリックすると、プライマリ、予備、割り当てないを切り替えられます</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -449,8 +450,9 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">利用枠が尽きたとき</h2>
-            <p>タスクの途中で Codex が利用上限に達すると、Pyloxa は Codex への作業の送信を止め、利用枠がリセットされる時刻を表示し、あなたのルールにあるフォールバックを提案します。確認すると、Codex がすでに変更したファイルから Claude Code が作業を続けます。</p>
-            <p>タイトルバーには、各サブスクリプションの残りが常に表示されます。70% 使うと黄色、90% に達するか制限中になると赤になります。</p>
+            <p>タスクの途中で Codex が利用上限に達すると、Pyloxa は Codex への作業の送信を止め、あなたのルールにあるフォールバックを提案します。確認すると、Codex がすでに変更したファイルから Claude Code が作業を続けます。</p>
+            <p>タイトルバーには、Claude Code のサブスクリプションの残りが表示されます。70% 使うと黄色、90% に達するか制限中になると赤になります。Codex などほかの接続では今日使ったトークン数が表示され、制限中になるとその旨が表示されます。</p>
+            <p class="more-link"><a href="../quota/">詳しい説明（英語）→</a></p>
             <div class="figures">
               <span>タスクごとに自動試行 3 回</span>
               <span>フォールバックは最大 2 回</span>
@@ -466,11 +468,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Codex の利用枠が上限に達しました（18:00 ごろリセット）</span>
+                <span class="ui-title fq-title">Codex の利用枠が上限に達しました</span>
                 <span class="ui-muted">Claude Code が引き継いで Codex が終えたところから続けるか、利用枠のリセット後に Codex が再試行できます。</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">Claude Code に引き継ぐ</button><button type="button" class="ui-button">利用枠の回復後に再試行</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro では、設定したフォールバックチェーンに沿って自動で引き継ぎます。トリガーと上限も設定できます。</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro では、ルールにあるフォールバックチェーンに沿って、毎回確認することなく自動で引き継ぎます。引き継ぎはタスクごとに最大 2 回です。</span></div>
             </div>
           </div>
         </div>
@@ -481,12 +483,13 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">どのエージェントも同じコンテキストを読む</h2>
             <p>プロジェクトのルール、慣習、落とし穴を一度書いておけば、Claude Code、Codex、Gemini CLI のすべてが読み込みます。スキルも同じです。CLI ごとにコピーを置かず、1 か所で管理できます。</p>
+            <p class="more-link"><a href="../memory/">詳しい説明（英語）→</a></p>
             <ol class="steps">
               <li><strong>記憶する<span class="tier">無料</span></strong><span>ブレインの返答やタスクのセッションで「記憶する」を押します。CLAUDE.md、AGENTS.md など各 CLI のメモリファイルから項目を選んでインポートすることもできます。</span></li>
-              <li><strong>エージェントが提案し、あなたが承認<span class="tier">無料</span></strong><span>エージェントは作業中にメモリを検索し、新しいメモリを提案できます。あなたが受け入れるまで、提案はどのエージェントにも見えません。</span></li>
+              <li><strong>エージェントが提案し、あなたが承認<span class="tier">無料</span></strong><span>エージェントは作業中にメモリを検索し、新しいメモリを提案できます。あなたが受け入れるまで、提案はどのエージェントにも見えません。プロジェクトごとに、エージェントが提案した事実と落とし穴を自動で受け入れるようにもできます（初期設定はオフ）。</span></li>
               <li><strong>すべての CLI に同期<span class="tier">無料</span></strong><span>プロジェクトのルールを AGENTS.md の Pyloxa ブロックに書き込むと、ターミナルで CLI を直接使うときにも読み込まれます。先に差分を確認でき、コミットは自動で行いません。</span></li>
               <li><strong>スキルの一覧<span class="tier">無料</span></strong><span>各 CLI にどのスキルがあるか、名前は同じでも内容が異なるものはどれかを確認できます。</span></li>
-              <li><strong>スキルライブラリと振り分けパック<span class="tier">Pro</span></strong><span>ひとつのスキルライブラリをすべての CLI に同期し、プロジェクトやプロファイルごとに割り当て、ワークフローと一緒に振り分けパックとして共有できます。</span></li>
+              <li><strong>スキルライブラリと振り分けパック<span class="tier">Pro</span></strong><span>ひとつのスキルライブラリをすべての CLI に同期し、プロジェクトやプロファイルごとに割り当て、ルールやコマンドの提案と一緒に振り分けパックとして共有できます。</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -650,6 +653,7 @@
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">無料版はひとつのプロジェクトを一緒に進め、Pro はすべてのプロジェクトを見守ります。</h2>
           <p>無料版でも、プラン作成、振り分け、検証、マージという流れ全体を使えます。Pro は、本来なら手作業でやることを引き受けます。複数プロジェクトの同時進行、設定した範囲内での判断、利用枠が尽きたときの引き継ぎ、完了した作業の別エージェントによるテストです。</p>
+          <p class="more-link"><a href="../pro/">詳しい説明（英語）→</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -673,7 +677,7 @@
             <tr>
               <th scope="row">利用枠が尽きたとき</th>
               <td>フォールバックを提案し、引き継ぎは毎回あなたが確認</td>
-              <td class="pro"><strong>自動フォールバックチェーン</strong>：トリガーと上限を設定可能。事前に許可しておけば、サブスクリプションの利用枠が尽きたときに API 課金へ切り替え</td>
+              <td class="pro"><strong>自動フォールバックチェーン</strong>：ルールにあるフォールバックへ順番に引き継ぎ、毎回の確認は不要。引き継ぎはタスクごとに最大 2 回</td>
             </tr>
             <tr>
               <th scope="row">検証とテスト</th>
@@ -682,7 +686,7 @@
             </tr>
             <tr>
               <th scope="row">利用枠のスケジューリング</th>
-              <td>利用枠を待つタスクはリセット後に再開</td>
+              <td>利用枠を待つタスクはリセット後に再開（リセット時刻がわかっていれば自動で再開）</td>
               <td class="pro">プロジェクトの優先度、接続ごとの利用枠、指定時刻や次のリセット時に開始するプランの予約 </td>
             </tr>
             <tr>
@@ -742,7 +746,7 @@
             <ul>
               <li>複数のプロジェクトを同時に進行。あなたの対応を待つものはすべて、タスクセンターの受信トレイにまとまります</li>
               <li>許可した範囲で自動：許可したエージェント、モデル、回数の範囲で選択と再試行を行い、上限に達すると一時停止</li>
-              <li>自動フォールバックチェーン：トリガーと上限を設定可能。事前に許可しておけば、サブスクリプションの利用枠が尽きたときに API 課金へ切り替え</li>
+              <li>自動フォールバックチェーン：ルールにあるフォールバックへ順番に引き継ぎ、毎回の確認は不要。引き継ぎはタスクごとに最大 2 回</li>
               <li>自動クロステスト：タスクの種類やブレインの判断で実行し、失敗したテストは修正に戻す</li>
               <li>利用枠のスケジューリング：プロジェクトの優先度、接続ごとの利用枠、指定時刻や次のリセット時に開始するプランの予約</li>
               <li>利用状況とレポート：プロジェクト横断の利用状況ダッシュボード。プロジェクトごとのエージェント作業時間、トークン、CLI が報告する金額を Markdown または CSV で書き出し</li>

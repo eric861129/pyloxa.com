@@ -1,0 +1,194 @@
+<!--meta {"title": "Workflow: split work between Claude Code and Codex, check it, then merge | Pyloxa", "description": "Pyloxa’s Workflow page puts planning, phases, assignment, checks and delivery on one page: the brain proposes a plan, your rules decide who does what, your commands decide what counts as done, and you press merge and push."}-->
+      <section class="wrap fx-hero">
+        <p class="fx-eyebrow">Workflow</p>
+        <h1>From request to merge, every step follows your settings</h1>
+        <p class="fx-lede">Pyloxa’s Workflow page lays the whole process out in five parts: who plans, which phases, who does which kind of work, how it’s checked and how it’s delivered. The brain only proposes plans and can’t change these settings. An agent saying it’s done doesn’t count either: your commands have to pass.</p>
+        <div class="fx-actions">
+          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download free</a>
+          <a class="button is-light" href="#plan">See the five parts</a>
+        </div>
+        <ul class="fx-facts">
+          <li><strong>5 parts</strong><span>Plan, phases, assignment, checks, delivery</span></li>
+          <li><strong>4</strong><span>Built-in templates, with a diff before you apply one</span></li>
+          <li><strong>1</strong><span>Automatic fix when a check fails</span></li>
+          <li><strong>0</strong><span>Merges or pushes without your OK</span></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-sec" id="plan" aria-labelledby="plan-title">
+        <div class="fx-copy reveal">
+          <h2 id="plan-title">1. Plan: who’s the brain, and how much you let go</h2>
+          <p>Pick one agent as the brain. It reads the project first, then splits the request into phases and tasks. The routing mode decides whether a plan waits for your approval.</p>
+          <ul class="fx-list">
+            <li><strong>Suggest, then ask</strong>: the brain proposes the plan and who does what. You review it, reassign or edit tasks, and nothing starts until you approve.</li>
+            <li><strong>Follow settings only</strong>: starts by itself when every task matches a rule, and stops to ask you when one doesn’t.</li>
+            <li><strong>Auto within limits</strong><span class="fx-tag">Pro</span>: the brain picks from the agents you allow, plans start without waiting for approval, and only manual gates stop.</li>
+            <li>When the brain can’t be used, Pro can hand planning to a backup brain. The brain never reviews work it did itself.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Routing mode</span><span class="spacer"></span><span class="ui-muted">Brain: Claude Code</span></div>
+            <div class="ui-row"><div class="fx-line"><span class="ui-title">Suggest, then ask</span><span class="badge info">Current</span></div><span class="ui-muted">The brain proposes; nothing starts until you approve</span></div>
+            <div class="ui-row"><div class="fx-line"><span class="ui-title">Follow settings only</span></div><span class="ui-muted">Routes by your rules and stops when a task doesn’t match</span></div>
+            <div class="ui-row"><div class="fx-line"><span class="ui-title">Auto within limits</span><span class="spacer"></span><span class="badge warn">Pro</span></div><span class="ui-muted">Decides within the agents, models and counts you allow</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="phases" aria-labelledby="phases-title">
+        <div class="fx-copy reveal">
+          <h2 id="phases-title">2. Phases: each one ends with a check</h2>
+          <p>The brain lays out phases for each request, such as specification, implementation and testing. Before you approve a plan, you can reassign a task, edit its instructions, choose whether each phase waits for you when it’s done, or ask the brain to redraft.</p>
+          <ul class="fx-list">
+            <li>At the end of each phase, Pyloxa runs a <strong>gate</strong> on the integrated result. A failed gate is re-run once, then gets one fix task.</li>
+            <li>A gate can move on by itself when it passes, or wait for your approval.</li>
+            <li>The next phase gets a handoff package from the previous one: the results, the checks that passed and what to watch out for.</li>
+            <li><strong>Agent Teams (experimental)</strong><span class="fx-tag">Pro</span>: running agents can see the whole team’s tasks, report progress, and stop to ask you when they’re missing information.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Plan: profile page</span><span class="ui-muted">3 phases · 5 tasks</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">1 Specification and contract</span><span class="ui-muted">Codex</span><span class="spacer"></span><span class="badge ok">Gate passed</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">2 Implementation</span><span class="ui-muted">Frontend Claude Code · backend Codex</span><span class="spacer"></span><span class="badge info"><span class="spin" aria-hidden="true"></span>Running</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">3 Testing</span><span class="ui-muted">Waits for you after the gate</span><span class="spacer"></span><span class="badge">Waiting</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="assign" aria-labelledby="assign-title">
+        <div class="fx-copy reveal">
+          <h2 id="assign-title">3. Assignment: one table decides who does which kind of work</h2>
+          <p>Each row of the assignment table is a kind of work and each column is an agent profile. Click a cell to make that agent primary, add it as a backup, don’t assign it, or open the advanced settings.</p>
+          <ul class="fx-list">
+            <li>Order of precedence: what you pick by hand on the plan card, then project rules, then global rules, then the default route. Within a level, the first rule that fully matches wins.</li>
+            <li>Rules for one project or one phase live in the “Rule list (advanced)” and come before the table. Each row shows which rule decides it.</li>
+            <li>When no rule matches, work goes to the default route or Pyloxa stops to ask you; you choose which.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Assignment table</span><span class="spacer"></span><span class="ui-muted">Click a cell: Make primary, Add as backup, Don’t assign</span></div>
+            <div class="fx-table">
+              <table>
+                <thead><tr><th scope="col">Kind of work</th><th scope="col">Claude Code</th><th scope="col">Codex</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Frontend</th><td><span class="badge info">Primary</span></td><td><span class="badge">Backup 1</span></td></tr>
+                  <tr><th scope="row">Backend</th><td><span class="badge">Backup 1</span></td><td><span class="badge info">Primary</span></td></tr>
+                  <tr><th scope="row">Docs</th><td><span class="badge info">Primary</span></td><td>—</td></tr>
+                  <tr><th scope="row">Tests</th><td>—</td><td><span class="badge info">Primary</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-flip" id="checks" aria-labelledby="checks-title">
+        <div class="fx-copy reveal">
+          <h2 id="checks-title">4. Checks: “done” from an agent doesn’t count</h2>
+          <p>Pyloxa suggests verification commands such as <code>npm run test</code>. You approve each one and can try it in a temporary worktree first; the brain can only use commands you approved.</p>
+          <ul class="fx-list">
+            <li>When a task finishes, Pyloxa runs the acceptance commands in that task’s worktree and checks required files and the write scope. A task is accepted automatically only if it has at least one objective check, every check passes, and it doesn’t need a person to look.</li>
+            <li>If a check fails, the same agent gets one automatic fix. Each task runs automatically at most 3 times.</li>
+            <li><strong>Cross-testing</strong>: another agent adds tests to finished work, and Pyloxa reruns your commands on the result. The tester can only change test files, and the original agent can’t change the tests it added. In the free version you click “Have another agent test it”; Pro does it automatically by your settings.</li>
+            <li><strong>Brain review</strong>: the brain checks finished work read-only, and its verdict is labeled as an AI judgment. Tasks that need your own review still wait for you.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Backend: points API</span><span class="badge">Codex</span><span class="spacer"></span><span class="badge ok">Accepted</span></div>
+            <div class="ui-row">
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><code>npm run test</code>&nbsp;passed</span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Within the write scope</span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Cross-testing: Claude Code added 2 tests, all passing</span>
+            </div>
+            <div class="ui-row fx-note">All checks passed; accepted automatically</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="deliver" aria-labelledby="deliver-title">
+        <div class="fx-copy reveal">
+          <h2 id="deliver-title">5. Delivery: you decide what’s merged and pushed</h2>
+          <p>Each task finishes in its own git worktree and branch, and accepted work is merged into the plan’s integration branch. Merging into your branch, pushing and opening a PR all wait for you, and Pyloxa never resolves conflicts on its own.</p>
+          <ul class="fx-list">
+            <li>Changes to <code>.github</code>, <code>.claude</code>, <code>.codex</code>, <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>.mcp.json</code> or the files that define your check commands are never accepted automatically or sent to brain review, and they’re listed again before you merge.</li>
+            <li>When you open a PR, you can attach a verification record: which commands actually ran and who accepted each result.</li>
+            <li>If you prefer, a whole plan can share one worktree: tasks run in order, and later tasks see the changes accepted before them.</li>
+            <li>Pyloxa never runs stash, reset or checkout on your working directory.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Create pull request</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
+            <div class="ui-row"><span class="ui-muted">Title</span><br />Add the points page</div>
+            <div class="ui-row fx-line"><input type="checkbox" checked disabled aria-label="Attach the verification record" /> <span>Append Pyloxa’s verification record to the description (5 results)</span></div>
+            <div class="ui-row fx-line"><span class="spacer"></span><span class="ui-button primary">Create PR</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="templates" aria-labelledby="templates-title">
+        <div class="fx-copy reveal">
+          <h2 id="templates-title">Start from a template, and undo it if you don’t like it</h2>
+          <p>Before you apply a template, Pyloxa lists every setting it changes and who gets each kind of work; “Undo last template” takes you back. Pro settings in a template are skipped in the free version, and the diff says so.</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col">Template</th><th scope="col">What it does</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Balanced (default)</th><td>Frontend to Claude Code, backend to Codex, each the other’s backup; suggest, then ask.</td></tr>
+              <tr><th scope="row">Quick fix</th><td>Follows your settings only, in one shared worktree, all on the brain’s profile.</td></tr>
+              <tr><th scope="row">Thorough review<span class="fx-tag">Includes Pro settings</span></th><td>The brain reviews every task, and frontend and backend work is cross-tested.</td></tr>
+              <tr><th scope="row">Share the quota<span class="fx-tag">Includes Pro settings</span></th><td>Spreads each kind of work across Claude Code and Codex, with automatic fallback when quota runs out.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="free-pro" aria-labelledby="free-pro-title">
+        <div class="fx-copy reveal">
+          <h2 id="free-pro-title">Free and Pro</h2>
+          <p>The free version covers the whole flow. Pro takes over what you would otherwise do by hand.</p>
+        </div>
+        <div class="fx-table reveal">
+          <table>
+            <thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col" class="is-pro">Pro</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Routing</th><td>Suggest, then ask; follow settings only</td><td class="is-pro">Adds auto within limits</td></tr>
+              <tr><th scope="row">Settings</th><td>Workflow page, assignment table, rule list, four templates</td><td class="is-pro">Same as free</td></tr>
+              <tr><th scope="row">Checks</th><td>Verification commands, phase gates, brain review, cross-testing on request</td><td class="is-pro">Adds automatic cross-testing, with failures sent back for a fix</td></tr>
+              <tr><th scope="row">Running</th><td>One project working at a time</td><td class="is-pro">Several projects at once; Agent Teams (experimental)</td></tr>
+              <tr><th scope="row">Delivery</th><td>Integration branch, merge, push, PR, verification record</td><td class="is-pro">Same as free</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Questions</h2>
+        <div class="fx-faq-list">
+          <details class="fx-q" open>
+            <summary>How does Pyloxa decide a task is really done?</summary>
+            <div><p>By the verification commands you approved. When a task finishes, Pyloxa runs the acceptance commands in that task’s worktree and checks required files and the write scope. Only a task with at least one objective check, where every check passes and no person needs to look, is accepted automatically; otherwise the same agent gets one automatic fix. A check that didn’t run, was skipped or failed is never marked as passed.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Can the cross-tester change my code?</summary>
+            <div><p>No. The tester can only write test files (such as <code>*.test.*</code>, <code>*.spec.*</code>, <code>test/</code>, <code>tests/</code> and <code>__tests__/</code>), and the original agent can’t change the tests it adds. The tester can’t be the profile that did the work, and Gemini CLI can’t be a tester.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Does Pyloxa merge or push on its own?</summary>
+            <div><p>No. Accepted work is merged only into the plan’s own integration branch. Merging into your branch, pushing and opening a PR are always your call, and conflicts are never resolved automatically. Changes to files that steer agents and automation, such as <code>.github</code>, <code>CLAUDE.md</code> and <code>AGENTS.md</code>, are never accepted automatically.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Who decides how many phases a plan has?</summary>
+            <div><p>The brain, for each request. Before you approve the plan, you can reassign tasks, edit instructions, choose whether each phase waits for you when it’s done, or ask the brain to redraft.</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Is the Workflow page part of the free version?</summary>
+            <div><p>Yes. The Workflow page, assignment table, rule list, templates, verification commands, gates, brain review and cross-testing on request are all free. Pro adds auto within limits, automatic cross-testing, several projects at once and Agent Teams (experimental).</p></div>
+          </details>
+        </div>
+      </section>
