@@ -1128,6 +1128,11 @@ section {
   padding-bottom: 28px;
 }
 
+/* Pro 預覽：先下載、登入就能用；早鳥登記放在它下面 */
+.pricing .preview-cta {
+  margin-bottom: 24px;
+}
+
 .pricing .later {
   color: var(--soft);
   font-size: var(--step-body);

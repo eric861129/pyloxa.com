@@ -31,7 +31,7 @@
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
     <meta name="twitter:image:alt" content="Pyloxa：让 Claude Code 和 Codex 分工协作。计划中的每个任务都标明交给哪个 Agent 以及命中的规则。" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/zh-CN/#software","name":"Pyloxa","url":"https://pyloxa.com/zh-CN/","image":"https://pyloxa.com/assets/og-en.png","description":"免费的 Windows 工具：把需求拆成任务，按你的规则交给 Claude Code 或 Codex，用你的测试验收结果，额度用完时由另一个 Agent 接手。使用你自己的订阅。","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.10","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
-    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-CN/#faq","url":"https://pyloxa.com/zh-CN/","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa 是什么？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版可直接下载；即将推出的 Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用。"}},{"@type":"Question","name":"Pyloxa 会收取 AI 使用费吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 运行的是你已经配置好的官方 CLI（Claude Code、Codex CLI，以及实验性的 Gemini CLI），用量计入你自己的订阅，或者你自己选用的 API Key。Pyloxa 不转售、也不代理任何 AI 服务。"}},{"@type":"Question","name":"需要安装什么？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 或 11（64 位）、git，以及至少一个已登录的 Claude Code 或 Codex CLI。Gemini CLI 是可选的实验性支持，需要你自己的付费 Gemini API Key。装了不止一个 CLI，默认流程才能分工，备用接手才派得上用场。还没装也没关系：首次启动时，设置向导会检查 git 和 Node.js，在你确认后用官方的 npm 命令安装 CLI，再带你完成登录和 API Key 配置。"}},{"@type":"Question","name":"Pyloxa 会读取我的凭据吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 只用各 CLI 自带的命令查询登录状态，并像你一样启动 CLI；token 和凭据文件不会被读取、复制或发送。"}},{"@type":"Question","name":"我的代码会发送到哪里？","acceptedAnswer":{"@type":"Answer","text":"免费版无需账号，Pyloxa 也不会把你的项目、提示内容或代码发送给我们；你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。试用、Pro 预览和 Pro 需要登录，账号只用于授权：登录后大约每天更新一次授权，只发送设备 ID、App 和 Windows 的版本。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。使用统计在你的电脑上计算，只有你开启匿名分享（默认关闭）时才会发送，而且只有次数和类别。你设置的 Pro 通知会从你的电脑直接发送到你指定的 Telegram、Discord 或 webhook。详见隐私政策（英文）。"}},{"@type":"Question","name":"Agent 会弄坏我的仓库吗？","acceptedAnswer":{"@type":"Answer","text":"Agent 在独立的 git worktree 中工作，不碰你正在编辑的工作目录；Pyloxa 也不会对它执行 stash、reset 或 checkout。每个任务完成后，会核对改动的文件是否都在计划允许的写入范围内，你也可以在内置的 diff 视图中逐个文件查看。是否合并、是否推送，都由你决定。"}},{"@type":"Question","name":"为什么安装时 Windows 会弹出警告？","acceptedAnswer":{"@type":"Answer","text":"免费版安装包目前还没有代码签名，SmartScreen 可能会提示“Windows 已保护你的电脑”。请点击“更多信息”，再点击“仍要运行”。安装前可以先核对安装包的 SHA-256 与发布页上的值是否一致。"}},{"@type":"Question","name":"可以指定模型和推理强度吗？","acceptedAnswer":{"@type":"Answer","text":"可以。每个 Profile 都能选择模型和推理参数，列表直接取自你安装的 CLI；不选就用 CLI 的默认值。大脑和执行任务的 Agent 可以用不同的模型。"}},{"@type":"Question","name":"能让某类任务固定交给某个 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"可以。用派工规则指定，例如“测试阶段的任务都交给 Claude Code”，规则可以应用到所有项目，也可以只用于当前项目。批准计划前，也能手动改派单个任务。新安装时会使用默认流程：Claude Code 负责前端和视频剪辑，Codex 负责后端和生成图片，Gemini 负责文章和文档，随时可以修改。"}},{"@type":"Question","name":"和把多个 Agent 终端并排显示的工具有什么不同？","acceptedAnswer":{"@type":"Answer","text":"终端复用工具把好几个 Agent 的终端放进同一个窗口，让你看到哪些在运行、哪些在等你，有些还能在退出应用后让 Agent 继续运行，或者连接远程机器。Pyloxa 管的是终端之外的事：大脑把需求拆成任务、按你的规则派给 Agent、用你的命令验收、额度用完时提出备用 Agent，最后由你合并。关闭 Pyloxa 的窗口后，它会留在系统托盘中继续工作；因重启等原因中断的任务，也可以恢复。如果你想亲自盯着每个终端，终端复用工具很合适；如果你想交出一个需求、拿回验收过的结果，Pyloxa 更合适。"}},{"@type":"Question","name":"已经订阅了 Claude 或 ChatGPT，为什么不直接在终端里运行 CLI？","acceptedAnswer":{"@type":"Answer","text":"直接运行 CLI 没有问题，Pyloxa 用的就是同一个 CLI 和你的订阅。区别在三点：额度用完时，Pyloxa 按你的规则提出备用 Agent，你确认后由另一个 CLI 在已改好的文件上继续做；Agent 说做完了不算数，你的验证命令通过才算；派工规则和各 CLI 能读到的 Skills 集中在一个地方查看，不必分别去每个 CLI 里设置。"}},{"@type":"Question","name":"和 CLI 内置的子 Agent 有什么不同？","acceptedAnswer":{"@type":"Answer","text":"子 Agent 在同一个 CLI 内部分工。Pyloxa 在 CLI 之间分工：不同任务可以交给不同的 CLI，各自在独立的 worktree 中运行，用你的命令验收，额度用完时由另一个 CLI 接手。两者可以一起用。"}},{"@type":"Question","name":"支持 Gemini 或其他 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"从 0.1.2 起以实验性功能支持 Gemini CLI，使用你自己的付费 Gemini API Key，不支持 Google 账号登录以及 AI Pro、Ultra 订阅。Gemini 可以执行文章、文档等任务，但不能担任大脑，也不能测试其他 Agent 的成果；在无人值守模式下可以修改文件，但不能运行命令。其他 Agent 仍在评估中。"}},{"@type":"Question","name":"Skills 管理什么时候推出？","acceptedAnswer":{"@type":"Answer","text":"盘点从 0.1.2 起包含在免费版中：“Skills”页面列出各 CLI 能读到的 Skills，并标出名称相同但内容不同的。同步、按项目或 Profile 分配以及派工包属于 Pro，仍在开发，推出时间以版本说明为准。"}},{"@type":"Question","name":"Pro 会增加什么？","acceptedAnswer":{"@type":"Answer","text":"多个项目同时运行并集中到一个收件箱、自动模式、按任务类型自动交叉测试、自动备用链，之后还有额度调度和共享的 Skills 库。Pro 每年 US$79。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。在方案表中留下 email 即可获得早鸟价：每年 US$49，只要持续订阅就不涨价。免费版会一直免费。"}}]}]}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-CN/#faq","url":"https://pyloxa.com/zh-CN/","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa 是什么？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版不需要账号；Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用，目前开放预览，登录即可免费使用。"}},{"@type":"Question","name":"Pyloxa 会收取 AI 使用费吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 运行的是你已经配置好的官方 CLI（Claude Code、Codex CLI，以及实验性的 Gemini CLI），用量计入你自己的订阅，或者你自己选用的 API Key。Pyloxa 不转售、也不代理任何 AI 服务。"}},{"@type":"Question","name":"需要安装什么？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 或 11（64 位）、git，以及至少一个已登录的 Claude Code 或 Codex CLI。Gemini CLI 是可选的实验性支持，需要你自己的付费 Gemini API Key。装了不止一个 CLI，默认流程才能分工，备用接手才派得上用场。还没装也没关系：首次启动时，设置向导会检查 git 和 Node.js，在你确认后用官方的 npm 命令安装 CLI，再带你完成登录和 API Key 配置。"}},{"@type":"Question","name":"Pyloxa 会读取我的凭据吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 只用各 CLI 自带的命令查询登录状态，并像你一样启动 CLI；token 和凭据文件不会被读取、复制或发送。"}},{"@type":"Question","name":"我的代码会发送到哪里？","acceptedAnswer":{"@type":"Answer","text":"免费版无需账号，Pyloxa 也不会把你的项目、提示内容或代码发送给我们；你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。试用、Pro 预览和 Pro 需要登录，账号只用于授权：登录后大约每天更新一次授权，只发送设备 ID、App 和 Windows 的版本。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。使用统计在你的电脑上计算，只有你开启匿名分享（默认关闭）时才会发送，而且只有次数和类别。你设置的 Pro 通知会从你的电脑直接发送到你指定的 Telegram、Discord 或 webhook。详见隐私政策（英文）。"}},{"@type":"Question","name":"Agent 会弄坏我的仓库吗？","acceptedAnswer":{"@type":"Answer","text":"Agent 在独立的 git worktree 中工作，不碰你正在编辑的工作目录；Pyloxa 也不会对它执行 stash、reset 或 checkout。每个任务完成后，会核对改动的文件是否都在计划允许的写入范围内，你也可以在内置的 diff 视图中逐个文件查看。是否合并、是否推送，都由你决定。"}},{"@type":"Question","name":"为什么安装时 Windows 会弹出警告？","acceptedAnswer":{"@type":"Answer","text":"免费版安装包目前还没有代码签名，SmartScreen 可能会提示“Windows 已保护你的电脑”。请点击“更多信息”，再点击“仍要运行”。安装前可以先核对安装包的 SHA-256 与发布页上的值是否一致。"}},{"@type":"Question","name":"可以指定模型和推理强度吗？","acceptedAnswer":{"@type":"Answer","text":"可以。每个 Profile 都能选择模型和推理参数，列表直接取自你安装的 CLI；不选就用 CLI 的默认值。大脑和执行任务的 Agent 可以用不同的模型。"}},{"@type":"Question","name":"能让某类任务固定交给某个 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"可以。用派工规则指定，例如“测试阶段的任务都交给 Claude Code”，规则可以应用到所有项目，也可以只用于当前项目。批准计划前，也能手动改派单个任务。新安装时会使用默认流程：Claude Code 负责前端和视频剪辑，Codex 负责后端和生成图片，Gemini 负责文章和文档，随时可以修改。"}},{"@type":"Question","name":"和把多个 Agent 终端并排显示的工具有什么不同？","acceptedAnswer":{"@type":"Answer","text":"终端复用工具把好几个 Agent 的终端放进同一个窗口，让你看到哪些在运行、哪些在等你，有些还能在退出应用后让 Agent 继续运行，或者连接远程机器。Pyloxa 管的是终端之外的事：大脑把需求拆成任务、按你的规则派给 Agent、用你的命令验收、额度用完时提出备用 Agent，最后由你合并。关闭 Pyloxa 的窗口后，它会留在系统托盘中继续工作；因重启等原因中断的任务，也可以恢复。如果你想亲自盯着每个终端，终端复用工具很合适；如果你想交出一个需求、拿回验收过的结果，Pyloxa 更合适。"}},{"@type":"Question","name":"已经订阅了 Claude 或 ChatGPT，为什么不直接在终端里运行 CLI？","acceptedAnswer":{"@type":"Answer","text":"直接运行 CLI 没有问题，Pyloxa 用的就是同一个 CLI 和你的订阅。区别在三点：额度用完时，Pyloxa 按你的规则提出备用 Agent，你确认后由另一个 CLI 在已改好的文件上继续做；Agent 说做完了不算数，你的验证命令通过才算；派工规则和各 CLI 能读到的 Skills 集中在一个地方查看，不必分别去每个 CLI 里设置。"}},{"@type":"Question","name":"和 CLI 内置的子 Agent 有什么不同？","acceptedAnswer":{"@type":"Answer","text":"子 Agent 在同一个 CLI 内部分工。Pyloxa 在 CLI 之间分工：不同任务可以交给不同的 CLI，各自在独立的 worktree 中运行，用你的命令验收，额度用完时由另一个 CLI 接手。两者可以一起用。"}},{"@type":"Question","name":"支持 Gemini 或其他 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"从 0.1.2 起以实验性功能支持 Gemini CLI，使用你自己的付费 Gemini API Key，不支持 Google 账号登录以及 AI Pro、Ultra 订阅。Gemini 可以执行文章、文档等任务，但不能担任大脑，也不能测试其他 Agent 的成果；在无人值守模式下可以修改文件，但不能运行命令。其他 Agent 仍在评估中。"}},{"@type":"Question","name":"Skills 怎么管理？","acceptedAnswer":{"@type":"Answer","text":"免费版的“Skills”页列出各 CLI 读得到的 Skills，并标出名称相同但内容不同的。Pro 把它们整理成一个 Skills 库：同步到每个 CLI、按项目或 Profile 分配，也可以和工作流程一起打包成派工包分享。这些功能从 0.1.10 起包含在 Pro 预览中，登录即可使用。"}},{"@type":"Question","name":"Pro 多了什么？","acceptedAnswer":{"@type":"Answer","text":"多个项目同时运行，等你处理的事集中在任务中心；在你设定的范围内自动决定（自动模式）；额度用完时自动备用；自动交叉测试；大脑备用；项目优先级、每条连接的配额和定时开始的计划；用量仪表板和报告；通知到 Telegram、Discord 或 webhook；Skills 库和派工包；以及实验中的 Agent Teams。Pro 每年 US$79，目前开放预览：登录即可免费使用，Pro 开卖时结束，至少提前 30 天通知。早鸟价每年 US$49，只要持续订阅就不涨价。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。免费版会一直免费。"}}]}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
@@ -111,7 +111,7 @@
             <div class="router" data-ui data-router>
               <div class="ui-row router-head">
                 <span class="ui-title">这个任务交给谁？</span>
-                <span class="badge info">派工规则</span>
+                <span class="badge info">工作流程</span>
               </div>
               <div class="ui-row fields">
                 <div>
@@ -387,7 +387,7 @@
 
           <div class="tabs" role="tablist" aria-label="可自定义的项目" hidden>
             <button type="button" role="tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true">Agent 和模型</button>
-            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">派工规则</button>
+            <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="false">分工</button>
             <button type="button" role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false">流程和验收</button>
             <button type="button" role="tab" id="tab-modes" aria-controls="panel-modes" aria-selected="false">自动化程度</button>
           </div>
@@ -484,7 +484,7 @@
       <section class="skills section" id="skills" aria-labelledby="skills-title">
         <div class="wrap grid">
           <div class="skills-copy reveal">
-            <span class="dev-tag">开发中</span>
+            <span class="dev-tag">Pro 预览可用</span>
             <h2 id="skills-title">一套 Skills，每个 Agent 都能用</h2>
             <p>Claude Code 读 <code>~/.claude/skills</code>，Codex 读 <code>~/.agents/skills</code>。同一个 Skill 两边各放一份，改了一边，另一边就过时了。Pyloxa 把它们集中管理。</p>
             <ol class="steps">
@@ -515,7 +515,7 @@
                 </tbody>
               </table>
             </div>
-            <p class="media-note">示意图。盘点从 0.1.2 起包含在免费版中；同步、分配和派工包属于 Pro，仍在开发。</p>
+            <p class="media-note">示意画面。盘点包含在免费版中；同步、分配和派工包属于 Pro，Pro 预览期间登录即可使用。</p>
           </div>
         </div>
       </section>
@@ -558,7 +558,7 @@
         </div>
         <div class="band c4">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b4">用我的语言回复。</p><p class="consequence">界面和 Agent 的回复语言可以分别选择：<span lang="en">English</span>、<span lang="zh-Hant">繁體中文</span>或简体中文。</p></div>
+            <div class="sentence"><p class="line" id="b4">用我的语言回复。</p><p class="consequence">界面和 Agent 的回复语言可以分别选择，各有九种语言，和本网站一样。</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
           </div>
         </div>
@@ -601,27 +601,27 @@
             <tr>
               <th scope="row">额度调度</th>
               <td>等待额度的任务在重置后自动继续</td>
-              <td class="pro">项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始 <span class="soon-tag">后续更新</span></td>
+              <td class="pro">项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始 </td>
             </tr>
             <tr>
               <th scope="row">用量和报告</th>
               <td>每次运行的用量</td>
-              <td class="pro">跨项目的用量仪表盘和预算预留，项目用量和工时报告导出为 Markdown 或 CSV <span class="soon-tag">后续更新</span></td>
+              <td class="pro">跨项目的用量仪表板：每个项目的 Agent 工时、token 和 CLI 报告的金额，可以导出为 Markdown 或 CSV</td>
             </tr>
             <tr>
               <th scope="row">通知</th>
               <td>Windows 桌面通知</td>
-              <td class="pro">推送到你自己的 Telegram bot、Discord 或任意 webhook <span class="soon-tag">后续更新</span></td>
+              <td class="pro">推送到你自己的 Telegram bot、Discord 或任意 webhook </td>
             </tr>
             <tr>
               <th scope="row">Skills</th>
               <td>盘点每个 CLI 能读到的 Skills</td>
-              <td class="pro">一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，并和规则一起打包成派工包分享 <span class="soon-tag">后续更新</span></td>
+              <td class="pro">一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，并和规则一起打包成派工包分享 </td>
             </tr>
             <tr>
               <th scope="row">大脑</th>
               <td>一个大脑，可随时更换</td>
-              <td class="pro">备用大脑：主大脑不可用时由备用大脑接手规划 <span class="soon-tag">后续更新</span></td>
+              <td class="pro">备用大脑：主大脑不可用时由备用大脑接手规划 </td>
             </tr>
             <tr class="both">
               <th scope="row">两个版本都有</th>
@@ -633,6 +633,7 @@
               <td></td>
               <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载免费版</a></td>
               <td class="pro">
+              <a class="button preview-cta" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载并登录，免费使用 Pro 预览</a>
               <span class="later" data-waitlist-soon>早鸟登记即将开放。</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-table">早鸟价：每年 US$49</label>
@@ -655,21 +656,19 @@
             <h3>Pro <span class="early">早鸟价每年 US$49</span></h3>
             <p class="price">US$79 <span class="period">每年；停止续订后，付费期间发布的版本仍可使用 Pro</span></p>
             <p class="preview-note">Pro 预览：登录免费使用，开卖时结束（至少提前 30 天通知）。</p>
-            <p class="plan-sub">Pro 发布时</p>
+            <p class="plan-sub">Pro 预览即可使用</p>
             <ul>
               <li>多个项目同时运行，所有等你处理的事集中在任务中心的收件箱</li>
               <li>授权范围内自动：在你允许的 Agent、模型和次数内自行选择与重试，超出范围就暂停</li>
               <li>自动备用链：依次交给备用 Agent，可设触发条件和上限；经你事先允许，订阅额度用完时改用 API 计费</li>
               <li>自动交叉测试：按任务类型或由大脑判断，自动交给另一个 Agent 测试，没通过就自动退回修复</li>
-            </ul>
-            <p class="plan-sub">后续更新</p>
-            <ul class="muted">
               <li>额度调度：项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始</li>
-              <li>用量和报告：跨项目的用量仪表盘和预算预留，项目用量和工时报告导出为 Markdown 或 CSV</li>
+              <li>用量和报告：跨项目的用量仪表板，每个项目的 Agent 工时、token 和 CLI 报告的金额，可以导出为 Markdown 或 CSV</li>
               <li>通知：推送到你自己的 Telegram bot、Discord 或任意 webhook</li>
               <li>Skills：一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，并和规则一起打包成派工包分享</li>
               <li>大脑：备用大脑，主大脑不可用时由它接手规划</li>
             </ul>
+            <a class="button preview-cta" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载并登录，免费使用 Pro 预览</a>
             <span class="later" data-waitlist-soon>早鸟登记即将开放。</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-phone">早鸟价：每年 US$49</label>
@@ -698,7 +697,7 @@
             <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载免费版</a>
           </div>
         </div>
-        <p class="pricing-note">标注“后续更新”的功能会在 Pro 发布后陆续加入，订阅期间都能用上。免费版会一直免费，与安全和正确性相关的功能都在免费版中。</p>
+        <p class="pricing-note">Pro 预览期间，登录即可免费使用以上所有 Pro 功能。Pro 开卖时预览结束，我们会至少提前 30 天通知；结束后还有 14 天的 Pro，数据和设置都会保留。免费版会一直免费，与安全和正确性相关的功能都在免费版中。</p>
       </section>
 
       <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
@@ -707,7 +706,7 @@
             <li class="faq-head"><h2 id="faq-title">常见问题</h2></li>
             <li data-q class="is-open">
               <h3 class="faq-q"><button type="button" aria-expanded="true">Pyloxa 是什么？</button></h3>
-              <div class="inline-answer"><p>Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版可直接下载；即将推出的 Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用。</p></div>
+              <div class="inline-answer"><p>Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版不需要账号；Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用，目前开放预览，登录即可免费使用。</p></div>
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">Pyloxa 会收取 AI 使用费吗？</button></h3>
@@ -758,16 +757,16 @@
               <div class="inline-answer"><p>从 0.1.2 起以实验性功能支持 Gemini CLI，使用你自己的付费 Gemini API Key，不支持 Google 账号登录以及 AI Pro、Ultra 订阅。Gemini 可以执行文章、文档等任务，但不能担任大脑，也不能测试其他 Agent 的成果；在无人值守模式下可以修改文件，但不能运行命令。其他 Agent 仍在评估中。</p></div>
             </li>
             <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">Skills 管理什么时候推出？</button></h3>
-              <div class="inline-answer"><p>盘点从 0.1.2 起包含在免费版中：“Skills”页面列出各 CLI 能读到的 Skills，并标出名称相同但内容不同的。同步、按项目或 Profile 分配以及派工包属于 Pro，仍在开发，推出时间以版本说明为准。</p></div>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Skills 怎么管理？</button></h3>
+              <div class="inline-answer"><p>免费版的“Skills”页列出各 CLI 读得到的 Skills，并标出名称相同但内容不同的。Pro 把它们整理成一个 Skills 库：同步到每个 CLI、按项目或 Profile 分配，也可以和工作流程一起打包成派工包分享。这些功能从 0.1.10 起包含在 Pro 预览中，登录即可使用。</p></div>
             </li>
             <li data-q>
-              <h3 class="faq-q"><button type="button" aria-expanded="false">Pro 会增加什么？</button></h3>
-              <div class="inline-answer"><p>多个项目同时运行并集中到一个收件箱、自动模式、按任务类型自动交叉测试、自动备用链，之后还有额度调度和共享的 Skills 库。Pro 每年 US$79。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。在方案表中留下 email 即可获得早鸟价：每年 US$49，只要持续订阅就不涨价。免费版会一直免费。</p></div>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">Pro 多了什么？</button></h3>
+              <div class="inline-answer"><p>多个项目同时运行，等你处理的事集中在任务中心；在你设定的范围内自动决定（自动模式）；额度用完时自动备用；自动交叉测试；大脑备用；项目优先级、每条连接的配额和定时开始的计划；用量仪表板和报告；通知到 Telegram、Discord 或 webhook；Skills 库和派工包；以及实验中的 Agent Teams。Pro 每年 US$79，目前开放预览：登录即可免费使用，Pro 开卖时结束，至少提前 30 天通知。早鸟价每年 US$49，只要持续订阅就不涨价。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。免费版会一直免费。</p></div>
             </li>
           </ul>
           <div class="faq-pane" aria-live="polite">
-            <p>Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版可直接下载；即将推出的 Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用。</p>
+            <p>Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版不需要账号；Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用，目前开放预览，登录即可免费使用。</p>
           </div>
         </div>
       </section>
