@@ -419,7 +419,7 @@
               <p>Cada tarea termina en su propio git worktree y se comprueba contra su alcance de escritura antes de fusionarse en la rama de integración. Fusionar en tu rama, hacer push y abrir un PR esperan a que tú lo decidas.</p>
               <ul>
                 <li>La descripción del PR puede llevar una tarjeta de verificación: una tabla por fase con quién hizo el trabajo, quién hizo las pruebas cruzadas, qué comandos ejecutó Pyloxa y cómo se aceptó cada resultado. Que un agente diga que terminó no cuenta como aprobado.</li>
-                <li>La línea final está desactivada de forma predeterminada. Si la activas, dice “Verified with Pyloxa” solo cuando todos los resultados superaron los comandos que ejecutó Pyloxa.</li>
+                <li>La línea final está desactivada de forma predeterminada. Si la activas, dice “Verified with Pyloxa” solo cuando todos los resultados superaron los comandos que ejecutó Pyloxa y todos los controles se superaron.</li>
                 <li>También la ves sin abrir un PR: cuando termina un plan, haz clic en “Tarjeta de verificación” al pie de la tarjeta del plan y copia el Markdown.</li>
                 <li>Cuando una tarea cambia archivos que dirigen a los agentes y la automatización, como .github, .claude o CLAUDE.md, nunca se acepta automáticamente, y el diálogo de fusión vuelve a mostrar esos archivos.</li>
                 <li>Pyloxa nunca hace stash, reset ni checkout en tu directorio de trabajo.</li>

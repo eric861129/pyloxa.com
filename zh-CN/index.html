@@ -419,7 +419,7 @@
               <p>每个任务在自己的 git worktree 中完成，核对改动都在允许的写入范围内之后，再合并到集成分支。合并到你的分支、推送和创建 PR，都等你来操作。</p>
               <ul>
                 <li>PR 描述可以附上验证报告卡：每个阶段一张表，写明谁做的、谁做交叉测试、Pyloxa 运行了哪些命令、成果是怎么被接受的。Agent 说做完了不算通过。</li>
-                <li>最后一行默认不加。打开后，只有每个成果都通过了 Pyloxa 执行的命令，才会写“Verified with Pyloxa”。</li>
+                <li>最后一行默认不加。打开后，只有每个成果都通过了 Pyloxa 执行的命令、每个 Gate 也都通过时，才会写“Verified with Pyloxa”。</li>
                 <li>不开 PR 也能看到：计划完成后点计划卡下方的“验证报告卡”，可以复制 Markdown。</li>
                 <li>任务改动了 .github、.claude、CLAUDE.md 这类影响 Agent 和自动化的文件时，一律不会自动接受，合并前的对话框也会再次列出这些文件。</li>
                 <li>Pyloxa 不会对你的工作目录执行 stash、reset 或 checkout。</li>

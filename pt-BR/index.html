@@ -419,7 +419,7 @@
               <p>Cada tarefa termina no próprio git worktree e é conferida contra o escopo de escrita antes de ser mesclada na branch de integração. Mesclar na sua branch, fazer push e abrir um PR ficam esperando por você.</p>
               <ul>
                 <li>A descrição do PR pode levar um cartão de verificação: uma tabela por fase mostrando quem fez o trabalho, quem fez o teste cruzado, quais comandos o Pyloxa executou e como cada resultado foi aceito. Um agente dizer que terminou não conta como aprovado.</li>
-                <li>A linha final vem desligada por padrão. Quando você a ativa, ela só diz “Verified with Pyloxa” se todos os resultados passaram nos comandos que o Pyloxa executou.</li>
+                <li>A linha final vem desligada por padrão. Quando você a ativa, ela só diz “Verified with Pyloxa” se todos os resultados passaram nos comandos que o Pyloxa executou e todos os gates foram aprovados.</li>
                 <li>Não precisa de PR para ver: quando um plano termina, abra “Cartão de verificação” abaixo do cartão do plano e copie o Markdown.</li>
                 <li>Quando uma tarefa altera arquivos que orientam agentes e automações, como .github, .claude ou CLAUDE.md, ela nunca é aceita automaticamente, e a janela de merge lista esses arquivos de novo.</li>
                 <li>O Pyloxa nunca executa stash, reset ou checkout no seu diretório de trabalho.</li>

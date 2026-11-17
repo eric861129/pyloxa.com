@@ -119,7 +119,7 @@
           <ul class="fx-list">
             <li>改到 <code>.github</code>、<code>.claude</code>、<code>.codex</code>、<code>CLAUDE.md</code>、<code>AGENTS.md</code>、<code>.mcp.json</code> 或定義驗證命令的檔案時，一律不自動接受，也不交給大腦驗收，合併前會再列出一次。</li>
             <li>開 PR 時可以附上<strong>驗證報告卡</strong>：每個階段一張表，寫明誰做的、誰交叉測試、Pyloxa 跑了哪些命令、成果怎麼被接受。計畫完成後，在計畫卡下方也能打開它、複製 Markdown。</li>
-            <li>報告卡最後一行預設不加。打開後，只有每個成果都通過 Pyloxa 執行的命令，才會寫「Verified with Pyloxa」，否則寫「Verification record by Pyloxa」。</li>
+            <li>報告卡最後一行預設不加。打開後，只有每個成果都通過 Pyloxa 執行的命令、每個 Gate 也都通過時，才會寫「Verified with Pyloxa」，否則寫「Verification record by Pyloxa」。</li>
             <li>需要時可以讓整個計畫共用一個 worktree，工作依序執行，後面的工作看得到前面接受的改動。</li>
             <li>Pyloxa 不會對你的工作目錄執行 stash、reset 或 checkout。</li>
           </ul>
@@ -156,7 +156,7 @@
       <section class="wrap fx-sec" id="my-workflows" aria-labelledby="my-workflows-title">
         <div class="fx-copy reveal">
           <h2 id="my-workflows-title">我的流程：每個專案各用一個<span class="fx-tag">Pro</span></h2>
-          <p>設定好之後按「存成我的流程」，再替每個專案選要用哪一個，例如 API 專案先寫規格、小工具直接改。沒有指定的專案照全域設定。</p>
+          <p>設定好之後按「存成我的流程」（最多 20 個），再替每個專案選要用哪一個，例如 API 專案先寫規格、小工具直接改。沒有指定的專案照全域設定；你為某個專案另外設的規則仍然優先。</p>
           <ul class="fx-list">
             <li><strong>用一句話建立</strong>：描述你想要的做法，大腦擬好流程，先列成差異給你看；要套用到全域、存成我的流程，還是修改描述再擬一次，由你選。大腦不能自己編 Agent，做不到的要求會寫在說明裡。</li>
             <li><strong>版本紀錄</strong>：每次儲存留一個版本，每個流程最多 10 版。可以比較任兩版，或還原到其中一版；還原前的內容也會留一版。</li>

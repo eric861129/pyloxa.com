@@ -420,7 +420,7 @@
               <p>Each task finishes in its own git worktree and is checked against its write scope before it’s merged into the integration branch. Merging into your branch, pushing, and opening a PR all wait for you.</p>
               <ul>
                 <li>The PR description can carry a verification card: one table per phase showing who did the work, who cross-tested it, which commands Pyloxa ran, and how each result was accepted. An agent saying it’s done doesn’t count as passing.</li>
-                <li>The closing line is off by default. When you turn it on, it says “Verified with Pyloxa” only if every result passed the commands Pyloxa ran.</li>
+                <li>The closing line is off by default. When you turn it on, it says “Verified with Pyloxa” only if every result passed the commands Pyloxa ran and every gate passed.</li>
                 <li>No PR needed to see it: when a plan finishes, open “Verification card” under the plan card and copy the Markdown.</li>
                 <li>When a task changes files that steer agents and automation, such as .github, .claude or CLAUDE.md, it’s never accepted automatically, and the merge dialog lists those files again.</li>
                 <li>Pyloxa never runs stash, reset or checkout on your working directory.</li>

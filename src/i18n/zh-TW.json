@@ -450,7 +450,7 @@
   "wf.phases.li2": "也可以照你規定的階段排：最多 5 段，每段交給誰、做完要不要等你核准、需求用不到時能不能省略，都由你決定。免費版也能用。",
   "wf.phases.mode": "照我規定的階段",
   "wf.deliver.li2": "PR 說明可以附上驗證報告卡：每個階段一張表，寫明誰做的、誰交叉測試、Pyloxa 跑了哪些命令、成果怎麼被接受。Agent 說做完了不算通過。",
-  "wf.deliver.li4": "最後一行預設不加。打開後，只有每個成果都通過 Pyloxa 執行的命令，才會寫「Verified with Pyloxa」。",
+  "wf.deliver.li4": "最後一行預設不加。打開後，只有每個成果都通過 Pyloxa 執行的命令、每個 Gate 也都通過時，才會寫「Verified with Pyloxa」。",
   "wf.deliver.li5": "沒有要開 PR 也看得到：計畫完成後按計畫卡下方的「驗證報告卡」，可以複製 Markdown。",
   "wf.deliver.r.title": "Pyloxa 驗證紀錄",
   "wf.deliver.r.sum": "總結：✅ 2 個通過 Pyloxa 自己執行的命令 · ⚠️ 1 個沒有命令驗證，靠人工或 AI 確認",

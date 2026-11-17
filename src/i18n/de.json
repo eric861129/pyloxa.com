@@ -450,7 +450,7 @@
   "wf.phases.li2": "Oder du nutzt eigene Phasen: bis zu fünf, und für jede entscheidest du, wer sie übernimmt, ob sie am Ende auf deine Freigabe wartet und ob sie entfallen kann, wenn eine Anfrage sie nicht braucht. Auch in der kostenlosen Version.",
   "wf.phases.mode": "Meine Phasen verwenden",
   "wf.deliver.li2": "Die PR-Beschreibung kann einen Prüfbericht enthalten: eine Tabelle pro Phase, die zeigt, wer die Arbeit gemacht hat, wer das Cross-Testing übernommen hat, welche Befehle Pyloxa ausgeführt hat und wie jedes Ergebnis angenommen wurde. Sagt ein Agent, er sei fertig, zählt das nicht als bestanden.",
-  "wf.deliver.li4": "Die Schlusszeile ist standardmäßig aus. Schaltest du sie ein, steht dort nur dann „Verified with Pyloxa“, wenn jedes Ergebnis die Befehle bestanden hat, die Pyloxa ausgeführt hat.",
+  "wf.deliver.li4": "Die Schlusszeile ist standardmäßig aus. Schaltest du sie ein, steht dort nur dann „Verified with Pyloxa“, wenn jedes Ergebnis die Befehle bestanden hat, die Pyloxa ausgeführt hat, und jedes Gate bestanden ist.",
   "wf.deliver.li5": "Auch ohne PR sichtbar: Wenn ein Plan fertig ist, öffne „Prüfbericht“ unter der Plankarte und kopiere das Markdown.",
   "wf.deliver.r.title": "Pyloxa-Prüfprotokoll",
   "wf.deliver.r.sum": "Zusammenfassung: ✅ 2 haben Befehle bestanden, die Pyloxa selbst ausgeführt hat · ⚠️ 1 ohne Befehlsprüfung, von einer Person oder KI geprüft",

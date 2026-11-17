@@ -419,7 +419,7 @@
               <p>Jede Aufgabe wird in ihrem eigenen git-Worktree fertig und gegen ihren Schreibbereich geprüft, bevor sie in den Integrations-Branch gemergt wird. Das Mergen in deinen Branch, das Pushen und das Öffnen eines PR warten auf dich.</p>
               <ul>
                 <li>Die PR-Beschreibung kann einen Prüfbericht enthalten: eine Tabelle pro Phase, die zeigt, wer die Arbeit gemacht hat, wer das Cross-Testing übernommen hat, welche Befehle Pyloxa ausgeführt hat und wie jedes Ergebnis angenommen wurde. Sagt ein Agent, er sei fertig, zählt das nicht als bestanden.</li>
-                <li>Die Schlusszeile ist standardmäßig aus. Schaltest du sie ein, steht dort nur dann „Verified with Pyloxa“, wenn jedes Ergebnis die Befehle bestanden hat, die Pyloxa ausgeführt hat.</li>
+                <li>Die Schlusszeile ist standardmäßig aus. Schaltest du sie ein, steht dort nur dann „Verified with Pyloxa“, wenn jedes Ergebnis die Befehle bestanden hat, die Pyloxa ausgeführt hat, und jedes Gate bestanden ist.</li>
                 <li>Auch ohne PR sichtbar: Wenn ein Plan fertig ist, öffne „Prüfbericht“ unter der Plankarte und kopiere das Markdown.</li>
                 <li>Ändert eine Aufgabe Dateien, die Agenten und Automatisierung steuern, etwa .github, .claude oder CLAUDE.md, wird sie nie automatisch angenommen, und der Merge-Dialog listet diese Dateien noch einmal auf.</li>
                 <li>Pyloxa führt in deinem Arbeitsverzeichnis nie stash, reset oder checkout aus.</li>

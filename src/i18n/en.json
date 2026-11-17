@@ -450,7 +450,7 @@
   "wf.phases.li2": "Or use your own stages: up to five, and for each one you decide who does it, whether it waits for your approval when done, and whether it can be skipped when a request doesn’t need it. Free version included.",
   "wf.phases.mode": "Use my stages",
   "wf.deliver.li2": "The PR description can carry a verification card: one table per phase showing who did the work, who cross-tested it, which commands Pyloxa ran, and how each result was accepted. An agent saying it’s done doesn’t count as passing.",
-  "wf.deliver.li4": "The closing line is off by default. When you turn it on, it says “Verified with Pyloxa” only if every result passed the commands Pyloxa ran.",
+  "wf.deliver.li4": "The closing line is off by default. When you turn it on, it says “Verified with Pyloxa” only if every result passed the commands Pyloxa ran and every gate passed.",
   "wf.deliver.li5": "No PR needed to see it: when a plan finishes, open “Verification card” under the plan card and copy the Markdown.",
   "wf.deliver.r.title": "Pyloxa verification record",
   "wf.deliver.r.sum": "Summary: ✅ 2 passed commands Pyloxa ran itself · ⚠️ 1 without command checks, reviewed by a person or AI",

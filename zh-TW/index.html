@@ -419,7 +419,7 @@
               <p>每個工作在自己的 git worktree 完成，核對改動都在允許的寫入範圍內，再合併到整合分支。合併到你的分支、推送和開 PR，都等你按下。</p>
               <ul>
                 <li>PR 說明可以附上驗證報告卡：每個階段一張表，寫明誰做的、誰交叉測試、Pyloxa 跑了哪些命令、成果怎麼被接受。Agent 說做完了不算通過。</li>
-                <li>最後一行預設不加。打開後，只有每個成果都通過 Pyloxa 執行的命令，才會寫「Verified with Pyloxa」。</li>
+                <li>最後一行預設不加。打開後，只有每個成果都通過 Pyloxa 執行的命令、每個 Gate 也都通過時，才會寫「Verified with Pyloxa」。</li>
                 <li>沒有要開 PR 也看得到：計畫完成後按計畫卡下方的「驗證報告卡」，可以複製 Markdown。</li>
                 <li>工作改到 .github、.claude、CLAUDE.md 這類影響 Agent 與自動化的檔案時，一律不自動接受，合併前的對話框也會再列出這些檔案。</li>
                 <li>Pyloxa 不會對你的工作目錄執行 stash、reset 或 checkout。</li>

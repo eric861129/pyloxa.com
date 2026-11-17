@@ -60,6 +60,27 @@
           <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">回報問題</a>
         </div>
       </div>
+      <article class="release" id="v0.1.11" aria-labelledby="h-v0.1.11">
+        <header>
+          <h2 id="h-v0.1.11"><a href="#v0.1.11">0.1.11</a></h2>
+          <p class="date"><time datetime="2026-11-17">發布於 2026-11-17</time></p>
+        </header>
+        <div class="body">
+<p>這次更新可以存下自己的工作流程、用一句話建立流程，也可以先拿範例專案試駕，再用在自己的專案上。每個完成的計畫都多了驗證報告卡，設定可以備份帶到另一台電腦，選單也多了說明文件。</p>
+<h3>新功能</h3>
+<ul><li><strong>先用範例專案試駕。</strong> 設定精靈的最後一步，以及還沒有任何專案時的歡迎頁，都有「開始試駕」。Pyloxa 會建立一個藏了四捨五入 bug 的小範例 repo 和事先寫好的計畫，你核准之前什麼都不會執行。有兩個不同的 CLI 時，一個修 bug、另一家測試修好了沒（Pro 自動；免費版由你按「交給另一個 Agent 測試」）；只有一個時，由 Pyloxa 自己執行規格裡的測試。Agent 只能改 <code>src/</code> 裡的檔案，所以結果通過就代表 bug 真的修好了。開始前會顯示誰做、誰測，以及估計的 Agent 回合數、tokens 與時間。試駕需要 git 與 Node.js，和其他工作一樣用你自己的訂閱或 API Key。</li><li><strong>每個完成的計畫都有驗證報告卡。</strong> 計畫完成後，下方的「驗證報告卡」列出檢查了什麼：每個工作由誰做、有沒有交叉測試、Pyloxa 自己執行的命令與結果，可以複製成 Markdown。PR 說明裡的驗證紀錄也換成同一張報告卡。最後一行的「Verified with Pyloxa」要你打開才加，而且只有每個成果都通過 Pyloxa 執行的命令、Gate 也都通過時才會這樣寫。</li><li><strong>我的流程（Pro）。</strong> 在「工作流程」頁按「存成我的流程」，把目前的派工模式、大腦驗收、交叉測試、worktree、階段與分工存成一個有名字的流程，最多 20 個。每個專案可以使用不同的流程，你為專案另外設的規則仍然優先。每個流程保留最近 10 個版本，可以比較任兩版或還原到某一版。沒有 Pro 時專案照全域設定，存好的流程會保留。</li><li><strong>用一句話建立流程（Pro）。</strong> 在「工作流程」頁按「用一句話建立」，寫下你想要的做法，例如「先寫規格，我核准後再開發；後端交給 Codex；全部都要大腦驗收」。大腦擬好一個流程，並列出做不到的地方。套用到全域設定或存成我的流程之前，會先列出哪些設定會改變。</li><li><strong>設定帶著走。</strong> 「設定 → 備份與搬移」把 Profile、全域規則、大腦與派工偏好、常用指令範本、全域共用記憶、Skills 庫、外觀與我的流程匯出成一個檔案，在另一台電腦匯入時會先預覽每一項變更。API Key、登入資料與這台電腦的路徑一律不匯出。匯入前會先備份這台的設定，「還原備份」可以回到最近 5 份中的任一份。匯出與匯入免費；檔案裡的 Pro 設定照存，沒有 Pro 時暫停。</li><li><strong>派工包可以帶我的流程（Pro）。</strong> 派工包可以附上你的流程，匯入時可以順便讓這個專案使用。舊派工包的「流程與慣例」改稱「慣例」。0.1.10 做的派工包照常能匯入。</li><li><strong>計畫卡上的階段進度。</strong> 核准有兩個以上階段的計畫後，計畫上方會顯示每個階段的狀態與目前在第幾段，點一段就捲到那個階段。</li><li><strong>說明文件。</strong> 「說明」選單與標題列的 Pyloxa 選單可以開啟 pyloxa.com/help/ 的「說明文件」（英文或繁體中文）。</li></ul>
+<h3>調整</h3>
+<ul><li>設定精靈與計畫卡的文字跟上 Pyloxa 現在的做法。歡迎頁不再說 Pyloxa 沒有伺服器：你的程式碼與 Agent 的回覆不會經過 Pyloxa 的伺服器，匿名使用統計預設關閉、你開啟才會傳送。精靈改指向「工作流程」頁，不再是舊的「派工規則」頁。Pro 的計畫卡不再寫「最多同時兩個工作」：同時進行的數量只受各條連線的上限限制。</li><li>大腦擬不出流程時，Pyloxa 會說明原因與下一步。</li><li>免費版裡，大腦擬好的流程不會套用自動模式。</li></ul>
+<h3>隱私</h3>
+<ul><li>沒有新的網路請求。「說明文件」是用瀏覽器開啟 pyloxa.com。</li><li>試駕的範例 repo 留在你電腦上 Pyloxa 資料夾的 <code>test-drive</code> 裡。</li></ul>
+<h3>升級</h3>
+<p>直接執行新的安裝檔覆蓋舊版即可。存在 <code>%APPDATA%\Pyloxa</code> 的執行紀錄、專案、設定、共用記憶與保存的 API Key 都會保留。資料庫維持第 21 版，所以可以用同一份資料回到 0.1.10；0.1.10 看不到我的流程，也不能匯入含有流程的派工包。</p>
+<h3>已知限制</h3>
+<ul><li>只支援 Windows 10 與 11（64 位元）。</li><li>安裝檔沒有程式碼簽章，SmartScreen 可能跳出警告；請按「其他資訊」，再按「仍要執行」。</li><li>Pyloxa 本身不會自動更新。有新版本時 Pyloxa 會提示你。</li><li>Codex 透過 <code>codex exec</code> 在它的沙箱內執行。在 Windows 上，這個沙箱通常無法建置專案或安裝套件，所以 Codex 的成果以你的驗證命令驗收。</li><li>Agent 寫的測試程式，在驗證命令執行它時仍在沙箱外執行（環境裡沒有你的金鑰）。新增或修改測試的工作，請看過變更再接受。</li><li>Gemini CLI 是實驗性支援：不能擔任大腦或交叉測試的測試者，在無人值守模式下也不能執行命令。</li><li>Agent Teams 是實驗功能。</li><li>說明文件目前只有英文與繁體中文。</li><li>已測試 Claude Code 2.1.318、Codex CLI 0.166.0，以及 Gemini CLI 0.66.0 與 0.67.0。</li></ul>
+<h3>校驗碼</h3>
+<div class="table"><table><thead><tr><th scope="col">檔案</th><th scope="col">大小</th><th scope="col">SHA-256</th></tr></thead><tbody><tr><td><code>Pyloxa-Setup-0.1.11.exe</code></td><td>待填 位元組</td><td><code>待填</code></td></tr></tbody></table></div>
+        </div>
+      </article>
       <article class="release" id="v0.1.10" aria-labelledby="h-v0.1.10">
         <header>
           <h2 id="h-v0.1.10"><a href="#v0.1.10">0.1.10</a></h2>

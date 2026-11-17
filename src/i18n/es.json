@@ -450,7 +450,7 @@
   "wf.phases.li2": "También puedes usar tus propias fases: hasta cinco, y en cada una decides quién la hace, si espera tu aprobación al terminar y si se puede omitir cuando la solicitud no la necesita. Incluido en la versión gratuita.",
   "wf.phases.mode": "Usar mis fases",
   "wf.deliver.li2": "La descripción del PR puede llevar una tarjeta de verificación: una tabla por fase con quién hizo el trabajo, quién hizo las pruebas cruzadas, qué comandos ejecutó Pyloxa y cómo se aceptó cada resultado. Que un agente diga que terminó no cuenta como aprobado.",
-  "wf.deliver.li4": "La línea final está desactivada de forma predeterminada. Si la activas, dice “Verified with Pyloxa” solo cuando todos los resultados superaron los comandos que ejecutó Pyloxa.",
+  "wf.deliver.li4": "La línea final está desactivada de forma predeterminada. Si la activas, dice “Verified with Pyloxa” solo cuando todos los resultados superaron los comandos que ejecutó Pyloxa y todos los controles se superaron.",
   "wf.deliver.li5": "También la ves sin abrir un PR: cuando termina un plan, haz clic en “Tarjeta de verificación” al pie de la tarjeta del plan y copia el Markdown.",
   "wf.deliver.r.title": "Registro de verificación de Pyloxa",
   "wf.deliver.r.sum": "Resumen: ✅ 2 superaron comandos que ejecutó el propio Pyloxa · ⚠️ 1 sin comprobación por comandos, revisado por una persona o IA",
