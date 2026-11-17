@@ -113,10 +113,10 @@
         <h2 id="setup-title">設定精靈</h2>
         <p>第一次開啟 Pyloxa 時，設定精靈會帶你走十個步驟。用「<strong>下一步</strong>」與「<strong>上一步</strong>」前後切換，也可以按「<strong>略過設定精靈</strong>」；之後隨時可以在 設定 → 一般設定 →「<strong>重新開啟設定精靈</strong>」再打開。</p>
         <ol>
-          <li><strong>歡迎</strong>：Pyloxa 在做什麼，以及介面語言。</li>
+          <li><strong>歡迎</strong>：先說明 Pyloxa 和自己開好幾個 Session 有什麼不同：大腦把需求拆成工作、依規則交給不同家的 Agent，Pyloxa 自己跑測試，額度用完經你確認後換手，Agent 不碰你的資料夾、合併與推送由你決定。也可以在這裡選介面語言。已經有可以派工的 Agent 時，這一頁就有「<strong>開始試駕</strong>」。</li>
           <li><strong>環境檢查</strong>：git（必要）與 Node.js（選用）。缺少或版本太舊時，複製畫面上的 <code>winget</code> 命令，或開啟官方下載頁，裝好後按「<strong>重新檢查</strong>」。</li>
           <li><strong>安裝 Agent</strong>：每個 CLI 一張卡。「<strong>安裝 {name}</strong>」會先讓你看到完整的命令，再以 CLI 官方的 npm 套件（<code>npm install -g …</code>）安裝 Pyloxa 已驗證的最新版本。這一步需要 Node.js。如果裝好了卻找不到，請重新啟動 Pyloxa。</li>
-          <li><strong>登入與金鑰</strong>：每個 CLI 是否「<strong>可以派工</strong>」。用畫面上的命令在終端機登入（例如 <code>claude auth login</code> 或 <code>codex login</code>），或改用 API Key。詳見<a href="#connect">連接 Agent</a>。</li>
+          <li><strong>登入與金鑰</strong>：每個 CLI 是否「<strong>可以派工</strong>」。用畫面上的命令在終端機登入（例如 <code>claude auth login</code> 或 <code>codex login</code>），或改用 API Key。詳見<a href="#connect">連接 Agent</a>。至少一個 Agent 可以派工時，最上面也有「<strong>開始試駕</strong>」。</li>
           <li><strong>選大腦</strong>：負責規劃工作的 Agent。詳見<a href="#brain">大腦</a>。</li>
           <li><strong>分工</strong>：哪一類工作交給哪個 Agent。之後可以在「工作流程」頁修改。</li>
           <li><strong>工作習慣</strong>：worktree 的方式、大腦驗收、交叉測試、精簡回覆、派工模式、沒有規則命中時怎麼辦、驗收方式，以及通知與更新。</li>
@@ -232,7 +232,7 @@
       <section id="test-drive" aria-labelledby="test-drive-title">
         <h2 id="test-drive-title">試駕與驗證報告卡</h2>
         <h3>先用範例專案試駕</h3>
-        <p>在設定精靈的最後一步，或還沒有任何專案時的歡迎畫面，按「<strong>開始試駕</strong>」。Pyloxa 會在它的資料夾裡建立一個藏了一個 bug 的小型範例 repo，並附上寫好的計畫，所以大腦不會用到額度。導覽會帶你走過：核准計畫、Agent 修正、Pyloxa 執行 <code>node --test</code>、有第二個 Agent 時由它交叉測試、接受結果，最後是驗證報告卡。預覽會估算大約會用多少。試駕需要 git 與 Node.js，本身是免費的；其中的自動交叉測試需要 Pro，免費版要自己按下測試。試完可以刪掉範例資料夾。</p>
+        <p>在設定精靈的最後一步，或還沒有任何專案時的歡迎畫面，按「<strong>開始試駕</strong>」。已經登入 Agent 的話，精靈的第 1 步（歡迎）與第 4 步（登入與金鑰）也有這個按鈕。從前面開始試駕時，精靈會以預設值結束：大腦與分工都用預設的，側欄的「<strong>入門清單</strong>」列出還沒做的事，之後可以在 設定 → 一般設定 重新開啟精靈。Pyloxa 會在它的資料夾裡建立一個藏了一個 bug 的小型範例 repo，並附上寫好的計畫，所以大腦不會用到額度。導覽會帶你走過：核准計畫、Agent 修正、Pyloxa 執行 <code>node --test</code>、有第二個 Agent 時由它交叉測試、接受結果，最後是驗證報告卡。預覽會估算大約會用多少。試駕需要 git 與 Node.js，本身是免費的；其中的自動交叉測試需要 Pro，免費版要自己按下測試。試完可以刪掉範例資料夾。</p>
         <h3>驗證報告卡</h3>
         <p>計畫完成後，計畫卡上的「<strong>驗證報告卡</strong>」整理每一份成果：✅ 通過 Pyloxa 執行的命令、⚠️ 沒有命令驗證、❌ 有檢查沒過、⏳ 還沒完成。每份成果會列出由誰完成、交叉測試的結果與新增的測試、跑了哪些命令，以及怎麼被接受的。可以按「<strong>複製 Markdown</strong>」，或在開 PR 時選擇把報告卡附在說明最後。</p>
       </section>
