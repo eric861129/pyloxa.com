@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Help — Pyloxa</title>
+    <meta name="description" content="How to install Pyloxa, connect Claude Code, Codex CLI and Gemini CLI, run your first plan, use workflows, shared memory and Skills, sign in for Pro, and fix common problems." />
+    <link rel="canonical" href="https://pyloxa.com/help/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/help/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/help/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/help/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Help — Pyloxa" />
+    <meta property="og:description" content="How to install Pyloxa, connect Claude Code, Codex CLI and Gemini CLI, run your first plan, use workflows, shared memory and Skills, sign in for Pro, and fix common problems." />
+    <meta property="og:url" content="https://pyloxa.com/help/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+      .policy { max-width: 820px; padding-block: clamp(40px, 6vw, 96px); display: grid; gap: clamp(40px, 5vw, 64px); }
+      .policy > .intro h1 { font-size: var(--step-display); line-height: 1; }
+      .policy > .intro p { margin-top: 16px; color: var(--soft); font-size: var(--step-lead); }
+      .policy > .intro .updated { font-size: var(--step-small); }
+      .policy section { display: grid; gap: 14px; padding-top: 32px; border-top: 1px solid var(--tone); scroll-margin-top: 24px; }
+      .policy h2 { font-size: var(--step-head); }
+      .policy h3 { margin-top: 10px; font-size: var(--step-body); font-weight: 600; scroll-margin-top: 24px; }
+      .policy ul, .policy ol { display: grid; gap: 8px; padding-left: 1.2em; }
+      .policy li::marker { color: var(--soft); }
+      .policy code { font-size: 0.9em; padding: 0.1em 0.3em; border-radius: 4px; background: var(--tone); overflow-wrap: anywhere; }
+      .policy .table { overflow-x: auto; }
+      .policy table { border-collapse: collapse; font-size: var(--step-small); }
+      .policy th, .policy td { padding: 8px 14px 8px 0; text-align: left; border-bottom: 1px solid var(--tone); vertical-align: top; }
+      .policy th { font-weight: 600; }
+      .policy .toc ol { columns: 2 16em; column-gap: 32px; display: block; }
+      .policy .toc li { break-inside: avoid; margin-bottom: 6px; }
+      .policy .pro { display: inline-block; padding: 0.05em 0.5em; border-radius: 999px; background: var(--accent-tint); color: var(--accent); font-size: 0.75em; font-weight: 600; letter-spacing: 0.02em; vertical-align: 0.12em; white-space: nowrap; }
+      .policy .note { padding: 12px 16px; border-radius: 8px; background: var(--tone); font-size: var(--step-small); }
+      .policy .path { color: var(--soft); }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a class="mark" href="../" aria-label="Pyloxa home">Pyloxa</a>
+      <ul>
+        <li><a href="../zh-TW/help/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+      </ul>
+    </header>
+    <main id="main" class="wrap policy">
+      <div class="intro">
+        <h1>Help</h1>
+        <p>How to install Pyloxa, connect your agents, run your first plan and fix common problems. Features marked <span class="pro">Pro</span> need the trial, the Pro preview or Pro; everything else is in the free version.</p>
+        <p class="updated">For Pyloxa 0.1.10 and later · Last updated: November 17, 2026</p>
+      </div>
+
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">Contents</h2>
+        <ol>
+          <li><a href="#install">Install and update</a></li>
+          <li><a href="#setup">The setup guide</a></li>
+          <li><a href="#connect">Connect your agents</a></li>
+          <li><a href="#first-plan">Your first plan</a></li>
+          <li><a href="#checks">Checks, brain review and cross-testing</a></li>
+          <li><a href="#workflow">Workflows</a></li>
+          <li><a href="#teams">Agent Teams</a></li>
+          <li><a href="#test-drive">Test drive and the verification card</a></li>
+          <li><a href="#memory">Shared memory</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#background">Background running</a></li>
+          <li><a href="#usage">Usage and quota</a></li>
+          <li><a href="#more-pro">Scheduling, task center and notifications</a></li>
+          <li><a href="#transfer">Back up and move your settings</a></li>
+          <li><a href="#pro">Pro account, trial and Pro preview</a></li>
+          <li><a href="#data">Where your data is, and uninstalling</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+          <li><a href="#report">Report a problem</a></li>
+          <li><a href="#free-vs-pro">Free and Pro at a glance</a></li>
+        </ol>
+      </nav>
+
+      <section id="install" aria-labelledby="install-title">
+        <h2 id="install-title">Install and update</h2>
+        <h3>What you need</h3>
+        <ul>
+          <li>Windows 10 or 11, 64-bit.</li>
+          <li><a href="https://git-scm.com/download/win">Git for Windows</a> 2.30 or later.</li>
+          <li>At least one agent CLI: Claude Code or Codex CLI signed in with your own subscription, or an API key. Gemini CLI is experimental and needs your own Gemini API key.</li>
+          <li>Node.js 22 or later, only if you want the setup guide to install the CLIs for you.</li>
+          <li>GitHub CLI (<code>gh</code>), optional, for opening pull requests.</li>
+        </ul>
+        <p>Pyloxa doesn’t charge for AI usage: the CLIs use your own subscription or API key.</p>
+
+        <h3>Download and install</h3>
+        <ol>
+          <li>Download <code>Pyloxa-Setup-&lt;version&gt;.exe</code> from the <a href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">latest release</a>.</li>
+          <li>Optional: check the file. In PowerShell, run <code>Get-FileHash .\Pyloxa-Setup-&lt;version&gt;.exe -Algorithm SHA256</code> and compare the result with the SHA-256 in the release notes.</li>
+          <li>Run the installer. It installs for your Windows user only (no administrator rights), shows the license agreement, lets you choose the folder, and adds Start menu and desktop shortcuts.</li>
+        </ol>
+
+        <h3 id="smartscreen">“Windows protected your PC”</h3>
+        <p>The installer is not code-signed yet, so Microsoft Defender SmartScreen may stop it with “Windows protected your PC” and “Unknown publisher”. Choose <strong>More info</strong>, then <strong>Run anyway</strong>. If you want to be sure the file is the one we published, compare its SHA-256 first (see above). If your antivirus blocks the installer or the app, see <a href="#antivirus">Antivirus blocks Pyloxa or a CLI</a>.</p>
+
+        <h3>Updates</h3>
+        <ul>
+          <li>Pyloxa checks GitHub for a new version at startup and every 12 hours, and shows a banner with <strong>View and download</strong>, <strong>See what’s new</strong> and <strong>Skip this version</strong>. Turn it off in Settings → General settings → Notifications &amp; updates → <strong>Tell me when a new version is out</strong>.</li>
+          <li>Pyloxa doesn’t update itself yet. To update, download the new installer and run it over the old version. Your projects, settings and history are kept.</li>
+          <li>The same check downloads the list of CLI versions Pyloxa has verified (see <a href="#cli-versions">CLI versions</a>). Turning the check off stops that too.</li>
+        </ul>
+      </section>
+
+      <section id="setup" aria-labelledby="setup-title">
+        <h2 id="setup-title">The setup guide</h2>
+        <p>The first time you open Pyloxa, the setup guide walks you through ten steps. Use <strong>Next</strong> and <strong>Back</strong>, or <strong>Skip the setup guide</strong>; you can reopen it any time from Settings → General settings → <strong>Reopen the setup guide</strong>.</p>
+        <ol>
+          <li><strong>Welcome</strong>: what Pyloxa does, and the interface language.</li>
+          <li><strong>Environment check</strong>: git (required) and Node.js (optional). If one is missing or too old, copy the <code>winget</code> command shown or open the official download page, then choose <strong>Check again</strong>.</li>
+          <li><strong>Install agents</strong>: one card per CLI. <strong>Install {name}</strong> shows the exact command first and then runs the CLI’s official npm package (<code>npm install -g …</code>) at the latest version Pyloxa has verified. This needs Node.js. If a CLI is installed but not found, restart Pyloxa.</li>
+          <li><strong>Sign-in and keys</strong>: whether each CLI is <strong>Ready</strong>. Sign in in a terminal with the command shown (for example <code>claude auth login</code> or <code>codex login</code>), or use an API key. See <a href="#connect">Connect your agents</a>.</li>
+          <li><strong>Choose the brain</strong>: the agent that plans the work. See <a href="#brain">The brain</a>.</li>
+          <li><strong>Division of work</strong>: which agent gets which type of task. You can change this later on the Workflow page.</li>
+          <li><strong>Work habits</strong>: worktree mode, brain review, cross-testing, concise replies, dispatch mode, what to do when no rule matches, how results are accepted, and notifications and updates.</li>
+          <li><strong>Skills</strong>: the skills each CLI can already see. See <a href="#skills">Skills</a>.</li>
+          <li><strong>Open a project</strong>: choose a git repository with at least one commit, then approve its verification commands.</li>
+          <li><strong>First task</strong>: how a task runs, and the option to <a href="#test-drive">try it on a sample project first</a>.</li>
+        </ol>
+        <p>After the guide, a <strong>Getting started</strong> checklist stays in the window until you close it: connect an agent, choose the brain, open a project, approve verification commands, accept your first result, look at Skills, and merge a result or open a PR. Short tips appear the first time you reach each part of the app; turn them off or show them again in Settings → General settings.</p>
+      </section>
+
+      <section id="connect" aria-labelledby="connect-title">
+        <h2 id="connect-title">Connect your agents</h2>
+        <p>Go to Settings → Agents and workflow → <strong>Agent Connections</strong>. Each CLI shows its version, compatibility, sign-in state, how it is billed and whether it is <strong>Ready</strong>, <strong>Can’t dispatch</strong> or <strong>Out of quota</strong>. Choose <strong>Re-detect</strong> after installing or signing in.</p>
+
+        <h3>Subscriptions (Claude Code and Codex CLI)</h3>
+        <p>Sign in with the CLI’s own command in a terminal: <code>claude auth login</code> for Claude Code, <code>codex login</code> for Codex CLI. Pyloxa checks sign-in only with the CLI’s own status command and starts the CLI as you would. It never reads, copies or sends your tokens or credential files.</p>
+
+        <h3>API keys</h3>
+        <ul>
+          <li>Choose <strong>Use an API key…</strong> on a CLI’s card and paste the key: an Anthropic Console key for Claude Code, an OpenAI Platform key for Codex CLI, or a Google AI Studio key for Gemini CLI. Pyloxa asks you to confirm before switching billing.</li>
+          <li>The key is encrypted with Windows’ own secure storage and only its last four characters are shown. <strong>Switch back to subscription</strong> returns to the CLI’s own sign-in.</li>
+          <li>API keys are billed by your provider per use; Pyloxa doesn’t add any charge.</li>
+        </ul>
+
+        <h3>Gemini CLI (experimental)</h3>
+        <p>Gemini CLI works only with your own paid Gemini API key; Google account sign-in and Google subscriptions are not supported. Pyloxa runs it with its own separate settings folder. It can take tasks such as writing and documentation, but it can’t be the brain or test another agent’s work.</p>
+
+        <h3 id="cli-versions">CLI versions</h3>
+        <p>Pyloxa tests each CLI version it supports. The connection card shows one of three states:</p>
+        <ul>
+          <li><strong>Verified version</strong>: tested with Pyloxa.</li>
+          <li><strong>Same series as a verified version</strong>: same major and minor version as a tested one.</li>
+          <li><strong>Unverified version (supervised mode only)</strong>: it still runs, but <em>Auto within limits</em> won’t use it.</li>
+        </ul>
+        <p>When a newer CLI version is out, the card shows it with <strong>Update to {version}</strong> (the latest version Pyloxa has verified), <strong>Copy command</strong> and the CLI’s official release notes. If a CLI updated itself, a banner tells you which version you are on now.</p>
+      </section>
+
+      <section id="first-plan" aria-labelledby="first-plan-title">
+        <h2 id="first-plan-title">Your first plan</h2>
+        <h3>Send a request</h3>
+        <p>Open a project and describe what you want in the message box. Under <strong>Send to</strong>, choose <strong>To the brain</strong> to have it planned, or <strong>Directly to {name}</strong> to give one agent a single task without a plan. Type <code>/</code> to insert a prompt template; the free version keeps up to five templates, Pro <span class="pro">Pro</span> any number.</p>
+
+        <h3 id="brain">The brain</h3>
+        <p>The brain is one of your agents. It answers questions, splits a request into phases and tasks, and can review results. Choose it in Settings → Agents and workflow → <strong>Agents &amp; Brain</strong>, where you can also set <strong>Brain model</strong> and <strong>Brain reasoning effort</strong>; they apply only to the brain, not to the agents doing the tasks. The brain can’t change your settings. Gemini CLI can’t be the brain. A backup brain that takes over when the main one is unavailable is <span class="pro">Pro</span>.</p>
+
+        <h3>Approve the plan</h3>
+        <ul>
+          <li>The plan card lists the phases and tasks and which agent gets each one. Choose <strong>Approve and start</strong>, <strong>Ask the brain to revise</strong>, or reply to the brain.</li>
+          <li>Each task runs in its own git worktree, away from the folder you are editing. Pyloxa never stashes, resets or checks out your working folder. You can switch the plan to <strong>One shared worktree for the whole plan</strong>, where tasks run one after another and see earlier changes.</li>
+          <li>When a task finishes, its checks run (see <a href="#checks">Checks</a>). Choose <strong>Accept result</strong>, <strong>Retry</strong>, <strong>Reassign to another agent</strong> or <strong>Abandon this result</strong>, or open the session to see what the agent did.</li>
+          <li>When the plan has finished, choose <strong>Merge into current branch</strong> or <strong>Create branch and open PR</strong>. Nothing is merged or pushed until you choose.</li>
+        </ul>
+
+        <h3>Routing and dispatch modes</h3>
+        <p>Settings → Agents and workflow → <strong>Workflow</strong> holds the rules. Under <strong>Division of work</strong>, the assignment table says which agent does each type of task, with fallbacks used only when an agent fails (for example when it runs out of quota). <strong>Rule simulation</strong> shows where a task would go without calling any agent. <strong>Dispatch mode</strong> sets how plans start:</p>
+        <ul>
+          <li><strong>Suggest, then ask</strong> (default): the brain proposes, you approve the plan.</li>
+          <li><strong>Follow settings only</strong>: starts right away when every task matches a rule; you still confirm each finished task.</li>
+          <li><strong>Auto within limits</strong> <span class="pro">Pro</span>: the brain chooses among the agents your rules allow and starts without asking, pausing at any limit. Only verified CLI versions are used.</li>
+        </ul>
+
+        <h3>How much runs at once</h3>
+        <ul>
+          <li>Free: up to two tasks at a time in a plan, and one project with work running at a time. A plan for a second project waits in a queue (<strong>Approve and queue</strong>), or you can choose <strong>Do this project first</strong>.</li>
+          <li><span class="pro">Pro</span>: several projects at once, and no per-plan limit beyond each connection’s own limit.</li>
+          <li>Every version: at most two tasks at a time per CLI connection, and one at a time for Claude Code on a subscription.</li>
+        </ul>
+      </section>
+
+      <section id="checks" aria-labelledby="checks-title">
+        <h2 id="checks-title">Checks, brain review and cross-testing</h2>
+        <p>An agent saying it is done isn’t enough. Pyloxa checks each result itself.</p>
+        <h3>Verification commands and gates</h3>
+        <ul>
+          <li>Approve your project’s commands (tests, build, lint) in Settings → Agents and workflow → <strong>Verification commands</strong>. Pyloxa runs them after each task, along with a check that the changed files are within the plan’s write scope.</li>
+          <li>A result is accepted automatically only when at least one check exists, everything passes and no human review is required. When a check fails, the same agent is asked to fix it. Each task gets at most three automatic runs, counting retries, fixes and fallbacks.</li>
+          <li>Each phase ends with a gate: its commands run on the combined result. A phase with no gate commands waits for <strong>Approve this phase</strong>.</li>
+        </ul>
+        <h3>Brain review</h3>
+        <p>On the Workflow page under <strong>Checks</strong>, <strong>Brain review</strong> can be off (default), review tasks without check commands, or review all tasks. The brain reads the result without changing it and accepts it, asks for changes or asks you; its verdict is labelled as an AI judgment. The brain never reviews its own task: a backup brain <span class="pro">Pro</span> does it, or the task waits for you.</p>
+        <h3>Cross-testing</h3>
+        <ul>
+          <li>Free: on a finished task, choose <strong>Have another agent test it</strong>. The tester works in its own worktree and may only add tests. Pyloxa re-runs the commands itself, and the command result decides. If a test fails, choose <strong>Send back to “{name}” to fix</strong>.</li>
+          <li><span class="pro">Pro</span>: automatic cross-testing by task type or by the brain’s judgment, a tester per routing rule, per-task choices in the plan, and failed tests sent back for a fix automatically.</li>
+          <li>Gemini CLI can’t be a tester.</li>
+        </ul>
+      </section>
+
+      <section id="workflow" aria-labelledby="workflow-title">
+        <h2 id="workflow-title">Workflows</h2>
+        <p>Settings → Agents and workflow → <strong>Workflow</strong> shows how work moves through five stages: Planning, Phases, Division of work, Checks and Delivery. Choose a stage to jump to its settings.</p>
+        <ul>
+          <li><strong>Start from a template</strong>: Balanced (default), Quick fix, Spec first, Thorough review, or Share the quota. Each shows what will change before it applies, and <strong>Undo last template</strong> takes it back. In the free version, the Pro parts of a template (auto mode, automatic cross-testing, automatic fallback) are skipped, and the preview says so.</li>
+          <li><strong>Plan stages</strong>: let the brain decide the stages for each request (default), or <strong>Use my stages</strong>: up to five, each with a name, who does it, a note for the brain, whether to wait for your approval, and whether it can be skipped.</li>
+          <li><strong>My workflows</strong> <span class="pro">Pro</span>: <strong>Save as my workflow</strong> keeps the current settings under a name (up to 20). Choose a saved workflow for each project. Without Pro, projects use the global settings and the saved workflows are kept.</li>
+          <li><strong>Describe it</strong> <span class="pro">Pro</span>: write the workflow you want in a sentence and choose <strong>Draft it</strong>. The brain reads the project without changing it and proposes settings with its notes and a list of changes, usually within a minute or two. Then apply it globally (it can be undone), save it as one of your workflows, or edit the description and try again.</li>
+        </ul>
+      </section>
+
+      <section id="teams" aria-labelledby="teams-title">
+        <h2 id="teams-title">Agent Teams <span class="pro">Pro</span></h2>
+        <p>Agent Teams is experimental. It lets the agents in one plan talk to each other: share tasks, report progress, ask questions and send messages, with the brain or you as the lead.</p>
+        <ul>
+          <li>Turn it on in Workflow → Phases → <strong>Agent Teams (experimental)</strong>. It is off by default. The setting is fixed into a plan when you approve it.</li>
+          <li>With it on, the message box offers a <strong>Team approach</strong>: let the brain decide, Feature squad (agree on interfaces, then build front end and back end together), Review board (review from several angles, then merge the reports) or Hypothesis debate (investigate causes separately, then fix).</li>
+          <li>A member that asks a question waits for your reply in the <strong>Team</strong> panel (<strong>Reply and continue</strong>). By default the brain handles members’ questions first, up to eight times per plan.</li>
+          <li>Messages are limited per member and per plan, and members can’t start their own sub-agents. With only a Claude subscription, tasks still run one at a time.</li>
+        </ul>
+      </section>
+
+      <section id="test-drive" aria-labelledby="test-drive-title">
+        <h2 id="test-drive-title">Test drive and the verification card</h2>
+        <h3>Try it on a sample project</h3>
+        <p>In the setup guide’s last step, or on the welcome screen when you have no projects yet, choose <strong>Start the test drive</strong>. Pyloxa creates a small sample repository in its data folder with a planted bug and a ready-made plan, so the brain uses no quota. A guide walks you through approving the plan, the agent’s fix, Pyloxa running <code>node --test</code>, a cross-test by a second agent if you have one, accepting the result and the verification card. The preview estimates how much it will use. It needs git and Node.js, and it is free; automatic cross-testing in it needs Pro, otherwise you start the test by hand. Delete the sample folder when you are done.</p>
+        <h3>The verification card</h3>
+        <p>When a plan has finished, <strong>Verification card</strong> on the plan card summarises every result: ✅ passed the commands Pyloxa ran, ⚠️ no command verification, ❌ a check failed, ⏳ not finished. For each result it shows who built it, the cross-test outcome and tests added, the commands run and how it was accepted. Use <strong>Copy Markdown</strong>, or when you create a PR, choose to append the card to the description.</p>
+      </section>
+
+      <section id="memory" aria-labelledby="memory-title">
+        <h2 id="memory-title">Shared memory</h2>
+        <p>Shared memory is one store on your computer that every agent receives as background when it works: rules, preferences, decisions, facts and pitfalls. It is in the free version. Open it in Settings → Agents and workflow → <strong>Shared memory</strong>.</p>
+        <ul>
+          <li><strong>Add memory</strong>, search, <strong>Pin: always include</strong>, archive or delete items. Each item is up to 500 characters, and anything that looks like a secret is rejected. About 3,000 characters are included per task.</li>
+          <li>Agents and the brain can propose new items while they work. Proposals wait under <strong>Pending</strong> for you to accept, edit or discard; you can let a project accept facts and pitfalls automatically. <strong>Remember</strong> under a reply or result saves it yourself.</li>
+          <li>Import from the memory files each CLI already uses, such as <code>CLAUDE.md</code>, <code>AGENTS.md</code> and <code>GEMINI.md</code>. Pyloxa only reads them.</li>
+          <li><strong>Sync to CLIs</strong> writes your project rules into a marked block in <code>AGENTS.md</code> (and links it from <code>CLAUDE.md</code>) after showing you the changes. Pyloxa never commits them.</li>
+          <li>Export as Markdown or JSON, and import from a file.</li>
+        </ul>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <p>Settings → Agents and workflow → <strong>Skills</strong> shows every skill and which CLIs can see it.</p>
+        <ul>
+          <li>Free: list and view skills, <strong>Scan again</strong>, and add up to ten folders to scan.</li>
+          <li><span class="pro">Pro</span>: one skills library for every CLI: <strong>New skill</strong>, <strong>Sync from Skills library</strong>, <strong>Fill in missing</strong>, edit and remove. Files that would be replaced are backed up first, and skills that loosen permissions or run code need your consent.</li>
+          <li><span class="pro">Pro</span>: <strong>Skills for this project</strong> chooses which skills each project, or each Claude Code or Codex profile, uses.</li>
+          <li>When Pyloxa runs Gemini CLI, Gemini can’t see your user-level skills; with an assignment <span class="pro">Pro</span>, the chosen skills are brought into each run.</li>
+          <li>If Pro ends, the library and synced files stay and the CLIs still read them; assignments are kept but not applied.</li>
+        </ul>
+      </section>
+
+      <section id="background" aria-labelledby="background-title">
+        <h2 id="background-title">Background running</h2>
+        <p>These are in the free version, in Settings → General settings → <strong>Background running</strong>.</p>
+        <ul>
+          <li><strong>When you close the window</strong>: stay in the tray while work is running (default), always stay in the tray, or quit. The tray icon shows what is running and gets a red dot when something needs you.</li>
+          <li><strong>Keep the computer awake while work is running</strong> (on by default): stops idle sleep on AC power only. Closing the lid or choosing Sleep still puts the computer to sleep.</li>
+          <li>Quitting with work running asks: <strong>Quit When Done</strong> lets running tasks finish first, <strong>Quit Now</strong> stops them.</li>
+          <li>Next time you open Pyloxa, interrupted tasks are listed with <strong>Resume All</strong>; the same agent continues from its saved work.</li>
+        </ul>
+      </section>
+
+      <section id="usage" aria-labelledby="usage-title">
+        <h2 id="usage-title">Usage and quota</h2>
+        <h3>The usage meter</h3>
+        <ul>
+          <li>The title bar shows how much quota each agent has left, for example “Claude Code 62% left”. Select it to see each window (5 hours, 7 days) and today’s tokens.</li>
+          <li>Claude Code on a subscription shows its real quota windows, updated when Pyloxa runs it. The quota is shared with claude.ai and your terminal.</li>
+          <li>Codex CLI doesn’t report its subscription quota, so only tokens are shown. API keys and Gemini CLI are billed by use and have no quota windows. Costs shown are the CLI’s own estimates, not a bill.</li>
+          <li>Hide it in Settings → Appearance → Layout → <strong>Show agent usage in the title bar</strong>.</li>
+        </ul>
+        <h3 id="quota">When an agent runs out of quota</h3>
+        <ul>
+          <li>Pyloxa marks the connection as out of quota and sends it no tasks until the reset time. If the reset time is unknown, choose <strong>Quota restored</strong> on Agent Connections when it is back.</li>
+          <li>On the plan card, choose <strong>Let {name} take over</strong> to have the fallback agent continue from the files already changed, or <strong>Retry when the quota resets</strong>. Waiting work resumes after the reset.</li>
+          <li>Short rate limits are retried automatically after a wait; network or service errors are retried once.</li>
+          <li><span class="pro">Pro</span>: <strong>Automatic fallback when quota runs out</strong> (Workflow → Division of work) hands the task to the rule’s fallback without asking, up to two times per task and only to the same kind of billing.</li>
+        </ul>
+      </section>
+
+      <section id="more-pro" aria-labelledby="more-pro-title">
+        <h2 id="more-pro-title">Scheduling, task center and notifications</h2>
+        <ul>
+          <li><strong>Task Center</strong> <span class="pro">Pro</span> (sidebar): everything waiting on you across projects, each project’s progress, scheduled plans, and usage and hours, with export to Markdown or CSV.</li>
+          <li><strong>Approve and schedule…</strong> <span class="pro">Pro</span> on the plan card: start at a set time or after the next quota reset. Pyloxa must be open (the tray is enough).</li>
+          <li><strong>Quota scheduling for this project…</strong> <span class="pro">Pro</span> (project menu in the sidebar): project priority and a quota share per connection.</li>
+          <li><strong>Backup brains</strong> <span class="pro">Pro</span> (Agents &amp; Brain): up to three, taking over planning, answers and review when the main brain is out of quota, signed out or failing.</li>
+          <li><strong>Notifications to your phone</strong> <span class="pro">Pro</span> (General settings): send “needs you”, “plan done”, “gate failed” and “out of quota” to your own Telegram bot, Discord channel or webhook. They are sent directly from your computer while Pyloxa is open. Windows desktop notifications are free.</li>
+          <li><strong>Dispatch packs</strong> <span class="pro">Pro</span> (Workflow → rule list): export or import rules, skills, conventions and suggested commands as a zip or folder. Rules in a repository’s <code>.pyloxa/</code> folder are read in the free version.</li>
+        </ul>
+      </section>
+
+      <section id="transfer" aria-labelledby="transfer-title">
+        <h2 id="transfer-title">Back up and move your settings</h2>
+        <p>Settings → General settings → <strong>Backup and transfer</strong>, in the free version. There is no cloud sync; you move the file yourself.</p>
+        <ul>
+          <li><strong>Export settings…</strong> saves a <code>.pyloxa-settings</code> file with the parts you tick: agent profiles, global routing rules, routing and brain preferences, prompt templates, global shared memory, the Skills library and interface preferences.</li>
+          <li>It never includes API keys, your license, project settings or paths on this computer. Items that contain secrets are skipped and listed.</li>
+          <li><strong>Import settings…</strong> shows what will change first; where an item differs, this computer’s version is kept unless you tick it. Your current settings are backed up before anything is applied, and <strong>Restore a backup…</strong> brings back one of the last five.</li>
+          <li>On the new computer, you still need to sign in to each CLI or enter API keys, add your project folders, and sign in to your account for Pro.</li>
+        </ul>
+      </section>
+
+      <section id="pro" aria-labelledby="pro-title">
+        <h2 id="pro-title">Pro account, trial and Pro preview</h2>
+        <p>The free version needs no account. The trial, the Pro preview and Pro need you to sign in; the account is used only for licensing and never sees your projects or code. See the <a href="../privacy/#pro-account">privacy policy</a> for what the account keeps.</p>
+        <h3>Sign in</h3>
+        <ul>
+          <li>Settings → General settings → <strong>License</strong> → <strong>Sign in</strong>. Your browser opens <code>account.pyloxa.com</code>: continue with Google or GitHub, or get a six-digit code by email (valid for 10 minutes). Finish within 5 minutes, then return to Pyloxa.</li>
+          <li>The same verified email address is always the same account.</li>
+        </ul>
+        <h3>Pro preview and trial</h3>
+        <ul>
+          <li><strong>Pro preview</strong>: until Pro goes on sale, signing in gives you the full Pro for free. The preview ends when Pro goes on sale, with at least 30 days’ notice in the app.</li>
+          <li><strong>Trial</strong>: when the preview isn’t running, your first sign-in starts a 14-day Pro trial. No card is needed. Each account and each computer gets one trial. The sidebar shows the days left.</li>
+          <li>Pro can’t be bought yet. When it goes on sale, <strong>Buy Pro</strong> appears on the License card, and the Pro terms, including cancellation and refunds, will be published before then.</li>
+        </ul>
+        <h3>Two computers</h3>
+        <ul>
+          <li>One account can be signed in on two computers. <strong>Sign out of this computer</strong> frees its place and deletes no data.</li>
+          <li>Signing in on a third computer shows your other two on the sign-in page, where you can remove one. You can also rename or remove computers on the <strong>Account page</strong>. Removing computers is limited to three times in 30 days; after that, write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>.</li>
+        </ul>
+        <h3>Staying online</h3>
+        <ul>
+          <li>Pyloxa refreshes the license about once a day, sending only a device ID, its credential and the app and Windows versions. <strong>Check again</strong> refreshes now.</li>
+          <li>If it can’t reach the license service, Pro keeps working for 14 days from the last successful refresh; the app warns you after three days. After that Pro pauses until a refresh succeeds.</li>
+          <li>If your company network blocks <code>account.pyloxa.com</code>, write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a> with the device ID shown on the License card. We can send an activation code to paste under <strong>Have an activation code from support?</strong></li>
+        </ul>
+        <h3>When the trial, preview or Pro ends</h3>
+        <p>Pyloxa goes back to the free version. Running tasks finish first, and no data, files or settings are deleted. Pro settings are paused and marked <strong>Needs Pro, paused</strong>; they come back as soon as you are on Pro again.</p>
+      </section>
+
+      <section id="data" aria-labelledby="data-title">
+        <h2 id="data-title">Where your data is, and uninstalling</h2>
+        <div class="table">
+          <table>
+            <thead><tr><th scope="col">Folder</th><th scope="col">What’s in it</th></tr></thead>
+            <tbody>
+              <tr><td><code>%APPDATA%\Pyloxa</code></td><td>Settings, history and the database (<code>pyloxa.sqlite3</code>), encrypted API keys and license (<code>secrets.json</code>), backups of skills and memory, and test-drive samples</td></tr>
+              <tr><td><code>%LOCALAPPDATA%\Pyloxa\worktrees</code></td><td>The git worktrees where agents work</td></tr>
+              <tr><td>Your repositories</td><td>Task branches named <code>pyloxa/…</code>, and anything you merged</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Pyloxa sends nothing from these folders to us. To uninstall, quit Pyloxa from the tray icon first (closing the window may leave it running), then uninstall it from Windows Settings → Apps like any other app. Uninstalling keeps both folders so that a reinstall picks up where you left off. To remove everything:</p>
+        <ol>
+          <li>Delete <code>%APPDATA%\Pyloxa</code> and <code>%LOCALAPPDATA%\Pyloxa</code>.</li>
+          <li>In each repository you used, run <code>git worktree prune</code>, and delete the <code>pyloxa/…</code> branches you don’t need.</li>
+          <li>If you used <strong>Sync to CLIs</strong>, remove Pyloxa’s marked block from <code>AGENTS.md</code> and the CLI memory files. The CLIs themselves, and skills synced to them, stay installed.</li>
+          <li>If you signed in, delete your account on the account page, or ask us at <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>.</li>
+        </ol>
+      </section>
+
+      <section id="troubleshooting" aria-labelledby="troubleshooting-title">
+        <h2 id="troubleshooting-title">Troubleshooting</h2>
+        <h3>Windows warns about the installer</h3>
+        <p>See <a href="#smartscreen">“Windows protected your PC”</a>.</p>
+
+        <h3 id="antivirus">Antivirus blocks Pyloxa or a CLI</h3>
+        <p>Because the app isn’t code-signed yet, some antivirus programs quarantine the installer, block Pyloxa from starting, or block the CLIs it starts. Signs: the installer disappears, a CLI shows as not installed although it works in your terminal, or a task fails with “Couldn’t start claude” (or codex, gemini).</p>
+        <ul>
+          <li>Check the file’s SHA-256 against the release notes, then restore it from quarantine or allow it in your antivirus. Allow Pyloxa’s install folder rather than turning protection off.</li>
+          <li>Each new version is a new file, so you may need to allow it again after updating.</li>
+          <li>Then choose <strong>Re-detect</strong> on Agent Connections.</li>
+        </ul>
+
+        <h3>A CLI shows “Can’t dispatch”</h3>
+        <ul>
+          <li><strong>Sign-in required</strong>: sign in again in a terminal (<code>claude auth login</code>, <code>codex login</code>), then <strong>Re-detect</strong>.</li>
+          <li><strong>CLI not found</strong>: install it, or restart Pyloxa if you just installed it.</li>
+          <li><strong>Unverified version</strong>: it still runs in supervised mode. To use a verified one, choose <strong>Update to {version}</strong> on its card.</li>
+          <li>Settings → General settings → Usage and feedback → <strong>Copy diagnostics</strong> copies the versions and connection states, useful in a report.</li>
+        </ul>
+
+        <h3>A task stopped with an error</h3>
+        <ul>
+          <li><strong>Subscription quota exhausted</strong>: wait for the reset or let another agent take over. See <a href="#quota">When an agent runs out of quota</a>.</li>
+          <li><strong>Temporarily rate-limited</strong> or <strong>Service or network error</strong>: Pyloxa retries once by itself; otherwise check your connection and choose <strong>Retry</strong>.</li>
+          <li><strong>Couldn’t parse the CLI output</strong>: please <a href="#report">report it</a> with the run’s history.</li>
+          <li>A check failed after three automatic runs: open the session to see what happened, then retry, reassign or fix it yourself.</li>
+        </ul>
+
+        <h3>Sign-in or license problems</h3>
+        <ul>
+          <li>“Couldn’t reach the Pyloxa license service”: check your connection; a company network may block <code>account.pyloxa.com</code>. See <a href="#pro">Staying online</a>.</li>
+          <li>“Already signed in on 2 computers”: remove one on the sign-in page or the account page.</li>
+          <li>“Sign-in timed out”: choose <strong>Sign in</strong> again and finish within 5 minutes.</li>
+        </ul>
+
+        <h3>The folder can’t be opened as a project</h3>
+        <p>Pyloxa needs a git repository with at least one commit. Run <code>git init</code> and make a first commit, then open the folder again.</p>
+      </section>
+
+      <section id="report" aria-labelledby="report-title">
+        <h2 id="report-title">Report a problem</h2>
+        <ul>
+          <li>In the app: Settings → General settings → Usage and feedback → <strong>Report a problem or suggestion</strong> opens our <a href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">GitHub issue forms</a>: <em>Bug report</em> or <em>Feature request</em>. Paste the text from <strong>Copy diagnostics</strong> into the bug report.</li>
+          <li>Issues are public. Never paste tokens, API keys or code you can’t share, and check screenshots for project names, file contents and account details.</li>
+          <li>For account, license or private questions, write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>.</li>
+          <li>Security vulnerabilities: report them privately through <a href="https://github.com/eric861129/Pyloxa-Releases/security/advisories/new">GitHub security advisories</a>, not in a public issue.</li>
+        </ul>
+      </section>
+
+      <section id="free-vs-pro" aria-labelledby="free-vs-pro-title">
+        <h2 id="free-vs-pro-title">Free and Pro at a glance</h2>
+        <div class="table">
+          <table>
+            <thead><tr><th scope="col">Feature</th><th scope="col">Free</th><th scope="col">Pro</th></tr></thead>
+            <tbody>
+              <tr><td>Plans, routing rules, worktrees, verification commands, gates, brain review</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Workflow templates and your own plan stages</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Shared memory, test drive, verification card, background running, usage meter, settings backup</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Projects running at once</td><td>One</td><td>Several, with the Task Center</td></tr>
+              <tr><td>Tasks at once in a plan</td><td>Two</td><td>No per-plan limit</td></tr>
+              <tr><td>Dispatch mode</td><td>Suggest then ask, or follow settings only</td><td>Also auto within limits</td></tr>
+              <tr><td>When quota runs out</td><td>You confirm each takeover</td><td>Automatic fallback</td></tr>
+              <tr><td>Cross-testing</td><td>When you ask</td><td>Automatic, with send-back for a fix</td></tr>
+              <tr><td>Brain</td><td>One</td><td>Up to three backup brains</td></tr>
+              <tr><td>Saved workflows and describing a workflow in a sentence</td><td>—</td><td>Yes</td></tr>
+              <tr><td>Agent Teams (experimental)</td><td>—</td><td>Yes</td></tr>
+              <tr><td>Scheduled plans, project priority and quota shares</td><td>Waiting work resumes after the reset</td><td>Yes</td></tr>
+              <tr><td>Usage report export</td><td>Usage per run</td><td>Across projects, Markdown or CSV</td></tr>
+              <tr><td>Notifications</td><td>Windows desktop</td><td>Also Telegram, Discord, webhook</td></tr>
+              <tr><td>Skills</td><td>List and view</td><td>Library, sync, per-project assignment</td></tr>
+              <tr><td>Dispatch packs</td><td>Reads <code>.pyloxa/</code> in a repository</td><td>Import and export</td></tr>
+              <tr><td>Prompt templates</td><td>Up to five</td><td>Any number</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">This page is in English and <a href="../zh-TW/help/" lang="zh-Hant">Traditional Chinese</a>. The other languages of this site will follow. Can’t find an answer? Write to <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>.</p>
+      </section>
+    </main>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

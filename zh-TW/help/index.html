@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>說明文件 — Pyloxa</title>
+    <meta name="description" content="安裝 Pyloxa、連接 Claude Code、Codex CLI 與 Gemini CLI、跑第一個計畫、使用工作流程、共用記憶與 Skills、登入 Pro，以及常見問題的處理方式。" />
+    <link rel="canonical" href="https://pyloxa.com/zh-TW/help/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/help/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/help/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/help/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="說明文件 — Pyloxa" />
+    <meta property="og:description" content="安裝 Pyloxa、連接 Claude Code、Codex CLI 與 Gemini CLI、跑第一個計畫、使用工作流程、共用記憶與 Skills、登入 Pro，以及常見問題的處理方式。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-TW/help/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+      .policy { max-width: 820px; padding-block: clamp(40px, 6vw, 96px); display: grid; gap: clamp(40px, 5vw, 64px); }
+      .policy > .intro h1 { font-size: var(--step-display); line-height: 1; }
+      .policy > .intro p { margin-top: 16px; color: var(--soft); font-size: var(--step-lead); }
+      .policy > .intro .updated { font-size: var(--step-small); }
+      .policy section { display: grid; gap: 14px; padding-top: 32px; border-top: 1px solid var(--tone); scroll-margin-top: 24px; }
+      .policy h2 { font-size: var(--step-head); }
+      .policy h3 { margin-top: 10px; font-size: var(--step-body); font-weight: 600; scroll-margin-top: 24px; }
+      .policy ul, .policy ol { display: grid; gap: 8px; padding-left: 1.2em; }
+      .policy li::marker { color: var(--soft); }
+      .policy code { font-size: 0.9em; padding: 0.1em 0.3em; border-radius: 4px; background: var(--tone); overflow-wrap: anywhere; }
+      .policy .table { overflow-x: auto; }
+      .policy table { border-collapse: collapse; font-size: var(--step-small); }
+      .policy th, .policy td { padding: 8px 14px 8px 0; text-align: left; border-bottom: 1px solid var(--tone); vertical-align: top; }
+      .policy th { font-weight: 600; }
+      .policy .toc ol { columns: 2 14em; column-gap: 32px; display: block; }
+      .policy .toc li { break-inside: avoid; margin-bottom: 6px; }
+      .policy .pro { display: inline-block; padding: 0.05em 0.5em; border-radius: 999px; background: var(--accent-tint); color: var(--accent); font-size: 0.75em; font-weight: 600; letter-spacing: 0.02em; vertical-align: 0.12em; white-space: nowrap; }
+      .policy .note { padding: 12px 16px; border-radius: 8px; background: var(--tone); font-size: var(--step-small); }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">跳到主要內容</a>
+    <header class="wrap nav">
+      <a class="mark" href="../" aria-label="Pyloxa 首頁">Pyloxa</a>
+      <ul>
+        <li><a href="../../help/" lang="en">English</a></li>
+        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載</a></li>
+      </ul>
+    </header>
+    <main id="main" class="wrap policy">
+      <div class="intro">
+        <h1>說明文件</h1>
+        <p>怎麼安裝 Pyloxa、連接 Agent、跑第一個計畫，以及常見問題怎麼處理。標有 <span class="pro">Pro</span> 的功能需要試用、Pro 預覽或 Pro；其他都在免費版裡。</p>
+        <p class="updated">適用 Pyloxa 0.1.10 以後的版本・最後更新：2026 年 11 月 17 日</p>
+      </div>
+
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">目錄</h2>
+        <ol>
+          <li><a href="#install">安裝與更新</a></li>
+          <li><a href="#setup">設定精靈</a></li>
+          <li><a href="#connect">連接 Agent</a></li>
+          <li><a href="#first-plan">第一個計畫</a></li>
+          <li><a href="#checks">驗證、大腦驗收與交叉測試</a></li>
+          <li><a href="#workflow">工作流程</a></li>
+          <li><a href="#teams">Agent Teams</a></li>
+          <li><a href="#test-drive">試駕與驗證報告卡</a></li>
+          <li><a href="#memory">共用記憶</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#background">背景執行</a></li>
+          <li><a href="#usage">用量與額度</a></li>
+          <li><a href="#more-pro">排程、任務中心與通知</a></li>
+          <li><a href="#transfer">備份與搬移設定</a></li>
+          <li><a href="#pro">Pro 帳號、試用與 Pro 預覽</a></li>
+          <li><a href="#data">資料放在哪裡，以及解除安裝</a></li>
+          <li><a href="#troubleshooting">疑難排解</a></li>
+          <li><a href="#report">回報問題</a></li>
+          <li><a href="#free-vs-pro">免費版與 Pro 一覽</a></li>
+        </ol>
+      </nav>
+
+      <section id="install" aria-labelledby="install-title">
+        <h2 id="install-title">安裝與更新</h2>
+        <h3>需要什麼</h3>
+        <ul>
+          <li>Windows 10 或 11，64 位元。</li>
+          <li><a href="https://git-scm.com/download/win">Git for Windows</a> 2.30 以上。</li>
+          <li>至少一個 Agent CLI：用你自己的訂閱登入的 Claude Code 或 Codex CLI，或是 API Key。Gemini CLI 是實驗性支援，需要你自己的 Gemini API Key。</li>
+          <li>Node.js 22 以上：只有要讓設定精靈幫你安裝 CLI 時才需要。</li>
+          <li>GitHub CLI（<code>gh</code>）：選用，用來開 pull request。</li>
+        </ul>
+        <p>Pyloxa 不收 AI 用量的費用：CLI 用的是你自己的訂閱或 API Key。</p>
+
+        <h3>下載與安裝</h3>
+        <ol>
+          <li>從<a href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">最新版本</a>下載 <code>Pyloxa-Setup-&lt;版本&gt;.exe</code>。</li>
+          <li>選用：檢查檔案。在 PowerShell 執行 <code>Get-FileHash .\Pyloxa-Setup-&lt;版本&gt;.exe -Algorithm SHA256</code>，和版本說明裡的 SHA-256 比對。</li>
+          <li>執行安裝檔。它只安裝給你這個 Windows 使用者（不需要系統管理員權限），會先顯示授權合約，可以選安裝資料夾，並在開始功能表與桌面建立捷徑。</li>
+        </ol>
+
+        <h3 id="smartscreen">「Windows 已保護您的電腦」</h3>
+        <p>安裝檔目前還沒有程式碼簽章，所以 Microsoft Defender SmartScreen 可能會擋下它，顯示「Windows 已保護您的電腦」與「未知的發行者」。請按「<strong>其他資訊</strong>」，再按「<strong>仍要執行</strong>」。想確認檔案是我們發布的那一個，可以先比對 SHA-256（見上方）。如果是防毒軟體擋下安裝檔或 App，請看<a href="#antivirus">防毒軟體擋下 Pyloxa 或 CLI</a>。</p>
+
+        <h3>更新</h3>
+        <ul>
+          <li>Pyloxa 啟動時與每 12 小時會到 GitHub 檢查新版本，有新版時顯示橫幅，可以選「<strong>查看並下載</strong>」、「<strong>看看改了什麼</strong>」或「<strong>略過這個版本</strong>」。要關掉的話：設定 → 一般設定 → 通知與更新 →「<strong>有新版本時提示我</strong>」。</li>
+          <li>Pyloxa 目前還不會自己更新。要更新時，下載新的安裝檔，直接裝在舊版上面即可，專案、設定與紀錄都會保留。</li>
+          <li>同一個檢查也會下載 Pyloxa 已驗證的 CLI 版本清單（見 <a href="#cli-versions">CLI 版本</a>）；關掉檢查，這份清單也不會再更新。</li>
+        </ul>
+      </section>
+
+      <section id="setup" aria-labelledby="setup-title">
+        <h2 id="setup-title">設定精靈</h2>
+        <p>第一次開啟 Pyloxa 時，設定精靈會帶你走十個步驟。用「<strong>下一步</strong>」與「<strong>上一步</strong>」前後切換，也可以按「<strong>略過設定精靈</strong>」；之後隨時可以在 設定 → 一般設定 →「<strong>重新開啟設定精靈</strong>」再打開。</p>
+        <ol>
+          <li><strong>歡迎</strong>：Pyloxa 在做什麼，以及介面語言。</li>
+          <li><strong>環境檢查</strong>：git（必要）與 Node.js（選用）。缺少或版本太舊時，複製畫面上的 <code>winget</code> 命令，或開啟官方下載頁，裝好後按「<strong>重新檢查</strong>」。</li>
+          <li><strong>安裝 Agent</strong>：每個 CLI 一張卡。「<strong>安裝 {name}</strong>」會先讓你看到完整的命令，再以 CLI 官方的 npm 套件（<code>npm install -g …</code>）安裝 Pyloxa 已驗證的最新版本。這一步需要 Node.js。如果裝好了卻找不到，請重新啟動 Pyloxa。</li>
+          <li><strong>登入與金鑰</strong>：每個 CLI 是否「<strong>可以派工</strong>」。用畫面上的命令在終端機登入（例如 <code>claude auth login</code> 或 <code>codex login</code>），或改用 API Key。詳見<a href="#connect">連接 Agent</a>。</li>
+          <li><strong>選大腦</strong>：負責規劃工作的 Agent。詳見<a href="#brain">大腦</a>。</li>
+          <li><strong>分工</strong>：哪一類工作交給哪個 Agent。之後可以在「工作流程」頁修改。</li>
+          <li><strong>工作習慣</strong>：worktree 的方式、大腦驗收、交叉測試、精簡回覆、派工模式、沒有規則命中時怎麼辦、驗收方式，以及通知與更新。</li>
+          <li><strong>Skills</strong>：各個 CLI 現在看得到的 Skills。詳見 <a href="#skills">Skills</a>。</li>
+          <li><strong>開啟專案</strong>：選一個至少有一次 commit 的 git repo，再核准它的驗證命令。</li>
+          <li><strong>第一個工作</strong>：說明一個工作怎麼跑，也可以選擇<a href="#test-drive">先用範例專案試駕</a>。</li>
+        </ol>
+        <p>精靈結束後，視窗裡會留著「<strong>入門清單</strong>」，直到你關掉它：連上一個 Agent、選好大腦、開啟專案、核准驗證命令、接受第一個成果、看看 Skills、合併成果或開 PR。第一次用到 App 的各個地方時會出現簡短的提示；可以在 設定 → 一般設定 關掉或重新顯示。</p>
+      </section>
+
+      <section id="connect" aria-labelledby="connect-title">
+        <h2 id="connect-title">連接 Agent</h2>
+        <p>到 設定 → Agent 與工作流程 →「<strong>Agent 連線</strong>」。每個 CLI 會顯示版本、相容性、登入狀態、計費方式，以及「<strong>可以派工</strong>」、「<strong>無法派工</strong>」或「<strong>額度受限</strong>」。安裝或登入之後按「<strong>重新偵測</strong>」。</p>
+
+        <h3>訂閱帳號（Claude Code 與 Codex CLI）</h3>
+        <p>在終端機用 CLI 自己的命令登入：Claude Code 是 <code>claude auth login</code>，Codex CLI 是 <code>codex login</code>。Pyloxa 只用 CLI 自己的狀態命令確認是否登入，並像你一樣啟動 CLI；不會讀取、複製或傳送你的 token 或憑證檔。</p>
+
+        <h3>API Key</h3>
+        <ul>
+          <li>在 CLI 的卡片按「<strong>改用 API Key…</strong>」，貼上金鑰：Claude Code 用 Anthropic Console 的金鑰，Codex CLI 用 OpenAI Platform 的金鑰，Gemini CLI 用 Google AI Studio 的金鑰。切換計費方式前 Pyloxa 會請你確認。</li>
+          <li>金鑰以 Windows 本身的安全儲存加密保存，畫面上只顯示最後四碼。「<strong>改回訂閱</strong>」會回到 CLI 自己的登入。</li>
+          <li>API Key 由服務商依用量計費，Pyloxa 不另外收費。</li>
+        </ul>
+
+        <h3>Gemini CLI（實驗性）</h3>
+        <p>Gemini CLI 只能用你自己的付費 Gemini API Key，不支援 Google 帳號登入與 Google 的訂閱方案。Pyloxa 用一個獨立的設定資料夾執行它。它可以接寫作、文件之類的工作，但不能擔任大腦，也不能測試其他 Agent 的成果。</p>
+
+        <h3 id="cli-versions">CLI 版本</h3>
+        <p>Pyloxa 會測試它支援的每個 CLI 版本。連線卡上會顯示三種狀態之一：</p>
+        <ul>
+          <li><strong>已驗證版本</strong>：和 Pyloxa 一起測試過。</li>
+          <li><strong>與已驗證版本同系列</strong>：主版號與次版號和測試過的版本相同。</li>
+          <li><strong>未驗證版本（只能用監督模式）</strong>：還是可以執行，但「授權範圍內自動」不會使用它。</li>
+        </ul>
+        <p>CLI 有新版本時，卡片上會顯示「<strong>更新到 {version}</strong>」（Pyloxa 已驗證的最新版本）、「<strong>複製命令</strong>」與 CLI 官方的更新說明。CLI 自己更新之後，會有橫幅告訴你現在是哪個版本。</p>
+      </section>
+
+      <section id="first-plan" aria-labelledby="first-plan-title">
+        <h2 id="first-plan-title">第一個計畫</h2>
+        <h3>送出需求</h3>
+        <p>開啟專案，在訊息框描述你想完成的事。在「<strong>交給誰</strong>」選「<strong>交給大腦</strong>」讓它規劃，或選「<strong>直接交給 {name}</strong>」，不經過計畫，直接把一個工作交給一個 Agent。輸入 <code>/</code> 可以插入常用指令；免費版最多存五個，Pro <span class="pro">Pro</span> 不限數量。</p>
+
+        <h3 id="brain">大腦</h3>
+        <p>大腦是你的其中一個 Agent。它回答問題、把需求拆成階段與工作，也可以驗收成果。在 設定 → Agent 與工作流程 →「<strong>Agent 與大腦</strong>」選擇，也可以在那裡設定「<strong>大腦的模型</strong>」與「<strong>大腦的思考強度</strong>」；這兩項只影響大腦，不影響執行工作的 Agent。大腦不能改你的設定。Gemini CLI 不能擔任大腦。主要大腦不能用時接手的備援大腦是 <span class="pro">Pro</span>。</p>
+
+        <h3>核准計畫</h3>
+        <ul>
+          <li>計畫卡列出各階段、各個工作，以及每個工作交給哪個 Agent。可以按「<strong>核准並開始</strong>」、「<strong>請大腦修訂</strong>」，或直接回覆大腦。</li>
+          <li>每個工作在自己的 git worktree 裡進行，不會碰到你正在編輯的資料夾。Pyloxa 不會對你的工作目錄做 stash、reset 或 checkout。也可以把計畫改成「<strong>整個計畫共用一個 worktree</strong>」，工作會依序進行，看得到前面的改動。</li>
+          <li>工作完成後會跑驗證（見<a href="#checks">驗證</a>）。可以按「<strong>接受結果</strong>」、「<strong>重試</strong>」、「<strong>改派給其他 Agent</strong>」或「<strong>放棄這份成果</strong>」，也可以開啟 Session 看 Agent 做了什麼。</li>
+          <li>整個計畫完成後，按「<strong>合併到目前分支</strong>」或「<strong>建立分支並開 PR</strong>」。你決定之前，什麼都不會合併或推送。</li>
+        </ul>
+
+        <h3>派工規則與派工模式</h3>
+        <p>規則在 設定 → Agent 與工作流程 →「<strong>工作流程</strong>」。「<strong>分工</strong>」的分工表決定每一類工作交給哪個 Agent，備援只在 Agent 出問題（例如額度用盡）時才用。「<strong>規則模擬</strong>」可以看一個工作會被派到哪裡，不會呼叫任何 Agent。「<strong>派工模式</strong>」決定計畫怎麼開始：</p>
+        <ul>
+          <li><strong>建議後詢問</strong>（預設）：大腦提出計畫，你核准。</li>
+          <li><strong>僅依設定執行</strong>：每個工作都有規則命中時直接開始；每個完成的工作仍由你確認。</li>
+          <li><strong>授權範圍內自動</strong> <span class="pro">Pro</span>：大腦在規則允許的 Agent 裡挑選，不用問你就開始，碰到任何上限就暫停。只會用已驗證的 CLI 版本。</li>
+        </ul>
+
+        <h3>同時能跑多少</h3>
+        <ul>
+          <li>免費版：一個計畫同時最多兩個工作，同一時間只有一個專案有工作在跑。第二個專案的計畫會排隊（「<strong>核准並排隊等待</strong>」），也可以選「<strong>改成先做這個專案</strong>」。</li>
+          <li><span class="pro">Pro</span>：多個專案同時進行，一個計畫裡也沒有數量上限，只受各條連線自己的上限限制。</li>
+          <li>所有版本：每條 CLI 連線同時最多兩個工作，用訂閱的 Claude Code 一次一個。</li>
+        </ul>
+      </section>
+
+      <section id="checks" aria-labelledby="checks-title">
+        <h2 id="checks-title">驗證、大腦驗收與交叉測試</h2>
+        <p>Agent 說做完了不算數，Pyloxa 會自己檢查每一份成果。</p>
+        <h3>驗證命令與 Gate</h3>
+        <ul>
+          <li>在 設定 → Agent 與工作流程 →「<strong>驗證命令</strong>」核准專案的命令（測試、建置、lint）。每個工作完成後 Pyloxa 會執行它們，並檢查改動的檔案有沒有超出計畫允許的寫入範圍。</li>
+          <li>只有至少有一項檢查、全部通過、而且不需要人工審查時，成果才會自動接受。檢查失敗時，會請同一個 Agent 修正。每個工作最多自動執行三次，重試、修正與備援接手都算在內。</li>
+          <li>每個階段結束時有 Gate：在合併後的版本上執行它的命令。沒有 Gate 命令的階段會等你按「<strong>核准此階段</strong>」。</li>
+        </ul>
+        <h3>大腦驗收</h3>
+        <p>在「工作流程」頁的「<strong>檢查</strong>」，「<strong>大腦驗收</strong>」可以關閉（預設）、只驗收沒有驗收命令的工作，或驗收所有工作。大腦只讀不改，決定接受、要求修改或問你；它的判斷會標示為 AI 判斷。大腦不會驗收自己做的工作：由備援大腦 <span class="pro">Pro</span> 驗收，沒有的話就等你處理。</p>
+        <h3>交叉測試</h3>
+        <ul>
+          <li>免費版：在完成的工作上按「<strong>交給另一個 Agent 測試</strong>」。測試者在自己的 worktree 裡工作，只能新增測試。Pyloxa 會自己重跑命令，以命令的結果為準。測試沒過時，按「<strong>交回「{name}」修正</strong>」。</li>
+          <li><span class="pro">Pro</span>：依工作類型或由大腦判斷自動交叉測試、每條派工規則指定測試者、在計畫裡逐一選擇要不要測，以及測試失敗時自動交回修正。</li>
+          <li>Gemini CLI 不能擔任測試者。</li>
+        </ul>
+      </section>
+
+      <section id="workflow" aria-labelledby="workflow-title">
+        <h2 id="workflow-title">工作流程</h2>
+        <p>設定 → Agent 與工作流程 →「<strong>工作流程</strong>」顯示工作經過的五段：規劃、階段、分工、檢查、交付。點任一段會跳到它的設定。</p>
+        <ul>
+          <li>「<strong>從範本開始</strong>」：均衡（預設）、快速修改、規格先行、嚴謹審查、平均分攤額度。套用前會先列出會改什麼，「<strong>還原上一版</strong>」可以復原。免費版套用範本時，會略過其中的 Pro 部分（授權範圍內自動、自動交叉測試、自動備援），預覽會標出來。</li>
+          <li>「<strong>計畫的階段</strong>」：由大腦依每個需求決定（預設），或「<strong>照我規定的階段</strong>」：最多五個，每個可以設定名稱、由誰做、給大腦的說明、做完要不要等你核准，以及需求用不到時能不能省略。</li>
+          <li>「<strong>我的流程</strong>」<span class="pro">Pro</span>：「<strong>存成我的流程</strong>」把目前的設定存成一個有名字的流程（最多 20 個），再替每個專案選要用哪一個。沒有 Pro 時，專案照全域設定，存好的流程會保留。</li>
+          <li>「<strong>用一句話建立</strong>」<span class="pro">Pro</span>：用一句話寫出你想要的流程，按「<strong>請大腦擬</strong>」。大腦只讀不改地看過專案，提出設定、說明與改動清單，通常一兩分鐘。之後可以套用到全域（可以復原）、存成我的流程，或修改描述再擬一次。</li>
+        </ul>
+      </section>
+
+      <section id="teams" aria-labelledby="teams-title">
+        <h2 id="teams-title">Agent Teams <span class="pro">Pro</span></h2>
+        <p>Agent Teams 是實驗功能，讓同一個計畫裡的 Agent 互相溝通：分工、回報進度、提問與傳訊息，由大腦或你擔任 Lead。</p>
+        <ul>
+          <li>在 工作流程 → 階段 →「<strong>Agent Teams（實驗）</strong>」開啟，預設關閉。核准計畫時，這個設定會固定在那個計畫裡。</li>
+          <li>開啟後，訊息框會多一個「<strong>團隊做法</strong>」：由大腦決定、功能小隊（先定介面，前後端同時做）、審查委員會（多角度審查，彙整報告）或假設辯論（分頭調查原因，再修正）。</li>
+          <li>成員提問時，會在「<strong>團隊</strong>」面板等你回覆（「<strong>回覆並接續</strong>」）。預設先由大腦處理成員的問題，每個計畫最多八次。</li>
+          <li>每位成員與每個計畫的訊息數有上限，成員不能自己再開子 Agent。只有 Claude 訂閱時，工作仍然一次一個。</li>
+        </ul>
+      </section>
+
+      <section id="test-drive" aria-labelledby="test-drive-title">
+        <h2 id="test-drive-title">試駕與驗證報告卡</h2>
+        <h3>先用範例專案試駕</h3>
+        <p>在設定精靈的最後一步，或還沒有任何專案時的歡迎畫面，按「<strong>開始試駕</strong>」。Pyloxa 會在它的資料夾裡建立一個藏了一個 bug 的小型範例 repo，並附上寫好的計畫，所以大腦不會用到額度。導覽會帶你走過：核准計畫、Agent 修正、Pyloxa 執行 <code>node --test</code>、有第二個 Agent 時由它交叉測試、接受結果，最後是驗證報告卡。預覽會估算大約會用多少。試駕需要 git 與 Node.js，本身是免費的；其中的自動交叉測試需要 Pro，免費版要自己按下測試。試完可以刪掉範例資料夾。</p>
+        <h3>驗證報告卡</h3>
+        <p>計畫完成後，計畫卡上的「<strong>驗證報告卡</strong>」整理每一份成果：✅ 通過 Pyloxa 執行的命令、⚠️ 沒有命令驗證、❌ 有檢查沒過、⏳ 還沒完成。每份成果會列出由誰完成、交叉測試的結果與新增的測試、跑了哪些命令，以及怎麼被接受的。可以按「<strong>複製 Markdown</strong>」，或在開 PR 時選擇把報告卡附在說明最後。</p>
+      </section>
+
+      <section id="memory" aria-labelledby="memory-title">
+        <h2 id="memory-title">共用記憶</h2>
+        <p>共用記憶是放在你電腦上的一份記憶，每個 Agent 工作時都會拿到它當作背景資料：規則、偏好、決定、事實與踩過的坑。免費版就有。在 設定 → Agent 與工作流程 →「<strong>共用記憶</strong>」開啟。</p>
+        <ul>
+          <li>可以「<strong>新增記憶</strong>」、搜尋、「<strong>釘選：每次都帶入</strong>」、封存或刪除。每則最多 500 字，看起來像祕密的內容會被拒絕。每次派工大約帶入 3,000 字。</li>
+          <li>Agent 與大腦工作時可以提議新的記憶，提議會放在「<strong>待確認</strong>」等你接受、修改或捨棄；也可以讓某個專案自動接受事實與踩過的坑。在回覆或成果下按「<strong>記住</strong>」可以自己存一則。</li>
+          <li>可以從各 CLI 原本的記憶檔匯入，例如 <code>CLAUDE.md</code>、<code>AGENTS.md</code> 與 <code>GEMINI.md</code>。Pyloxa 只讀取這些檔案。</li>
+          <li>「<strong>同步到各 CLI</strong>」會先讓你看改動，再把專案規則寫進 <code>AGENTS.md</code> 裡一段有標記的區塊（並從 <code>CLAUDE.md</code> 連過去）。Pyloxa 不會替你 commit。</li>
+          <li>可以匯出成 Markdown 或 JSON，也可以從檔案匯入。</li>
+        </ul>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <p>設定 → Agent 與工作流程 →「<strong>Skills</strong>」列出每個 Skill，以及哪些 CLI 看得到它。</p>
+        <ul>
+          <li>免費版：盤點與檢視 Skills、「<strong>重新盤點</strong>」，並可以加入最多十個要盤點的資料夾。</li>
+          <li><span class="pro">Pro</span>：所有 CLI 共用一個 Skills 庫：「<strong>新增 Skill</strong>」、「<strong>以 Skills 庫為準同步</strong>」、「<strong>補齊缺少的</strong>」、編輯與移除。會被取代的檔案會先備份；放寬權限或會執行程式的 Skill 需要你同意。</li>
+          <li><span class="pro">Pro</span>：「<strong>這個專案的 Skills</strong>」決定每個專案，或每個 Claude Code、Codex 的 Profile 要用哪些 Skills。</li>
+          <li>Pyloxa 派工給 Gemini CLI 時，Gemini 讀不到你使用者層的 Skills；指派之後 <span class="pro">Pro</span>，勾選的 Skills 會在每次執行時帶入。</li>
+          <li>Pro 結束後，Skills 庫與已同步的檔案都會留著，CLI 照樣讀得到；指派會保留，但不會套用。</li>
+        </ul>
+      </section>
+
+      <section id="background" aria-labelledby="background-title">
+        <h2 id="background-title">背景執行</h2>
+        <p>以下都在免費版裡，位於 設定 → 一般設定 →「<strong>背景執行</strong>」。</p>
+        <ul>
+          <li>「<strong>關閉視窗時</strong>」：有工作時留在系統匣（預設）、一律留在系統匣，或直接結束。系統匣圖示會顯示正在跑什麼，有事需要你時會出現紅點。</li>
+          <li>「<strong>工作執行中防止電腦自動睡眠</strong>」（預設開啟）：只在接上電源時擋住閒置睡眠。闔上筆電或自己選「睡眠」仍會睡眠。</li>
+          <li>有工作在跑時結束 Pyloxa 會先詢問：「<strong>做完再結束</strong>」讓執行中的工作先做完，「<strong>立即結束</strong>」會停止它們，改到一半的內容會保留。</li>
+          <li>下次開啟 Pyloxa 時，被中斷的工作會列出來，按「<strong>全部接續</strong>」由同一個 Agent 從保存的進度繼續。</li>
+        </ul>
+      </section>
+
+      <section id="usage" aria-labelledby="usage-title">
+        <h2 id="usage-title">用量與額度</h2>
+        <h3>用量表</h3>
+        <ul>
+          <li>標題列會顯示每個 Agent 還剩多少額度，例如「Claude Code 剩 62%」。點一下可以看各個視窗（5 小時、7 天）與今天用的 token。</li>
+          <li>用訂閱的 Claude Code 會顯示真正的額度視窗，在 Pyloxa 執行它時更新。這份額度和 claude.ai 與你的終端機共用。</li>
+          <li>Codex CLI 不會回報訂閱額度，所以只顯示 token。API Key 與 Gemini CLI 依用量計費，沒有額度視窗。畫面上的費用是 CLI 自己的估算，不是帳單。</li>
+          <li>要隱藏的話：設定 → 外觀 → 版面 →「<strong>標題列顯示 Agent 額度</strong>」。</li>
+        </ul>
+        <h3 id="quota">Agent 額度用盡時</h3>
+        <ul>
+          <li>Pyloxa 會把這條連線標成額度用盡，在重設時間之前不再派工給它。不知道重設時間的話，額度恢復後在「Agent 連線」按「<strong>額度已恢復</strong>」。</li>
+          <li>在計畫卡上，按「<strong>由 {name} 接手</strong>」讓備援 Agent 從已經改好的檔案繼續，或按「<strong>額度恢復後重試</strong>」。等待中的工作會在重設後繼續。</li>
+          <li>短暫的限流會等一下自動重試；服務或網路錯誤會自動重試一次。</li>
+          <li><span class="pro">Pro</span>：「<strong>額度用盡時自動由備援接手</strong>」（工作流程 → 分工）不用問你，就把工作交給規則裡的備援，每個工作最多兩次，而且只交給相同計費方式的連線。</li>
+        </ul>
+      </section>
+
+      <section id="more-pro" aria-labelledby="more-pro-title">
+        <h2 id="more-pro-title">排程、任務中心與通知</h2>
+        <ul>
+          <li>「<strong>任務中心</strong>」<span class="pro">Pro</span>（側欄）：所有專案裡等你處理的事、各專案的進度、已排程的計畫，以及用量與工時，可以匯出成 Markdown 或 CSV。</li>
+          <li>計畫卡上的「<strong>核准，排程開始…</strong>」<span class="pro">Pro</span>：在指定時間或下次額度重設後開始。Pyloxa 必須開著（留在系統匣就可以）。</li>
+          <li>「<strong>這個專案的額度調度…</strong>」<span class="pro">Pro</span>（側欄的專案選單）：專案的優先序，以及每條連線可以用多少額度。</li>
+          <li>「<strong>大腦備援</strong>」<span class="pro">Pro</span>（Agent 與大腦）：最多三個，在主要大腦額度用盡、登出或一直出錯時接手規劃、回答與驗收。</li>
+          <li>「<strong>傳到手機的通知</strong>」<span class="pro">Pro</span>（一般設定）：把「等你處理」、「計畫完成」、「Gate 沒通過」與「額度用盡」傳到你自己的 Telegram bot、Discord 頻道或 webhook。通知直接從你的電腦送出，Pyloxa 開著時才會送。Windows 桌面通知是免費的。</li>
+          <li>「<strong>派工包</strong>」<span class="pro">Pro</span>（工作流程 → 規則清單）：把規則、Skills、慣例與建議的命令匯出或匯入成 zip 或資料夾。免費版也會讀 repo 裡 <code>.pyloxa/</code> 資料夾的規則。</li>
+        </ul>
+      </section>
+
+      <section id="transfer" aria-labelledby="transfer-title">
+        <h2 id="transfer-title">備份與搬移設定</h2>
+        <p>設定 → 一般設定 →「<strong>備份與搬移</strong>」，免費版就有。沒有雲端同步，檔案由你自己搬。</p>
+        <ul>
+          <li>「<strong>匯出設定…</strong>」把你勾選的項目存成一個 <code>.pyloxa-settings</code> 檔：Agent Profile、全域派工規則、派工與大腦的偏好、常用指令範本、全域共用記憶、Skills 庫與介面偏好。</li>
+          <li>不會包含 API Key、授權、專案設定與這台電腦的路徑。含有祕密的項目會被略過並列出來。</li>
+          <li>「<strong>匯入設定…</strong>」會先列出會改什麼；內容不同的項目預設保留這台電腦的版本，勾選了才換掉。套用前會先自動備份目前的設定，「<strong>還原備份…</strong>」可以還原最近五份之一。</li>
+          <li>在新電腦上，還是要登入各 CLI 或填 API Key、加入專案資料夾；要用 Pro 的話，登入你的帳號。</li>
+        </ul>
+      </section>
+
+      <section id="pro" aria-labelledby="pro-title">
+        <h2 id="pro-title">Pro 帳號、試用與 Pro 預覽</h2>
+        <p>免費版不需要帳號。試用、Pro 預覽與 Pro 需要登入；帳號只用來授權，看不到你的專案或程式碼。帳號會保存哪些資料，請看<a href="../privacy/#pro-account">隱私權政策</a>。</p>
+        <h3>登入</h3>
+        <ul>
+          <li>設定 → 一般設定 →「<strong>授權</strong>」→「<strong>登入</strong>」。瀏覽器會開啟 <code>account.pyloxa.com</code>：以 Google 或 GitHub 繼續，或用寄到 email 的 6 位數驗證碼（10 分鐘內有效）。請在 5 分鐘內完成，再回到 Pyloxa。</li>
+          <li>同一個已驗證的 email 永遠是同一個帳號。</li>
+        </ul>
+        <h3>Pro 預覽與試用</h3>
+        <ul>
+          <li><strong>Pro 預覽</strong>：開賣之前，登入就能免費使用完整的 Pro。開賣時預覽結束，App 會至少提前 30 天通知。</li>
+          <li><strong>試用</strong>：沒有 Pro 預覽時，第一次登入會開始 14 天的 Pro 試用，不需要信用卡。每個帳號、每台電腦都只能試用一次。側欄會顯示還剩幾天。</li>
+          <li>Pro 目前還不能購買。開賣時「授權」卡上會出現「<strong>購買 Pro</strong>」；包含取消與退款的 Pro 條款會在開賣前公布。</li>
+        </ul>
+        <h3>兩台電腦</h3>
+        <ul>
+          <li>一個帳號可以在兩台電腦登入。「<strong>登出這台電腦</strong>」會騰出這台的名額，不會刪除任何資料。</li>
+          <li>在第三台電腦登入時，登入頁會列出另外兩台，可以移除其中一台。也可以在「<strong>帳號頁</strong>」重新命名或移除電腦。移除電腦 30 天內最多三次；超過之後請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。</li>
+        </ul>
+        <h3>保持連線</h3>
+        <ul>
+          <li>Pyloxa 大約每天更新一次授權，只送出裝置 ID、它的憑證，以及 App 與 Windows 的版本。「<strong>重新檢查</strong>」會立刻更新。</li>
+          <li>連不到授權服務時，從上次成功更新起算，Pro 還可以用 14 天；離線超過三天 App 會提醒你。超過之後 Pro 會暫停，等更新成功就恢復。</li>
+          <li>如果公司網路擋了 <code>account.pyloxa.com</code>，請把「授權」卡上顯示的裝置 ID 寄到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。我們可以寄給你啟用碼，貼在「<strong>有客服給的啟用碼？</strong>」。</li>
+        </ul>
+        <h3>試用、預覽或 Pro 結束時</h3>
+        <p>Pyloxa 會回到免費版。執行中的工作會先做完，不會刪除任何資料、檔案或設定。Pro 的設定會暫停，並標示「<strong>需要 Pro，已暫停</strong>」；回到 Pro 時立即恢復。</p>
+      </section>
+
+      <section id="data" aria-labelledby="data-title">
+        <h2 id="data-title">資料放在哪裡，以及解除安裝</h2>
+        <div class="table">
+          <table>
+            <thead><tr><th scope="col">資料夾</th><th scope="col">裡面有什麼</th></tr></thead>
+            <tbody>
+              <tr><td><code>%APPDATA%\Pyloxa</code></td><td>設定、紀錄與資料庫（<code>pyloxa.sqlite3</code>）、加密保存的 API Key 與授權（<code>secrets.json</code>）、Skills 與記憶的備份，以及試駕的範例專案</td></tr>
+              <tr><td><code>%LOCALAPPDATA%\Pyloxa\worktrees</code></td><td>Agent 工作用的 git worktree</td></tr>
+              <tr><td>你的 repo</td><td>名稱是 <code>pyloxa/…</code> 的工作分支，以及你合併進去的內容</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Pyloxa 不會把這些資料夾的內容傳給我們。解除安裝前，先在系統匣圖示上結束 Pyloxa（關掉視窗它可能還在背景執行），再到 Windows 的 設定 → 應用程式，像其他 App 一樣解除安裝。解除安裝會保留上面兩個資料夾，重新安裝後可以接著用。要全部移除的話：</p>
+        <ol>
+          <li>刪除 <code>%APPDATA%\Pyloxa</code> 與 <code>%LOCALAPPDATA%\Pyloxa</code>。</li>
+          <li>在用過的每個 repo 執行 <code>git worktree prune</code>，再刪掉不需要的 <code>pyloxa/…</code> 分支。</li>
+          <li>用過「<strong>同步到各 CLI</strong>」的話，從 <code>AGENTS.md</code> 與各 CLI 的記憶檔刪掉 Pyloxa 標記的區塊。CLI 本身與同步過去的 Skills 會留著。</li>
+          <li>登入過的話，在帳號頁刪除帳號，或寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a> 請我們刪除。</li>
+        </ol>
+      </section>
+
+      <section id="troubleshooting" aria-labelledby="troubleshooting-title">
+        <h2 id="troubleshooting-title">疑難排解</h2>
+        <h3>Windows 對安裝檔發出警告</h3>
+        <p>請看<a href="#smartscreen">「Windows 已保護您的電腦」</a>。</p>
+
+        <h3 id="antivirus">防毒軟體擋下 Pyloxa 或 CLI</h3>
+        <p>因為 App 還沒有程式碼簽章，有些防毒軟體會隔離安裝檔、不讓 Pyloxa 啟動，或擋下它啟動的 CLI。可能的樣子：安裝檔不見了、CLI 在終端機能用但 Pyloxa 顯示沒有安裝，或工作失敗並顯示「無法啟動 claude」（或 codex、gemini）。</p>
+        <ul>
+          <li>先用版本說明裡的 SHA-256 確認檔案，再從隔離區還原，或在防毒軟體裡允許它。請允許 Pyloxa 的安裝資料夾，不要直接關掉防護。</li>
+          <li>每個新版本都是新的檔案，更新之後可能要再允許一次。</li>
+          <li>接著在「Agent 連線」按「<strong>重新偵測</strong>」。</li>
+        </ul>
+
+        <h3>CLI 顯示「無法派工」</h3>
+        <ul>
+          <li><strong>需要重新登入</strong>：在終端機重新登入（<code>claude auth login</code>、<code>codex login</code>），再按「<strong>重新偵測</strong>」。</li>
+          <li><strong>找不到 CLI</strong>：安裝它；剛裝好的話，重新啟動 Pyloxa。</li>
+          <li><strong>未驗證版本</strong>：仍可以用監督模式執行。要換成已驗證的版本，在它的卡片按「<strong>更新到 {version}</strong>」。</li>
+          <li>設定 → 一般設定 → 使用統計與回報 →「<strong>複製診斷資訊</strong>」會複製各版本與連線狀態，回報問題時很有用。</li>
+        </ul>
+
+        <h3>工作因為錯誤停下來</h3>
+        <ul>
+          <li><strong>訂閱額度用盡</strong>：等額度重設，或讓另一個 Agent 接手。詳見 <a href="#quota">Agent 額度用盡時</a>。</li>
+          <li><strong>暫時限流</strong>或<strong>服務或網路錯誤</strong>：Pyloxa 會自己重試一次；還是不行的話，確認網路後按「<strong>重試</strong>」。</li>
+          <li><strong>無法解析 CLI 的輸出</strong>：請附上這次執行的紀錄<a href="#report">回報問題</a>。</li>
+          <li>自動執行三次後檢查仍然沒過：開啟 Session 看發生什麼事，再重試、改派，或自己修正。</li>
+        </ul>
+
+        <h3>登入或授權的問題</h3>
+        <ul>
+          <li>「連不到 Pyloxa 授權服務」：確認網路；公司網路可能擋了 <code>account.pyloxa.com</code>。詳見<a href="#pro">保持連線</a>。</li>
+          <li>「這個授權已經在 2 台電腦登入」：在登入頁或帳號頁移除一台。</li>
+          <li>「登入逾時」：重新按「<strong>登入</strong>」，在 5 分鐘內完成。</li>
+        </ul>
+
+        <h3>資料夾無法開成專案</h3>
+        <p>Pyloxa 需要一個至少有一次 commit 的 git repo。先執行 <code>git init</code> 並做第一次 commit，再重新開啟資料夾。</p>
+      </section>
+
+      <section id="report" aria-labelledby="report-title">
+        <h2 id="report-title">回報問題</h2>
+        <ul>
+          <li>在 App 裡：設定 → 一般設定 → 使用統計與回報 →「<strong>回報問題或建議</strong>」會開啟我們的 <a href="https://github.com/eric861129/Pyloxa-Releases/issues/new/choose">GitHub 回報表單</a>：「問題回報」或「功能建議」。回報問題時，貼上「<strong>複製診斷資訊</strong>」複製的內容。</li>
+          <li>Issue 是公開的。不要貼 token、API Key 或不能公開的程式碼，也請檢查截圖裡有沒有專案名稱、檔案內容或帳號資料。</li>
+          <li>帳號、授權或不方便公開的問題，請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。</li>
+          <li>資安漏洞：請透過 <a href="https://github.com/eric861129/Pyloxa-Releases/security/advisories/new">GitHub 的安全性通報</a>私下回報，不要開公開的 issue。</li>
+        </ul>
+      </section>
+
+      <section id="free-vs-pro" aria-labelledby="free-vs-pro-title">
+        <h2 id="free-vs-pro-title">免費版與 Pro 一覽</h2>
+        <div class="table">
+          <table>
+            <thead><tr><th scope="col">功能</th><th scope="col">免費版</th><th scope="col">Pro</th></tr></thead>
+            <tbody>
+              <tr><td>計畫、派工規則、worktree、驗證命令、Gate、大腦驗收</td><td>有</td><td>有</td></tr>
+              <tr><td>工作流程範本與自訂計畫階段</td><td>有</td><td>有</td></tr>
+              <tr><td>共用記憶、試駕、驗證報告卡、背景執行、用量表、設定備份</td><td>有</td><td>有</td></tr>
+              <tr><td>同時進行的專案</td><td>一個</td><td>多個，加上任務中心</td></tr>
+              <tr><td>一個計畫同時進行的工作</td><td>兩個</td><td>計畫內沒有上限</td></tr>
+              <tr><td>派工模式</td><td>建議後詢問、僅依設定執行</td><td>再加上授權範圍內自動</td></tr>
+              <tr><td>額度用盡時</td><td>每次接手由你確認</td><td>自動備援</td></tr>
+              <tr><td>交叉測試</td><td>你按下時才測</td><td>自動測試，失敗時交回修正</td></tr>
+              <tr><td>大腦</td><td>一個</td><td>最多三個備援大腦</td></tr>
+              <tr><td>我的流程與用一句話建立流程</td><td>—</td><td>有</td></tr>
+              <tr><td>Agent Teams（實驗）</td><td>—</td><td>有</td></tr>
+              <tr><td>排程計畫、專案優先序與額度分配</td><td>等待中的工作在重設後繼續</td><td>有</td></tr>
+              <tr><td>用量報表匯出</td><td>每次執行的用量</td><td>跨專案，Markdown 或 CSV</td></tr>
+              <tr><td>通知</td><td>Windows 桌面通知</td><td>再加上 Telegram、Discord、webhook</td></tr>
+              <tr><td>Skills</td><td>盤點與檢視</td><td>Skills 庫、同步、依專案指派</td></tr>
+              <tr><td>派工包</td><td>讀取 repo 裡的 <code>.pyloxa/</code></td><td>匯入與匯出</td></tr>
+              <tr><td>常用指令</td><td>最多五個</td><td>不限數量</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">這份說明目前有<a href="../../help/" lang="en">英文</a>與繁體中文，官網其他語言之後再補。找不到答案的話，請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。</p>
+      </section>
+    </main>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

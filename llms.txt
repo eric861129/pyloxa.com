@@ -36,6 +36,7 @@ Pyloxa is made from the first letters of Plan, Yield, Lead, Orchestrate, eXecute
 - [Quota & fallback](https://pyloxa.com/quota/): the title-bar usage meter, takeovers when quota runs out, and Pro scheduling
 - [Pro](https://pyloxa.com/pro/): what Pro adds, the free preview, accounts, and what happens when Pro ends
 - [Changelog](https://pyloxa.com/changelog/): what changed in each release
+- [Help](https://pyloxa.com/help/): installing, connecting the CLIs, plans, checks, workflows, Pro sign-in and troubleshooting, with Pro features marked ([繁體中文](https://pyloxa.com/zh-TW/help/))
 - [Download](https://github.com/eric861129/Pyloxa-Releases/releases/latest): latest Windows installer and SHA-256
 - [Report a problem](https://github.com/eric861129/Pyloxa-Releases/issues)
 - [Privacy policy](https://pyloxa.com/privacy/)
