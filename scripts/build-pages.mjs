@@ -92,9 +92,10 @@ function render(lang) {
     ogImage: `${ORIGIN}/assets/${lang.og}`,
     ogLocales: ogLocales(lang),
     wlTag: lang.code.toLowerCase(),
-    // 改版紀錄與隱私權政策只有英文與繁中；其他語言連到英文版
+    // 改版紀錄、隱私權政策與說明文件只有英文與繁中；其他語言連到英文版
     changelog: lang.pages?.includes("changelog") ? "changelog/" : `${lang.dir ? "../" : ""}changelog/`,
     privacy: lang.pages?.includes("privacy") ? "privacy/" : `${lang.dir ? "../" : ""}privacy/`,
+    help: lang.pages?.includes("help") ? "help/" : `${lang.dir ? "../" : ""}help/`,
     // App 介面只有英文、繁中、簡中：其他語言的頁面在下載按鈕旁說明
     appLangNote: lang.appUi ? "" : `<span class="meta app-lang">${strings["hero.appLang"] ?? english["hero.appLang"]}</span>`,
     alternates: alternates(),
@@ -132,7 +133,7 @@ function sitemap() {
   const today = new Date().toISOString().slice(0, 10);
   const alt = (href) => (l) => `    <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${href(l)}" />`;
   const homeAlts = [...languages.map(alt(pageUrl)), `    <xhtml:link rel="alternate" hreflang="x-default" href="${pageUrl(languages[0])}" />`].join("\n");
-  // 改版紀錄與隱私權政策目前只有英文與繁中
+  // 改版紀錄、隱私權政策與說明文件目前只有英文與繁中
   const pair = (sub) => {
     const en = `${ORIGIN}/${sub}/`;
     const zh = `${ORIGIN}/zh-TW/${sub}/`;
@@ -143,6 +144,7 @@ function sitemap() {
     ...languages.map((l) => `  <url>\n    <loc>${pageUrl(l)}</loc>\n    <lastmod>${today}</lastmod>\n${homeAlts}\n  </url>`),
     ...pair("changelog"),
     ...pair("privacy"),
+    ...pair("help"),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join("\n")}\n</urlset>\n`;
 }
@@ -160,6 +162,13 @@ function emit(rel, content) {
   mkdirSync(path.dirname(file), { recursive: true });
   writeFileSync(file, content);
   console.log(`已寫入 ${rel}`);
+}
+
+// languages.json 的 pages 是手寫的子頁面（改版紀錄、隱私權政策、說明文件）；首頁與 sitemap 會連過去，所以檔案一定要在
+const missingPages = languages.flatMap((l) => (l.pages ?? []).map((p) => path.join(l.dir || "", p, "index.html")).filter((rel) => !existsSync(path.join(site, rel))));
+if (missingPages.length) {
+  console.error(`languages.json 列了這些子頁面，但檔案不存在：${missingPages.join("、")}`);
+  process.exit(1);
 }
 
 for (const lang of languages) emit(path.join(lang.dir || "", "index.html"), render(lang));

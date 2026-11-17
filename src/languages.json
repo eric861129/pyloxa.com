@@ -1,6 +1,6 @@
 [
-  { "code": "en", "dir": "", "htmlLang": "en", "hreflang": "en", "name": "English", "ogLocale": "en_US", "og": "og-en.png", "assets": "en", "pages": ["changelog", "privacy"], "appUi": true },
-  { "code": "zh-TW", "dir": "zh-TW", "htmlLang": "zh-Hant-TW", "hreflang": "zh-TW", "name": "繁體中文", "ogLocale": "zh_TW", "og": "og-zh.png", "assets": "zh", "pages": ["changelog", "privacy"], "appUi": true },
+  { "code": "en", "dir": "", "htmlLang": "en", "hreflang": "en", "name": "English", "ogLocale": "en_US", "og": "og-en.png", "assets": "en", "pages": ["changelog", "privacy", "help"], "appUi": true },
+  { "code": "zh-TW", "dir": "zh-TW", "htmlLang": "zh-Hant-TW", "hreflang": "zh-TW", "name": "繁體中文", "ogLocale": "zh_TW", "og": "og-zh.png", "assets": "zh", "pages": ["changelog", "privacy", "help"], "appUi": true },
   { "code": "zh-CN", "dir": "zh-CN", "htmlLang": "zh-Hans-CN", "hreflang": "zh-CN", "name": "简体中文", "ogLocale": "zh_CN", "og": "og-en.png", "assets": "en", "appUi": true },
   { "code": "ja", "dir": "ja", "htmlLang": "ja", "hreflang": "ja", "name": "日本語", "ogLocale": "ja_JP", "og": "og-en.png", "assets": "en" },
   { "code": "ko", "dir": "ko", "htmlLang": "ko", "hreflang": "ko", "name": "한국어", "ogLocale": "ko_KR", "og": "og-en.png", "assets": "en" },
