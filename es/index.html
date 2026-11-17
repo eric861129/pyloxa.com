@@ -31,7 +31,7 @@
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
     <meta name="twitter:image:alt" content="Pyloxa: usa Claude Code y Codex juntos. Un plan en el que cada tarea muestra el agente al que va y la regla con la que coincidió." />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/es/#software","name":"Pyloxa","url":"https://pyloxa.com/es/","image":"https://pyloxa.com/assets/og-en.png","description":"App gratis para Windows que asigna cada tarea de programación a Claude Code o Codex según tus reglas, verifica con tus pruebas y cambia de agente si se acaba la cuota.","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.10","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"es","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
-    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/es/#faq","url":"https://pyloxa.com/es/","inLanguage":"es","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"¿Qué es Pyloxa?","acceptedAnswer":{"@type":"Answer","text":"Pyloxa es una app de escritorio para Windows 10 y 11 que hace que agentes de IA para programar, como Claude Code y Codex CLI, trabajen juntos. Describes el trabajo una vez, y el cerebro lo divide en tareas y entrega cada una a una CLI según tus reglas de asignación. Cada tarea se ejecuta en su propio git worktree y se verifica con tus comandos de verificación, y tú decides qué se fusiona. Si una CLI se queda sin cuota, otra toma el relevo cuando lo confirmas. Pyloxa usa tus propias suscripciones o claves de API. La edición gratuita no necesita cuenta; Pro, por US$79 al año, añade varios proyectos a la vez, modo automático y respaldo automático, y ahora está en vista previa gratuita: inicia sesión para usarlo."}},{"@type":"Question","name":"¿Pyloxa cobra por el uso de IA?","acceptedAnswer":{"@type":"Answer","text":"No. Pyloxa ejecuta las CLI oficiales que ya configuraste (Claude Code, Codex CLI y, de forma experimental, Gemini CLI), así que el uso se descuenta de tu propia suscripción, o de tu propia clave de API si eliges una. Pyloxa nunca revende ni hace de proxy de ningún servicio de IA."}},{"@type":"Question","name":"¿Qué necesito instalar?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 u 11 (64 bits), git y al menos una de estas CLI con la sesión iniciada: Claude Code o Codex CLI. Gemini CLI es opcional y experimental, y necesita tu propia clave de API de Gemini de pago. Con más de una CLI, el flujo predeterminado reparte el trabajo y el respaldo empieza a ser útil. ¿Todavía no las tienes? En el primer inicio, el asistente de configuración comprueba git y Node.js, instala las CLI con sus comandos npm oficiales después de que confirmes y te guía por el inicio de sesión y las claves de API."}},{"@type":"Question","name":"¿Pyloxa lee mis credenciales?","acceptedAnswer":{"@type":"Answer","text":"Nunca. Comprueba el estado del inicio de sesión con el propio comando de cada CLI y la inicia como lo harías tú. Los tokens y los archivos de credenciales no se leen, copian ni envían."}},{"@type":"Question","name":"¿Se envía mi código a algún sitio?","acceptedAnswer":{"@type":"Answer","text":"La versión gratuita no necesita cuenta, y Pyloxa nunca nos envía tus proyectos, prompts ni código; tu código solo va a donde lo envían las CLI, bajo los términos de Anthropic, OpenAI y Google. La prueba, la vista previa de Pro y Pro requieren iniciar sesión, y la cuenta solo se usa para la licencia: después de iniciar sesión, Pyloxa renueva la licencia aproximadamente una vez al día y solo envía un ID de dispositivo y las versiones de la app y de Windows. Pyloxa consulta a GitHub la última versión de Pyloxa y su catálogo de compatibilidad de CLI al iniciarse y cada 12 horas, sin datos de proyectos ni de uso; puedes desactivarlo en la configuración. Las estadísticas de uso se calculan en tu equipo y solo se envían si activas el uso compartido anónimo, que está desactivado de forma predeterminada, y entonces solo contienen recuentos y categorías. Las notificaciones de Pro que configures van directamente desde tu equipo al Telegram, Discord o webhook que elijas. Los detalles están en la política de privacidad (en inglés)."}},{"@type":"Question","name":"¿Un agente puede romper mi repositorio?","acceptedAnswer":{"@type":"Answer","text":"Los agentes trabajan en git worktrees separados, lejos del directorio de trabajo que estás editando, y Pyloxa nunca hace stash, reset ni checkout en él. Cuando una tarea termina, sus archivos cambiados se comprueban contra el alcance de escritura que permite el plan, y puedes revisar cada archivo en la vista de diff integrada. No se fusiona ni se hace push de nada hasta que tú lo decidas."}},{"@type":"Question","name":"¿Por qué Windows me muestra una advertencia al instalar?","acceptedAnswer":{"@type":"Answer","text":"El instalador gratuito todavía no tiene firma de código, así que SmartScreen puede decir que protegió tu PC. Elige Más información y luego Ejecutar de todas formas. Antes puedes comparar el SHA-256 del instalador con el de la página de la versión."}},{"@type":"Question","name":"¿En qué se diferencia de las herramientas que ponen terminales de agentes lado a lado?","acceptedAnswer":{"@type":"Answer","text":"Los multiplexores de terminales ponen varias terminales de agentes en una ventana para que veas cuáles están trabajando y cuáles te esperan; algunos mantienen los agentes en marcha incluso después de cerrar la app o llegan a máquinas remotas. Pyloxa se ocupa de lo que pasa fuera de las terminales: el cerebro divide la petición en tareas, tus reglas las asignan, tus comandos verifican los resultados, se propone un respaldo cuando se acaba la cuota y tú fusionas al final. Pyloxa sigue trabajando en la bandeja del sistema cuando cierras su ventana, y las tareas interrumpidas por un reinicio se pueden reanudar. Si quieres vigilar cada terminal tú mismo, te conviene un multiplexor; si quieres entregar una petición y recibir resultados verificados, te conviene Pyloxa."}},{"@type":"Question","name":"Ya pago Claude o ChatGPT. ¿Por qué no ejecutar la CLI en una terminal?","acceptedAnswer":{"@type":"Answer","text":"Ejecutar la CLI directamente está bien, y Pyloxa usa la misma CLI y la misma suscripción. La diferencia está en tres cosas: cuando se acaba la cuota, Pyloxa propone un respaldo según tus reglas y, cuando confirmas, otra CLI continúa desde los archivos ya cambiados; que un agente diga que terminó no cuenta hasta que pasan tus comandos de verificación; y las reglas de asignación y las skills que ve cada CLI están en un solo lugar en vez de en la configuración de cada CLI."}},{"@type":"Question","name":"¿En qué se diferencia de los subagentes de una CLI?","acceptedAnswer":{"@type":"Answer","text":"Los subagentes reparten el trabajo dentro de una CLI. Pyloxa lo reparte entre varias CLI: las tareas pueden ir a CLI distintas, cada una se ejecuta en su propio worktree, tus comandos verifican los resultados y otra CLI toma el relevo cuando una se queda sin cuota. Puedes usar ambos a la vez."}},{"@type":"Question","name":"¿Es compatible con Gemini u otros agentes?","acceptedAnswer":{"@type":"Answer","text":"Desde 0.1.2, Gemini CLI es compatible como opción experimental con tu propia clave de API de Gemini de pago. No se admiten el inicio de sesión con cuenta de Google ni las suscripciones AI Pro o Ultra. Gemini puede ejecutar tareas como redacción y documentación, pero no puede ser el cerebro ni probar el trabajo de otro agente, y en modo desatendido puede editar archivos pero no ejecutar comandos. Se están evaluando otros agentes."}},{"@type":"Question","name":"¿Qué añade Pro?","acceptedAnswer":{"@type":"Answer","text":"Varios proyectos trabajando a la vez, con todo lo que espera por ti en el centro de tareas; decisiones automáticas dentro de los límites que fijes (modo automático); respaldo automático cuando se agota la cuota; pruebas cruzadas automáticas; un cerebro de respaldo; prioridad por proyecto, cuotas por conexión y planes programados; un panel de uso e informes; notificaciones a Telegram, Discord o un webhook; una biblioteca de skills y paquetes de asignación; y Agent Teams, todavía experimental. Pro cuesta US$79 al año y ahora está en vista previa: inicia sesión y úsalo gratis hasta que Pro salga a la venta, con al menos 30 días de aviso. El precio early bird es de US$49 al año y se mantiene mientras sigas suscrito. Si cancelas, Pro sigue funcionando en todas las versiones publicadas mientras estuviste suscrito. La versión gratuita seguirá siendo gratuita."}}]}]}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/es/#faq","url":"https://pyloxa.com/es/","inLanguage":"es","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"¿Qué es Pyloxa?","acceptedAnswer":{"@type":"Answer","text":"Pyloxa es una app de escritorio para Windows 10 y 11 que hace que agentes de IA para programar, como Claude Code y Codex CLI, trabajen juntos. Describes el trabajo una vez, y el cerebro lo divide en tareas y entrega cada una a una CLI según tus reglas de asignación. Cada tarea se ejecuta en su propio git worktree y se verifica con tus comandos de verificación, y tú decides qué se fusiona. Si una CLI se queda sin cuota, otra toma el relevo cuando lo confirmas. Pyloxa usa tus propias suscripciones o claves de API. La edición gratuita no necesita cuenta; Pro, por US$79 al año, añade varios proyectos a la vez, modo automático y respaldo automático, y ahora está en vista previa gratuita: inicia sesión para usarlo."}},{"@type":"Question","name":"¿Pyloxa cobra por el uso de IA?","acceptedAnswer":{"@type":"Answer","text":"No. Pyloxa ejecuta las CLI oficiales que ya configuraste (Claude Code, Codex CLI y, de forma experimental, Gemini CLI), así que el uso se descuenta de tu propia suscripción, o de tu propia clave de API si eliges una. Pyloxa nunca revende ni hace de proxy de ningún servicio de IA."}},{"@type":"Question","name":"¿Qué necesito instalar?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 u 11 (64 bits), git y al menos una de estas CLI con la sesión iniciada: Claude Code o Codex CLI. Gemini CLI es opcional y experimental, y necesita tu propia clave de API de Gemini de pago. Con más de una CLI, el flujo predeterminado reparte el trabajo y el respaldo empieza a ser útil. ¿Todavía no las tienes? En el primer inicio, el asistente de configuración comprueba git y Node.js, instala las CLI con sus comandos npm oficiales después de que confirmes y te guía por el inicio de sesión y las claves de API."}},{"@type":"Question","name":"¿Puedo probarlo sin usar mi propio proyecto?","acceptedAnswer":{"@type":"Answer","text":"Sí. En el último paso de la guía de configuración, o en la página de bienvenida cuando aún no tienes proyectos, elige “Empezar la prueba”. Pyloxa crea un repo de ejemplo con un carrito de compras que esconde un bug y un plan escrito de antemano, y espera tu aprobación. Con CLI de dos proveedores, una implementa y la otra hace pruebas cruzadas; con una sola, la comprobación la hace una prueba de especificación incluida en el repo. Pyloxa ejecuta las pruebas por su cuenta y al final puedes abrir la tarjeta de verificación. Antes de empezar verás una estimación de turnos de agente, tokens y tiempo. La prueba nunca toca tus proyectos, no hace push ni abre un PR."}},{"@type":"Question","name":"¿Pyloxa lee mis credenciales?","acceptedAnswer":{"@type":"Answer","text":"Nunca. Comprueba el estado del inicio de sesión con el propio comando de cada CLI y la inicia como lo harías tú. Los tokens y los archivos de credenciales no se leen, copian ni envían."}},{"@type":"Question","name":"¿Se envía mi código a algún sitio?","acceptedAnswer":{"@type":"Answer","text":"La versión gratuita no necesita cuenta, y Pyloxa nunca nos envía tus proyectos, prompts ni código; tu código solo va a donde lo envían las CLI, bajo los términos de Anthropic, OpenAI y Google. La prueba, la vista previa de Pro y Pro requieren iniciar sesión, y la cuenta solo se usa para la licencia: después de iniciar sesión, Pyloxa renueva la licencia aproximadamente una vez al día y solo envía un ID de dispositivo y las versiones de la app y de Windows. Pyloxa consulta a GitHub la última versión de Pyloxa y su catálogo de compatibilidad de CLI al iniciarse y cada 12 horas, sin datos de proyectos ni de uso; puedes desactivarlo en la configuración. Las estadísticas de uso se calculan en tu equipo y solo se envían si activas el uso compartido anónimo, que está desactivado de forma predeterminada, y entonces solo contienen recuentos y categorías. Las notificaciones de Pro que configures van directamente desde tu equipo al Telegram, Discord o webhook que elijas. Los detalles están en la política de privacidad (en inglés)."}},{"@type":"Question","name":"¿Un agente puede romper mi repositorio?","acceptedAnswer":{"@type":"Answer","text":"Los agentes trabajan en git worktrees separados, lejos del directorio de trabajo que estás editando, y Pyloxa nunca hace stash, reset ni checkout en él. Cuando una tarea termina, sus archivos cambiados se comprueban contra el alcance de escritura que permite el plan, y puedes revisar cada archivo en la vista de diff integrada. No se fusiona ni se hace push de nada hasta que tú lo decidas."}},{"@type":"Question","name":"¿Tengo que volver a configurarlo todo en una computadora nueva?","acceptedAnswer":{"@type":"Answer","text":"No. Exporta la configuración en “Configuración → Copia de seguridad y traslado” e impórtala en la computadora nueva: los perfiles de agente, las reglas de asignación globales, las preferencias de asignación y del cerebro, las fases, las plantillas de prompts, la memoria compartida global, la biblioteca de skills y las preferencias de la interfaz van en un solo archivo. Las claves de API, los inicios de sesión, las licencias y las rutas de esta computadora nunca se incluyen. La configuración de cada proyecto y tus flujos guardados tampoco viajan; las reglas del proyecto pueden ir en la carpeta .pyloxa/ del repo y viajar con git. Antes de importar revisas cada elemento, antes de aplicar se hace una copia de seguridad automática de la configuración de esta computadora, y puedes restaurarla. Está incluido en la versión gratuita."}},{"@type":"Question","name":"¿Por qué Windows me muestra una advertencia al instalar?","acceptedAnswer":{"@type":"Answer","text":"El instalador gratuito todavía no tiene firma de código, así que SmartScreen puede decir que protegió tu PC. Elige Más información y luego Ejecutar de todas formas. Antes puedes comparar el SHA-256 del instalador con el de la página de la versión."}},{"@type":"Question","name":"¿En qué se diferencia de las herramientas que ponen terminales de agentes lado a lado?","acceptedAnswer":{"@type":"Answer","text":"Los multiplexores de terminales ponen varias terminales de agentes en una ventana para que veas cuáles están trabajando y cuáles te esperan; algunos mantienen los agentes en marcha incluso después de cerrar la app o llegan a máquinas remotas. Pyloxa se ocupa de lo que pasa fuera de las terminales: el cerebro divide la petición en tareas, tus reglas las asignan, tus comandos verifican los resultados, se propone un respaldo cuando se acaba la cuota y tú fusionas al final. Pyloxa sigue trabajando en la bandeja del sistema cuando cierras su ventana, y las tareas interrumpidas por un reinicio se pueden reanudar. Si quieres vigilar cada terminal tú mismo, te conviene un multiplexor; si quieres entregar una petición y recibir resultados verificados, te conviene Pyloxa."}},{"@type":"Question","name":"Ya pago Claude o ChatGPT. ¿Por qué no ejecutar la CLI en una terminal?","acceptedAnswer":{"@type":"Answer","text":"Ejecutar la CLI directamente está bien, y Pyloxa usa la misma CLI y la misma suscripción. La diferencia está en tres cosas: cuando se acaba la cuota, Pyloxa propone un respaldo según tus reglas y, cuando confirmas, otra CLI continúa desde los archivos ya cambiados; que un agente diga que terminó no cuenta hasta que pasan tus comandos de verificación; y las reglas de asignación y las skills que ve cada CLI están en un solo lugar en vez de en la configuración de cada CLI."}},{"@type":"Question","name":"¿En qué se diferencia de los subagentes de una CLI?","acceptedAnswer":{"@type":"Answer","text":"Los subagentes reparten el trabajo dentro de una CLI. Pyloxa lo reparte entre varias CLI: las tareas pueden ir a CLI distintas, cada una se ejecuta en su propio worktree, tus comandos verifican los resultados y otra CLI toma el relevo cuando una se queda sin cuota. Puedes usar ambos a la vez."}},{"@type":"Question","name":"¿Es compatible con Gemini u otros agentes?","acceptedAnswer":{"@type":"Answer","text":"Desde 0.1.2, Gemini CLI es compatible como opción experimental con tu propia clave de API de Gemini de pago. No se admiten el inicio de sesión con cuenta de Google ni las suscripciones AI Pro o Ultra. Gemini puede ejecutar tareas como redacción y documentación, pero no puede ser el cerebro ni probar el trabajo de otro agente, y en modo desatendido puede editar archivos pero no ejecutar comandos. Se están evaluando otros agentes."}},{"@type":"Question","name":"¿Qué añade Pro?","acceptedAnswer":{"@type":"Answer","text":"Varios proyectos trabajando a la vez, con todo lo que espera por ti en el centro de tareas; decisiones automáticas dentro de los límites que fijes (modo automático); respaldo automático cuando se agota la cuota; pruebas cruzadas automáticas; un cerebro de respaldo; flujos guardados, uno distinto para cada proyecto, y flujos redactados a partir de una frase; prioridad por proyecto, cuotas por conexión y planes programados; un panel de uso e informes; notificaciones a Telegram, Discord o un webhook; una biblioteca de skills y paquetes de asignación; y Agent Teams, todavía experimental. Pro cuesta US$79 al año y ahora está en vista previa: inicia sesión y úsalo gratis hasta que Pro salga a la venta, con al menos 30 días de aviso. El precio early bird es de US$49 al año y se mantiene mientras sigas suscrito. Si cancelas, Pro sigue funcionando en todas las versiones publicadas mientras estuviste suscrito. La versión gratuita seguirá siendo gratuita."}}]}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
@@ -145,7 +145,7 @@
                 <span id="quota-label">Codex se quedó sin cuota</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Codex se quedó sin cuota</span>
+                <span class="ui-title" data-quota-title>Codex se quedó sin cuota (se restablece hacia las 18:00)</span>
                 <span class="ui-muted">Un respaldo puede tomar el relevo y continuar desde el trabajo de Codex, después de que lo confirmes.</span>
                 <span><button type="button" class="ui-button primary" data-takeover>Que Claude Code tome el relevo</button></span>
               </div>
@@ -217,7 +217,6 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">Un flujo de trabajo, cinco etapas</h2>
             <p>La página “Flujo de trabajo” de la app muestra todo el flujo de una vez: quién planifica, en qué fases, quién hace cada tipo de trabajo, cómo se comprueba y cómo se entrega. Cada etapa la configuras tú; el cerebro solo propone planes y no puede cambiarlas.</p>
-            <p class="more-link"><a href="../workflow/">Más detalles (en inglés) →</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="Las cinco etapas de un flujo de trabajo" hidden>
@@ -263,11 +262,12 @@
 
           <div class="panel" role="tabpanel" id="wf-phases" aria-labelledby="wf-tab-phases">
             <div class="panel-copy">
-              <h3>Fases: el cerebro las organiza y cada una termina con una comprobación</h3>
+              <h3>Fases: el cerebro las organiza, o las defines tú</h3>
               <p>El cerebro organiza las fases según la petición, como especificación, contrato, implementación y pruebas. Antes de aprobar, puedes reasignar una tarea, editar sus instrucciones o pedirle al cerebro que lo revise.</p>
               <ul>
                 <li>Cada tarea terminada se verifica en su propio worktree; al final de cada fase, el control se ejecuta de nuevo sobre el resultado integrado.</li>
                 <li>Un control puede avanzar solo cuando pasa, o esperar tu aprobación.</li>
+                <li>También puedes usar tus propias fases: hasta cinco, y en cada una decides quién la hace, si espera tu aprobación al terminar y si se puede omitir cuando la solicitud no la necesita. Incluido en la versión gratuita.</li>
                 <li>La siguiente fase recibe un paquete de traspaso: los resultados, las verificaciones que pasaron y en qué fijarse.</li>
                 <li>Agent Teams (experimental, Pro): los agentes en ejecución pueden ver las tareas de todo el equipo, informar de su avance y detenerse a preguntarte cuando les falta información.</li>
               </ul>
@@ -277,6 +277,8 @@
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">Plan: página de perfil</span>
                   <span class="ui-muted">3 fases · 5 tareas</span>
+                  <span class="spacer"></span>
+                  <span class="badge info">Usar mis fases</span>
                 </div>
                 <ol class="wf-phase-list">
                   <li class="ui-row"><span class="wf-num">1</span><div><span class="ui-title">Especificación y contrato</span><span class="ui-muted">Codex</span></div><span class="badge ok">Control superado</span></li>
@@ -302,7 +304,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">Tabla de asignación</span>
-                  <span class="ui-muted">Pantalla de ejemplo: haz clic en una celda para cambiar entre principal, respaldo y no asignar</span>
+                  <span class="ui-muted">Haz clic en una celda: principal → respaldo → no asignar</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -414,34 +416,88 @@
               <h3>Entrega: tú decides qué se fusiona y cuándo se hace push</h3>
               <p>Cada tarea termina en su propio git worktree y se comprueba contra su alcance de escritura antes de fusionarse en la rama de integración. Fusionar en tu rama, hacer push y abrir un PR esperan a que tú lo decidas.</p>
               <ul>
+                <li>La descripción del PR puede llevar una tarjeta de verificación: una tabla por fase con quién hizo el trabajo, quién hizo las pruebas cruzadas, qué comandos ejecutó Pyloxa y cómo se aceptó cada resultado. Que un agente diga que terminó no cuenta como aprobado.</li>
+                <li>La línea final está desactivada de forma predeterminada. Si la activas, dice “Verified with Pyloxa” solo cuando todos los resultados superaron los comandos que ejecutó Pyloxa.</li>
+                <li>También la ves sin abrir un PR: cuando termina un plan, haz clic en “Tarjeta de verificación” al pie de la tarjeta del plan y copia el Markdown.</li>
                 <li>Cuando una tarea cambia archivos que dirigen a los agentes y la automatización, como .github, .claude o CLAUDE.md, nunca se acepta automáticamente, y el diálogo de fusión vuelve a mostrar esos archivos.</li>
-                <li>Al abrir un PR puedes añadir un registro de qué comandos se ejecutaron de verdad y quién aceptó cada resultado.</li>
                 <li>Pyloxa nunca hace stash, reset ni checkout en tu directorio de trabajo.</li>
               </ul>
             </div>
             <div class="panel-media">
-              <div class="wf-pr" data-ui>
+              <div class="wf-pr" data-ui data-report>
                 <div class="ui-row wf-card-head"><span class="ui-title">Crear pull request</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
                 <div class="ui-row wf-pr-body">
                   <span class="field-label">Título</span>
                   <span class="wf-input">Agregar la página de perfil</span>
-                  <label class="wf-check"><input type="checkbox" checked /> Agregar al final de la descripción el registro de verificación de Pyloxa (5 resultados)</label>
-                  <div class="wf-warn">Necesita tu revisión: este cambio toca <code>.github/workflows/ci.yml</code></div>
+                  <label class="wf-check"><input type="checkbox" checked disabled /> Añadir al final de la descripción la tarjeta de verificación de Pyloxa (3 resultados)</label>
+                  <div class="wf-report">
+                    <p class="wf-report-title">Registro de verificación de Pyloxa</p>
+                    <p class="wf-report-sum">Resumen: ✅ 2 superaron comandos que ejecutó el propio Pyloxa · ⚠️ 1 sin comprobación por comandos, revisado por una persona o IA</p>
+                    <div class="wf-report-scroll">
+                      <table>
+                        <thead>
+                          <tr><th scope="col">Resultado</th><th scope="col">Hecho por</th><th scope="col">Pruebas cruzadas</th><th scope="col">Aceptación</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>✅ API de perfil</td><td>Codex</td><td>Claude Code: superado, añadió 1 archivo de prueba protegido</td><td>Todas las comprobaciones pasaron; aceptado automáticamente</td></tr>
+                          <tr><td>✅ Página de perfil</td><td>Claude Code</td><td>—</td><td>Aceptado tras revisión humana</td></tr>
+                          <tr><td>⚠️ Actualizar el README</td><td>Claude Code</td><td>—</td><td>Aceptado tras revisión humana</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="wf-report-footer" data-report-footer hidden><a href="/" tabindex="-1">Verification record by Pyloxa</a><span class="ui-muted">Un resultado no tiene comprobación por comandos, así que la línea no dice Verified.</span></p>
+                  </div>
+                  <label class="wf-check"><input type="checkbox" data-report-toggle /> Terminar con una línea “Verification record by Pyloxa” y un enlace al sitio web</label>
                 </div>
-                <div class="ui-row wf-pr-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Pasaron todos los comandos de verificación (2) · fusionado en la rama de integración</span><span class="spacer"></span><button type="button" class="ui-button primary">Crear PR</button></div>
+                <div class="ui-row wf-pr-foot"><span class="spacer"></span><button type="button" class="ui-button primary">Crear PR</button></div>
               </div>
             </div>
           </div>
 
           <div class="wf-templates reveal">
-            <h3>Empieza con una plantilla</h3>
+            <h3>Empieza con una de las cinco plantillas</h3>
             <p>Antes de aplicar una, Pyloxa muestra cada configuración que cambia, y “Deshacer la última plantilla” te devuelve a como estaba. Las configuraciones de Pro de una plantilla se omiten en la versión gratuita.</p>
             <ul>
               <li><span class="wf-tpl-name">Equilibrado</span><span class="badge info">Predeterminado</span><p>Frontend a Claude Code, backend a Codex, cada uno respaldo del otro; sugerir y preguntar.</p></li>
               <li><span class="wf-tpl-name">Arreglo rápido</span><p>Solo sigue tu configuración, en un worktree compartido, todo con el perfil del cerebro.</p></li>
               <li><span class="wf-tpl-name">Revisión exhaustiva</span><span class="badge warn">Incluye configuración de Pro</span><p>El cerebro revisa cada tarea, y el trabajo de frontend y backend recibe pruebas cruzadas.</p></li>
               <li><span class="wf-tpl-name">Repartir la cuota</span><span class="badge warn">Incluye configuración de Pro</span><p>Reparte cada tipo de trabajo entre Claude Code y Codex, con respaldo automático cuando se acaba la cuota.</p></li>
+              <li><span class="wf-tpl-name">Primero la especificación</span><p>Se escribe la especificación y espera tu aprobación; después se implementa y se prueba. Las pruebas se pueden omitir si la solicitud no las necesita.</p></li>
             </ul>
+          </div>
+
+          <div class="wf-mine reveal">
+            <div class="wf-mine-copy">
+              <h3>Guarda tus propios flujos, uno para cada proyecto <span class="badge warn">Pro</span></h3>
+              <p>Cuando lo tengas configurado, elige “Guardar como mi flujo” y luego elige qué flujo usa cada proyecto: primero la especificación para la API, cambios directos para una herramienta pequeña. También puedes describir en una frase cómo quieres trabajar y dejar que el cerebro redacte el flujo.</p>
+              <ul>
+                <li>El cerebro solo redacta. Las fases, el reparto del trabajo y las comprobaciones se muestran primero como cambios, y tú eliges si aplicarlo globalmente, guardarlo como uno de tus flujos o editar la descripción y redactarlo de nuevo.</li>
+                <li>El cerebro no puede inventar agentes: los que no existen o están desactivados se quitan, y lo que no puede hacerse queda escrito en las notas.</li>
+                <li>Antes de aplicar globalmente se guardan tus ajustes actuales, así que puedes volver a la versión anterior. Los proyectos sin un flujo propio usan los ajustes globales.</li>
+              </ul>
+            </div>
+            <div class="wf-draft" data-ui>
+              <div class="ui-row wf-card-head"><span class="ui-title">Describe un flujo</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+              <div class="ui-row wf-draft-body">
+                <span class="field-label">¿Cómo quieres trabajar?</span>
+                <span class="wf-input">Para proyectos de API, escribe primero una especificación y empieza a desarrollar cuando yo la apruebe. El backend va para Codex y el cerebro revisa todas las tareas.</span>
+                <div class="wf-draft-cols">
+                  <div>
+                    <span class="field-label">Nombre</span>
+                    <span class="wf-input">Especificación primero (API)</span>
+                  </div>
+                  <div>
+                    <span class="field-label">Qué cambia al aplicarlo</span>
+                    <dl class="wf-diff">
+                      <div><dt>Fases</dt><dd><s>Lo decide el cerebro</s> → Especificación (espera tu aprobación) → implementación → pruebas</dd></div>
+                      <div><dt>Backend</dt><dd><s>Claude Code</s> → Codex</dd></div>
+                      <div><dt>Revisión del cerebro</dt><dd><s>Desactivada</s> → Todas las tareas</dd></div>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-row wf-pr-foot"><button type="button" class="ui-button">Editar descripción</button><span class="spacer"></span><button type="button" class="ui-button">Guardar como mi flujo</button><button type="button" class="ui-button primary">Aplicar globalmente</button></div>
+            </div>
           </div>
         </div>
       </section>
@@ -450,9 +506,8 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">Cuando uno se queda sin cuota</h2>
-            <p>Si Codex llega a su límite de uso a mitad de una tarea, Pyloxa deja de enviarle trabajo y ofrece el respaldo de tu regla. Tú confirmas, y Claude Code continúa desde los archivos que Codex ya cambió.</p>
-            <p>La barra de título muestra cuánto queda de tu suscripción de Claude Code: amarillo al 70% de uso, rojo al 90% o cuando estás limitado. Codex y las demás conexiones muestran los tokens de hoy y se marcan cuando están limitadas.</p>
-            <p class="more-link"><a href="../quota/">Más detalles (en inglés) →</a></p>
+            <p>Si Codex llega a su límite de uso a mitad de una tarea, Pyloxa deja de enviarle trabajo, muestra cuándo se restablece la cuota y ofrece el respaldo de tu regla. Tú confirmas, y Claude Code continúa desde los archivos que Codex ya cambió.</p>
+            <p>La barra de título muestra cuánto queda de cada suscripción: amarillo al 70% de uso, rojo al 90% o cuando estás limitado.</p>
             <div class="figures">
               <span>3 intentos automáticos por tarea</span>
               <span>2 respaldos como máximo</span>
@@ -468,11 +523,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Codex se quedó sin cuota</span>
+                <span class="ui-title fq-title">Codex se quedó sin cuota (se restablece hacia las 18:00)</span>
                 <span class="ui-muted">Claude Code puede tomar el relevo y continuar desde lo que terminó Codex, o Codex puede reintentar cuando se restablezca su cuota.</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">Que Claude Code tome el relevo</button><button type="button" class="ui-button">Reintentar cuando se restablezca la cuota</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro toma el relevo automáticamente siguiendo la cadena de respaldo de tus reglas, sin preguntar cada vez; como máximo 2 relevos por tarea.</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro toma el relevo automáticamente siguiendo tu cadena de respaldo, con los disparadores y límites que fijes.</span></div>
             </div>
           </div>
         </div>
@@ -483,13 +538,12 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">Todos los agentes leen el mismo contexto</h2>
             <p>Anota una vez las reglas, convenciones y trampas conocidas de tu proyecto, y Claude Code, Codex y Gemini CLI las leen. Con las skills pasa lo mismo: las gestionas en un solo lugar en vez de tener una copia en cada CLI.</p>
-            <p class="more-link"><a href="../memory/">Más detalles (en inglés) →</a></p>
             <ol class="steps">
               <li><strong>Recordar<span class="tier">Gratis</span></strong><span>Pulsa “Recordar” en una respuesta del cerebro o en la sesión de una tarea, o elige entradas para importar de CLAUDE.md, AGENTS.md y los archivos de memoria de las otras CLI.</span></li>
-              <li><strong>Los agentes sugieren, tú apruebas<span class="tier">Gratis</span></strong><span>Mientras trabajan, los agentes pueden buscar en la memoria y sugerir entradas nuevas. Ningún agente ve una sugerencia hasta que la aceptas, salvo que permitas que un proyecto acepte automáticamente los hechos y las trampas conocidas que sugieren los agentes (desactivado por defecto).</span></li>
+              <li><strong>Los agentes sugieren, tú apruebas<span class="tier">Gratis</span></strong><span>Mientras trabajan, los agentes pueden buscar en la memoria y sugerir entradas nuevas. Ningún agente ve una sugerencia hasta que la aceptas.</span></li>
               <li><strong>Sincronizar con las CLI<span class="tier">Gratis</span></strong><span>Escribe las reglas del proyecto en un bloque de Pyloxa en AGENTS.md, para que las CLI también las lean en tu terminal. Primero ves el diff, y Pyloxa no hace ningún commit por ti.</span></li>
               <li><strong>Inventario de skills<span class="tier">Gratis</span></strong><span>Mira qué skills tiene cada CLI y cuáles comparten nombre pero difieren en contenido.</span></li>
-              <li><strong>Biblioteca de skills y paquetes de asignación<span class="tier">Pro</span></strong><span>Una biblioteca de skills sincronizada con todas las CLI y asignada por proyecto o perfil, que se comparte junto con tus reglas y sugerencias de comandos como paquete de asignación.</span></li>
+              <li><strong>Biblioteca de skills y paquetes de asignación<span class="tier">Pro</span></strong><span>Una biblioteca de skills sincronizada con todas las CLI y asignada por proyecto o perfil, que se comparte junto con tu flujo de trabajo como paquete de asignación.</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -615,10 +669,42 @@
               <p>Los agentes trabajan solo en lo que pediste y nunca crean trabajo por su cuenta. Cuando se agota la cuota, el trabajo se detiene o pasa a otro agente según tus reglas.</p>
             </li>
             <li>
-              <h3>Un registro para tu PR</h3>
-              <p>Al abrir un PR puedes añadir un registro de qué comandos se ejecutaron de verdad y quién aceptó cada resultado.</p>
+              <h3>Una tarjeta de verificación para tu PR</h3>
+              <p>Al abrir un PR puedes añadir una tarjeta de verificación: qué comandos se ejecutaron de verdad, quién hizo las pruebas cruzadas y cómo se aceptó cada resultado.</p>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section class="wrap section drive" id="test-drive" aria-labelledby="td-title">
+        <div class="grid">
+          <div class="drive-copy reveal">
+            <h2 class="section-head" id="td-title">Prueba primero con un proyecto de ejemplo</h2>
+            <p>Tu primera vez no tiene por qué poner en riesgo tu propio proyecto. En el último paso de la guía de configuración, elige “Empezar la prueba”: Pyloxa crea un pequeño repo de ejemplo con un carrito de compras y le pide a un agente que añada una función. Tiene un bug de redondeo escondido a propósito.</p>
+            <ol class="steps drive-steps">
+              <li>El plan está escrito de antemano, así que no pasa por el cerebro ni gasta su cuota, y aun así espera tu aprobación para empezar.</li>
+              <li>Un agente implementa la función y Pyloxa ejecuta el comando de prueba por su cuenta, sin fiarse de lo que diga el agente.</li>
+              <li>Un agente de otro proveedor añade pruebas según la especificación y, si encuentra el bug, devuelve el trabajo para corregirlo. Pro hace las pruebas cruzadas automáticamente; en la versión gratuita eliges “Pedir a otro agente que lo pruebe”.</li>
+              <li>Después de aceptar el resultado, haz clic en “Tarjeta de verificación” al pie de la tarjeta del plan para ver qué comprobaciones se hicieron realmente en cada paso.</li>
+            </ol>
+            <p class="drive-note">Necesita git y Node.js. Si solo tienes un agente, la comprobación la hace una prueba de especificación incluida en el repo. Antes de empezar, Pyloxa muestra quién implementa, quién prueba y una estimación de turnos de agente, tokens y tiempo. La prueba nunca toca tus proyectos, no hace push ni abre un PR.</p>
+          </div>
+          <div class="drive-mock reveal" data-ui>
+            <div class="ui-row wf-card-head"><span class="ui-title">Prueba: carrito de compras</span><span class="spacer"></span><span class="badge info">Codex implementa</span><span class="badge">Claude Code prueba</span></div>
+            <div class="ui-row drive-diff">
+              <span class="ui-muted"><code>src/money.js</code></span>
+              <pre><code><span class="ln">function toCents(dollars) {</span>
+<span class="ln del">-  return Math.floor(dollars * 100);</span>
+<span class="ln add">+  return Math.round(dollars * 100);</span>
+<span class="ln">}</span></code></pre>
+              <span class="ui-muted">Especificación: 19.99 × 3, 10% de descuento = 53.97</span>
+            </div>
+            <div class="ui-row drive-checks">
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><code>node --test</code></span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Comandos que ejecutó Pyloxa: 12 superados</span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Pruebas cruzadas: añadió 1 archivo de prueba protegido</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -647,13 +733,18 @@
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
           </div>
         </div>
+        <div class="band c5">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b5">Lleva mi configuración a la computadora nueva.</p><p class="consequence">En “Configuración → Copia de seguridad y traslado”, exporta a un solo archivo los perfiles de agente, las reglas de asignación, las plantillas de prompts, la memoria compartida, la biblioteca de skills y las preferencias de la interfaz. Las claves de API y los inicios de sesión quedan fuera; antes de importar revisas cada elemento, y primero se hace una copia de seguridad de la configuración de esta computadora.</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b5" data-ui></button></span>
+          </div>
+        </div>
       </section>
 
       <section class="wrap section pricing" id="pricing" aria-labelledby="pricing-title">
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">La versión gratuita trabaja contigo en un proyecto. Pro se ocupa de todos.</h2>
           <p>La versión gratuita cubre todo el flujo: planificar, asignar, verificar y fusionar. Pro se encarga de lo que de otro modo harías a mano: varios proyectos a la vez, decisiones dentro de los límites que fijas, relevos cuando se acaba la cuota y trabajo terminado enviado a otro agente para que lo pruebe.</p>
-          <p class="more-link"><a href="../pro/">Más detalles (en inglés) →</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -675,9 +766,14 @@
               <td class="pro"><strong>Automático dentro de límites</strong>: elige y reintenta dentro de los agentes, modelos y cantidades que permites, y se pausa al llegar a cualquier límite</td>
             </tr>
             <tr>
+              <th scope="row">Flujo de trabajo</th>
+              <td>La página de flujo de trabajo, la tabla de asignación, cinco plantillas integradas y fases personalizadas</td>
+              <td class="pro"><strong>Mis flujos</strong>: guarda varios flujos y usa uno distinto en cada proyecto; describe un flujo en una frase</td>
+            </tr>
+            <tr>
               <th scope="row">Cuando se acaba la cuota</th>
               <td>Se propone un respaldo; tú confirmas cada relevo</td>
-              <td class="pro"><strong>Cadena de respaldo automática</strong> que pasa el trabajo a los respaldos de tus reglas, en orden, sin preguntar cada vez; como máximo 2 relevos por tarea</td>
+              <td class="pro"><strong>Cadena de respaldo automática</strong> con disparadores y límites; con tu permiso previo, cambia a facturación por API cuando se agota una suscripción</td>
             </tr>
             <tr>
               <th scope="row">Verificaciones y pruebas</th>
@@ -686,7 +782,7 @@
             </tr>
             <tr>
               <th scope="row">Programación de cuota</th>
-              <td>Las tareas que esperan cuota se reanudan tras el restablecimiento, automáticamente cuando se conoce la hora del restablecimiento</td>
+              <td>Las tareas que esperan cuota se reanudan tras el restablecimiento</td>
               <td class="pro">Prioridad por proyecto, cuotas por conexión y planes programados para una hora fija o para el próximo restablecimiento </td>
             </tr>
             <tr>
@@ -711,7 +807,7 @@
             </tr>
             <tr class="both">
               <th scope="row">Ambas versiones</th>
-              <td colspan="2">Claude Code, Codex CLI y Gemini CLI (experimental) · tus propios perfiles y reglas de asignación · comandos de verificación y controles de fase · un worktree por tarea · ejecución en segundo plano y reanudación del trabajo interrumpido · archivos, diffs, git y pull requests</td>
+              <td colspan="2">Claude Code, Codex CLI y Gemini CLI (experimental) · tus propios perfiles y reglas de asignación · comandos de verificación y controles de fase · un worktree por tarea · tarjetas de verificación · ejecución en segundo plano y reanudación del trabajo interrumpido · archivos, diffs, git y pull requests · exportación e importación de la configuración</td>
             </tr>
           </tbody>
           <tfoot>
@@ -746,7 +842,8 @@
             <ul>
               <li>Varios proyectos trabajando a la vez, con una bandeja del centro de tareas para todo lo que espera por ti</li>
               <li>Automático dentro de límites: elige y reintenta dentro de los agentes, modelos y cantidades que permites, y se pausa al llegar a cualquier límite</li>
-              <li>Cadena de respaldo automática que pasa el trabajo a los respaldos de tus reglas, en orden, sin preguntar cada vez; como máximo 2 relevos por tarea</li>
+              <li>Flujo de trabajo: guarda varios flujos y usa uno distinto en cada proyecto; describe un flujo en una frase</li>
+              <li>Cadena de respaldo automática con disparadores y límites; con tu permiso previo, cambia a facturación por API cuando se agota una suscripción</li>
               <li>Pruebas cruzadas automáticas por tipo de tarea o a criterio del cerebro, y las pruebas fallidas se devuelven para corregirlas</li>
               <li>Programación de cuota: prioridad por proyecto, cuotas por conexión y planes programados para una hora fija o para el próximo restablecimiento</li>
               <li>Uso e informes: un panel de uso de todos los proyectos, con el tiempo de los agentes, los tokens y el coste que informa la CLI por proyecto, exportable en Markdown o CSV</li>
@@ -779,7 +876,7 @@
               <li>Revisión del cerebro y pruebas cruzadas cuando lo pides</li>
             </ul>
             <p class="plan-sub">Ambas versiones</p>
-            <p class="plan-both">Claude Code, Codex CLI y Gemini CLI (experimental) · tus propios perfiles y reglas de asignación · comandos de verificación y controles de fase · un worktree por tarea · ejecución en segundo plano y reanudación del trabajo interrumpido · archivos, diffs, git y pull requests</p>
+            <p class="plan-both">Claude Code, Codex CLI y Gemini CLI (experimental) · tus propios perfiles y reglas de asignación · comandos de verificación y controles de fase · un worktree por tarea · tarjetas de verificación · ejecución en segundo plano y reanudación del trabajo interrumpido · archivos, diffs, git y pull requests · exportación e importación de la configuración</p>
             <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Descargar la versión gratuita</a>
           </div>
         </div>
@@ -803,6 +900,10 @@
               <div class="inline-answer"><p>Windows 10 u 11 (64 bits), git y al menos una de estas CLI con la sesión iniciada: Claude Code o Codex CLI. Gemini CLI es opcional y experimental, y necesita tu propia clave de API de Gemini de pago. Con más de una CLI, el flujo predeterminado reparte el trabajo y el respaldo empieza a ser útil. ¿Todavía no las tienes? En el primer inicio, el asistente de configuración comprueba git y Node.js, instala las CLI con sus comandos npm oficiales después de que confirmes y te guía por el inicio de sesión y las claves de API.</p></div>
             </li>
             <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">¿Puedo probarlo sin usar mi propio proyecto?</button></h3>
+              <div class="inline-answer"><p>Sí. En el último paso de la guía de configuración, o en la página de bienvenida cuando aún no tienes proyectos, elige “Empezar la prueba”. Pyloxa crea un repo de ejemplo con un carrito de compras que esconde un bug y un plan escrito de antemano, y espera tu aprobación. Con CLI de dos proveedores, una implementa y la otra hace pruebas cruzadas; con una sola, la comprobación la hace una prueba de especificación incluida en el repo. Pyloxa ejecuta las pruebas por su cuenta y al final puedes abrir la tarjeta de verificación. Antes de empezar verás una estimación de turnos de agente, tokens y tiempo. La prueba nunca toca tus proyectos, no hace push ni abre un PR.</p></div>
+            </li>
+            <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">¿Pyloxa lee mis credenciales?</button></h3>
               <div class="inline-answer"><p>Nunca. Comprueba el estado del inicio de sesión con el propio comando de cada CLI y la inicia como lo harías tú. Los tokens y los archivos de credenciales no se leen, copian ni envían.</p></div>
             </li>
@@ -813,6 +914,10 @@
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">¿Un agente puede romper mi repositorio?</button></h3>
               <div class="inline-answer"><p>Los agentes trabajan en git worktrees separados, lejos del directorio de trabajo que estás editando, y Pyloxa nunca hace stash, reset ni checkout en él. Cuando una tarea termina, sus archivos cambiados se comprueban contra el alcance de escritura que permite el plan, y puedes revisar cada archivo en la vista de diff integrada. No se fusiona ni se hace push de nada hasta que tú lo decidas.</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">¿Tengo que volver a configurarlo todo en una computadora nueva?</button></h3>
+              <div class="inline-answer"><p>No. Exporta la configuración en “Configuración → Copia de seguridad y traslado” e impórtala en la computadora nueva: los perfiles de agente, las reglas de asignación globales, las preferencias de asignación y del cerebro, las fases, las plantillas de prompts, la memoria compartida global, la biblioteca de skills y las preferencias de la interfaz van en un solo archivo. Las claves de API, los inicios de sesión, las licencias y las rutas de esta computadora nunca se incluyen. La configuración de cada proyecto y tus flujos guardados tampoco viajan; las reglas del proyecto pueden ir en la carpeta .pyloxa/ del repo y viajar con git. Antes de importar revisas cada elemento, antes de aplicar se hace una copia de seguridad automática de la configuración de esta computadora, y puedes restaurarla. Está incluido en la versión gratuita.</p></div>
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">¿Por qué Windows me muestra una advertencia al instalar?</button></h3>
@@ -836,7 +941,7 @@
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">¿Qué añade Pro?</button></h3>
-              <div class="inline-answer"><p>Varios proyectos trabajando a la vez, con todo lo que espera por ti en el centro de tareas; decisiones automáticas dentro de los límites que fijes (modo automático); respaldo automático cuando se agota la cuota; pruebas cruzadas automáticas; un cerebro de respaldo; prioridad por proyecto, cuotas por conexión y planes programados; un panel de uso e informes; notificaciones a Telegram, Discord o un webhook; una biblioteca de skills y paquetes de asignación; y Agent Teams, todavía experimental. Pro cuesta US$79 al año y ahora está en vista previa: inicia sesión y úsalo gratis hasta que Pro salga a la venta, con al menos 30 días de aviso. El precio early bird es de US$49 al año y se mantiene mientras sigas suscrito. Si cancelas, Pro sigue funcionando en todas las versiones publicadas mientras estuviste suscrito. La versión gratuita seguirá siendo gratuita.</p></div>
+              <div class="inline-answer"><p>Varios proyectos trabajando a la vez, con todo lo que espera por ti en el centro de tareas; decisiones automáticas dentro de los límites que fijes (modo automático); respaldo automático cuando se agota la cuota; pruebas cruzadas automáticas; un cerebro de respaldo; flujos guardados, uno distinto para cada proyecto, y flujos redactados a partir de una frase; prioridad por proyecto, cuotas por conexión y planes programados; un panel de uso e informes; notificaciones a Telegram, Discord o un webhook; una biblioteca de skills y paquetes de asignación; y Agent Teams, todavía experimental. Pro cuesta US$79 al año y ahora está en vista previa: inicia sesión y úsalo gratis hasta que Pro salga a la venta, con al menos 30 días de aviso. El precio early bird es de US$49 al año y se mantiene mientras sigas suscrito. Si cancelas, Pro sigue funcionando en todas las versiones publicadas mientras estuviste suscrito. La versión gratuita seguirá siendo gratuita.</p></div>
             </li>
           </ul>
           <div class="faq-pane" aria-live="polite">
@@ -889,7 +994,7 @@
         <div class="wrap grid">
           <div class="close-copy reveal">
             <h2 id="close-title">Dilo una vez.</h2>
-            <p>Instala Pyloxa, abre la carpeta de un proyecto y describe lo que quieres hacer. El cerebro lee primero el proyecto y pregunta antes de planificar algo grande.</p>
+            <p>Instala Pyloxa, haz la prueba con un proyecto de ejemplo o abre directamente la carpeta de tu proyecto y describe lo que quieres hacer. El cerebro lee primero el proyecto y pregunta antes de planificar algo grande.</p>
             <p class="smartscreen">El instalador todavía no tiene firma de código; si aparece SmartScreen, elige Más información y luego Ejecutar de todas formas.</p>
           </div>
           <div class="starter reveal" data-ui>

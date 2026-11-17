@@ -264,6 +264,16 @@
   });
 
   // ---- 分工表：點格子切換 主要 → 備援 → 不交給它；同一列只有一個主要，原本的主要改成備援 ----
+  // 交付：驗證報告卡的「最後加上一行」
+  document.querySelectorAll("[data-report]").forEach((card) => {
+    const toggle = card.querySelector("[data-report-toggle]");
+    const footer = card.querySelector("[data-report-footer]");
+    if (!toggle || !footer) return;
+    toggle.addEventListener("change", () => {
+      footer.hidden = !toggle.checked;
+    });
+  });
+
   document.querySelectorAll("[data-matrix]").forEach((matrix) => {
     const cells = [...matrix.querySelectorAll("[data-cell]")];
     const sample = (cls) => cells.find((c) => c.classList.contains(cls));

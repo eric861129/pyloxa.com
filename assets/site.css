@@ -3349,3 +3349,377 @@ html:lang(ko) {
     font-size: 12px;
   }
 }
+
+/* ==== B 階段（0.1.11）：驗證報告卡、我的流程、試駕、設定帶著走 ==== */
+.wf .field-label {
+  display: block;
+  font-size: 13px;
+  color: #6b6878;
+}
+
+.wf-card-head .spacer {
+  flex: 1;
+}
+
+.wf-check input:disabled {
+  opacity: 1;
+}
+
+/* 交付：驗證報告卡的預覽 */
+.wf-report {
+  border: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #fbfbfd;
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.wf-report-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.wf-report-sum {
+  font-weight: 600;
+}
+
+.wf-report-scroll {
+  overflow-x: auto;
+}
+
+.wf-report table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.wf-report th,
+.wf-report td {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 8px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.wf-report thead th {
+  border-top: 0;
+  color: #6b6878;
+  font-weight: 400;
+}
+
+.wf-report td:first-child {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.wf-report-footer {
+  display: grid;
+  gap: 2px;
+  padding-top: 8px;
+  border-top: 1px dashed #dedbe6; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+  animation: wf-in 260ms var(--ease) both;
+}
+
+.wf-report-footer[hidden] {
+  display: none;
+}
+
+.wf-report-footer a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+/* 範本：五個 */
+.wf-templates ul {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* 我的流程與一句話建立流程 */
+.wf-mine {
+  grid-column: 1 / -1;
+  margin-top: 88px;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(12px, 2vw, 32px);
+  row-gap: 32px;
+  align-items: start;
+}
+
+.wf-mine-copy {
+  grid-column: 1 / 6;
+}
+
+.wf-mine-copy h3 {
+  font-size: var(--step-lead);
+  font-weight: 600;
+}
+
+.wf-mine-copy h3 .badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid #f0cf9c;
+  border-radius: 999px;
+  background: #fdf5e8;
+  color: #a6600a;
+  font-size: 12px;
+  font-weight: 400;
+  vertical-align: 4px;
+}
+
+.wf-mine-copy > p {
+  margin-top: 12px;
+  color: var(--soft);
+  max-width: 52ch;
+}
+
+.wf-mine-copy ul {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+.wf-mine-copy li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.wf-mine-copy li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 7px;
+  height: 7px;
+  background: var(--orange);
+}
+
+.wf-draft {
+  grid-column: 6 / 13;
+  overflow: hidden;
+  transition:
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease);
+}
+
+.wf-draft:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -24px rgba(21, 19, 31, 0.4);
+}
+
+.wf-draft-body {
+  display: grid;
+  gap: 10px;
+}
+
+.wf-draft-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.wf-draft-cols > div {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.wf-diff {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.wf-diff > div {
+  display: grid;
+  grid-template-columns: 6.5em minmax(0, 1fr);
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--accent-tint);
+}
+
+.wf-diff dt {
+  color: #6b6878;
+}
+
+.wf-diff dd {
+  margin: 0;
+}
+
+.wf-diff s {
+  color: #8a8796;
+}
+
+/* 試駕 */
+.drive .grid {
+  align-items: start;
+  row-gap: 40px;
+}
+
+.drive-copy {
+  grid-column: 1 / 6;
+}
+
+.drive-copy > p {
+  margin-top: 20px;
+  max-width: 48ch;
+  color: var(--soft);
+}
+
+.drive-steps {
+  margin-top: 32px;
+}
+
+.drive-steps li {
+  align-items: baseline;
+}
+
+.drive-steps li::before {
+  grid-row: auto;
+  color: var(--accent);
+  opacity: 1;
+}
+
+.drive-copy .drive-note {
+  max-width: 60ch;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--tone);
+  font-size: var(--step-small);
+}
+
+.drive-mock {
+  grid-column: 7 / 13;
+  overflow: hidden;
+  position: sticky;
+  top: 96px;
+}
+
+.drive-mock .badge + .badge {
+  margin-left: 6px;
+}
+
+.drive-diff {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.drive-diff pre {
+  margin: 0;
+  padding: 10px 0;
+  border-radius: 8px;
+  background: #f7f6fa;
+  overflow-x: auto;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.drive-diff pre code {
+  display: block;
+  white-space: normal;
+}
+
+.drive-diff .ln {
+  display: block;
+  padding: 0 12px;
+  white-space: pre;
+}
+
+.drive-diff .del {
+  background: #fdecec;
+  color: #a2271f;
+}
+
+.drive-diff .add {
+  background: #e7f6ec;
+  color: #17643a;
+}
+
+.drive-checks {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid #ecebf0; /* taste-skill-ignore：App 元件（data-ui）本身的樣式 */
+}
+
+.js .drive-mock.is-in .drive-checks .check-line {
+  animation: wf-in 360ms var(--ease) both;
+  animation-delay: 300ms;
+}
+
+.js .drive-mock.is-in .drive-checks .check-line:nth-child(2) {
+  animation-delay: 700ms;
+}
+
+.js .drive-mock.is-in .drive-checks .check-line:nth-child(3) {
+  animation-delay: 1100ms;
+}
+
+/* 照你的習慣：第五條 */
+.band.is-on.c5 {
+  background: var(--accent-tint);
+}
+
+@media (max-width: 1100px) {
+  .wf-templates ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .wf-mine-copy,
+  .wf-draft,
+  .drive-copy,
+  .drive-mock {
+    grid-column: 1 / -1;
+  }
+
+  .drive-mock {
+    position: static;
+  }
+
+  .wf-mine {
+    margin-top: 64px;
+  }
+}
+
+@media (max-width: 700px) {
+  .wf-templates ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wf-draft-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .wf-templates ul {
+    grid-template-columns: 1fr;
+  }
+
+  .wf-report th,
+  .wf-report td {
+    padding: 6px 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wf-draft,
+  .wf-report-footer,
+  .js .drive-mock.is-in .drive-checks .check-line {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

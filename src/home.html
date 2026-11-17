@@ -249,6 +249,7 @@
               <ul>
                 <li>{{panel-flow.5}}</li>
                 <li>{{panel-flow.6}}</li>
+                <li>{{wf.phases.li2}}</li>
                 <li>{{why-title.18}}</li>
                 <li>{{wf.phases.li}}</li>
               </ul>
@@ -258,6 +259,8 @@
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">{{wf.phases.m1}}</span>
                   <span class="ui-muted">{{wf.phases.m2}}</span>
+                  <span class="spacer"></span>
+                  <span class="badge info">{{wf.phases.mode}}</span>
                 </div>
                 <ol class="wf-phase-list">
                   <li class="ui-row"><span class="wf-num">1</span><div><span class="ui-title">{{wf.phases.m3}}</span><span class="ui-muted">Codex</span></div><span class="badge ok">{{wf.phases.m4}}</span></li>
@@ -395,21 +398,40 @@
               <h3>{{wf.deliver.h}}</h3>
               <p>{{wf.deliver.p}}</p>
               <ul>
+                <li>{{wf.deliver.li2}}</li>
+                <li>{{wf.deliver.li4}}</li>
+                <li>{{wf.deliver.li5}}</li>
                 <li>{{wf.deliver.li1}}</li>
-                <li>{{supervised-title.14}}</li>
                 <li>{{wf.deliver.li3}}</li>
               </ul>
             </div>
             <div class="panel-media">
-              <div class="wf-pr" data-ui>
+              <div class="wf-pr" data-ui data-report>
                 <div class="ui-row wf-card-head"><span class="ui-title">{{wf.deliver.m1}}</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
                 <div class="ui-row wf-pr-body">
                   <span class="field-label">{{wf.deliver.m2}}</span>
                   <span class="wf-input">{{wf.deliver.m3}}</span>
-                  <label class="wf-check"><input type="checkbox" checked /> {{wf.deliver.m4}}</label>
-                  <div class="wf-warn">{{wf.deliver.m5}} <code>.github/workflows/ci.yml</code></div>
+                  <label class="wf-check"><input type="checkbox" checked disabled /> {{wf.deliver.m4}}</label>
+                  <div class="wf-report">
+                    <p class="wf-report-title">{{wf.deliver.r.title}}</p>
+                    <p class="wf-report-sum">{{wf.deliver.r.sum}}</p>
+                    <div class="wf-report-scroll">
+                      <table>
+                        <thead>
+                          <tr><th scope="col">{{wf.deliver.r.c1}}</th><th scope="col">{{wf.deliver.r.c2}}</th><th scope="col">{{wf.deliver.r.c3}}</th><th scope="col">{{wf.deliver.r.c4}}</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>✅ {{wf.deliver.r.t1}}</td><td>Codex</td><td>{{wf.deliver.r.x1}}</td><td>{{wf.deliver.r.o1}}</td></tr>
+                          <tr><td>✅ {{wf.deliver.r.t2}}</td><td>Claude Code</td><td>—</td><td>{{wf.deliver.r.o2}}</td></tr>
+                          <tr><td>⚠️ {{wf.deliver.r.t3}}</td><td>Claude Code</td><td>—</td><td>{{wf.deliver.r.o2}}</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="wf-report-footer" data-report-footer hidden><a href="/" tabindex="-1">Verification record by Pyloxa</a><span class="ui-muted">{{wf.deliver.r.why}}</span></p>
+                  </div>
+                  <label class="wf-check"><input type="checkbox" data-report-toggle /> {{wf.deliver.r.footer}}</label>
                 </div>
-                <div class="ui-row wf-pr-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{session-input.8}}</span><span class="spacer"></span><button type="button" class="ui-button primary">{{wf.deliver.m6}}</button></div>
+                <div class="ui-row wf-pr-foot"><span class="spacer"></span><button type="button" class="ui-button primary">{{wf.deliver.m6}}</button></div>
               </div>
             </div>
           </div>
@@ -422,7 +444,42 @@
               <li><span class="wf-tpl-name">{{wf.tpl.n2}}</span><p>{{wf.tpl.d2}}</p></li>
               <li><span class="wf-tpl-name">{{wf.tpl.n3}}</span><span class="badge warn">{{wf.tpl.pro}}</span><p>{{wf.tpl.d3}}</p></li>
               <li><span class="wf-tpl-name">{{wf.tpl.n4}}</span><span class="badge warn">{{wf.tpl.pro}}</span><p>{{wf.tpl.d4}}</p></li>
+              <li><span class="wf-tpl-name">{{wf.tpl.n5}}</span><p>{{wf.tpl.d5}}</p></li>
             </ul>
+          </div>
+
+          <div class="wf-mine reveal">
+            <div class="wf-mine-copy">
+              <h3>{{wf.mine.h}} <span class="badge warn">Pro</span></h3>
+              <p>{{wf.mine.p}}</p>
+              <ul>
+                <li>{{wf.mine.li1}}</li>
+                <li>{{wf.mine.li2}}</li>
+                <li>{{wf.mine.li3}}</li>
+              </ul>
+            </div>
+            <div class="wf-draft" data-ui>
+              <div class="ui-row wf-card-head"><span class="ui-title">{{wf.mine.m.title}}</span><span class="spacer"></span><span class="badge warn">Pro</span></div>
+              <div class="ui-row wf-draft-body">
+                <span class="field-label">{{wf.mine.m.label}}</span>
+                <span class="wf-input">{{wf.mine.m.input}}</span>
+                <div class="wf-draft-cols">
+                  <div>
+                    <span class="field-label">{{wf.mine.m.name}}</span>
+                    <span class="wf-input">{{wf.mine.m.nameV}}</span>
+                  </div>
+                  <div>
+                    <span class="field-label">{{wf.mine.m.diff}}</span>
+                    <dl class="wf-diff">
+                      <div><dt>{{wf.mine.m.d1k}}</dt><dd><s>{{wf.mine.m.d1o}}</s> → {{wf.mine.m.d1n}}</dd></div>
+                      <div><dt>{{type-label.3}}</dt><dd><s>Claude Code</s> → Codex</dd></div>
+                      <div><dt>{{wf.mine.m.d3k}}</dt><dd><s>{{wf.mine.m.d3o}}</s> → {{wf.mine.m.d3n}}</dd></div>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-row wf-pr-foot"><button type="button" class="ui-button">{{wf.mine.m.b3}}</button><span class="spacer"></span><button type="button" class="ui-button">{{wf.mine.m.b2}}</button><button type="button" class="ui-button primary">{{wf.mine.m.b1}}</button></div>
+            </div>
           </div>
         </div>
       </section>
@@ -603,6 +660,38 @@
         </div>
       </section>
 
+      <section class="wrap section drive" id="test-drive" aria-labelledby="td-title">
+        <div class="grid">
+          <div class="drive-copy reveal">
+            <h2 class="section-head" id="td-title">{{td.title}}</h2>
+            <p>{{td.lede}}</p>
+            <ol class="steps drive-steps">
+              <li>{{td.s1}}</li>
+              <li>{{td.s2}}</li>
+              <li>{{td.s3}}</li>
+              <li>{{td.s4}}</li>
+            </ol>
+            <p class="drive-note">{{td.note}}</p>
+          </div>
+          <div class="drive-mock reveal" data-ui>
+            <div class="ui-row wf-card-head"><span class="ui-title">{{td.m.title}}</span><span class="spacer"></span><span class="badge info">{{td.m.impl}}</span><span class="badge">{{td.m.test}}</span></div>
+            <div class="ui-row drive-diff">
+              <span class="ui-muted"><code>src/money.js</code></span>
+              <pre><code><span class="ln">function toCents(dollars) {</span>
+<span class="ln del">-  return Math.floor(dollars * 100);</span>
+<span class="ln add">+  return Math.round(dollars * 100);</span>
+<span class="ln">}</span></code></pre>
+              <span class="ui-muted">{{td.m.spec}}</span>
+            </div>
+            <div class="ui-row drive-checks">
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg><code>node --test</code></span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{td.m.cmd}}</span>
+              <span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{td.m.cross}}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="bands" aria-label="{{fallback-title.8}}">
         <div class="band c1">
           <div class="wrap grid">
@@ -626,6 +715,12 @@
           <div class="wrap grid">
             <div class="sentence"><p class="line" id="b4">{{b4.1}}</p><p class="consequence">{{b4.2}}</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="false" aria-labelledby="b4" data-ui></button></span>
+          </div>
+        </div>
+        <div class="band c5">
+          <div class="wrap grid">
+            <div class="sentence"><p class="line" id="b5">{{b5.1}}</p><p class="consequence">{{b5.2}}</p></div>
+            <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b5" data-ui></button></span>
           </div>
         </div>
       </section>
@@ -654,6 +749,11 @@
               <th scope="row">{{pricing-title.12}}</th>
               <td>{{pricing-title.13}}</td>
               <td class="pro"><strong>{{pricing-title.14}}</strong>{{pricing-title.15}}</td>
+            </tr>
+            <tr>
+              <th scope="row">{{pricing.wf.h}}</th>
+              <td>{{pricing.wf.free}}</td>
+              <td class="pro"><strong>{{pricing.wf.pro}}</strong>{{pricing.wf.pro2}}</td>
             </tr>
             <tr>
               <th scope="row">{{pricing-title.16}}</th>
@@ -727,6 +827,7 @@
             <ul>
               <li>{{wl-email-table.7}}</li>
               <li>{{wl-email-table.8}}</li>
+              <li>{{wl.wf}}</li>
               <li>{{wl-email-table.9}}</li>
               <li>{{wl-email-table.10}}</li>
               <li>{{wl-email-table.12}}</li>
@@ -784,6 +885,10 @@
               <div class="inline-answer"><p>{{faq-title.7}}</p></div>
             </li>
             <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq.td.q}}</button></h3>
+              <div class="inline-answer"><p>{{faq.td.a}}</p></div>
+            </li>
+            <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.8}}</button></h3>
               <div class="inline-answer"><p>{{faq-title.9}}</p></div>
             </li>
@@ -794,6 +899,10 @@
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.12}}</button></h3>
               <div class="inline-answer"><p>{{faq-title.13}}</p></div>
+            </li>
+            <li data-q>
+              <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq.move.q}}</button></h3>
+              <div class="inline-answer"><p>{{faq.move.a}}</p></div>
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">{{faq-title.14}}</button></h3>
