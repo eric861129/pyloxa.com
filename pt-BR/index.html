@@ -145,7 +145,7 @@
                 <span id="quota-label">O Codex está sem cota</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Codex ficou sem cota (renova por volta das 18:00)</span>
+                <span class="ui-title" data-quota-title>Codex ficou sem cota</span>
                 <span class="ui-muted">Um fallback pode assumir e continuar a partir do trabalho do Codex, depois que você confirmar.</span>
                 <span><button type="button" class="ui-button primary" data-takeover>Deixar Claude Code assumir</button></span>
               </div>
@@ -217,6 +217,7 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">Um fluxo de trabalho, cinco etapas</h2>
             <p>A página “Fluxo de trabalho” do app mostra o fluxo inteiro de uma vez: quem planeja, quais fases, quem faz cada tipo de trabalho, como é conferido e como é entregue. Cada etapa é configurada por você; o cérebro só propõe planos e não pode mudá-las.</p>
+            <p class="more-link"><a href="../workflow/">Mais detalhes (em inglês) →</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="As cinco etapas de um fluxo de trabalho" hidden>
@@ -304,7 +305,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">Tabela de atribuição</span>
-                  <span class="ui-muted">Clique numa célula: principal → fallback → não atribuir</span>
+                  <span class="ui-muted">Tela de exemplo: clique numa célula para alternar entre principal, fallback e não atribuir</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -506,8 +507,9 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">Quando um esgota</h2>
-            <p>Se o Codex atingir o limite de uso no meio de uma tarefa, o Pyloxa para de enviar trabalho para ele, mostra quando a cota renova e oferece o fallback da sua regra. Você confirma, e o Claude Code continua a partir dos arquivos que o Codex já alterou.</p>
-            <p>A barra de título mostra quanto resta de cada assinatura: amarelo com 70% usado, vermelho com 90% ou quando você está limitado.</p>
+            <p>Se o Codex atingir o limite de uso no meio de uma tarefa, o Pyloxa para de enviar trabalho para ele e oferece o fallback da sua regra. Você confirma, e o Claude Code continua a partir dos arquivos que o Codex já alterou.</p>
+            <p>A barra de título mostra quanto resta da sua assinatura do Claude Code: amarelo com 70% usado, vermelho com 90% ou quando você está limitado. O Codex e as outras conexões mostram os tokens de hoje e ficam marcados quando limitados.</p>
+            <p class="more-link"><a href="../quota/">Mais detalhes (em inglês) →</a></p>
             <div class="figures">
               <span>3 tentativas automáticas por tarefa</span>
               <span>No máximo 2 fallbacks</span>
@@ -523,11 +525,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Codex ficou sem cota (renova por volta das 18:00)</span>
+                <span class="ui-title fq-title">Codex ficou sem cota</span>
                 <span class="ui-muted">O Claude Code pode assumir e continuar do que o Codex terminou, ou o Codex pode tentar de novo quando a cota renovar.</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">Deixar Claude Code assumir</button><button type="button" class="ui-button">Tentar de novo quando a cota renovar</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">O Pro assume automaticamente pela sua cadeia de fallback, com os gatilhos e limites que você definir.</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">O Pro assume automaticamente pela cadeia de fallback das suas regras, sem perguntar toda vez; no máximo 2 trocas por tarefa.</span></div>
             </div>
           </div>
         </div>
@@ -538,12 +540,13 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">Todos os agentes leem o mesmo contexto</h2>
             <p>Anote uma vez as regras, convenções e armadilhas do seu projeto, e o Claude Code, o Codex e o Gemini CLI leem tudo. Com as skills é igual: você gerencia num só lugar, em vez de manter uma cópia em cada CLI.</p>
+            <p class="more-link"><a href="../memory/">Mais detalhes (em inglês) →</a></p>
             <ol class="steps">
               <li><strong>Lembrar<span class="tier">Grátis</span></strong><span>Clique em “Lembrar” numa resposta do cérebro ou na sessão de uma tarefa, ou escolha entradas para importar do CLAUDE.md, do AGENTS.md e dos arquivos de memória das outras CLIs.</span></li>
-              <li><strong>Os agentes sugerem, você aprova<span class="tier">Grátis</span></strong><span>Enquanto trabalham, os agentes podem buscar na memória e sugerir novas entradas. Nenhum agente vê uma sugestão até você aceitá-la.</span></li>
+              <li><strong>Os agentes sugerem, você aprova<span class="tier">Grátis</span></strong><span>Enquanto trabalham, os agentes podem buscar na memória e sugerir novas entradas. Nenhum agente vê uma sugestão até você aceitá-la, a menos que você deixe um projeto aceitar automaticamente os fatos e as armadilhas que os agentes sugerem (desativado por padrão).</span></li>
               <li><strong>Sincronizar com as CLIs<span class="tier">Grátis</span></strong><span>Escreva as regras do projeto num bloco do Pyloxa no AGENTS.md, para que as CLIs também as leiam no seu terminal. Você vê o diff antes, e o Pyloxa não faz commit por você.</span></li>
               <li><strong>Inventário de skills<span class="tier">Grátis</span></strong><span>Veja quais skills cada CLI tem e quais têm o mesmo nome, mas conteúdo diferente.</span></li>
-              <li><strong>Biblioteca de skills e pacotes de roteamento<span class="tier">Pro</span></strong><span>Uma biblioteca de skills sincronizada com todas as CLIs e atribuída por projeto ou perfil, compartilhada junto com seu fluxo de trabalho como um pacote de roteamento.</span></li>
+              <li><strong>Biblioteca de skills e pacotes de roteamento<span class="tier">Pro</span></strong><span>Uma biblioteca de skills sincronizada com todas as CLIs e atribuída por projeto ou perfil, compartilhada junto com suas regras e sugestões de comandos como um pacote de roteamento.</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -745,6 +748,7 @@
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">O Grátis acompanha você em um projeto. O Pro cuida de todos.</h2>
           <p>A versão grátis cobre o fluxo inteiro: planejar, rotear, conferir, mesclar. O Pro assume o que você faria à mão: vários projetos ao mesmo tempo, decisões dentro dos limites que você define, trocas de agente quando a cota acaba e trabalho concluído enviado a outro agente para teste.</p>
+          <p class="more-link"><a href="../pro/">Mais detalhes (em inglês) →</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -773,7 +777,7 @@
             <tr>
               <th scope="row">Quando a cota acaba</th>
               <td>Um fallback é proposto; você confirma cada troca</td>
-              <td class="pro"><strong>Cadeia automática de fallback</strong> com gatilhos e limites; com seu OK prévio, muda para cobrança via API quando uma assinatura se esgota</td>
+              <td class="pro"><strong>Cadeia automática de fallback</strong> que passa o trabalho para os fallbacks das suas regras, em ordem, sem perguntar toda vez; no máximo 2 trocas por tarefa</td>
             </tr>
             <tr>
               <th scope="row">Verificações e testes</th>
@@ -782,7 +786,7 @@
             </tr>
             <tr>
               <th scope="row">Agendamento por cota</th>
-              <td>Tarefas esperando cota retomam depois da renovação</td>
+              <td>Tarefas esperando cota retomam depois da renovação, automaticamente quando o horário da renovação é conhecido</td>
               <td class="pro">Prioridade por projeto, cotas por conexão e planos agendados para um horário definido ou para a próxima renovação </td>
             </tr>
             <tr>
@@ -843,7 +847,7 @@
               <li>Vários projetos em andamento ao mesmo tempo, com uma caixa de entrada na central de tarefas para tudo que espera por você</li>
               <li>Automático dentro dos limites: escolhe e tenta de novo dentro dos agentes, modelos e quantidades que você permite, e pausa em qualquer limite</li>
               <li>Fluxo de trabalho: salve vários fluxos e use um diferente em cada projeto; descreva um fluxo em uma frase</li>
-              <li>Cadeia automática de fallback com gatilhos e limites; com seu OK prévio, muda para cobrança via API quando uma assinatura se esgota</li>
+              <li>Cadeia automática de fallback que passa o trabalho para os fallbacks das suas regras, em ordem, sem perguntar toda vez; no máximo 2 trocas por tarefa</li>
               <li>Teste cruzado automático por tipo de tarefa ou critério do cérebro, com testes que falharam enviados de volta para correção</li>
               <li>Agendamento por cota: prioridade por projeto, cotas por conexão e planos agendados para um horário definido ou para a próxima renovação</li>
               <li>Uso e relatórios: um painel de uso de todos os projetos, com tempo dos agentes, tokens e o custo informado pela CLI em cada projeto, exportável em Markdown ou CSV</li>

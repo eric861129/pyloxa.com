@@ -145,7 +145,7 @@
                 <span id="quota-label">Codex n’a plus de quota</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Codex a épuisé son quota (réinitialisation vers 18:00)</span>
+                <span class="ui-title" data-quota-title>Codex a épuisé son quota</span>
                 <span class="ui-muted">Un agent de secours peut prendre le relais et reprendre le travail de Codex, après votre confirmation.</span>
                 <span><button type="button" class="ui-button primary" data-takeover>Laisser Claude Code prendre le relais</button></span>
               </div>
@@ -217,6 +217,7 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">Un flux de travail, cinq étapes</h2>
             <p>La page « Flux de travail » de l’app montre tout le flux d’un coup : qui planifie, quelles phases, qui fait chaque type de travail, comment c’est vérifié et comment c’est livré. Chaque étape est un réglage à vous ; le cerveau ne fait que proposer des plans et ne peut pas modifier ces réglages.</p>
+            <p class="more-link"><a href="../workflow/">En savoir plus (en anglais) →</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="Les cinq étapes d’un flux de travail" hidden>
@@ -304,7 +305,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">Tableau d’attribution</span>
-                  <span class="ui-muted">Cliquez sur une cellule : principal → secours → ne pas attribuer</span>
+                  <span class="ui-muted">Maquette : cliquez sur une cellule pour basculer entre principal, secours et ne pas attribuer</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -506,8 +507,9 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">Quand l’un est à sec</h2>
-            <p>Si Codex atteint sa limite d’utilisation au milieu d’une tâche, Pyloxa cesse de lui envoyer du travail, affiche l’heure de réinitialisation du quota et propose l’agent de secours prévu par votre règle. Vous confirmez, et Claude Code reprend à partir des fichiers que Codex a déjà modifiés.</p>
-            <p>La barre de titre indique ce qui reste de chaque abonnement : jaune à 70 % utilisés, rouge à 90 % ou quand vous êtes limité.</p>
+            <p>Si Codex atteint sa limite d’utilisation au milieu d’une tâche, Pyloxa cesse de lui envoyer du travail et propose l’agent de secours prévu par votre règle. Vous confirmez, et Claude Code reprend à partir des fichiers que Codex a déjà modifiés.</p>
+            <p>La barre de titre indique ce qui reste de votre abonnement Claude Code : jaune à 70 % utilisés, rouge à 90 % ou quand vous êtes limité. Codex et les autres connexions affichent les tokens du jour et sont signalés quand ils sont limités.</p>
+            <p class="more-link"><a href="../quota/">En savoir plus (en anglais) →</a></p>
             <div class="figures">
               <span>3 essais automatiques par tâche</span>
               <span>2 relais au maximum</span>
@@ -523,11 +525,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Codex a épuisé son quota (réinitialisation vers 18:00)</span>
+                <span class="ui-title fq-title">Codex a épuisé son quota</span>
                 <span class="ui-muted">Claude Code peut prendre le relais et reprendre là où Codex s’est arrêté, ou Codex peut réessayer après la réinitialisation de son quota.</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">Laisser Claude Code prendre le relais</button><button type="button" class="ui-button">Réessayer à la réinitialisation du quota</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro prend le relais automatiquement en suivant votre chaîne de secours, avec les déclencheurs et les limites que vous fixez.</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro prend le relais automatiquement en suivant la chaîne de secours de vos règles, sans demander à chaque fois ; au maximum 2 reprises par tâche.</span></div>
             </div>
           </div>
         </div>
@@ -538,12 +540,13 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">Tous les agents lisent le même contexte</h2>
             <p>Notez une seule fois les règles, conventions et pièges de votre projet, et Claude Code, Codex et Gemini CLI les lisent tous. Les skills fonctionnent de la même façon : un seul endroit pour les gérer au lieu d’une copie dans chaque CLI.</p>
+            <p class="more-link"><a href="../memory/">En savoir plus (en anglais) →</a></p>
             <ol class="steps">
               <li><strong>Mémoriser<span class="tier">Gratuit</span></strong><span>Cliquez sur « Mémoriser » sous une réponse du cerveau ou dans une session de tâche, ou choisissez des entrées à importer depuis CLAUDE.md, AGENTS.md et les fichiers de mémoire des autres CLI.</span></li>
-              <li><strong>Les agents proposent, vous approuvez<span class="tier">Gratuit</span></strong><span>Pendant leur travail, les agents peuvent chercher dans la mémoire et proposer de nouvelles entrées. Aucun agent ne voit une proposition tant que vous ne l’avez pas acceptée.</span></li>
+              <li><strong>Les agents proposent, vous approuvez<span class="tier">Gratuit</span></strong><span>Pendant leur travail, les agents peuvent chercher dans la mémoire et proposer de nouvelles entrées. Aucun agent ne voit une proposition tant que vous ne l’avez pas acceptée, sauf si vous laissez un projet accepter automatiquement les faits et les pièges proposés par les agents (désactivé par défaut).</span></li>
               <li><strong>Synchroniser avec toutes les CLI<span class="tier">Gratuit</span></strong><span>Écrivez les règles du projet dans un bloc Pyloxa d’AGENTS.md, pour que les CLI les lisent aussi dans votre terminal. Vous voyez d’abord le diff, et rien n’est commité à votre place.</span></li>
               <li><strong>Inventaire des skills<span class="tier">Gratuit</span></strong><span>Voyez quels skills possède chaque CLI, et lesquels portent le même nom mais diffèrent par leur contenu.</span></li>
-              <li><strong>Bibliothèque de skills et packs de routage<span class="tier">Pro</span></strong><span>Une bibliothèque de skills synchronisée avec chaque CLI, attribuée par projet ou par profil, et partagée avec votre flux de travail sous forme de pack de routage.</span></li>
+              <li><strong>Bibliothèque de skills et packs de routage<span class="tier">Pro</span></strong><span>Une bibliothèque de skills synchronisée avec chaque CLI, attribuée par projet ou par profil, et partagée avec vos règles et vos suggestions de commandes sous forme de pack de routage.</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -745,6 +748,7 @@
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">La version gratuite gère un projet avec vous. Pro s’occupe de tous.</h2>
           <p>La version gratuite couvre tout le flux : planifier, router, vérifier, fusionner. Pro prend en charge ce que vous feriez sinon à la main : plusieurs projets à la fois, des décisions dans les limites que vous fixez, des reprises quand le quota est épuisé, et l’envoi du travail terminé à un autre agent pour le tester.</p>
+          <p class="more-link"><a href="../pro/">En savoir plus (en anglais) →</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -773,7 +777,7 @@
             <tr>
               <th scope="row">Quand le quota est épuisé</th>
               <td>Un agent de secours est proposé ; vous confirmez chaque reprise</td>
-              <td class="pro"><strong>Chaîne de secours automatique</strong> avec déclencheurs et limites ; avec votre accord préalable, passe à la facturation API quand un abonnement est épuisé</td>
+              <td class="pro"><strong>Chaîne de secours automatique</strong> qui confie le travail aux agents de secours de vos règles, dans l’ordre, sans demander à chaque fois ; au maximum 2 reprises par tâche</td>
             </tr>
             <tr>
               <th scope="row">Vérifications et tests</th>
@@ -782,7 +786,7 @@
             </tr>
             <tr>
               <th scope="row">Planification des quotas</th>
-              <td>Les tâches en attente de quota reprennent après la réinitialisation</td>
+              <td>Les tâches en attente de quota reprennent après la réinitialisation, automatiquement quand l’heure de réinitialisation est connue</td>
               <td class="pro">Priorité des projets, quotas par connexion et plans programmés à une heure donnée ou à la prochaine réinitialisation </td>
             </tr>
             <tr>
@@ -843,7 +847,7 @@
               <li>Plusieurs projets actifs à la fois, avec une seule boîte de réception dans le centre de tâches pour tout ce qui vous attend</li>
               <li>Automatique dans les limites : choisit et relance dans les limites des agents, modèles et nombres d’essais que vous autorisez, et se met en pause à chaque limite</li>
               <li>Flux de travail : enregistrez plusieurs flux et utilisez-en un différent dans chaque projet ; décrivez un flux en une phrase</li>
-              <li>Chaîne de secours automatique avec déclencheurs et limites ; avec votre accord préalable, passe à la facturation API quand un abonnement est épuisé</li>
+              <li>Chaîne de secours automatique qui confie le travail aux agents de secours de vos règles, dans l’ordre, sans demander à chaque fois ; au maximum 2 reprises par tâche</li>
               <li>Tests croisés automatiques selon le type de tâche ou le jugement du cerveau, les tests en échec étant renvoyés pour correction</li>
               <li>Planification des quotas : priorité des projets, quotas par connexion et plans programmés à une heure donnée ou à la prochaine réinitialisation</li>
               <li>Utilisation et rapports : un tableau de bord d’utilisation sur tous les projets, avec le temps des agents, les tokens et le coût indiqué par la CLI pour chaque projet, exportable en Markdown ou CSV</li>

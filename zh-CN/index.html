@@ -145,7 +145,7 @@
                 <span id="quota-label">Codex 额度已用完</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Codex 额度已用完（约 18:00 重置）</span>
+                <span class="ui-title" data-quota-title>Codex 额度已用完</span>
                 <span class="ui-muted">经你确认后，备用 Agent 可以接手，在 Codex 的成果上继续做。</span>
                 <span><button type="button" class="ui-button primary" data-takeover>由 Claude Code 接手</button></span>
               </div>
@@ -217,6 +217,7 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">一个工作流程，五个环节</h2>
             <p>App 中的“工作流程”页一次展示整个流程：谁来规划、分成哪些阶段、哪类任务交给谁、怎么检查、怎么交付。每个环节都由你设置，大脑只负责提出计划，不能改动这些设置。</p>
+            <p class="more-link"><a href="../workflow/">完整说明（英文）→</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="工作流程的五个环节" hidden>
@@ -304,7 +305,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">分工表</span>
-                  <span class="ui-muted">点击格子切换：主要 → 备用 → 不交给它</span>
+                  <span class="ui-muted">示意：点击格子切换主要、备用、不交给它</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -506,8 +507,9 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">额度用完的时候</h2>
-            <p>如果 Codex 做到一半额度用完，Pyloxa 会停止给它派工、显示额度何时重置，并按你的规则提出备用 Agent。你确认后，Claude Code 会在 Codex 已经改好的文件上继续做。</p>
-            <p>标题栏随时显示每个订阅还剩多少：用掉 70% 变黄，达到 90% 或受限时变红。</p>
+            <p>如果 Codex 做到一半额度用完，Pyloxa 会停止给它派工，并按你的规则提出备用 Agent。你确认后，Claude Code 会在 Codex 已经改好的文件上继续做。</p>
+            <p>标题栏显示 Claude Code 订阅还剩多少：用掉 70% 变黄，达到 90% 或受限时变红。Codex 等其他连接显示今天用了多少 token，受限时也会标出。</p>
+            <p class="more-link"><a href="../quota/">完整说明（英文）→</a></p>
             <div class="figures">
               <span>每个任务最多自动尝试 3 次</span>
               <span>最多 2 次备用接手</span>
@@ -523,11 +525,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Codex 额度已用完（约 18:00 重置）</span>
+                <span class="ui-title fq-title">Codex 额度已用完</span>
                 <span class="ui-muted">可以由 Claude Code 接手，在 Codex 已完成的部分上继续做，或者等额度重置后由 Codex 重试。</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">由 Claude Code 接手</button><button type="button" class="ui-button">额度恢复后重试</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro 按你设置的备用链自动接手，可以设置触发条件和上限。</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro 按你规则里的备用链自动接手，不必每次确认；每个任务最多接手 2 次。</span></div>
             </div>
           </div>
         </div>
@@ -538,12 +540,13 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">每个 Agent 都读同一份背景信息</h2>
             <p>项目的规则、惯例和踩过的坑，记一次，Claude Code、Codex 和 Gemini CLI 都能读到。Skills 也一样：集中在一个地方管理，不必在每个 CLI 里各放一份。</p>
+            <p class="more-link"><a href="../memory/">完整说明（英文）→</a></p>
             <ol class="steps">
               <li><strong>记住<span class="tier">免费版</span></strong><span>在大脑的回复或任务 Session 中点“记住”，也可以从 CLAUDE.md、AGENTS.md 等各 CLI 的记忆文件中挑选导入。</span></li>
-              <li><strong>Agent 提议，你批准<span class="tier">免费版</span></strong><span>Agent 工作时可以搜索记忆、提议新的记忆；在你接受之前，任何 Agent 都看不到这些提议。</span></li>
+              <li><strong>Agent 提议，你批准<span class="tier">免费版</span></strong><span>Agent 工作时可以搜索记忆、提议新的记忆；在你接受之前，任何 Agent 都看不到这些提议。你也可以让某个项目自动接受 Agent 提议的事实和踩过的坑，默认关闭。</span></li>
               <li><strong>同步到各 CLI<span class="tier">免费版</span></strong><span>把项目的规则写进 AGENTS.md 中的 Pyloxa 区块，在终端里直接使用 CLI 也能读到。先看差异再写入，不会替你提交。</span></li>
               <li><strong>盘点 Skills<span class="tier">免费版</span></strong><span>列出每个 CLI 装了哪些 Skills，并标出名称相同但内容不同的。</span></li>
-              <li><strong>Skills 库与派工包<span class="tier">Pro</span></strong><span>一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，还能和工作流程一起打包成派工包分享。</span></li>
+              <li><strong>Skills 库与派工包<span class="tier">Pro</span></strong><span>一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，还能和规则、命令建议一起打包成派工包分享。</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -745,6 +748,7 @@
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">免费版陪你做一个项目，Pro 帮你同时照看所有项目。</h2>
           <p>免费版就能走完整个流程：做计划、派工、验收、合并。Pro 把你原本要亲手做的事交给 Pyloxa：多个项目一起运行、在你设定的范围内自行决定、额度用完自动接手、做完自动交给另一个 Agent 测试。</p>
+          <p class="more-link"><a href="../pro/">完整说明（英文）→</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -773,7 +777,7 @@
             <tr>
               <th scope="row">额度用完时</th>
               <td>提出备用 Agent，每次接手由你确认</td>
-              <td class="pro"><strong>自动备用链</strong>：依次交给备用 Agent，可设触发条件和上限；经你事先允许，订阅额度用完时改用 API 计费</td>
+              <td class="pro"><strong>自动备用链</strong>：依次交给规则里的备用 Agent，不必每次确认；每个任务最多接手 2 次</td>
             </tr>
             <tr>
               <th scope="row">验收和测试</th>
@@ -782,7 +786,7 @@
             </tr>
             <tr>
               <th scope="row">额度调度</th>
-              <td>等待额度的任务在重置后自动继续</td>
+              <td>等待额度的任务在重置后继续：知道重置时间时自动开始</td>
               <td class="pro">项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始 </td>
             </tr>
             <tr>
@@ -843,7 +847,7 @@
               <li>多个项目同时运行，所有等你处理的事集中在任务中心的收件箱</li>
               <li>授权范围内自动：在你允许的 Agent、模型和次数内自行选择与重试，超出范围就暂停</li>
               <li>工作流程：存成多个流程，每个项目用不同的流程；用一句话建立流程</li>
-              <li>自动备用链：依次交给备用 Agent，可设触发条件和上限；经你事先允许，订阅额度用完时改用 API 计费</li>
+              <li>自动备用链：依次交给规则里的备用 Agent，不必每次确认；每个任务最多接手 2 次</li>
               <li>自动交叉测试：按任务类型或由大脑判断，自动交给另一个 Agent 测试，没通过就自动退回修复</li>
               <li>额度调度：项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始</li>
               <li>用量和报告：跨项目的用量仪表板，每个项目的 Agent 工时、token 和 CLI 报告的金额，可以导出为 Markdown 或 CSV</li>

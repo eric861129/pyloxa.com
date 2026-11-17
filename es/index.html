@@ -145,7 +145,7 @@
                 <span id="quota-label">Codex se quedó sin cuota</span>
               </div>
               <div class="quota-box" data-quota-box hidden>
-                <span class="ui-title" data-quota-title>Codex se quedó sin cuota (se restablece hacia las 18:00)</span>
+                <span class="ui-title" data-quota-title>Codex se quedó sin cuota</span>
                 <span class="ui-muted">Un respaldo puede tomar el relevo y continuar desde el trabajo de Codex, después de que lo confirmes.</span>
                 <span><button type="button" class="ui-button primary" data-takeover>Que Claude Code tome el relevo</button></span>
               </div>
@@ -217,6 +217,7 @@
           <div class="custom-head reveal">
             <h2 class="section-head" id="wf-title">Un flujo de trabajo, cinco etapas</h2>
             <p>La página “Flujo de trabajo” de la app muestra todo el flujo de una vez: quién planifica, en qué fases, quién hace cada tipo de trabajo, cómo se comprueba y cómo se entrega. Cada etapa la configuras tú; el cerebro solo propone planes y no puede cambiarlas.</p>
+            <p class="more-link"><a href="../workflow/">Más detalles (en inglés) →</a></p>
           </div>
 
           <div class="tabs wf-steps" role="tablist" aria-label="Las cinco etapas de un flujo de trabajo" hidden>
@@ -304,7 +305,7 @@
               <div class="wf-matrix" data-ui data-matrix>
                 <div class="ui-row wf-card-head">
                   <span class="ui-title">Tabla de asignación</span>
-                  <span class="ui-muted">Haz clic en una celda: principal → respaldo → no asignar</span>
+                  <span class="ui-muted">Pantalla de ejemplo: haz clic en una celda para cambiar entre principal, respaldo y no asignar</span>
                 </div>
                 <div class="wf-matrix-scroll">
                   <table>
@@ -506,8 +507,9 @@
         <div class="wrap grid">
           <div class="fallback-copy reveal">
             <h2 id="fallback-title">Cuando uno se queda sin cuota</h2>
-            <p>Si Codex llega a su límite de uso a mitad de una tarea, Pyloxa deja de enviarle trabajo, muestra cuándo se restablece la cuota y ofrece el respaldo de tu regla. Tú confirmas, y Claude Code continúa desde los archivos que Codex ya cambió.</p>
-            <p>La barra de título muestra cuánto queda de cada suscripción: amarillo al 70% de uso, rojo al 90% o cuando estás limitado.</p>
+            <p>Si Codex llega a su límite de uso a mitad de una tarea, Pyloxa deja de enviarle trabajo y ofrece el respaldo de tu regla. Tú confirmas, y Claude Code continúa desde los archivos que Codex ya cambió.</p>
+            <p>La barra de título muestra cuánto queda de tu suscripción de Claude Code: amarillo al 70% de uso, rojo al 90% o cuando estás limitado. Codex y las demás conexiones muestran los tokens de hoy y se marcan cuando están limitadas.</p>
+            <p class="more-link"><a href="../quota/">Más detalles (en inglés) →</a></p>
             <div class="figures">
               <span>3 intentos automáticos por tarea</span>
               <span>2 respaldos como máximo</span>
@@ -523,11 +525,11 @@
             </div>
             <div class="fq-card" data-ui>
               <div class="ui-row">
-                <span class="ui-title fq-title">Codex se quedó sin cuota (se restablece hacia las 18:00)</span>
+                <span class="ui-title fq-title">Codex se quedó sin cuota</span>
                 <span class="ui-muted">Claude Code puede tomar el relevo y continuar desde lo que terminó Codex, o Codex puede reintentar cuando se restablezca su cuota.</span>
                 <span class="fq-actions"><button type="button" class="ui-button primary">Que Claude Code tome el relevo</button><button type="button" class="ui-button">Reintentar cuando se restablezca la cuota</button></span>
               </div>
-              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro toma el relevo automáticamente siguiendo tu cadena de respaldo, con los disparadores y límites que fijes.</span></div>
+              <div class="ui-row fq-pro"><span class="badge warn">Pro</span><span class="ui-muted">Pro toma el relevo automáticamente siguiendo la cadena de respaldo de tus reglas, sin preguntar cada vez; como máximo 2 relevos por tarea.</span></div>
             </div>
           </div>
         </div>
@@ -538,12 +540,13 @@
           <div class="skills-copy reveal">
             <h2 id="memory-title">Todos los agentes leen el mismo contexto</h2>
             <p>Anota una vez las reglas, convenciones y trampas conocidas de tu proyecto, y Claude Code, Codex y Gemini CLI las leen. Con las skills pasa lo mismo: las gestionas en un solo lugar en vez de tener una copia en cada CLI.</p>
+            <p class="more-link"><a href="../memory/">Más detalles (en inglés) →</a></p>
             <ol class="steps">
               <li><strong>Recordar<span class="tier">Gratis</span></strong><span>Pulsa “Recordar” en una respuesta del cerebro o en la sesión de una tarea, o elige entradas para importar de CLAUDE.md, AGENTS.md y los archivos de memoria de las otras CLI.</span></li>
-              <li><strong>Los agentes sugieren, tú apruebas<span class="tier">Gratis</span></strong><span>Mientras trabajan, los agentes pueden buscar en la memoria y sugerir entradas nuevas. Ningún agente ve una sugerencia hasta que la aceptas.</span></li>
+              <li><strong>Los agentes sugieren, tú apruebas<span class="tier">Gratis</span></strong><span>Mientras trabajan, los agentes pueden buscar en la memoria y sugerir entradas nuevas. Ningún agente ve una sugerencia hasta que la aceptas, salvo que permitas que un proyecto acepte automáticamente los hechos y las trampas conocidas que sugieren los agentes (desactivado por defecto).</span></li>
               <li><strong>Sincronizar con las CLI<span class="tier">Gratis</span></strong><span>Escribe las reglas del proyecto en un bloque de Pyloxa en AGENTS.md, para que las CLI también las lean en tu terminal. Primero ves el diff, y Pyloxa no hace ningún commit por ti.</span></li>
               <li><strong>Inventario de skills<span class="tier">Gratis</span></strong><span>Mira qué skills tiene cada CLI y cuáles comparten nombre pero difieren en contenido.</span></li>
-              <li><strong>Biblioteca de skills y paquetes de asignación<span class="tier">Pro</span></strong><span>Una biblioteca de skills sincronizada con todas las CLI y asignada por proyecto o perfil, que se comparte junto con tu flujo de trabajo como paquete de asignación.</span></li>
+              <li><strong>Biblioteca de skills y paquetes de asignación<span class="tier">Pro</span></strong><span>Una biblioteca de skills sincronizada con todas las CLI y asignada por proyecto o perfil, que se comparte junto con tus reglas y sugerencias de comandos como paquete de asignación.</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -745,6 +748,7 @@
         <div class="pricing-lede reveal">
           <h2 id="pricing-title">La versión gratuita trabaja contigo en un proyecto. Pro se ocupa de todos.</h2>
           <p>La versión gratuita cubre todo el flujo: planificar, asignar, verificar y fusionar. Pro se encarga de lo que de otro modo harías a mano: varios proyectos a la vez, decisiones dentro de los límites que fijas, relevos cuando se acaba la cuota y trabajo terminado enviado a otro agente para que lo pruebe.</p>
+          <p class="more-link"><a href="../pro/">Más detalles (en inglés) →</a></p>
         </div>
         <table class="reveal">
           <thead>
@@ -773,7 +777,7 @@
             <tr>
               <th scope="row">Cuando se acaba la cuota</th>
               <td>Se propone un respaldo; tú confirmas cada relevo</td>
-              <td class="pro"><strong>Cadena de respaldo automática</strong> con disparadores y límites; con tu permiso previo, cambia a facturación por API cuando se agota una suscripción</td>
+              <td class="pro"><strong>Cadena de respaldo automática</strong> que pasa el trabajo a los respaldos de tus reglas, en orden, sin preguntar cada vez; como máximo 2 relevos por tarea</td>
             </tr>
             <tr>
               <th scope="row">Verificaciones y pruebas</th>
@@ -782,7 +786,7 @@
             </tr>
             <tr>
               <th scope="row">Programación de cuota</th>
-              <td>Las tareas que esperan cuota se reanudan tras el restablecimiento</td>
+              <td>Las tareas que esperan cuota se reanudan tras el restablecimiento, automáticamente cuando se conoce la hora del restablecimiento</td>
               <td class="pro">Prioridad por proyecto, cuotas por conexión y planes programados para una hora fija o para el próximo restablecimiento </td>
             </tr>
             <tr>
@@ -843,7 +847,7 @@
               <li>Varios proyectos trabajando a la vez, con una bandeja del centro de tareas para todo lo que espera por ti</li>
               <li>Automático dentro de límites: elige y reintenta dentro de los agentes, modelos y cantidades que permites, y se pausa al llegar a cualquier límite</li>
               <li>Flujo de trabajo: guarda varios flujos y usa uno distinto en cada proyecto; describe un flujo en una frase</li>
-              <li>Cadena de respaldo automática con disparadores y límites; con tu permiso previo, cambia a facturación por API cuando se agota una suscripción</li>
+              <li>Cadena de respaldo automática que pasa el trabajo a los respaldos de tus reglas, en orden, sin preguntar cada vez; como máximo 2 relevos por tarea</li>
               <li>Pruebas cruzadas automáticas por tipo de tarea o a criterio del cerebro, y las pruebas fallidas se devuelven para corregirlas</li>
               <li>Programación de cuota: prioridad por proyecto, cuotas por conexión y planes programados para una hora fija o para el próximo restablecimiento</li>
               <li>Uso e informes: un panel de uso de todos los proyectos, con el tiempo de los agentes, los tokens y el coste que informa la CLI por proyecto, exportable en Markdown o CSV</li>
