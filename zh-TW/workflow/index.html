@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>工作流程：讓 Claude Code 與 Codex 分工、驗收再合併｜Pyloxa</title>
-    <meta name="description" content="Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。" />
+    <meta name="description" content="Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。Pro 可以存成多個流程，每個專案各用一個。" />
     <meta name="theme-color" content="#4932d4" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pyloxa" />
     <meta property="og:title" content="工作流程：讓 Claude Code 與 Codex 分工、驗收再合併｜Pyloxa" />
-    <meta property="og:description" content="Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。" />
+    <meta property="og:description" content="Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。Pro 可以存成多個流程，每個專案各用一個。" />
     <meta property="og:url" content="https://pyloxa.com/zh-TW/workflow/" />
     <meta property="og:image" content="https://pyloxa.com/assets/og-zh.png" />
     <meta property="og:image:width" content="1200" />
@@ -24,7 +24,7 @@
     <link rel="alternate" hreflang="en" href="https://pyloxa.com/workflow/" />
     <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/workflow/" />
     <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/workflow/" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://pyloxa.com/zh-TW/workflow/","url":"https://pyloxa.com/zh-TW/workflow/","name":"工作流程：讓 Claude Code 與 Codex 分工、驗收再合併｜Pyloxa","description":"Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"about":{"@id":"https://pyloxa.com/#software"},"publisher":{"@id":"https://pyloxa.com/#organization"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/workflow/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/workflow/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"工作流程","item":"https://pyloxa.com/zh-TW/workflow/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/workflow/#faq","mainEntity":[{"@type":"Question","name":"Agent 說做完了，Pyloxa 怎麼判斷算不算完成？","acceptedAnswer":{"@type":"Answer","text":"看你核准的驗證命令。工作完成後，Pyloxa 在那個工作的 worktree 執行驗收命令，並核對必要檔案與寫入範圍。至少有一項客觀檢查而且全部通過、又不需要人看的工作，才會自動接受；沒通過就由同一個 Agent 自動修正一次。沒有執行、跳過或失敗的檢查，不會標成通過。"}},{"@type":"Question","name":"交叉測試的測試者會改到我的程式嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。測試者只能寫入測試檔（例如 *.test.*、*.spec.*、test/、tests/、__tests__/），它補上的測試原本的 Agent 改不掉。測試者不能是做這個工作的同一個 Profile，Gemini CLI 也不能當測試者。"}},{"@type":"Question","name":"Pyloxa 會自動合併或推送嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。工作接受後只合併到這次計畫自己的整合分支；合併到你的分支、推送與開 PR 都由你按下，有衝突時也不會自動解決。改到 .github、CLAUDE.md、AGENTS.md 這類影響 Agent 與自動化的檔案時，一律不自動接受。"}},{"@type":"Question","name":"分幾個階段由誰決定？","acceptedAnswer":{"@type":"Answer","text":"由大腦依每個需求決定。核准計畫前，你可以在計畫卡上改派工作、修改指示、決定每個階段做完要不要等你，或請大腦重擬。"}},{"@type":"Question","name":"工作流程頁要付費嗎？","acceptedAnswer":{"@type":"Answer","text":"不用。工作流程頁、分工表、規則清單、範本、驗證命令、Gate、大腦驗收與手動交叉測試都在免費版。Pro 加上授權範圍內自動、自動交叉測試、多個專案同時執行與 Agent Teams（實驗）。"}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://pyloxa.com/zh-TW/workflow/","url":"https://pyloxa.com/zh-TW/workflow/","name":"工作流程：讓 Claude Code 與 Codex 分工、驗收再合併｜Pyloxa","description":"Pyloxa 的工作流程頁把規劃、階段、分工、檢查與交付放在同一頁：大腦擬計畫，規則決定誰做，你的驗證命令決定算不算完成，合併與推送由你按下。Pro 可以存成多個流程，每個專案各用一個。","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"about":{"@id":"https://pyloxa.com/#software"},"publisher":{"@id":"https://pyloxa.com/#organization"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/workflow/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/workflow/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"工作流程","item":"https://pyloxa.com/zh-TW/workflow/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/workflow/#faq","mainEntity":[{"@type":"Question","name":"Agent 說做完了，Pyloxa 怎麼判斷算不算完成？","acceptedAnswer":{"@type":"Answer","text":"看你核准的驗證命令。工作完成後，Pyloxa 在那個工作的 worktree 執行驗收命令，並核對必要檔案與寫入範圍。至少有一項客觀檢查而且全部通過、又不需要人看的工作，才會自動接受；沒通過就由同一個 Agent 自動修正一次。沒有執行、跳過或失敗的檢查，不會標成通過。"}},{"@type":"Question","name":"交叉測試的測試者會改到我的程式嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。測試者只能寫入測試檔（例如 *.test.*、*.spec.*、test/、tests/、__tests__/），它補上的測試原本的 Agent 改不掉。測試者不能是做這個工作的同一個 Profile，Gemini CLI 也不能當測試者。"}},{"@type":"Question","name":"Pyloxa 會自動合併或推送嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。工作接受後只合併到這次計畫自己的整合分支；合併到你的分支、推送與開 PR 都由你按下，有衝突時也不會自動解決。改到 .github、CLAUDE.md、AGENTS.md 這類影響 Agent 與自動化的檔案時，一律不自動接受。"}},{"@type":"Question","name":"分幾個階段由誰決定？","acceptedAnswer":{"@type":"Answer","text":"預設由大腦依每個需求決定，核准計畫前你可以在計畫卡上改派工作、修改指示、決定每個階段做完要不要等你，或請大腦重擬。也可以在工作流程頁改成「照我規定的階段」：最多 5 段，每段交給誰、要不要等你核准、能不能省略都由你決定，免費版也能用。"}},{"@type":"Question","name":"工作流程頁要付費嗎？","acceptedAnswer":{"@type":"Answer","text":"不用。工作流程頁、分工表、規則清單、範本、自訂階段、驗證命令、Gate、大腦驗收、手動交叉測試與驗證報告卡都在免費版。Pro 加上我的流程、用一句話建立流程、授權範圍內自動、自動交叉測試、多個專案同時執行與 Agent Teams（實驗）。"}},{"@type":"Question","name":"可以讓不同的專案用不同的流程嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，這是 Pro 功能。把目前的設定存成我的流程，再替每個專案選一個；沒有指定的專案照全域設定。每個流程保留最多 10 個版本，可以比較與還原。"}}]}]}</script>
     <link rel="stylesheet" href="../../assets/site.css" />
     <link rel="stylesheet" href="../../assets/features.css" />
     <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
@@ -82,7 +82,7 @@
         </div>
         <ul class="fx-facts">
           <li><strong>5 段</strong><span>規劃、階段、分工、檢查、交付</span></li>
-          <li><strong>4 個</strong><span>內建範本，套用前先看差異</span></li>
+          <li><strong>5 個</strong><span>內建範本，套用前先看差異</span></li>
           <li><strong>1 次</strong><span>命令沒通過時自動修正的次數</span></li>
           <li><strong>0 次</strong><span>不經你同意的合併與推送</span></li>
         </ul>
@@ -114,6 +114,8 @@
           <h2 id="phases-title">2. 階段：每段結束先檢查，再往下走</h2>
           <p>大腦依需求排出階段，例如規格、開發、測試。核准計畫前，你可以在計畫卡上改派某個工作、修改它的指示、決定每個階段做完要不要等你，或請大腦重擬。</p>
           <ul class="fx-list">
+            <li><strong>照我規定的階段</strong>：也可以自己定階段，最多 5 段。每段交給誰、做完要不要等你核准、需求用不到時能不能省略，都由你決定；大腦排計畫時只能用這些階段。免費版也能用。</li>
+            <li>核准後，計畫卡上方的進度條顯示每一段的狀態與目前在第幾段，點一段就捲到那裡。</li>
             <li>每個階段結束時，Pyloxa 在整合後的版本上跑 <strong>Gate</strong>。Gate 沒通過會重跑一次，再不行就開一個修正工作。</li>
             <li>Gate 可以通過後自動往下走，也可以停下來等你核准。</li>
             <li>下一個階段自動拿到上一段的交接包：成果、通過的檢查和要注意的事。</li>
@@ -122,7 +124,7 @@
         </div>
         <div class="fx-media reveal">
           <div class="fx-rows" data-ui>
-            <div class="ui-row fx-head"><span class="ui-title">計畫：會員資料頁</span><span class="ui-muted">3 個階段 · 5 個工作</span></div>
+            <div class="ui-row fx-head"><span class="ui-title">計畫：會員資料頁</span><span class="ui-muted">3 個階段 · 5 個工作</span><span class="spacer"></span><span class="badge info">第 2 / 共 3 段</span></div>
             <div class="ui-row fx-line"><span class="ui-title">1 規格與 Contract</span><span class="ui-muted">Codex</span><span class="spacer"></span><span class="badge ok">Gate 通過</span></div>
             <div class="ui-row fx-line"><span class="ui-title">2 開發</span><span class="ui-muted">前端 Claude Code · 後端 Codex</span><span class="spacer"></span><span class="badge info"><span class="spin" aria-hidden="true"></span>執行中</span></div>
             <div class="ui-row fx-line"><span class="ui-title">3 測試</span><span class="ui-muted">Gate 通過後等你核准</span><span class="spacer"></span><span class="badge">等待中</span></div>
@@ -167,6 +169,7 @@
             <li>沒通過時，同一個 Agent 自動修正一次；每個工作最多自動執行 3 次。</li>
             <li><strong>交叉測試</strong>：完成的工作交給另一個 Agent 補測試，Pyloxa 在成果上重跑你的命令。測試者只能改測試檔，補上的測試原本的 Agent 改不掉。免費版按「交給另一個 Agent 測試」，Pro 依設定自動進行。</li>
             <li><strong>大腦驗收</strong>：大腦以唯讀方式檢查完成的工作，結論標示為 AI 判斷；要求你親自確認的工作，仍然等你決定。</li>
+            <li>想先看一次完整的檢查流程，可以在設定精靈的最後一步「開始試駕」：Pyloxa 建立一個藏了 bug 的範例專案，不會碰到你的專案。</li>
           </ul>
         </div>
         <div class="fx-media reveal">
@@ -188,7 +191,8 @@
           <p>每個工作在自己的 git worktree 與分支完成，接受後合併到這次計畫的整合分支。合併到你的分支、推送和開 PR，都等你按下；有衝突時 Pyloxa 不會自動解決。</p>
           <ul class="fx-list">
             <li>改到 <code>.github</code>、<code>.claude</code>、<code>.codex</code>、<code>CLAUDE.md</code>、<code>AGENTS.md</code>、<code>.mcp.json</code> 或定義驗證命令的檔案時，一律不自動接受，也不交給大腦驗收，合併前會再列出一次。</li>
-            <li>開 PR 時可以附上驗證紀錄：哪些命令真的跑過、每個成果是誰接受的。</li>
+            <li>開 PR 時可以附上<strong>驗證報告卡</strong>：每個階段一張表，寫明誰做的、誰交叉測試、Pyloxa 跑了哪些命令、成果怎麼被接受。計畫完成後，在計畫卡下方也能打開它、複製 Markdown。</li>
+            <li>報告卡最後一行預設不加。打開後，只有每個成果都通過 Pyloxa 執行的命令，才會寫「Verified with Pyloxa」，否則寫「Verification record by Pyloxa」。</li>
             <li>需要時可以讓整個計畫共用一個 worktree，工作依序執行，後面的工作看得到前面接受的改動。</li>
             <li>Pyloxa 不會對你的工作目錄執行 stash、reset 或 checkout。</li>
           </ul>
@@ -197,7 +201,7 @@
           <div class="fx-rows" data-ui>
             <div class="ui-row fx-head"><span class="ui-title">建立 Pull Request</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
             <div class="ui-row"><span class="ui-muted">標題</span><br />新增會員點數頁</div>
-            <div class="ui-row fx-line"><input type="checkbox" checked disabled aria-label="附上驗證紀錄" /> <span>在說明最後附上 Pyloxa 的驗證紀錄（5 個成果）</span></div>
+            <div class="ui-row fx-line"><input type="checkbox" checked disabled aria-label="附上驗證報告卡" /> <span>在說明最後附上 Pyloxa 的驗證報告卡（5 個成果）</span></div>
             <div class="ui-row fx-line"><span class="spacer"></span><span class="ui-button primary">建立 PR</span></div>
           </div>
         </div>
@@ -216,8 +220,31 @@
               <tr><th scope="row">快速修改</th><td>僅依設定執行，共用一個 worktree，全部交給大腦的 Profile。</td></tr>
               <tr><th scope="row">嚴謹審查<span class="fx-tag">含 Pro 設定</span></th><td>大腦驗收所有工作，前端與後端的工作交叉測試。</td></tr>
               <tr><th scope="row">平均分攤額度<span class="fx-tag">含 Pro 設定</span></th><td>各種工作在 Claude Code 與 Codex 之間分攤，額度用完時自動備援。</td></tr>
+              <tr><th scope="row">規格先行</th><td>先寫規格，做完等你核准，再開發與測試；需求用不到測試時可以省略。</td></tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="my-workflows" aria-labelledby="my-workflows-title">
+        <div class="fx-copy reveal">
+          <h2 id="my-workflows-title">我的流程：每個專案各用一個<span class="fx-tag">Pro</span></h2>
+          <p>設定好之後按「存成我的流程」，再替每個專案選要用哪一個，例如 API 專案先寫規格、小工具直接改。沒有指定的專案照全域設定。</p>
+          <ul class="fx-list">
+            <li><strong>用一句話建立</strong>：描述你想要的做法，大腦擬好流程，先列成差異給你看；要套用到全域、存成我的流程，還是修改描述再擬一次，由你選。大腦不能自己編 Agent，做不到的要求會寫在說明裡。</li>
+            <li><strong>版本紀錄</strong>：每次儲存留一個版本，每個流程最多 10 版。可以比較任兩版，或還原到其中一版；還原前的內容也會留一版。</li>
+            <li>我的流程可以放進派工包分享，也會跟著「設定帶著走」到新電腦；版本紀錄與專案使用哪一個流程不帶。</li>
+            <li>回到免費版時，我的流程都保留，專案暫時照全域設定，回到 Pro 就恢復。</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">版本紀錄：API 規格先行</span><span class="spacer"></span><span class="ui-muted">示意畫面</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">第 3 版</span><span class="ui-muted">還原自第 1 版</span><span class="spacer"></span><span class="badge info">目前</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">第 2 版</span><span class="ui-muted">後端改交給 Claude Code</span><span class="spacer"></span><span class="ui-button">還原</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">第 1 版</span><span class="ui-muted">規格做完等你核准 → 開發 → 測試</span><span class="spacer"></span><span class="ui-button">還原</span></div>
+            <div class="ui-row fx-line"><span class="fx-note">選兩版比較差異</span><span class="spacer"></span><span class="ui-button primary">比較第 2 → 3 版</span></div>
+          </div>
         </div>
       </section>
 
@@ -231,10 +258,11 @@
             <thead><tr><th scope="col"></th><th scope="col">免費版</th><th scope="col" class="is-pro">Pro</th></tr></thead>
             <tbody>
               <tr><th scope="row">派工</th><td>建議後詢問、僅依設定執行</td><td class="is-pro">加上授權範圍內自動</td></tr>
-              <tr><th scope="row">設定</th><td>工作流程頁、分工表、規則清單、四個範本</td><td class="is-pro">同免費版</td></tr>
+              <tr><th scope="row">設定</th><td>工作流程頁、分工表、規則清單、五個範本、自訂階段</td><td class="is-pro">同免費版</td></tr>
+              <tr><th scope="row">我的流程</th><td>—</td><td class="is-pro">存成多個流程、每個專案各用一個、版本比較與還原、用一句話建立流程</td></tr>
               <tr><th scope="row">檢查</th><td>驗證命令、階段 Gate、大腦驗收、手動交叉測試</td><td class="is-pro">加上自動交叉測試，沒通過自動退回修正</td></tr>
               <tr><th scope="row">執行</th><td>一次一個專案在執行</td><td class="is-pro">多個專案同時執行、Agent Teams（實驗）</td></tr>
-              <tr><th scope="row">交付</th><td>整合分支、合併、推送、開 PR、驗證紀錄</td><td class="is-pro">同免費版</td></tr>
+              <tr><th scope="row">交付</th><td>整合分支、合併、推送、開 PR、驗證報告卡</td><td class="is-pro">同免費版</td></tr>
             </tbody>
           </table>
         </div>
@@ -257,11 +285,15 @@
           </details>
           <details class="fx-q">
             <summary>分幾個階段由誰決定？</summary>
-            <div><p>由大腦依每個需求決定。核准計畫前，你可以在計畫卡上改派工作、修改指示、決定每個階段做完要不要等你，或請大腦重擬。</p></div>
+            <div><p>預設由大腦依每個需求決定，核准計畫前你可以在計畫卡上改派工作、修改指示、決定每個階段做完要不要等你，或請大腦重擬。也可以在工作流程頁改成「照我規定的階段」：最多 5 段，每段交給誰、要不要等你核准、能不能省略都由你決定，免費版也能用。</p></div>
           </details>
           <details class="fx-q">
             <summary>工作流程頁要付費嗎？</summary>
-            <div><p>不用。工作流程頁、分工表、規則清單、範本、驗證命令、Gate、大腦驗收與手動交叉測試都在免費版。Pro 加上授權範圍內自動、自動交叉測試、多個專案同時執行與 Agent Teams（實驗）。</p></div>
+            <div><p>不用。工作流程頁、分工表、規則清單、範本、自訂階段、驗證命令、Gate、大腦驗收、手動交叉測試與驗證報告卡都在免費版。Pro 加上我的流程、用一句話建立流程、授權範圍內自動、自動交叉測試、多個專案同時執行與 Agent Teams（實驗）。</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>可以讓不同的專案用不同的流程嗎？</summary>
+            <div><p>可以，這是 Pro 功能。把目前的設定存成我的流程，再替每個專案選一個；沒有指定的專案照全域設定。每個流程保留最多 10 個版本，可以比較與還原。</p></div>
           </details>
         </div>
       </section>
@@ -283,12 +315,13 @@
             <li><a href="../../zh-TW/memory/"><span>記憶與 Skills</span><span class="fx-related-text">每個 Agent 都讀得到的共用記憶，以及各 CLI 看得到的 Skills。</span></a></li>
             <li><a href="../../zh-TW/quota/"><span>額度與備援</span><span class="fx-related-text">看得到還剩多少，額度用完時交給另一個 CLI 接手。</span></a></li>
             <li><a href="../../zh-TW/pro/"><span>Pro</span><span class="fx-related-text">Pro 多了什麼、免費預覽，以及哪些一直免費。</span></a></li>
+            <li><a href="../../zh-TW/help/"><span>說明文件</span><span class="fx-related-text">安裝、連線 CLI、計畫與疑難排解的操作步驟。</span></a></li>
         </ul>
       </section>
     </main>
 
     <footer class="wrap fx-foot">
-      <p>版本 0.1.10 · Windows 10 與 11 · <a href="../../zh-TW/changelog/">改版紀錄</a> · <a href="../../zh-TW/privacy/">隱私權政策</a> · <a href="../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>版本 0.1.11 · Windows 10 與 11 · <a href="../../zh-TW/help/">說明文件</a> · <a href="../../zh-TW/changelog/">改版紀錄</a> · <a href="../../zh-TW/privacy/">隱私權政策</a> · <a href="../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
       <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。</p>
     </footer>
 

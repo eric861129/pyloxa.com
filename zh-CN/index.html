@@ -30,8 +30,8 @@
     <meta name="twitter:description" content="免费的 Windows 工具：把需求拆成任务，按你的规则交给 Claude Code 或 Codex，用你的测试验收结果，额度用完时由另一个 Agent 接手。使用你自己的订阅。" />
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
     <meta name="twitter:image:alt" content="Pyloxa：让 Claude Code 和 Codex 分工协作。计划中的每个任务都标明交给哪个 Agent 以及命中的规则。" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/zh-CN/#software","name":"Pyloxa","url":"https://pyloxa.com/zh-CN/","image":"https://pyloxa.com/assets/og-en.png","description":"免费的 Windows 工具：把需求拆成任务，按你的规则交给 Claude Code 或 Codex，用你的测试验收结果，额度用完时由另一个 Agent 接手。使用你自己的订阅。","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.10","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
-    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-CN/#faq","url":"https://pyloxa.com/zh-CN/","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa 是什么？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版不需要账号；Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用，目前开放预览，登录即可免费使用。"}},{"@type":"Question","name":"Pyloxa 会收取 AI 使用费吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 运行的是你已经配置好的官方 CLI（Claude Code、Codex CLI，以及实验性的 Gemini CLI），用量计入你自己的订阅，或者你自己选用的 API Key。Pyloxa 不转售、也不代理任何 AI 服务。"}},{"@type":"Question","name":"需要安装什么？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 或 11（64 位）、git，以及至少一个已登录的 Claude Code 或 Codex CLI。Gemini CLI 是可选的实验性支持，需要你自己的付费 Gemini API Key。装了不止一个 CLI，默认流程才能分工，备用接手才派得上用场。还没装也没关系：首次启动时，设置向导会检查 git 和 Node.js，在你确认后用官方的 npm 命令安装 CLI，再带你完成登录和 API Key 配置。"}},{"@type":"Question","name":"可以先不拿自己的项目试试吗？","acceptedAnswer":{"@type":"Answer","text":"可以。在设置向导的最后一步，或还没有项目时的欢迎页，可以“开始试驾”：Pyloxa 创建一个藏了 bug 的购物车示例 repo，放上事先写好的计划，等你批准。有两家的 CLI 时，一个实现、另一个交叉测试；只有一个时，改用附带的规格测试把关。测试由 Pyloxa 自己执行，最后可以查看验证报告卡。开始前会列出预计的回合数、tokens 和时间；试驾不会碰你的项目，也不会推送或创建 PR。"}},{"@type":"Question","name":"Pyloxa 会读取我的凭据吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 只用各 CLI 自带的命令查询登录状态，并像你一样启动 CLI；token 和凭据文件不会被读取、复制或发送。"}},{"@type":"Question","name":"我的代码会发送到哪里？","acceptedAnswer":{"@type":"Answer","text":"免费版无需账号，Pyloxa 也不会把你的项目、提示内容或代码发送给我们；你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。试用、Pro 预览和 Pro 需要登录，账号只用于授权：登录后大约每天更新一次授权，只发送设备 ID、App 和 Windows 的版本。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。使用统计在你的电脑上计算，只有你开启匿名分享（默认关闭）时才会发送，而且只有次数和类别。你设置的 Pro 通知会从你的电脑直接发送到你指定的 Telegram、Discord 或 webhook。详见隐私政策（英文）。"}},{"@type":"Question","name":"Agent 会弄坏我的仓库吗？","acceptedAnswer":{"@type":"Answer","text":"Agent 在独立的 git worktree 中工作，不碰你正在编辑的工作目录；Pyloxa 也不会对它执行 stash、reset 或 checkout。每个任务完成后，会核对改动的文件是否都在计划允许的写入范围内，你也可以在内置的 diff 视图中逐个文件查看。是否合并、是否推送，都由你决定。"}},{"@type":"Question","name":"换电脑时，设置要重新做一遍吗？","acceptedAnswer":{"@type":"Answer","text":"不用。在“设置 → 备份与搬移”导出设置，到新电脑导入：Agent Profile、全局派工规则、派工和大脑的偏好、阶段、指令模板、全局共用记忆、Skills 库和界面偏好都在同一个文件里。API Key、登录信息、授权和这台电脑上的路径不会放进去；项目自己的设置和我的流程也不带走，项目规则可以放在 repo 的 .pyloxa/ 文件夹，跟着 git 走。导入前逐项预览，应用前自动备份这台电脑的设置，可以还原。免费版就能用。"}},{"@type":"Question","name":"为什么安装时 Windows 会弹出警告？","acceptedAnswer":{"@type":"Answer","text":"免费版安装包目前还没有代码签名，SmartScreen 可能会提示“Windows 已保护你的电脑”。请点击“更多信息”，再点击“仍要运行”。安装前可以先核对安装包的 SHA-256 与发布页上的值是否一致。"}},{"@type":"Question","name":"和把多个 Agent 终端并排显示的工具有什么不同？","acceptedAnswer":{"@type":"Answer","text":"终端复用工具把好几个 Agent 的终端放进同一个窗口，让你看到哪些在运行、哪些在等你，有些还能在退出应用后让 Agent 继续运行，或者连接远程机器。Pyloxa 管的是终端之外的事：大脑把需求拆成任务、按你的规则派给 Agent、用你的命令验收、额度用完时提出备用 Agent，最后由你合并。关闭 Pyloxa 的窗口后，它会留在系统托盘中继续工作；因重启等原因中断的任务，也可以恢复。如果你想亲自盯着每个终端，终端复用工具很合适；如果你想交出一个需求、拿回验收过的结果，Pyloxa 更合适。"}},{"@type":"Question","name":"已经订阅了 Claude 或 ChatGPT，为什么不直接在终端里运行 CLI？","acceptedAnswer":{"@type":"Answer","text":"直接运行 CLI 没有问题，Pyloxa 用的就是同一个 CLI 和你的订阅。区别在三点：额度用完时，Pyloxa 按你的规则提出备用 Agent，你确认后由另一个 CLI 在已改好的文件上继续做；Agent 说做完了不算数，你的验证命令通过才算；派工规则和各 CLI 能读到的 Skills 集中在一个地方查看，不必分别去每个 CLI 里设置。"}},{"@type":"Question","name":"和 CLI 内置的子 Agent 有什么不同？","acceptedAnswer":{"@type":"Answer","text":"子 Agent 在同一个 CLI 内部分工。Pyloxa 在 CLI 之间分工：不同任务可以交给不同的 CLI，各自在独立的 worktree 中运行，用你的命令验收，额度用完时由另一个 CLI 接手。两者可以一起用。"}},{"@type":"Question","name":"支持 Gemini 或其他 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"从 0.1.2 起以实验性功能支持 Gemini CLI，使用你自己的付费 Gemini API Key，不支持 Google 账号登录以及 AI Pro、Ultra 订阅。Gemini 可以执行文章、文档等任务，但不能担任大脑，也不能测试其他 Agent 的成果；在无人值守模式下可以修改文件，但不能运行命令。其他 Agent 仍在评估中。"}},{"@type":"Question","name":"Pro 多了什么？","acceptedAnswer":{"@type":"Answer","text":"多个项目同时运行，等你处理的事集中在任务中心；在你设定的范围内自动决定（自动模式）；额度用完时自动备用；自动交叉测试；大脑备用；存成多个流程，让每个项目用不同的流程，也可以用一句话建立流程；项目优先级、每条连接的配额和定时开始的计划；用量仪表板和报告；通知到 Telegram、Discord 或 webhook；Skills 库和派工包；以及实验中的 Agent Teams。Pro 每年 US$79，目前开放预览：登录即可免费使用，Pro 开卖时结束，至少提前 30 天通知。早鸟价每年 US$49，只要持续订阅就不涨价。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。免费版会一直免费。"}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/zh-CN/#software","name":"Pyloxa","url":"https://pyloxa.com/zh-CN/","image":"https://pyloxa.com/assets/og-en.png","description":"免费的 Windows 工具：把需求拆成任务，按你的规则交给 Claude Code 或 Codex，用你的测试验收结果，额度用完时由另一个 Agent 接手。使用你自己的订阅。","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.1.11","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
+    <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-CN/#faq","url":"https://pyloxa.com/zh-CN/","inLanguage":"zh-CN","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"Pyloxa 是什么？","acceptedAnswer":{"@type":"Answer","text":"Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版不需要账号；Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用，目前开放预览，登录即可免费使用。"}},{"@type":"Question","name":"Pyloxa 会收取 AI 使用费吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 运行的是你已经配置好的官方 CLI（Claude Code、Codex CLI，以及实验性的 Gemini CLI），用量计入你自己的订阅，或者你自己选用的 API Key。Pyloxa 不转售、也不代理任何 AI 服务。"}},{"@type":"Question","name":"需要安装什么？","acceptedAnswer":{"@type":"Answer","text":"Windows 10 或 11（64 位）、git，以及至少一个已登录的 Claude Code 或 Codex CLI。Gemini CLI 是可选的实验性支持，需要你自己的付费 Gemini API Key。装了不止一个 CLI，默认流程才能分工，备用接手才派得上用场。还没装也没关系：首次启动时，设置向导会检查 git 和 Node.js，在你确认后用官方的 npm 命令安装 CLI，再带你完成登录和 API Key 配置。"}},{"@type":"Question","name":"可以先不拿自己的项目试试吗？","acceptedAnswer":{"@type":"Answer","text":"可以。在设置向导的最后一步，或还没有项目时的欢迎页，可以“开始试驾”：Pyloxa 创建一个藏了 bug 的购物车示例 repo，放上事先写好的计划，等你批准。有两家的 CLI 时，一个实现、另一个交叉测试；只有一个时，改用附带的规格测试把关。测试由 Pyloxa 自己执行，最后可以查看验证报告卡。开始前会列出预计的回合数、tokens 和时间；试驾不会碰你的项目，也不会推送或创建 PR。"}},{"@type":"Question","name":"Pyloxa 会读取我的凭据吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Pyloxa 只用各 CLI 自带的命令查询登录状态，并像你一样启动 CLI；token 和凭据文件不会被读取、复制或发送。"}},{"@type":"Question","name":"我的代码会发送到哪里？","acceptedAnswer":{"@type":"Answer","text":"免费版无需账号，Pyloxa 也不会把你的项目、提示内容或代码发送给我们；你的代码只会发送到 CLI 原本就会发送的地方，适用 Anthropic、OpenAI 和 Google 的条款。试用、Pro 预览和 Pro 需要登录，账号只用于授权：登录后大约每天更新一次授权，只发送设备 ID、App 和 Windows 的版本。Pyloxa 在启动时和每 12 小时会向 GitHub 查询最新版本和 CLI 兼容性目录，不包含任何项目或使用数据，可以在“设置”中关闭。使用统计在你的电脑上计算，只有你开启匿名分享（默认关闭）时才会发送，而且只有次数和类别。你设置的 Pro 通知会从你的电脑直接发送到你指定的 Telegram、Discord 或 webhook。详见隐私政策（英文）。"}},{"@type":"Question","name":"Agent 会弄坏我的仓库吗？","acceptedAnswer":{"@type":"Answer","text":"Agent 在独立的 git worktree 中工作，不碰你正在编辑的工作目录；Pyloxa 也不会对它执行 stash、reset 或 checkout。每个任务完成后，会核对改动的文件是否都在计划允许的写入范围内，你也可以在内置的 diff 视图中逐个文件查看。是否合并、是否推送，都由你决定。"}},{"@type":"Question","name":"换电脑时，设置要重新做一遍吗？","acceptedAnswer":{"@type":"Answer","text":"不用。在“设置 → 备份与搬移”导出设置，到新电脑导入：Agent Profile、全局派工规则、派工和大脑的偏好、阶段、我的流程、指令模板、全局共用记忆、Skills 库和界面偏好都在同一个文件里。免费版也会照样保存我的流程，让项目使用需要 Pro。API Key、登录信息、授权和这台电脑上的路径不会放进去；项目自己的设置、项目使用哪个流程以及流程的版本记录也不带走，项目规则可以放在 repo 的 .pyloxa/ 文件夹，跟着 git 走。导入前逐项预览，应用前自动备份这台电脑的设置，可以还原。免费版就能用。"}},{"@type":"Question","name":"为什么安装时 Windows 会弹出警告？","acceptedAnswer":{"@type":"Answer","text":"免费版安装包目前还没有代码签名，SmartScreen 可能会提示“Windows 已保护你的电脑”。请点击“更多信息”，再点击“仍要运行”。安装前可以先核对安装包的 SHA-256 与发布页上的值是否一致。"}},{"@type":"Question","name":"和把多个 Agent 终端并排显示的工具有什么不同？","acceptedAnswer":{"@type":"Answer","text":"终端复用工具把好几个 Agent 的终端放进同一个窗口，让你看到哪些在运行、哪些在等你，有些还能在退出应用后让 Agent 继续运行，或者连接远程机器。Pyloxa 管的是终端之外的事：大脑把需求拆成任务、按你的规则派给 Agent、用你的命令验收、额度用完时提出备用 Agent，最后由你合并。关闭 Pyloxa 的窗口后，它会留在系统托盘中继续工作；因重启等原因中断的任务，也可以恢复。如果你想亲自盯着每个终端，终端复用工具很合适；如果你想交出一个需求、拿回验收过的结果，Pyloxa 更合适。"}},{"@type":"Question","name":"已经订阅了 Claude 或 ChatGPT，为什么不直接在终端里运行 CLI？","acceptedAnswer":{"@type":"Answer","text":"直接运行 CLI 没有问题，Pyloxa 用的就是同一个 CLI 和你的订阅。区别在三点：额度用完时，Pyloxa 按你的规则提出备用 Agent，你确认后由另一个 CLI 在已改好的文件上继续做；Agent 说做完了不算数，你的验证命令通过才算；派工规则和各 CLI 能读到的 Skills 集中在一个地方查看，不必分别去每个 CLI 里设置。"}},{"@type":"Question","name":"和 CLI 内置的子 Agent 有什么不同？","acceptedAnswer":{"@type":"Answer","text":"子 Agent 在同一个 CLI 内部分工。Pyloxa 在 CLI 之间分工：不同任务可以交给不同的 CLI，各自在独立的 worktree 中运行，用你的命令验收，额度用完时由另一个 CLI 接手。两者可以一起用。"}},{"@type":"Question","name":"支持 Gemini 或其他 Agent 吗？","acceptedAnswer":{"@type":"Answer","text":"从 0.1.2 起以实验性功能支持 Gemini CLI，使用你自己的付费 Gemini API Key，不支持 Google 账号登录以及 AI Pro、Ultra 订阅。Gemini 可以执行文章、文档等任务，但不能担任大脑，也不能测试其他 Agent 的成果；在无人值守模式下可以修改文件，但不能运行命令。其他 Agent 仍在评估中。"}},{"@type":"Question","name":"Pro 多了什么？","acceptedAnswer":{"@type":"Answer","text":"多个项目同时运行，等你处理的事集中在任务中心；在你设定的范围内自动决定（自动模式）；额度用完时自动备用；自动交叉测试；大脑备用；存成多个流程，让每个项目用不同的流程，也可以用一句话建立流程；项目优先级、每条连接的配额和定时开始的计划；用量仪表板和报告；通知到 Telegram、Discord 或 webhook；Skills 库和派工包；以及实验中的 Agent Teams。Pro 每年 US$79，目前开放预览：登录即可免费使用，Pro 开卖时结束，至少提前 30 天通知。早鸟价每年 US$49，只要持续订阅就不涨价。停止续订后，订阅期间发布的版本仍可使用 Pro 功能。免费版会一直免费。"}}]}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
@@ -102,7 +102,7 @@
             <p class="lead">需求只说一次。Pyloxa 会先做好计划，用你自己的订阅把每个任务交给 Claude Code 或 Codex，并在合并前检查结果。</p>
             <div class="actions">
               <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下载 Windows 版</a>
-              <span class="meta">免费 · v0.1.10 · Windows 10 和 11</span>
+              <span class="meta">免费 · v0.1.11 · Windows 10 和 11</span>
             </div>
             <a class="hero-pro" href="#pricing">或登录，免费试用 Pro 预览 →</a>
             <ul class="trust" aria-label="要点">
@@ -269,6 +269,7 @@
                 <li>每个任务完成后，在它自己的 worktree 中验收；每个阶段结束时，在集成后的版本上再跑一次 Gate。</li>
                 <li>Gate 通过后可以自动进入下一步，也可以停下来等你批准。</li>
                 <li>也可以按你规定的阶段来排：最多 5 段，每段交给谁、完成后要不要等你批准、需求用不到时能不能省略，都由你决定。免费版也能用。</li>
+                <li>计划批准后，计划卡上方的进度条会显示每个阶段的状态和当前在第几个阶段，点击某个阶段就会滚动到那里。</li>
                 <li>下一个阶段自动拿到交接包：成果、已通过的检查和需要注意的地方。</li>
                 <li>Agent Teams（实验性，Pro）：运行中的 Agent 可以查看整个团队的任务、汇报进度，缺少信息时停下来问你。</li>
               </ul>
@@ -475,6 +476,8 @@
                 <li>大脑只负责拟定：阶段、分工和检查方式先列成差异给你看，要“套用到全域”、“存成我的流程”，还是“修改描述”再拟一次，由你选择。</li>
                 <li>大脑不能自己编造 Agent：不存在或已停用的 Agent 会被移除，做不到的要求会写在说明里。</li>
                 <li>“套用到全域”前会记下目前的设置，可以还原上一版。没有指定流程的项目按全局设置。</li>
+                <li>每次保存都会留下一个版本，每个流程最多 10 个；可以比较任意两个版本，或还原到其中一个，还原前的内容也会留下一个版本。</li>
+                <li>我的流程可以放进派工包分享，也会随导出的设置一起带到新电脑。</li>
               </ul>
             </div>
             <div class="wf-draft" data-ui>
@@ -546,7 +549,7 @@
               <li><strong>Agent 提议，你批准<span class="tier">免费版</span></strong><span>Agent 工作时可以搜索记忆、提议新的记忆；在你接受之前，任何 Agent 都看不到这些提议。你也可以让某个项目自动接受 Agent 提议的事实和踩过的坑，默认关闭。</span></li>
               <li><strong>同步到各 CLI<span class="tier">免费版</span></strong><span>把项目的规则写进 AGENTS.md 中的 Pyloxa 区块，在终端里直接使用 CLI 也能读到。先看差异再写入，不会替你提交。</span></li>
               <li><strong>盘点 Skills<span class="tier">免费版</span></strong><span>列出每个 CLI 装了哪些 Skills，并标出名称相同但内容不同的。</span></li>
-              <li><strong>Skills 库与派工包<span class="tier">Pro</span></strong><span>一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，还能和规则、命令建议一起打包成派工包分享。</span></li>
+              <li><strong>Skills 库与派工包<span class="tier">Pro</span></strong><span>一个 Skills 库同步到每个 CLI，按项目或 Profile 分配，还能和规则、命令建议、惯例以及我的流程一起打包成派工包分享。</span></li>
             </ol>
           </div>
           <div class="skills-mock reveal">
@@ -738,7 +741,7 @@
         </div>
         <div class="band c5">
           <div class="wrap grid">
-            <div class="sentence"><p class="line" id="b5">带着我的设置换电脑。</p><p class="consequence">在“设置 → 备份与搬移”把 Agent Profile、派工规则、指令模板、共用记忆、Skills 库和界面偏好导出成一个文件。API Key 和登录信息不会放进去；导入前逐项预览，也会先自动备份这台电脑的设置。</p></div>
+            <div class="sentence"><p class="line" id="b5">带着我的设置换电脑。</p><p class="consequence">在“设置 → 备份与搬移”把 Agent Profile、派工规则、我的流程、指令模板、共用记忆、Skills 库和界面偏好导出成一个文件。API Key 和登录信息不会放进去；导入前逐项预览，也会先自动备份这台电脑的设置。</p></div>
             <span class="switch"><button type="button" class="toggle" role="switch" aria-checked="true" aria-labelledby="b5" data-ui></button></span>
           </div>
         </div>
@@ -772,7 +775,7 @@
             <tr>
               <th scope="row">工作流程</th>
               <td>工作流程页、分工表、五个内置模板、自定义阶段</td>
-              <td class="pro"><strong>我的流程</strong>：存成多个流程，每个项目用不同的流程；用一句话建立流程</td>
+              <td class="pro"><strong>我的流程</strong>：存成多个流程，每个项目用不同的流程，版本可以比较和还原；用一句话建立流程</td>
             </tr>
             <tr>
               <th scope="row">额度用完时</th>
@@ -846,7 +849,7 @@
             <ul>
               <li>多个项目同时运行，所有等你处理的事集中在任务中心的收件箱</li>
               <li>授权范围内自动：在你允许的 Agent、模型和次数内自行选择与重试，超出范围就暂停</li>
-              <li>工作流程：存成多个流程，每个项目用不同的流程；用一句话建立流程</li>
+              <li>工作流程：存成多个流程，每个项目用不同的流程，版本可以比较和还原；用一句话建立流程</li>
               <li>自动备用链：依次交给规则里的备用 Agent，不必每次确认；每个任务最多接手 2 次</li>
               <li>自动交叉测试：按任务类型或由大脑判断，自动交给另一个 Agent 测试，没通过就自动退回修复</li>
               <li>额度调度：项目优先级、每个连接的配额，整个计划排到指定时间或下次额度重置再开始</li>
@@ -890,7 +893,7 @@
       <section class="wrap section faq" id="faq" aria-labelledby="faq-title">
         <div class="grid">
           <ul class="faq-list reveal">
-            <li class="faq-head"><h2 id="faq-title">常见问题</h2></li>
+            <li class="faq-head"><h2 id="faq-title">常见问题</h2><p class="more-link"><a href="../help/">安装、连接、计划与故障排除的步骤，见帮助文档（英文） →</a></p></li>
             <li data-q class="is-open">
               <h3 class="faq-q"><button type="button" aria-expanded="true">Pyloxa 是什么？</button></h3>
               <div class="inline-answer"><p>Pyloxa 是一款适用于 Windows 10 和 11 的桌面应用，让 Claude Code、Codex CLI 等 AI 编程 Agent 分工协作。需求只需说一次，大脑会把它拆成任务，按你的派工规则交给不同的 CLI；每个任务在自己的 git worktree 中运行，用你的验证命令验收，最后由你决定是否合并。某个 CLI 额度用完时，经你确认后由另一个 CLI 接手。Pyloxa 使用你自己的订阅或 API Key，免费版不需要账号；Pro 每年 US$79，增加多个项目同时运行、自动模式和自动备用，目前开放预览，登录即可免费使用。</p></div>
@@ -921,7 +924,7 @@
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">换电脑时，设置要重新做一遍吗？</button></h3>
-              <div class="inline-answer"><p>不用。在“设置 → 备份与搬移”导出设置，到新电脑导入：Agent Profile、全局派工规则、派工和大脑的偏好、阶段、指令模板、全局共用记忆、Skills 库和界面偏好都在同一个文件里。API Key、登录信息、授权和这台电脑上的路径不会放进去；项目自己的设置和我的流程也不带走，项目规则可以放在 repo 的 .pyloxa/ 文件夹，跟着 git 走。导入前逐项预览，应用前自动备份这台电脑的设置，可以还原。免费版就能用。</p></div>
+              <div class="inline-answer"><p>不用。在“设置 → 备份与搬移”导出设置，到新电脑导入：Agent Profile、全局派工规则、派工和大脑的偏好、阶段、我的流程、指令模板、全局共用记忆、Skills 库和界面偏好都在同一个文件里。免费版也会照样保存我的流程，让项目使用需要 Pro。API Key、登录信息、授权和这台电脑上的路径不会放进去；项目自己的设置、项目使用哪个流程以及流程的版本记录也不带走，项目规则可以放在 repo 的 .pyloxa/ 文件夹，跟着 git 走。导入前逐项预览，应用前自动备份这台电脑的设置，可以还原。免费版就能用。</p></div>
             </li>
             <li data-q>
               <h3 class="faq-q"><button type="button" aria-expanded="false">为什么安装时 Windows 会弹出警告？</button></h3>
@@ -1040,7 +1043,7 @@
           </ul>
         </nav>
         <div class="tile system">
-          <p>Windows 10 和 11<br />64 位<br />版本 0.1.10</p>
+          <p>Windows 10 和 11<br />64 位<br />版本 0.1.11</p>
         </div>
         <div class="tile issue">
           <p>发现问题？</p>

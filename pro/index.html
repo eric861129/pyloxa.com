@@ -91,13 +91,14 @@
       <section class="wrap fx-sec is-wide" id="features" aria-labelledby="features-title">
         <div class="fx-copy reveal">
           <h2 id="features-title">What Pro adds</h2>
-          <p>These are the Pro features in version 0.1.10. Each one has a manual way to do it in the free version; Pro does it for you, or looks after more projects at once.</p>
+          <p>These are the Pro features in version 0.1.11. Each one has a manual way to do it in the free version; Pro does it for you, or looks after more projects at once.</p>
         </div>
         <div class="fx-table reveal">
           <table>
             <thead><tr><th scope="col">Feature</th><th scope="col">Free</th><th scope="col" class="is-pro">Pro</th></tr></thead>
             <tbody>
               <tr><th scope="row">Projects at once</th><td>One project working at a time; switch any time</td><td class="is-pro">Several projects at once, with everything waiting on you in the task center</td></tr>
+              <tr><th scope="row">My workflows</th><td>The Workflow page, templates and your own stages</td><td class="is-pro">Save several workflows, one per project, compare and restore versions, describe a workflow in one sentence</td></tr>
               <tr><th scope="row">Routing</th><td>Suggest, then ask; follow settings only</td><td class="is-pro">Auto within limits: decides within the agents, models and counts you allow; only manual gates stop</td></tr>
               <tr><th scope="row">When quota runs out</th><td>A fallback you confirm each time</td><td class="is-pro">Automatic fallback chain: hands work to the fallbacks in your rules, at most 2 takeovers per task</td></tr>
               <tr><th scope="row">Cross-testing</th><td>Send work to another agent to test by hand</td><td class="is-pro">Automatic cross-testing by your settings, with failures sent back for a fix</td></tr>
@@ -105,7 +106,8 @@
               <tr><th scope="row">Brain</th><td>One brain, which you can change any time</td><td class="is-pro">Up to 3 backup brains</td></tr>
               <tr><th scope="row">Usage</th><td>Usage for each run</td><td class="is-pro">A usage dashboard across projects, exportable as Markdown or CSV</td></tr>
               <tr><th scope="row">Notifications</th><td>Windows desktop notifications</td><td class="is-pro">Sent to your own Telegram bot, Discord or a webhook</td></tr>
-              <tr><th scope="row">Skills</th><td>An inventory of the skills each CLI can read</td><td class="is-pro">A skills library synced to every CLI, assigned per project or profile; dispatch packs</td></tr>
+              <tr><th scope="row">Skills</th><td>An inventory of the skills each CLI can read</td><td class="is-pro">A skills library synced to every CLI, assigned per project or profile; dispatch packs (which can carry your workflows)</td></tr>
+              <tr><th scope="row">New PC</th><td>Export and import your settings, including your workflows</td><td class="is-pro">Same as free; imported workflows can be used in projects</td></tr>
               <tr><th scope="row">Prompt templates</th><td>Up to 5</td><td class="is-pro">Unlimited</td></tr>
               <tr><th scope="row">Agent Teams</th><td>—</td><td class="is-pro">Experimental: running agents can see the team’s tasks, report progress and stop to ask you</td></tr>
             </tbody>
@@ -162,6 +164,7 @@
             <li>Several projects: one project keeps working and the others wait.</li>
             <li>Auto within limits: new plans use suggest, then ask; approved plans keep running.</li>
             <li>Automatic fallback: back to confirming each takeover.</li>
+            <li>My workflows: all kept; projects use the global settings for now.</li>
             <li>Scheduled plans: kept, but they don’t start on their own; you can start them by hand.</li>
             <li>Usage dashboard: locked, but usage is still recorded.</li>
             <li>Skills library: the CLIs still read your skills, but you can’t edit them. Dispatch packs you already imported stay in effect.</li>
@@ -229,12 +232,13 @@
             <li><a href="../workflow/"><span>Workflow</span><span class="fx-related-text">Plan, phases, who does what, checks and delivery on one page.</span></a></li>
             <li><a href="../memory/"><span>Memory & Skills</span><span class="fx-related-text">One memory every agent reads, and the skills each CLI can see.</span></a></li>
             <li><a href="../quota/"><span>Quota & fallback</span><span class="fx-related-text">See what’s left, and hand work to another CLI when quota runs out.</span></a></li>
+            <li><a href="../help/"><span>Help</span><span class="fx-related-text">Step-by-step help for installing, connecting the CLIs, plans and troubleshooting.</span></a></li>
         </ul>
       </section>
     </main>
 
     <footer class="wrap fx-foot">
-      <p>Version 0.1.10 · Windows 10 and 11 · <a href="../changelog/">Changelog</a> · <a href="../privacy/">Privacy policy</a> · <a href="../legal/EULA.txt">License (EULA)</a> · <a href="mailto:support@pyloxa.com">Support</a></p>
+      <p>Version 0.1.11 · Windows 10 and 11 · <a href="../help/">Help</a> · <a href="../changelog/">Changelog</a> · <a href="../privacy/">Privacy policy</a> · <a href="../legal/EULA.txt">License (EULA)</a> · <a href="mailto:support@pyloxa.com">Support</a></p>
       <p>Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google.</p>
     </footer>
 

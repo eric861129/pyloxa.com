@@ -91,13 +91,14 @@
       <section class="wrap fx-sec is-wide" id="features" aria-labelledby="features-title">
         <div class="fx-copy reveal">
           <h2 id="features-title">Pro 多了什麼</h2>
-          <p>下面是 0.1.10 版的 Pro 功能。每一項在免費版都有對應的手動做法，Pro 讓它自動完成，或一次照顧更多專案。</p>
+          <p>下面是 0.1.11 版的 Pro 功能。每一項在免費版都有對應的手動做法，Pro 讓它自動完成，或一次照顧更多專案。</p>
         </div>
         <div class="fx-table reveal">
           <table>
             <thead><tr><th scope="col">功能</th><th scope="col">免費版</th><th scope="col" class="is-pro">Pro</th></tr></thead>
             <tbody>
               <tr><th scope="row">同時進行的專案</th><td>一次一個專案在執行，可以隨時切換</td><td class="is-pro">多個專案同時執行，等你處理的事集中在任務中心</td></tr>
+              <tr><th scope="row">我的流程</th><td>工作流程頁、範本與自訂階段</td><td class="is-pro">存成多個流程、每個專案各用一個、版本比較與還原、用一句話建立流程</td></tr>
               <tr><th scope="row">派工</th><td>建議後詢問、僅依設定執行</td><td class="is-pro">授權範圍內自動：在你允許的 Agent、模型與次數內自己決定，只有人工 Gate 會停</td></tr>
               <tr><th scope="row">額度用完時</th><td>提出備援，每次由你確認</td><td class="is-pro">自動備援鏈：依序交給規則裡的備援，每個工作最多換手 2 次</td></tr>
               <tr><th scope="row">交叉測試</th><td>手動交給另一個 Agent 測試</td><td class="is-pro">依設定自動交叉測試，沒通過自動退回修正</td></tr>
@@ -105,7 +106,8 @@
               <tr><th scope="row">大腦</th><td>一個大腦，可以隨時更換</td><td class="is-pro">最多 3 個備援大腦</td></tr>
               <tr><th scope="row">用量</th><td>每次執行的用量</td><td class="is-pro">跨專案的用量儀表板，匯出 Markdown 或 CSV</td></tr>
               <tr><th scope="row">通知</th><td>Windows 桌面通知</td><td class="is-pro">推送到你自己的 Telegram bot、Discord 或 webhook</td></tr>
-              <tr><th scope="row">Skills</th><td>盤點每個 CLI 讀得到的 Skills</td><td class="is-pro">Skills 庫同步到各 CLI，依專案或 Profile 指派；派工包</td></tr>
+              <tr><th scope="row">Skills</th><td>盤點每個 CLI 讀得到的 Skills</td><td class="is-pro">Skills 庫同步到各 CLI，依專案或 Profile 指派；派工包（也能帶我的流程）</td></tr>
+              <tr><th scope="row">換電腦</th><td>設定帶著走：匯出與匯入設定，包括我的流程</td><td class="is-pro">同免費版；匯入的流程可以讓專案使用</td></tr>
               <tr><th scope="row">指令範本</th><td>最多 5 個</td><td class="is-pro">不限</td></tr>
               <tr><th scope="row">Agent Teams</th><td>—</td><td class="is-pro">實驗中：執行中的 Agent 可以看整隊的工作、回報進度、停下來問你</td></tr>
             </tbody>
@@ -162,6 +164,7 @@
             <li>多個專案：留一個專案繼續執行，其他的等待。</li>
             <li>授權範圍內自動：新的計畫改為建議後詢問，已核准的計畫照常執行。</li>
             <li>自動備援：改回每次由你確認。</li>
+            <li>我的流程：全部保留，專案暫時照全域設定。</li>
             <li>排定時間的計畫：保留，但不會自己開始，你可以手動開始。</li>
             <li>用量儀表板：鎖起來，但用量照常記錄。</li>
             <li>Skills 庫：各 CLI 照樣讀得到，只是不能再修改。已匯入的派工包照常生效。</li>
@@ -229,12 +232,13 @@
             <li><a href="../../zh-TW/workflow/"><span>工作流程</span><span class="fx-related-text">規劃、階段、分工、檢查與交付，在同一頁設定。</span></a></li>
             <li><a href="../../zh-TW/memory/"><span>記憶與 Skills</span><span class="fx-related-text">每個 Agent 都讀得到的共用記憶，以及各 CLI 看得到的 Skills。</span></a></li>
             <li><a href="../../zh-TW/quota/"><span>額度與備援</span><span class="fx-related-text">看得到還剩多少，額度用完時交給另一個 CLI 接手。</span></a></li>
+            <li><a href="../../zh-TW/help/"><span>說明文件</span><span class="fx-related-text">安裝、連線 CLI、計畫與疑難排解的操作步驟。</span></a></li>
         </ul>
       </section>
     </main>
 
     <footer class="wrap fx-foot">
-      <p>版本 0.1.10 · Windows 10 與 11 · <a href="../../zh-TW/changelog/">改版紀錄</a> · <a href="../../zh-TW/privacy/">隱私權政策</a> · <a href="../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>版本 0.1.11 · Windows 10 與 11 · <a href="../../zh-TW/help/">說明文件</a> · <a href="../../zh-TW/changelog/">改版紀錄</a> · <a href="../../zh-TW/privacy/">隱私權政策</a> · <a href="../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
       <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。</p>
     </footer>
 

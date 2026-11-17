@@ -1,4 +1,4 @@
-<!--meta {"title": "Workflow: split work between Claude Code and Codex, check it, then merge | Pyloxa", "description": "Pyloxa’s Workflow page puts planning, phases, assignment, checks and delivery on one page: the brain proposes a plan, your rules decide who does what, your commands decide what counts as done, and you press merge and push."}-->
+<!--meta {"title": "Workflow: split work between Claude Code and Codex, check it, then merge | Pyloxa", "description": "Pyloxa’s Workflow page puts planning, phases, assignment, checks and delivery on one page: the brain proposes a plan, your rules decide who does what, your commands decide what counts as done, and you press merge and push. Pro saves several workflows, one per project."}-->
       <section class="wrap fx-hero">
         <p class="fx-eyebrow">Workflow</p>
         <h1>From request to merge, every step follows your settings</h1>
@@ -9,7 +9,7 @@
         </div>
         <ul class="fx-facts">
           <li><strong>5 parts</strong><span>Plan, phases, assignment, checks, delivery</span></li>
-          <li><strong>4</strong><span>Built-in templates, with a diff before you apply one</span></li>
+          <li><strong>5</strong><span>Built-in templates, with a diff before you apply one</span></li>
           <li><strong>1</strong><span>Automatic fix when a check fails</span></li>
           <li><strong>0</strong><span>Merges or pushes without your OK</span></li>
         </ul>
@@ -41,6 +41,8 @@
           <h2 id="phases-title">2. Phases: each one ends with a check</h2>
           <p>The brain lays out phases for each request, such as specification, implementation and testing. Before you approve a plan, you can reassign a task, edit its instructions, choose whether each phase waits for you when it’s done, or ask the brain to redraft.</p>
           <ul class="fx-list">
+            <li><strong>Use my stages</strong>: or set the stages yourself, up to five. For each one you decide who does it, whether it waits for your approval when done, and whether it can be skipped when a request doesn’t need it; the brain plans with only these stages. Free version included.</li>
+            <li>Once a plan is approved, a progress bar on the plan card shows each phase’s status and which one you’re on; click a phase to jump to it.</li>
             <li>At the end of each phase, Pyloxa runs a <strong>gate</strong> on the integrated result. A failed gate is re-run once, then gets one fix task.</li>
             <li>A gate can move on by itself when it passes, or wait for your approval.</li>
             <li>The next phase gets a handoff package from the previous one: the results, the checks that passed and what to watch out for.</li>
@@ -49,7 +51,7 @@
         </div>
         <div class="fx-media reveal">
           <div class="fx-rows" data-ui>
-            <div class="ui-row fx-head"><span class="ui-title">Plan: profile page</span><span class="ui-muted">3 phases · 5 tasks</span></div>
+            <div class="ui-row fx-head"><span class="ui-title">Plan: profile page</span><span class="ui-muted">3 phases · 5 tasks</span><span class="spacer"></span><span class="badge info">Phase 2 of 3</span></div>
             <div class="ui-row fx-line"><span class="ui-title">1 Specification and contract</span><span class="ui-muted">Codex</span><span class="spacer"></span><span class="badge ok">Gate passed</span></div>
             <div class="ui-row fx-line"><span class="ui-title">2 Implementation</span><span class="ui-muted">Frontend Claude Code · backend Codex</span><span class="spacer"></span><span class="badge info"><span class="spin" aria-hidden="true"></span>Running</span></div>
             <div class="ui-row fx-line"><span class="ui-title">3 Testing</span><span class="ui-muted">Waits for you after the gate</span><span class="spacer"></span><span class="badge">Waiting</span></div>
@@ -94,6 +96,7 @@
             <li>If a check fails, the same agent gets one automatic fix. Each task runs automatically at most 3 times.</li>
             <li><strong>Cross-testing</strong>: another agent adds tests to finished work, and Pyloxa reruns your commands on the result. The tester can only change test files, and the original agent can’t change the tests it added. In the free version you click “Have another agent test it”; Pro does it automatically by your settings.</li>
             <li><strong>Brain review</strong>: the brain checks finished work read-only, and its verdict is labeled as an AI judgment. Tasks that need your own review still wait for you.</li>
+            <li>To see the whole check process once first, choose “Start the test drive” on the last step of the setup wizard: Pyloxa creates a sample project with a hidden bug and never touches your projects.</li>
           </ul>
         </div>
         <div class="fx-media reveal">
@@ -115,7 +118,8 @@
           <p>Each task finishes in its own git worktree and branch, and accepted work is merged into the plan’s integration branch. Merging into your branch, pushing and opening a PR all wait for you, and Pyloxa never resolves conflicts on its own.</p>
           <ul class="fx-list">
             <li>Changes to <code>.github</code>, <code>.claude</code>, <code>.codex</code>, <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>.mcp.json</code> or the files that define your check commands are never accepted automatically or sent to brain review, and they’re listed again before you merge.</li>
-            <li>When you open a PR, you can attach a verification record: which commands actually ran and who accepted each result.</li>
+            <li>When you open a PR, you can attach a <strong>verification card</strong>: one table per phase showing who did the work, who cross-tested it, which commands Pyloxa ran and how each result was accepted. When a plan finishes, you can also open it under the plan card and copy the Markdown.</li>
+            <li>The card’s closing line is off by default. When you turn it on, it says “Verified with Pyloxa” only if every result passed the commands Pyloxa ran, and “Verification record by Pyloxa” otherwise.</li>
             <li>If you prefer, a whole plan can share one worktree: tasks run in order, and later tasks see the changes accepted before them.</li>
             <li>Pyloxa never runs stash, reset or checkout on your working directory.</li>
           </ul>
@@ -124,7 +128,7 @@
           <div class="fx-rows" data-ui>
             <div class="ui-row fx-head"><span class="ui-title">Create pull request</span><span class="ui-muted">pyloxa/r_8f2k/integration → main</span></div>
             <div class="ui-row"><span class="ui-muted">Title</span><br />Add the points page</div>
-            <div class="ui-row fx-line"><input type="checkbox" checked disabled aria-label="Attach the verification record" /> <span>Append Pyloxa’s verification record to the description (5 results)</span></div>
+            <div class="ui-row fx-line"><input type="checkbox" checked disabled aria-label="Attach the verification card" /> <span>Append Pyloxa’s verification card to the description (5 results)</span></div>
             <div class="ui-row fx-line"><span class="spacer"></span><span class="ui-button primary">Create PR</span></div>
           </div>
         </div>
@@ -143,8 +147,31 @@
               <tr><th scope="row">Quick fix</th><td>Follows your settings only, in one shared worktree, all on the brain’s profile.</td></tr>
               <tr><th scope="row">Thorough review<span class="fx-tag">Includes Pro settings</span></th><td>The brain reviews every task, and frontend and backend work is cross-tested.</td></tr>
               <tr><th scope="row">Share the quota<span class="fx-tag">Includes Pro settings</span></th><td>Spreads each kind of work across Claude Code and Codex, with automatic fallback when quota runs out.</td></tr>
+              <tr><th scope="row">Spec first</th><td>Write the spec and wait for your approval, then implement and test; testing can be skipped when a request doesn’t need it.</td></tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec" id="my-workflows" aria-labelledby="my-workflows-title">
+        <div class="fx-copy reveal">
+          <h2 id="my-workflows-title">My workflows: one for each project<span class="fx-tag">Pro</span></h2>
+          <p>Once it’s set up, choose “Save as my workflow”, then pick a workflow for each project: spec first for the API, straight edits for a small tool. Projects without one use the global settings.</p>
+          <ul class="fx-list">
+            <li><strong>Describe a workflow</strong>: say how you want to work and the brain drafts a workflow, shown as a diff first. You choose whether to apply it globally, save it as one of your workflows, or edit the description and draft again. The brain can’t invent agents, and anything it can’t do is written in the notes.</li>
+            <li><strong>Version history</strong>: every save keeps a version, up to 10 per workflow. Compare any two, or restore one; restoring keeps a version of what you had before.</li>
+            <li>Your workflows can go into a dispatch pack to share, and they travel to a new PC with your exported settings. Version history and which workflow each project uses stay behind.</li>
+            <li>If you go back to the free version, your workflows are kept and projects use the global settings until you’re on Pro again.</li>
+          </ul>
+        </div>
+        <div class="fx-media reveal">
+          <div class="fx-rows" data-ui>
+            <div class="ui-row fx-head"><span class="ui-title">Version history: API spec first</span><span class="spacer"></span><span class="ui-muted">Mockup</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Version 3</span><span class="ui-muted">Restored from version 1</span><span class="spacer"></span><span class="badge info">Current</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Version 2</span><span class="ui-muted">Backend moved to Claude Code</span><span class="spacer"></span><span class="ui-button">Restore</span></div>
+            <div class="ui-row fx-line"><span class="ui-title">Version 1</span><span class="ui-muted">Spec waits for you → implementation → testing</span><span class="spacer"></span><span class="ui-button">Restore</span></div>
+            <div class="ui-row fx-line"><span class="fx-note">Pick two versions to compare</span><span class="spacer"></span><span class="ui-button primary">Compare 2 → 3</span></div>
+          </div>
         </div>
       </section>
 
@@ -158,10 +185,11 @@
             <thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col" class="is-pro">Pro</th></tr></thead>
             <tbody>
               <tr><th scope="row">Routing</th><td>Suggest, then ask; follow settings only</td><td class="is-pro">Adds auto within limits</td></tr>
-              <tr><th scope="row">Settings</th><td>Workflow page, assignment table, rule list, four templates</td><td class="is-pro">Same as free</td></tr>
+              <tr><th scope="row">Settings</th><td>Workflow page, assignment table, rule list, five templates, your own stages</td><td class="is-pro">Same as free</td></tr>
+              <tr><th scope="row">My workflows</th><td>—</td><td class="is-pro">Save several workflows, one per project, compare and restore versions, describe a workflow in one sentence</td></tr>
               <tr><th scope="row">Checks</th><td>Verification commands, phase gates, brain review, cross-testing on request</td><td class="is-pro">Adds automatic cross-testing, with failures sent back for a fix</td></tr>
               <tr><th scope="row">Running</th><td>One project working at a time</td><td class="is-pro">Several projects at once; Agent Teams (experimental)</td></tr>
-              <tr><th scope="row">Delivery</th><td>Integration branch, merge, push, PR, verification record</td><td class="is-pro">Same as free</td></tr>
+              <tr><th scope="row">Delivery</th><td>Integration branch, merge, push, PR, verification card</td><td class="is-pro">Same as free</td></tr>
             </tbody>
           </table>
         </div>
@@ -184,11 +212,15 @@
           </details>
           <details class="fx-q">
             <summary>Who decides how many phases a plan has?</summary>
-            <div><p>The brain, for each request. Before you approve the plan, you can reassign tasks, edit instructions, choose whether each phase waits for you when it’s done, or ask the brain to redraft.</p></div>
+            <div><p>By default the brain decides for each request, and before you approve the plan you can reassign tasks, edit instructions, choose whether each phase waits for you when it’s done, or ask the brain to redraft. You can also switch the Workflow page to “Use my stages”: up to five, and you decide who does each one, whether it waits for your approval and whether it can be skipped. That’s in the free version too.</p></div>
           </details>
           <details class="fx-q">
             <summary>Is the Workflow page part of the free version?</summary>
-            <div><p>Yes. The Workflow page, assignment table, rule list, templates, verification commands, gates, brain review and cross-testing on request are all free. Pro adds auto within limits, automatic cross-testing, several projects at once and Agent Teams (experimental).</p></div>
+            <div><p>Yes. The Workflow page, assignment table, rule list, templates, your own stages, verification commands, gates, brain review, cross-testing on request and verification cards are all free. Pro adds my workflows, describe a workflow, auto within limits, automatic cross-testing, several projects at once and Agent Teams (experimental).</p></div>
+          </details>
+          <details class="fx-q">
+            <summary>Can different projects use different workflows?</summary>
+            <div><p>Yes, with Pro. Save your current settings as one of your workflows and pick one for each project; projects without one use the global settings. Each workflow keeps up to 10 versions you can compare and restore.</p></div>
           </details>
         </div>
       </section>
