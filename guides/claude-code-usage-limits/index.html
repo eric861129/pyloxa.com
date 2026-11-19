@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Claude Code usage limit reached: what it means, what to do</title>
+    <meta name="description" content="Hit the Claude Code usage limit on Pro or Max? How the 5-hour and weekly limits work, where to check, and what to do: wait, credits, API key or hand off." />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Claude Code usage limit reached: what it means, what to do" />
+    <meta property="og:description" content="Hit the Claude Code usage limit on Pro or Max? How the 5-hour and weekly limits work, where to check, and what to do: wait, credits, API key or hand off." />
+    <meta property="og:url" content="https://pyloxa.com/guides/claude-code-usage-limits/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/guides/claude-code-usage-limits/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-usage-limits/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-usage-limits/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-usage-limits/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://pyloxa.com/guides/claude-code-usage-limits/#article","headline":"Claude Code says “usage limit reached”. Now what?","description":"Hit the Claude Code usage limit on Pro or Max? How the 5-hour and weekly limits work, where to check, and what to do: wait, credits, API key or hand off.","inLanguage":"en","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/guides/claude-code-usage-limits/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-en.png"},{"@type":"WebPage","@id":"https://pyloxa.com/guides/claude-code-usage-limits/","url":"https://pyloxa.com/guides/claude-code-usage-limits/","name":"Claude Code usage limit reached: what it means, what to do","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/guides/claude-code-usage-limits/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/guides/claude-code-usage-limits/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://pyloxa.com/guides/"},{"@type":"ListItem","position":3,"name":"Claude Code usage limits","item":"https://pyloxa.com/guides/claude-code-usage-limits/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/guides/claude-code-usage-limits/#faq","mainEntity":[{"@type":"Question","name":"When does the Claude Code usage limit reset?","acceptedAnswer":{"@type":"Answer","text":"The session limit resets five hours after the first message of that session. The weekly limit resets at a fixed weekly time for your account. The error message shows the reset time, and /usage or claude.ai → Settings → Usage show both."}},{"@type":"Question","name":"Do claude.ai chats and Claude Code share the same limit?","acceptedAnswer":{"@type":"Answer","text":"Yes. On Pro, Max and Ultra, activity in claude.ai, Claude Desktop and Claude Code all counts toward the same session and weekly limits."}},{"@type":"Question","name":"Does switching to Sonnet or Haiku get me past the limit?","acceptedAnswer":{"@type":"Answer","text":"Not for the session or weekly limit, which apply to all models. It does help after an Opus or Sonnet limit message, and a lighter model makes the remaining allowance last longer."}},{"@type":"Question","name":"Will Claude Code charge my card automatically when I hit the limit?","acceptedAnswer":{"@type":"Answer","text":"Not on a subscription unless you turn on usage credits and buy them. It does bill per token if ANTHROPIC_API_KEY is set and approved, so check /status if you’re unsure which one you’re on."}},{"@type":"Question","name":"Can Codex pick up exactly where Claude Code stopped?","acceptedAnswer":{"@type":"Answer","text":"It picks up from the files and the git branch, not from Claude’s conversation. That’s why the committed branch and a short handoff note matter: they hold the context the next agent needs."}}]}]}</script>
+    <link rel="stylesheet" href="../../assets/site.css" />
+    <link rel="stylesheet" href="../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../" aria-label="Pyloxa home">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../workflow/">Workflow</a></li>
+        <li class="optional"><a href="../../memory/">Memory & Skills</a></li>
+        <li class="optional"><a href="../../quota/">Quota & fallback</a></li>
+        <li class="optional"><a href="../../pro/">Pro</a></li>
+        <li class="optional"><a href="../../guides/">Guides</a></li>
+        <li><a href="../../zh-TW/guides/claude-code-usage-limits/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="../../download/#start">Download</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../">Pyloxa</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Claude Code usage limits</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">Guide</p>
+          <h1>Claude Code says “usage limit reached”. Now what?</h1>
+          <p class="fx-lede">How Claude Code limits work on a Pro, Max or Ultra subscription, how to see when yours resets, and how to keep the work moving without losing it or breaking the terms.</p>
+          <p class="gd-updated"><time datetime="2026-11-19">Updated November 19, 2026</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>On a Pro or Max plan, Claude Code shares one allowance with claude.ai: a session limit that resets five hours after your first message, plus a weekly limit. When you hit it, run <code>/usage</code> to see when it resets. You can then wait (recent Claude Code versions continue the interrupted task on their own after the reset), turn on usage credits billed at API rates, switch Claude Code to a Console API key, or commit the work and hand it to another agent. Rotating several accounts to dodge the limit goes against Anthropic’s terms and Usage Policy.</p>
+        </aside>
+
+        <section class="gd-sec" id="what" aria-labelledby="what-title">
+          <h2 id="what-title">What “usage limit reached” means in Claude Code</h2>
+          <p>A Pro, Max or Ultra subscription covers claude.ai, Claude Desktop and Claude Code with one shared allowance. Everything you do in any of them counts against the same limits.</p>
+          <ul class="fx-list">
+            <li><strong>Session limit</strong>: the period starts with your first message and resets in full five hours later. Verified Ultra accounts have no five-hour limit.</li>
+            <li><strong>Weekly limit</strong>: across all models, with a fixed weekly reset time for your account. Max and Ultra also have a separate weekly limit for Fable models.</li>
+            <li><strong>Both at once</strong>: usage counts against the session and weekly allowances at the same time, so one heavy burst can use up the week before the session resets.</li>
+          </ul>
+          <p>Anthropic publishes no message or token counts for these limits and may adjust them. Model, effort level, conversation length and tools all change how fast you use them.</p>
+          <div class="gd-table"><table><thead><tr><th scope="col">Message</th><th scope="col">What it means</th></tr></thead><tbody>
+            <tr><td><code>You've hit your session limit · resets 3:45pm</code></td><td>The five-hour window is used up. Switching models doesn’t help.</td></tr>
+            <tr><td><code>You've hit your weekly limit · resets Mon 12:00am</code></td><td>The weekly allowance is used up. Switching models doesn’t help.</td></tr>
+            <tr><td><code>You've hit your Opus limit</code> or <code>Sonnet limit</code></td><td>Only that model family is limited. <code>/model</code> to another family keeps you working.</td></tr>
+            <tr><td><code>Usage limit reached · wrapping up</code></td><td>You hit the five-hour limit mid-response; Claude Code may finish the current step. On Pro this happens at most once per week; it doesn’t cover new messages.</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="gd-sec" id="check" aria-labelledby="check-title">
+          <h2 id="check-title">How do I see my usage and when it resets?</h2>
+          <ul class="fx-list">
+            <li><strong><code>/usage</code></strong> (also <code>/cost</code>, <code>/stats</code>): plan usage bars, reset times, and a breakdown of what used your allowance, with suggested fixes. The breakdown covers this computer only.</li>
+            <li><strong><code>/status</code></strong>: which account and login method is active, so you know whether you’re on your subscription or an API key.</li>
+            <li><strong>claude.ai → Settings → Usage</strong>: the current session, time remaining and your next weekly reset, across every Claude app.</li>
+          </ul>
+          <p class="gd-note">Claude Code warns before you run out, with a message such as <code>You've used 85% of your session limit · resets 3:45pm</code>. That’s the moment to commit and write a handoff note, while Claude can still help.</p>
+        </section>
+
+        <section class="gd-sec" id="options" aria-labelledby="options-title">
+          <h2 id="options-title">What can I do when the limit hits?</h2>
+          <ol class="fx-steps">
+            <li><div><strong>Wait for the reset</strong>Since v2.1.234, an interactive session signed in with a subscription continues the task by itself after the reset, as long as the session stays open: <code>Continuing automatically at 3:45pm · Esc to cancel</code>. For a reset more than 24 hours away (often the weekly limit), pick “Wait here, then continue automatically” from <code>/rate-limit-options</code>.</div></li>
+            <li><div><strong>Turn on usage credits</strong>Usage credits (formerly “extra usage”) let Pro, Max and Ultra keep working past the limit. Run <code>/usage-credits</code> or open claude.ai → Settings → Usage, turn on Usage credits, set a monthly spend limit and buy credits. They’re prepaid, charged at standard API rates on top of your subscription, and non-refundable.</div></li>
+            <li><div><strong>Switch Claude Code to an API key</strong>Set <code>ANTHROPIC_API_KEY</code> to a Claude Console key and approve it when asked, or <code>/login</code> with a Console account. Every token is then billed at API rates, with no reset window. To go back, remove the variable and check <code>/status</code>; a forgotten key keeps billing you.</div></li>
+            <li><div><strong>Use a lighter model</strong>This gets you past an Opus or Sonnet limit and makes the rest of the allowance last. Anthropic suggests Sonnet for most coding and Opus for hard reasoning; <code>/effort</code> lowers thinking.</div></li>
+            <li><div><strong>Upgrade the plan</strong>Pro to Max, or Max to Ultra, raises the base limits. Check current plans at claude.com/pricing.</div></li>
+          </ol>
+        </section>
+
+        <section class="gd-sec" id="save" aria-labelledby="save-title">
+          <h2 id="save-title">How do I make the limit last longer?</h2>
+          <p>Claude Code sends the whole conversation with every request, so context size drives usage. From Anthropic’s cost guide:</p>
+          <ul class="fx-list">
+            <li><strong><code>/clear</code> between unrelated tasks.</strong> It costs nothing. <code>/rename</code> first if you want to <code>/resume</code> later.</li>
+            <li><strong><code>/compact</code> with focus instructions</strong> when you need continuity. Compacting a big context is itself a large request.</li>
+            <li><strong>Ask for specific changes.</strong> “Add input validation to the login function in auth.ts” reads far fewer files than “improve this codebase”.</li>
+            <li><strong>Keep CLAUDE.md short</strong> (the docs suggest under 200 lines) and move rarely used instructions into skills.</li>
+            <li><strong>Disable unused MCP servers</strong> with <code>/mcp</code>; <code>/context</code> shows what fills the window.</li>
+            <li><strong>Watch idle sessions.</strong> Loops, scheduled tasks and goal check-ins can send your full context while the session sits idle, and every subagent makes its own requests.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="handoff" aria-labelledby="handoff-title">
+          <h2 id="handoff-title">How do I hand unfinished work to Codex or another agent?</h2>
+          <p>Another agent on its own plan, such as Codex CLI signed in with your ChatGPT account, can carry on. It sees your files and git, not Claude’s conversation, so put everything there.</p>
+          <ol class="fx-steps">
+            <li><div><strong>Put the work on a branch</strong>Check <code>git status</code> so nothing secret gets committed, then commit what’s there, even if it doesn’t build yet.</div></li>
+            <li><div><strong>Write a short handoff note</strong>Goal, what’s done, what’s left, which files matter, how to test, and known breakage. Ask Claude to write it when the usage warning appears; after the limit, write it yourself.</div></li>
+            <li><div><strong>Give both agents the same instructions</strong>Codex reads <code>AGENTS.md</code> before it starts. Claude Code reads <code>AGENTS.md</code> when there’s no CLAUDE.md, or put <code>@AGENTS.md</code> on the first line of CLAUDE.md so both read one file.</div></li>
+            <li><div><strong>Start the next agent on the note</strong>Open the repo in Codex and ask it to read the note and continue. Check <code>/status</code> in Codex: it has its own limits.</div></li>
+          </ol>
+          <pre class="gd-code"><code>git status
+git switch -c wip/limit-handoff
+git add -A
+git commit -m "WIP: handoff from Claude Code (usage limit)"
+codex "Read HANDOFF.md and AGENTS.md, run the tests, then continue the remaining items."</code></pre>
+        </section>
+
+        <section class="gd-sec" id="dont" aria-labelledby="dont-title">
+          <h2 id="dont-title">Can I use several Claude accounts to get around the limit?</h2>
+          <p>Don’t. Pro, Max and Ultra fall under Anthropic’s Consumer Terms, which forbid sharing your account login with anyone else. Anthropic’s Usage Policy, under “Do Not Abuse Our Platform”, forbids intentionally bypassing restrictions built into its products and creating multiple accounts to avoid detection. Rotating accounts to dodge a limit, or sharing one subscription, risks every account involved. If one plan isn’t enough, use usage credits, a bigger plan, an API key, or another vendor’s agent on your own plan.</p>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Where Pyloxa fits</h2>
+          <p>Pyloxa, a Windows app with a free edition, runs Claude Code and Codex CLI on your own subscriptions and handles the handoff above for you. Each task runs in its own git worktree on its own branch, so half-done work is already in files and a branch when a limit hits.</p>
+          <ul class="fx-list">
+            <li><strong>Free</strong>: the title bar shows how much Claude Code quota is left (the tighter of the 5-hour and 7-day windows, shared with claude.ai and your terminal). When a CLI runs out, Pyloxa stops sending it work and offers the fallback from your rules. You confirm, and the other CLI continues from the files already changed, or you choose <strong>Retry when the quota resets</strong>. Waiting tasks resume after the reset.</li>
+            <li><strong>Pro</strong>: automatic fallback along your chain, off by default, at most 2 takeovers per task. Also project priority, per-connection quota estimates, and plans scheduled to start after the next reset.</li>
+            <li>It never switches a subscription task to API-key billing by itself.</li>
+          </ul>
+          <p>If you only use Claude Code, its built-in auto-continue already covers waiting; you don’t need Pyloxa for that. See <a href="../../quota/">Quota &amp; fallback</a>, <a href="../../help/#quota">When an agent runs out of quota</a> and <a href="../../pro/">Pro</a>.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>When does the Claude Code usage limit reset?</summary><div>The session limit resets five hours after the first message of that session. The weekly limit resets at a fixed weekly time for your account. The error message shows the reset time, and <code>/usage</code> or claude.ai → Settings → Usage show both.</div></details>
+          <details class="fx-q"><summary>Do claude.ai chats and Claude Code share the same limit?</summary><div>Yes. On Pro, Max and Ultra, activity in claude.ai, Claude Desktop and Claude Code all counts toward the same session and weekly limits.</div></details>
+          <details class="fx-q"><summary>Does switching to Sonnet or Haiku get me past the limit?</summary><div>Not for the session or weekly limit, which apply to all models. It does help after an Opus or Sonnet limit message, and a lighter model makes the remaining allowance last longer.</div></details>
+          <details class="fx-q"><summary>Will Claude Code charge my card automatically when I hit the limit?</summary><div>Not on a subscription unless you turn on usage credits and buy them. It does bill per token if <code>ANTHROPIC_API_KEY</code> is set and approved, so check <code>/status</code> if you’re unsure which one you’re on.</div></details>
+          <details class="fx-q"><summary>Can Codex pick up exactly where Claude Code stopped?</summary><div>It picks up from the files and the git branch, not from Claude’s conversation. That’s why the committed branch and a short handoff note matter: they hold the context the next agent needs.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan">Use Claude Code with your Pro, Max, or Ultra plan</a>, Anthropic Help Center (checked 2026-11-19)</li>
+            <li><a href="https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work">How do usage and length limits work?</a>, Anthropic Help Center (checked 2026-11-19)</li>
+            <li><a href="https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans">Manage usage credits for paid Claude plans</a>, Anthropic Help Center (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/errors">Error reference: usage limits</a>, Claude Code docs (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/interactive-mode">Interactive mode: wait for a usage limit to reset</a>, Claude Code docs (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/costs">Manage costs effectively</a>, Claude Code docs (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/commands">Commands</a>, Claude Code docs (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/authentication">Authentication</a>, Claude Code docs (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project (AGENTS.md)</a>, Claude Code docs (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/legal-and-compliance">Legal and compliance</a>, Claude Code docs (checked 2026-11-19)</li>
+            <li><a href="https://www.anthropic.com/legal/consumer-terms">Consumer Terms of Service</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://www.anthropic.com/legal/aup">Usage Policy</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">Custom instructions with AGENTS.md</a>, OpenAI Codex docs (checked 2026-11-19)</li>
+            <li><a href="https://learn.chatgpt.com/docs/pricing">Codex pricing and usage limits</a>, OpenAI Codex docs (checked 2026-11-19)</li>
+            <li><a href="https://learn.chatgpt.com/docs/cli/reference">Codex CLI command line options</a>, OpenAI Codex docs (checked 2026-11-19)</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">More guides</h2>
+        <ul>
+            <li><a href="../claude-code-and-codex-together/"><span>Claude Code and Codex together</span><span class="fx-related-text">Split the work, keep the agents out of each other’s files, share one set of rules and cross-review.</span></a></li>
+            <li><a href="../verify-ai-agent-code/"><span>Verify AI agent code</span><span class="fx-related-text">Why an agent’s “done” isn’t evidence, the checks that work, and how to have a second AI review or test the code.</span></a></li>
+            <li><a href="../agents-md-claude-md-gemini-md/"><span>AGENTS.md vs CLAUDE.md</span><span class="fx-related-text">Which instruction file each CLI reads, and how to share one AGENTS.md across Claude Code, Codex and Gemini CLI.</span></a></li>
+            <li><a href="../claude-code-codex-on-windows/"><span>Claude Code and Codex on Windows</span><span class="fx-related-text">Native Windows or WSL for Claude Code and Codex CLI, with official install commands and fixes for common errors.</span></a></li>
+            <li><a href="../../help/"><span>Help</span><span class="fx-related-text">Step-by-step help for installing Pyloxa, connecting the CLIs, plans and troubleshooting.</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">Want this handled for you?</h2>
+          <p>Pyloxa is a free Windows app that runs the Claude Code and Codex CLIs you already use: it splits the work by your rules, runs your tests itself and offers a handoff when one runs out of quota.</p>
+          <div class="fx-actions">
+            <a class="button" href="../../download/#start">Download Pyloxa for Windows</a>
+            <a class="button is-light" href="../../workflow/">How it works</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>Version 0.2.0 · Windows 10 and 11 · <a href="../../help/">Help</a> · <a href="../../guides/">Guides</a> · <a href="../../changelog/">Changelog</a> · <a href="../../privacy/">Privacy policy</a> · <a href="../../legal/EULA.txt">License (EULA)</a> · <a href="mailto:support@pyloxa.com">Support</a></p>
+      <p>Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google. Product names belong to their owners.</p>
+    </footer>
+
+    <script src="../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

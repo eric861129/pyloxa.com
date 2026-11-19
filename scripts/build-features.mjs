@@ -44,6 +44,8 @@ const CHROME = {
     support: "Support",
     help: "Help",
     helpText: "Step-by-step help for installing, connecting the CLIs, plans and troubleshooting.",
+    guides: "Guides",
+    guidesText: "Usage limits, Claude Code and Codex together, checking agent work, shared instructions and Windows setup.",
     footer: "Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google.",
     version: `Version ${version} · Windows 10 and 11`,
   },
@@ -68,6 +70,8 @@ const CHROME = {
     support: "聯絡我們",
     help: "說明文件",
     helpText: "安裝、連線 CLI、計畫與疑難排解的操作步驟。",
+    guides: "攻略",
+    guidesText: "額度用完怎麼辦、Claude Code 與 Codex 一起用、驗收 Agent 的成果、共用指示檔與 Windows 安裝。",
     footer: "Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。",
     version: `版本 ${version} · Windows 10 與 11`,
   },
@@ -140,6 +144,7 @@ function render(page, lang) {
   const nav = PAGES.map((p) => `<li class="optional"><a href="${root}${dirOf(lang)}${p.slug}/"${p.slug === page.slug ? ' aria-current="page"' : ""}>${p.nav[lang]}</a></li>`).join("\n        ");
   const related = PAGES.filter((p) => p.slug !== page.slug)
     .map((p) => `<li><a href="${root}${dirOf(lang)}${p.slug}/"><span>${p.nav[lang]}</span><span class="fx-related-text">${p.blurb[lang]}</span></a></li>`)
+    .concat(`<li><a href="${root}${dirOf(lang)}guides/"><span>${c.guides}</span><span class="fx-related-text">${c.guidesText}</span></a></li>`)
     .concat(`<li><a href="${root}${dirOf(lang)}help/"><span>${c.help}</span><span class="fx-related-text">${c.helpText}</span></a></li>`)
     .join("\n            ");
 
@@ -208,7 +213,7 @@ ${body}
     </main>
 
     <footer class="wrap fx-foot">
-      <p>${c.version} · <a href="${root}${dirOf(lang)}help/">${c.help}</a> · <a href="${root}${dirOf(lang)}changelog/">${c.changelog}</a> · <a href="${root}${dirOf(lang)}privacy/">${c.privacy}</a> · <a href="${root}legal/EULA.txt">${c.eula}</a> · <a href="mailto:support@pyloxa.com">${c.support}</a></p>
+      <p>${c.version} · <a href="${root}${dirOf(lang)}help/">${c.help}</a> · <a href="${root}${dirOf(lang)}guides/">${c.guides}</a> · <a href="${root}${dirOf(lang)}changelog/">${c.changelog}</a> · <a href="${root}${dirOf(lang)}privacy/">${c.privacy}</a> · <a href="${root}legal/EULA.txt">${c.eula}</a> · <a href="mailto:support@pyloxa.com">${c.support}</a></p>
       <p>${c.footer}</p>
     </footer>
 

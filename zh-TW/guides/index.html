@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>攻略：Claude Code、Codex 與 Gemini CLI 實戰 | Pyloxa</title>
+    <meta name="description" content="給使用 Claude Code、Codex 與 Gemini CLI 的開發者：額度用完怎麼辦、兩個一起用、Windows 安裝、驗收 Agent 的成果與共用指示檔。" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="攻略：Claude Code、Codex 與 Gemini CLI 實戰 | Pyloxa" />
+    <meta property="og:description" content="給使用 Claude Code、Codex 與 Gemini CLI 的開發者：額度用完怎麼辦、兩個一起用、Windows 安裝、驗收 Agent 的成果與共用指示檔。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-TW/guides/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-zh.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/zh-TW/guides/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://pyloxa.com/zh-TW/guides/","url":"https://pyloxa.com/zh-TW/guides/","name":"攻略：Claude Code、Codex 與 Gemini CLI 實戰 | Pyloxa","description":"給使用 Claude Code、Codex 與 Gemini CLI 的開發者：額度用完怎麼辦、兩個一起用、Windows 安裝、驗收 Agent 的成果與共用指示檔。","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/guides/#breadcrumb"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://pyloxa.com/zh-TW/guides/claude-code-usage-limits/","name":"Claude Code 說「usage limit reached」，接下來怎麼辦？"},{"@type":"ListItem","position":2,"url":"https://pyloxa.com/zh-TW/guides/claude-code-and-codex-together/","name":"Claude Code 和 Codex 怎麼在同一個專案一起用"},{"@type":"ListItem","position":3,"url":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/","name":"AI Agent 說做完了，你要怎麼確認？"},{"@type":"ListItem","position":4,"url":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/","name":"AGENTS.md、CLAUDE.md、GEMINI.md：三個 CLI 共用一份指示檔"},{"@type":"ListItem","position":5,"url":"https://pyloxa.com/zh-TW/guides/claude-code-codex-on-windows/","name":"在 Windows 跑 Claude Code 與 Codex CLI，需要 WSL 嗎？"}]}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/guides/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"攻略","item":"https://pyloxa.com/zh-TW/guides/"}]}]}</script>
+    <link rel="stylesheet" href="../../assets/site.css" />
+    <link rel="stylesheet" href="../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">跳到主要內容</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../zh-TW/" aria-label="Pyloxa 首頁">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../zh-TW/workflow/">工作流程</a></li>
+        <li class="optional"><a href="../../zh-TW/memory/">記憶與 Skills</a></li>
+        <li class="optional"><a href="../../zh-TW/quota/">額度與備援</a></li>
+        <li class="optional"><a href="../../zh-TW/pro/">Pro</a></li>
+        <li class="optional"><a href="../../zh-TW/guides/" aria-current="page">攻略</a></li>
+        <li><a href="../../guides/" lang="en">English</a></li>
+        <li><a class="nav-download" href="../../zh-TW/download/#start">下載</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../zh-TW/">Pyloxa</a><span aria-hidden="true">/</span><span aria-current="page">攻略</span></nav>
+      <section class="wrap fx-hero gd-index-hero">
+        <p class="fx-eyebrow">攻略</p>
+        <h1>AI 程式開發 Agent 攻略</h1>
+        <p class="fx-lede">給使用 Claude Code、Codex 與 Gemini CLI 的開發者的實用解答，內容都對照過各家的官方文件。不管有沒有用 Pyloxa 都派得上用場。</p>
+      </section>
+      <section class="wrap gd-index" aria-label="攻略">
+        <ul class="gd-cards">
+          <li><a href="claude-code-usage-limits/"><span class="gd-card-title">Claude Code 說「usage limit reached」，接下來怎麼辦？</span><span class="gd-card-text">Claude Code 額度用完的訊息是什麼意思、什麼時候重設，以及所有正當的繼續工作方式。</span><span class="gd-card-more">閱讀攻略 →</span></a></li>
+          <li><a href="claude-code-and-codex-together/"><span class="gd-card-title">Claude Code 和 Codex 怎麼在同一個專案一起用</span><span class="gd-card-text">分好工、讓兩個 Agent 不碰彼此的檔案、共用一份規則，再互相審查。</span><span class="gd-card-more">閱讀攻略 →</span></a></li>
+          <li><a href="verify-ai-agent-code/"><span class="gd-card-title">AI Agent 說做完了，你要怎麼確認？</span><span class="gd-card-text">為什麼 Agent 說「做完了」不算證據、哪些檢查真正有效，以及怎麼讓第二個 AI 審查或測試程式碼。</span><span class="gd-card-more">閱讀攻略 →</span></a></li>
+          <li><a href="agents-md-claude-md-gemini-md/"><span class="gd-card-title">AGENTS.md、CLAUDE.md、GEMINI.md：三個 CLI 共用一份指示檔</span><span class="gd-card-text">三個 CLI 各讀哪個指示檔，以及怎麼讓 Claude Code、Codex、Gemini CLI 共用同一份 AGENTS.md。</span><span class="gd-card-more">閱讀攻略 →</span></a></li>
+          <li><a href="claude-code-codex-on-windows/"><span class="gd-card-title">在 Windows 跑 Claude Code 與 Codex CLI，需要 WSL 嗎？</span><span class="gd-card-text">Claude Code 與 Codex CLI 在 Windows 原生還是 WSL：官方安裝命令與常見錯誤的解法。</span><span class="gd-card-more">閱讀攻略 →</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">想把這些交給工具處理？</h2>
+          <p>Pyloxa 是免費的 Windows App，執行你已經在用的 Claude Code 與 Codex CLI：依你的規則分工、自己跑你的測試，某一個額度用完時提出換手。</p>
+          <div class="fx-actions">
+            <a class="button" href="../../zh-TW/download/#start">下載 Pyloxa Windows 版</a>
+            <a class="button is-light" href="../../zh-TW/workflow/">看看怎麼運作</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>版本 0.2.0 · Windows 10 與 11 · <a href="../../zh-TW/help/">說明文件</a> · <a href="../../zh-TW/guides/">攻略</a> · <a href="../../zh-TW/changelog/">改版紀錄</a> · <a href="../../zh-TW/privacy/">隱私權政策</a> · <a href="../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。產品名稱屬於各自的所有者。</p>
+    </footer>
+
+    <script src="../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

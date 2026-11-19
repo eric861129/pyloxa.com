@@ -1,0 +1,118 @@
+<!--meta {"title": "Claude Code 額度用完（usage limit reached）怎麼辦", "description": "Claude Code 額度用完？Pro、Max 的 5 小時與每週額度怎麼算、哪裡看重設，以及等待、usage credits、API Key、換手。", "h1": "Claude Code 說「usage limit reached」，接下來怎麼辦？", "lede": "Pro、Max、Ultra 訂閱的 Claude Code 額度怎麼算、怎麼看什麼時候重設，以及怎麼讓工作繼續、不弄丟進度，也不違反條款。", "nav": "Claude Code 額度用完怎麼辦", "blurb": "Claude Code 額度用完的訊息是什麼意思、什麼時候重設，以及所有正當的繼續工作方式。", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>Pro 或 Max 訂閱的 Claude Code 和 claude.ai 共用同一份額度：一個從你送出第一則訊息起算、5 小時後重設的 Session 額度，再加上每週額度。用完時先跑 <code>/usage</code> 看什麼時候重設。接著可以等（新版 Claude Code 會在重設後自動接著做被中斷的工作）、開啟依 API 費率計費的 usage credits、把 Claude Code 改成用 Console 的 API Key，或是先 commit，再交給另一個 Agent 接手。輪流用好幾個帳號來躲額度，違反 Anthropic 的條款與使用政策。</p>
+        </aside>
+
+        <section class="gd-sec" id="what" aria-labelledby="what-title">
+          <h2 id="what-title">Claude Code 的「usage limit reached」是什麼意思</h2>
+          <p>Pro、Max、Ultra 訂閱同時涵蓋 claude.ai、Claude Desktop 與 Claude Code，三邊共用同一份額度，在哪裡用都算進同一個上限。</p>
+          <ul class="fx-list">
+            <li><strong>Session 額度</strong>：從你送出第一則訊息開始算，5 小時後整份重設。通過驗證的 Ultra 帳號沒有 5 小時限制。</li>
+            <li><strong>每週額度</strong>：所有模型合計，每個帳號有固定的每週重設時間。Max 與 Ultra 另外還有 Fable 模型專用的每週額度。</li>
+            <li><strong>兩個同時扣</strong>：用量會同時算進 Session 與每週額度，所以一次大量使用，可能在 Session 重設前就把整週額度用完。</li>
+          </ul>
+          <p>Anthropic 沒有公布這些額度等於幾則訊息或多少 token，也保留調整的權利。用得快慢取決於模型、思考強度、對話長度，以及用到的工具與連接器。</p>
+          <div class="gd-table"><table><thead><tr><th scope="col">訊息</th><th scope="col">意思</th></tr></thead><tbody>
+            <tr><td><code>You've hit your session limit · resets 3:45pm</code></td><td>5 小時的 Session 額度用完了，換模型沒有用。</td></tr>
+            <tr><td><code>You've hit your weekly limit · resets Mon 12:00am</code></td><td>每週額度用完了，換模型沒有用。</td></tr>
+            <tr><td><code>You've hit your Opus limit</code> 或 <code>Sonnet limit</code></td><td>只有這個模型家族受限，用 <code>/model</code> 換到別的家族就能繼續。</td></tr>
+            <tr><td><code>Usage limit reached · wrapping up</code></td><td>回應到一半撞到 5 小時額度，Claude Code 可能會把目前這一步做完。Pro 每週最多一次，而且不適用於新訊息。</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="gd-sec" id="check" aria-labelledby="check-title">
+          <h2 id="check-title">怎麼看額度還剩多少、什麼時候重設？</h2>
+          <ul class="fx-list">
+            <li><strong><code>/usage</code></strong>（也可以打 <code>/cost</code>、<code>/stats</code>）：顯示訂閱額度的用量條、重設時間，以及額度花在哪裡的明細與改善建議。明細只算這台電腦上的用量。</li>
+            <li><strong><code>/status</code></strong>：顯示目前用的帳號與登入方式，確認你是在用訂閱還是 API Key。</li>
+            <li><strong>claude.ai → Settings → Usage</strong>：目前 Session 的用量、剩餘時間與下次每週重設時間，涵蓋所有 Claude App。</li>
+          </ul>
+          <p class="gd-note">快用完前，Claude Code 會先提醒，例如 <code>You've used 85% of your session limit · resets 3:45pm</code>。看到這個訊息時，就是 commit、寫交接筆記的時機，因為這時 Claude 還能幫忙。</p>
+        </section>
+
+        <section class="gd-sec" id="options" aria-labelledby="options-title">
+          <h2 id="options-title">額度用完時可以怎麼做？</h2>
+          <ol class="fx-steps">
+            <li><div><strong>等額度重設</strong>從 v2.1.234 開始，用訂閱登入的互動式 Session 只要保持開著，重設後會自己接著做：<code>Continuing automatically at 3:45pm · Esc to cancel</code>。如果重設時間在 24 小時以後（常見於每週額度），到 <code>/rate-limit-options</code> 選「Wait here, then continue automatically」。</div></li>
+            <li><div><strong>開啟 usage credits</strong>usage credits（以前叫 extra usage）讓 Pro、Max、Ultra 在額度用完後繼續用。執行 <code>/usage-credits</code>，或到 claude.ai → Settings → Usage 打開 Usage credits、設定每月花費上限，再購買額度。這是預付制，依標準 API 費率計費，另外加在訂閱費之外，而且不退款。</div></li>
+            <li><div><strong>把 Claude Code 改成用 API Key</strong>把 <code>ANTHROPIC_API_KEY</code> 設成 Claude Console 的 API Key，並在詢問時同意使用，或用 <code>/login</code> 登入 Console 帳號。之後每個 token 都依 API 費率計費，沒有重設時間可等。要換回訂閱，移除這個環境變數再用 <code>/status</code> 確認；忘了移除，就會一直用 API Key 計費。</div></li>
+            <li><div><strong>改用比較輕的模型</strong>遇到 Opus 或 Sonnet 額度時可以靠換模型繼續，平常也能讓剩下的額度撐久一點。Anthropic 建議大部分寫程式的工作用 Sonnet，困難的推理再用 Opus；<code>/effort</code> 可以降低思考強度。</div></li>
+            <li><div><strong>升級方案</strong>從 Pro 升到 Max，或從 Max 升到 Ultra，基本額度會變高。目前的方案請看 claude.com/pricing。</div></li>
+          </ol>
+        </section>
+
+        <section class="gd-sec" id="save" aria-labelledby="save-title">
+          <h2 id="save-title">怎麼讓額度撐久一點？</h2>
+          <p>Claude Code 每次請求都會送出整段對話，所以 context 越大，用得越快。Anthropic 的成本指南建議：</p>
+          <ul class="fx-list">
+            <li><strong>換不相關的工作就 <code>/clear</code>。</strong>它不花額度。之後還想回來，先用 <code>/rename</code> 取名，再用 <code>/resume</code> 找回。</li>
+            <li><strong>需要延續時，用 <code>/compact</code> 加上重點說明。</strong>壓縮很大的 context，本身就是一次大請求。</li>
+            <li><strong>要求要具體。</strong>「在 auth.ts 的 login 函式加上輸入驗證」比「改善這個 codebase」少讀很多檔案。</li>
+            <li><strong>CLAUDE.md 保持精簡</strong>（文件建議 200 行以內），不常用的指示搬到 Skills。</li>
+            <li><strong>關掉沒在用的 MCP server</strong>：用 <code>/mcp</code>；<code>/context</code> 可以看 context 被什麼佔掉。</li>
+            <li><strong>注意閒置的 Session。</strong>Loop、排程工作與 goal check-in 在閒置時也可能送出整段 context，每個 subagent 也會各自發出請求。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="handoff" aria-labelledby="handoff-title">
+          <h2 id="handoff-title">怎麼把沒做完的工作交給 Codex 或其他 Agent？</h2>
+          <p>另一個用自己訂閱的 Agent，例如用 ChatGPT 帳號登入的 Codex CLI，可以接手做下去。它看得到的是你的檔案與 git，看不到 Claude 的對話，所以要把東西都放進去。</p>
+          <ol class="fx-steps">
+            <li><div><strong>放到一個分支上</strong>先看 <code>git status</code>，確定沒有機密檔案會被 commit，再把現有的變更 commit 起來，還不能 build 也沒關係。</div></li>
+            <li><div><strong>寫一份簡短的交接筆記</strong>目標、做完了什麼、還剩什麼、重要的檔案、怎麼測試、已知的問題。看到額度提醒時就請 Claude 寫；額度已經用完的話，自己寫。</div></li>
+            <li><div><strong>讓兩個 Agent 讀同一份專案指示</strong>Codex 開始工作前會讀 <code>AGENTS.md</code>。Claude Code 在沒有 CLAUDE.md 時會讀 <code>AGENTS.md</code>；或在 CLAUDE.md 第一行寫 <code>@AGENTS.md</code>，兩邊就讀同一份。</div></li>
+            <li><div><strong>讓下一個 Agent 從筆記開始</strong>在 repo 裡開 Codex，請它讀筆記後繼續。記得在 Codex 裡跑 <code>/status</code>：它也有自己的額度。</div></li>
+          </ol>
+          <pre class="gd-code"><code>git status
+git switch -c wip/limit-handoff
+git add -A
+git commit -m "WIP: handoff from Claude Code (usage limit)"
+codex "Read HANDOFF.md and AGENTS.md, run the tests, then continue the remaining items."</code></pre>
+        </section>
+
+        <section class="gd-sec" id="dont" aria-labelledby="dont-title">
+          <h2 id="dont-title">可以開好幾個 Claude 帳號來繞過額度嗎？</h2>
+          <p>不要。Pro、Max、Ultra 適用 Anthropic 的 Consumer Terms，條款禁止把帳號登入資訊分享給任何人。Anthropic 的使用政策（Usage Policy）在「Do Not Abuse Our Platform」底下，禁止刻意繞過產品內建的限制，也禁止為了躲避偵測而建立多個帳號。輪流換帳號躲額度，或幾個人共用一個訂閱，牽涉到的每個帳號都有風險。一個方案不夠用時，正當的做法是 usage credits、升級方案、API Key，或用你自己訂閱的另一家 Agent。</p>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Pyloxa 能幫上什麼</h2>
+          <p>Pyloxa 是有免費版的 Windows App，用你自己的訂閱執行 Claude Code 與 Codex CLI，上面的換手流程它會幫你處理。每個工作都在自己的 git worktree 與分支上執行，所以撞到額度時，做到一半的成果已經在檔案與分支裡。</p>
+          <ul class="fx-list">
+            <li><strong>免費版</strong>：標題列顯示 Claude Code 還剩多少額度（取 5 小時與 7 天中比較緊的那個，和 claude.ai 與終端機共用）。某個 CLI 額度用盡時，Pyloxa 停止派工給它，依你的規則提出備援；你確認後，另一個 CLI 從已經改好的檔案接著做，也可以選「<strong>額度恢復後重試</strong>」。等待中的工作會在重設後繼續。</li>
+            <li><strong>Pro</strong>：依你設定的備援順序自動接手，預設關閉，每個工作最多換手 2 次。另外還有專案優先序、每條連線的額度估計，以及在下次額度重設後才開始的排程計畫。</li>
+            <li>用訂閱的工作不會自己改成 API Key 計費。</li>
+          </ul>
+          <p>如果你只用 Claude Code，它內建的自動繼續就能處理「等重設」，這部分不需要 Pyloxa。詳見 <a href="../../quota/">額度與備援</a>、<a href="../../help/#quota">Agent 額度用盡時</a> 與 <a href="../../pro/">Pro</a>。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>Claude Code 的額度什麼時候重設？</summary><div>Session 額度在那個 Session 第一則訊息的 5 小時後重設；每週額度在你帳號固定的每週時間重設。錯誤訊息會寫重設時間，<code>/usage</code> 與 claude.ai → Settings → Usage 兩者都看得到。</div></details>
+          <details class="fx-q"><summary>claude.ai 聊天和 Claude Code 共用同一份額度嗎？</summary><div>是。Pro、Max、Ultra 在 claude.ai、Claude Desktop 與 Claude Code 的使用，都算進同一份 Session 與每週額度。</div></details>
+          <details class="fx-q"><summary>換成 Sonnet 或 Haiku 能繞過額度嗎？</summary><div>Session 與每週額度不行，因為它們是所有模型合計。如果看到的是 Opus 或 Sonnet 額度的訊息，換模型就能繼續；平常用輕一點的模型，也能讓剩下的額度撐久一點。</div></details>
+          <details class="fx-q"><summary>額度用完時，Claude Code 會自動刷我的卡嗎？</summary><div>用訂閱時不會，除非你自己開啟並購買 usage credits。但如果設定了 <code>ANTHROPIC_API_KEY</code> 並同意使用，就會依 token 計費；不確定時用 <code>/status</code> 看目前是哪一種。</div></details>
+          <details class="fx-q"><summary>Codex 能從 Claude Code 停下的地方接著做嗎？</summary><div>它是從檔案與 git 分支接著做，看不到 Claude 的對話。所以 commit 好的分支和一份簡短的交接筆記很重要：下一個 Agent 需要的脈絡都在裡面。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan">Use Claude Code with your Pro, Max, or Ultra plan</a>，Anthropic Help Center（2026-11-19 查證）</li>
+            <li><a href="https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work">How do usage and length limits work?</a>，Anthropic Help Center（2026-11-19 查證）</li>
+            <li><a href="https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans">Manage usage credits for paid Claude plans</a>，Anthropic Help Center（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/errors">Error reference: usage limits</a>，Claude Code 文件（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/interactive-mode">Interactive mode: wait for a usage limit to reset</a>，Claude Code 文件（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/costs">Manage costs effectively</a>，Claude Code 文件（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/commands">Commands</a>，Claude Code 文件（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/authentication">Authentication</a>，Claude Code 文件（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project (AGENTS.md)</a>，Claude Code 文件（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/legal-and-compliance">Legal and compliance</a>，Claude Code 文件（2026-11-19 查證）</li>
+            <li><a href="https://www.anthropic.com/legal/consumer-terms">Consumer Terms of Service</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://www.anthropic.com/legal/aup">Usage Policy</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">Custom instructions with AGENTS.md</a>，OpenAI Codex 文件（2026-11-19 查證）</li>
+            <li><a href="https://learn.chatgpt.com/docs/pricing">Codex pricing and usage limits</a>，OpenAI Codex 文件（2026-11-19 查證）</li>
+            <li><a href="https://learn.chatgpt.com/docs/cli/reference">Codex CLI command line options</a>，OpenAI Codex 文件（2026-11-19 查證）</li>
+          </ol>
+        </section>

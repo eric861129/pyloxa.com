@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Claude Code and Codex on Windows: WSL or native?</title>
+    <meta name="description" content="Do you need WSL for Claude Code or Codex CLI on Windows? Official install commands, native vs WSL trade-offs, and fixes for PATH and script errors." />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Claude Code and Codex on Windows: WSL or native?" />
+    <meta property="og:description" content="Do you need WSL for Claude Code or Codex CLI on Windows? Official install commands, native vs WSL trade-offs, and fixes for PATH and script errors." />
+    <meta property="og:url" content="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-codex-on-windows/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://pyloxa.com/guides/claude-code-codex-on-windows/#article","headline":"Claude Code and Codex CLI on Windows: do you need WSL?","description":"Do you need WSL for Claude Code or Codex CLI on Windows? Official install commands, native vs WSL trade-offs, and fixes for PATH and script errors.","inLanguage":"en","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/guides/claude-code-codex-on-windows/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-en.png"},{"@type":"WebPage","@id":"https://pyloxa.com/guides/claude-code-codex-on-windows/","url":"https://pyloxa.com/guides/claude-code-codex-on-windows/","name":"Claude Code and Codex on Windows: WSL or native?","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/guides/claude-code-codex-on-windows/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/guides/claude-code-codex-on-windows/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://pyloxa.com/guides/"},{"@type":"ListItem","position":3,"name":"Claude Code and Codex on Windows","item":"https://pyloxa.com/guides/claude-code-codex-on-windows/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/guides/claude-code-codex-on-windows/#faq","mainEntity":[{"@type":"Question","name":"Do I need WSL to run Claude Code on Windows?","acceptedAnswer":{"@type":"Answer","text":"No. Claude Code runs natively from PowerShell or CMD on Windows 10 1809+ and Windows Server 2019+. Use WSL 2 only if you want Claude Code’s sandboxing or Linux toolchains."}},{"@type":"Question","name":"Is Codex CLI on Windows still experimental?","acceptedAnswer":{"@type":"Answer","text":"OpenAI’s current Windows page, checked on 2026-11-19, describes native Windows with a Windows sandbox as the default and doesn’t label it experimental. It recommends WSL 2 when you need Linux-native tools or your work already lives in WSL."}},{"@type":"Question","name":"Should my repo be on C: or in the WSL file system?","acceptedAnswer":{"@type":"Answer","text":"Match it to where you run the tools. Working from WSL, keep the repo under your Linux home; paths under /mnt/c are slower. Working natively, keep it on the Windows file system."}},{"@type":"Question","name":"Which Node.js version do I need?","acceptedAnswer":{"@type":"Answer","text":"The native Claude Code installer doesn’t need Node.js. For npm installs, Claude Code needs Node.js 22 or later and Gemini CLI needs 20.0.0 or later. Check yours with node --version."}},{"@type":"Question","name":"Do I need a paid plan?","acceptedAnswer":{"@type":"Answer","text":"For Claude Code, yes: a Pro, Max, Ultra, Team, Enterprise or Console account. Codex CLI signs in with ChatGPT or uses an OpenAI API key billed at API rates. Check each vendor’s plan page for what’s included."}}]}]}</script>
+    <link rel="stylesheet" href="../../assets/site.css" />
+    <link rel="stylesheet" href="../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../" aria-label="Pyloxa home">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../workflow/">Workflow</a></li>
+        <li class="optional"><a href="../../memory/">Memory & Skills</a></li>
+        <li class="optional"><a href="../../quota/">Quota & fallback</a></li>
+        <li class="optional"><a href="../../pro/">Pro</a></li>
+        <li class="optional"><a href="../../guides/">Guides</a></li>
+        <li><a href="../../zh-TW/guides/claude-code-codex-on-windows/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="../../download/#start">Download</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../">Pyloxa</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Claude Code and Codex on Windows</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">Guide</p>
+          <h1>Claude Code and Codex CLI on Windows: do you need WSL?</h1>
+          <p class="fx-lede">Both run natively on Windows today. Here is how to install each one, when WSL 2 is still the better choice, and how to fix the install errors people hit most.</p>
+          <p class="gd-updated"><time datetime="2026-11-19">Updated November 19, 2026</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>No, you don’t need WSL. Claude Code supports Windows 10 1809+ natively: run <code>irm https://claude.ai/install.ps1 | iex</code> in PowerShell (no administrator rights needed), and install Git for Windows if you want Claude Code to use Git Bash. Codex CLI also runs natively in PowerShell with its own Windows sandbox; install it with OpenAI’s PowerShell installer or <code>npm install -g @openai/codex</code>. Choose WSL 2 instead when you need Linux toolchains, when your repositories already live in WSL, or when you want Claude Code’s sandboxing, which native Windows doesn’t support.</p>
+        </aside>
+
+        <section class="gd-sec" id="claude-code" aria-labelledby="claude-code-title">
+          <h2 id="claude-code-title">How do I install Claude Code on Windows?</h2>
+          <p>Anthropic lists Windows 10 1809+ and Windows Server 2019+ as supported, on x64 or ARM64 with 4 GB of RAM or more. You can use PowerShell or CMD. Pick one of the official methods:</p>
+          <ul class="fx-list">
+            <li><strong>PowerShell (recommended native installer)</strong>: <code>irm https://claude.ai/install.ps1 | iex</code></li>
+            <li><strong>CMD</strong>: <code>curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code></li>
+            <li><strong>WinGet</strong>: <code>winget install Anthropic.ClaudeCode</code>. WinGet installs don’t auto-update; run <code>winget upgrade Anthropic.ClaudeCode</code> now and then.</li>
+            <li><strong>npm</strong>: <code>npm install -g @anthropic-ai/claude-code@latest</code>. This needs Node.js 22 or later and installs the same native binary.</li>
+          </ul>
+          <p>The native installer puts <code>claude.exe</code> in <code>%USERPROFILE%\.local\bin</code> and updates itself in the background. When it finishes, open a new terminal and check it:</p>
+          <pre class="gd-code"><code>claude --version
+claude doctor</code></pre>
+          <p><code>claude doctor</code> prints read-only diagnostics about the install and your settings. Then run <code>claude</code> in your project folder and sign in in the browser. Claude Code needs a Pro, Max, Ultra, Team, Enterprise or Console account; the free claude.ai plan doesn’t include it.</p>
+          <h3>Do I need Git for Windows?</h3>
+          <p>It’s optional but recommended. With Git for Windows installed, Claude Code uses Git Bash for its Bash tool; without it, Claude Code runs shell commands through its PowerShell tool. If Claude Code can’t find Git Bash, set the path in <code>~/.claude/settings.json</code>:</p>
+          <pre class="gd-code"><code>{
+  "env": {
+    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
+  }
+}</code></pre>
+          <p class="gd-note">Point it at <code>bash.exe</code>, not the <code>git-bash.exe</code> launcher. Claude Code ignores the variable when the file has any other name. Run <code>where.exe git</code> to find your Git folder.</p>
+        </section>
+
+        <section class="gd-sec" id="codex" aria-labelledby="codex-title">
+          <h2 id="codex-title">Does Codex CLI work on native Windows?</h2>
+          <p>Yes. OpenAI’s Windows documentation says you can use Codex on Windows natively with the CLI, the IDE extension or the desktop app, running in PowerShell with a Windows sandbox instead of WSL or a virtual machine. The page we checked doesn’t call native Windows support experimental. Windows 11 is the recommended baseline; Windows 10 needs version 1809 or newer.</p>
+          <p>Install it from PowerShell with the standalone installer, or with npm:</p>
+          <pre class="gd-code"><code>powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+npm install -g @openai/codex</code></pre>
+          <p>Sign in with <code>codex login</code> (browser sign-in with ChatGPT) and check the method with <code>codex login status</code>. You can use an OpenAI Platform API key instead with <code>codex login --with-api-key</code>; that is billed at standard API rates.</p>
+          <h3>The Codex Windows sandbox</h3>
+          <p>The sandbox enforces the file and network permissions of the active permission profile for the commands Codex runs. There are three implementations:</p>
+          <ul class="fx-list">
+            <li><strong><code>mxc</code></strong>: recommended where supported. It needs Windows 11 24H2 (build 26100.9278) or 25H2 (build 26200.9278) with capabilities Microsoft is still rolling out, and no administrator setup.</li>
+            <li><strong><code>elevated</code></strong>: the fallback Codex prefers when no mode is set. Setup needs administrator approval; the sandboxed commands themselves don’t run as administrator.</li>
+            <li><strong><code>unelevated</code></strong>: for when elevated setup isn’t possible. Network isolation is weaker.</li>
+          </ul>
+          <p>You choose a fallback in Codex’s <code>config.toml</code> with <code>[windows]</code> <code>sandbox = "elevated"</code> (or <code>"unelevated"</code>).</p>
+        </section>
+
+        <section class="gd-sec" id="gemini" aria-labelledby="gemini-title">
+          <h2 id="gemini-title">What about Gemini CLI?</h2>
+          <p>Google’s installation guide recommends Windows 11 24H2 or later and Node.js 20.0.0 or later, and lists PowerShell as a supported shell. Install it with <code>npm install -g @google/gemini-cli</code>.</p>
+        </section>
+
+        <section class="gd-sec" id="native-vs-wsl" aria-labelledby="native-vs-wsl-title">
+          <h2 id="native-vs-wsl-title">Native Windows or WSL 2: which should you pick?</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Native Windows</th><th scope="col">WSL 2</th></tr></thead><tbody>
+            <tr><td>Where your repo lives</td><td>Windows file system, for example <code>C:\Users\you\Project</code></td><td>Linux file system, for example <code>/home/you/Project</code></td></tr>
+            <tr><td>File speed</td><td>Fast for Windows tools</td><td>Fast inside Linux; working under <code>/mnt/c/...</code> is slower</td></tr>
+            <tr><td>Toolchains</td><td>Windows-native projects and tools</td><td>Linux toolchains</td></tr>
+            <tr><td>Claude Code sandboxing</td><td>Not supported</td><td>Supported (not on WSL 1)</td></tr>
+            <tr><td>Codex sandbox</td><td>Windows sandbox (<code>mxc</code>, <code>elevated</code> or <code>unelevated</code>)</td><td>Linux sandbox; WSL 1 isn’t supported since Codex 0.115</td></tr>
+            <tr><td>Install</td><td>PowerShell or CMD installers above</td><td><code>curl -fsSL https://claude.ai/install.sh | bash</code> and <code>curl -fsSL https://chatgpt.com/codex/install.sh | sh</code> inside the WSL shell</td></tr>
+          </tbody></table></div>
+          <p>Microsoft’s rule of thumb: keep files in the WSL file system if you work from a Linux command line, and in the Windows file system if you work from PowerShell or CMD. Mixing the two is where most slowness comes from. To set up WSL, run <code>wsl --install</code> in an administrator PowerShell and restart; new distributions use WSL 2 by default. Check with <code>wsl -l -v</code>.</p>
+          <p class="gd-note">Inside WSL, install Claude Code and Codex in the WSL terminal, not from PowerShell. If <code>which node</code> or <code>which npm</code> shows a path under <code>/mnt/c/</code>, WSL is using your Windows Node.js; install Node inside the Linux distribution.</p>
+        </section>
+
+        <section class="gd-sec" id="fixes" aria-labelledby="fixes-title">
+          <h2 id="fixes-title">Common install errors and how to fix them</h2>
+          <h3><code>'claude' is not recognized</code> after installing</h3>
+          <p>The install folder isn’t on your PATH. Check that the file exists, then add the folder to your user PATH and open a new terminal (restart your editor too if you use its terminal):</p>
+          <pre class="gd-code"><code>Test-Path "$env:USERPROFILE\.local\bin\claude.exe"
+$currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')</code></pre>
+          <h3>A CLI installed with npm isn’t found</h3>
+          <p>On Windows, npm links global commands directly into its global prefix folder, which defaults to <code>%AppData%\npm</code>. Run <code>npm prefix -g</code> to see yours, make sure that folder is on your PATH, then open a new terminal.</p>
+          <h3>“running scripts is disabled on this system”</h3>
+          <p>PowerShell’s execution policy is blocking the <code>npm.ps1</code> or <code>claude.ps1</code> launchers that npm creates. Either allow local scripts for your user only (no administrator needed), call <code>npm.cmd</code> instead, or use the native installer, which doesn’t install a <code>.ps1</code> script:</p>
+          <pre class="gd-code"><code>Get-ExecutionPolicy -List
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+          <p class="gd-note">Microsoft notes that execution policy isn’t a security boundary. A Group Policy setting overrides it, so on a managed PC ask IT.</p>
+          <h3>The wrong install command for your shell</h3>
+          <ul class="fx-list">
+            <li><code>'irm' is not recognized</code>: you’re in CMD. Use the CMD command or open PowerShell.</li>
+            <li><code>The token '&amp;&amp;' is not a valid statement separator</code>: you’re in PowerShell. Use the PowerShell command.</li>
+            <li><code>A parameter cannot be found that matches parameter name 'fsSL'</code>: you ran the macOS/Linux command in PowerShell, where <code>curl</code> is an alias for <code>Invoke-WebRequest</code>.</li>
+          </ul>
+          <h3>Node.js is too old</h3>
+          <p>Run <code>node --version</code>. Claude Code’s npm package needs Node.js 22 or later (on older versions npm prints an <code>EBADENGINE</code> warning), and Gemini CLI needs 20 or later. The native Claude Code installer doesn’t use Node.js at all.</p>
+          <h3>“Exec format error” in WSL</h3>
+          <p>You’re on WSL 1. Convert the distribution with <code>wsl --set-version &lt;DistroName&gt; 2</code>.</p>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Where Pyloxa fits</h2>
+          <p>Pyloxa is a native Windows 10 and 11 desktop app that gets Claude Code and Codex CLI working on the same project. It runs directly on Windows, with no WSL and no Docker. It needs Git for Windows 2.30 or later, and Node.js 22 or later only if you want it to install the CLIs for you.</p>
+          <p>The free version’s <a href="../../help/#setup">setup guide</a> covers the steps on this page:</p>
+          <ul class="fx-list">
+            <li><strong>Environment check</strong>: git (required) and Node.js (optional). If one is missing or too old, copy the winget command it shows or open the official download page, then choose <strong>Check again</strong>.</li>
+            <li><strong>Install agents</strong>: one card per CLI. It shows you the exact command first, then runs the CLI’s official <code>npm install -g</code> package at the latest version Pyloxa has verified.</li>
+            <li><strong>Sign-in and keys</strong>: shows whether each CLI is <strong>Ready</strong>. You sign in in a terminal with <code>claude auth login</code> or <code>codex login</code>, or paste an API key. Pyloxa never reads, copies or sends your tokens. Gemini CLI is experimental and needs your own paid Gemini API key.</li>
+          </ul>
+          <p>Windows-specific items from the <a href="../../help/#troubleshooting">troubleshooting section</a>: if a CLI works in your terminal but Pyloxa says it isn’t installed, restart Pyloxa; if a task fails with “Couldn’t start claude” (or codex), your antivirus may be blocking it, so <a href="../../help/#antivirus">allow Pyloxa’s install folder</a> rather than turning protection off. The installer isn’t code-signed yet, so SmartScreen may warn on first run.</p>
+          <p>Everything above is in the free version. If you only ever use one agent in one terminal, you don’t need Pyloxa; it helps when you want a plan split across both agents, each task in its own git worktree, and your own test commands deciding what passes. See the <a href="../../workflow/">workflow page</a>.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Do I need WSL to run Claude Code on Windows?</summary><div>No. Claude Code runs natively from PowerShell or CMD on Windows 10 1809+ and Windows Server 2019+. Use WSL 2 only if you want Claude Code’s sandboxing or Linux toolchains.</div></details>
+          <details class="fx-q"><summary>Is Codex CLI on Windows still experimental?</summary><div>OpenAI’s current Windows page, checked on 2026-11-19, describes native Windows with a Windows sandbox as the default and doesn’t label it experimental. It recommends WSL 2 when you need Linux-native tools or your work already lives in WSL.</div></details>
+          <details class="fx-q"><summary>Should my repo be on C: or in the WSL file system?</summary><div>Match it to where you run the tools. Working from WSL, keep the repo under your Linux home; paths under <code>/mnt/c</code> are slower. Working natively, keep it on the Windows file system.</div></details>
+          <details class="fx-q"><summary>Which Node.js version do I need?</summary><div>The native Claude Code installer doesn’t need Node.js. For npm installs, Claude Code needs Node.js 22 or later and Gemini CLI needs 20.0.0 or later. Check yours with <code>node --version</code>.</div></details>
+          <details class="fx-q"><summary>Do I need a paid plan?</summary><div>For Claude Code, yes: a Pro, Max, Ultra, Team, Enterprise or Console account. Codex CLI signs in with ChatGPT or uses an OpenAI API key billed at API rates. Check each vendor’s plan page for what’s included.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/setup">Advanced setup</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/troubleshoot-install">Troubleshoot installation and login</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/cli-reference">CLI reference</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/windows">Windows sandbox</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/windows/wsl">WSL</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/auth">Authentication</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://github.com/openai/codex">openai/codex README</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/get-started/installation.mdx">Gemini CLI installation</a>, Google (checked 2026-11-19)</li>
+            <li><a href="https://learn.microsoft.com/en-us/windows/wsl/install">Install WSL</a>, Microsoft (checked 2026-11-19)</li>
+            <li><a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems">Working across file systems</a>, Microsoft (checked 2026-11-19)</li>
+            <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies">about_Execution_Policies</a>, Microsoft (checked 2026-11-19)</li>
+            <li><a href="https://docs.npmjs.com/cli/v11/configuring-npm/folders">Folders</a>, npm Docs (checked 2026-11-19)</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">More guides</h2>
+        <ul>
+            <li><a href="../claude-code-usage-limits/"><span>Claude Code usage limits</span><span class="fx-related-text">What the Claude Code usage limit message means, when it resets, and every legitimate way to keep working.</span></a></li>
+            <li><a href="../claude-code-and-codex-together/"><span>Claude Code and Codex together</span><span class="fx-related-text">Split the work, keep the agents out of each other’s files, share one set of rules and cross-review.</span></a></li>
+            <li><a href="../verify-ai-agent-code/"><span>Verify AI agent code</span><span class="fx-related-text">Why an agent’s “done” isn’t evidence, the checks that work, and how to have a second AI review or test the code.</span></a></li>
+            <li><a href="../agents-md-claude-md-gemini-md/"><span>AGENTS.md vs CLAUDE.md</span><span class="fx-related-text">Which instruction file each CLI reads, and how to share one AGENTS.md across Claude Code, Codex and Gemini CLI.</span></a></li>
+            <li><a href="../../help/"><span>Help</span><span class="fx-related-text">Step-by-step help for installing Pyloxa, connecting the CLIs, plans and troubleshooting.</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">Want this handled for you?</h2>
+          <p>Pyloxa is a free Windows app that runs the Claude Code and Codex CLIs you already use: it splits the work by your rules, runs your tests itself and offers a handoff when one runs out of quota.</p>
+          <div class="fx-actions">
+            <a class="button" href="../../download/#start">Download Pyloxa for Windows</a>
+            <a class="button is-light" href="../../workflow/">How it works</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>Version 0.2.0 · Windows 10 and 11 · <a href="../../help/">Help</a> · <a href="../../guides/">Guides</a> · <a href="../../changelog/">Changelog</a> · <a href="../../privacy/">Privacy policy</a> · <a href="../../legal/EULA.txt">License (EULA)</a> · <a href="mailto:support@pyloxa.com">Support</a></p>
+      <p>Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google. Product names belong to their owners.</p>
+    </footer>
+
+    <script src="../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

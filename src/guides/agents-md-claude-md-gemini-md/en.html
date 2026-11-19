@@ -1,0 +1,141 @@
+<!--meta {"title": "AGENTS.md vs CLAUDE.md vs GEMINI.md: one file for all", "description": "Which instruction file Claude Code, Codex CLI and Gemini CLI read, where, and how to keep one AGENTS.md that all three use. Checked against official docs.", "h1": "AGENTS.md, CLAUDE.md and GEMINI.md: one instructions file for three CLIs", "lede": "Claude Code, Codex CLI and Gemini CLI each look for a different file in different places. Here is what each one reads today, and a setup where you write your project rules once.", "nav": "AGENTS.md vs CLAUDE.md", "blurb": "Which instruction file each CLI reads, and how to share one AGENTS.md across Claude Code, Codex and Gemini CLI.", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>Codex CLI reads <code>AGENTS.md</code>. Claude Code reads <code>CLAUDE.md</code>, and since v2.1.277 it also reads <code>AGENTS.md</code>, but by default only when no <code>CLAUDE.md</code>, <code>.claude/CLAUDE.md</code> or <code>CLAUDE.local.md</code> exists in the working directory or above it. Gemini CLI reads <code>GEMINI.md</code> unless you list other names in its <code>context.fileName</code> setting. To keep one source of truth, write <code>AGENTS.md</code>, add a <code>CLAUDE.md</code> whose first line is <code>@AGENTS.md</code>, and set Gemini CLI’s <code>context.fileName</code> to include <code>AGENTS.md</code>.</p>
+        </aside>
+
+        <section class="gd-sec" id="which-file" aria-labelledby="which-file-title">
+          <h2 id="which-file-title">Which instructions file does each CLI read?</h2>
+          <p>All three treat these files as context added to the conversation, not as enforced settings. The details differ more than the names suggest.</p>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Claude Code</th><th scope="col">Codex CLI</th><th scope="col">Gemini CLI</th></tr></thead><tbody>
+            <tr><td>Project file</td><td><code>CLAUDE.md</code> or <code>.claude/CLAUDE.md</code></td><td><code>AGENTS.md</code></td><td><code>GEMINI.md</code></td></tr>
+            <tr><td>Reads <code>AGENTS.md</code>?</td><td>Yes, from v2.1.277, when there is no <code>CLAUDE.md</code>; or always through an <code>@AGENTS.md</code> import</td><td>Yes, natively</td><td>Only if listed in <code>context.fileName</code></td></tr>
+            <tr><td>User-level file</td><td><code>~/.claude/CLAUDE.md</code> (plus <code>~/.claude/rules/</code>)</td><td><code>~/.codex/AGENTS.md</code> (or <code>CODEX_HOME</code>)</td><td><code>~/.gemini/GEMINI.md</code></td></tr>
+            <tr><td>Personal or override file</td><td><code>CLAUDE.local.md</code>, meant to be gitignored</td><td><code>AGENTS.override.md</code> wins over <code>AGENTS.md</code> in the same folder</td><td>Not documented</td></tr>
+            <tr><td>Folders</td><td>Working directory and every parent at launch; subfolder files load when Claude works there</td><td>Repo root down to the working directory, one file per folder</td><td>Workspace folders and parents up to <code>.git</code>; more files load when a tool touches a folder</td></tr>
+            <tr><td>Imports</td><td><code>@path</code>, up to four hops deep</td><td>Not documented</td><td><code>@file.md</code>, relative or absolute</td></tr>
+            <tr><td>Size guidance</td><td>Aim for under 200 lines; a file over 4 MiB is skipped</td><td>Stops adding files at 32 KiB combined by default (<code>project_doc_max_bytes</code>)</td><td>No size limit documented; searches up to 200 folders</td></tr>
+            <tr><td>Check what loaded</td><td><code>/context all</code> or <code>/memory</code></td><td>Ask it to summarize the current instructions</td><td><code>/memory show</code></td></tr>
+          </tbody></table></div>
+          <p class="gd-note">In all three, files are combined rather than replacing each other. Claude Code and Codex put the file closest to your working directory last. Codex says closer files override earlier guidance; Anthropic warns that Claude may follow either of two conflicting instructions. Don’t let your files contradict each other.</p>
+        </section>
+
+        <section class="gd-sec" id="claude-code" aria-labelledby="claude-code-title">
+          <h2 id="claude-code-title">Does Claude Code read AGENTS.md?</h2>
+          <p>Yes, with conditions. From v2.1.277 a built-in plugin reads <code>AGENTS.md</code> as your project instructions, but under the default setting only when none of <code>CLAUDE.md</code>, <code>.claude/CLAUDE.md</code> or <code>CLAUDE.local.md</code> exists in your working directory or above it. Your <code>~/.claude/CLAUDE.md</code> and <code>.claude/rules/</code> don’t count for that check and keep loading alongside.</p>
+          <ul class="fx-list">
+            <li>If both files exist, Claude reads only <code>CLAUDE.md</code>, unless it imports <code>AGENTS.md</code> or you set <strong>Project instructions</strong> in <code>/config</code> to <code>claude-md-and-agents-md</code>.</li>
+            <li>Adding a <code>CLAUDE.local.md</code> for your own notes stops Claude from reading <code>AGENTS.md</code> by default.</li>
+            <li>Claude Code doesn’t read <code>AGENTS.override.md</code>, <code>AGENTS.local.md</code> or anything under <code>.agents/</code>.</li>
+            <li>Some sessions can’t read <code>AGENTS.md</code> directly, such as older versions. An <code>@AGENTS.md</code> import works there, and Anthropic says keeping the import never makes Claude read the file twice.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="codex" aria-labelledby="codex-title">
+          <h2 id="codex-title">How Codex CLI finds AGENTS.md</h2>
+          <p>Codex builds its instruction chain once at startup. It reads the global file first: <code>AGENTS.override.md</code> in <code>~/.codex</code> if it exists and isn’t empty, otherwise <code>AGENTS.md</code>. Then it walks from the project root, usually the git root, down to your working directory. In each folder it takes the first of <code>AGENTS.override.md</code>, <code>AGENTS.md</code> and any names in <code>project_doc_fallback_filenames</code>.</p>
+          <pre class="gd-code"><code># ~/.codex/config.toml
+project_doc_fallback_filenames = ["TEAM_GUIDE.md", ".agents.md"]
+project_doc_max_bytes = 65536</code></pre>
+          <p class="gd-note">Codex stops adding files once the combined size reaches <code>project_doc_max_bytes</code>, 32 KiB by default. Restart Codex after changing the config.</p>
+        </section>
+
+        <section class="gd-sec" id="gemini" aria-labelledby="gemini-title">
+          <h2 id="gemini-title">How to make Gemini CLI read AGENTS.md</h2>
+          <p>Gemini CLI loads <code>~/.gemini/GEMINI.md</code>, then <code>GEMINI.md</code> files in your workspace and its parent folders, then files it finds when a tool opens a folder. The <code>context.fileName</code> setting takes one name or a list. Put it in the project’s <code>.gemini/settings.json</code>, or in <code>~/.gemini/settings.json</code> to apply it everywhere:</p>
+          <pre class="gd-code"><code>{
+  "context": {
+    "fileName": ["AGENTS.md", "GEMINI.md"]
+  }
+}</code></pre>
+          <p class="gd-note">If you turn on Gemini CLI’s Trusted Folders feature, an untrusted folder’s <code>.gemini/settings.json</code> is ignored. Use the user-level settings file if the setting has to apply before you trust a folder.</p>
+        </section>
+
+        <section class="gd-sec" id="one-source" aria-labelledby="one-source-title">
+          <h2 id="one-source-title">How do I use one instructions file for Claude Code, Codex and Gemini?</h2>
+          <ol class="fx-steps">
+            <li><div><strong>Write AGENTS.md at the repo root</strong>This is the shared file. Codex reads it with no setup.</div></li>
+            <li><div><strong>Add a one-line CLAUDE.md</strong>Put <code>@AGENTS.md</code> on the first line. Add Claude-only notes below it if you need them. This works even in sessions that can’t read <code>AGENTS.md</code> directly, and keeps working if you later add a <code>CLAUDE.local.md</code>.</div></li>
+            <li><div><strong>Point Gemini CLI at it</strong>Set <code>context.fileName</code> to include <code>AGENTS.md</code>, as shown above, and commit <code>.gemini/settings.json</code> if your team uses Gemini CLI.</div></li>
+            <li><div><strong>Check each tool</strong>Run <code>/context all</code> in Claude Code, <code>codex --ask-for-approval never "Summarize the current instructions."</code> in the repo root, and <code>/memory show</code> in Gemini CLI.</div></li>
+          </ol>
+          <pre class="gd-code"><code># CLAUDE.md
+@AGENTS.md
+
+## Claude Code
+Use plan mode for changes under src/billing/.</code></pre>
+          <h3>Why not a symlink?</h3>
+          <p>Anthropic documents <code>ln -s AGENTS.md CLAUDE.md</code> as an option, with two catches. Claude’s Edit and Write tools refuse to write through a symlink. And on Windows, creating a symlink needs Administrator rights or Developer Mode, and Git checks a committed symlink out as a plain text file unless <code>core.symlinks</code> is on, so that clone gets a one-line <code>CLAUDE.md</code> instead of your rules. Microsoft’s “Create symbolic links” policy is granted only to Administrators by default. If anyone on the team uses Windows, use the import.</p>
+        </section>
+
+        <section class="gd-sec" id="what-to-write" aria-labelledby="what-to-write-title">
+          <h2 id="what-to-write-title">What to put in AGENTS.md, and what to leave out</h2>
+          <p>Write down what you would otherwise re-explain each session. Keep it concrete enough to check: “Run <code>npm test</code> before committing” beats “test your changes”.</p>
+          <ul class="fx-list">
+            <li><strong>Put in:</strong> the exact build, test and lint commands; conventions that differ from the usual defaults; where key code lives when it isn’t obvious; folders and files not to touch; how to tell a change is done.</li>
+            <li><strong>Leave out:</strong> API keys, tokens, passwords and internal URLs you wouldn’t publish. The file is usually committed, and its text goes to the model provider with every request.</li>
+            <li><strong>Leave out:</strong> long step-by-step procedures. Anthropic suggests moving them into a skill or a path-scoped rule.</li>
+            <li><strong>Leave out:</strong> anything the agent can read from the code, such as directory listings and dependency lists.</li>
+            <li><strong>Move elsewhere:</strong> personal preferences go in the user-level file or <code>CLAUDE.local.md</code>, not the shared one.</li>
+          </ul>
+          <pre class="gd-code"><code># AGENTS.md
+## Commands
+- Install: pnpm install
+- Test: pnpm test (run before every commit)
+- Lint: pnpm lint
+
+## Conventions
+- API responses use camelCase.
+- New tests go in tests/ and use Vitest.
+
+## Do not touch
+- legacy/ and anything under generated/</code></pre>
+          <p class="gd-note">Instructions are guidance, not a lock. To block an action every time, Anthropic points to hooks and permission settings rather than <code>CLAUDE.md</code>.</p>
+        </section>
+
+        <section class="gd-sec" id="skills" aria-labelledby="skills-title">
+          <h2 id="skills-title">Skills: SKILL.md folders in each CLI</h2>
+          <p>A skill is a folder with a <code>SKILL.md</code> file: YAML frontmatter with a description, then instructions. Unlike the instructions file, a skill loads only when it’s relevant. All three CLIs support skills today, but not in the same folders.</p>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">User skills</th><th scope="col">Project skills</th></tr></thead><tbody>
+            <tr><td>Claude Code</td><td><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td><td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td></tr>
+            <tr><td>Codex CLI</td><td><code>~/.agents/skills</code></td><td><code>.agents/skills</code> in the working directory, the folder above it, and the repo root</td></tr>
+            <tr><td>Gemini CLI</td><td><code>~/.gemini/skills</code> or <code>~/.agents/skills</code></td><td><code>.gemini/skills</code> or <code>.agents/skills</code></td></tr>
+          </tbody></table></div>
+          <p class="gd-note">A <code>.agents/skills</code> folder covers Codex and Gemini CLI. Claude Code doesn’t read <code>.agents/</code>, so it needs its own copy under <code>.claude/skills</code>. Codex requires both <code>name</code> and <code>description</code> in the frontmatter.</p>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Where Pyloxa fits</h2>
+          <p>Pyloxa is a free Windows desktop app that runs Claude Code and Codex CLI, with Gemini CLI as experimental support, on one project. Its <a href="../../memory/">shared memory</a> is one store on your computer that all three receive as background when Pyloxa dispatches work: rules, preferences, decisions, facts and pitfalls. Agents can suggest new memories while they work, but a suggestion goes to Pending and counts only after you accept it. Every shared-memory feature is free.</p>
+          <ul class="fx-list">
+            <li><strong>Sync to CLIs</strong> writes the project’s memory as a marked Pyloxa block in <code>AGENTS.md</code> and adds <code>@AGENTS.md</code> to <code>CLAUDE.md</code>, the same setup as above. You see the diff first, and Pyloxa never commits for you.</li>
+            <li>Writing to each CLI’s user-level memory (<code>~/.claude/CLAUDE.md</code>, <code>~/.codex/AGENTS.md</code>, <code>~/.gemini/GEMINI.md</code>) is off by default; when you turn it on, Pyloxa backs those files up before its first write.</li>
+            <li>You can import from files you already have, such as <code>CLAUDE.md</code>, <code>.claude/rules/*.md</code>, <code>AGENTS.md</code> and <code>GEMINI.md</code>. Pyloxa only reads them.</li>
+            <li>The <a href="../../help/#skills">Skills</a> inventory, which shows which skills each CLI can see, is free. A skills library in <code>~/.agents/skills</code> synced to every CLI, and choosing skills per project or profile, are <a href="../../pro/">Pro</a>.</li>
+          </ul>
+          <p>If you use one CLI, or the <code>AGENTS.md</code> plus import setup already does what you need, you don’t need Pyloxa for this.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Does Codex read CLAUDE.md?</summary><div>Not by default. Codex looks for <code>AGENTS.override.md</code>, <code>AGENTS.md</code> and any names you add to <code>project_doc_fallback_filenames</code> in <code>~/.codex/config.toml</code>, and it uses at most one file per folder. Making <code>AGENTS.md</code> the main file avoids the question.</div></details>
+          <details class="fx-q"><summary>I have both CLAUDE.md and AGENTS.md. Which one does Claude Code use?</summary><div>By default only <code>CLAUDE.md</code>. Add <code>@AGENTS.md</code> to it, or set <strong>Project instructions</strong> in <code>/config</code> to <code>claude-md-and-agents-md</code> to load both.</div></details>
+          <details class="fx-q"><summary>Why did Claude Code stop reading my AGENTS.md?</summary><div>The usual cause is a <code>CLAUDE.md</code>, <code>.claude/CLAUDE.md</code> or <code>CLAUDE.local.md</code> in your working directory or a parent folder. A version before v2.1.277, or a disabled AGENTS.md plugin, has the same effect. A <code>CLAUDE.md</code> that imports <code>AGENTS.md</code> fixes all of these.</div></details>
+          <details class="fx-q"><summary>Can GEMINI.md import other files?</summary><div>Yes. Add <code>@./path/file.md</code> where you want the file’s text; relative and absolute paths both work. Use <code>/memory show</code> to see the combined result.</div></details>
+          <details class="fx-q"><summary>Can I put API keys in AGENTS.md?</summary><div>No. The file is usually committed to the repository, and its contents go to the model provider as part of every request. Keep keys in the CLI’s own sign-in or your environment, and leave them out of instruction files.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/skills">Extend Claude with skills</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/guides/agents-md">Custom instructions with AGENTS.md</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/skills">Build skills</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md">Provide context with GEMINI.md files</a>, Google (checked 2026-11-19)</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md">Gemini CLI configuration</a>, Google (checked 2026-11-19)</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/trusted-folders.md">Trusted Folders</a>, Google (checked 2026-11-19)</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/skills.md">Agent Skills</a>, Google (checked 2026-11-19)</li>
+            <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/create-symbolic-links">Create symbolic links</a>, Microsoft (checked 2026-11-19)</li>
+          </ol>
+        </section>

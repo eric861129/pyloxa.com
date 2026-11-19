@@ -1,0 +1,4 @@
+{
+  "languages": ["en", "zh-TW"],
+  "guides": ["claude-code-usage-limits", "claude-code-and-codex-together", "verify-ai-agent-code", "agents-md-claude-md-gemini-md", "claude-code-codex-on-windows"]
+}

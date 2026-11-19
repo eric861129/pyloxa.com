@@ -1,0 +1,129 @@
+<!--meta {"title": "Claude Code 和 Codex 一起用：同一個專案的分工做法", "description": "同一個專案同時用 Claude Code 與 Codex：怎麼分工、各開 git worktree、共用一份 AGENTS.md，再互相審查。", "h1": "Claude Code 和 Codex 怎麼在同一個專案一起用", "lede": "兩個都有訂閱，不必只挑一個。每個 Agent 各拿一個工作、各用一個分支，規則共用一份，再讓一個檢查另一個的成果。", "nav": "Claude Code 與 Codex 一起用", "blurb": "分好工、讓兩個 Agent 不碰彼此的檔案、共用一份規則，再互相審查。", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>讓 Claude Code 和 Codex 各做不同的工作，每個工作開一個自己的 git worktree 與分支，兩邊永遠不改同一批檔案。專案規則與測試命令只寫在一份 <code>AGENTS.md</code>：Codex 會讀它；新版的 Claude Code 在沒有 <code>CLAUDE.md</code> 時也會讀，或是在 <code>CLAUDE.md</code> 裡用 <code>@AGENTS.md</code> 匯入。最後由沒寫這段程式的那個 Agent 審查，測試你自己跑，合併也由你動手。</p>
+        </aside>
+
+        <section class="gd-sec" id="why" aria-labelledby="why-title">
+          <h2 id="why-title">為什麼要在同一個專案同時用 Claude Code 和 Codex？</h2>
+          <p>哪個模型比較會做哪類工作，每次改版都會變，不要把流程建立在這上面。比較站得住腳的是實際的理由：</p>
+          <ul class="fx-list">
+            <li><strong>兩份各自獨立的額度。</strong>用 Claude 訂閱的 Claude Code，額度和 claude.ai 共用；用 ChatGPT 訂閱的 Codex，額度和部分 ChatGPT 功能共用。一邊用完，不影響另一邊。</li>
+            <li><strong>另一家模型的第二意見。</strong>沒寫這段程式、又來自不同廠商的審查者，等於多一次獨立的檢查。</li>
+            <li><strong>獨立的審查與測試。</strong>寫程式的 Agent 最不適合判斷自己的成果對不對。讓另一個 Agent 替它寫測試，你就有客觀的東西可以跑。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="patterns" aria-labelledby="patterns-title">
+          <h2 id="patterns-title">Claude Code 和 Codex 要怎麼分工？</h2>
+          <p>不管選哪一種，原則都一樣：一個 Agent 一個工作，而且清楚列出它能改哪些檔案。</p>
+          <div class="gd-table"><table><thead><tr><th scope="col">做法</th><th scope="col">怎麼做</th><th scope="col">適合</th></tr></thead><tbody>
+            <tr><td>一個規劃、一個實作</td><td>一個 Agent 讀程式碼、寫出含工作與檔案清單的計畫，不動檔案；另一個照計畫實作。</td><td>會動到好幾個部分的功能</td></tr>
+            <tr><td>依工作類型分</td><td>固定的規則，例如前端給一個、後端給另一個。</td><td>熟悉的專案、日常開發</td></tr>
+            <tr><td>一個實作、一個審查</td><td>一個實作；另一個只看 diff、回報問題，不改檔案。</td><td>任何準備合併的改動</td></tr>
+            <tr><td>一個實作、一個寫測試</td><td>一個實作；另一個只能新增測試。測試命令由你跑，以結果為準。</td><td>修 bug、預期行為明確的邏輯</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">先照一種分法用一週，記下哪類工作哪個 Agent 需要比較少的修正。這比任何排行榜都準。</p>
+        </section>
+
+        <section class="gd-sec" id="parallel" aria-labelledby="parallel-title">
+          <h2 id="parallel-title">兩個同時跑，怎麼不互相干擾？</h2>
+          <p>兩個 Agent 在同一個資料夾裡，會互相覆蓋檔案、打亂彼此的測試。給每個 Agent 一個 git worktree：同一個 repo 的另一份 checkout，各自在自己的分支上（repo 至少要有一個 commit）。</p>
+          <pre class="gd-code"><code>git worktree add ../myapp-api -b agent/api
+git worktree add ../myapp-ui -b agent/ui
+git worktree list</code></pre>
+          <p>在 <code>../myapp-api</code> 開 Codex，在 <code>../myapp-ui</code> 開 Claude Code。Claude Code 也可以用 <code>claude --worktree &lt;name&gt;</code> 自己建 worktree。分支合併後，用 <code>git worktree remove ../myapp-api</code> 移除資料夾。</p>
+          <ul class="fx-list">
+            <li>不要讓兩個 Agent 改同一批檔案，就算在不同分支也一樣，不然省下的時間都會花在解衝突上。</li>
+            <li>在工作說明裡寫清楚寫入範圍，例如「只改 <code>src/api/</code> 底下的檔案」。</li>
+            <li>工作 B 需要工作 A 的成果時，先合併 A，再從更新後的分支開始 B。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="instructions" aria-labelledby="instructions-title">
+          <h2 id="instructions-title">怎麼讓兩個 Agent 用同一份專案規則？</h2>
+          <p>只維護一份 <code>AGENTS.md</code>，再讓另一個工具指向它：</p>
+          <ul class="fx-list">
+            <li><strong>Codex</strong> 先讀 <code>~/.codex</code> 裡的 <code>AGENTS.md</code>，再從專案根目錄一路往下讀到你所在的資料夾，每個資料夾一份。合計預設到 32 KiB 就不再加入（<code>project_doc_max_bytes</code>）。想讓它讀其他檔名，可以在 <code>~/.codex/config.toml</code> 設 <code>project_doc_fallback_filenames</code>。</li>
+            <li><strong>Claude Code</strong> 讀的是 <code>CLAUDE.md</code>。從 v2.1.277 起，當目前資料夾與上層都沒有 <code>CLAUDE.md</code> 或 <code>CLAUDE.local.md</code> 時，它會改讀 <code>AGENTS.md</code>。如果你也有 <code>CLAUDE.md</code>，在最上面寫 <code>@AGENTS.md</code> 匯入共用的那份，Claude 專用的說明寫在下面。</li>
+          </ul>
+          <pre class="gd-code"><code># CLAUDE.md
+@AGENTS.md
+
+## Claude Code only
+- Use plan mode before multi-file changes.</code></pre>
+          <p class="gd-note">在 Windows 上請用 <code>@AGENTS.md</code> 匯入，不要用 symlink。Anthropic 的文件提到，Windows 建立 symlink 需要系統管理員權限或開發人員模式，而且 Git 可能把它 checkout 成一個普通的文字檔。</p>
+          <p>把建置、測試、lint 的確切命令寫進這份檔案，兩個 Agent 就會用同樣的方式檢查成果。檔案保持精簡：Anthropic 提到檔案越長，遵守程度越低。</p>
+        </section>
+
+        <section class="gd-sec" id="call-codex" aria-labelledby="call-codex-title">
+          <h2 id="call-codex-title">Claude Code 可以直接呼叫 Codex 嗎？</h2>
+          <p>可以。OpenAI 官方出了一個開源的 Claude Code 外掛（<code>openai/codex-plugin-cc</code>），它呼叫你電腦上的 Codex CLI，用你自己的 Codex 登入，用量也算在你的 Codex 額度裡。</p>
+          <pre class="gd-code"><code>/plugin marketplace add openai/codex-plugin-cc
+/plugin install codex@openai-codex
+/reload-plugins
+/codex:setup</code></pre>
+          <p>裝好後會多出 <code>/codex:review</code>（唯讀審查目前的改動或某個分支）、<code>/codex:adversarial-review</code>（質疑設計決定的審查）和 <code>/codex:rescue</code>（把一個工作交給 Codex）等命令。不裝外掛的話，也可以在終端機跑 <code>codex review --base main</code> 或 <code>codex review --uncommitted</code>。</p>
+        </section>
+
+        <section class="gd-sec" id="costs" aria-labelledby="costs-title">
+          <h2 id="costs-title">兩個都要訂閱嗎？</h2>
+          <p>要。兩個工具各自用自家的訂閱或 API Key。</p>
+          <ul class="fx-list">
+            <li><strong>Claude Code</strong> 包含在 Claude 的 Pro、Max 與 Ultra 方案裡（Team 與 Enterprise 另有說明），額度和 claude.ai 共用。改用 Claude Console 帳號登入就是依 API 價格計費；環境變數有設 <code>ANTHROPIC_API_KEY</code> 時，Claude Code 會用那把 Key，費用算 API 用量。</li>
+            <li><strong>Codex</strong> 包含在 ChatGPT 方案裡（OpenAI 的價格頁列出 Free、Go、Plus、Pro、Business、Edu 與 Enterprise），也可以用 OpenAI API Key，依 API 價格另外計費，不算在方案的額度裡。</li>
+          </ul>
+          <p>Anthropic 與 OpenAI 的條款都寫明，不能把帳號或登入資訊分享給別人。也不要多開帳號來繞過額度限制，請先看清楚各家的條款。一個 Agent 額度用完時，把剩下的工作換手給另一個，或等額度重設。</p>
+        </section>
+
+        <section class="gd-sec" id="try-it" aria-labelledby="try-it-title">
+          <h2 id="try-it-title">今天下午就能試的 Claude Code + Codex 流程</h2>
+          <ol class="fx-steps">
+            <li><div><strong>寫共用規則</strong>建立 <code>AGENTS.md</code>，寫進測試與 lint 命令，加上三到五條專案規則。如果已經有 <code>CLAUDE.md</code>，在裡面加上 <code>@AGENTS.md</code>。</div></li>
+            <li><div><strong>只規劃、不動檔案</strong>執行 <code>claude --permission-mode plan</code>，請它把需求拆成兩個不共用檔案的工作，每個都附上檔案清單與測試命令。</div></li>
+            <li><div><strong>開兩個 worktree</strong>照上面的 <code>git worktree add</code> 命令，一個工作一個分支。</div></li>
+            <li><div><strong>同時實作</strong>在一個 worktree 把工作 1 貼給 Codex，在另一個把工作 2 貼給 Claude Code。寫清楚寫入範圍，並要求完成前先跑測試。</div></li>
+            <li><div><strong>自己跑驗證</strong>在每個 worktree 執行測試命令。Agent 說「做完了」不等於測試通過。</div></li>
+            <li><div><strong>交換審查</strong>Claude 的分支用 <code>codex review --base main</code> 審查；Codex 的分支，在那個 worktree 以 plan mode 開 Claude Code，請它審查和 <code>main</code> 的差異。</div></li>
+            <li><div><strong>自己合併</strong>修掉重要的問題，合併兩個分支，再用 <code>git worktree remove</code> 移除兩個資料夾。</div></li>
+          </ol>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Pyloxa 能幫上什麼</h2>
+          <p>Pyloxa 是免費的 Windows 桌面 App，用官方的 CLI、你自己的訂閱或 API Key，把上面大部分的步驟自動化。需求只要說一次，由一個 Agent 擔任大腦寫出計畫，你核准後才開始。</p>
+          <ul class="fx-list">
+            <li><strong>依工作類型派工。</strong>分工表決定每一類工作交給哪個 Agent，也可以設備援。預設的「均衡」範本是前端給 Claude Code、後端給 Codex。<a href="../../workflow/">看工作流程</a>。</li>
+            <li><strong>一個工作一個 worktree。</strong>每個工作都在自己的 git worktree 與分支裡進行，Pyloxa 不會對你的工作目錄做 stash、reset 或 checkout。</li>
+            <li><strong>Pyloxa 自己跑驗證命令。</strong>你核准過的命令（例如 <code>npm run test</code>）會在每個工作完成後執行，並檢查改動有沒有超出計畫的寫入範圍。<a href="../../help/#checks">驗證怎麼運作</a>。</li>
+            <li><strong>交給另一個 Agent 交叉測試。</strong>例如由 Codex 測 Claude Code 的成果，測試者只能新增測試，Pyloxa 再自己重跑命令。免費版：手動按下測試。Pro：自動交叉測試，沒過會自動交回修正。</li>
+            <li><strong>額度用盡時換手。</strong>Pyloxa 依你的規則提出備援，另一個 Agent 從已經改好的檔案繼續。免費版：每次換手由你確認。Pro：自動換手，每個工作最多兩次，而且不會從訂閱自動切到 API Key。<a href="../../quota/">額度與備援</a>。</li>
+            <li><strong>由你合併。</strong>你決定之前，什麼都不會合併到你的分支、推送或開 PR。</li>
+          </ul>
+          <p>免費版一次一個專案有工作在跑，一個計畫同時最多兩個工作。<a href="../../pro/">Pro</a> 加上多個專案同時進行與自動化的部分，目前可以免費預覽。如果你一次只用一個 Agent，或開兩個終端機照上面的步驟就夠順手，就不需要 Pyloxa。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>Claude Code 和 Codex 可以同時在同一個資料夾工作嗎？</summary><div>可以，但它們會改到同樣的檔案，也會打亂彼此的測試。給每個 Agent 自己的 git worktree 與分支，派給它們不共用檔案的工作。</div></details>
+          <details class="fx-q"><summary>Claude Code 會讀 AGENTS.md 嗎？</summary><div>會，從 v2.1.277 起，在目前資料夾與上層都沒有 <code>CLAUDE.md</code> 或 <code>CLAUDE.local.md</code> 時會讀。已經有 <code>CLAUDE.md</code> 的話，在裡面加上 <code>@AGENTS.md</code> 匯入。</div></details>
+          <details class="fx-q"><summary>開不同分支就好，還是一定要 worktree？</summary><div>只開分支的話，還是同一個資料夾，一次只能 checkout 一個分支。worktree 讓每個分支有自己的資料夾，兩個 Agent 才能同時工作。</div></details>
+          <details class="fx-q"><summary>在 Claude Code 裡用 Codex 外掛，用的是誰的額度？</summary><div>Codex 的部分用你自己的 Codex 登入；外掛的 README 寫明，用量會算在你的 Codex 額度裡。</div></details>
+          <details class="fx-q"><summary>可以和同事共用一個訂閱來跑兩個工具嗎？</summary><div>不行。Anthropic 與 OpenAI 的條款都規定不能分享帳號或登入資訊，每個人每個工具都要有自己的帳號。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/common-workflows">Common workflows</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan">Use Claude Code with your Pro, Max, or Ultra plan</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://www.anthropic.com/legal/consumer-terms">Consumer Terms of Service</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://developers.openai.com/codex/guides/agents-md">Custom instructions with AGENTS.md</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://developers.openai.com/codex/pricing">Pricing</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://developers.openai.com/codex/cli/slash-commands">Developer commands</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://github.com/openai/codex-plugin-cc">Codex plugin for Claude Code</a>，OpenAI on GitHub（2026-11-19 查證）</li>
+            <li><a href="https://openai.com/policies/row-terms-of-use/">Terms of Use</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://git-scm.com/docs/git-worktree">git-worktree documentation</a>，Git（2026-11-19 查證）</li>
+          </ol>
+        </section>

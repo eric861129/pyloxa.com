@@ -553,5 +553,6 @@
   "dl.privacy": "L’édition gratuite ne demande aucun compte, et Pyloxa ne nous envoie jamais votre code ni vos prompts.",
   "dl.verifyTitle": "Vérifier le fichier (facultatif)",
   "dl.verify": "Pour vous assurer que le programme d’installation n’a pas été modifié, ouvrez PowerShell dans le dossier de téléchargement, lancez cette commande et comparez le résultat avec la valeur ci-dessous.",
-  "dl.links": "Toutes les versions, avec leurs notes et sommes de contrôle, sont dans le <a href=\"{{@changelog}}\">journal des modifications</a> et sur <a href=\"https://github.com/eric861129/Pyloxa-Releases/releases\">GitHub</a>. Un problème ? <a href=\"https://github.com/eric861129/Pyloxa-Releases/issues\">Signalez-le</a> ou consultez l’<a href=\"{{@help}}\">aide</a>."
+  "dl.links": "Toutes les versions, avec leurs notes et sommes de contrôle, sont dans le <a href=\"{{@changelog}}\">journal des modifications</a> et sur <a href=\"https://github.com/eric861129/Pyloxa-Releases/releases\">GitHub</a>. Un problème ? <a href=\"https://github.com/eric861129/Pyloxa-Releases/issues\">Signalez-le</a> ou consultez l’<a href=\"{{@help}}\">aide</a>.",
+  "footer.guides": "Guides"
 }

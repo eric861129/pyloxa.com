@@ -35,6 +35,12 @@ Pyloxa is made from the first letters of Plan, Yield, Lead, Orchestrate, eXecute
 - [Memory & Skills](https://pyloxa.com/memory/): shared memory across Claude Code, Codex and Gemini CLI, and the skills inventory
 - [Quota & fallback](https://pyloxa.com/quota/): the title-bar usage meter, takeovers when quota runs out, and Pro scheduling
 - [Pro](https://pyloxa.com/pro/): what Pro adds, the free preview, accounts, and what happens when Pro ends
+- [Guides](https://pyloxa.com/guides/): practical guides on Claude Code, Codex and Gemini CLI, checked against the vendors’ documentation ([繁體中文](https://pyloxa.com/zh-TW/guides/))
+  - [Claude Code says “usage limit reached”. Now what?](https://pyloxa.com/guides/claude-code-usage-limits/): What the Claude Code usage limit message means, when it resets, and every legitimate way to keep working.
+  - [How to use Claude Code and Codex together on one project](https://pyloxa.com/guides/claude-code-and-codex-together/): Split the work, keep the agents out of each other’s files, share one set of rules and cross-review.
+  - [The AI agent says it’s done. How do you check?](https://pyloxa.com/guides/verify-ai-agent-code/): Why an agent’s “done” isn’t evidence, the checks that work, and how to have a second AI review or test the code.
+  - [AGENTS.md, CLAUDE.md and GEMINI.md: one instructions file for three CLIs](https://pyloxa.com/guides/agents-md-claude-md-gemini-md/): Which instruction file each CLI reads, and how to share one AGENTS.md across Claude Code, Codex and Gemini CLI.
+  - [Claude Code and Codex CLI on Windows: do you need WSL?](https://pyloxa.com/guides/claude-code-codex-on-windows/): Native Windows or WSL for Claude Code and Codex CLI, with official install commands and fixes for common errors.
 - [Changelog](https://pyloxa.com/changelog/): what changed in each release
 - [Help](https://pyloxa.com/help/): installing, connecting the CLIs, plans, checks, workflows, Pro sign-in and troubleshooting, with Pro features marked ([繁體中文](https://pyloxa.com/zh-TW/help/))
 - [Download](https://pyloxa.com/download/): the latest Windows installer, install steps, what the SmartScreen warning looks like, and the SHA-256 checksum (all releases: https://github.com/eric861129/Pyloxa-Releases/releases)

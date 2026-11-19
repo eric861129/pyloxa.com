@@ -350,4 +350,88 @@
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/help/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/help/" />
   </url>
+  <url>
+    <loc>https://pyloxa.com/guides/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/guides/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/guides/claude-code-usage-limits/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-usage-limits/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-usage-limits/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-usage-limits/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/guides/claude-code-usage-limits/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-usage-limits/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-usage-limits/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-usage-limits/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/guides/claude-code-and-codex-together/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-and-codex-together/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/guides/claude-code-and-codex-together/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-and-codex-together/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/guides/verify-ai-agent-code/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/guides/agents-md-claude-md-gemini-md/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/agents-md-claude-md-gemini-md/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/agents-md-claude-md-gemini-md/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/agents-md-claude-md-gemini-md/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/agents-md-claude-md-gemini-md/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/guides/claude-code-codex-on-windows/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-codex-on-windows/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/guides/claude-code-codex-on-windows/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-codex-on-windows/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
+  </url>
 </urlset>

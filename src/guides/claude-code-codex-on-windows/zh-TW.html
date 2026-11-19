@@ -1,0 +1,130 @@
+<!--meta {"title": "Windows 跑 Claude Code、Codex 要裝 WSL 嗎？", "description": "Windows 跑 Claude Code 與 Codex CLI 不一定要 WSL。官方安裝命令、原生與 WSL 怎麼選，及 PATH、執行原則錯誤解法。", "h1": "在 Windows 跑 Claude Code 與 Codex CLI，需要 WSL 嗎？", "lede": "兩個 CLI 現在都能直接在 Windows 上跑。這篇整理各自的官方安裝方式、什麼情況還是 WSL 2 比較好，以及最常卡住的安裝錯誤怎麼解。", "nav": "在 Windows 跑 Claude Code 與 Codex", "blurb": "Claude Code 與 Codex CLI 在 Windows 原生還是 WSL：官方安裝命令與常見錯誤的解法。", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>不需要 WSL。Claude Code 原生支援 Windows 10 1809 以上：在 PowerShell 執行 <code>irm https://claude.ai/install.ps1 | iex</code> 即可（不用系統管理員權限），想讓它用 Git Bash 就再裝 Git for Windows。Codex CLI 也能直接在 PowerShell 跑，並有自己的 Windows 沙箱；用 OpenAI 的 PowerShell 安裝程式或 <code>npm install -g @openai/codex</code> 安裝。需要 Linux 工具鏈、repo 本來就放在 WSL，或想用 Claude Code 的沙箱功能（原生 Windows 不支援）時，再改用 WSL 2。</p>
+        </aside>
+
+        <section class="gd-sec" id="claude-code" aria-labelledby="claude-code-title">
+          <h2 id="claude-code-title">Windows 怎麼安裝 Claude Code？</h2>
+          <p>Anthropic 列出的支援環境是 Windows 10 1809 以上與 Windows Server 2019 以上，x64 或 ARM64，記憶體 4 GB 以上。PowerShell 或 CMD 都可以，官方方式有這幾種：</p>
+          <ul class="fx-list">
+            <li><strong>PowerShell（建議的原生安裝程式）</strong>：<code>irm https://claude.ai/install.ps1 | iex</code></li>
+            <li><strong>CMD</strong>：<code>curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code></li>
+            <li><strong>WinGet</strong>：<code>winget install Anthropic.ClaudeCode</code>。用 WinGet 裝的不會自動更新，要自己定期跑 <code>winget upgrade Anthropic.ClaudeCode</code>。</li>
+            <li><strong>npm</strong>：<code>npm install -g @anthropic-ai/claude-code@latest</code>。需要 Node.js 22 以上，裝的是同一個原生執行檔。</li>
+          </ul>
+          <p>原生安裝程式會把 <code>claude.exe</code> 放在 <code>%USERPROFILE%\.local\bin</code>，之後在背景自動更新。裝完開一個新的終端機確認：</p>
+          <pre class="gd-code"><code>claude --version
+claude doctor</code></pre>
+          <p><code>claude doctor</code> 會列出安裝與設定的診斷資訊（只讀，不會改東西）。接著在專案資料夾執行 <code>claude</code>，照瀏覽器的步驟登入。Claude Code 需要 Pro、Max、Ultra、Team、Enterprise 或 Console 帳號，claude.ai 免費方案不包含 Claude Code。</p>
+          <h3>一定要裝 Git for Windows 嗎？</h3>
+          <p>不一定，但建議裝。有 Git for Windows 時，Claude Code 的 Bash 工具會用 Git Bash；沒有的話就改用 PowerShell 工具執行命令。如果 Claude Code 找不到 Git Bash，在 <code>~/.claude/settings.json</code> 指定路徑：</p>
+          <pre class="gd-code"><code>{
+  "env": {
+    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
+  }
+}</code></pre>
+          <p class="gd-note">要指到 <code>bash.exe</code>，不是 <code>git-bash.exe</code> 那個啟動器；檔名不對的話 Claude Code 會忽略這個變數。不確定 Git 裝在哪，執行 <code>where.exe git</code> 就知道。</p>
+        </section>
+
+        <section class="gd-sec" id="codex" aria-labelledby="codex-title">
+          <h2 id="codex-title">Codex CLI 能在原生 Windows 跑嗎？</h2>
+          <p>可以。OpenAI 的 Windows 文件寫明 CLI、IDE 擴充套件與桌面 App 都能在 Windows 原生使用，在 PowerShell 裡搭配 Windows 沙箱執行，不必透過 WSL 或虛擬機。我們查閱的頁面沒有把原生 Windows 標成實驗性。建議用 Windows 11；Windows 10 至少要 1809。</p>
+          <p>在 PowerShell 用官方安裝程式，或用 npm 安裝：</p>
+          <pre class="gd-code"><code>powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+npm install -g @openai/codex</code></pre>
+          <p>用 <code>codex login</code> 透過瀏覽器以 ChatGPT 帳號登入，<code>codex login status</code> 可以看目前的登入方式。也可以用 <code>codex login --with-api-key</code> 改用 OpenAI Platform 的 API Key，這會依標準 API 費率計費。</p>
+          <h3>Codex 的 Windows 沙箱</h3>
+          <p>沙箱會依目前的權限設定，限制 Codex 執行的命令能讀寫哪些檔案、能不能連網。有三種實作：</p>
+          <ul class="fx-list">
+            <li><strong><code>mxc</code></strong>：支援的環境優先用它。需要 Windows 11 24H2（build 26100.9278）或 25H2（build 26200.9278），以及 Microsoft 還在陸續推出的 MXC 功能，不需要系統管理員設定。</li>
+            <li><strong><code>elevated</code></strong>：沒指定模式時 Codex 優先用的備援。設定時需要系統管理員核准，但沙箱裡的命令本身不會以系統管理員身分執行。</li>
+            <li><strong><code>unelevated</code></strong>：無法做 elevated 設定時使用，網路隔離比較弱。</li>
+          </ul>
+          <p>要指定備援，在 Codex 的 <code>config.toml</code> 的 <code>[windows]</code> 下寫 <code>sandbox = "elevated"</code>（或 <code>"unelevated"</code>）。</p>
+        </section>
+
+        <section class="gd-sec" id="gemini" aria-labelledby="gemini-title">
+          <h2 id="gemini-title">Gemini CLI 呢？</h2>
+          <p>Google 的安裝說明建議 Windows 11 24H2 以上、Node.js 20.0.0 以上，支援的 shell 包含 PowerShell。安裝命令是 <code>npm install -g @google/gemini-cli</code>。</p>
+        </section>
+
+        <section class="gd-sec" id="native-vs-wsl" aria-labelledby="native-vs-wsl-title">
+          <h2 id="native-vs-wsl-title">原生 Windows 還是 WSL 2，該選哪個？</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">原生 Windows</th><th scope="col">WSL 2</th></tr></thead><tbody>
+            <tr><td>repo 放哪裡</td><td>Windows 檔案系統，例如 <code>C:\Users\you\Project</code></td><td>Linux 檔案系統，例如 <code>/home/you/Project</code></td></tr>
+            <tr><td>檔案存取速度</td><td>給 Windows 工具用最快</td><td>在 Linux 裡很快；在 <code>/mnt/c/...</code> 底下工作會變慢</td></tr>
+            <tr><td>工具鏈</td><td>Windows 原生的專案與工具</td><td>Linux 工具鏈</td></tr>
+            <tr><td>Claude Code 沙箱</td><td>不支援</td><td>支援（WSL 1 不支援）</td></tr>
+            <tr><td>Codex 沙箱</td><td>Windows 沙箱（<code>mxc</code>、<code>elevated</code> 或 <code>unelevated</code>）</td><td>Linux 沙箱；Codex 0.115 起不再支援 WSL 1</td></tr>
+            <tr><td>安裝方式</td><td>上面的 PowerShell 或 CMD 安裝程式</td><td>在 WSL 的 shell 裡執行 <code>curl -fsSL https://claude.ai/install.sh | bash</code> 與 <code>curl -fsSL https://chatgpt.com/codex/install.sh | sh</code></td></tr>
+          </tbody></table></div>
+          <p>Microsoft 的原則很簡單：在 Linux 命令列工作，檔案就放 WSL 的檔案系統；在 PowerShell 或 CMD 工作，就放 Windows 的檔案系統。兩邊混用通常就是變慢的原因。要裝 WSL，用系統管理員身分開 PowerShell 執行 <code>wsl --install</code> 再重新開機；新裝的發行版預設就是 WSL 2，可以用 <code>wsl -l -v</code> 確認。</p>
+          <p class="gd-note">用 WSL 的話，Claude Code 與 Codex 要在 WSL 終端機裡安裝，不是在 PowerShell。如果 <code>which node</code> 或 <code>which npm</code> 顯示 <code>/mnt/c/</code> 開頭的路徑，代表 WSL 用到的是 Windows 那邊的 Node.js，請在 Linux 發行版裡另外裝 Node。</p>
+        </section>
+
+        <section class="gd-sec" id="fixes" aria-labelledby="fixes-title">
+          <h2 id="fixes-title">常見的安裝錯誤與解法</h2>
+          <h3>裝完出現「'claude' 不是內部或外部命令」</h3>
+          <p>安裝資料夾不在 PATH 裡。先確認檔案存在，再把資料夾加進使用者的 PATH，然後開新的終端機（用編輯器內建終端機的話，編輯器也要重開）：</p>
+          <pre class="gd-code"><code>Test-Path "$env:USERPROFILE\.local\bin\claude.exe"
+$currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')</code></pre>
+          <h3>用 npm 裝的 CLI 找不到</h3>
+          <p>在 Windows 上，npm 會把全域命令直接放在全域 prefix 資料夾，預設是 <code>%AppData%\npm</code>。執行 <code>npm prefix -g</code> 看你的位置，確認這個資料夾在 PATH 裡，再開新的終端機。</p>
+          <h3>「因為這個系統上已停用指令碼執行」</h3>
+          <p>英文訊息是 “running scripts is disabled on this system”。這是 PowerShell 的執行原則擋下了 npm 建立的 <code>npm.ps1</code> 或 <code>claude.ps1</code>。三個解法擇一：只對自己這個使用者允許本機指令碼（不需要系統管理員）、改呼叫 <code>npm.cmd</code>，或改用不會裝 <code>.ps1</code> 的原生安裝程式：</p>
+          <pre class="gd-code"><code>Get-ExecutionPolicy -List
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+          <p class="gd-note">Microsoft 說明執行原則不是安全邊界。群組原則的設定會蓋過它，公司管理的電腦請找 IT。</p>
+          <h3>在錯的 shell 跑了安裝命令</h3>
+          <ul class="fx-list">
+            <li><code>'irm' is not recognized</code>：你在 CMD。改用 CMD 的命令，或開 PowerShell。</li>
+            <li><code>The token '&amp;&amp;' is not a valid statement separator</code>：你在 PowerShell。改用 PowerShell 的命令。</li>
+            <li><code>A parameter cannot be found that matches parameter name 'fsSL'</code>：你在 PowerShell 跑了 macOS／Linux 的命令，PowerShell 的 <code>curl</code> 其實是 <code>Invoke-WebRequest</code> 的別名。</li>
+          </ul>
+          <h3>Node.js 版本太舊</h3>
+          <p>執行 <code>node --version</code>。Claude Code 的 npm 套件需要 Node.js 22 以上（版本太舊時 npm 會顯示 <code>EBADENGINE</code> 警告），Gemini CLI 需要 20 以上。Claude Code 的原生安裝程式完全不用 Node.js。</p>
+          <h3>WSL 出現「Exec format error」</h3>
+          <p>你用的是 WSL 1。用 <code>wsl --set-version &lt;DistroName&gt; 2</code> 把發行版轉成 WSL 2。</p>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Pyloxa 能幫上什麼</h2>
+          <p>Pyloxa 是 Windows 10、11 的原生桌面 App，讓 Claude Code 和 Codex CLI 在同一個專案裡分工合作。它直接在 Windows 執行，不需要 WSL，也不需要 Docker。需要 Git for Windows 2.30 以上；Node.js 22 以上只有在要讓它幫你安裝 CLI 時才需要。</p>
+          <p>免費版的<a href="../../help/#setup">設定精靈</a>就涵蓋這篇的步驟：</p>
+          <ul class="fx-list">
+            <li><strong>環境檢查</strong>：git（必要）與 Node.js（選用）。缺少或版本太舊時，複製畫面上的 winget 命令或開啟官方下載頁，裝好後按「重新檢查」。</li>
+            <li><strong>安裝 Agent</strong>：每個 CLI 一張卡，先讓你看到完整命令，再以 CLI 官方的 <code>npm install -g</code> 套件安裝 Pyloxa 已驗證的最新版本。</li>
+            <li><strong>登入與金鑰</strong>：顯示每個 CLI 是否「可以派工」。在終端機用 <code>claude auth login</code> 或 <code>codex login</code> 登入訂閱，或貼上 API Key。Pyloxa 不會讀取、複製或傳送你的 token。Gemini CLI 是實驗性支援，需要你自己的付費 Gemini API Key。</li>
+          </ul>
+          <p><a href="../../help/#troubleshooting">疑難排解</a>裡和 Windows 有關的：CLI 在終端機能用、Pyloxa 卻顯示沒安裝，請重新啟動 Pyloxa；工作失敗並顯示「無法啟動 claude」（或 codex），可能是防毒軟體擋下，請<a href="../../help/#antivirus">允許 Pyloxa 的安裝資料夾</a>，不要直接關掉防護。安裝檔目前還沒有程式碼簽章，第一次執行時 SmartScreen 可能會警告。</p>
+          <p>以上都在免費版。如果你只在一個終端機用一個 Agent，其實不需要 Pyloxa；它適合想讓大腦把需求拆給兩家 Agent 派工、每個工作在自己的 git worktree 跑、由你自己的測試命令決定過不過的情況。詳見<a href="../../workflow/">工作流程</a>。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>在 Windows 用 Claude Code 一定要 WSL 嗎？</summary><div>不用。Claude Code 可以在 Windows 10 1809 以上與 Windows Server 2019 以上，直接從 PowerShell 或 CMD 執行。只有想用 Claude Code 的沙箱或 Linux 工具鏈時才需要 WSL 2。</div></details>
+          <details class="fx-q"><summary>Codex CLI 在 Windows 還是實驗性的嗎？</summary><div>OpenAI 目前的 Windows 頁面（2026-11-19 查閱）把原生 Windows 加 Windows 沙箱當成預設做法，沒有標示實驗性。需要 Linux 原生工具、或工作本來就在 WSL 裡時，才建議用 WSL 2。</div></details>
+          <details class="fx-q"><summary>repo 要放 C 槽還是 WSL 的檔案系統？</summary><div>看你在哪裡跑工具。從 WSL 工作，就放在 Linux 的家目錄，<code>/mnt/c</code> 底下會比較慢；原生工作，就放在 Windows 檔案系統。</div></details>
+          <details class="fx-q"><summary>需要哪個版本的 Node.js？</summary><div>Claude Code 的原生安裝程式不需要 Node.js。用 npm 安裝時，Claude Code 需要 Node.js 22 以上，Gemini CLI 需要 20.0.0 以上。用 <code>node --version</code> 檢查。</div></details>
+          <details class="fx-q"><summary>一定要付費方案嗎？</summary><div>Claude Code 要：需要 Pro、Max、Ultra、Team、Enterprise 或 Console 帳號。Codex CLI 用 ChatGPT 帳號登入，或用依 API 費率計費的 OpenAI API Key。各方案包含什麼，請看各家官方的方案頁。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/setup">Advanced setup</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://code.claude.com/docs/en/troubleshoot-install">Troubleshoot installation and login</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://code.claude.com/docs/en/cli-reference">CLI reference</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://developers.openai.com/codex/windows">Windows sandbox</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://developers.openai.com/codex/windows/wsl">WSL</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://developers.openai.com/codex/auth">Authentication</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://github.com/openai/codex">openai/codex README</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/get-started/installation.mdx">Gemini CLI installation</a>，Google（2026-11-19 查閱）</li>
+            <li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/install">安裝 WSL</a>，Microsoft（2026-11-19 查閱）</li>
+            <li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/filesystems">跨文件系統工作</a>，Microsoft（2026-11-19 查閱）</li>
+            <li><a href="https://learn.microsoft.com/zh-tw/powershell/module/microsoft.powershell.core/about/about_execution_policies">about_Execution_Policies</a>，Microsoft（2026-11-19 查閱）</li>
+            <li><a href="https://docs.npmjs.com/cli/v11/configuring-npm/folders">Folders</a>，npm Docs（2026-11-19 查閱）</li>
+          </ol>
+        </section>

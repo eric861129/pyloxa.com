@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verify AI agent code before merging: Claude Code, Codex</title>
+    <meta name="description" content="Your AI agent says it’s done and tests pass. Here’s how to check: rerun the commands, read the test diff, check scope, get a second agent to review." />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Verify AI agent code before merging: Claude Code, Codex" />
+    <meta property="og:description" content="Your AI agent says it’s done and tests pass. Here’s how to check: rerun the commands, read the test diff, check scope, get a second agent to review." />
+    <meta property="og:url" content="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://pyloxa.com/guides/verify-ai-agent-code/#article","headline":"The AI agent says it’s done. How do you check?","description":"Your AI agent says it’s done and tests pass. Here’s how to check: rerun the commands, read the test diff, check scope, get a second agent to review.","inLanguage":"en","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/guides/verify-ai-agent-code/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-en.png"},{"@type":"WebPage","@id":"https://pyloxa.com/guides/verify-ai-agent-code/","url":"https://pyloxa.com/guides/verify-ai-agent-code/","name":"Verify AI agent code before merging: Claude Code, Codex","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/guides/verify-ai-agent-code/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/guides/verify-ai-agent-code/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://pyloxa.com/guides/"},{"@type":"ListItem","position":3,"name":"Verify AI agent code","item":"https://pyloxa.com/guides/verify-ai-agent-code/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/guides/verify-ai-agent-code/#faq","mainEntity":[{"@type":"Question","name":"Why does the agent say tests pass when they fail for me?","acceptedAnswer":{"@type":"Answer","text":"Usually it ran a subset, ran them before a later edit, used a different environment, or reported from memory. Ask for the exact command and output, then rerun the full suite yourself on a clean install."}},{"@type":"Question","name":"Should the same agent review its own code?","acceptedAnswer":{"@type":"Answer","text":"It helps less than a fresh reviewer. Claude Code’s /code-review runs in a subagent that never saw your conversation, which is better; a model from another vendor working from the spec is more independent still. Either way, the test results decide, not the review."}},{"@type":"Question","name":"Can I let the reviewer fix what it finds?","acceptedAnswer":{"@type":"Answer","text":"You can, but then its edits need checking too. Codex’s /review reports without modifying your working tree, and Claude Code’s /code-review only edits with --fix. Keeping fixes with the original author and rerunning the checks is easier to follow."}},{"@type":"Question","name":"How do I stop an agent from editing tests to make them pass?","acceptedAnswer":{"@type":"Answer","text":"Say so in the task, then enforce it. Review the diff of test files on every branch, and in Claude Code a PreToolUse hook can block edits to paths you choose. Having a separate agent write the tests also helps."}},{"@type":"Question","name":"Is an AI code review enough to merge?","acceptedAnswer":{"@type":"Answer","text":"No. It catches things tests miss, but it’s a judgment. Merge on passing commands you ran, a diff you read, and your own review of risky areas such as auth, payments and migrations."}}]}]}</script>
+    <link rel="stylesheet" href="../../assets/site.css" />
+    <link rel="stylesheet" href="../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../" aria-label="Pyloxa home">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../workflow/">Workflow</a></li>
+        <li class="optional"><a href="../../memory/">Memory & Skills</a></li>
+        <li class="optional"><a href="../../quota/">Quota & fallback</a></li>
+        <li class="optional"><a href="../../pro/">Pro</a></li>
+        <li class="optional"><a href="../../guides/">Guides</a></li>
+        <li><a href="../../zh-TW/guides/verify-ai-agent-code/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="../../download/#start">Download</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../">Pyloxa</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Verify AI agent code</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">Guide</p>
+          <h1>The AI agent says it’s done. How do you check?</h1>
+          <p class="fx-lede">A practical way to verify work from Claude Code or Codex before you merge it: run the checks yourself, read the diff, and get a second agent to review or test against the spec.</p>
+          <p class="gd-updated"><time datetime="2026-11-19">Updated November 19, 2026</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>Treat an agent’s “done, all tests pass” as a claim, not a result. On the agent’s branch, run the project’s own test, lint and build commands yourself or in CI, read the whole diff including any changes to test files, and check that the changed files match what the task allowed. For a second opinion, give a different agent (ideally from another vendor) the spec rather than the first agent’s reasoning, and have it review or write tests without fixing the code itself.</p>
+        </aside>
+
+        <section class="gd-sec" id="why-done" aria-labelledby="why-done-title">
+          <h2 id="why-done-title">Why “done” from an agent isn’t evidence</h2>
+          <p>A coding agent stops when the work looks finished to it. Anthropic’s own Claude Code guide puts it plainly: if the agent has nothing to run that tells it whether the work is done, “looks done” is all it has to go on, and “all tests pass” on its own tells you very little. The same holds for any agent. Common ways a “done” goes wrong:</p>
+          <ul class="fx-list">
+            <li><strong>The tests never ran</strong>, or only one file did, or they ran against a stale build or a different environment.</li>
+            <li><strong>The tests changed</strong>: an assertion was loosened, a failing case was deleted, or a test was marked skip or only.</li>
+            <li><strong>The wrong thing was tested</strong>: new tests check what the code does, not what the task asked for.</li>
+            <li><strong>The scope drifted</strong>: files outside the task changed, including CI config, test config or the agent’s own instruction files.</li>
+          </ul>
+          <p>None of this needs bad intent. It happens when the same process writes the code, picks the checks and reports the result. Move the checking somewhere the agent doesn’t control.</p>
+        </section>
+
+        <section class="gd-sec" id="run-checks" aria-labelledby="run-checks-title">
+          <h2 id="run-checks-title">Run the project’s own checks yourself</h2>
+          <p>The one check that settles it is your test suite running on the agent’s branch, started by you or by CI, with the output in front of you. Use the same commands your team uses, not ones the agent picked for this task.</p>
+          <pre class="gd-code"><code>git fetch origin
+git switch agent/task-42
+npm ci
+npm test
+npm run lint
+npm run build</code></pre>
+          <ul class="fx-list">
+            <li>Install dependencies fresh, so you aren’t testing against leftovers from the agent’s session.</li>
+            <li>Run the full suite, not only the tests the agent mentions.</li>
+            <li>When you do ask the agent to check its own work, ask for evidence: the exact command it ran and its output.</li>
+            <li>In Claude Code you can also enforce a check: a <code>Stop</code> hook runs your script whenever Claude tries to end its turn and sends it back to work if the script exits with code 2.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="review-diff" aria-labelledby="review-diff-title">
+          <h2 id="review-diff-title">Read the diff, starting with the tests</h2>
+          <p>Before reading the implementation, look at what changed and where. Compare the file list with what the task allowed.</p>
+          <pre class="gd-code"><code>git diff --stat main...agent/task-42
+git diff --name-only main...agent/task-42
+git diff main...agent/task-42 -- '*test*' '*spec*'</code></pre>
+          <div class="gd-table"><table><thead><tr><th scope="col">If the diff touches</th><th scope="col">Check that</th></tr></thead><tbody><tr><td>Existing test files</td><td>No assertions were weakened or removed and no tests were skipped, unless the task asked for it</td></tr><tr><td>Test or build config</td><td>Test paths, coverage thresholds and lint rules weren’t loosened</td></tr><tr><td>CI workflows</td><td>No step was removed or made to always pass</td></tr><tr><td>Agent instruction files such as <code>CLAUDE.md</code> or <code>AGENTS.md</code></td><td>The change is one you actually want every future session to follow</td></tr><tr><td>Files outside the task</td><td>Each one has a reason you agree with</td></tr></tbody></table></div>
+          <p class="gd-note">A quick search for newly skipped tests helps, for example <code>git diff main...agent/task-42 | grep -nE '^\+.*(\.skip\(|\.only\(|pytest\.mark\.skip)'</code>. Adjust the pattern to your test framework.</p>
+        </section>
+
+        <section class="gd-sec" id="isolate" aria-labelledby="isolate-title">
+          <h2 id="isolate-title">Keep each task on its own branch or worktree</h2>
+          <p>One task per branch makes every check above simple: the diff is only that task, and you can rerun its tests without anything else mixed in. A git worktree is a separate checkout on its own branch, so two agents can work at once without editing the same folder.</p>
+          <pre class="gd-code"><code>git worktree add -b agent/task-42 ../myapp-task-42 main
+cd ../myapp-task-42
+# run the agent here, then your checks
+git worktree remove ../myapp-task-42</code></pre>
+          <p>Claude Code has this built in: <code>claude --worktree task-42</code> starts an isolated session on its own worktree. The repository needs at least one commit first.</p>
+        </section>
+
+        <section class="gd-sec" id="second-agent" aria-labelledby="second-agent-title">
+          <h2 id="second-agent-title">How to have a second AI review or test the code</h2>
+          <p>A second agent helps only if it isn’t simply agreeing with the first. Set it up so it can’t.</p>
+          <ol class="fx-steps">
+            <li><div><strong>Give it the spec, not the first agent’s reasoning</strong>Hand over the task description or spec file and the diff. Leave out the first agent’s summary, so the reviewer judges the result, not the story about it.</div></li>
+            <li><div><strong>Ask it to check against the spec</strong>For example: “Review the diff between main and this branch against SPEC.md. Check every requirement is implemented and each listed edge case has a test. Report only gaps that affect correctness; skip style. Don’t edit files.” Asking it to skip style matters: a reviewer told to find problems will always find something.</div></li>
+            <li><div><strong>Or ask it to write tests</strong>Let it add tests from the spec, limited to test files, then run your commands yourself. Afterwards, check with <code>git diff --name-only</code> that it touched only test files, and don’t let the original agent edit the tests it added.</div></li>
+            <li><div><strong>Use a model from another vendor</strong>Have Codex review Claude Code’s branch, or the other way round. A different model doesn’t start from the same assumptions, so you get a more independent view. It can still be wrong.</div></li>
+            <li><div><strong>Don’t let the reviewer fix things silently</strong>Findings go back to the agent that wrote the code, and the checks run again. A reviewer that edits the code becomes a second author, and nobody reviewed its edits.</div></li>
+          </ol>
+          <p>Both vendors ship a review command. Each one is an AI review, not a test run.</p>
+          <div class="gd-table"><table><thead><tr><th scope="col">Tool</th><th scope="col">Command</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Claude Code</td><td><code>/code-review</code> (alias <code>/review</code>)</td><td>Reviews your branch’s changes, or a PR, branch, path or range you pass, for correctness bugs, in a subagent that never saw your conversation. Report only, unless you add <code>--fix</code>.</td></tr><tr><td>Claude Code</td><td><code>/security-review</code></td><td>Checks the diff between your branch and origin’s default branch for security issues.</td></tr><tr><td>Codex CLI</td><td><code>/review</code></td><td>Reviews uncommitted changes, a commit or a base branch, or follows custom instructions, and reports prioritized findings without modifying your working tree.</td></tr><tr><td>Codex CLI</td><td><code>codex review --base main</code></td><td>The same review, non-interactive, against a base branch. <code>--uncommitted</code>, <code>--commit</code> and custom instructions are alternatives.</td></tr></tbody></table></div>
+          <pre class="gd-code"><code># Codex reviews a branch Claude Code wrote
+git switch agent/task-42
+codex review --base main
+
+# Claude Code reviews a branch Codex wrote, without editing
+claude -p "/code-review main...agent/task-43"</code></pre>
+          <p class="gd-note">Reviews use your plan’s usage or API billing like any other session. A review that finds nothing doesn’t replace running the tests.</p>
+        </section>
+
+        <section class="gd-sec" id="checklist" aria-labelledby="checklist-title">
+          <h2 id="checklist-title">A checklist to copy</h2>
+          <pre class="gd-code"><code>- [ ] The task ran on its own branch or worktree
+- [ ] I ran install, test, lint and build on that branch myself (or CI did)
+- [ ] I read the output, not the agent's summary
+- [ ] The changed files match what the task allowed
+- [ ] No existing test was weakened, deleted or skipped without a reason
+- [ ] No changes to CI, test config or agent instruction files I didn't ask for
+- [ ] A second agent (another vendor if possible) reviewed it against the spec
+- [ ] The reviewer reported; the author fixed; the checks ran again
+- [ ] I decided to merge</code></pre>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Where Pyloxa fits</h2>
+          <p>Pyloxa is a free Windows app that runs Claude Code and Codex CLI together on one project, and it does most of the checklist above for you. An agent saying it’s done never counts. When a task finishes, Pyloxa runs the verification commands you approved (tests, build, lint) in that task’s own worktree and checks that the changed files are within the plan’s write scope. A result is accepted automatically only when at least one check exists, everything passes and no human review is required. If a check fails, the same agent is asked to fix it, with at most three automatic runs per task.</p>
+          <ul class="fx-list">
+            <li><strong>Cross-testing</strong>: a different agent, for example Codex on Claude Code’s work, adds tests and Pyloxa reruns your commands; the command result decides. The tester can only change test files, and the original agent can’t change the tests it added. In the free version you choose “Have another agent test it”; Pro does it automatically by your settings, with failed tests sent back for a fix.</li>
+            <li><strong>Brain review</strong> (free): the brain reads finished work without changing it, and its verdict is labelled as an AI judgment. It never reviews its own task.</li>
+            <li>Changes to <code>.github</code>, <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>.mcp.json</code> or the files that define your check commands are never accepted automatically. Merging, pushing and opening a PR always wait for you.</li>
+            <li>The <strong>verification card</strong> (free) goes on your PR: who did each result, who cross-tested it, which commands Pyloxa ran and how it was accepted. Its optional closing line says “Verified with Pyloxa” only if every result passed the commands Pyloxa ran and every gate passed, and “Verification record by Pyloxa” otherwise.</li>
+          </ul>
+          <p>You don’t need it for one agent on small changes you review yourself, or if CI already runs on every agent branch and you read the diffs. The setup wizard’s free test drive shows the whole process on a sample project with a hidden bug. Details: <a href="../../workflow/#checks">Workflow: checks</a> and <a href="../../help/#checks">Help: checks, brain review and cross-testing</a>.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Why does the agent say tests pass when they fail for me?</summary><div>Usually it ran a subset, ran them before a later edit, used a different environment, or reported from memory. Ask for the exact command and output, then rerun the full suite yourself on a clean install.</div></details>
+          <details class="fx-q"><summary>Should the same agent review its own code?</summary><div>It helps less than a fresh reviewer. Claude Code’s <code>/code-review</code> runs in a subagent that never saw your conversation, which is better; a model from another vendor working from the spec is more independent still. Either way, the test results decide, not the review.</div></details>
+          <details class="fx-q"><summary>Can I let the reviewer fix what it finds?</summary><div>You can, but then its edits need checking too. Codex’s <code>/review</code> reports without modifying your working tree, and Claude Code’s <code>/code-review</code> only edits with <code>--fix</code>. Keeping fixes with the original author and rerunning the checks is easier to follow.</div></details>
+          <details class="fx-q"><summary>How do I stop an agent from editing tests to make them pass?</summary><div>Say so in the task, then enforce it. Review the diff of test files on every branch, and in Claude Code a <code>PreToolUse</code> hook can block edits to paths you choose. Having a separate agent write the tests also helps.</div></details>
+          <details class="fx-q"><summary>Is an AI code review enough to merge?</summary><div>No. It catches things tests miss, but it’s a judgment. Merge on passing commands you ran, a diff you read, and your own review of risky areas such as auth, payments and migrations.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/code-review-local">Review locally with /code-review</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/commands">Commands</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/common-workflows">Common workflows: run parallel sessions with worktrees</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://learn.chatgpt.com/docs/codex/cli">Codex CLI</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://learn.chatgpt.com/docs/developer-commands?surface=cli">Developer commands: codex review</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://git-scm.com/docs/git-worktree">git-worktree</a>, Git documentation (checked 2026-11-19)</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">More guides</h2>
+        <ul>
+            <li><a href="../claude-code-usage-limits/"><span>Claude Code usage limits</span><span class="fx-related-text">What the Claude Code usage limit message means, when it resets, and every legitimate way to keep working.</span></a></li>
+            <li><a href="../claude-code-and-codex-together/"><span>Claude Code and Codex together</span><span class="fx-related-text">Split the work, keep the agents out of each other’s files, share one set of rules and cross-review.</span></a></li>
+            <li><a href="../agents-md-claude-md-gemini-md/"><span>AGENTS.md vs CLAUDE.md</span><span class="fx-related-text">Which instruction file each CLI reads, and how to share one AGENTS.md across Claude Code, Codex and Gemini CLI.</span></a></li>
+            <li><a href="../claude-code-codex-on-windows/"><span>Claude Code and Codex on Windows</span><span class="fx-related-text">Native Windows or WSL for Claude Code and Codex CLI, with official install commands and fixes for common errors.</span></a></li>
+            <li><a href="../../help/"><span>Help</span><span class="fx-related-text">Step-by-step help for installing Pyloxa, connecting the CLIs, plans and troubleshooting.</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">Want this handled for you?</h2>
+          <p>Pyloxa is a free Windows app that runs the Claude Code and Codex CLIs you already use: it splits the work by your rules, runs your tests itself and offers a handoff when one runs out of quota.</p>
+          <div class="fx-actions">
+            <a class="button" href="../../download/#start">Download Pyloxa for Windows</a>
+            <a class="button is-light" href="../../workflow/">How it works</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>Version 0.2.0 · Windows 10 and 11 · <a href="../../help/">Help</a> · <a href="../../guides/">Guides</a> · <a href="../../changelog/">Changelog</a> · <a href="../../privacy/">Privacy policy</a> · <a href="../../legal/EULA.txt">License (EULA)</a> · <a href="mailto:support@pyloxa.com">Support</a></p>
+      <p>Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google. Product names belong to their owners.</p>
+    </footer>
+
+    <script src="../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

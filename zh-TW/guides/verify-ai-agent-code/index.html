@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Agent 說做完了、測試都過了？合併前怎麼驗收 Claude Code 與 Codex</title>
+    <meta name="description" content="Agent 說做完、測試都過，不代表真的過了。自己重跑命令、看測試檔的 diff、核對改動範圍，再請另一個 Agent 依規格審查或補測試。" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="AI Agent 說做完了、測試都過了？合併前怎麼驗收 Claude Code 與 Codex" />
+    <meta property="og:description" content="Agent 說做完、測試都過，不代表真的過了。自己重跑命令、看測試檔的 diff、核對改動範圍，再請另一個 Agent 依規格審查或補測試。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-zh.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/verify-ai-agent-code/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/#article","headline":"AI Agent 說做完了，你要怎麼確認？","description":"Agent 說做完、測試都過，不代表真的過了。自己重跑命令、看測試檔的 diff、核對改動範圍，再請另一個 Agent 依規格審查或補測試。","inLanguage":"zh-TW","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-zh.png"},{"@type":"WebPage","@id":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/","url":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/","name":"AI Agent 說做完了、測試都過了？合併前怎麼驗收 Claude Code 與 Codex","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"攻略","item":"https://pyloxa.com/zh-TW/guides/"},{"@type":"ListItem","position":3,"name":"驗收 AI Agent 寫的程式","item":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/guides/verify-ai-agent-code/#faq","mainEntity":[{"@type":"Question","name":"為什麼 Agent 說測試都過了，我跑卻失敗？","acceptedAnswer":{"@type":"Answer","text":"通常是它只跑了一部分、在後來又改了程式之前跑的、環境不一樣，或是憑記憶回報。請它給出實際的命令和輸出，再自己在乾淨安裝的環境跑完整測試。"}},{"@type":"Question","name":"可以讓同一個 Agent 審查自己寫的程式嗎？","acceptedAnswer":{"@type":"Answer","text":"效果不如換一個新的審查者。Claude Code 的 /code-review 在沒看過你對話的 subagent 裡執行，這樣比較好；換成別家廠商的模型、依規格審查，又更獨立。不管哪一種，下定論的是測試結果，不是審查意見。"}},{"@type":"Question","name":"可以讓審查者直接修它找到的問題嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，但那些修改也要有人檢查。Codex 的 /review 只回報、不改你的工作目錄；Claude Code 的 /code-review 要加 --fix 才會改。把修正留給原作者、再重跑檢查，比較好追。"}},{"@type":"Question","name":"怎麼防止 Agent 為了過測試去改測試？","acceptedAnswer":{"@type":"Answer","text":"在工作說明裡講清楚，然後實際擋住：每個分支都看測試檔的 diff；在 Claude Code 可以用 PreToolUse hook 擋下對指定路徑的修改。由另一個 Agent 寫測試也有幫助。"}},{"@type":"Question","name":"AI 程式碼審查過了就可以合併嗎？","acceptedAnswer":{"@type":"Answer","text":"不行。它能抓到測試抓不到的問題，但終究是判斷。合併的依據應該是你跑過、有通過的命令，你看過的 diff，以及你自己對驗證、金流、資料庫遷移這類高風險部分的審查。"}}]}]}</script>
+    <link rel="stylesheet" href="../../../assets/site.css" />
+    <link rel="stylesheet" href="../../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">跳到主要內容</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../../zh-TW/" aria-label="Pyloxa 首頁">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../../zh-TW/workflow/">工作流程</a></li>
+        <li class="optional"><a href="../../../zh-TW/memory/">記憶與 Skills</a></li>
+        <li class="optional"><a href="../../../zh-TW/quota/">額度與備援</a></li>
+        <li class="optional"><a href="../../../zh-TW/pro/">Pro</a></li>
+        <li class="optional"><a href="../../../zh-TW/guides/">攻略</a></li>
+        <li><a href="../../../guides/verify-ai-agent-code/" lang="en">English</a></li>
+        <li><a class="nav-download" href="../../../zh-TW/download/#start">下載</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../../zh-TW/">Pyloxa</a><span aria-hidden="true">/</span><a href="../">攻略</a><span aria-hidden="true">/</span><span aria-current="page">驗收 AI Agent 寫的程式</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">攻略</p>
+          <h1>AI Agent 說做完了，你要怎麼確認？</h1>
+          <p class="fx-lede">合併 Claude Code 或 Codex 的成果之前，一套實際可行的驗收方法：自己跑檢查、看 diff，再請第二個 Agent 依規格審查或補測試。</p>
+          <p class="gd-updated"><time datetime="2026-11-19">更新於 2026 年 11 月 19 日</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>把 Agent 回報的「做完了，測試全過」當成一句說法，不是結果。在 Agent 的分支上，由你自己或 CI 跑專案原本的測試、lint、建置命令；整份 diff 都要看，尤其是測試檔的改動；再核對改到的檔案有沒有超出這個工作允許的範圍。想要第二意見，就把規格（而不是第一個 Agent 的推理過程）交給另一個 Agent，最好是別家廠商的模型，請它審查或補測試，但不要讓它自己動手改程式碼。</p>
+        </aside>
+
+        <section class="gd-sec" id="why-done" aria-labelledby="why-done-title">
+          <h2 id="why-done-title">為什麼 Agent 說「做完了」不算證據</h2>
+          <p>寫程式的 Agent 覺得看起來完成了，就會停下來。Anthropic 自己的 Claude Code 最佳實務文件就寫得很直白：如果 Agent 手上沒有可以執行、能告訴它到底做完沒的檢查，它就只能憑「看起來做完了」判斷；光說一句「all tests pass」，能告訴你的資訊很少。這對任何 Agent 都一樣。常見的出錯方式：</p>
+          <ul class="fx-list">
+            <li><strong>測試根本沒跑</strong>，或只跑了一個檔案，或是跑在舊的建置、不同的環境上。</li>
+            <li><strong>測試被改了</strong>：斷言被放寬、失敗的案例被刪掉，或測試被標成 skip、only。</li>
+            <li><strong>測錯東西</strong>：新加的測試驗證的是程式現在的行為，不是需求要的行為。</li>
+            <li><strong>範圍跑掉</strong>：改到工作範圍以外的檔案，包括 CI 設定、測試設定，甚至 Agent 自己的指示檔。</li>
+          </ul>
+          <p>這些都不需要什麼惡意。只要寫程式、決定檢查什麼、回報結果的是同一個流程，就會發生。解法是把檢查移到 Agent 管不到的地方。</p>
+        </section>
+
+        <section class="gd-sec" id="run-checks" aria-labelledby="run-checks-title">
+          <h2 id="run-checks-title">自己跑專案原本的檢查</h2>
+          <p>真正能下定論的，是你的測試在 Agent 的分支上跑過，而且是由你或 CI 啟動、輸出就在你眼前。用團隊平常用的命令，不要用 Agent 為這個工作臨時挑的。</p>
+          <pre class="gd-code"><code>git fetch origin
+git switch agent/task-42
+npm ci
+npm test
+npm run lint
+npm run build</code></pre>
+          <ul class="fx-list">
+            <li>重新安裝相依套件，避免測到 Agent Session 留下來的東西。</li>
+            <li>跑完整的測試，不是只跑 Agent 提到的那幾個。</li>
+            <li>如果要 Agent 自己檢查，就要它拿出證據：實際執行的命令和輸出。</li>
+            <li>Claude Code 也可以強制檢查：<code>Stop</code> hook 會在 Claude 要結束回合時執行你的腳本，腳本以代碼 2 結束時，Claude 就得回去繼續做。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="review-diff" aria-labelledby="review-diff-title">
+          <h2 id="review-diff-title">看 diff，先從測試看起</h2>
+          <p>讀實作之前，先看改了什麼、改在哪裡，再拿檔案清單和工作允許的範圍比對。</p>
+          <pre class="gd-code"><code>git diff --stat main...agent/task-42
+git diff --name-only main...agent/task-42
+git diff main...agent/task-42 -- '*test*' '*spec*'</code></pre>
+          <div class="gd-table"><table><thead><tr><th scope="col">diff 改到</th><th scope="col">要確認</th></tr></thead><tbody><tr><td>既有的測試檔</td><td>除非工作本來就要求，否則沒有斷言被放寬或刪除，也沒有測試被跳過</td></tr><tr><td>測試或建置設定</td><td>測試路徑、覆蓋率門檻、lint 規則沒有被放寬</td></tr><tr><td>CI workflow</td><td>沒有步驟被拿掉，或被改成一定會通過</td></tr><tr><td><code>CLAUDE.md</code>、<code>AGENTS.md</code> 這類 Agent 指示檔</td><td>這個改動真的是你希望之後每個 Session 都遵守的</td></tr><tr><td>工作範圍以外的檔案</td><td>每一個都有你認同的理由</td></tr></tbody></table></div>
+          <p class="gd-note">可以順手搜尋新加的 skip，例如 <code>git diff main...agent/task-42 | grep -nE '^\+.*(\.skip\(|\.only\(|pytest\.mark\.skip)'</code>，再依你的測試框架調整。</p>
+        </section>
+
+        <section class="gd-sec" id="isolate" aria-labelledby="isolate-title">
+          <h2 id="isolate-title">每個工作用自己的分支或 worktree</h2>
+          <p>一個工作一個分支，上面每項檢查都會簡單很多：diff 只有這個工作，重跑測試也不會混到別的改動。git worktree 是一份獨立的 checkout，有自己的分支，兩個 Agent 可以同時工作，不會改到同一個資料夾。</p>
+          <pre class="gd-code"><code>git worktree add -b agent/task-42 ../myapp-task-42 main
+cd ../myapp-task-42
+# 在這裡跑 Agent，再跑你的檢查
+git worktree remove ../myapp-task-42</code></pre>
+          <p>Claude Code 內建這個功能：<code>claude --worktree task-42</code> 會在自己的 worktree 開一個隔離的 Session。repo 至少要先有一個 commit。</p>
+        </section>
+
+        <section class="gd-sec" id="second-agent" aria-labelledby="second-agent-title">
+          <h2 id="second-agent-title">怎麼讓第二個 AI 審查或測試程式碼</h2>
+          <p>第二個 Agent 只有在不會順著第一個講的時候才有用，所以要把它安排成沒辦法順著講。</p>
+          <ol class="fx-steps">
+            <li><div><strong>給它規格，不要給第一個 Agent 的推理</strong>交出工作描述或規格檔，加上 diff。第一個 Agent 的摘要不要給，讓審查者判斷成果本身，而不是它對成果的說法。</div></li>
+            <li><div><strong>請它對照規格檢查</strong>例如：「對照 SPEC.md 審查 main 與這個分支之間的 diff，確認每項需求都有實作、列出的邊界情況都有測試。只回報影響正確性的缺口，風格問題跳過。不要修改檔案。」記得叫它跳過風格：被要求找問題的審查者，一定找得到東西。</div></li>
+            <li><div><strong>或請它寫測試</strong>讓它依規格補測試，只能動測試檔，然後由你自己跑命令。事後用 <code>git diff --name-only</code> 確認它只改了測試檔，也不要讓原本的 Agent 去改它補的測試。</div></li>
+            <li><div><strong>用別家廠商的模型</strong>讓 Codex 審 Claude Code 的分支，或反過來。不同模型不是從同一套假設出發，看法比較獨立，但一樣可能看錯。</div></li>
+            <li><div><strong>別讓審查者偷偷修</strong>發現的問題交回給寫程式的 Agent，再重跑檢查。審查者一動手改，就變成第二個作者，而它的改動沒有人審。</div></li>
+          </ol>
+          <p>兩家都有內建的審查命令。它們都是 AI 審查，不是跑測試。</p>
+          <div class="gd-table"><table><thead><tr><th scope="col">工具</th><th scope="col">命令</th><th scope="col">做什麼</th></tr></thead><tbody><tr><td>Claude Code</td><td><code>/code-review</code>（別名 <code>/review</code>）</td><td>審查目前分支的改動，或你指定的 PR、分支、路徑、commit 範圍，找正確性 bug；在一個沒看過你對話的 subagent 裡執行。只回報，加上 <code>--fix</code> 才會套用修正。</td></tr><tr><td>Claude Code</td><td><code>/security-review</code></td><td>檢查你的分支與 origin 預設分支之間的 diff 有沒有安全問題。</td></tr><tr><td>Codex CLI</td><td><code>/review</code></td><td>審查未 commit 的改動、某個 commit 或與基準分支的差異，也可以給自訂指示；回報依優先順序排列的問題，不會修改你的工作目錄。</td></tr><tr><td>Codex CLI</td><td><code>codex review --base main</code></td><td>同樣的審查，非互動模式，對照基準分支。也可以改用 <code>--uncommitted</code>、<code>--commit</code> 或自訂指示（擇一）。</td></tr></tbody></table></div>
+          <pre class="gd-code"><code># 讓 Codex 審查 Claude Code 寫的分支
+git switch agent/task-42
+codex review --base main
+
+# 讓 Claude Code 審查 Codex 寫的分支，不修改檔案
+claude -p "/code-review main...agent/task-43"</code></pre>
+          <p class="gd-note">審查和其他 Session 一樣會用到你訂閱方案的額度或 API 費用。審查沒找到問題，不代表可以不跑測試。</p>
+        </section>
+
+        <section class="gd-sec" id="checklist" aria-labelledby="checklist-title">
+          <h2 id="checklist-title">可以直接複製的檢查清單</h2>
+          <pre class="gd-code"><code>- [ ] 這個工作在自己的分支或 worktree 上完成
+- [ ] 我自己（或 CI）在這個分支上跑過安裝、測試、lint、建置
+- [ ] 我看的是命令輸出，不是 Agent 的摘要
+- [ ] 改到的檔案符合工作允許的範圍
+- [ ] 既有測試沒有在沒理由的情況下被放寬、刪除或跳過
+- [ ] CI、測試設定、Agent 指示檔沒有我沒要求的改動
+- [ ] 第二個 Agent（盡量是別家廠商）已對照規格審查
+- [ ] 審查者只回報；作者修正；檢查重跑過
+- [ ] 合併與否由我決定</code></pre>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Pyloxa 能幫上什麼</h2>
+          <p>Pyloxa 是一個免費的 Windows 應用程式，讓 Claude Code 和 Codex CLI 在同一個專案裡一起工作，上面這份清單大部分它會替你做。Agent 說做完了不算數：工作完成後，Pyloxa 會在那個工作自己的 worktree 裡執行你核准過的驗證命令（測試、建置、lint），並檢查改動的檔案有沒有超出計畫允許的寫入範圍。只有至少有一項檢查、全部通過、而且不需要人工審查時，成果才會自動接受；檢查沒過，會請同一個 Agent 修正，每個工作最多自動執行三次。</p>
+          <ul class="fx-list">
+            <li><strong>交叉測試</strong>：由另一個 Agent（例如 Codex 測 Claude Code 的成果）補測試，Pyloxa 自己重跑你的命令，以命令的結果為準。測試者只能改測試檔，補上的測試原本的 Agent 改不掉。免費版按「交給另一個 Agent 測試」；Pro 依設定自動進行，測試沒過會自動交回修正。</li>
+            <li><strong>大腦驗收</strong>（免費）：大腦只讀不改地檢查完成的工作，它的判斷會標示為 AI 判斷。大腦不會驗收自己做的工作。</li>
+            <li>改到 <code>.github</code>、<code>CLAUDE.md</code>、<code>AGENTS.md</code>、<code>.mcp.json</code> 或定義驗證命令的檔案時，一律不自動接受。合併、推送、開 PR 都等你按下。</li>
+            <li><strong>驗證報告卡</strong>（免費）可以附在 PR 上：每份成果由誰完成、誰交叉測試、Pyloxa 跑了哪些命令、怎麼被接受的。最後一行可選擇加上，只有每個成果都通過 Pyloxa 執行的命令、每個 Gate 也都通過時，才會寫「Verified with Pyloxa」，否則寫「Verification record by Pyloxa」。</li>
+          </ul>
+          <p>如果你只用一個 Agent 做小改動、每次都自己看，或是 CI 本來就會跑每個 Agent 分支、你也會看 diff，那就不一定需要它。設定精靈裡免費的試駕，會用一個藏了 bug 的範例專案走一遍完整流程，不會碰到你的專案。詳細說明：<a href="../../workflow/#checks">工作流程：檢查</a>、<a href="../../help/#checks">說明：驗證、大腦驗收與交叉測試</a>。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>為什麼 Agent 說測試都過了，我跑卻失敗？</summary><div>通常是它只跑了一部分、在後來又改了程式之前跑的、環境不一樣，或是憑記憶回報。請它給出實際的命令和輸出，再自己在乾淨安裝的環境跑完整測試。</div></details>
+          <details class="fx-q"><summary>可以讓同一個 Agent 審查自己寫的程式嗎？</summary><div>效果不如換一個新的審查者。Claude Code 的 <code>/code-review</code> 在沒看過你對話的 subagent 裡執行，這樣比較好；換成別家廠商的模型、依規格審查，又更獨立。不管哪一種，下定論的是測試結果，不是審查意見。</div></details>
+          <details class="fx-q"><summary>可以讓審查者直接修它找到的問題嗎？</summary><div>可以，但那些修改也要有人檢查。Codex 的 <code>/review</code> 只回報、不改你的工作目錄；Claude Code 的 <code>/code-review</code> 要加 <code>--fix</code> 才會改。把修正留給原作者、再重跑檢查，比較好追。</div></details>
+          <details class="fx-q"><summary>怎麼防止 Agent 為了過測試去改測試？</summary><div>在工作說明裡講清楚，然後實際擋住：每個分支都看測試檔的 diff；在 Claude Code 可以用 <code>PreToolUse</code> hook 擋下對指定路徑的修改。由另一個 Agent 寫測試也有幫助。</div></details>
+          <details class="fx-q"><summary>AI 程式碼審查過了就可以合併嗎？</summary><div>不行。它能抓到測試抓不到的問題，但終究是判斷。合併的依據應該是你跑過、有通過的命令，你看過的 diff，以及你自己對驗證、金流、資料庫遷移這類高風險部分的審查。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/code-review-local">Review locally with /code-review</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/commands">Commands</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/common-workflows">Common workflows: run parallel sessions with worktrees</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://learn.chatgpt.com/docs/codex/cli">Codex CLI</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://learn.chatgpt.com/docs/developer-commands?surface=cli">Developer commands: codex review</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://git-scm.com/docs/git-worktree">git-worktree</a>，Git 官方文件（2026-11-19 查證）</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">其他攻略</h2>
+        <ul>
+            <li><a href="../claude-code-usage-limits/"><span>Claude Code 額度用完怎麼辦</span><span class="fx-related-text">Claude Code 額度用完的訊息是什麼意思、什麼時候重設，以及所有正當的繼續工作方式。</span></a></li>
+            <li><a href="../claude-code-and-codex-together/"><span>Claude Code 與 Codex 一起用</span><span class="fx-related-text">分好工、讓兩個 Agent 不碰彼此的檔案、共用一份規則，再互相審查。</span></a></li>
+            <li><a href="../agents-md-claude-md-gemini-md/"><span>AGENTS.md 與 CLAUDE.md</span><span class="fx-related-text">三個 CLI 各讀哪個指示檔，以及怎麼讓 Claude Code、Codex、Gemini CLI 共用同一份 AGENTS.md。</span></a></li>
+            <li><a href="../claude-code-codex-on-windows/"><span>在 Windows 跑 Claude Code 與 Codex</span><span class="fx-related-text">Claude Code 與 Codex CLI 在 Windows 原生還是 WSL：官方安裝命令與常見錯誤的解法。</span></a></li>
+            <li><a href="../../../zh-TW/help/"><span>說明文件</span><span class="fx-related-text">安裝 Pyloxa、連線 CLI、計畫與疑難排解的操作步驟。</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">想把這些交給工具處理？</h2>
+          <p>Pyloxa 是免費的 Windows App，執行你已經在用的 Claude Code 與 Codex CLI：依你的規則分工、自己跑你的測試，某一個額度用完時提出換手。</p>
+          <div class="fx-actions">
+            <a class="button" href="../../../zh-TW/download/#start">下載 Pyloxa Windows 版</a>
+            <a class="button is-light" href="../../../zh-TW/workflow/">看看怎麼運作</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>版本 0.2.0 · Windows 10 與 11 · <a href="../../../zh-TW/help/">說明文件</a> · <a href="../../../zh-TW/guides/">攻略</a> · <a href="../../../zh-TW/changelog/">改版紀錄</a> · <a href="../../../zh-TW/privacy/">隱私權政策</a> · <a href="../../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。產品名稱屬於各自的所有者。</p>
+    </footer>
+
+    <script src="../../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

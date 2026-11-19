@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AGENTS.md、CLAUDE.md、GEMINI.md 差在哪？一份檔案給三個 CLI</title>
+    <meta name="description" content="Claude Code、Codex CLI、Gemini CLI 各讀哪個指示檔、放在哪裡，怎麼只維護一份 AGENTS.md 讓三個都讀到。依官方文件查證。" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="AGENTS.md、CLAUDE.md、GEMINI.md 差在哪？一份檔案給三個 CLI" />
+    <meta property="og:description" content="Claude Code、Codex CLI、Gemini CLI 各讀哪個指示檔、放在哪裡，怎麼只維護一份 AGENTS.md 讓三個都讀到。依官方文件查證。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-zh.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/agents-md-claude-md-gemini-md/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/agents-md-claude-md-gemini-md/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/#article","headline":"AGENTS.md、CLAUDE.md、GEMINI.md：三個 CLI 共用一份指示檔","description":"Claude Code、Codex CLI、Gemini CLI 各讀哪個指示檔、放在哪裡，怎麼只維護一份 AGENTS.md 讓三個都讀到。依官方文件查證。","inLanguage":"zh-TW","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-zh.png"},{"@type":"WebPage","@id":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/","url":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/","name":"AGENTS.md、CLAUDE.md、GEMINI.md 差在哪？一份檔案給三個 CLI","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"攻略","item":"https://pyloxa.com/zh-TW/guides/"},{"@type":"ListItem","position":3,"name":"AGENTS.md 與 CLAUDE.md","item":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/guides/agents-md-claude-md-gemini-md/#faq","mainEntity":[{"@type":"Question","name":"Codex 會讀 CLAUDE.md 嗎？","acceptedAnswer":{"@type":"Answer","text":"預設不會。Codex 找的是 AGENTS.override.md、AGENTS.md，以及你在 ~/.codex/config.toml 的 project_doc_fallback_filenames 加的檔名，而且每個資料夾最多用一個檔。把 AGENTS.md 當主檔，就不用煩惱這件事。"}},{"@type":"Question","name":"CLAUDE.md 和 AGENTS.md 都有，Claude Code 用哪個？","acceptedAnswer":{"@type":"Answer","text":"預設只用 CLAUDE.md。在裡面加 @AGENTS.md，或在 /config 把「Project instructions」設成 claude-md-and-agents-md，兩個都會載入。"}},{"@type":"Question","name":"為什麼 Claude Code 突然不讀我的 AGENTS.md？","acceptedAnswer":{"@type":"Answer","text":"最常見的原因是工作目錄或上層出現了 CLAUDE.md、.claude/CLAUDE.md 或 CLAUDE.local.md。版本早於 v2.1.277，或停用了讀 AGENTS.md 的內建外掛，也會這樣。放一個匯入 AGENTS.md 的 CLAUDE.md，以上情況都能解決。"}},{"@type":"Question","name":"GEMINI.md 可以匯入其他檔案嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。在想放入內容的位置寫 @./path/file.md，相對與絕對路徑都可以。用 /memory show 看合併後的結果。"}},{"@type":"Question","name":"可以把 API Key 寫進 AGENTS.md 嗎？","acceptedAnswer":{"@type":"Answer","text":"不行。這個檔案通常會 commit 進 repo，內容也會隨每次請求送給模型供應商。金鑰交給 CLI 自己的登入或環境變數管理，不要放進指示檔。"}}]}]}</script>
+    <link rel="stylesheet" href="../../../assets/site.css" />
+    <link rel="stylesheet" href="../../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">跳到主要內容</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../../zh-TW/" aria-label="Pyloxa 首頁">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../../zh-TW/workflow/">工作流程</a></li>
+        <li class="optional"><a href="../../../zh-TW/memory/">記憶與 Skills</a></li>
+        <li class="optional"><a href="../../../zh-TW/quota/">額度與備援</a></li>
+        <li class="optional"><a href="../../../zh-TW/pro/">Pro</a></li>
+        <li class="optional"><a href="../../../zh-TW/guides/">攻略</a></li>
+        <li><a href="../../../guides/agents-md-claude-md-gemini-md/" lang="en">English</a></li>
+        <li><a class="nav-download" href="../../../zh-TW/download/#start">下載</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../../zh-TW/">Pyloxa</a><span aria-hidden="true">/</span><a href="../">攻略</a><span aria-hidden="true">/</span><span aria-current="page">AGENTS.md 與 CLAUDE.md</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">攻略</p>
+          <h1>AGENTS.md、CLAUDE.md、GEMINI.md：三個 CLI 共用一份指示檔</h1>
+          <p class="fx-lede">Claude Code、Codex CLI、Gemini CLI 找的檔名不同，找的位置也不同。這篇整理三者現在實際讀哪些檔案，以及一套只寫一次專案規則的做法。</p>
+          <p class="gd-updated"><time datetime="2026-11-19">更新於 2026 年 11 月 19 日</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>Codex CLI 讀 <code>AGENTS.md</code>。Claude Code 讀 <code>CLAUDE.md</code>，從 v2.1.277 起也會讀 <code>AGENTS.md</code>，但預設只有在工作目錄與上層都沒有 <code>CLAUDE.md</code>、<code>.claude/CLAUDE.md</code>、<code>CLAUDE.local.md</code> 時才讀。Gemini CLI 讀 <code>GEMINI.md</code>，除非你在 <code>context.fileName</code> 設定其他檔名。想只維護一份：寫 <code>AGENTS.md</code>，再放一個第一行是 <code>@AGENTS.md</code> 的 <code>CLAUDE.md</code>，並把 Gemini CLI 的 <code>context.fileName</code> 設成包含 <code>AGENTS.md</code>。</p>
+        </aside>
+
+        <section class="gd-sec" id="which-file" aria-labelledby="which-file-title">
+          <h2 id="which-file-title">三個 CLI 各讀哪個指示檔？</h2>
+          <p>三者都把這些檔案當成對話裡的背景資料，而不是強制執行的設定。細節的差異比檔名還多。</p>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Claude Code</th><th scope="col">Codex CLI</th><th scope="col">Gemini CLI</th></tr></thead><tbody>
+            <tr><td>專案檔</td><td><code>CLAUDE.md</code> 或 <code>.claude/CLAUDE.md</code></td><td><code>AGENTS.md</code></td><td><code>GEMINI.md</code></td></tr>
+            <tr><td>讀 <code>AGENTS.md</code> 嗎？</td><td>v2.1.277 起，沒有 <code>CLAUDE.md</code> 時會讀；用 <code>@AGENTS.md</code> 匯入則一律讀得到</td><td>原生就讀</td><td>要列在 <code>context.fileName</code> 才讀</td></tr>
+            <tr><td>使用者層</td><td><code>~/.claude/CLAUDE.md</code>（另有 <code>~/.claude/rules/</code>）</td><td><code>~/.codex/AGENTS.md</code>（或 <code>CODEX_HOME</code>）</td><td><code>~/.gemini/GEMINI.md</code></td></tr>
+            <tr><td>個人／覆寫檔</td><td><code>CLAUDE.local.md</code>，建議加進 gitignore</td><td>同一個資料夾裡 <code>AGENTS.override.md</code> 優先於 <code>AGENTS.md</code></td><td>文件沒有寫</td></tr>
+            <tr><td>資料夾範圍</td><td>啟動時讀工作目錄與每一層上層；子資料夾的檔案在 Claude 動到那裡時才載入</td><td>從 repo 根目錄往下到工作目錄，每個資料夾最多一個檔</td><td>workspace 與上層直到 <code>.git</code>；工具碰到某個資料夾時再載入那裡的檔案</td></tr>
+            <tr><td>匯入</td><td><code>@path</code>，最多四層</td><td>文件沒有寫</td><td><code>@file.md</code>，相對或絕對路徑</td></tr>
+            <tr><td>大小</td><td>建議每個檔案 200 行以內；超過 4 MiB 的檔案整個略過</td><td>合計預設到 32 KiB 就不再加檔（<code>project_doc_max_bytes</code>）</td><td>文件沒寫大小上限；最多搜尋 200 個資料夾</td></tr>
+            <tr><td>確認載入了什麼</td><td><code>/context all</code> 或 <code>/memory</code></td><td>請它摘要目前的指示</td><td><code>/memory show</code></td></tr>
+          </tbody></table></div>
+          <p class="gd-note">三者都是把檔案合併起來，不是互相取代。Claude Code 和 Codex 會把離工作目錄最近的檔案放在最後；Codex 說較近的檔案會覆蓋前面的指示，Anthropic 則提醒兩條指示衝突時 Claude 可能照任何一條做。最好別讓檔案彼此矛盾。</p>
+        </section>
+
+        <section class="gd-sec" id="claude-code" aria-labelledby="claude-code-title">
+          <h2 id="claude-code-title">Claude Code 會讀 AGENTS.md 嗎？</h2>
+          <p>會，但有條件。v2.1.277 起有一個內建外掛會把 <code>AGENTS.md</code> 當成專案指示讀進來，不過在預設設定下，只有工作目錄與上層都沒有 <code>CLAUDE.md</code>、<code>.claude/CLAUDE.md</code>、<code>CLAUDE.local.md</code> 時才讀。<code>~/.claude/CLAUDE.md</code> 與 <code>.claude/rules/</code> 不算在這個判斷裡，會照常一起載入。</p>
+          <ul class="fx-list">
+            <li>兩個檔案都有時，Claude 只讀 <code>CLAUDE.md</code>；除非它匯入了 <code>AGENTS.md</code>，或你在 <code>/config</code> 把「<strong>Project instructions</strong>」設成 <code>claude-md-and-agents-md</code>。</li>
+            <li>為了放自己的筆記而加一個 <code>CLAUDE.local.md</code>，預設就會讓 Claude 不再讀 <code>AGENTS.md</code>。</li>
+            <li>Claude Code 不讀 <code>AGENTS.override.md</code>、<code>AGENTS.local.md</code>，也不讀 <code>.agents/</code> 底下的任何東西。</li>
+            <li>有些 Session 沒辦法直接讀 <code>AGENTS.md</code>，例如舊版本。這時用 <code>@AGENTS.md</code> 匯入就行；Anthropic 說保留匯入不會讓同一個檔案被讀兩次。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="codex" aria-labelledby="codex-title">
+          <h2 id="codex-title">Codex CLI 怎麼找 AGENTS.md</h2>
+          <p>Codex 在啟動時組好一次指示鏈。先讀全域檔：<code>~/.codex</code> 裡的 <code>AGENTS.override.md</code>（存在且不是空的），否則讀 <code>AGENTS.md</code>。接著從專案根目錄（通常是 git 根目錄）往下走到工作目錄，每個資料夾依序找 <code>AGENTS.override.md</code>、<code>AGENTS.md</code>，以及 <code>project_doc_fallback_filenames</code> 裡的檔名，取第一個找到的。</p>
+          <pre class="gd-code"><code># ~/.codex/config.toml
+project_doc_fallback_filenames = ["TEAM_GUIDE.md", ".agents.md"]
+project_doc_max_bytes = 65536</code></pre>
+          <p class="gd-note">合計大小到 <code>project_doc_max_bytes</code>（預設 32 KiB）後，Codex 就不再加入更多檔案。改完設定要重新啟動 Codex。</p>
+        </section>
+
+        <section class="gd-sec" id="gemini" aria-labelledby="gemini-title">
+          <h2 id="gemini-title">怎麼讓 Gemini CLI 讀 AGENTS.md</h2>
+          <p>Gemini CLI 先讀 <code>~/.gemini/GEMINI.md</code>，再讀 workspace 與上層資料夾的 <code>GEMINI.md</code>，之後工具打開某個資料夾時再載入那裡的檔案。<code>context.fileName</code> 可以填一個檔名或一串檔名。放在專案的 <code>.gemini/settings.json</code>，或放在 <code>~/.gemini/settings.json</code> 讓所有專案都套用：</p>
+          <pre class="gd-code"><code>{
+  "context": {
+    "fileName": ["AGENTS.md", "GEMINI.md"]
+  }
+}</code></pre>
+          <p class="gd-note">如果你開了 Gemini CLI 的 Trusted Folders 功能，不受信任資料夾裡的 <code>.gemini/settings.json</code> 會被忽略。要在信任資料夾之前就生效，請放在使用者層的設定檔。</p>
+        </section>
+
+        <section class="gd-sec" id="one-source" aria-labelledby="one-source-title">
+          <h2 id="one-source-title">Claude Code、Codex、Gemini 怎麼共用一份指示檔？</h2>
+          <ol class="fx-steps">
+            <li><div><strong>在 repo 根目錄寫 AGENTS.md</strong>這就是共用的那一份，Codex 不用任何設定就會讀。</div></li>
+            <li><div><strong>加一個一行的 CLAUDE.md</strong>第一行寫 <code>@AGENTS.md</code>，需要的話在下面補 Claude 專用的說明。即使在無法直接讀 <code>AGENTS.md</code> 的 Session 也有效，之後加了 <code>CLAUDE.local.md</code> 也不受影響。</div></li>
+            <li><div><strong>讓 Gemini CLI 指向它</strong>照上面把 <code>context.fileName</code> 設成包含 <code>AGENTS.md</code>；團隊有人用 Gemini CLI 的話，把 <code>.gemini/settings.json</code> 一起 commit。</div></li>
+            <li><div><strong>逐一確認</strong>Claude Code 跑 <code>/context all</code>；在 repo 根目錄跑 <code>codex --ask-for-approval never "Summarize the current instructions."</code>；Gemini CLI 跑 <code>/memory show</code>。</div></li>
+          </ol>
+          <pre class="gd-code"><code># CLAUDE.md
+@AGENTS.md
+
+## Claude Code
+Use plan mode for changes under src/billing/.</code></pre>
+          <h3>為什麼不用 symlink？</h3>
+          <p>Anthropic 的文件也列出 <code>ln -s AGENTS.md CLAUDE.md</code> 這個做法，但有兩個問題。Claude 的 Edit 與 Write 工具不會透過 symlink 寫入。在 Windows 上，建立 symlink 需要系統管理員權限或開發人員模式；而且除非開了 <code>core.symlinks</code>，Git 會把 commit 進去的 symlink 簽出成一般文字檔，那份 clone 拿到的 <code>CLAUDE.md</code> 就只有一行路徑，不是你的規則。Microsoft 的「建立符號連結」（Create symbolic links）原則預設也只給 Administrators 群組。團隊裡只要有人用 Windows，就用匯入。</p>
+        </section>
+
+        <section class="gd-sec" id="what-to-write" aria-labelledby="what-to-write-title">
+          <h2 id="what-to-write-title">AGENTS.md 該寫什麼、不該寫什麼</h2>
+          <p>寫下你每次開新 Session 都得重講一遍的事。要具體到能檢查：「commit 前先跑 <code>npm test</code>」比「記得測試」有用。</p>
+          <ul class="fx-list">
+            <li><strong>要寫：</strong>建置、測試、lint 的確切命令；和一般預設不同的慣例；不容易找到的關鍵程式碼位置；不能動的資料夾與檔案；怎樣才算改完。</li>
+            <li><strong>不要寫：</strong>API Key、token、密碼，以及不想公開的內部網址。這個檔案通常會 commit 進 repo，內容也會隨每次請求送給模型供應商。</li>
+            <li><strong>不要寫：</strong>很長的逐步操作流程。Anthropic 建議改放在 Skill 或只對特定路徑生效的規則裡。</li>
+            <li><strong>不要寫：</strong>Agent 讀程式碼就知道的東西，例如目錄清單、相依套件清單。</li>
+            <li><strong>放到別處：</strong>個人偏好放使用者層的檔案或 <code>CLAUDE.local.md</code>，不要放共用的那份。</li>
+          </ul>
+          <pre class="gd-code"><code># AGENTS.md
+## Commands
+- Install: pnpm install
+- Test: pnpm test (run before every commit)
+- Lint: pnpm lint
+
+## Conventions
+- API responses use camelCase.
+- New tests go in tests/ and use Vitest.
+
+## Do not touch
+- legacy/ and anything under generated/</code></pre>
+          <p class="gd-note">指示是建議，不是鎖。要每次都擋下某個動作，Anthropic 建議用 hooks 與權限設定，而不是寫在 <code>CLAUDE.md</code>。</p>
+        </section>
+
+        <section class="gd-sec" id="skills" aria-labelledby="skills-title">
+          <h2 id="skills-title">Skills：各 CLI 的 SKILL.md 資料夾</h2>
+          <p>一個 Skill 就是一個含 <code>SKILL.md</code> 的資料夾：開頭是帶描述的 YAML frontmatter，後面是指示。和指示檔不同，Skill 只在用得到時才載入。三個 CLI 現在都支援 Skills，但放的資料夾不一樣。</p>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">使用者層</th><th scope="col">專案層</th></tr></thead><tbody>
+            <tr><td>Claude Code</td><td><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td><td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td></tr>
+            <tr><td>Codex CLI</td><td><code>~/.agents/skills</code></td><td>工作目錄、它的上一層與 repo 根目錄的 <code>.agents/skills</code></td></tr>
+            <tr><td>Gemini CLI</td><td><code>~/.gemini/skills</code> 或 <code>~/.agents/skills</code></td><td><code>.gemini/skills</code> 或 <code>.agents/skills</code></td></tr>
+          </tbody></table></div>
+          <p class="gd-note">一個 <code>.agents/skills</code> 資料夾可以同時給 Codex 與 Gemini CLI 用。Claude Code 不讀 <code>.agents/</code>，需要在 <code>.claude/skills</code> 另放一份。Codex 要求 frontmatter 同時有 <code>name</code> 與 <code>description</code>。</p>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Pyloxa 能幫上什麼</h2>
+          <p>Pyloxa 是免費的 Windows 桌面 App，讓 Claude Code 與 Codex CLI（Gemini CLI 為實驗性支援）在同一個專案上合作。它的<a href="../../memory/">共用記憶</a>是放在你電腦上的一份記憶，Pyloxa 派工時三個 CLI 都會拿到它當背景資料：規則、偏好、決定、事實與踩過的坑。Agent 工作時可以提議新的記憶，但提議會先放進「待確認」，你接受之後才算數。共用記憶的所有功能都在免費版。</p>
+          <ul class="fx-list">
+            <li>「<strong>同步到各 CLI</strong>」把專案的記憶寫成 <code>AGENTS.md</code> 裡一段有標記的 Pyloxa 區塊，並在 <code>CLAUDE.md</code> 加上 <code>@AGENTS.md</code>，和上面的做法一樣。寫入前先讓你看差異，Pyloxa 不會替你 commit。</li>
+            <li>「也寫進各 CLI 的使用者層記憶」（<code>~/.claude/CLAUDE.md</code>、<code>~/.codex/AGENTS.md</code>、<code>~/.gemini/GEMINI.md</code>）預設關閉；打開後，Pyloxa 第一次寫入前會先備份這些檔案。</li>
+            <li>可以從既有的檔案匯入，例如 <code>CLAUDE.md</code>、<code>.claude/rules/*.md</code>、<code>AGENTS.md</code>、<code>GEMINI.md</code>，Pyloxa 只讀取這些檔案。</li>
+            <li><a href="../../help/#skills">Skills</a> 盤點（看每個 CLI 讀得到哪些 Skills）是免費的。把 Skills 集中在 <code>~/.agents/skills</code> 並同步到各 CLI 的 Skills 庫，以及依專案或 Profile 指派 Skills，屬於 <a href="../../pro/">Pro</a>。</li>
+          </ul>
+          <p>如果你只用一個 CLI，或上面那套 <code>AGENTS.md</code> 加匯入已經夠用，這件事就不需要 Pyloxa。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>Codex 會讀 CLAUDE.md 嗎？</summary><div>預設不會。Codex 找的是 <code>AGENTS.override.md</code>、<code>AGENTS.md</code>，以及你在 <code>~/.codex/config.toml</code> 的 <code>project_doc_fallback_filenames</code> 加的檔名，而且每個資料夾最多用一個檔。把 <code>AGENTS.md</code> 當主檔，就不用煩惱這件事。</div></details>
+          <details class="fx-q"><summary>CLAUDE.md 和 AGENTS.md 都有，Claude Code 用哪個？</summary><div>預設只用 <code>CLAUDE.md</code>。在裡面加 <code>@AGENTS.md</code>，或在 <code>/config</code> 把「<strong>Project instructions</strong>」設成 <code>claude-md-and-agents-md</code>，兩個都會載入。</div></details>
+          <details class="fx-q"><summary>為什麼 Claude Code 突然不讀我的 AGENTS.md？</summary><div>最常見的原因是工作目錄或上層出現了 <code>CLAUDE.md</code>、<code>.claude/CLAUDE.md</code> 或 <code>CLAUDE.local.md</code>。版本早於 v2.1.277，或停用了讀 AGENTS.md 的內建外掛，也會這樣。放一個匯入 <code>AGENTS.md</code> 的 <code>CLAUDE.md</code>，以上情況都能解決。</div></details>
+          <details class="fx-q"><summary>GEMINI.md 可以匯入其他檔案嗎？</summary><div>可以。在想放入內容的位置寫 <code>@./path/file.md</code>，相對與絕對路徑都可以。用 <code>/memory show</code> 看合併後的結果。</div></details>
+          <details class="fx-q"><summary>可以把 API Key 寫進 AGENTS.md 嗎？</summary><div>不行。這個檔案通常會 commit 進 repo，內容也會隨每次請求送給模型供應商。金鑰交給 CLI 自己的登入或環境變數管理，不要放進指示檔。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://code.claude.com/docs/en/skills">Extend Claude with skills</a>，Anthropic（2026-11-19 查證）</li>
+            <li><a href="https://developers.openai.com/codex/guides/agents-md">Custom instructions with AGENTS.md</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://developers.openai.com/codex/skills">Build skills</a>，OpenAI（2026-11-19 查證）</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md">Provide context with GEMINI.md files</a>，Google（2026-11-19 查證）</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md">Gemini CLI configuration</a>，Google（2026-11-19 查證）</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/trusted-folders.md">Trusted Folders</a>，Google（2026-11-19 查證）</li>
+            <li><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/skills.md">Agent Skills</a>，Google（2026-11-19 查證）</li>
+            <li><a href="https://learn.microsoft.com/zh-tw/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/create-symbolic-links">建立符號連結（Create symbolic links）</a>，Microsoft（2026-11-19 查證）</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">其他攻略</h2>
+        <ul>
+            <li><a href="../claude-code-usage-limits/"><span>Claude Code 額度用完怎麼辦</span><span class="fx-related-text">Claude Code 額度用完的訊息是什麼意思、什麼時候重設，以及所有正當的繼續工作方式。</span></a></li>
+            <li><a href="../claude-code-and-codex-together/"><span>Claude Code 與 Codex 一起用</span><span class="fx-related-text">分好工、讓兩個 Agent 不碰彼此的檔案、共用一份規則，再互相審查。</span></a></li>
+            <li><a href="../verify-ai-agent-code/"><span>驗收 AI Agent 寫的程式</span><span class="fx-related-text">為什麼 Agent 說「做完了」不算證據、哪些檢查真正有效，以及怎麼讓第二個 AI 審查或測試程式碼。</span></a></li>
+            <li><a href="../claude-code-codex-on-windows/"><span>在 Windows 跑 Claude Code 與 Codex</span><span class="fx-related-text">Claude Code 與 Codex CLI 在 Windows 原生還是 WSL：官方安裝命令與常見錯誤的解法。</span></a></li>
+            <li><a href="../../../zh-TW/help/"><span>說明文件</span><span class="fx-related-text">安裝 Pyloxa、連線 CLI、計畫與疑難排解的操作步驟。</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">想把這些交給工具處理？</h2>
+          <p>Pyloxa 是免費的 Windows App，執行你已經在用的 Claude Code 與 Codex CLI：依你的規則分工、自己跑你的測試，某一個額度用完時提出換手。</p>
+          <div class="fx-actions">
+            <a class="button" href="../../../zh-TW/download/#start">下載 Pyloxa Windows 版</a>
+            <a class="button is-light" href="../../../zh-TW/workflow/">看看怎麼運作</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>版本 0.2.0 · Windows 10 與 11 · <a href="../../../zh-TW/help/">說明文件</a> · <a href="../../../zh-TW/guides/">攻略</a> · <a href="../../../zh-TW/changelog/">改版紀錄</a> · <a href="../../../zh-TW/privacy/">隱私權政策</a> · <a href="../../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。產品名稱屬於各自的所有者。</p>
+    </footer>
+
+    <script src="../../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

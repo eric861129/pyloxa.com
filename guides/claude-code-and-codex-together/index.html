@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Use Claude Code and Codex together on one project</title>
+    <meta name="description" content="How to use Claude Code and OpenAI Codex on the same codebase: split the work, run each in its own git worktree, share one AGENTS.md and cross-review." />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Use Claude Code and Codex together on one project" />
+    <meta property="og:description" content="How to use Claude Code and OpenAI Codex on the same codebase: split the work, run each in its own git worktree, share one AGENTS.md and cross-review." />
+    <meta property="og:url" content="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-and-codex-together/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-and-codex-together/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://pyloxa.com/guides/claude-code-and-codex-together/#article","headline":"How to use Claude Code and Codex together on one project","description":"How to use Claude Code and OpenAI Codex on the same codebase: split the work, run each in its own git worktree, share one AGENTS.md and cross-review.","inLanguage":"en","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/guides/claude-code-and-codex-together/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-en.png"},{"@type":"WebPage","@id":"https://pyloxa.com/guides/claude-code-and-codex-together/","url":"https://pyloxa.com/guides/claude-code-and-codex-together/","name":"Use Claude Code and Codex together on one project","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/guides/claude-code-and-codex-together/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/guides/claude-code-and-codex-together/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://pyloxa.com/guides/"},{"@type":"ListItem","position":3,"name":"Claude Code and Codex together","item":"https://pyloxa.com/guides/claude-code-and-codex-together/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/guides/claude-code-and-codex-together/#faq","mainEntity":[{"@type":"Question","name":"Can Claude Code and Codex work in the same folder at the same time?","acceptedAnswer":{"@type":"Answer","text":"They can, but they will change the same files and disturb each other’s test runs. Give each its own git worktree and branch, and give them tasks that don’t share files."}},{"@type":"Question","name":"Does Claude Code read AGENTS.md?","acceptedAnswer":{"@type":"Answer","text":"Yes, from v2.1.277, when there is no CLAUDE.md or CLAUDE.local.md in the folder or above it. If you have a CLAUDE.md, add @AGENTS.md to it to import the shared file."}},{"@type":"Question","name":"Are separate branches enough, or do I need worktrees?","acceptedAnswer":{"@type":"Answer","text":"Branches alone still share one folder, so only one can be checked out at a time. A worktree gives each branch its own folder, so both agents can work at once."}},{"@type":"Question","name":"Whose limits does the Codex plugin for Claude Code use?","acceptedAnswer":{"@type":"Answer","text":"The Codex part runs on your own Codex sign-in, and the plugin’s README says its usage counts against your Codex limits."}},{"@type":"Question","name":"Can I share one subscription with a teammate to run both?","acceptedAnswer":{"@type":"Answer","text":"No. Anthropic’s and OpenAI’s terms both say you may not share your account or credentials. Each person needs their own account for each tool."}}]}]}</script>
+    <link rel="stylesheet" href="../../assets/site.css" />
+    <link rel="stylesheet" href="../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../" aria-label="Pyloxa home">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../workflow/">Workflow</a></li>
+        <li class="optional"><a href="../../memory/">Memory & Skills</a></li>
+        <li class="optional"><a href="../../quota/">Quota & fallback</a></li>
+        <li class="optional"><a href="../../pro/">Pro</a></li>
+        <li class="optional"><a href="../../guides/">Guides</a></li>
+        <li><a href="../../zh-TW/guides/claude-code-and-codex-together/" lang="zh-Hant">繁體中文</a></li>
+        <li><a class="nav-download" href="../../download/#start">Download</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../">Pyloxa</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Claude Code and Codex together</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">Guide</p>
+          <h1>How to use Claude Code and Codex together on one project</h1>
+          <p class="fx-lede">If you pay for both, you don’t have to pick one. Give each agent its own task and branch, give both the same rules, and let one check the other’s work.</p>
+          <p class="gd-updated"><time datetime="2026-11-19">Updated November 19, 2026</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>Give Claude Code and Codex separate tasks, each in its own git worktree on its own branch, so they never edit the same files. Keep one set of project rules and test commands in <code>AGENTS.md</code>: Codex reads it, and current Claude Code reads it too when there is no <code>CLAUDE.md</code>, or through an <code>@AGENTS.md</code> import. Then have the agent that didn’t write the code review it, run the tests yourself, and merge by hand.</p>
+        </aside>
+
+        <section class="gd-sec" id="why" aria-labelledby="why-title">
+          <h2 id="why-title">Why use Claude Code and Codex on the same project?</h2>
+          <p>Which model is “better” at what changes with every release, so don’t build a workflow on that. The practical reasons hold up better:</p>
+          <ul class="fx-list">
+            <li><strong>Two separate allowances.</strong> Claude Code on a Claude plan shares its usage limits with claude.ai. Codex on a ChatGPT plan shares its limits with some other ChatGPT features. Running out on one doesn’t touch the other.</li>
+            <li><strong>A second opinion from a different model.</strong> A reviewer that didn’t write the code, from a different vendor, gives you a second, independent read of the change.</li>
+            <li><strong>Independent review and tests.</strong> The agent that wrote a change is the worst judge of whether it works. A second agent writing tests against it gives you something objective to run.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="patterns" aria-labelledby="patterns-title">
+          <h2 id="patterns-title">How should I split work between Claude Code and Codex?</h2>
+          <p>Whichever pattern you pick, the rule is the same: one task per agent, and a clear list of the files each one may touch.</p>
+          <div class="gd-table"><table><thead><tr><th scope="col">Pattern</th><th scope="col">How it works</th><th scope="col">Good for</th></tr></thead><tbody>
+            <tr><td>Plan and build</td><td>One agent reads the code and writes a plan with tasks and file lists, without editing. The other implements it.</td><td>Features that touch several parts of the code</td></tr>
+            <tr><td>Split by task type</td><td>A fixed rule, such as front end to one agent and back end to the other.</td><td>Steady work on a project you know well</td></tr>
+            <tr><td>Build and review</td><td>One implements. The other reviews the diff and reports problems, without editing.</td><td>Any change you plan to merge</td></tr>
+            <tr><td>Build and test</td><td>One implements. The other may only add tests. You run the test command and the result decides.</td><td>Bug fixes and logic with clear expected behaviour</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">Try a split for a week and note which agent needed fewer fixes for which kind of task. That beats any general ranking.</p>
+        </section>
+
+        <section class="gd-sec" id="parallel" aria-labelledby="parallel-title">
+          <h2 id="parallel-title">How do I run both at once without conflicts?</h2>
+          <p>Two agents in one folder overwrite each other’s files and test runs. Give each a git worktree: a separate checkout of the same repository on its own branch (the repository needs at least one commit).</p>
+          <pre class="gd-code"><code>git worktree add ../myapp-api -b agent/api
+git worktree add ../myapp-ui -b agent/ui
+git worktree list</code></pre>
+          <p>Start Codex in <code>../myapp-api</code> and Claude Code in <code>../myapp-ui</code>. Claude Code can also create a worktree itself with <code>claude --worktree &lt;name&gt;</code>. When a branch is merged, remove its folder with <code>git worktree remove ../myapp-api</code>.</p>
+          <ul class="fx-list">
+            <li>Never give both agents the same files, even on different branches, or the time you saved goes into merge conflicts.</li>
+            <li>Tell each agent its write scope in the task, for example “only change files under <code>src/api/</code>”.</li>
+            <li>If task B needs task A’s result, merge A first and start B from the updated branch.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="instructions" aria-labelledby="instructions-title">
+          <h2 id="instructions-title">How do I give both agents the same project rules?</h2>
+          <p>Keep one file, <code>AGENTS.md</code>, and point the other tool at it:</p>
+          <ul class="fx-list">
+            <li><strong>Codex</strong> reads <code>AGENTS.md</code> from <code>~/.codex</code>, then from the project root down to the folder you are in, one file per folder. It stops adding files at 32 KiB by default (<code>project_doc_max_bytes</code>). Other file names can be added with <code>project_doc_fallback_filenames</code> in <code>~/.codex/config.toml</code>.</li>
+            <li><strong>Claude Code</strong> reads <code>CLAUDE.md</code>. Since v2.1.277 it reads <code>AGENTS.md</code> instead when there is no <code>CLAUDE.md</code> or <code>CLAUDE.local.md</code> in the folder or above it. If you also keep a <code>CLAUDE.md</code>, put <code>@AGENTS.md</code> at the top of it to import the shared file, then add Claude-only notes below.</li>
+          </ul>
+          <pre class="gd-code"><code># CLAUDE.md
+@AGENTS.md
+
+## Claude Code only
+- Use plan mode before multi-file changes.</code></pre>
+          <p class="gd-note">On Windows, use the <code>@AGENTS.md</code> import rather than a symlink. Anthropic’s docs note that symlinks there need Administrator rights or Developer Mode, and Git may check one out as a plain text file.</p>
+          <p>Put the exact build, test and lint commands in it, so both agents check their work the same way. Keep it short: Anthropic notes that longer files reduce adherence.</p>
+        </section>
+
+        <section class="gd-sec" id="call-codex" aria-labelledby="call-codex-title">
+          <h2 id="call-codex-title">Can Claude Code call Codex directly?</h2>
+          <p>Yes. OpenAI publishes an open-source Codex plugin for Claude Code (<code>openai/codex-plugin-cc</code>). It calls the Codex CLI on your machine with your own Codex sign-in, and its usage counts against your Codex limits.</p>
+          <pre class="gd-code"><code>/plugin marketplace add openai/codex-plugin-cc
+/plugin install codex@openai-codex
+/reload-plugins
+/codex:setup</code></pre>
+          <p>It adds commands such as <code>/codex:review</code> (a read-only review of your current work or a branch), <code>/codex:adversarial-review</code> (a review that questions design choices) and <code>/codex:rescue</code> (hand a task to Codex). Without the plugin, you can run a review from a terminal with <code>codex review --base main</code> or <code>codex review --uncommitted</code>.</p>
+        </section>
+
+        <section class="gd-sec" id="costs" aria-labelledby="costs-title">
+          <h2 id="costs-title">Do I need a subscription for each?</h2>
+          <p>Yes. Each tool runs on its own vendor’s plan or API key.</p>
+          <ul class="fx-list">
+            <li><strong>Claude Code</strong> is included in Claude’s Pro, Max and Ultra plans (Team and Enterprise are covered separately), with limits shared with claude.ai. A Claude Console account bills at API rates instead, and if <code>ANTHROPIC_API_KEY</code> is set, Claude Code uses that key and you pay API charges.</li>
+            <li><strong>Codex</strong> is included in ChatGPT plans (OpenAI’s pricing page lists Free, Go, Plus, Pro, Business, Edu and Enterprise), or runs on an OpenAI API key at API pricing, separate from your plan’s allowance.</li>
+          </ul>
+          <p>Anthropic’s and OpenAI’s terms both say you may not share your account or credentials with anyone else. Don’t open extra accounts to get around a usage limit either; check each vendor’s terms. When one agent runs out, move the remaining task to the other or wait for the reset.</p>
+        </section>
+
+        <section class="gd-sec" id="try-it" aria-labelledby="try-it-title">
+          <h2 id="try-it-title">A Claude Code and Codex workflow to try this afternoon</h2>
+          <ol class="fx-steps">
+            <li><div><strong>Write the shared rules</strong>Create <code>AGENTS.md</code> with your test and lint commands and three to five project rules. Add <code>@AGENTS.md</code> to <code>CLAUDE.md</code> if you have one.</div></li>
+            <li><div><strong>Plan without editing</strong>Start <code>claude --permission-mode plan</code> and ask for a plan split into two tasks with no shared files, each with a file list and a test command.</div></li>
+            <li><div><strong>Make two worktrees</strong>Run the <code>git worktree add</code> commands above, one branch per task.</div></li>
+            <li><div><strong>Build in parallel</strong>Paste task 1 into Codex in one worktree and task 2 into Claude Code in the other. Include the write scope and ask each to run the tests before finishing.</div></li>
+            <li><div><strong>Run the checks yourself</strong>In each worktree, run the test command. An agent saying “done” is not a passing test.</div></li>
+            <li><div><strong>Swap for review</strong>Review Claude’s branch with <code>codex review --base main</code>. Review Codex’s branch by starting Claude Code in plan mode in that worktree and asking it to review the diff against <code>main</code>.</div></li>
+            <li><div><strong>Merge by hand</strong>Fix what matters, merge each branch, then <code>git worktree remove</code> both folders.</div></li>
+          </ol>
+        </section>
+
+        <section class="gd-sec gd-pyloxa" id="pyloxa" aria-labelledby="pyloxa-title">
+          <h2 id="pyloxa-title">Where Pyloxa fits</h2>
+          <p>Pyloxa is a free Windows desktop app that automates most of the steps above with the official CLIs, on your own subscriptions or API keys. You describe the work once; one agent, the brain, writes the plan, and you approve it.</p>
+          <ul class="fx-list">
+            <li><strong>Routing rules by task type.</strong> An assignment table says which agent gets each kind of work, with backups. The default Balanced template sends front end to Claude Code and back end to Codex. <a href="../../workflow/">See the workflow</a>.</li>
+            <li><strong>One worktree per task.</strong> Each task runs in its own git worktree and branch. Pyloxa never stashes, resets or checks out your working folder.</li>
+            <li><strong>Checks Pyloxa runs itself.</strong> Your approved commands (for example <code>npm run test</code>) run after each task, plus a check that changes stay within the plan’s write scope. <a href="../../help/#checks">How checks work</a>.</li>
+            <li><strong>Cross-testing by another agent.</strong> The tester, for example Codex on Claude Code’s work, may only add tests, and Pyloxa re-runs the commands. Free: on request. Pro: automatic, with failures sent back for a fix.</li>
+            <li><strong>When quota runs out.</strong> Pyloxa proposes the fallback from your rules, and the other agent continues from the files already changed. Free: you confirm each takeover. Pro: automatic, at most two takeovers per task and never from a subscription to an API key. <a href="../../quota/">Quota and fallback</a>.</li>
+            <li><strong>You merge.</strong> Nothing is merged into your branch, pushed or opened as a PR until you choose.</li>
+          </ul>
+          <p>The free edition runs one project at a time, up to two tasks at once. <a href="../../pro/">Pro</a> adds several projects at once and the automatic parts, and is in a free preview now. You don’t need Pyloxa if you use one agent at a time, or if two terminals and the steps above already work for you.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Can Claude Code and Codex work in the same folder at the same time?</summary><div>They can, but they will change the same files and disturb each other’s test runs. Give each its own git worktree and branch, and give them tasks that don’t share files.</div></details>
+          <details class="fx-q"><summary>Does Claude Code read AGENTS.md?</summary><div>Yes, from v2.1.277, when there is no <code>CLAUDE.md</code> or <code>CLAUDE.local.md</code> in the folder or above it. If you have a <code>CLAUDE.md</code>, add <code>@AGENTS.md</code> to it to import the shared file.</div></details>
+          <details class="fx-q"><summary>Are separate branches enough, or do I need worktrees?</summary><div>Branches alone still share one folder, so only one can be checked out at a time. A worktree gives each branch its own folder, so both agents can work at once.</div></details>
+          <details class="fx-q"><summary>Whose limits does the Codex plugin for Claude Code use?</summary><div>The Codex part runs on your own Codex sign-in, and the plugin’s README says its usage counts against your Codex limits.</div></details>
+          <details class="fx-q"><summary>Can I share one subscription with a teammate to run both?</summary><div>No. Anthropic’s and OpenAI’s terms both say you may not share your account or credentials. Each person needs their own account for each tool.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/common-workflows">Common workflows</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan">Use Claude Code with your Pro, Max, or Ultra plan</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://www.anthropic.com/legal/consumer-terms">Consumer Terms of Service</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/guides/agents-md">Custom instructions with AGENTS.md</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/pricing">Pricing</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://developers.openai.com/codex/cli/slash-commands">Developer commands</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://github.com/openai/codex-plugin-cc">Codex plugin for Claude Code</a>, OpenAI on GitHub (checked 2026-11-19)</li>
+            <li><a href="https://openai.com/policies/row-terms-of-use/">Terms of Use</a>, OpenAI (checked 2026-11-19)</li>
+            <li><a href="https://git-scm.com/docs/git-worktree">git-worktree documentation</a>, Git (checked 2026-11-19)</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">More guides</h2>
+        <ul>
+            <li><a href="../claude-code-usage-limits/"><span>Claude Code usage limits</span><span class="fx-related-text">What the Claude Code usage limit message means, when it resets, and every legitimate way to keep working.</span></a></li>
+            <li><a href="../verify-ai-agent-code/"><span>Verify AI agent code</span><span class="fx-related-text">Why an agent’s “done” isn’t evidence, the checks that work, and how to have a second AI review or test the code.</span></a></li>
+            <li><a href="../agents-md-claude-md-gemini-md/"><span>AGENTS.md vs CLAUDE.md</span><span class="fx-related-text">Which instruction file each CLI reads, and how to share one AGENTS.md across Claude Code, Codex and Gemini CLI.</span></a></li>
+            <li><a href="../claude-code-codex-on-windows/"><span>Claude Code and Codex on Windows</span><span class="fx-related-text">Native Windows or WSL for Claude Code and Codex CLI, with official install commands and fixes for common errors.</span></a></li>
+            <li><a href="../../help/"><span>Help</span><span class="fx-related-text">Step-by-step help for installing Pyloxa, connecting the CLIs, plans and troubleshooting.</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">Want this handled for you?</h2>
+          <p>Pyloxa is a free Windows app that runs the Claude Code and Codex CLIs you already use: it splits the work by your rules, runs your tests itself and offers a handoff when one runs out of quota.</p>
+          <div class="fx-actions">
+            <a class="button" href="../../download/#start">Download Pyloxa for Windows</a>
+            <a class="button is-light" href="../../workflow/">How it works</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>Version 0.2.0 · Windows 10 and 11 · <a href="../../help/">Help</a> · <a href="../../guides/">Guides</a> · <a href="../../changelog/">Changelog</a> · <a href="../../privacy/">Privacy policy</a> · <a href="../../legal/EULA.txt">License (EULA)</a> · <a href="mailto:support@pyloxa.com">Support</a></p>
+      <p>Pyloxa is not affiliated with or endorsed by Anthropic, OpenAI or Google. Product names belong to their owners.</p>
+    </footer>
+
+    <script src="../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>
