@@ -554,5 +554,6 @@
   "dl.verifyTitle": "Datei prüfen (optional)",
   "dl.verify": "Um sicherzugehen, dass der Installer nicht verändert wurde, öffne PowerShell im Download-Ordner, führ diesen Befehl aus und vergleich das Ergebnis mit dem Wert unten.",
   "dl.links": "Alle Releases mit Notes und Prüfsummen stehen im <a href=\"{{@changelog}}\">Changelog</a> und auf <a href=\"https://github.com/eric861129/Pyloxa-Releases/releases\">GitHub</a>. Stimmt etwas nicht? <a href=\"https://github.com/eric861129/Pyloxa-Releases/issues\">Melde ein Problem</a> oder lies die <a href=\"{{@help}}\">Hilfe</a>.",
-  "footer.guides": "Anleitungen"
+  "footer.guides": "Anleitungen",
+  "footer.compare": "Vergleiche"
 }

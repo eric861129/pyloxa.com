@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pyloxa vs cmux：Agent 終端機還是派工指揮台</title>
+    <meta name="description" content="cmux 是免費開源的 macOS 終端機，用來同時跑很多個 Coding Agent。Pyloxa 是 Windows App，負責規劃、派工、驗收與換手。" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Pyloxa vs cmux：Agent 終端機還是派工指揮台" />
+    <meta property="og:description" content="cmux 是免費開源的 macOS 終端機，用來同時跑很多個 Coding Agent。Pyloxa 是 Windows App，負責規劃、派工、驗收與換手。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-zh.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-cmux/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-cmux/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/#article","headline":"Pyloxa vs cmux","description":"cmux 是免費開源的 macOS 終端機，用來同時跑很多個 Coding Agent。Pyloxa 是 Windows App，負責規劃、派工、驗收與換手。","inLanguage":"zh-TW","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-zh.png"},{"@type":"WebPage","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/","url":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/","name":"Pyloxa vs cmux：Agent 終端機還是派工指揮台","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"比較","item":"https://pyloxa.com/zh-TW/compare/"},{"@type":"ListItem","position":3,"name":"Pyloxa vs cmux","item":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/#faq","mainEntity":[{"@type":"Question","name":"cmux 有 Windows 版嗎？","acceptedAnswer":{"@type":"Answer","text":"目前沒有。cmux 的 README 寫著只支援 macOS（“macOS only, for now”），最新的 GitHub Release 也只有 macOS 的下載檔。如果你想找能在 Windows 上讓 Claude Code 與 Codex 一起做同一個專案的 App，Pyloxa 是一個選擇，只是做法不同。"}},{"@type":"Question","name":"cmux 能跑 Claude Code 和 Codex 嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。cmux 能跑任何在終端機裡執行的 Agent，README 也點名了這兩個。它還有 cmux claude-teams 可以開 Claude Code 的 teammate 模式，以及讓 Codex 與 Claude Code 接續 Session 的 hooks。"}},{"@type":"Question","name":"cmux 免費嗎？Pyloxa 呢？","acceptedAnswer":{"@type":"Answer","text":"cmux App 免費且開源，付費方案加上 Cloud VM 與 iOS App。Pyloxa 免費版不需要帳號；Pro 每年 US$79（早鳥 US$49），開賣前是免費預覽。兩者都用你自己的訂閱或 API Key 跑 Agent。"}},{"@type":"Question","name":"cmux 會建立 git worktree 嗎？","acceptedAnswer":{"@type":"Answer","text":"worktree 不在它列出的功能裡，不過自訂命令文件有一個範例「Agents in New Worktree」，會建立一個 worktree 並在裡面開 Codex 與 Claude Code。Pyloxa 會替每個工作建立 worktree。"}}]}]}</script>
+    <link rel="stylesheet" href="../../../assets/site.css" />
+    <link rel="stylesheet" href="../../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">跳到主要內容</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../../zh-TW/" aria-label="Pyloxa 首頁">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../../zh-TW/workflow/">工作流程</a></li>
+        <li class="optional"><a href="../../../zh-TW/memory/">記憶與 Skills</a></li>
+        <li class="optional"><a href="../../../zh-TW/quota/">額度與備援</a></li>
+        <li class="optional"><a href="../../../zh-TW/pro/">Pro</a></li>
+        <li class="optional"><a href="../../../zh-TW/guides/">攻略</a></li>
+        <li class="optional"><a href="../../../zh-TW/compare/">比較</a></li>
+        <li><a href="../../../compare/pyloxa-vs-cmux/" lang="en">English</a></li>
+        <li><a class="nav-download" href="../../../zh-TW/download/#start">下載</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../../zh-TW/">Pyloxa</a><span aria-hidden="true">/</span><a href="../">比較</a><span aria-hidden="true">/</span><span aria-current="page">Pyloxa vs cmux</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">比較</p>
+          <h1>Pyloxa vs cmux</h1>
+          <p class="fx-lede">cmux 給你一個可程式化的 macOS 終端機，自己開、自己盯很多個 Coding Agent。Pyloxa 在 Windows 上替你規劃工作、依你的規則派工、用你的命令驗收，合併由你決定。</p>
+          <p class="gd-updated"><time datetime="2026-11-19">更新於 2026 年 11 月 19 日</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>cmux 是 Manaflow 做的免費開源 macOS 終端機，以 Ghostty 為基礎，讓你同時開很多個 Coding Agent，附提醒光圈、可程式化的瀏覽器面板與 CLI。Pyloxa 是 Windows 10/11 的 App：大腦規劃工作，你的規則把每個工作派給 Claude Code 或 Codex CLI，各自在自己的 git worktree 裡做，Pyloxa 跑完你的驗證再讓你合併。用 Mac、想自己操控任何終端機 Agent，選 cmux；用 Windows、想把規劃、驗收與額度換手交給工具處理，選 Pyloxa。</p>
+        </aside>
+
+        <section class="gd-sec" id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">一覽</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">cmux</th><th scope="col">Pyloxa</th></tr></thead><tbody>
+            <tr><th scope="row">它是什麼</th><td>原生 macOS 終端機，有直式分頁、分割畫面與給 Coding Agent 的通知</td><td>桌面 App：規劃需求、把工作派給 Agent CLI、檢查成果</td></tr>
+            <tr><th scope="row">平台</th><td>只有 macOS（README 寫著 “macOS only, for now”）</td><td>只有 Windows 10 與 11，64 位元</td></tr>
+            <tr><th scope="row">價格與授權</th><td>免費，GPL-3.0-or-later。付費方案加上 Cloud VM 與 iOS App（Pro 每月 US$50 或每年 US$480）</td><td>免費版，不需帳號。Pro 每年 US$79（早鳥 US$49），目前免費預覽。不開源</td></tr>
+            <tr><th scope="row">能跑哪些 Agent</th><td>任何終端機 Agent，包括 Claude Code、Codex、Gemini CLI、OpenCode、Aider 與 Amp</td><td>Claude Code 與 Codex CLI；Gemini CLI 是實驗性支援（需自己的付費 API Key）</td></tr>
+            <tr><th scope="row">工作怎麼分</th><td>你自己開 Workspace、啟動 Agent，手動或透過 CLI</td><td>大腦寫計畫，你的派工規則決定每個工作給哪個 Agent</td></tr>
+            <tr><th scope="row">Agent 在哪裡做</th><td>你開的資料夾；worktree 要靠你自己寫的自訂命令</td><td>每個工作有自己的 git worktree 與分支</td></tr>
+            <tr><th scope="row">誰檢查成果</th><td>文件沒有寫內建的檢查步驟</td><td>Pyloxa 跑你的命令；另一家的 Agent 可以交叉測試</td></tr>
+            <tr><th scope="row">額度用完時</th><td>文件沒有寫</td><td>經你確認後由另一個 Agent 換手（Pro 可自動）</td></tr>
+            <tr><th scope="row">關掉之後</th><td>還原版面與捲動紀錄，支援的 Agent 可以接續；要讓程序持續跑需要 tmux 或 Cloud VM</td><td>有工作在跑時留在系統匣；結束 Pyloxa 會停掉 Agent</td></tr>
+            <tr><th scope="row">遠端或其他電腦</th><td>SSH Workspace；付費方案有 iOS App 與 Cloud VM</td><td>在你的電腦上執行；Pro 可以傳通知到 Telegram、Discord 或 webhook</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">2026-11-19 對照各產品官方頁面確認。功能會變動，請見資料來源。</p>
+        </section>
+
+        <section class="gd-sec" id="them" aria-labelledby="them-title">
+          <h2 id="them-title">cmux 做得好的地方</h2>
+          <ul class="fx-list">
+            <li><strong>任何 Agent，真正的終端機。</strong>每個 CLI Agent 不用整合就能跑，每個 Session 的完整輸出都看得到。</li>
+            <li><strong>一眼看出誰在等你。</strong>Agent 在等輸入時，它的面板會出現藍色光圈、分頁會亮起來。側邊欄顯示每個 Workspace 的 git 分支、連結的 PR、監聽中的 port 與最新通知。</li>
+            <li><strong>終端機旁邊就有瀏覽器。</strong>瀏覽器面板可以用程式點擊、填表單、執行 JavaScript、讀取 console 與網路紀錄，Agent 能自己檢查網頁改動。</li>
+            <li><strong>什麼都能寫腳本。</strong>CLI 與 Unix socket 可以建立 Workspace、分割面板、送出輸入、讀取畫面。專案專用的動作寫在 <code>cmux.json</code>。</li>
+            <li><strong>遠端工作。</strong><code>cmux ssh</code> 在另一台機器上開 Workspace；付費方案還有 Cloud VM 與 iOS App。</li>
+            <li><strong>開源又原生。</strong>用 Swift 與 AppKit 寫成，沿用你的 Ghostty 設定，而且免費。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="different" aria-labelledby="different-title">
+          <h2 id="different-title">Pyloxa 的不同之處</h2>
+          <p>cmux 把自己定位成讓你組裝的基本元件；Pyloxa 是一套固定的流程，每一步怎麼走由你設定。</p>
+          <ul class="fx-list">
+            <li><strong>它會規劃與派工。</strong>大腦把需求拆成階段與工作，分工表決定每一類工作交給哪個 Agent。詳見<a href="../../workflow/">工作流程</a>。</li>
+            <li><strong>它自己驗收。</strong>Agent 說做完了不算數。Pyloxa 會跑你的測試、建置與 lint 命令，檢查有沒有超出計畫的寫入範圍，也可以請第二個 Agent 補測試。整個計畫完成後有一張驗證報告卡，可以附在 PR 上。詳見<a href="../../help/#checks">驗證</a>。</li>
+            <li><strong>額度換手。</strong>標題列顯示每個 Agent 還剩多少額度。某個用完時，經你確認，另一個 Agent 從已經改好的檔案接著做。詳見<a href="../../quota/">額度與備援</a>。</li>
+            <li><strong>合併由你決定。</strong>Pyloxa 不會對你的工作目錄做 stash 或 reset，你決定之前什麼都不會合併或推送。</li>
+          </ul>
+          <p>Pyloxa 沒有的東西：終端機或瀏覽器面板、公開的 CLI 或 socket API，以及遠端執行。它只跑 Claude Code、Codex CLI，以及實驗性支援的 Gemini CLI。免費版一次最多兩個工作，同一時間只有一個專案在跑。Pyloxa 不開源、只支援 Windows，安裝檔還沒有程式碼簽章，第一次執行時 SmartScreen 可能會警告。結束 Pyloxa 會停掉它的 Agent。</p>
+        </section>
+
+        <section class="gd-sec" id="choose" aria-labelledby="choose-title">
+          <h2 id="choose-title">該選哪一個</h2>
+          <ul class="fx-list">
+            <li><strong>選 cmux，如果</strong>你用 Mac、想在真正的終端機裡自己操控 Agent、會用 Claude Code 與 Codex 以外的 Agent、需要可程式化的瀏覽器或 SSH Workspace，或偏好能自己延伸的開源工具。</li>
+            <li><strong>選 Pyloxa，如果</strong>你在 Windows 上用 Claude Code 與 Codex CLI，想在一個 App 裡完成計畫、依規則派工、各自的 worktree、用你自己的命令判斷「做完了沒」以及額度換手，合併留給你自己。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="both" aria-labelledby="both-title">
+          <h2 id="both-title">可以兩個一起用嗎？</h2>
+          <p>同一台電腦不行：cmux 在 macOS 上，Pyloxa 在 Windows 上。如果你同時有 Mac 與 Windows 電腦，可以各自對同一個 repo 使用。Pyloxa 的「同步到各 CLI」會把專案規則寫進 <code>AGENTS.md</code>，你 commit 之後，在 cmux 裡跑的 Agent 也拿得到。詳見<a href="../../guides/agents-md-claude-md-gemini-md/">三個 CLI 共用一份指示檔</a>。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>cmux 有 Windows 版嗎？</summary><div>目前沒有。cmux 的 README 寫著只支援 macOS（“macOS only, for now”），最新的 GitHub Release 也只有 macOS 的下載檔。如果你想找能在 Windows 上讓 Claude Code 與 Codex 一起做同一個專案的 App，Pyloxa 是一個選擇，只是做法不同。</div></details>
+          <details class="fx-q"><summary>cmux 能跑 Claude Code 和 Codex 嗎？</summary><div>可以。cmux 能跑任何在終端機裡執行的 Agent，README 也點名了這兩個。它還有 <code>cmux claude-teams</code> 可以開 Claude Code 的 teammate 模式，以及讓 Codex 與 Claude Code 接續 Session 的 hooks。</div></details>
+          <details class="fx-q"><summary>cmux 免費嗎？Pyloxa 呢？</summary><div>cmux App 免費且開源，付費方案加上 Cloud VM 與 iOS App。Pyloxa 免費版不需要帳號；<a href="../../pro/">Pro</a> 每年 US$79（早鳥 US$49），開賣前是免費預覽。兩者都用你自己的訂閱或 API Key 跑 Agent。</div></details>
+          <details class="fx-q"><summary>cmux 會建立 git worktree 嗎？</summary><div>worktree 不在它列出的功能裡，不過自訂命令文件有一個範例「Agents in New Worktree」，會建立一個 worktree 並在裡面開 Codex 與 Claude Code。Pyloxa 會替每個工作建立 worktree。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://github.com/manaflow-ai/cmux">cmux README</a>，Manaflow（GitHub，2026-11-19 確認）</li>
+            <li><a href="https://github.com/manaflow-ai/cmux/releases">cmux releases</a>，Manaflow（GitHub，2026-11-19 確認）</li>
+            <li><a href="https://cmux.com/">cmux 首頁與 FAQ</a>，Manaflow（2026-11-19 確認）</li>
+            <li><a href="https://cmux.com/pricing">cmux 價格</a>，Manaflow（2026-11-19 確認）</li>
+            <li><a href="https://cmux.com/docs/custom-commands">Custom commands</a>，cmux 文件（2026-11-19 確認）</li>
+            <li><a href="../../help/">Pyloxa 說明</a>，Pyloxa（2026-11-19 確認）</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">其他比較</h2>
+        <ul>
+            <li><a href="../pyloxa-vs-codex-app/"><span>Pyloxa 與 Codex App</span><span class="fx-related-text">OpenAI 自家的 Codex 桌面 App，和依你的規則協調 Codex CLI 與 Claude Code 的 Pyloxa。</span></a></li>
+            <li><a href="../pyloxa-vs-claude-code-desktop/"><span>Pyloxa vs Claude Code Desktop</span><span class="fx-related-text">Anthropic 自家的 Claude Code App，和依你的規則協調 Claude Code 與 Codex CLI 的 Pyloxa 比一比。</span></a></li>
+            <li><a href="../pyloxa-vs-conductor/"><span>Pyloxa vs Conductor</span><span class="fx-related-text">Conductor 適合在 macOS 上平行開 Agent 工作區，Pyloxa 適合在 Windows 上規劃、驗收：各自做什麼、什麼時候選哪個。</span></a></li>
+            <li><a href="../pyloxa-vs-herdr/"><span>Pyloxa 與 Herdr</span><span class="fx-related-text">支援三個平台的 Agent 終端機工作區，還是在 Windows 上規劃、派工、驗收的多 Agent 執行。</span></a></li>
+            <li><a href="../../../zh-TW/help/"><span>說明文件</span><span class="fx-related-text">安裝 Pyloxa、連線 CLI、計畫與疑難排解的操作步驟。</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">想把這些交給工具處理？</h2>
+          <p>Pyloxa 是免費的 Windows App，執行你已經在用的 Claude Code 與 Codex CLI：依你的規則分工、自己跑你的測試，某一個額度用完時提出換手。</p>
+          <div class="fx-actions">
+            <a class="button" href="../../../zh-TW/download/#start">下載 Pyloxa Windows 版</a>
+            <a class="button is-light" href="../../../zh-TW/workflow/">看看怎麼運作</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>版本 0.2.0 · Windows 10 與 11 · <a href="../../../zh-TW/help/">說明文件</a> · <a href="../../../zh-TW/guides/">攻略</a> · <a href="../../../zh-TW/compare/">比較</a> · <a href="../../../zh-TW/changelog/">改版紀錄</a> · <a href="../../../zh-TW/privacy/">隱私權政策</a> · <a href="../../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。產品名稱屬於各自的所有者。</p>
+      <p>比較內容依各產品官方頁面在標示日期的樣子。產品名稱與商標屬於各自的所有者，他們並未背書這些頁面。發現內容過時了？請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。</p>
+    </footer>
+
+    <script src="../../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

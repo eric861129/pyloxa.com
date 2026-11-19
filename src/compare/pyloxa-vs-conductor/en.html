@@ -1,0 +1,87 @@
+<!--meta {"title": "Pyloxa vs Conductor: parallel coding agents on Windows", "description": "Conductor runs Claude Code, Codex, Cursor and OpenCode in parallel workspaces on macOS. Pyloxa plans, routes and checks Claude Code and Codex on Windows.", "h1": "Pyloxa vs Conductor", "lede": "Both run Claude Code and Codex side by side, each in its own git worktree. Conductor is a macOS app built around workspaces you drive and review; Pyloxa is a Windows app built around a plan that it checks with your own commands.", "nav": "Pyloxa vs Conductor", "blurb": "Conductor for parallel agent workspaces on macOS, Pyloxa for planned, checked work on Windows: what each does and when to pick which.", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>Conductor is a free macOS app for running Claude Code, Codex, Cursor and OpenCode agents in parallel workspaces, each a git worktree, with diff, pull request and checks views. Its install page says it is not available for Windows or Linux yet (checked 2026-11-19). Pyloxa is a free, closed-source Windows 10 and 11 app where a brain agent plans the work, your rules send each task to Claude Code or Codex, and Pyloxa runs your test commands itself before a result counts. On a Mac, Conductor is a strong fit if you want to drive and review each agent yourself; on Windows, Conductor isn’t an option today and Pyloxa is one alternative.</p>
+        </aside>
+
+        <section class="gd-sec" id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">At a glance</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Conductor</th><th scope="col">Pyloxa</th></tr></thead><tbody>
+            <tr><th scope="row">Platforms</th><td>macOS; not available for Windows or Linux yet. iOS app for cloud workspaces.</td><td>Windows 10 and 11, 64-bit only</td></tr>
+            <tr><th scope="row">Price</th><td>App free. Cloud workspaces need a Pro, Teams or Enterprise plan; prices not listed.</td><td>Free edition, no account. Pro US$79 a year, in a free preview. Closed source.</td></tr>
+            <tr><th scope="row">Agents it runs</th><td>Claude Code, Codex, OpenCode (bundled); Cursor through its API</td><td>Claude Code, Codex CLI; Gemini CLI experimental</td></tr>
+            <tr><th scope="row">Sign-in</th><td>Claude Pro or Max login, Sign in with ChatGPT, API keys, Bedrock and gateways</td><td>Each CLI’s own sign-in or an API key</td></tr>
+            <tr><th scope="row">How work is split</th><td>You open a workspace per task or issue; Plan Mode per session; agents can start workspaces and chat with other agents</td><td>A brain agent plans phases and tasks; your routing rules pick the agent; you approve the plan</td></tr>
+            <tr><th scope="row">Where agents work</th><td>A git worktree and branch per workspace, with setup, run and archive scripts</td><td>A git worktree and <code>pyloxa/…</code> branch per task, or one per plan</td></tr>
+            <tr><th scope="row">Who checks the result</th><td>You, with a diff viewer and a Checks tab (PR, CI and status checks, review comments, todos)</td><td>Pyloxa runs your test, build and lint commands after each task and at phase gates; another vendor’s agent can cross-test</td></tr>
+            <tr><th scope="row">When quota runs out</th><td>Usage limits and estimated cost shown per chat; handover to another agent not documented</td><td>Proposes the fallback agent from your rules, which continues after you confirm; automatic in Pro</td></tr>
+            <tr><th scope="row">After closing the app</th><td>Local sessions end; cloud workspace agents keep working</td><td>Stays in the tray while work runs; quitting stops the agents</td></tr>
+            <tr><th scope="row">Remote</th><td>Cloud workspaces (GitHub repositories); remote control of your Mac from an iPhone</td><td>Runs only on your PC; Pro sends notifications to Telegram, Discord or a webhook</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">Checked against each product’s official pages on 2026-11-19. Features change; see Sources.</p>
+        </section>
+
+        <section class="gd-sec" id="them" aria-labelledby="them-title">
+          <h2 id="them-title">What Conductor does well</h2>
+          <ul class="fx-list">
+            <li><strong>Review in one window.</strong> The diff viewer filters by commit and sends your comments on changed lines to the agent. GitHub review comments appear in the app, and the Checks tab gathers PR details, CI and status checks, deployments and todos before you merge.</li>
+            <li><strong>Workspace plumbing.</strong> Setup scripts prepare each new worktree, run actions start your app or test watcher, archive scripts clean up, gitignored files such as <code>.env.local</code> can be copied in, and each workspace gets ten ports of its own.</li>
+            <li><strong>Many agents and providers.</strong> Four harnesses with a model picker per chat. Codex can use your ChatGPT plan through Sign in with ChatGPT; Claude Code can use your Claude Pro or Max login, an API key, Bedrock or a gateway.</li>
+            <li><strong>Work away from the desk.</strong> Cloud workspaces keep running after you close the app, the iOS app lets you chat with agents and merge PRs, and remote control drives your Mac from an iPhone.</li>
+            <li><strong>Flexible parallel patterns.</strong> One workspace per issue, or several agents in one workspace, and since 0.95.0 agents can create workspaces and message other agents.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="different" aria-labelledby="different-title">
+          <h2 id="different-title">Where Pyloxa is different</h2>
+          <p><strong>A plan and rules decide who does what.</strong> You describe the work once; the brain splits it into phases and tasks, and routing rules you write, such as “backend tasks go to Codex”, pick the agent for each. The <a href="../../workflow/">workflow page</a> has five templates and your own stages.</p>
+          <p><strong>Pyloxa runs the checks itself.</strong> An agent saying it is done isn’t enough. After each task Pyloxa runs the verification commands you approved and checks the plan’s write scope, and each phase ends with a gate on the combined result. Another vendor’s agent can test the work, adding tests only, and the command result decides (on request in the free edition, automatic in <a href="../../pro/">Pro</a>). Conductor’s docs describe showing CI, status checks and todos before merge; they don’t describe the app running your test commands to accept or reject a result.</p>
+          <p><strong>Quota takeovers.</strong> When a CLI runs out of quota, Pyloxa stops sending it work and offers the fallback agent from your rules, which continues from the files already changed once you confirm. See <a href="../../quota/">Quota &amp; fallback</a>.</p>
+          <p><strong>What Conductor documents and Pyloxa doesn’t:</strong> Cursor and OpenCode, cloud workspaces, a phone app, setup and run scripts, and line comments on a diff. Pyloxa’s own limits: closed source, Windows only, an installer that isn’t code-signed (SmartScreen may warn), and agents that stop when you quit it. The free edition runs one project at a time, and Claude Code on a subscription takes one task at a time.</p>
+        </section>
+
+        <section class="gd-sec" id="choose" aria-labelledby="choose-title">
+          <h2 id="choose-title">Which one to choose</h2>
+          <ul class="fx-list">
+            <li><strong>Choose Conductor if</strong> you work on a Mac; you like to start each agent yourself and review its diff, checks and PR in one window; you want Cursor, OpenCode, Bedrock or OpenRouter; or you want cloud workspaces and an iPhone app.</li>
+            <li><strong>Choose Pyloxa if</strong> you work on Windows 10 or 11; you want one request turned into a plan that rules route between Claude Code and Codex; you want a result to count only when your own commands pass, with another vendor’s agent testing it; and you want a confirmed takeover when one CLI runs out of quota.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="both" aria-labelledby="both-title">
+          <h2 id="both-title">Can you use both?</h2>
+          <p>Not on one computer: Conductor runs on macOS and Pyloxa on Windows. With a Mac and a Windows PC, you can use each against the same GitHub repository. Both work on their own branches, so their work meets in pull requests. If both use the same Claude or ChatGPT plan, they share its usage limits.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Is there a Conductor for Windows?</summary><div>Not as of 2026-11-19. Conductor’s install page says it is available for macOS, is not available for Windows or Linux yet, and offers a sign-up to hear when it is.</div></details>
+          <details class="fx-q"><summary>What is a Conductor alternative for Windows?</summary><div>Pyloxa is one: a Windows 10 and 11 app that runs Claude Code and Codex CLI in separate git worktrees. It isn’t a port of Conductor. It is built around a plan, routing rules and checks it runs itself, and it doesn’t run Cursor or OpenCode or offer cloud workspaces. To run the CLIs on Windows yourself, see <a href="../../guides/claude-code-codex-on-windows/">Claude Code and Codex CLI on Windows</a>.</div></details>
+          <details class="fx-q"><summary>Does Conductor run Codex with a ChatGPT plan?</summary><div>Yes. Codex is bundled, and since 0.89.0 you can choose Continue with ChatGPT in Settings → Agents → Codex; an existing <code>codex login</code> or an API key also works. Pyloxa runs Codex CLI with <code>codex login</code> or an OpenAI Platform API key.</div></details>
+          <details class="fx-q"><summary>Is Conductor free?</summary><div>The app is free, and model usage is billed by your provider. Its FAQ says it plans to charge for collaboration features later. Cloud workspaces need a Pro, Teams or Enterprise plan, with no extra cloud fee for now. Pyloxa’s free edition stays free; Pro is US$79 a year and in a free preview.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://www.conductor.build/">Conductor home page</a>, Conductor (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/installation">Install</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/faq">FAQ</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/reference/harnesses">Harnesses overview</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/guides/providers">Providers</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/concepts/workspaces-and-branches">Isolated workspaces</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/concepts/git-worktrees">Git worktrees</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/reference/scripts">Scripts</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/concepts/parallel-agents">Parallel agents</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/concepts/agent-modes">Agent modes</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/reference/diff-viewer">Diff viewer</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/reference/checks">Checks</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/docs/cloud/faq">Cloud FAQ</a>, Conductor docs (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/changelog/0.89.0-sign-in-with-chatgpt">0.89.0: Sign in with ChatGPT</a>, Conductor changelog (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/changelog/0.90.0-conductor-for-ios">0.90.0: Conductor for iOS</a>, Conductor changelog (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/changelog/0.92.0-remote-control">0.92.0: Remote control</a>, Conductor changelog (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/changelog/0.95.0-agents-that-manage-your-local-workspaces">0.95.0: Agents that manage your local workspaces</a>, Conductor changelog (checked 2026-11-19)</li>
+            <li><a href="https://www.conductor.build/changelog/0.96.0-know-what-you-re-spending">0.96.0: Know what you’re spending</a>, Conductor changelog (checked 2026-11-19)</li>
+            <li><a href="../../help/">Pyloxa Help</a>, Pyloxa (checked 2026-11-19)</li>
+          </ol>
+        </section>

@@ -434,4 +434,88 @@
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/guides/claude-code-codex-on-windows/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/guides/claude-code-codex-on-windows/" />
   </url>
+  <url>
+    <loc>https://pyloxa.com/compare/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/compare/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/compare/pyloxa-vs-codex-app/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-codex-app/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-codex-app/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-codex-app/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/compare/pyloxa-vs-codex-app/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-codex-app/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-codex-app/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-codex-app/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/compare/pyloxa-vs-conductor/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-conductor/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-conductor/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-conductor/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/compare/pyloxa-vs-conductor/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-conductor/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-conductor/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-conductor/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/compare/pyloxa-vs-herdr/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-herdr/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-herdr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-herdr/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/compare/pyloxa-vs-herdr/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-herdr/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-herdr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-herdr/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/compare/pyloxa-vs-cmux/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-cmux/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-cmux/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-cmux/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-cmux/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-cmux/" />
+  </url>
 </urlset>

@@ -1,0 +1,87 @@
+<!--meta {"title": "Pyloxa 與 Codex App 比較：哪一個適合你的工作方式", "description": "ChatGPT 桌面 App 裡的 Codex，還是 Pyloxa？平台、方案、worktree、審查、排程與用量限制，依 2026-11-19 官方文件比較。", "h1": "Pyloxa 與 Codex App 比較", "lede": "Codex App 是 OpenAI 自家的 Codex 桌面 App，現在是 ChatGPT 桌面 App 的一部分。Pyloxa 是另一個 Windows App，讓 Codex CLI 和 Claude Code 在同一個專案裡分工合作。", "nav": "Pyloxa 與 Codex App", "blurb": "OpenAI 自家的 Codex 桌面 App，和依你的規則協調 Codex CLI 與 Claude Code 的 Pyloxa。", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>Codex App 是 OpenAI 自家的 Codex 桌面 App。從 2026 年 7 月 9 日起，它併入 macOS 與 Windows 上的 ChatGPT 桌面 App，Linux 版則在預覽中。它可以同時開好幾個 Codex 對話，跑在本機、Git worktree 或雲端，並內建 diff 與 Pull Request 審查、排程工作和手機遠端操作。Pyloxa 是另一個 Windows App，和 OpenAI 沒有關係：它讓 Codex CLI 和 Claude Code 依你的派工規則做同一份計畫，並由 Pyloxa 自己執行你的驗證命令。如果你只用 Codex，Codex App 多半比較適合你。</p>
+        </aside>
+
+        <section class="gd-sec" id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">一覽</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Codex App（ChatGPT 桌面 App）</th><th scope="col">Pyloxa</th></tr></thead><tbody>
+            <tr><th scope="row">它是什麼</th><td>OpenAI 的 Codex 桌面 App，現在是 ChatGPT 桌面 App 裡的一個畫面</td><td>規劃工作、依你的規則把工作派給 Codex CLI 與 Claude Code 的 App</td></tr>
+            <tr><th scope="row">平台</th><td>macOS、Windows（原生 PowerShell 搭配 Windows 沙箱，或 WSL2）、Linux 預覽版（Ubuntu、Debian、Fedora）</td><td>Windows 10 與 11，64 位元</td></tr>
+            <tr><th scope="row">價格與方案</th><td>包含在 ChatGPT Free、Go、Plus、Pro、Business、Edu 與 Enterprise 方案；符合資格的方案可以用點數加購用量</td><td>免費版，不需帳號；Pro（每年 US$79）目前免費預覽；不開源。AI 用量走你自己的訂閱或 API Key</td></tr>
+            <tr><th scope="row">能跑哪些 Agent</th><td>使用 OpenAI 模型的 Codex；其他廠商的 Agent：文件未說明（可以從 Claude Code、Claude Cowork 與 Cursor 匯入設定）</td><td>Codex CLI 與 Claude Code；Gemini CLI 為實驗性支援，需要你自己的付費 API Key</td></tr>
+            <tr><th scope="row">工作怎麼分</th><td>由你開好幾個平行對話；要求時 Codex 可以用 subagent</td><td>大腦寫出分階段、分工作的計畫；你的派工規則決定每個工作交給哪個 CLI</td></tr>
+            <tr><th scope="row">Agent 在哪裡工作</th><td>每個對話各選：Local（你的 checkout）、Worktree（由 Codex 管理）或 Cloud</td><td>每個工作在自己的 git worktree、自己的 <code>pyloxa/…</code> 分支；不會對你的資料夾做 stash 或 reset</td></tr>
+            <tr><th scope="row">誰來驗收</th><td>你在審查窗格看；<code>/review</code> 列出問題；Code Review 處理 GitHub 的 Pull Request</td><td>Pyloxa 執行你核准的驗證命令並檢查寫入範圍；另一家的 Agent 可以交叉測試</td></tr>
+            <tr><th scope="row">額度用完時</th><td>方案內的用量（Plus 與 Business 有五小時限制，也可能有每週限制）；符合資格的方案可以用點數繼續</td><td>依你的規則提出備援；你確認後，另一個 CLI 接手繼續（Pro 可自動換手）</td></tr>
+            <tr><th scope="row">排程</th><td>排程工作；本機專案需要電腦開著、App 在執行</td><td>Pro：在指定時間或下次額度重設後開始計畫；Pyloxa 必須開著</td></tr>
+            <tr><th scope="row">關掉之後</th><td>雲端工作在電腦睡眠時也會繼續</td><td>有工作時留在系統匣；結束 Pyloxa 會停止它的 Agent</td></tr>
+            <tr><th scope="row">其他裝置</th><td>用 iOS 或 Android 上的 ChatGPT 操作 Mac 或 Windows 主機；支援 SSH 專案</td><td>在安裝它的那台電腦上運作；Pro 可以通知到 Telegram、Discord 或 webhook</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">2026-11-19 依兩者的官方頁面核對。功能會變動，請見資料來源。</p>
+        </section>
+
+        <section class="gd-sec" id="them" aria-labelledby="them-title">
+          <h2 id="them-title">Codex App 做得好的地方</h2>
+          <ul class="fx-list">
+            <li><strong>每個對話自選本機、worktree 或雲端。</strong>Handoff 可以把對話在 Local 和 Worktree 之間移動，Git 操作由它處理。設定腳本會幫新的 worktree 準備環境，動作（actions）把測試之類的常用命令放在上方工具列。</li>
+            <li><strong>內建審查。</strong>審查窗格可以加行內註解，也能 stage、revert、commit、push 和開 Pull Request。<code>/review</code> 審查某個分支或還沒 commit 的改動，不會動到你的檔案。Code Review 顯示 GitHub 的 Pull Request 與它的檢查結果，自動雲端審查可以在你打開之前就先留下意見。</li>
+            <li><strong>你不在時工作照樣進行。</strong>雲端工作在電腦睡眠時也會繼續跑。排程工作在你的專案或背景 worktree 裡執行，結果回報到 Scheduled。</li>
+            <li><strong>在哪裡都能接手。</strong>用 iOS 或 Android 上的 ChatGPT，就能在連線的電腦上開新對話、核准命令、看 diff。App 也能透過 SSH 開啟遠端主機上的專案。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="different" aria-labelledby="different-title">
+          <h2 id="different-title">Pyloxa 的不同之處</h2>
+          <p>Pyloxa 不是要取代 Codex。它像你在終端機裡一樣啟動官方的 Codex CLI 與 Claude Code，再讓它們在同一個專案裡分工。</p>
+          <ul class="fx-list">
+            <li><strong>兩家的 Agent 做同一份計畫。</strong>大腦把需求拆成階段與工作，你的派工規則把每個工作交給 Codex CLI 或 Claude Code。Codex App 的文件說明的是從 Claude Code 匯入設定，不是執行它。詳見<a href="../../workflow/">工作流程</a>。</li>
+            <li><strong>Pyloxa 自己驗收。</strong>每個工作完成後，它會執行你核准的驗證命令（例如 <code>npm run test</code>），並檢查改動的檔案有沒有超出計畫的寫入範圍。Agent 說「做完了」從來不算通過。另一家的 Agent 可以新增測試來交叉測試，以命令的結果為準。免費版要你按下才交叉測試，<a href="../../pro/">Pro</a> 可以自動進行。</li>
+            <li><strong>額度用完時換另一個 Agent 接手。</strong>Codex 額度用完時，Pyloxa 依你的規則提出備援，你確認後，Claude Code 從已經改好的檔案繼續做。詳見<a href="../../quota/">額度與備援</a>。</li>
+            <li><strong>你的資料夾不會被動到。</strong>Agent 只在 Pyloxa 的 worktree 裡工作，直到你按「合併到目前分支」或「建立分支並開 PR」之前，什麼都不會合併或推送。驗證報告卡可以附在 PR 說明裡。</li>
+          </ul>
+          <p>先說清楚的限制：Pyloxa 只支援 Windows、不開源，安裝檔還沒有程式碼簽章，所以第一次執行時 SmartScreen 可能會跳警告。它的 Agent 跑在你自己的電腦上，結束 Pyloxa 就會停止它們。</p>
+        </section>
+
+        <section class="gd-sec" id="choose" aria-labelledby="choose-title">
+          <h2 id="choose-title">該選哪一個</h2>
+          <ul class="fx-list">
+            <li><strong>選 Codex App，如果</strong>你只用 Codex 寫程式、用的是 Mac 或 Linux，或想在同一個 App 裡用雲端工作、手機遠端、SSH 專案、排程工作或 Pull Request 審查。</li>
+            <li><strong>選 Pyloxa，如果</strong>你在 Windows 上同時用 Codex 和 Claude Code，想讓一份計畫依你的規則分給兩邊，由你自己的命令決定什麼算通過，而且一邊額度用完時由另一邊接手。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="both" aria-labelledby="both-title">
+          <h2 id="both-title">可以兩個一起用嗎？</h2>
+          <p>可以。Pyloxa 用的是 Codex CLI，不是 Codex App：Codex 對話、雲端工作與 Pull Request 審查用 Codex App，要讓 Codex 和 Claude Code 分工的計畫用 Pyloxa。Codex CLI 用 ChatGPT 帳號登入時，它在 Pyloxa 裡的用量算在同一個方案；API Key 的 Session 另外計費。Git 規定一個分支同一時間只能在一個 worktree 裡 checkout，所以不要讓兩邊同時處理同一個分支或同一批檔案。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>Codex App 有 Windows 版嗎？</summary><div>有。Codex App 在 2026 年 3 月 4 日推出 Windows 版，2026 年 7 月 9 日 Codex 併入 ChatGPT 桌面 App，原有的專案與設定都會保留。它可以用原生 PowerShell 搭配 Windows 沙箱執行，也可以跑在 WSL2。</div></details>
+          <details class="fx-q"><summary>Codex App 能跑 Claude Code 嗎？</summary><div>OpenAI 的文件說明的是從 Claude Code、Claude Cowork 與 Cursor 匯入設定和最近的對話，不是執行這些 Agent。Pyloxa 則讓 Claude Code 和 Codex CLI 在同一份計畫裡一起工作。</div></details>
+          <details class="fx-q"><summary>Codex App 需要付費方案嗎？</summary><div>不需要。OpenAI 列出從 Free 到 Enterprise 的每個 ChatGPT 方案都包含 Codex。能用多少，要看方案、模型和工作內容。</div></details>
+          <details class="fx-q"><summary>Pyloxa 可以用我的 ChatGPT 訂閱嗎？</summary><div>可以。在終端機用 <code>codex login</code> 登入 Codex CLI，或改用 OpenAI Platform 的 API Key。Pyloxa 不會讀取、複製或傳送你的 token。詳見<a href="../../help/#connect">連接 Agent</a>。</div></details>
+          <details class="fx-q"><summary>Pyloxa 有 macOS 版嗎？</summary><div>沒有。Pyloxa 支援 Windows 10 與 11，64 位元。在 Mac 上可以用 Codex App。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://learn.chatgpt.com/docs/app">ChatGPT desktop app</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/changelog?type=codex-app">ChatGPT &amp; Codex changelog</a>（2026-03-04、2026-07-09 與 2026-08-11 的項目），OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/windows/windows-app">ChatGPT desktop app for Windows</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/pricing">Pricing</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/environments/modes">Codex environments</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/environments/git-worktrees">Worktrees</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/environments/local-environment">Local environments</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/code-review">Code review</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/automations">Scheduled tasks</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/cloud">Codex Cloud</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/remote-connections">Remote connections</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/agent-configuration/subagents">Subagents</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/long-running-work">Long-running work</a>，OpenAI（2026-11-19 查閱）</li>
+            <li><a href="https://learn.chatgpt.com/docs/import">Import from another agent</a>，OpenAI（2026-11-19 查閱）</li>
+          </ol>
+        </section>

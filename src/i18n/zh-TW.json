@@ -554,5 +554,6 @@
   "dl.verifyTitle": "檢查檔案（選用）",
   "dl.verify": "想確認安裝檔沒有被改過，可以在下載的資料夾開啟 PowerShell，執行下面的命令，再和下方的值比對。",
   "dl.links": "每一版的發布說明與校驗碼都在<a href=\"{{@changelog}}\">改版紀錄</a>與 <a href=\"https://github.com/eric861129/Pyloxa-Releases/releases\">GitHub</a> 上。遇到問題？可以<a href=\"https://github.com/eric861129/Pyloxa-Releases/issues\">回報問題</a>，或看<a href=\"{{@help}}\">說明文件</a>。",
-  "footer.guides": "攻略"
+  "footer.guides": "攻略",
+  "footer.compare": "比較"
 }

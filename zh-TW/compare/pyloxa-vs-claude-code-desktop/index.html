@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pyloxa vs Claude Code Desktop：Windows 上該用哪個</title>
+    <meta name="description" content="Claude Code Desktop 還是 Pyloxa？平台、方案、平行 Session、worktree、驗收與額度，依官方文件比對。" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="Pyloxa vs Claude Code Desktop：Windows 上該用哪個" />
+    <meta property="og:description" content="Claude Code Desktop 還是 Pyloxa？平台、方案、平行 Session、worktree、驗收與額度，依官方文件比對。" />
+    <meta property="og:url" content="https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/" />
+    <meta property="og:image" content="https://pyloxa.com/assets/og-zh.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../../../assets/site.webmanifest" />
+    <link rel="canonical" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/" />
+    <link rel="alternate" hreflang="en" href="https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/" />
+    <link rel="alternate" hreflang="x-default" href="https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/#article","headline":"Pyloxa vs Claude Code Desktop","description":"Claude Code Desktop 還是 Pyloxa？平台、方案、平行 Session、worktree、驗收與額度，依官方文件比對。","inLanguage":"zh-TW","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"},"publisher":{"@id":"https://pyloxa.com/#organization"},"mainEntityOfPage":{"@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/"},"about":{"@id":"https://pyloxa.com/#software"},"image":"https://pyloxa.com/assets/og-zh.png"},{"@type":"WebPage","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/","url":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/","name":"Pyloxa vs Claude Code Desktop：Windows 上該用哪個","inLanguage":"zh-TW","isPartOf":{"@id":"https://pyloxa.com/#website"},"breadcrumb":{"@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Pyloxa","item":"https://pyloxa.com/zh-TW/"},{"@type":"ListItem","position":2,"name":"比較","item":"https://pyloxa.com/zh-TW/compare/"},{"@type":"ListItem","position":3,"name":"Pyloxa vs Claude Code Desktop","item":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/"}]},{"@type":"FAQPage","@id":"https://pyloxa.com/zh-TW/compare/pyloxa-vs-claude-code-desktop/#faq","mainEntity":[{"@type":"Question","name":"Claude Code Desktop 有 Windows 版嗎？","acceptedAnswer":{"@type":"Answer","text":"有，x64 與 ARM64 都有。Session 可以直接在 Windows 上跑，也可以在 WSL 2 裡跑；使用 worktree 的 Session 需要 Git for Windows。"}},{"@type":"Question","name":"Claude Code Desktop 能跑 Codex 嗎？","acceptedAnswer":{"@type":"Answer","text":"它的文件只涵蓋 Claude Code，包括透過 Amazon Bedrock、Google Cloud 的 Agent Platform、Microsoft Foundry 或 LLM gateway 使用。文件沒有說明能在裡面跑 Codex CLI。Pyloxa 可以讓 Codex CLI 和 Claude Code 一起工作，請看Claude Code 與 Codex 一起用。"}},{"@type":"Question","name":"Pyloxa 是要取代 Claude 桌面 App 嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。Pyloxa 是另一個 App，和 Anthropic 沒有關係，也沒有得到 Anthropic 背書。它用你自己的訂閱或 API Key 啟動官方的 Claude Code CLI，不會讀取你的 CLI token。"}},{"@type":"Question","name":"碰到 Claude 用量上限怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"用量是所有 Claude Code 介面共用的，所以兩個 App 都會受到限制。Pyloxa 會把這條連線標成額度用盡，經你確認後把工作交給 Codex CLI 接手，或等額度重設。請看Claude Code 額度用完怎麼辦。"}}]}]}</script>
+    <link rel="stylesheet" href="../../../assets/site.css" />
+    <link rel="stylesheet" href="../../../assets/features.css" />
+    <!-- Google Analytics：不開廣告功能。裝置時區在歐洲（涵蓋歐洲經濟區、英國與瑞士及其海外地區）、是 UTC 或讀不到時，完全不載入；
+         載入後若 Google 判斷訪客在這些地區，仍預設不使用 analytics cookie（第二道保護） -->
+    <script>
+      (() => {
+      let tz = "";
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch {}
+      const europe =
+        /^(Europe|Atlantic|Arctic|Etc)\//.test(tz) ||
+        /^(UTC|UCT|GMT|Greenwich|Universal|Zulu|WET|CET|MET|EET|GB|GB-Eire|Eire|Iceland|Poland|Portugal)$/.test(tz) ||
+        ["Asia/Nicosia", "Asia/Famagusta", "Africa/Ceuta", "America/Cayenne", "America/Guadeloupe", "America/Marigot", "America/Martinique", "America/St_Barthelemy", "Indian/Mayotte", "Indian/Reunion"].includes(tz);
+      if (!tz || europe) return;
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-PWKKJHQV92";
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"] });
+      gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+      gtag("js", new Date());
+      gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
+      // 下載按鈕：記成 download_click，在 GA 設為主要事件
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
+        if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
+      });
+      })();
+    </script>
+  </head>
+  <body class="fx gd-page">
+    <a class="skip" href="#main">跳到主要內容</a>
+    <header class="wrap nav">
+      <a class="mark" href="../../../zh-TW/" aria-label="Pyloxa 首頁">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="../../../zh-TW/workflow/">工作流程</a></li>
+        <li class="optional"><a href="../../../zh-TW/memory/">記憶與 Skills</a></li>
+        <li class="optional"><a href="../../../zh-TW/quota/">額度與備援</a></li>
+        <li class="optional"><a href="../../../zh-TW/pro/">Pro</a></li>
+        <li class="optional"><a href="../../../zh-TW/guides/">攻略</a></li>
+        <li class="optional"><a href="../../../zh-TW/compare/">比較</a></li>
+        <li><a href="../../../compare/pyloxa-vs-claude-code-desktop/" lang="en">English</a></li>
+        <li><a class="nav-download" href="../../../zh-TW/download/#start">下載</a></li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <nav class="wrap fx-crumbs" aria-label="Breadcrumb"><a href="../../../zh-TW/">Pyloxa</a><span aria-hidden="true">/</span><a href="../">比較</a><span aria-hidden="true">/</span><span aria-current="page">Pyloxa vs Claude Code Desktop</span></nav>
+      <article class="wrap gd">
+        <header class="gd-head">
+          <p class="fx-eyebrow">比較</p>
+          <h1>Pyloxa vs Claude Code Desktop</h1>
+          <p class="fx-lede">Claude Code Desktop 是 Anthropic 自家的 Claude Code 桌面 App。Pyloxa 是另一個 Windows App，讓 Claude Code 和 Codex CLI 在同一個專案裡分工。</p>
+          <p class="gd-updated"><time datetime="2026-11-19">更新於 2026 年 11 月 19 日</time></p>
+        </header>
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">簡短回答</h2>
+          <p>Claude Code Desktop 是 Anthropic 官方提供、用圖形介面跑 Claude Code 的方式：也就是 Claude 桌面 App 裡的 Code 分頁，支援 macOS、Windows 與 Linux（beta），有平行 Session、可選的 worktree、diff 審閱、排程工作與雲端 Session。Pyloxa 是另一個 Windows App，和 Anthropic 沒有關係，它讓 Claude Code 和 Codex CLI 依你的派工規則完成同一份計畫，並自己執行你的驗證命令。如果你只用 Claude Code，Claude Code Desktop 多半更適合你。</p>
+        </aside>
+
+        <section class="gd-sec" id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">一覽</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Claude Code Desktop</th><th scope="col">Pyloxa</th></tr></thead><tbody>
+            <tr><th scope="row">它是什麼</th><td>Anthropic 的 Claude 桌面 App 裡的 Code 分頁</td><td>先規劃工作，再依你的規則把工作派給 Claude Code 與 Codex CLI 的 App</td></tr>
+            <tr><th scope="row">平台</th><td>macOS、Windows x64 與 ARM64、Linux beta（Ubuntu、Debian）</td><td>Windows 10 與 11，64 位元</td></tr>
+            <tr><th scope="row">價格與方案</th><td>Claude Code 需要 Pro、Max、Ultra、Team 或 Enterprise 訂閱；App 內含 Claude Code</td><td>免費版不需帳號；Pro（每年 US$79）目前免費預覽；不開源</td></tr>
+            <tr><th scope="row">能跑的 Agent</th><td>Claude Code；也可透過 Amazon Bedrock、Google Cloud 的 Agent Platform、Microsoft Foundry 或 LLM gateway。其他廠商的 Agent：文件未說明</td><td>Claude Code 與 Codex CLI；Gemini CLI 為實驗性支援，需要你自己的 API Key</td></tr>
+            <tr><th scope="row">工作怎麼分</th><td>你自己開 Session，可以同時跑好幾個；dynamic workflows 可以從一個 Session 跑很多 subagent</td><td>大腦把計畫拆成階段；你核准後，工作依派工規則交給各個 CLI</td></tr>
+            <tr><th scope="row">Agent 在哪裡工作</th><td>專案資料夾本身，或開啟 Worktree 後每個 Session 一個 Git worktree（預設關閉）</td><td>每個工作有自己的 git worktree 與分支，也可以整個計畫共用一個 worktree</td></tr>
+            <tr><th scope="row">誰來驗收</th><td>你在 diff 畫面審閱；<code>/code-review</code>；Browser 窗格的 auto-verify；PR 上的 CI 狀態與 Auto-fix</td><td>Pyloxa 執行你核准的命令並檢查寫入範圍；可選的大腦驗收；由另一家的 Agent 交叉測試</td></tr>
+            <tr><th scope="row">同時能跑多少</th><td>好幾個 Session；文件沒有寫上限</td><td>免費版：一個計畫兩個工作、一次一個專案；Pro：多個專案。用訂閱的 Claude Code 一次一個工作</td></tr>
+            <tr><th scope="row">用量與額度</th><td>用量圓環顯示方案用量，所有 Claude Code 介面共用</td><td>標題列顯示每個 Agent 剩多少；額度用完時經你確認換手給另一個 CLI（Pro 可自動）</td></tr>
+            <tr><th scope="row">關掉之後</th><td>雲端 Session 在電腦關機後也會繼續；本機排程工作需要 App 開著、電腦醒著</td><td>有工作在跑時留在系統匣；結束 Pyloxa 會停止 Agent；中斷的工作可以接續</td></tr>
+            <tr><th scope="row">遠端或其他電腦</th><td>雲端、SSH、Windows 上的 WSL 2，以及從手機用 Dispatch</td><td>只在你的 Windows 電腦上</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">2026-11-19 依各產品官方頁面比對。功能會變動，請見資料來源。</p>
+        </section>
+
+        <section class="gd-sec" id="them" aria-labelledby="them-title">
+          <h2 id="them-title">Claude Code Desktop 做得好的地方</h2>
+          <ul class="fx-list">
+            <li><strong>不用另外安裝。</strong>App 內含 Claude Code，用 Code 分頁不需要 Node.js 或 CLI。</li>
+            <li><strong>一個視窗管多個 Session。</strong>Session 可以並排或開成獨立視窗，想要的話每個都有自己的 Git worktree。Claude 也能查看你其他 Session 的進度、傳訊息給它們。</li>
+            <li><strong>內建審閱。</strong>在 diff 畫面針對某幾行留言，Claude 會照著改。<code>/code-review</code> 會找 bug，也能直接套用修正。預設開啟的 auto-verify 讓 Claude 在 Browser 窗格裡檢查自己的改動。開了 PR 之後會顯示 CI 檢查，還有 Auto-fix 與 Merge when ready。</li>
+            <li><strong>不只在你的電腦上。</strong>雲端 Session 和雲端排程工作在電腦關機後也會繼續跑。SSH Session 跑在你自己的伺服器上，Dispatch 可以從手機開 Session。</li>
+            <li><strong>和 CLI 共用設定。</strong>Desktop 和 Claude Code CLI 共用 CLAUDE.md、MCP server、hooks、Skills 與設定。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="different" aria-labelledby="different-title">
+          <h2 id="different-title">Pyloxa 的不同之處</h2>
+          <p><strong>兩家的 Agent 做同一份計畫。</strong>大腦先讀專案、把計畫拆成階段，每個工作再依你寫的規則交給 Claude Code 或 Codex CLI，例如「後端工作交給 Codex」。Claude Code Desktop 的文件沒有說明怎麼跑其他廠商的 Agent。詳見<a href="../../workflow/">工作流程</a>。</p>
+          <p><strong>Pyloxa 自己跑檢查。</strong>每個工作完成後，Pyloxa 執行你核准的命令（測試、建置、lint），並檢查改動的檔案有沒有超出計畫的寫入範圍。Agent 說「做完了」不算通過。每個階段結束都有 Gate，也可以讓另一家的 Agent 補測試，以命令的結果為準。在 Claude Code Desktop 裡，審閱是在 Session 裡和你的 CI 上進行，hooks 也可以執行命令。詳見<a href="../../help/#checks">驗證</a>。</p>
+          <p><strong>跨 Agent 的額度。</strong>某個 CLI 額度用完時，Pyloxa 不再派工給它，並依你的規則提出備援；你確認後，另一個 CLI 從已經改好的檔案接手。自動備援是 Pro。詳見<a href="../../quota/">額度與備援</a>。</p>
+          <p><strong>Claude Code Desktop 做得更多的地方。</strong>Pyloxa 只支援 Windows、不開源，安裝檔還沒有程式碼簽章，SmartScreen 可能會跳警告。Agent 只在你的電腦上跑，結束 Pyloxa 就會停止。用訂閱的 Claude Code 一次只跑一個工作。Claude Code Desktop 另外還有瀏覽器預覽、PR 監看、computer use 與 iOS Simulator 窗格。</p>
+        </section>
+
+        <section class="gd-sec" id="choose" aria-labelledby="choose-title">
+          <h2 id="choose-title">該選哪一個</h2>
+          <ul class="fx-list">
+            <li><strong>選 Claude Code Desktop，如果</strong>你只用 Claude Code、想用 Anthropic 自家的 App、也會在 macOS 或 Linux 上工作，或需要雲端 Session、SSH、排程工作或 Dispatch。它也比較容易上手：一個 App，不用裝 CLI。</li>
+            <li><strong>選 Pyloxa，如果</strong>你在 Windows 上同時用 Claude Code 和 Codex CLI，想讓一份計畫依你的規則分給兩邊做：每個工作在自己的 worktree、由你的命令決定過不過、另一家的 Agent 來測試，額度用完時由你確認換手。</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="both" aria-labelledby="both-title">
+          <h2 id="both-title">可以兩個一起用嗎？</h2>
+          <p>可以。Pyloxa 啟動的是官方的 Claude Code CLI，而 Anthropic 的文件說 Desktop 和 CLI 可以同時在同一個專案上執行，共用 CLAUDE.md、hooks、Skills 與設定。給 Pyloxa 用的 CLI 要另外安裝並登入；桌面 App 內附的那一份是給 Code 分頁用的。兩邊用的是同一個 Claude 方案的用量。</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常見問題</h2>
+          <details class="fx-q" open><summary>Claude Code Desktop 有 Windows 版嗎？</summary><div>有，x64 與 ARM64 都有。Session 可以直接在 Windows 上跑，也可以在 WSL 2 裡跑；使用 worktree 的 Session 需要 Git for Windows。</div></details>
+          <details class="fx-q"><summary>Claude Code Desktop 能跑 Codex 嗎？</summary><div>它的文件只涵蓋 Claude Code，包括透過 Amazon Bedrock、Google Cloud 的 Agent Platform、Microsoft Foundry 或 LLM gateway 使用。文件沒有說明能在裡面跑 Codex CLI。Pyloxa 可以讓 Codex CLI 和 Claude Code 一起工作，請看<a href="../../guides/claude-code-and-codex-together/">Claude Code 與 Codex 一起用</a>。</div></details>
+          <details class="fx-q"><summary>Pyloxa 是要取代 Claude 桌面 App 嗎？</summary><div>不是。Pyloxa 是另一個 App，和 Anthropic 沒有關係，也沒有得到 Anthropic 背書。它用你自己的訂閱或 API Key 啟動官方的 Claude Code CLI，不會讀取你的 CLI token。</div></details>
+          <details class="fx-q"><summary>碰到 Claude 用量上限怎麼辦？</summary><div>用量是所有 Claude Code 介面共用的，所以兩個 App 都會受到限制。Pyloxa 會把這條連線標成額度用盡，經你確認後把工作交給 Codex CLI 接手，或等額度重設。請看<a href="../../guides/claude-code-usage-limits/">Claude Code 額度用完怎麼辦</a>。</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">資料來源</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/desktop-quickstart">Get started with the desktop app</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://code.claude.com/docs/en/desktop">Desktop application</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://code.claude.com/docs/en/desktop-scheduled-tasks">Schedule recurring tasks in Claude Code Desktop</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://code.claude.com/docs/en/claude-code-on-the-web">Use Claude Code in the cloud</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://code.claude.com/docs/en/code-review-local">Review locally with /code-review</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="https://code.claude.com/docs/en/workflows">Orchestrate subagents at scale with dynamic workflows</a>，Anthropic（2026-11-19 查閱）</li>
+            <li><a href="../../help/">Pyloxa 說明</a>，Pyloxa（2026-11-19 查閱）</li>
+          </ol>
+        </section>
+      </article>
+
+      <section class="wrap fx-related" aria-labelledby="fx-related-title">
+        <h2 id="fx-related-title">其他比較</h2>
+        <ul>
+            <li><a href="../pyloxa-vs-codex-app/"><span>Pyloxa 與 Codex App</span><span class="fx-related-text">OpenAI 自家的 Codex 桌面 App，和依你的規則協調 Codex CLI 與 Claude Code 的 Pyloxa。</span></a></li>
+            <li><a href="../pyloxa-vs-conductor/"><span>Pyloxa vs Conductor</span><span class="fx-related-text">Conductor 適合在 macOS 上平行開 Agent 工作區，Pyloxa 適合在 Windows 上規劃、驗收：各自做什麼、什麼時候選哪個。</span></a></li>
+            <li><a href="../pyloxa-vs-herdr/"><span>Pyloxa 與 Herdr</span><span class="fx-related-text">支援三個平台的 Agent 終端機工作區，還是在 Windows 上規劃、派工、驗收的多 Agent 執行。</span></a></li>
+            <li><a href="../pyloxa-vs-cmux/"><span>Pyloxa vs cmux</span><span class="fx-related-text">免費開源、跑 Agent Session 的 macOS 終端機，對上負責規劃、驗收與換手的 Windows App。</span></a></li>
+            <li><a href="../../../zh-TW/help/"><span>說明文件</span><span class="fx-related-text">安裝 Pyloxa、連線 CLI、計畫與疑難排解的操作步驟。</span></a></li>
+        </ul>
+      </section>
+
+      <section class="wrap fx-cta" aria-labelledby="fx-cta-title">
+        <div class="fx-cta-box">
+          <h2 id="fx-cta-title">想把這些交給工具處理？</h2>
+          <p>Pyloxa 是免費的 Windows App，執行你已經在用的 Claude Code 與 Codex CLI：依你的規則分工、自己跑你的測試，某一個額度用完時提出換手。</p>
+          <div class="fx-actions">
+            <a class="button" href="../../../zh-TW/download/#start">下載 Pyloxa Windows 版</a>
+            <a class="button is-light" href="../../../zh-TW/workflow/">看看怎麼運作</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>版本 0.2.0 · Windows 10 與 11 · <a href="../../../zh-TW/help/">說明文件</a> · <a href="../../../zh-TW/guides/">攻略</a> · <a href="../../../zh-TW/compare/">比較</a> · <a href="../../../zh-TW/changelog/">改版紀錄</a> · <a href="../../../zh-TW/privacy/">隱私權政策</a> · <a href="../../../legal/EULA.txt">授權條款（EULA）</a> · <a href="mailto:support@pyloxa.com">聯絡我們</a></p>
+      <p>Pyloxa 與 Anthropic、OpenAI、Google 沒有關聯，也未獲得它們背書。產品名稱屬於各自的所有者。</p>
+      <p>比較內容依各產品官方頁面在標示日期的樣子。產品名稱與商標屬於各自的所有者，他們並未背書這些頁面。發現內容過時了？請寫信到 <a href="mailto:support@pyloxa.com">support@pyloxa.com</a>。</p>
+    </footer>
+
+    <script src="../../../assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+{
+  "languages": ["en", "zh-TW"],
+  "pages": ["pyloxa-vs-codex-app", "pyloxa-vs-claude-code-desktop", "pyloxa-vs-conductor", "pyloxa-vs-herdr", "pyloxa-vs-cmux"]
+}

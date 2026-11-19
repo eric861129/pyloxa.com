@@ -1,0 +1,81 @@
+<!--meta {"title": "Pyloxa vs Herdr: agent terminals or a planned, checked run", "description": "Herdr runs coding agents in real terminals on macOS, Linux and Windows. Pyloxa plans work across Claude Code and Codex on Windows and runs your checks.", "h1": "Pyloxa vs Herdr", "lede": "Herdr gives your coding agents real terminals that keep running and lets you steer each one yourself. Pyloxa sits above the terminals: it plans the work, routes it by your rules and checks the results before you merge.", "nav": "Pyloxa vs Herdr", "blurb": "A terminal workspace for agents on three platforms, or a Windows app that plans, routes and checks a multi-agent run.", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>Herdr is a free, open-source app for macOS, Linux and Windows where each coding agent runs in a real terminal kept alive by a local server, herdr-core, including on SSH machines you add. Pyloxa is a Windows app where a brain agent plans the work, each task goes to Claude Code or Codex CLI by your rules in its own git worktree, and Pyloxa runs your checks before you merge. Pick Herdr to watch and steer each agent yourself, across machines; pick Pyloxa to turn one request into a planned, checked run on one Windows PC.</p>
+        </aside>
+
+        <section class="gd-sec" id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">At a glance</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Herdr</th><th scope="col">Pyloxa</th></tr></thead><tbody>
+            <tr><th scope="row">What it is</th><td>A native app for terminals and coding agents, with spaces, tabs, panes and an agents sidebar</td><td>A desktop app that plans a request, routes tasks to agents and checks each result</td></tr>
+            <tr><th scope="row">Platforms</th><td>macOS (Apple silicon), Linux (x86-64, ARM64), Windows x64; companion app for iPhone, iPad and Android</td><td>Windows 10 and 11, 64-bit</td></tr>
+            <tr><th scope="row">Price and license</th><td>Free; open source under Apache 2.0</td><td>Free edition, no account; Pro US$79 a year, in a free preview now; closed source</td></tr>
+            <tr><th scope="row">Agents it runs</th><td>Anything that runs in a terminal; the docs name Claude Code and Codex</td><td>Claude Code and Codex CLI; Gemini CLI experimental, with your own paid Gemini API key</td></tr>
+            <tr><th scope="row">How work is split</th><td>You start agents; an agent can start helpers with <code>hc run --bg</code> and message them with <code>hc send</code></td><td>A brain agent writes a plan; your routing rules decide which agent gets each task; you approve</td></tr>
+            <tr><th scope="row">Where agents work</th><td>Each terminal’s folder; New worktree opens a git worktree as its own space</td><td>Each task in its own git worktree and branch; your working folder is never touched</td></tr>
+            <tr><th scope="row">Who checks the result</th><td>You and your agents; built-in result checks not documented</td><td>Pyloxa runs your verification commands and a write-scope check; cross-testing by another agent (Free on request, Pro automatic)</td></tr>
+            <tr><th scope="row">When quota runs out</th><td>Not documented</td><td>Proposes a fallback from your rules; Free: you confirm each takeover; Pro: automatic</td></tr>
+            <tr><th scope="row">After closing or quitting</th><td>Agents keep running in herdr-core when the app quits, updates or crashes; not after a reboot</td><td>Closing the window keeps Pyloxa in the tray while work runs; quitting stops its agents</td></tr>
+            <tr><th scope="row">Other machines</th><td>SSH machines in the same sidebar (<code>hc machine add</code>); phone app over SSH</td><td>Not supported; agents run on the PC where Pyloxa runs</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">Checked against each product’s official pages on 2026-11-19. Features change; see Sources.</p>
+        </section>
+
+        <section class="gd-sec" id="them" aria-labelledby="them-title">
+          <h2 id="them-title">What Herdr does well</h2>
+          <ul class="fx-list">
+            <li><strong>Agents outlive the window.</strong> The app draws terminals; herdr-core runs them. Quitting, updating or crashing the app leaves every agent running, and <code>hc attach</code> takes over any terminal from your shell. After a reboot, panes come back with a fresh shell in the same folder, without the agent.</li>
+            <li><strong>Real terminals, any agent.</strong> Programs that report status through OSC 7501, an open protocol, show as working, blocked or done, so the sidebar shows which agent needs you.</li>
+            <li><strong>Agents run agents.</strong> An agent starts a helper (<code>hc run --bg codex "..."</code>), steers it with <code>hc send</code> and waits for its children. Templates give a helper a role, such as a read-only reviewer.</li>
+            <li><strong>Other machines and your phone.</strong> Add a server, VM or laptop over SSH and its agents join the same list. The free phone app answers agents over SSH, with no Herdr account.</li>
+            <li><strong>Shaped by asking.</strong> Layouts, keys, themes and JavaScript mods are files in <code>~/.config/herdr-app</code> that your agent edits on request, with shared layouts and mods on herdr.dev.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="different" aria-labelledby="different-title">
+          <h2 id="different-title">Where Pyloxa is different</h2>
+          <p>Herdr is terminal-first: you see every agent and decide what each does next. Pyloxa takes one request and runs the coordination for you.</p>
+          <ul class="fx-list">
+            <li><strong>Planning and routing.</strong> A brain agent splits the request into phases and tasks, and an assignment table by task type sends each to Claude Code or Codex, for example backend tasks to Codex. <a href="../../workflow/">Workflow</a>.</li>
+            <li><strong>Checks Pyloxa runs itself.</strong> After each task Pyloxa runs the test, build and lint commands you approved and checks the changed files against the plan’s write scope. An agent saying “done” never counts as passing. An agent from another vendor can cross-test, adding tests only. <a href="../../guides/verify-ai-agent-code/">Checking an agent’s work</a>.</li>
+            <li><strong>Quota takeovers.</strong> The title bar shows each agent’s remaining quota. When a CLI runs out, the fallback agent continues from the files already changed after you confirm (automatic in Pro). <a href="../../quota/">Quota and fallback</a>.</li>
+            <li><strong>You merge.</strong> Nothing is merged or pushed until you choose, and a verification card can go into the PR description.</li>
+          </ul>
+          <p>Herdr does things Pyloxa doesn’t: a daemon that keeps agents running after the app quits, SSH machines, a phone app, macOS and Linux, and any terminal program as an agent. Pyloxa is closed source, and its installer is not code-signed yet, so SmartScreen may warn on first run.</p>
+        </section>
+
+        <section class="gd-sec" id="choose" aria-labelledby="choose-title">
+          <h2 id="choose-title">Which one to choose</h2>
+          <ul class="fx-list">
+            <li><strong>Choose Herdr if</strong> you’re on macOS or Linux, want to steer each agent in its own terminal, need agents to keep running when the app closes, work across SSH machines or from your phone, or want open-source software you can reshape.</li>
+            <li><strong>Choose Pyloxa if</strong> you’re on Windows and want one request planned, split between Claude Code and Codex by your rules, each task in its own worktree, your own test commands run on every result, and the merge left to you.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="both" aria-labelledby="both-title">
+          <h2 id="both-title">Can you use both?</h2>
+          <p>Yes, on 64-bit Windows, but they don’t connect: agents Pyloxa starts don’t appear in Herdr, and Herdr’s agents aren’t part of a Pyloxa plan. One split is Herdr for interactive sessions and remote machines, Pyloxa for a planned job with checks. If both use the same CLI sign-ins, they draw on the same subscription quota; Claude Code’s is also shared with claude.ai.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Does Herdr run on Windows?</summary><div>Yes, on x64 Windows (Windows 10 1803 or newer), installed with a PowerShell command. It also runs on macOS with Apple silicon and on Linux x86-64 and ARM64. Pyloxa runs on 64-bit Windows 10 and 11 only.</div></details>
+          <details class="fx-q"><summary>Does Herdr run Claude Code and Codex?</summary><div>Yes, it runs anything that runs in a terminal. Status appears for programs that report it through OSC 7501; a program that reports nothing shows no status.</div></details>
+          <details class="fx-q"><summary>Do agents keep running when I close the app?</summary><div>In Herdr, yes, until a reboot. In Pyloxa, closing the window while work runs keeps it in the tray; quitting stops its agents, and Resume All continues interrupted tasks next time. <a href="../../help/#background">Background running</a>.</div></details>
+          <details class="fx-q"><summary>Can Pyloxa run agents on a remote machine?</summary><div>No. Pyloxa runs the CLIs on the Windows PC where it is installed.</div></details>
+          <details class="fx-q"><summary>Are they free?</summary><div>Herdr is free under Apache 2.0. Pyloxa’s free edition needs no account; <a href="../../pro/">Pro</a> is US$79 a year and in a free preview now. Both run the CLIs on your own subscriptions or API keys.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://herdr.dev/">Herdr</a>, herdr.dev (checked 2026-11-19)</li>
+            <li><a href="https://herdr.dev/download/">Download</a>, herdr.dev (checked 2026-11-19)</li>
+            <li><a href="https://herdr.dev/core/">herdr-core</a>, herdr.dev (checked 2026-11-19)</li>
+            <li><a href="https://herdr.dev/mobile/">Mobile</a>, herdr.dev (checked 2026-11-19)</li>
+            <li><a href="https://herdr.dev/guide/">Guide</a>, herdr.dev (checked 2026-11-19)</li>
+            <li><a href="https://github.com/herdrdev/herdr-app">herdr-app README</a>, herdrdev on GitHub (checked 2026-11-19)</li>
+            <li><a href="https://github.com/herdrdev/herdr-app/blob/master/defaults/AGENTS.md">Herdr agent guide (AGENTS.md)</a>, herdrdev on GitHub (checked 2026-11-19)</li>
+            <li><a href="https://github.com/herdrdev/herdr-core">herdr-core README</a>, herdrdev on GitHub (checked 2026-11-19)</li>
+          </ol>
+        </section>

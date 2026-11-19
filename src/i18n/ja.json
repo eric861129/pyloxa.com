@@ -554,5 +554,6 @@
   "dl.verifyTitle": "ファイルの確認（任意）",
   "dl.verify": "インストーラーが改ざんされていないか確かめるには、ダウンロードしたフォルダーで PowerShell を開き、次のコマンドを実行して、下の値と比べてください。",
   "dl.links": "すべてのリリースのノートとチェックサムは、<a href=\"{{@changelog}}\">変更履歴</a>と <a href=\"https://github.com/eric861129/Pyloxa-Releases/releases\">GitHub</a> にあります。問題があれば<a href=\"https://github.com/eric861129/Pyloxa-Releases/issues\">報告</a>するか、<a href=\"{{@help}}\">ヘルプ</a>をご覧ください。",
-  "footer.guides": "ガイド"
+  "footer.guides": "ガイド",
+  "footer.compare": "比較"
 }

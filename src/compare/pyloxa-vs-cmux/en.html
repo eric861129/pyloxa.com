@@ -1,0 +1,79 @@
+<!--meta {"title": "Pyloxa vs cmux: agent terminal or agent orchestrator", "description": "cmux is a free, open-source macOS terminal for running many coding agents. Pyloxa is a Windows app that plans, routes, checks and hands off agent work.", "h1": "Pyloxa vs cmux", "lede": "cmux gives you a programmable macOS terminal to run and watch many coding agents yourself. Pyloxa plans the work on Windows, sends each task to an agent by your rules, checks it with your commands and leaves the merge to you.", "nav": "Pyloxa vs cmux", "blurb": "A free, open-source macOS terminal for agent sessions, compared with a Windows app that plans, checks and hands off agent work.", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>cmux, by Manaflow, is a free, open-source macOS terminal built on Ghostty for running many coding agents side by side, with notification rings, a scriptable browser pane and a CLI. Pyloxa is a Windows 10/11 app in which a brain agent plans the work, your rules send each task to Claude Code or Codex CLI in its own git worktree, and Pyloxa runs your checks before you merge. Pick cmux on a Mac if you want to drive any terminal agent yourself; pick Pyloxa on Windows if you want planning, checks and quota takeovers handled for you.</p>
+        </aside>
+
+        <section class="gd-sec" id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">At a glance</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">cmux</th><th scope="col">Pyloxa</th></tr></thead><tbody>
+            <tr><th scope="row">What it is</th><td>A native macOS terminal with vertical tabs, splits and notifications for coding agents</td><td>A desktop app that plans a request, assigns tasks to agent CLIs and checks the results</td></tr>
+            <tr><th scope="row">Platforms</th><td>macOS only (“macOS only, for now”, per its README)</td><td>Windows 10 and 11, 64-bit, only</td></tr>
+            <tr><th scope="row">Price and license</th><td>Free, GPL-3.0-or-later. Paid plans add Cloud VMs and the iOS app (Pro US$50 a month or US$480 a year)</td><td>Free edition, no account. Pro US$79 a year (early bird US$49), in free preview. Closed source</td></tr>
+            <tr><th scope="row">Agents it runs</th><td>Any terminal agent, including Claude Code, Codex, Gemini CLI, OpenCode, Aider and Amp</td><td>Claude Code and Codex CLI; Gemini CLI experimental (own paid API key)</td></tr>
+            <tr><th scope="row">How work is split</th><td>You open workspaces and start agents, by hand or through the CLI</td><td>A brain writes a plan; your routing rules pick the agent for each task</td></tr>
+            <tr><th scope="row">Where agents work</th><td>The folder you open; worktrees through your own custom commands</td><td>Each task in its own git worktree and branch</td></tr>
+            <tr><th scope="row">Who checks the result</th><td>Not documented as a built-in step</td><td>Pyloxa runs your commands; another vendor’s agent can cross-test</td></tr>
+            <tr><th scope="row">When quota runs out</th><td>Not documented</td><td>Another agent takes over after you confirm (automatic in Pro)</td></tr>
+            <tr><th scope="row">After closing</th><td>Restores layout and scrollback; supported agents resume. Live processes need tmux or a cloud VM</td><td>Stays in the tray while work runs; quitting stops the agents</td></tr>
+            <tr><th scope="row">Remote or other machines</th><td>SSH workspaces; iOS app and Cloud VMs on paid plans</td><td>Runs on your PC; Pro can send notifications to Telegram, Discord or a webhook</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">Checked against each product’s official pages on 2026-11-19. Features change; see Sources.</p>
+        </section>
+
+        <section class="gd-sec" id="them" aria-labelledby="them-title">
+          <h2 id="them-title">What cmux does well</h2>
+          <ul class="fx-list">
+            <li><strong>Any agent, in real terminals.</strong> Every CLI agent works without an integration, and you see each session’s full output.</li>
+            <li><strong>Knowing which agent needs you.</strong> A waiting agent’s pane gets a blue ring and its tab lights up. The sidebar shows each workspace’s git branch, linked pull request, ports and latest notification.</li>
+            <li><strong>A browser beside the terminal.</strong> The browser pane can be scripted to click, fill forms, run JavaScript and read console and network activity, so an agent can check its own web changes.</li>
+            <li><strong>Everything is scriptable.</strong> A CLI and a Unix socket create workspaces, split panes, send input and read the screen. Project actions go in <code>cmux.json</code>.</li>
+            <li><strong>Remote work.</strong> <code>cmux ssh</code> opens a workspace on another machine; paid plans add Cloud VMs and an iOS app.</li>
+            <li><strong>Open source and native.</strong> Built with Swift and AppKit, it reads your Ghostty config and costs nothing.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="different" aria-labelledby="different-title">
+          <h2 id="different-title">Where Pyloxa is different</h2>
+          <p>cmux describes itself as building blocks you assemble. Pyloxa is one workflow whose steps you configure.</p>
+          <ul class="fx-list">
+            <li><strong>It plans and assigns.</strong> The brain splits a request into phases and tasks, and an assignment table decides which agent takes each type of task. See <a href="../../workflow/">Workflow</a>.</li>
+            <li><strong>It checks the work itself.</strong> An agent saying it’s done doesn’t count. Pyloxa runs your test, build and lint commands, checks the plan’s write scope, and can have a second agent add tests. A finished plan gets a verification card for your PR. See <a href="../../help/#checks">Checks</a>.</li>
+            <li><strong>Quota takeovers.</strong> The title bar shows each agent’s remaining quota. When one runs out, another continues from the files already changed, after you confirm. See <a href="../../quota/">Quota &amp; fallback</a>.</li>
+            <li><strong>You merge.</strong> Your working folder is never stashed or reset, and nothing is merged or pushed until you choose.</li>
+          </ul>
+          <p>What Pyloxa doesn’t have: a terminal or browser pane, a documented CLI or socket API, or remote execution. It runs only Claude Code, Codex CLI and, experimentally, Gemini CLI. The free edition runs up to two tasks at a time, in one project at a time. Pyloxa is closed source, Windows only, and its installer isn’t code-signed, so SmartScreen may warn on first run. Quitting Pyloxa stops its agents.</p>
+        </section>
+
+        <section class="gd-sec" id="choose" aria-labelledby="choose-title">
+          <h2 id="choose-title">Which one to choose</h2>
+          <ul class="fx-list">
+            <li><strong>Choose cmux if</strong> you work on a Mac, want to steer agents yourself in real terminals, use agents beyond Claude Code and Codex, want a scriptable browser or SSH workspaces, or prefer open-source tools you can build on.</li>
+            <li><strong>Choose Pyloxa if</strong> you work on Windows with Claude Code and Codex CLI and want a plan, rule-based assignment, separate worktrees, your own commands as the test of “done” and quota takeovers in one app, with the merge left to you.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="both" aria-labelledby="both-title">
+          <h2 id="both-title">Can you use both?</h2>
+          <p>Not on one computer: cmux runs on macOS and Pyloxa on Windows. With a Mac and a Windows PC you can use each against the same repository. Pyloxa’s Sync to CLIs writes your project rules into <code>AGENTS.md</code>, which you can commit for the agents you run in cmux. See <a href="../../guides/agents-md-claude-md-gemini-md/">one instructions file for three CLIs</a>.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Is there cmux for Windows?</summary><div>Not today. The cmux README says “macOS only, for now”, and the latest release has only macOS downloads. If you want a Windows app for running Claude Code and Codex on one project, Pyloxa is one option, though it works differently.</div></details>
+          <details class="fx-q"><summary>Does cmux run Claude Code and Codex?</summary><div>Yes. cmux runs any agent that works in a terminal, and its README names both. It also has <code>cmux claude-teams</code> for Claude Code’s teammate mode and resume hooks for Codex and Claude Code.</div></details>
+          <details class="fx-q"><summary>Is cmux free? Is Pyloxa?</summary><div>The cmux app is free and open source; its paid plans add Cloud VMs and the iOS app. Pyloxa’s free edition needs no account; <a href="../../pro/">Pro</a> costs US$79 a year (early bird US$49) and is in a free preview until it goes on sale. Both run agents on your own subscriptions or API keys.</div></details>
+          <details class="fx-q"><summary>Does cmux create git worktrees?</summary><div>Worktrees aren’t a listed feature, but the custom commands docs include an example, “Agents in New Worktree”, that creates one and opens Codex and Claude Code in it. Pyloxa creates a worktree for every task.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://github.com/manaflow-ai/cmux">cmux README</a>, Manaflow on GitHub (checked 2026-11-19)</li>
+            <li><a href="https://github.com/manaflow-ai/cmux/releases">cmux releases</a>, Manaflow on GitHub (checked 2026-11-19)</li>
+            <li><a href="https://cmux.com/">cmux home page and FAQ</a>, Manaflow (checked 2026-11-19)</li>
+            <li><a href="https://cmux.com/pricing">cmux pricing</a>, Manaflow (checked 2026-11-19)</li>
+            <li><a href="https://cmux.com/docs/custom-commands">Custom commands</a>, cmux docs (checked 2026-11-19)</li>
+            <li><a href="../../help/">Pyloxa help</a>, Pyloxa (checked 2026-11-19)</li>
+          </ol>
+        </section>

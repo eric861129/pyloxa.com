@@ -1,0 +1,76 @@
+<!--meta {"title": "Pyloxa vs Claude Code Desktop: which fits on Windows", "description": "Claude Code Desktop or Pyloxa? Platforms, plans, parallel sessions, worktrees, checks and quota, compared against the official docs on 2026-11-19.", "h1": "Pyloxa vs Claude Code Desktop", "lede": "Claude Code Desktop is Anthropic’s own app for Claude Code. Pyloxa is a separate Windows app that coordinates Claude Code and Codex CLI on one project.", "nav": "Pyloxa vs Claude Code Desktop", "blurb": "Anthropic’s own Claude Code app compared with Pyloxa, which coordinates Claude Code and Codex CLI under your rules.", "updated": "2026-11-19"}-->
+        <aside class="gd-short" aria-labelledby="short">
+          <h2 id="short">Short answer</h2>
+          <p>Claude Code Desktop is Anthropic’s first-party way to run Claude Code with a graphical interface: the Code tab of the Claude desktop app, on macOS, Windows and Linux (beta), with parallel sessions, optional worktrees, diff review, scheduled tasks and cloud sessions. Pyloxa is a separate Windows app, not affiliated with Anthropic, that gets Claude Code and Codex CLI to work on one plan under your routing rules and runs your verification commands itself. If you only use Claude Code, Claude Code Desktop is likely the better fit.</p>
+        </aside>
+
+        <section class="gd-sec" id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">At a glance</h2>
+          <div class="gd-table"><table><thead><tr><th scope="col"></th><th scope="col">Claude Code Desktop</th><th scope="col">Pyloxa</th></tr></thead><tbody>
+            <tr><th scope="row">What it is</th><td>The Code tab of Anthropic’s Claude desktop app</td><td>An app that plans work and hands tasks to Claude Code and Codex CLI by your rules</td></tr>
+            <tr><th scope="row">Platforms</th><td>macOS, Windows x64 and ARM64, Linux beta (Ubuntu, Debian)</td><td>Windows 10 and 11, 64-bit</td></tr>
+            <tr><th scope="row">Price and plan</th><td>Claude Code needs a Pro, Max, Ultra, Team or Enterprise subscription; Claude Code is included in the app</td><td>Free edition, no account; Pro (US$79 a year) in a free preview; closed source</td></tr>
+            <tr><th scope="row">Agents it runs</th><td>Claude Code; also via Amazon Bedrock, Google Cloud’s Agent Platform, Microsoft Foundry or an LLM gateway. Other vendors’ agents: not documented</td><td>Claude Code and Codex CLI; Gemini CLI experimental, with your own API key</td></tr>
+            <tr><th scope="row">How work is split</th><td>You start sessions and run several in parallel; dynamic workflows run many subagents from one session</td><td>A brain agent plans in phases; tasks go to a CLI by your routing rules once you approve</td></tr>
+            <tr><th scope="row">Where agents work</th><td>The project folder, or a Git worktree per session when you turn on Worktree (off by default)</td><td>Each task in its own git worktree and branch, or one shared worktree per plan</td></tr>
+            <tr><th scope="row">Who checks the result</th><td>You in the diff view; <code>/code-review</code>; auto-verify in the Browser pane; CI status and Auto-fix on the pull request</td><td>Pyloxa runs your approved commands and a write-scope check; optional brain review; cross-testing by another vendor’s agent</td></tr>
+            <tr><th scope="row">Runs at once</th><td>Several sessions; no number documented</td><td>Free: two tasks per plan, one project; Pro: several projects. Claude Code on a subscription: one task at a time</td></tr>
+            <tr><th scope="row">Usage and quota</th><td>A usage ring shows plan usage shared across your Claude Code surfaces</td><td>Per-agent meter in the title bar; takeover by another CLI after you confirm (automatic in Pro)</td></tr>
+            <tr><th scope="row">After you close it</th><td>Cloud sessions continue with the computer off; local scheduled tasks need the app open and the computer awake</td><td>Stays in the tray while work runs; quitting stops the agents; interrupted work can be resumed</td></tr>
+            <tr><th scope="row">Remote or other machines</th><td>Cloud, SSH, WSL 2 on Windows, Dispatch from your phone</td><td>Your Windows PC only</td></tr>
+          </tbody></table></div>
+          <p class="gd-note">Checked against each product’s official pages on 2026-11-19. Features change; see Sources.</p>
+        </section>
+
+        <section class="gd-sec" id="them" aria-labelledby="them-title">
+          <h2 id="them-title">What Claude Code Desktop does well</h2>
+          <ul class="fx-list">
+            <li><strong>Nothing extra to install.</strong> The app includes Claude Code, so the Code tab needs no Node.js or CLI.</li>
+            <li><strong>Parallel sessions in one window.</strong> Run sessions side by side or in their own windows, each in its own Git worktree if you like. Claude can check on and message your other sessions.</li>
+            <li><strong>Review built in.</strong> Comment on lines in the diff view and Claude revises. <code>/code-review</code> finds bugs and can apply fixes. Auto-verify, on by default, has Claude check its changes in the Browser pane. Open pull requests show their CI checks, with Auto-fix and Merge when ready.</li>
+            <li><strong>Work beyond your PC.</strong> Cloud sessions and cloud scheduled tasks keep running with your computer off. SSH sessions run on your servers, and Dispatch starts sessions from your phone.</li>
+            <li><strong>One setup with the CLI.</strong> Desktop and the Claude Code CLI share CLAUDE.md, MCP servers, hooks, skills and settings.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="different" aria-labelledby="different-title">
+          <h2 id="different-title">Where Pyloxa is different</h2>
+          <p><strong>Two vendors on one plan.</strong> A brain agent reads the project and writes a plan in phases, and each task goes to Claude Code or Codex CLI by rules you write, such as “backend tasks go to Codex”. Claude Code Desktop’s documentation doesn’t cover running another vendor’s agent. See <a href="../../workflow/">Workflow</a>.</p>
+          <p><strong>Checks Pyloxa runs itself.</strong> After each task, Pyloxa runs the commands you approved (tests, build, lint) and checks that changed files stay within the plan’s write scope. An agent saying it’s done never counts as passing. Each phase ends with a gate, and an agent from the other vendor can add tests, with the command result deciding. In Claude Code Desktop, review happens in the session and in your CI, and hooks can run commands. See <a href="../../help/#checks">Checks</a>.</p>
+          <p><strong>Quota across agents.</strong> When one CLI runs out, Pyloxa stops sending it work and proposes a fallback from your rules; after you confirm, the other CLI continues from the files already changed. Automatic fallback is Pro. See <a href="../../quota/">Quota &amp; fallback</a>.</p>
+          <p><strong>Where Claude Code Desktop goes further.</strong> Pyloxa is Windows only and closed source, and its installer is not code-signed, so SmartScreen may warn. It runs the agents on your PC only, and quitting it stops them. It runs one Claude Code task at a time on a subscription. Claude Code Desktop also brings a browser preview, PR monitoring, computer use and an iOS Simulator pane.</p>
+        </section>
+
+        <section class="gd-sec" id="choose" aria-labelledby="choose-title">
+          <h2 id="choose-title">Which one to choose</h2>
+          <ul class="fx-list">
+            <li><strong>Choose Claude Code Desktop if</strong> Claude Code is your only agent, you want Anthropic’s own app, you also work on macOS or Linux, or you want cloud sessions, SSH, scheduled tasks or Dispatch. It is the simpler start: one app, no CLI install.</li>
+            <li><strong>Choose Pyloxa if</strong> you use Claude Code and Codex CLI on Windows and want one plan split between them by your rules, each task in its own worktree, your own commands deciding what passes, a second vendor’s agent testing the work, and a takeover you confirm when quota runs out.</li>
+          </ul>
+        </section>
+
+        <section class="gd-sec" id="both" aria-labelledby="both-title">
+          <h2 id="both-title">Can you use both?</h2>
+          <p>Yes. Pyloxa starts the official Claude Code CLI, and Anthropic’s docs say Desktop and the CLI can run at the same time on the same project, sharing CLAUDE.md, hooks, skills and settings. Install and sign in to the CLI separately for Pyloxa; the copy inside the desktop app is for the Code tab. Both draw on the same Claude plan usage.</p>
+        </section>
+
+        <section class="gd-sec" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <details class="fx-q" open><summary>Is Claude Code Desktop available on Windows?</summary><div>Yes, for x64 and ARM64. Sessions can run on Windows directly or inside WSL 2; sessions in their own worktree need Git for Windows.</div></details>
+          <details class="fx-q"><summary>Can Claude Code Desktop run Codex?</summary><div>Its documentation covers Claude Code only, including through Amazon Bedrock, Google Cloud’s Agent Platform, Microsoft Foundry or an LLM gateway. Running Codex CLI in it isn’t documented. Pyloxa runs Codex CLI next to Claude Code; see <a href="../../guides/claude-code-and-codex-together/">using Claude Code and Codex together</a>.</div></details>
+          <details class="fx-q"><summary>Does Pyloxa replace the Claude desktop app?</summary><div>No. Pyloxa is a separate app, not affiliated with or endorsed by Anthropic. It starts the official Claude Code CLI on your own subscription or API key and never reads your CLI tokens.</div></details>
+          <details class="fx-q"><summary>What happens when I hit the Claude usage limit?</summary><div>Usage is shared across Claude Code surfaces, so the limit applies in both apps. Pyloxa marks the connection as out of quota and can hand the task to Codex CLI after you confirm, or wait for the reset. See <a href="../../guides/claude-code-usage-limits/">Claude Code usage limits</a>.</div></details>
+        </section>
+
+        <section class="gd-sec gd-sources" id="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            <li><a href="https://code.claude.com/docs/en/desktop-quickstart">Get started with the desktop app</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/desktop">Desktop application</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/desktop-scheduled-tasks">Schedule recurring tasks in Claude Code Desktop</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/claude-code-on-the-web">Use Claude Code in the cloud</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/code-review-local">Review locally with /code-review</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="https://code.claude.com/docs/en/workflows">Orchestrate subagents at scale with dynamic workflows</a>, Anthropic (checked 2026-11-19)</li>
+            <li><a href="../../help/">Pyloxa Help</a>, Pyloxa (checked 2026-11-19)</li>
+          </ol>
+        </section>

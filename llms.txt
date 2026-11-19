@@ -41,6 +41,12 @@ Pyloxa is made from the first letters of Plan, Yield, Lead, Orchestrate, eXecute
   - [The AI agent says it’s done. How do you check?](https://pyloxa.com/guides/verify-ai-agent-code/): Why an agent’s “done” isn’t evidence, the checks that work, and how to have a second AI review or test the code.
   - [AGENTS.md, CLAUDE.md and GEMINI.md: one instructions file for three CLIs](https://pyloxa.com/guides/agents-md-claude-md-gemini-md/): Which instruction file each CLI reads, and how to share one AGENTS.md across Claude Code, Codex and Gemini CLI.
   - [Claude Code and Codex CLI on Windows: do you need WSL?](https://pyloxa.com/guides/claude-code-codex-on-windows/): Native Windows or WSL for Claude Code and Codex CLI, with official install commands and fixes for common errors.
+- [Comparisons](https://pyloxa.com/compare/): how Pyloxa compares with other ways to run Claude Code and Codex, and when each is the better choice, checked against each product’s official pages ([繁體中文](https://pyloxa.com/zh-TW/compare/))
+  - [Pyloxa vs Codex app](https://pyloxa.com/compare/pyloxa-vs-codex-app/): OpenAI’s own Codex desktop app compared with Pyloxa, which coordinates Codex CLI and Claude Code under your rules.
+  - [Pyloxa vs Claude Code Desktop](https://pyloxa.com/compare/pyloxa-vs-claude-code-desktop/): Anthropic’s own Claude Code app compared with Pyloxa, which coordinates Claude Code and Codex CLI under your rules.
+  - [Pyloxa vs Conductor](https://pyloxa.com/compare/pyloxa-vs-conductor/): Conductor for parallel agent workspaces on macOS, Pyloxa for planned, checked work on Windows: what each does and when to pick which.
+  - [Pyloxa vs Herdr](https://pyloxa.com/compare/pyloxa-vs-herdr/): A terminal workspace for agents on three platforms, or a Windows app that plans, routes and checks a multi-agent run.
+  - [Pyloxa vs cmux](https://pyloxa.com/compare/pyloxa-vs-cmux/): A free, open-source macOS terminal for agent sessions, compared with a Windows app that plans, checks and hands off agent work.
 - [Changelog](https://pyloxa.com/changelog/): what changed in each release
 - [Help](https://pyloxa.com/help/): installing, connecting the CLIs, plans, checks, workflows, Pro sign-in and troubleshooting, with Pro features marked ([繁體中文](https://pyloxa.com/zh-TW/help/))
 - [Download](https://pyloxa.com/download/): the latest Windows installer, install steps, what the SmartScreen warning looks like, and the SHA-256 checksum (all releases: https://github.com/eric861129/Pyloxa-Releases/releases)

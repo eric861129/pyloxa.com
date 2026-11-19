@@ -34,6 +34,7 @@ const downloadTemplate = readFileSync(path.join(site, "src", "download.html"), "
 const features = JSON.parse(readFileSync(path.join(site, "src", "features", "pages.json"), "utf8"));
 // 攻略（/guides/，scripts/build-guides.mjs 產生）：只有這些語言有，其他語言的首頁連到英文版
 const guides = JSON.parse(readFileSync(path.join(site, "src", "guides", "guides.json"), "utf8"));
+const compare = JSON.parse(readFileSync(path.join(site, "src", "compare", "compare.json"), "utf8"));
 
 // 模板用哪種換行，產生的片段就用哪種
 const NL = template.includes("\r\n") ? "\r\n" : "\n";
@@ -150,6 +151,7 @@ function render(lang) {
     siteGraph: '<script type="application/ld+json" id="site-graph">{}</script>',
     feat: features.languages.includes(lang.code) ? "" : "../",
     guides: guides.languages.includes(lang.code) ? "guides/" : "../guides/",
+    compare: compare.languages.includes(lang.code) ? "compare/" : "../compare/",
     exe,
     exeName,
     size,
@@ -229,6 +231,8 @@ function sitemap() {
     ...pair("help"),
     ...pair("guides"),
     ...guides.guides.flatMap((g) => pair(`guides/${g}`)),
+    ...pair("compare"),
+    ...compare.pages.flatMap((g) => pair(`compare/${g}`)),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join("\n")}\n</urlset>\n`;
 }
