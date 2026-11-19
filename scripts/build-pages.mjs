@@ -144,6 +144,9 @@ function render(lang) {
     // 改版紀錄、隱私權政策與說明文件只有英文與繁中；其他語言連到英文版
     changelog: lang.pages?.includes("changelog") ? "changelog/" : `${lang.dir ? "../" : ""}changelog/`,
     privacy: lang.pages?.includes("privacy") ? "privacy/" : `${lang.dir ? "../" : ""}privacy/`,
+    // Pro 條款與退款政策跟隱私權政策一樣只有英文與繁中
+    terms: lang.pages?.includes("privacy") ? "terms/" : `${lang.dir ? "../" : ""}terms/`,
+    refund: lang.pages?.includes("privacy") ? "refund/" : `${lang.dir ? "../" : ""}refund/`,
     help: lang.pages?.includes("help") ? "help/" : `${lang.dir ? "../" : ""}help/`,
     // App 介面只有英文、繁中、簡中：其他語言的頁面在下載按鈕旁說明
     appLangNote: lang.appUi ? "" : `<span class="meta app-lang">${strings["hero.appLang"] ?? english["hero.appLang"]}</span>`,
@@ -198,6 +201,8 @@ function renderDownload(lang) {
     help: sub("help"),
     changelog: sub("changelog"),
     privacy: sub("privacy"),
+    terms: sub("terms"),
+    refund: sub("refund"),
     ogImage: `${ORIGIN}/assets/${lang.og}`,
     alternates: alts.map((x) => `${x}${NL}`).join(""),
     schema: `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, LT)}</script>`,
@@ -218,7 +223,7 @@ function sitemap() {
   const alt = (href) => (l) => `    <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${href(l)}" />`;
   const dlAlts = [...languages.map(alt(downloadUrl)), `    <xhtml:link rel="alternate" hreflang="x-default" href="${downloadUrl(languages[0])}" />`].join("\n");
   const homeAlts = [...languages.map(alt(pageUrl)), `    <xhtml:link rel="alternate" hreflang="x-default" href="${pageUrl(languages[0])}" />`].join("\n");
-  // 改版紀錄、隱私權政策與說明文件目前只有英文與繁中
+  // 改版紀錄、隱私權政策、Pro 條款、退款政策與說明文件目前只有英文與繁中
   const pair = (sub) => {
     const en = `${ORIGIN}/${sub}/`;
     const zh = `${ORIGIN}/zh-TW/${sub}/`;
@@ -231,6 +236,8 @@ function sitemap() {
     ...features.pages.flatMap((p) => pair(p.slug)),
     ...pair("changelog"),
     ...pair("privacy"),
+    ...pair("terms"),
+    ...pair("refund"),
     ...pair("help"),
     ...pair("guides"),
     ...guides.guides.flatMap((g) => pair(`guides/${g}`)),

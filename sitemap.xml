@@ -337,6 +337,34 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/privacy/" />
   </url>
   <url>
+    <loc>https://pyloxa.com/terms/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/terms/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/terms/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/terms/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/refund/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/refund/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/refund/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/refund/" />
+  </url>
+  <url>
+    <loc>https://pyloxa.com/zh-TW/refund/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/refund/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://pyloxa.com/zh-TW/refund/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyloxa.com/refund/" />
+  </url>
+  <url>
     <loc>https://pyloxa.com/help/</loc>
     <lastmod>2026-11-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://pyloxa.com/help/" />
