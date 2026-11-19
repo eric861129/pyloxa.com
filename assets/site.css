@@ -669,11 +669,14 @@ section {
   width: min(820px, calc(75cqi - 56px));
 }
 
-/* 第一張截圖裁出對話區（不含側欄），維持可讀的大小 */
+/* 第一張截圖已經裁成只有對話區（1570×1080，2 倍解析度），放寬一點讓字和 App 裡差不多大 */
+.exchange .response.wide {
+  width: min(1000px, calc(100vw - 2 * var(--margin) - 56px));
+  width: min(1000px, calc(75cqi - 56px));
+}
+
 .exchange .response .crop-chat {
-  aspect-ratio: 16 / 11;
-  object-fit: cover;
-  object-position: 78% 0;
+  aspect-ratio: 157 / 108;
 }
 
 .exchange .response img {
@@ -2435,6 +2438,7 @@ section {
   }
 
   .exchange .response,
+  .exchange .response.wide,
   .exchange.final .response {
     margin-left: 0;
     width: 100%;
@@ -2785,7 +2789,8 @@ html:lang(ko) {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 10;
+  /* 錄影裁掉了側欄，只留對話區（1052×800），在桌面上用原尺寸顯示，字才看得清楚 */
+  aspect-ratio: 263 / 200;
   background: #ffffff;
   cursor: pointer;
 }
@@ -2799,6 +2804,14 @@ html:lang(ko) {
   margin: 0 0 96px;
   width: min(980px, calc((min(100vw, 1440px) - 2 * var(--margin)) * 0.75 - 16px));
   width: min(980px, 75cqi);
+}
+
+/* 桌面：錄影最寬到 1052px 加上外框（原尺寸），右邊對齊頁面，不夠寬時往左延伸到欄位外 */
+@media (min-width: 901px) {
+  .flow .demo {
+    width: min(calc(1052px + 2 * clamp(10px, 1.4vw, 18px)), 100cqi);
+    margin-left: calc(75cqi - min(calc(1052px + 2 * clamp(10px, 1.4vw, 18px)), 100cqi));
+  }
 }
 
 .demo .frame {
