@@ -159,36 +159,39 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+      <section class="wrap section flow" id="how" data-zoom-close="Fermer" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>Fonctionnement</span></h2>
 
           <figure class="demo reveal">
             <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Enregistrement d’écran : saisie d’une demande, le cerveau propose un plan, Claude Code et Codex prennent chacun une partie après approbation, les vérifications réussissent et le résultat est fusionné">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Enregistrement d’écran : saisie d’une demande, le cerveau propose un plan, puis après approbation Codex prend le backend et Claude Code la page et la documentation. Pyloxa exécute les tests, l’autre agent fait les tests croisés et le contrôle de phase est réussi">
                 <source src="../assets/video/en/flow.webm" type="video/webm" />
               </video>
+              <span class="zoom-hint" aria-hidden="true">Touchez pour agrandir</span>
             </div>
-            <figcaption>Un vrai enregistrement : une demande, un plan du cerveau, Claude Code et Codex qui se partagent le travail, des vérifications qui réussissent, puis la fusion. Les temps d’attente des agents ont été coupés.</figcaption>
+            <figcaption>Un vrai enregistrement de Pyloxa 0.2.0 : une demande, un plan du cerveau, Codex et Claude Code qui se partagent le travail, Pyloxa qui exécute lui-même les tests, des tests croisés par l’autre agent et un contrôle de phase réussi. Les temps d’attente des agents sont accélérés ou coupés.</figcaption>
           </figure>
 
           <div class="exchange reveal">
             <p class="say">D’abord, dites ce que vous voulez.</p>
             <div class="call">
-              <div data-ui class="ui-row">Créer une page de profil membre où chacun peut modifier son pseudo et son avatar. Le backend a besoin d’une API et de documentation.</div>
+              <div data-ui class="ui-row">Ajouter une date d’échéance aux tâches : l’API valide les dates et peut trier par échéance, la page met en évidence les tâches en retard, docs/API.md fait l’objet d’une tâche à part, et tout est couvert par des tests.</div>
             </div>
             <figure class="response wide" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="1570" height="1080" alt="Pyloxa affiche la réponse du cerveau et un plan en trois phases dont les tâches sont attribuées à Claude Code" loading="lazy" />
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="830" height="859" alt="Pyloxa affiche la réponse du cerveau et un plan en une phase avec trois tâches : le backend pour Codex, la page et la documentation pour Claude Code" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">Touchez pour agrandir</span>
             </figure>
           </div>
 
           <div class="exchange reveal">
             <p class="say">Ensuite, approuvez le plan.</p>
             <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Approuver et démarrer</button> <span class="ui-muted">Un agent travaille à la fois, chacun dans son propre worktree git.</span></div>
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Approuver et démarrer</button> <span class="ui-muted">Les tâches qui peuvent avancer ensemble tournent en parallèle, chacune dans son propre worktree git.</span></div>
             </div>
             <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/en/plan-gates.png" alt="Un plan dont les tâches ont été acceptées automatiquement après la réussite de leurs commandes de vérification, avec un contrôle de phase réussi" loading="lazy" />
+              <img src="../assets/shots/en/plan-gates.png" alt="Une tâche de documentation acceptée automatiquement après la réussite de sa commande de vérification, puis un contrôle de phase réussi" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">Touchez pour agrandir</span>
             </figure>
           </div>
 
@@ -198,13 +201,18 @@
               <div data-ui class="ui-row"><button type="button" class="ui-button primary">Fusionner dans la branche actuelle (main)</button></div>
             </div>
             <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">Résultat de tout le plan (5 fichiers)</span></div>
+              <div class="ui-row"><span class="ui-title">Résultat de tout le plan (10 fichiers)</span></div>
               <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
+                <li><span class="st">M</span>backend/server.js</li>
+                <li><span class="st">M</span>backend/tasks.js</li>
+                <li><span class="st">A</span>backend/test/due-date-http.test.js</li>
+                <li><span class="st">M</span>backend/test/tasks.test.js</li>
+                <li><span class="st">M</span>docs/API.md</li>
+                <li><span class="st">M</span>frontend/app.js</li>
+                <li><span class="st">M</span>frontend/format.js</li>
+                <li><span class="st">M</span>frontend/index.html</li>
+                <li><span class="st">M</span>frontend/style.css</li>
+                <li><span class="st">M</span>frontend/test/format.test.js</li>
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Fusionné dans main. Rien n’est poussé tant que vous ne le faites pas.</span></div>
             </div>

@@ -159,36 +159,39 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+      <section class="wrap section flow" id="how" data-zoom-close="Fechar" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>Como funciona</span></h2>
 
           <figure class="demo reveal">
             <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Gravação de tela: você digita um pedido, o cérebro propõe um plano, Claude Code e Codex pegam cada um uma parte após a aprovação, as verificações passam e o resultado é mesclado">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Gravação de tela: você digita um pedido, o cérebro propõe um plano e, após a aprovação, o Codex fica com o backend e o Claude Code com a página e a documentação. O Pyloxa roda os testes, o outro agente faz o teste cruzado e o gate de fase passa">
                 <source src="../assets/video/en/flow.webm" type="video/webm" />
               </video>
+              <span class="zoom-hint" aria-hidden="true">Toque para ampliar</span>
             </div>
-            <figcaption>Uma gravação real: um pedido, um plano do cérebro, Claude Code e Codex dividindo o trabalho, verificações passando e o merge. O tempo de espera pelos agentes foi cortado.</figcaption>
+            <figcaption>Uma gravação real do Pyloxa 0.2.0: um pedido, um plano do cérebro, Codex e Claude Code dividindo o trabalho, o Pyloxa rodando os testes por conta própria, o teste cruzado do outro agente e o gate passando. A espera pelos agentes foi acelerada ou cortada.</figcaption>
           </figure>
 
           <div class="exchange reveal">
             <p class="say">Primeiro, diga o que você quer.</p>
             <div class="call">
-              <div data-ui class="ui-row">Crie uma página de perfil de membro onde as pessoas possam editar o apelido e o avatar. O backend precisa de uma API e de documentação.</div>
+              <div data-ui class="ui-row">Adicione datas de vencimento às tarefas: a API valida as datas e pode ordenar por vencimento, a página destaca as tarefas atrasadas, docs/API.md vira uma tarefa própria e tudo ganha testes.</div>
             </div>
             <figure class="response wide" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="1570" height="1080" alt="O Pyloxa mostrando a resposta do cérebro e um plano em três fases com tarefas atribuídas ao Claude Code" loading="lazy" />
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="830" height="859" alt="O Pyloxa mostrando a resposta do cérebro e um plano de uma fase com três tarefas: o backend vai para o Codex, a página e a documentação para o Claude Code" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">Toque para ampliar</span>
             </figure>
           </div>
 
           <div class="exchange reveal">
             <p class="say">Depois, aprove o plano.</p>
             <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Aprovar e iniciar</button> <span class="ui-muted">Um agente trabalha por vez, cada um no próprio git worktree.</span></div>
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Aprovar e iniciar</button> <span class="ui-muted">Tarefas que podem rodar juntas rodam em paralelo, cada uma no próprio git worktree.</span></div>
             </div>
             <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/en/plan-gates.png" alt="Um plano com tarefas aceitas automaticamente depois que os comandos de verificação passaram, e um gate de fase aprovado" loading="lazy" />
+              <img src="../assets/shots/en/plan-gates.png" alt="Uma tarefa de documentação aceita automaticamente depois que o comando de verificação passou, seguida de um gate de fase aprovado" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">Toque para ampliar</span>
             </figure>
           </div>
 
@@ -198,13 +201,18 @@
               <div data-ui class="ui-row"><button type="button" class="ui-button primary">Mesclar na branch atual (main)</button></div>
             </div>
             <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">Resultado do plano inteiro (5 arquivos)</span></div>
+              <div class="ui-row"><span class="ui-title">Resultado do plano inteiro (10 arquivos)</span></div>
               <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
+                <li><span class="st">M</span>backend/server.js</li>
+                <li><span class="st">M</span>backend/tasks.js</li>
+                <li><span class="st">A</span>backend/test/due-date-http.test.js</li>
+                <li><span class="st">M</span>backend/test/tasks.test.js</li>
+                <li><span class="st">M</span>docs/API.md</li>
+                <li><span class="st">M</span>frontend/app.js</li>
+                <li><span class="st">M</span>frontend/format.js</li>
+                <li><span class="st">M</span>frontend/index.html</li>
+                <li><span class="st">M</span>frontend/style.css</li>
+                <li><span class="st">M</span>frontend/test/format.test.js</li>
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>Mesclado em main. Nada vai para o remoto até você fazer push.</span></div>
             </div>

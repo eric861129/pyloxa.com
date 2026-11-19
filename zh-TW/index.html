@@ -159,36 +159,39 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+      <section class="wrap section flow" id="how" data-zoom-close="關閉" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>運作方式</span></h2>
 
           <figure class="demo reveal">
             <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/zh/flow.jpg" aria-label="操作錄影：輸入需求、大腦提出計畫、核准後 Claude Code 與 Codex 各做一部分，驗證通過後合併">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/zh/flow.jpg" aria-label="操作錄影：一句需求、大腦提出計畫，核准後 Codex 做後端、Claude Code 做網頁和文件，Pyloxa 自己跑測試、另一家的 Agent 交叉測試，最後階段 Gate 通過">
                 <source src="../assets/video/zh/flow.webm" type="video/webm" />
               </video>
+              <span class="zoom-hint" aria-hidden="true">點一下放大</span>
             </div>
-            <figcaption>實際操作錄影：一句需求、大腦擬計畫、Claude Code 與 Codex 分工、驗證通過、合併。等 Agent 工作的時間已經剪掉。</figcaption>
+            <figcaption>Pyloxa 0.2.0 的實際操作錄影：一句需求、大腦擬計畫、Codex 與 Claude Code 分工、Pyloxa 自己跑測試、另一家的 Agent 交叉測試、Gate 通過。等 Agent 工作的時間有加速或剪掉。</figcaption>
           </figure>
 
           <div class="exchange reveal">
             <p class="say">先說你想做什麼。</p>
             <div class="call">
-              <div data-ui class="ui-row">做一個會員資料頁，讓會員可以修改暱稱和頭像。後端要有 API 和文件。</div>
+              <div data-ui class="ui-row">替待辦事項加上到期日：API 要驗證日期、可以依到期日排序，網頁標示逾期的待辦，docs/API.md 獨立成一個工作，都要補上測試。</div>
             </div>
             <figure class="response wide" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/zh/conversation.png" width="1570" height="1080" alt="Pyloxa 顯示大腦的回覆，以及分成三個階段、工作交給 Claude Code 的計畫" loading="lazy" />
+              <img class="crop-chat" src="../assets/shots/zh/conversation.png" width="830" height="859" alt="Pyloxa 顯示大腦的回覆，以及一個階段、三個工作的計畫：後端交給 Codex，網頁和文件交給 Claude Code" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">點一下放大</span>
             </figure>
           </div>
 
           <div class="exchange reveal">
             <p class="say">再核准計畫。</p>
             <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">核准並開始</button> <span class="ui-muted">一次一個 Agent 工作，各自在獨立的 git worktree。</span></div>
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">核准並開始</button> <span class="ui-muted">能同時做的工作會同時進行，各自在獨立的 git worktree。</span></div>
             </div>
             <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/zh/plan-gates.png" alt="驗證命令通過後自動接受的工作，以及已通過的階段 Gate" loading="lazy" />
+              <img src="../assets/shots/zh/plan-gates.png" alt="文件的工作在驗證命令通過後自動接受，接著階段 Gate 也通過了" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">點一下放大</span>
             </figure>
           </div>
 
@@ -198,13 +201,18 @@
               <div data-ui class="ui-row"><button type="button" class="ui-button primary">合併到目前分支（main）</button></div>
             </div>
             <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">整個計畫的成果（5 個檔案）</span></div>
+              <div class="ui-row"><span class="ui-title">整個計畫的成果（10 個檔案）</span></div>
               <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
+                <li><span class="st">M</span>backend/server.js</li>
+                <li><span class="st">M</span>backend/tasks.js</li>
+                <li><span class="st">A</span>backend/test/due-date-http.test.js</li>
+                <li><span class="st">M</span>backend/test/tasks.test.js</li>
+                <li><span class="st">M</span>docs/API.md</li>
+                <li><span class="st">M</span>frontend/app.js</li>
+                <li><span class="st">M</span>frontend/format.js</li>
+                <li><span class="st">M</span>frontend/index.html</li>
+                <li><span class="st">M</span>frontend/style.css</li>
+                <li><span class="st">M</span>frontend/test/format.test.js</li>
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>已合併到 main。要不要推送，由你決定。</span></div>
             </div>

@@ -299,11 +299,13 @@
   // ---- 操作錄影：捲到看得到時播放、離開時暫停；按一下暫停或繼續。偏好減少動態時不自動播放 ----
   var clipObserver;
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const zoomMq = window.matchMedia("(max-width: 900px)");
   const clips = document.querySelectorAll("video.clip");
   clips.forEach((v) => {
     if (reduce) v.controls = true;
     v.addEventListener("click", () => {
-      if (reduce) return;
+      // 手機上「運作方式」的錄影改成點一下放大（見下面的 zoom）
+      if (reduce || (zoomMq.matches && v.closest("#how"))) return;
       v.dataset.paused = v.paused ? "" : "1";
       if (v.paused) v.play().catch(() => {});
       else v.pause();
@@ -321,6 +323,84 @@
       { threshold: 0.35 },
     );
     clips.forEach((v) => clipObserver.observe(v));
+  }
+
+  // ---- 手機：「運作方式」的錄影與截圖點一下放大，用原尺寸顯示，可以捲動查看 ----
+  const how = document.getElementById("how");
+  if (how) {
+    const targets = [...how.querySelectorAll("video.clip, .response img")];
+    const open = (el) => {
+      const layer = document.createElement("div");
+      layer.className = "zoom-layer";
+      layer.setAttribute("role", "dialog");
+      layer.setAttribute("aria-modal", "true");
+      layer.setAttribute("aria-label", el.getAttribute("alt") || el.getAttribute("aria-label") || "");
+      const bar = document.createElement("div");
+      bar.className = "zoom-bar";
+      const close = document.createElement("button");
+      close.type = "button";
+      close.className = "zoom-close";
+      close.textContent = how.dataset.zoomClose || "Close";
+      bar.append(close);
+      const scroll = document.createElement("div");
+      scroll.className = "zoom-scroll";
+      let media;
+      if (el.tagName === "VIDEO") {
+        el.pause();
+        media = document.createElement("video");
+        media.src = el.currentSrc || el.querySelector("source")?.src || "";
+        media.muted = true;
+        media.loop = true;
+        media.playsInline = true;
+        media.autoplay = !reduce;
+        media.controls = reduce;
+        media.style.width = (el.videoWidth || 810) + "px";
+      } else {
+        media = document.createElement("img");
+        media.src = el.currentSrc || el.src;
+        media.alt = el.alt;
+        media.style.width = (el.naturalWidth || 830) + "px";
+      }
+      scroll.append(media);
+      layer.append(bar, scroll);
+      document.body.append(layer);
+      document.documentElement.classList.add("zoom-open");
+      if (media.tagName === "VIDEO" && !reduce) media.play().catch(() => {});
+      const done = () => {
+        layer.remove();
+        document.documentElement.classList.remove("zoom-open");
+        document.removeEventListener("keydown", onKey);
+        el.focus({ preventScroll: true });
+      };
+      const onKey = (e) => {
+        if (e.key === "Escape") done();
+      };
+      close.addEventListener("click", done);
+      document.addEventListener("keydown", onKey);
+      close.focus();
+    };
+    targets.forEach((el) => {
+      el.addEventListener("click", () => {
+        if (zoomMq.matches) open(el);
+      });
+      el.addEventListener("keydown", (e) => {
+        if (zoomMq.matches && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          open(el);
+        }
+      });
+      const sync = () => {
+        if (zoomMq.matches) {
+          el.tabIndex = 0;
+          el.setAttribute("role", "button");
+        } else {
+          el.removeAttribute("tabindex");
+          el.removeAttribute("role");
+        }
+      };
+      sync();
+      zoomMq.addEventListener?.("change", sync);
+    });
   }
 
   // ---- 常見問題：左邊選題，右邊顯示答案；手機改為展開在題目下方 ----

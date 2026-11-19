@@ -159,36 +159,39 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+      <section class="wrap section flow" id="how" data-zoom-close="닫기" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>작동 방식</span></h2>
 
           <figure class="demo reveal">
             <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="화면 녹화: 요청을 입력하면 브레인이 계획을 제안하고, 승인 후 Claude Code와 Codex가 각각 일부를 맡으며, 검증을 통과한 결과가 병합됩니다">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="화면 녹화: 요청을 입력하면 브레인이 계획을 제안하고, 승인 후 Codex는 백엔드를, Claude Code는 페이지와 문서를 맡습니다. Pyloxa가 테스트를 직접 실행하고 다른 에이전트가 교차 테스트한 뒤 단계 게이트를 통과합니다">
                 <source src="../assets/video/en/flow.webm" type="video/webm" />
               </video>
+              <span class="zoom-hint" aria-hidden="true">탭하면 확대</span>
             </div>
-            <figcaption>실제 녹화입니다. 요청 하나, 브레인의 계획, Claude Code와 Codex의 분업, 검증 통과, 병합까지. 에이전트를 기다리는 시간은 잘라 냈습니다.</figcaption>
+            <figcaption>Pyloxa 0.2.0의 실제 녹화입니다. 요청 하나, 브레인의 계획, Codex와 Claude Code의 분업, Pyloxa가 직접 실행한 테스트, 다른 에이전트의 교차 테스트, 게이트 통과까지. 에이전트를 기다리는 시간은 빨리 감거나 잘라 냈습니다.</figcaption>
           </figure>
 
           <div class="exchange reveal">
             <p class="say">먼저 원하는 것을 말합니다.</p>
             <div class="call">
-              <div data-ui class="ui-row">회원이 닉네임과 아바타를 수정할 수 있는 프로필 페이지를 만들어 줘. 백엔드에는 API와 문서가 필요해.</div>
+              <div data-ui class="ui-row">할 일에 마감일을 추가해 줘. API는 날짜를 검증하고 마감일순으로 정렬할 수 있어야 해. 페이지에서는 기한이 지난 할 일을 강조하고, docs/API.md는 별도 작업으로 해 줘. 모두 테스트도 추가해 줘.</div>
             </div>
             <figure class="response wide" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="1570" height="1080" alt="브레인의 답변과, Claude Code에 작업이 배정된 3단계 계획을 보여 주는 Pyloxa 화면" loading="lazy" />
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="830" height="859" alt="브레인의 답변과, 단계 1개·작업 3개로 된 계획(백엔드는 Codex, 페이지와 문서는 Claude Code)을 보여 주는 Pyloxa 화면" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">탭하면 확대</span>
             </figure>
           </div>
 
           <div class="exchange reveal">
             <p class="say">그다음 계획을 승인합니다.</p>
             <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">승인하고 시작</button> <span class="ui-muted">한 번에 한 에이전트가 작업하며, 각자 자체 git worktree를 씁니다.</span></div>
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">승인하고 시작</button> <span class="ui-muted">함께 진행할 수 있는 작업은 동시에 실행되며, 각자 자체 git worktree를 씁니다.</span></div>
             </div>
             <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/en/plan-gates.png" alt="검증 명령을 통과해 자동 수락된 작업과 통과한 단계 게이트가 보이는 계획" loading="lazy" />
+              <img src="../assets/shots/en/plan-gates.png" alt="검증 명령을 통과해 자동 수락된 문서 작업과, 이어서 통과한 단계 게이트" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">탭하면 확대</span>
             </figure>
           </div>
 
@@ -198,13 +201,18 @@
               <div data-ui class="ui-row"><button type="button" class="ui-button primary">현재 브랜치(main)에 병합</button></div>
             </div>
             <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">전체 계획의 결과 (파일 5개)</span></div>
+              <div class="ui-row"><span class="ui-title">전체 계획의 결과 (파일 10개)</span></div>
               <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
+                <li><span class="st">M</span>backend/server.js</li>
+                <li><span class="st">M</span>backend/tasks.js</li>
+                <li><span class="st">A</span>backend/test/due-date-http.test.js</li>
+                <li><span class="st">M</span>backend/test/tasks.test.js</li>
+                <li><span class="st">M</span>docs/API.md</li>
+                <li><span class="st">M</span>frontend/app.js</li>
+                <li><span class="st">M</span>frontend/format.js</li>
+                <li><span class="st">M</span>frontend/index.html</li>
+                <li><span class="st">M</span>frontend/style.css</li>
+                <li><span class="st">M</span>frontend/test/format.test.js</li>
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>main에 병합했습니다. 직접 푸시하기 전에는 아무것도 푸시되지 않습니다.</span></div>
             </div>

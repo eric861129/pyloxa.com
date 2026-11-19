@@ -140,7 +140,7 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+      <section class="wrap section flow" id="how" data-zoom-close="{{how-zoom.close}}" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>{{how-title.1}}</span></h2>
 
@@ -149,6 +149,7 @@
               <video class="clip" muted loop playsinline preload="metadata" poster="{{@root}}assets/video/{{@assetLang}}/flow.jpg" aria-label="{{how-title.3}}">
                 <source src="{{@root}}assets/video/{{@assetLang}}/flow.webm" type="video/webm" />
               </video>
+              <span class="zoom-hint" aria-hidden="true">{{how-zoom.hint}}</span>
             </div>
             <figcaption>{{how-title.5}}</figcaption>
           </figure>
@@ -159,7 +160,8 @@
               <div data-ui class="ui-row">{{how-title.7}}</div>
             </div>
             <figure class="response wide" style="margin-inline-end: 0">
-              <img class="crop-chat" src="{{@root}}assets/shots/{{@assetLang}}/conversation.png" width="1570" height="1080" alt="{{how-title.9}}" loading="lazy" />
+              <img class="crop-chat" src="{{@root}}assets/shots/{{@assetLang}}/conversation.png" width="830" height="859" alt="{{how-title.9}}" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">{{how-zoom.hint}}</span>
             </figure>
           </div>
 
@@ -170,6 +172,7 @@
             </div>
             <figure class="response" style="margin-inline-end: 0">
               <img src="{{@root}}assets/shots/{{@assetLang}}/plan-gates.png" alt="{{how-title.14}}" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">{{how-zoom.hint}}</span>
             </figure>
           </div>
 
@@ -181,11 +184,16 @@
             <div class="response result" data-ui>
               <div class="ui-row"><span class="ui-title">{{how-title.17}}</span></div>
               <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
+                <li><span class="st">M</span>backend/server.js</li>
+                <li><span class="st">M</span>backend/tasks.js</li>
+                <li><span class="st">A</span>backend/test/due-date-http.test.js</li>
+                <li><span class="st">M</span>backend/test/tasks.test.js</li>
+                <li><span class="st">M</span>docs/API.md</li>
+                <li><span class="st">M</span>frontend/app.js</li>
+                <li><span class="st">M</span>frontend/format.js</li>
+                <li><span class="st">M</span>frontend/index.html</li>
+                <li><span class="st">M</span>frontend/style.css</li>
+                <li><span class="st">M</span>frontend/test/format.test.js</li>
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>{{how-title.18}}</span></div>
             </div>

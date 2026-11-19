@@ -159,36 +159,39 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+      <section class="wrap section flow" id="how" data-zoom-close="閉じる" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>しくみ</span></h2>
 
           <figure class="demo reveal">
             <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="画面録画：依頼を入力すると、ブレインがプランを提案し、承認後に Claude Code と Codex がそれぞれ一部を担当し、チェックが成功して結果がマージされる">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="画面録画：依頼を入力すると、ブレインがプランを提案し、承認後に Codex がバックエンド、Claude Code がページとドキュメントを担当。Pyloxa がテストを実行し、もう一方のエージェントがクロステストして、フェーズゲートを通過する">
                 <source src="../assets/video/en/flow.webm" type="video/webm" />
               </video>
+              <span class="zoom-hint" aria-hidden="true">タップで拡大</span>
             </div>
-            <figcaption>実際の画面録画です。ひとつの依頼、ブレインのプラン、Claude Code と Codex の分担、チェックの成功、マージまで。エージェントの作業を待つ時間はカットしています。</figcaption>
+            <figcaption>Pyloxa 0.2.0 の実際の画面録画です。ひとつの依頼、ブレインのプラン、Codex と Claude Code の分担、Pyloxa 自身によるテスト実行、もう一方のエージェントによるクロステスト、ゲートの通過まで。エージェントを待つ時間は早送りかカットしています。</figcaption>
           </figure>
 
           <div class="exchange reveal">
             <p class="say">まず、やりたいことを伝えます。</p>
             <div class="call">
-              <div data-ui class="ui-row">メンバーがニックネームとアバターを編集できるプロフィールページを作ってください。バックエンドには API とドキュメントが必要です。</div>
+              <div data-ui class="ui-row">タスクに期限日を追加してください。API は日付を検証し、期限日で並べ替えられるようにします。ページでは期限切れのタスクを強調し、docs/API.md は別のタスクにします。どれにもテストを追加してください。</div>
             </div>
             <figure class="response wide" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="1570" height="1080" alt="ブレインの返答と、タスクが Claude Code に割り当てられた 3 フェーズのプランを表示している Pyloxa" loading="lazy" />
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="830" height="859" alt="ブレインの返答と、1 フェーズ・3 タスクのプラン（バックエンドは Codex、ページとドキュメントは Claude Code）を表示している Pyloxa" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">タップで拡大</span>
             </figure>
           </div>
 
           <div class="exchange reveal">
             <p class="say">次に、プランを承認します。</p>
             <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">承認して開始</button> <span class="ui-muted">一度に動くエージェントはひとつで、それぞれ専用の git worktree で作業します。</span></div>
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">承認して開始</button> <span class="ui-muted">同時に進められるタスクは並行して動き、それぞれ専用の git worktree で作業します。</span></div>
             </div>
             <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/en/plan-gates.png" alt="検証コマンドの成功後に自動承認されたタスクと、通過したフェーズゲートが表示されたプラン" loading="lazy" />
+              <img src="../assets/shots/en/plan-gates.png" alt="検証コマンドの成功後に自動承認されたドキュメントのタスクと、続いて通過したフェーズゲート" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">タップで拡大</span>
             </figure>
           </div>
 
@@ -198,13 +201,18 @@
               <div data-ui class="ui-row"><button type="button" class="ui-button primary">現在のブランチ（main）にマージ</button></div>
             </div>
             <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">プラン全体の結果（5 ファイル）</span></div>
+              <div class="ui-row"><span class="ui-title">プラン全体の結果（10 ファイル）</span></div>
               <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
+                <li><span class="st">M</span>backend/server.js</li>
+                <li><span class="st">M</span>backend/tasks.js</li>
+                <li><span class="st">A</span>backend/test/due-date-http.test.js</li>
+                <li><span class="st">M</span>backend/test/tasks.test.js</li>
+                <li><span class="st">M</span>docs/API.md</li>
+                <li><span class="st">M</span>frontend/app.js</li>
+                <li><span class="st">M</span>frontend/format.js</li>
+                <li><span class="st">M</span>frontend/index.html</li>
+                <li><span class="st">M</span>frontend/style.css</li>
+                <li><span class="st">M</span>frontend/test/format.test.js</li>
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>main にマージしました。あなたがプッシュするまで、何もプッシュされません。</span></div>
             </div>

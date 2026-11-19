@@ -159,36 +159,39 @@
         </div>
       </section>
 
-      <section class="wrap section flow" id="how" aria-labelledby="how-title">
+      <section class="wrap section flow" id="how" data-zoom-close="Schließen" aria-labelledby="how-title">
         <div class="flow-col">
           <h2 class="section-head reveal" id="how-title"><span>So funktioniert’s</span></h2>
 
           <figure class="demo reveal">
             <div class="frame">
-              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Bildschirmaufnahme: Anfrage eingeben, der Planer schlägt einen Plan vor, Claude Code und Codex übernehmen nach der Freigabe je einen Teil, die Prüfungen bestehen und das Ergebnis wird gemergt">
+              <video class="clip" muted loop playsinline preload="metadata" poster="../assets/video/en/flow.jpg" aria-label="Bildschirmaufnahme: Anfrage eingeben, der Planer schlägt einen Plan vor, nach der Freigabe übernimmt Codex das Backend und Claude Code die Seite und die Doku. Pyloxa führt die Tests aus, der andere Agent testet gegen, und das Phasen-Gate besteht">
                 <source src="../assets/video/en/flow.webm" type="video/webm" />
               </video>
+              <span class="zoom-hint" aria-hidden="true">Zum Vergrößern tippen</span>
             </div>
-            <figcaption>Eine echte Aufnahme: eine Anfrage, ein Plan vom Planer, Claude Code und Codex teilen sich die Arbeit, die Prüfungen bestehen, dann der Merge. Wartezeiten auf die Agenten sind herausgeschnitten.</figcaption>
+            <figcaption>Eine echte Aufnahme von Pyloxa 0.2.0: eine Anfrage, ein Plan vom Planer, Codex und Claude Code teilen sich die Arbeit, Pyloxa führt die Tests selbst aus, der andere Agent übernimmt das Cross-Testing, und das Gate besteht. Wartezeiten auf die Agenten sind beschleunigt oder herausgeschnitten.</figcaption>
           </figure>
 
           <div class="exchange reveal">
             <p class="say">Zuerst sagst du, was du willst.</p>
             <div class="call">
-              <div data-ui class="ui-row">Baue eine Profilseite für Mitglieder, auf der sie Nickname und Avatar ändern können. Das Backend braucht eine API und Doku.</div>
+              <div data-ui class="ui-row">Füge Aufgaben ein Fälligkeitsdatum hinzu: Die API prüft das Datum und kann danach sortieren, die Seite hebt überfällige Aufgaben hervor, docs/API.md wird eine eigene Aufgabe, und alles bekommt Tests.</div>
             </div>
             <figure class="response wide" style="margin-inline-end: 0">
-              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="1570" height="1080" alt="Pyloxa zeigt die Antwort des Planers und einen Plan mit drei Phasen, dessen Aufgaben Claude Code zugewiesen sind" loading="lazy" />
+              <img class="crop-chat" src="../assets/shots/en/conversation.png" width="830" height="859" alt="Pyloxa zeigt die Antwort des Planers und einen Plan mit einer Phase und drei Aufgaben: Das Backend geht an Codex, Seite und Doku gehen an Claude Code" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">Zum Vergrößern tippen</span>
             </figure>
           </div>
 
           <div class="exchange reveal">
             <p class="say">Dann gibst du den Plan frei.</p>
             <div class="call">
-              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Freigeben und starten</button> <span class="ui-muted">Es arbeitet jeweils ein Agent, jeder in seinem eigenen git-Worktree.</span></div>
+              <div data-ui class="ui-row"><button type="button" class="ui-button primary">Freigeben und starten</button> <span class="ui-muted">Aufgaben, die parallel laufen können, laufen parallel, jede in ihrem eigenen git-Worktree.</span></div>
             </div>
             <figure class="response" style="margin-inline-end: 0">
-              <img src="../assets/shots/en/plan-gates.png" alt="Ein Plan mit Aufgaben, die nach bestandenen Prüfbefehlen automatisch angenommen wurden, und einem bestandenen Phasen-Gate" loading="lazy" />
+              <img src="../assets/shots/en/plan-gates.png" alt="Eine Doku-Aufgabe, die nach bestandenem Prüfbefehl automatisch angenommen wurde, danach ein bestandenes Phasen-Gate" loading="lazy" />
+              <span class="zoom-hint" aria-hidden="true">Zum Vergrößern tippen</span>
             </figure>
           </div>
 
@@ -198,13 +201,18 @@
               <div data-ui class="ui-row"><button type="button" class="ui-button primary">In aktuellen Branch mergen (main)</button></div>
             </div>
             <div class="response result" data-ui>
-              <div class="ui-row"><span class="ui-title">Ergebnis des ganzen Plans (5 Dateien)</span></div>
+              <div class="ui-row"><span class="ui-title">Ergebnis des ganzen Plans (10 Dateien)</span></div>
               <ul class="files">
-                <li><span class="st">A</span>docs/api/profile.yaml</li>
-                <li><span class="st">A</span>server/src/routes/profile.ts</li>
-                <li><span class="st">A</span>web/src/pages/Profile.tsx</li>
-                <li><span class="st">A</span>test/profile.test.ts</li>
-                <li><span class="st">A</span>test/contract.test.ts</li>
+                <li><span class="st">M</span>backend/server.js</li>
+                <li><span class="st">M</span>backend/tasks.js</li>
+                <li><span class="st">A</span>backend/test/due-date-http.test.js</li>
+                <li><span class="st">M</span>backend/test/tasks.test.js</li>
+                <li><span class="st">M</span>docs/API.md</li>
+                <li><span class="st">M</span>frontend/app.js</li>
+                <li><span class="st">M</span>frontend/format.js</li>
+                <li><span class="st">M</span>frontend/index.html</li>
+                <li><span class="st">M</span>frontend/style.css</li>
+                <li><span class="st">M</span>frontend/test/format.test.js</li>
               </ul>
               <div class="ui-row result-foot"><span class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m8 12 3 3 5-6" /></svg>In main gemergt. Nichts wird gepusht, bis du es pushst.</span></div>
             </div>
