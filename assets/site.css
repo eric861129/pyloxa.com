@@ -3723,3 +3723,118 @@ html:lang(ko) {
     transform: none !important;
   }
 }
+
+/* ---- 導覽影片：按下播放前只有本站的封面圖，按下後才載入 YouTube 播放器 ---- */
+.hero-tour {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 20px;
+}
+
+.hero-tour svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.tour-head,
+.tour-video {
+  margin-left: 25%;
+}
+
+.tour-head {
+  width: min(560px, 75%);
+}
+
+.tour-head p {
+  margin-top: 20px;
+  max-width: 56ch;
+  color: var(--soft);
+}
+
+.tour-video {
+  width: min(980px, 75%);
+  margin-top: 40px;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.tour-facade {
+  position: relative;
+  display: block;
+  background: var(--tone);
+  padding: clamp(10px, 1.4vw, 18px);
+}
+
+.tour-facade img,
+.tour-facade iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.tour-facade iframe {
+  background: #000000;
+}
+
+.tour-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.tour-play svg {
+  width: 84px;
+  height: 84px;
+  padding: 22px 18px 22px 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 12px 32px rgba(73, 50, 212, 0.35);
+  transition: transform 220ms var(--ease);
+}
+
+.tour-facade:hover .tour-play svg,
+.tour-facade:focus-visible .tour-play svg {
+  transform: scale(1.08);
+}
+
+.tour-facade:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.tour-video figcaption {
+  margin-top: 12px;
+  max-width: 64ch;
+  font-size: var(--step-small);
+  color: var(--soft);
+}
+
+.tour-video figcaption a {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .tour-head,
+  .tour-video {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .tour-play svg {
+    width: 64px;
+    height: 64px;
+    padding: 17px 14px 17px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-play svg {
+    transition: none;
+  }
+}

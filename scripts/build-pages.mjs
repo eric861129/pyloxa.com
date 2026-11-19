@@ -8,7 +8,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { siteGraphTag } from "./build-schema.mjs";
+import { siteGraphTag, TOUR } from "./build-schema.mjs";
 
 const site = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ORIGIN = "https://pyloxa.com";
@@ -135,6 +135,9 @@ function render(lang) {
     hreflang: lang.hreflang,
     version,
     assetLang: lang.assets,
+    // 導覽影片：繁中頁放中文配音版，其他語言放英文版（字幕語言跟著影片）
+    tourId: TOUR[lang.assets].id,
+    tourCc: TOUR[lang.assets].cc,
     ogImage: `${ORIGIN}/assets/${lang.og}`,
     ogLocales: ogLocales(lang),
     wlTag: lang.code.toLowerCase(),

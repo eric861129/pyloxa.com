@@ -85,6 +85,7 @@
               <a class="button" href="download/#start">{{hero-title.5}}</a>
               <span class="meta">{{hero-title.6}}</span>{{@appLangNote}}
             </div>
+            <a class="hero-pro hero-tour" href="#tour"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>{{hero.tour}}</a>
             <a class="hero-pro" href="#pricing">{{hero.pro}}</a>
             <ul class="trust" aria-label="{{hero.trustLabel}}">
               <li>{{hero.trust1}}</li>
@@ -190,6 +191,21 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- 導覽影片：按下播放前只顯示本站的封面圖，按下後才從 youtube-nocookie.com 載入播放器 -->
+      <section class="wrap section tour" id="tour" aria-labelledby="tour-title">
+        <div class="tour-head reveal">
+          <h2 class="section-head" id="tour-title">{{tour.title}}</h2>
+          <p>{{tour.lede}}</p>
+        </div>
+        <figure class="tour-video reveal">
+          <a class="tour-facade" href="https://www.youtube.com/watch?v={{@tourId}}" data-yt="{{@tourId}}" data-yt-cc="{{@tourCc}}" aria-label="{{tour.play}}">
+            <img src="{{@root}}assets/video/{{@assetLang}}/tour.jpg" width="1280" height="720" alt="" loading="lazy" decoding="async" />
+            <span class="tour-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span>
+          </a>
+          <figcaption>{{tour.note}} <a href="https://www.youtube.com/watch?v={{@tourId}}">{{tour.link}}</a></figcaption>
+        </figure>
       </section>
 
       <!-- 工作流程五段：和 App「工作流程」頁的規劃、階段、分工、檢查、交付一致（D-108） -->

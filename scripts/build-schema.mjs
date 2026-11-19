@@ -10,6 +10,49 @@ const site = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ORIGIN = "https://pyloxa.com";
 const languages = JSON.parse(readFileSync(path.join(site, "src", "languages.json"), "utf8")).filter((l) => existsSync(path.join(site, "src", "i18n", `${l.code}.json`)));
 
+// 首頁的導覽影片（YouTube），依頁面用的素材語言（languages.json 的 assets）選一支。
+// 首頁出現 data-yt 時，結構化資料加上 VideoObject。
+export const TOUR = {
+  en: {
+    id: "NM24OBhmF8s",
+    cc: "en",
+    name: "Claude Code + Codex as one team: a full tour of Pyloxa (Windows)",
+    description: "Pyloxa is a free Windows app that gets Claude Code and Codex CLI to work on one project as a team. This tour builds a real feature on a small project and covers the workflow, shared memory, Skills, verification and Pro.",
+    duration: "PT6M14S",
+    inLanguage: "en",
+  },
+  zh: {
+    id: "0wAXIupj5qQ",
+    cc: "zh-TW",
+    name: "Claude Code 和 Codex 一起分工：Pyloxa 完整導覽（Windows）",
+    description: "Pyloxa 是免費的 Windows App，讓 Claude Code 和 Codex CLI 在同一個專案裡像團隊一樣分工。影片在一個小專案上實際做一個功能，介紹工作流程、共用記憶、Skills、驗證與 Pro。",
+    duration: "PT6M21S",
+    inLanguage: "zh-TW",
+  },
+};
+const TOUR_DATE = "2026-11-19";
+
+function videoNode(html, page) {
+  const id = html.match(/data-yt="([\w-]{11})"/)?.[1];
+  const [lang, v] = Object.entries(TOUR).find(([, t]) => t.id === id) ?? [];
+  if (!v) return [];
+  return [
+    {
+      "@type": "VideoObject",
+      "@id": `${page.url}#tour`,
+      name: v.name,
+      description: v.description,
+      thumbnailUrl: `${ORIGIN}/assets/video/${lang}/tour.jpg`,
+      uploadDate: TOUR_DATE,
+      duration: v.duration,
+      inLanguage: v.inLanguage,
+      embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+      url: `https://www.youtube.com/watch?v=${v.id}`,
+      publisher: { "@id": `${ORIGIN}/#organization` },
+    },
+  ];
+}
+
 const decode = (s) =>
   s
     .replace(/<[^>]+>/g, "")
@@ -64,6 +107,7 @@ export function siteGraphTag(html, page) {
         isPartOf: { "@id": `${ORIGIN}/#website` },
         mainEntity: faq(html),
       },
+      ...videoNode(html, page),
     ],
   };
   // JSON 放進 <script> 時跳脫 <，避免內容裡出現 </script>

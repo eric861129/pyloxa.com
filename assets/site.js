@@ -363,6 +363,27 @@
     }, 400);
   }
 
+  // ---- 導覽影片：按下播放才把封面換成 YouTube 播放器（youtube-nocookie.com），在那之前不連到 YouTube ----
+  document.querySelectorAll("[data-yt]").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      const cc = a.dataset.ytCc || "en";
+      const f = document.createElement("iframe");
+      f.src = `https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=${encodeURIComponent(cc)}&hl=${encodeURIComponent(root.lang)}`;
+      f.title = a.getAttribute("aria-label") || "YouTube";
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      f.referrerPolicy = "strict-origin-when-cross-origin";
+      const box = document.createElement("div");
+      box.className = "tour-facade";
+      box.appendChild(f);
+      a.replaceWith(box);
+      f.focus();
+      if (window.gtag) gtag("event", "video_play", { video_id: a.dataset.yt });
+    });
+  });
+
   // ---- 語言選單：點選單外面或按 Esc 就收起 ----
   const menus = [...document.querySelectorAll(".lang-menu")];
   if (menus.length) {
