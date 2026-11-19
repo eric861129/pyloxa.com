@@ -73,7 +73,7 @@ const CHROME = {
   },
 };
 
-const RELEASES = "https://github.com/eric861129/Pyloxa-Releases/releases/latest";
+// 下載按鈕到同語言的下載頁（自動開始下載，並說明 SmartScreen 與安裝步驟）
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const strip = (s) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 const decode = (s) => s.replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&amp;/g, "&");
@@ -107,6 +107,7 @@ function render(page, lang) {
   const url = urlOf(lang, page.slug);
   const root = lang === "en" ? "../" : "../../";
   const homeHref = root + dirOf(lang);
+  const RELEASES = `${homeHref}download/#start`;
   const otherHref = `${root}${dirOf(other)}${page.slug}/`;
   const label = page.nav[lang];
 

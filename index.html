@@ -31,7 +31,7 @@
     <meta name="twitter:description" content="Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out." />
     <meta name="twitter:image" content="https://pyloxa.com/assets/og-en.png" />
     <meta name="twitter:image:alt" content="Pyloxa: run Claude Code and Codex together. A plan where each task shows the agent it goes to and the rule it matched." />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/#software","name":"Pyloxa","url":"https://pyloxa.com/","image":"https://pyloxa.com/assets/og-en.png","description":"Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out.","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.2.0","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/latest","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://github.com/eric861129/Pyloxa-Releases/releases/latest"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://pyloxa.com/#software","name":"Pyloxa","url":"https://pyloxa.com/","image":"https://pyloxa.com/assets/og-en.png","description":"Free Windows app that routes each coding task to Claude Code or Codex by your rules, checks results with your tests, and switches agents when quota runs out.","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"0.2.0","downloadUrl":"https://github.com/eric861129/Pyloxa-Releases/releases/download/v0.2.0/Pyloxa-Setup-0.2.0.exe","fileSize":"130.5 MB","releaseNotes":"https://github.com/eric861129/Pyloxa-Releases/releases","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"publisher":{"@id":"https://pyloxa.com/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://pyloxa.com/download/"},"author":{"@type":"Person","name":"ChiYu-Huang","url":"https://github.com/eric861129"}}</script>
     <script type="application/ld+json" id="site-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pyloxa.com/#organization","name":"Pyloxa","url":"https://pyloxa.com/","logo":"https://pyloxa.com/assets/icon-512.png","email":"support@pyloxa.com","founder":{"@type":"Person","name":"ChiYu-Huang","sameAs":["https://github.com/eric861129"]},"sameAs":["https://github.com/eric861129/Pyloxa-Releases"]},{"@type":"WebSite","@id":"https://pyloxa.com/#website","url":"https://pyloxa.com/","name":"Pyloxa","inLanguage":["en","zh-TW","zh-CN","ja","ko","es","pt-BR","de","fr"],"publisher":{"@id":"https://pyloxa.com/#organization"}},{"@type":"FAQPage","@id":"https://pyloxa.com/#faq","url":"https://pyloxa.com/","inLanguage":"en","isPartOf":{"@id":"https://pyloxa.com/#website"},"mainEntity":[{"@type":"Question","name":"What is Pyloxa?","acceptedAnswer":{"@type":"Answer","text":"Pyloxa is a desktop app for Windows 10 and 11 that gets AI coding agents such as Claude Code and Codex CLI to work together. You describe the work once, and the brain splits it into tasks and hands each one to a CLI by your routing rules. Every task runs in its own git worktree and is checked with your verification commands, and you decide what gets merged. If one CLI runs out of quota, another takes over once you confirm. Pyloxa uses your own subscriptions or API keys. The free edition needs no account; Pro, US$79 a year, adds running several projects at once, auto mode and automatic fallback, and is in a free preview now: sign in to use it."}},{"@type":"Question","name":"How is this different from running several sessions in the vendors’ own apps?","acceptedAnswer":{"@type":"Answer","text":"The vendors’ desktop apps can also run several sessions at once, which suits handing out the work and watching each session yourself. Pyloxa handles what happens around the sessions: the brain breaks one request into tasks and, following your rules, hands them to CLIs from different vendors, such as Claude Code and Codex. An agent saying it’s done doesn’t count: Pyloxa runs your verification commands in the task’s own worktree. When one vendor’s quota runs out, another picks up from the files already changed, after you confirm. You decide whether to merge. For a small change to a file or two with one vendor, the vendor’s own app or CLI is all you need."}},{"@type":"Question","name":"Does Pyloxa charge for AI usage?","acceptedAnswer":{"@type":"Answer","text":"No. Pyloxa runs the official CLIs you already set up (Claude Code, Codex CLI and, experimentally, Gemini CLI), so usage counts against your own subscription, or against your own API key if you choose one. Pyloxa never resells or proxies any AI service."}},{"@type":"Question","name":"What do I need to install?","acceptedAnswer":{"@type":"Answer","text":"Windows 10 or 11 (64-bit), git, and at least one of Claude Code or Codex CLI, signed in. Gemini CLI is optional and experimental, and needs your own paid Gemini API key. With more than one CLI, the default flow splits the work and fallback becomes useful. Don't have them yet? On first launch, the setup wizard checks for git and Node.js, installs the CLIs with their official npm commands after you confirm, and walks you through sign-in and API keys."}},{"@type":"Question","name":"Can I try it without using my own project?","acceptedAnswer":{"@type":"Answer","text":"Yes. On the last step of the setup wizard, or on the welcome page before you have any projects, choose “Start the test drive”. Pyloxa creates a shopping-cart sample repo with a hidden bug and a plan written in advance, and waits for your approval. With CLIs from two vendors, one builds and the other cross-tests; with only one, a spec test included in the repo does the checking. Pyloxa runs the tests itself, and you can open the verification card at the end. Before it starts, you see an estimate of agent turns, tokens and time. The test drive never touches your projects, pushes or opens a PR."}},{"@type":"Question","name":"Does Pyloxa read my credentials?","acceptedAnswer":{"@type":"Answer","text":"Never. It checks sign-in status with each CLI’s own command and starts the CLI as you would. Tokens and credential files are not read, copied or sent."}},{"@type":"Question","name":"Is my code sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"The free version needs no account, and Pyloxa never sends us your projects, prompts or code; your code goes only where the CLIs send it, under Anthropic’s, OpenAI’s and Google’s terms. The trial, the Pro preview and Pro need you to sign in, and the account is used only for licensing: once signed in, Pyloxa refreshes its license about once a day, sending only a device ID and the app and Windows versions. Pyloxa asks GitHub for the latest Pyloxa version and its CLI compatibility catalog at startup and every 12 hours, with no project or usage data; you can turn this off in Settings. Usage statistics are computed on your computer and are sent only if you turn on anonymous sharing, which is off by default, and then contain only counts and categories. Pro notifications you set up go straight from your computer to the Telegram, Discord or webhook you choose. Details are in the privacy policy."}},{"@type":"Question","name":"Can an agent break my repository?","acceptedAnswer":{"@type":"Answer","text":"Agents work in separate git worktrees, away from the working directory you are editing, and Pyloxa never stashes, resets or checks it out. When a task finishes, its changed files are checked against the write scope the plan allows, and you can review each file in the built-in diff view. Nothing is merged or pushed until you choose to."}},{"@type":"Question","name":"Do I have to set everything up again on a new PC?","acceptedAnswer":{"@type":"Answer","text":"No. Export your settings in Settings → Backup and transfer and import them on the new PC: agent profiles, global routing rules, routing and brain preferences, stages, your workflows, prompt templates, global shared memory, the skills library and interface preferences travel in one file. The free version keeps imported workflows too; using one in a project needs Pro. API keys, sign-ins, licenses and paths on this PC are never included. Per-project settings, which workflow each project uses and workflow version history stay behind; project rules can live in the repo’s .pyloxa/ folder and travel with git. You preview each item before importing, this PC’s settings are backed up automatically first, and you can restore them. It’s in the free version."}},{"@type":"Question","name":"Why does Windows warn me when installing?","acceptedAnswer":{"@type":"Answer","text":"The free installer is not code-signed yet, so SmartScreen may say it protected your PC. Choose More info, then Run anyway. You can compare the installer’s SHA-256 with the one on the release page first."}},{"@type":"Question","name":"How is this different from tools that put agent terminals side by side?","acceptedAnswer":{"@type":"Answer","text":"Terminal multiplexers put several agent terminals in one window so you can see which are working and which are waiting for you; some keep agents running even after you quit the app or reach remote machines. Pyloxa handles what happens outside the terminals: the brain splits the request into tasks, your rules route them, your commands check the results, a fallback is proposed when quota runs out, and you merge at the end. Pyloxa keeps working in the system tray when you close its window, and tasks interrupted by a restart can be resumed. If you want to watch every terminal yourself, a multiplexer fits; if you want to hand over a request and get checked results back, Pyloxa fits."}},{"@type":"Question","name":"I already pay for Claude or ChatGPT. Why not just run the CLI in a terminal?","acceptedAnswer":{"@type":"Answer","text":"Running the CLI directly is fine, and Pyloxa uses the same CLI and the same subscription. The difference is three things: when quota runs out, Pyloxa proposes a fallback from your rules and, once you confirm, another CLI continues from the files already changed; an agent saying it is done does not count until your verification commands pass; and routing rules plus the skills each CLI can see are in one place instead of in each CLI's own settings."}},{"@type":"Question","name":"How is this different from a CLI's own subagents?","acceptedAnswer":{"@type":"Answer","text":"Subagents split work inside one CLI. Pyloxa splits work across CLIs: tasks can go to different CLIs, each runs in its own worktree, your commands check the results, and another CLI takes over when one runs out of quota. You can use both together."}},{"@type":"Question","name":"Does it support Gemini or other agents?","acceptedAnswer":{"@type":"Answer","text":"Since 0.1.2, Gemini CLI is supported as an experimental option with your own paid Gemini API key. Google account sign-in and AI Pro or Ultra subscriptions are not supported. Gemini can run tasks such as writing and docs but can’t be the brain or test another agent’s work, and in unattended mode it can edit files but not run commands. Other agents are being evaluated."}},{"@type":"Question","name":"What does Pro add?","acceptedAnswer":{"@type":"Answer","text":"Several projects working at once, with everything waiting on you in the task center; automatic decisions within limits you set (auto mode); automatic fallback when quota runs out; automatic cross-testing; a backup brain; saved workflows, a different one for each project, and workflows drafted from one sentence; project priority, per-connection quotas and scheduled plans; a usage dashboard and reports; notifications to Telegram, Discord or a webhook; a skills library and dispatch packs; and Agent Teams, still experimental. Pro is US$79 a year and is in a preview now: sign in to use it for free until Pro goes on sale, with at least 30 days’ notice. The early-bird price is US$49 a year, and it stays US$49 for as long as you stay subscribed. If you stop, Pro keeps working on every version released while you subscribed. The free version stays free."}}]}]}</script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -72,7 +72,7 @@
       gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
       // 下載按鈕：記成 download_click，在 GA 設為主要事件
       document.addEventListener("click", (e) => {
-        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
         if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
       });
       })();
@@ -91,7 +91,7 @@
         <li class="optional"><a href="#faq">FAQ</a></li>
         <li class="optional"><a href="changelog/">Changelog</a></li>
         <li class="nav-lang"><details class="lang-menu in-nav"><summary><span class="lang-current">English</span><span class="visually-hidden"> — Language</span></summary><ul><li><a href="./" lang="en" hreflang="en" aria-current="true">English</a></li><li><a href="zh-TW/" lang="zh-Hant-TW" hreflang="zh-TW">繁體中文</a></li><li><a href="zh-CN/" lang="zh-Hans-CN" hreflang="zh-CN">简体中文</a></li><li><a href="ja/" lang="ja" hreflang="ja">日本語</a></li><li><a href="ko/" lang="ko" hreflang="ko">한국어</a></li><li><a href="es/" lang="es" hreflang="es">Español</a></li><li><a href="pt-BR/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></li><li><a href="de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="fr/" lang="fr" hreflang="fr">Français</a></li></ul></details></li>
-        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+        <li><a class="nav-download" href="download/#start">Download</a></li>
       </ul>
     </header>
 
@@ -99,10 +99,10 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="wrap grid">
           <div class="hero-copy reveal">
-            <h1 id="hero-title">One chat.<br />Many agents.<span class="h1-sub">A Windows app that gets Claude Code and Codex to split the work</span></h1>
+            <h1 id="hero-title">Agents say “done”.<br />Your tests decide.<span class="h1-sub">A free Windows app that gets Claude Code and Codex to split the work, with a handoff when quota runs out</span></h1>
             <p class="lead">More than running several sessions at once. Describe the work once: Pyloxa plans it, splits the tasks between Claude Code and Codex, and runs your tests itself before anything is merged.</p>
             <div class="actions">
-              <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download for Windows</a>
+              <a class="button" href="download/#start">Download for Windows</a>
               <span class="meta">Free · v0.2.0 · Windows 10 and 11</span>
             </div>
             <a class="hero-pro" href="#pricing">Or sign in and try the Pro preview for free →</a>
@@ -821,9 +821,9 @@
           <tfoot>
             <tr>
               <td></td>
-              <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download the free version</a></td>
+              <td><a class="button is-light" href="download/#start">Download the free version</a></td>
               <td class="pro">
-              <a class="button preview-cta" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download and sign in to try the Pro preview</a>
+              <a class="button preview-cta" href="download/#start">Download and sign in to try the Pro preview</a>
               <span class="later" data-waitlist-soon>Early-bird sign-up opens soon.</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-table">Early bird: US$49 a year</label>
@@ -859,7 +859,7 @@
               <li>Skills: One skills library synced to every CLI, assigned per project or profile, and shared with your rules as dispatch packs</li>
               <li>Brain: A backup brain that takes over planning when the main one is unavailable</li>
             </ul>
-            <a class="button preview-cta" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download and sign in to try the Pro preview</a>
+            <a class="button preview-cta" href="download/#start">Download and sign in to try the Pro preview</a>
             <span class="later" data-waitlist-soon>Early-bird sign-up opens soon.</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-phone">Early bird: US$49 a year</label>
@@ -885,7 +885,7 @@
             </ul>
             <p class="plan-sub">Both versions</p>
             <p class="plan-both">Claude Code, Codex CLI and Gemini CLI (experimental) · your own profiles and routing rules · verification commands and phase gates · a worktree per task · verification cards · background running and resuming interrupted work · files, diffs, git and pull requests · settings export and import</p>
-            <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download the free version</a>
+            <a class="button is-light" href="download/#start">Download the free version</a>
           </div>
         </div>
         <p class="pricing-note">During the Pro preview, signing in gives you every Pro feature above for free. The preview ends when Pro goes on sale, with at least 30 days’ notice, and you keep Pro for 14 more days with your data and settings intact. The free version stays free, and everything about safety and correctness is in it.</p>
@@ -1008,6 +1008,7 @@
             <h2 id="close-title">Say it once.</h2>
             <p>Install Pyloxa, take the test drive on a sample project or open your own project folder, and describe what you want done. The brain reads the project first and asks before it plans anything big.</p>
             <p class="smartscreen">The installer is not code-signed yet; if SmartScreen appears, choose More info, then Run anyway.</p>
+            <p class="smartscreen">12 releases since November 2026, each with release notes and a SHA-256 checksum. <a href="changelog/">Changelog</a></p>
           </div>
           <div class="starter reveal" data-ui>
             <div class="ui-row">
@@ -1022,7 +1023,7 @@
               </div>
             </div>
             <div class="ui-row">
-              <a class="button download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download Pyloxa for Windows</a>
+              <a class="button download" href="download/#start">Download Pyloxa for Windows</a>
             </div>
           </div>
         </div>
@@ -1038,7 +1039,7 @@
         </div>
         <nav class="tile links" aria-label="Footer">
           <ul>
-            <li><a href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+            <li><a href="download/#start">Download</a></li>
             <li><a href="changelog/">Changelog</a></li>
             <li><a href="help/">Help</a></li>
             <li><a href="#faq">FAQ</a></li>
@@ -1055,7 +1056,7 @@
           <a href="https://github.com/eric861129/Pyloxa-Releases/issues">Report it on GitHub</a>
         </div>
         <div class="tile word"><span class="wordmark">Pyloxa</span></div>
-        <a class="tile go" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">
+        <a class="tile go" href="download/#start">
           <span>Download it free</span>
           <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M14 42 42 14M20 14h22v22" /></svg>
         </a>

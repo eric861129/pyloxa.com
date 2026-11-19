@@ -50,7 +50,7 @@
       gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
       // 下載按鈕：記成 download_click，在 GA 設為主要事件
       document.addEventListener("click", (e) => {
-        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
         if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
       });
       })();
@@ -66,7 +66,7 @@
         <li class="optional"><a href="../../zh-TW/quota/">額度與備援</a></li>
         <li class="optional"><a href="../../zh-TW/pro/" aria-current="page">Pro</a></li>
         <li><a href="../../pro/" lang="en">English</a></li>
-        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載</a></li>
+        <li><a class="nav-download" href="../../zh-TW/download/#start">下載</a></li>
       </ul>
     </header>
 
@@ -77,7 +77,7 @@
         <h1>免費版陪你做一個專案，Pro 幫你顧好所有專案</h1>
         <p class="fx-lede">免費版就能走完整個流程：擬計畫、派工、驗收、合併。Pro 把你原本要親手做的事交給 Pyloxa：多個專案一起跑、在你設定的範圍內自己決定、額度用完自己接手、做完自己找另一個 Agent 測試。現在登入就能免費預覽。</p>
         <div class="fx-actions">
-          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載並登入，免費使用 Pro 預覽</a>
+          <a class="button" href="../download/#start">下載並登入，免費使用 Pro 預覽</a>
           <a class="button is-light" href="#features">看 Pro 多了什麼</a>
         </div>
         <ul class="fx-facts">
@@ -220,7 +220,7 @@
           <h2 id="fx-cta-title">拿你自己的專案試試看</h2>
           <p>Pyloxa 是免費的 Windows App，執行你已經在用的 Claude Code 與 Codex CLI，用你自己的訂閱或 API Key。</p>
           <div class="fx-actions">
-            <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">下載 Pyloxa Windows 版</a>
+            <a class="button" href="../../zh-TW/download/#start">下載 Pyloxa Windows 版</a>
             <a class="button is-light" href="../../zh-TW/#pricing">比較免費版與 Pro</a>
           </div>
         </div>

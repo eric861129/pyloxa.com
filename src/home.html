@@ -52,7 +52,7 @@
       gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
       // 下載按鈕：記成 download_click，在 GA 設為主要事件
       document.addEventListener("click", (e) => {
-        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
         if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
       });
       })();
@@ -71,7 +71,7 @@
         <li class="optional"><a href="#faq">{{body.7}}</a></li>
         <li class="optional"><a href="{{@changelog}}">{{body.8}}</a></li>
         <li class="nav-lang">{{@langMenuNav}}</li>
-        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{body.12}}</a></li>
+        <li><a class="nav-download" href="download/#start">{{body.12}}</a></li>
       </ul>
     </header>
 
@@ -82,7 +82,7 @@
             <h1 id="hero-title">{{hero-title.1}}<br />{{hero-title.2}}<span class="h1-sub">{{hero-title.3}}</span></h1>
             <p class="lead">{{hero-title.4}}</p>
             <div class="actions">
-              <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{hero-title.5}}</a>
+              <a class="button" href="download/#start">{{hero-title.5}}</a>
               <span class="meta">{{hero-title.6}}</span>{{@appLangNote}}
             </div>
             <a class="hero-pro" href="#pricing">{{hero.pro}}</a>
@@ -801,9 +801,9 @@
           <tfoot>
             <tr>
               <td></td>
-              <td><a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{pricing-title.45}}</a></td>
+              <td><a class="button is-light" href="download/#start">{{pricing-title.45}}</a></td>
               <td class="pro">
-              <a class="button preview-cta" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{pricing-cta}}</a>
+              <a class="button preview-cta" href="download/#start">{{pricing-cta}}</a>
               <span class="later" data-waitlist-soon>{{pricing-title.46}}</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-table">{{pricing-title.47}}</label>
@@ -839,7 +839,7 @@
               <li>{{wl-email-table.15}}</li>
               <li>{{wl-email-table.16}}</li>
             </ul>
-            <a class="button preview-cta" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{pricing-cta}}</a>
+            <a class="button preview-cta" href="download/#start">{{pricing-cta}}</a>
             <span class="later" data-waitlist-soon>{{wl-email-table.17}}</span>
               <form class="waitlist" data-waitlist method="post" hidden>
                 <label for="wl-email-phone">{{wl-email-table.18}}</label>
@@ -865,7 +865,7 @@
             </ul>
             <p class="plan-sub">{{wl-email-phone.10}}</p>
             <p class="plan-both">{{wl-email-phone.11}}</p>
-            <a class="button is-light" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{wl-email-phone.12}}</a>
+            <a class="button is-light" href="download/#start">{{wl-email-phone.12}}</a>
           </div>
         </div>
         <p class="pricing-note">{{wl-email-phone.13}}</p>
@@ -988,6 +988,7 @@
             <h2 id="close-title">{{close-title.1}}</h2>
             <p>{{close-title.2}}</p>
             <p class="smartscreen">{{close-title.3}}</p>
+            <p class="smartscreen">{{dl.trust}} <a href="{{@changelog}}">{{body.8}}</a></p>
           </div>
           <div class="starter reveal" data-ui>
             <div class="ui-row">
@@ -1002,7 +1003,7 @@
               </div>
             </div>
             <div class="ui-row">
-              <a class="button download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{close-title.10}}</a>
+              <a class="button download" href="download/#start">{{close-title.10}}</a>
             </div>
           </div>
         </div>
@@ -1018,7 +1019,7 @@
         </div>
         <nav class="tile links" aria-label="{{footer.11}}">
           <ul>
-            <li><a href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">{{footer.12}}</a></li>
+            <li><a href="download/#start">{{footer.12}}</a></li>
             <li><a href="{{@changelog}}">{{footer.13}}</a></li>
             <li><a href="{{@help}}">{{footer.27}}</a></li>
             <li><a href="#faq">{{footer.14}}</a></li>
@@ -1035,7 +1036,7 @@
           <a href="https://github.com/eric861129/Pyloxa-Releases/issues">{{footer.24}}</a>
         </div>
         <div class="tile word"><span class="wordmark">Pyloxa</span></div>
-        <a class="tile go" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">
+        <a class="tile go" href="download/#start">
           <span>{{footer.25}}</span>
           <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M14 42 42 14M20 14h22v22" /></svg>
         </a>

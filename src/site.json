@@ -1,3 +1,7 @@
 {
-  "version": "0.2.0"
+  "version": "0.2.0",
+  "installer": {
+    "sha256": "0ba00a15f5f16be60c2d1b453e622abd3f4895bf5e1e2045aac9fc52734f35af",
+    "bytes": 130543383
+  }
 }

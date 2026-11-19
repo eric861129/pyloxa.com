@@ -352,6 +352,17 @@
     });
   }
 
+  // ---- 下載頁：從下載按鈕來的（網址帶 #start）自動開始下載安裝檔；從搜尋直接進來的不自動下載 ----
+  const exe = document.querySelector("[data-dl-exe]");
+  if (exe && location.hash === "#start") {
+    history.replaceState(null, "", location.pathname + location.search);
+    document.querySelector("[data-dl-started]")?.removeAttribute("hidden");
+    setTimeout(() => {
+      if (window.gtag) gtag("event", "download_start", { method: "auto", link_url: exe.href });
+      location.href = exe.href;
+    }, 400);
+  }
+
   // ---- 語言選單：點選單外面或按 Esc 就收起 ----
   const menus = [...document.querySelectorAll(".lang-menu")];
   if (menus.length) {

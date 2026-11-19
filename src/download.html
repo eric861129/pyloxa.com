@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="{{@htmlLang}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{dl.title}}</title>
+    <meta name="description" content="{{dl.description}}" />
+    <meta name="theme-color" content="#4932d4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyloxa" />
+    <meta property="og:title" content="{{dl.title}}" />
+    <meta property="og:description" content="{{dl.description}}" />
+    <meta property="og:url" content="{{@url}}" />
+    <meta property="og:image" content="{{@ogImage}}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="{{@up}}assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{{@up}}assets/apple-touch-icon.png" />
+    <link rel="manifest" href="{{@up}}assets/site.webmanifest" />
+    <link rel="canonical" href="{{@url}}" />
+{{@alternates}}    {{@schema}}
+    <link rel="stylesheet" href="{{@up}}assets/site.css" />
+    <link rel="stylesheet" href="{{@up}}assets/features.css" />
+{{@analytics}}
+  </head>
+  <body class="fx dl">
+    <a class="skip" href="#main">{{body.1}}</a>
+    <header class="wrap nav">
+      <a class="mark" href="{{@home}}" aria-label="{{body.2}}">Pyloxa</a>
+      <ul>
+        <li class="optional"><a href="{{@help}}">{{footer.27}}</a></li>
+        <li class="optional"><a href="{{@changelog}}">{{body.8}}</a></li>
+        <li class="nav-lang">{{@langMenu}}</li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <section class="wrap fx-hero dl-hero" id="start">
+        <p class="fx-eyebrow">{{dl.eyebrow}}</p>
+        <h1>{{dl.h1}}</h1>
+        <p class="fx-lede">{{dl.lede}}</p>
+        <p class="dl-started" data-dl-started hidden>{{dl.started}}</p>
+        <div class="fx-actions">
+          <a class="button" href="{{@exe}}" data-dl-exe>{{dl.button}}</a>
+          <span class="meta">{{dl.meta}}</span>
+        </div>
+        <p class="dl-trust">{{dl.trust}}</p>
+      </section>
+
+      <section class="wrap fx-sec is-flip" aria-labelledby="dl-steps-title">
+        <div class="fx-copy">
+          <h2 id="dl-steps-title">{{dl.stepsTitle}}</h2>
+          <ol class="fx-steps">
+            <li><div><strong>{{dl.s1t}}</strong>{{dl.s1}}</div></li>
+            <li><div><strong>{{dl.s2t}}</strong>{{dl.s2}}</div></li>
+            <li><div><strong>{{dl.s3t}}</strong>{{dl.s3}}</div></li>
+            <li><div><strong>{{dl.s4t}}</strong>{{dl.s4}}</div></li>
+          </ol>
+        </div>
+        <figure class="fx-media dl-shot">
+          <div class="dl-dialog" data-ui role="img" aria-label="{{dl.ss.alt}}">
+            <p class="dl-dialog-title">{{dl.ss.title}}</p>
+            <p class="dl-dialog-text">{{dl.ss.text}}</p>
+            <p class="dl-dialog-more"><span class="dl-mark">1</span><u>{{dl.ss.more}}</u></p>
+            <p class="dl-dialog-meta">{{dl.ss.app}} {{@exeName}}<br />{{dl.ss.publisher}}</p>
+            <div class="dl-dialog-buttons">
+              <span class="dl-dialog-run"><span class="dl-mark">2</span>{{dl.ss.run}}</span>
+              <span class="dl-dialog-dont">{{dl.ss.dont}}</span>
+            </div>
+          </div>
+          <figcaption class="fx-note">{{dl.ss.caption}}</figcaption>
+        </figure>
+      </section>
+
+      <section class="wrap fx-sec is-wide" aria-labelledby="dl-need-title">
+        <div class="fx-copy">
+          <h2 id="dl-need-title">{{dl.needTitle}}</h2>
+          <ul class="fx-list">
+            <li>{{dl.need1}}</li>
+            <li>{{dl.need2}}</li>
+            <li>{{dl.need3}}</li>
+            <li>{{dl.need4}}</li>
+          </ul>
+          <p>{{dl.privacy}}</p>
+        </div>
+      </section>
+
+      <section class="wrap fx-sec is-wide" id="checksum" aria-labelledby="dl-verify-title">
+        <div class="fx-copy">
+          <h2 id="dl-verify-title">{{dl.verifyTitle}}</h2>
+          <p>{{dl.verify}}</p>
+          <pre class="dl-code"><code>Get-FileHash .\{{@exeName}} -Algorithm SHA256</code></pre>
+          <p class="dl-hash"><span>SHA-256</span><code>{{@sha256}}</code></p>
+          <p>{{dl.links}}</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap fx-foot">
+      <p>{{footer.22}} · <a href="{{@help}}">{{footer.27}}</a> · <a href="{{@changelog}}">{{footer.13}}</a> · <a href="{{@privacy}}">{{footer.15}}</a> · <a href="{{@up}}legal/EULA.txt">EULA</a> · <a href="mailto:support@pyloxa.com">{{footer.16}}</a></p>
+    </footer>
+
+    <script src="{{@up}}assets/site.js" defer></script>
+    <!-- Cloudflare Web Analytics：不使用 cookie，只統計瀏覽次數 --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4fd2f289f39942fea6f9881f3b5cad55"}'></script>
+  </body>
+</html>

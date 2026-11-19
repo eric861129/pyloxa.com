@@ -50,7 +50,7 @@
       gtag("config", "G-PWKKJHQV92", { allow_google_signals: false, allow_ad_personalization_signals: false });
       // 下載按鈕：記成 download_click，在 GA 設為主要事件
       document.addEventListener("click", (e) => {
-        const a = e.target.closest && e.target.closest('a[href*="Pyloxa-Releases/releases"]');
+        const a = e.target.closest && e.target.closest('a[href$="download/#start"], a[href*="Pyloxa-Releases/releases/download"]');
         if (a) gtag("event", "download_click", { link_url: a.href, link_text: a.textContent.trim().slice(0, 60) });
       });
       })();
@@ -66,7 +66,7 @@
         <li class="optional"><a href="../quota/" aria-current="page">Quota & fallback</a></li>
         <li class="optional"><a href="../pro/">Pro</a></li>
         <li><a href="../zh-TW/quota/" lang="zh-Hant">繁體中文</a></li>
-        <li><a class="nav-download" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download</a></li>
+        <li><a class="nav-download" href="../download/#start">Download</a></li>
       </ul>
     </header>
 
@@ -77,7 +77,7 @@
         <h1>Out of quota doesn’t have to mean out of work</h1>
         <p class="fx-lede">When Codex runs out of quota halfway through a task, Pyloxa stops sending it work and offers the fallback from your rules. You confirm, and Claude Code continues from the files Codex already changed. Or wait for the reset and let the original agent carry on.</p>
         <div class="fx-actions">
-          <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download free</a>
+          <a class="button" href="../download/#start">Download free</a>
           <a class="button is-light" href="#meter">See the quota meter</a>
         </div>
         <ul class="fx-facts">
@@ -199,7 +199,7 @@
           <h2 id="fx-cta-title">Try it on your own project</h2>
           <p>Pyloxa is a free Windows app. It runs the Claude Code and Codex CLIs you already use, on your own subscriptions or API keys.</p>
           <div class="fx-actions">
-            <a class="button" href="https://github.com/eric861129/Pyloxa-Releases/releases/latest">Download Pyloxa for Windows</a>
+            <a class="button" href="../download/#start">Download Pyloxa for Windows</a>
             <a class="button is-light" href="../#pricing">Compare Free and Pro</a>
           </div>
         </div>
