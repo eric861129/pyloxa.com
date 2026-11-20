@@ -3935,3 +3935,43 @@ html.zoom-open body {
     transition: none;
   }
 }
+
+/* ---- 手機的段落選單（SEO 稽核第 11 項）：段落連結改成第二列、可以橫向捲動，點擊高度 44px ---- */
+@media (max-width: 900px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .nav ul {
+    flex-wrap: wrap;
+  }
+
+  .nav ul li.optional {
+    display: none;
+  }
+
+  .nav .nav-sections {
+    display: flex;
+    order: 3;
+    flex-basis: 100%;
+    gap: 4px 16px;
+    margin: 4px 0 0;
+    padding: 0;
+    overflow-x: auto;
+    list-style: none;
+    scrollbar-width: none;
+  }
+
+  .nav .nav-sections a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 901px) {
+  .nav .nav-sections {
+    display: none;
+  }
+}

@@ -89,7 +89,7 @@ export function siteGraphTag(html, page) {
         logo: `${ORIGIN}/assets/icon-512.png`,
         email: "support@pyloxa.com",
         founder: { "@type": "Person", name: "ChiYu-Huang", sameAs: ["https://github.com/eric861129"] },
-        sameAs: ["https://github.com/eric861129/Pyloxa-Releases"],
+        sameAs: ["https://github.com/eric861129/Pyloxa-Releases", "https://www.youtube.com/channel/UC-J3VnKPb5N_9is6hXC3BHg"],
       },
       {
         "@type": "WebSite",

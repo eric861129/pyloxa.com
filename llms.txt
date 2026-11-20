@@ -53,3 +53,9 @@ Pyloxa is made from the first letters of Plan, Yield, Lead, Orchestrate, eXecute
 - [Report a problem](https://github.com/eric861129/Pyloxa-Releases/issues)
 - [Privacy policy](https://pyloxa.com/privacy/)
 - [License (EULA)](https://pyloxa.com/legal/EULA.txt)
+- [Video tour](https://www.youtube.com/channel/UC-J3VnKPb5N_9is6hXC3BHg): six-minute narrated tours in English and Traditional Chinese on the Pyloxa YouTube channel
+
+## Contact
+
+- Email: support@pyloxa.com
+- Built and maintained by ChiYu-Huang, an independent developer in Taiwan (https://github.com/eric861129)
